@@ -1,0 +1,7 @@
+docker/pg/data
+docker/mongo/data
+docker/mysql/data
+*~
+*.log
+__pycache__
+.idea
