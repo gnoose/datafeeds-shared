@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  #pg:
+  #  image: mdillon/postgis:9.4-alpine
+  #  volumes:
+  #    - ./docker/pg/data:/var/lib/postgresql/data
+  #  expose:
+  #    - 5432
+  #  ports:
+  #    - "5432:5432"
+  #  labels:
+  #    SERVICE_NAME: pg
+
+  mysql:
+    image: mysql:5.6
+    environment:
+      - MYSQL_DATABASE=urjanet
+      - MYSQL_USER=gridium
+      - MYSQL_PASSWORD=gridium
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    restart: always
