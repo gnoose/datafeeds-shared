@@ -1,0 +1,29 @@
+{
+    "periods": [
+        {
+            "end": "2019-08-15",
+            "peak_demand": null,
+            "start": "2019-07-11",
+            "tariff": null,
+            "total_charge": "1972.7300",
+            "total_usage": "4810.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Bill",
+                    "ChargeAmount": "1972.7300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-15",
+                    "IntervalStart": "2019-07-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237439779,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9c5b21-bdfc-d158-9cb3-0e6fcd4edc32"
+            ]
+        }
+    ]
+}

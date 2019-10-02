@@ -40,8 +40,8 @@ def upload_data(data, account_id, meter_id, dst_strategy='none'):
             )
 
             webapps.post(
-               '/accounts/%s/meters/%s/readings' % (account_id, meter_id),
-               {'transaction': transaction_oid, 'readings': json.dumps(data_to_upload), 'dstStrategy': dst_strategy}
+                '/accounts/%s/meters/%s/readings' % (account_id, meter_id),
+                {'transaction': transaction_oid, 'readings': json.dumps(data_to_upload), 'dstStrategy': dst_strategy}
             )
 
             data_to_upload = {}
@@ -50,8 +50,8 @@ def upload_data(data, account_id, meter_id, dst_strategy='none'):
     if data_to_upload:
         log.debug("Uploading last data batch")
         webapps.post(
-           '/accounts/%s/meters/%s/readings' % (account_id, meter_id),
-           {'transaction': transaction_oid, 'readings': json.dumps(data_to_upload), 'dstStrategy': dst_strategy}
+            '/accounts/%s/meters/%s/readings' % (account_id, meter_id),
+            {'transaction': transaction_oid, 'readings': json.dumps(data_to_upload), 'dstStrategy': dst_strategy}
         )
 
     webapps.post('/transactions/commit', {'oid': transaction_oid})

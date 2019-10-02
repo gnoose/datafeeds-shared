@@ -1,0 +1,1435 @@
+{
+    "periods": [
+        {
+            "end": "2015-01-29",
+            "peak_demand": null,
+            "start": "2014-12-31",
+            "tariff": null,
+            "total_charge": "34.7400",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.96286/HCF",
+                    "ChargeAmount": "34.7400",
+                    "ChargeRatePerUnit": "4.9629",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2015-01-30",
+                    "IntervalStart": "2015-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222006,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7789-2eda-dbd6-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-03-02",
+            "peak_demand": null,
+            "start": "2015-01-30",
+            "tariff": null,
+            "total_charge": "44.6600",
+            "total_usage": "9.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 9 HCF x $4.96222/HCF",
+                    "ChargeAmount": "44.6600",
+                    "ChargeRatePerUnit": "4.9622",
+                    "ChargeUnitsUsed": "9.0000",
+                    "IntervalEnd": "2015-03-03",
+                    "IntervalStart": "2015-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222005,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7789-2eda-dbd6-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-03-30",
+            "peak_demand": null,
+            "start": "2015-03-03",
+            "tariff": null,
+            "total_charge": "44.6600",
+            "total_usage": "9.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 9 HCF x $4.96222/HCF",
+                    "ChargeAmount": "44.6600",
+                    "ChargeRatePerUnit": "4.9622",
+                    "ChargeUnitsUsed": "9.0000",
+                    "IntervalEnd": "2015-03-31",
+                    "IntervalStart": "2015-03-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221212,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7787-7282-d4ee-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-04-28",
+            "peak_demand": null,
+            "start": "2015-03-31",
+            "tariff": null,
+            "total_charge": "34.5400",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.93429/HCF",
+                    "ChargeAmount": "34.5400",
+                    "ChargeRatePerUnit": "4.9343",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2015-04-29",
+                    "IntervalStart": "2015-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221426,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7784-da6f-ddc7-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-05-28",
+            "peak_demand": null,
+            "start": "2015-04-29",
+            "tariff": null,
+            "total_charge": "49.3200",
+            "total_usage": "10.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 10 HCF x $4.932/HCF",
+                    "ChargeAmount": "49.3200",
+                    "ChargeRatePerUnit": "4.9320",
+                    "ChargeUnitsUsed": "10.0000",
+                    "IntervalEnd": "2015-05-29",
+                    "IntervalStart": "2015-04-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222434,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7789-ffdf-d0dd-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-06-28",
+            "peak_demand": null,
+            "start": "2015-05-29",
+            "tariff": null,
+            "total_charge": "34.5400",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.93429/HCF",
+                    "ChargeAmount": "34.5400",
+                    "ChargeRatePerUnit": "4.9343",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2015-06-29",
+                    "IntervalStart": "2015-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221762,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7788-93ee-d14d-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-07-29",
+            "peak_demand": null,
+            "start": "2015-06-29",
+            "tariff": null,
+            "total_charge": "35.7700",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.11/HCF",
+                    "ChargeAmount": "35.7700",
+                    "ChargeRatePerUnit": "5.1100",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2015-07-30",
+                    "IntervalStart": "2015-06-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221580,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7785-3805-d5ac-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-08-26",
+            "peak_demand": null,
+            "start": "2015-07-30",
+            "tariff": null,
+            "total_charge": "35.8100",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.11571/HCF",
+                    "ChargeAmount": "35.8100",
+                    "ChargeRatePerUnit": "5.1157",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2015-08-27",
+                    "IntervalStart": "2015-07-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222225,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7786-af43-d665-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-09-27",
+            "peak_demand": null,
+            "start": "2015-08-27",
+            "tariff": null,
+            "total_charge": "35.8100",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.11571/HCF",
+                    "ChargeAmount": "35.8100",
+                    "ChargeRatePerUnit": "5.1157",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2015-09-28",
+                    "IntervalStart": "2015-08-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222102,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7786-672f-d379-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-10-27",
+            "peak_demand": null,
+            "start": "2015-09-28",
+            "tariff": null,
+            "total_charge": "32.8000",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.68571/HCF",
+                    "ChargeAmount": "32.8000",
+                    "ChargeRatePerUnit": "4.6857",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2015-10-28",
+                    "IntervalStart": "2015-09-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222405,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7786-f3f9-db46-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-11-30",
+            "peak_demand": null,
+            "start": "2015-10-28",
+            "tariff": null,
+            "total_charge": "32.5800",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.65429/HCF",
+                    "ChargeAmount": "32.5800",
+                    "ChargeRatePerUnit": "4.6543",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2015-12-01",
+                    "IntervalStart": "2015-10-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221689,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7785-70d7-d3d2-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2015-12-30",
+            "peak_demand": null,
+            "start": "2015-12-01",
+            "tariff": null,
+            "total_charge": "18.6200",
+            "total_usage": "4.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 4 HCF x $4.655/HCF",
+                    "ChargeAmount": "18.6200",
+                    "ChargeRatePerUnit": "4.6550",
+                    "ChargeUnitsUsed": "4.0000",
+                    "IntervalEnd": "2015-12-31",
+                    "IntervalStart": "2015-12-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221803,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7785-b1ce-d205-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-01-31",
+            "peak_demand": null,
+            "start": "2015-12-31",
+            "tariff": null,
+            "total_charge": "33.2800",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.75429/HCF",
+                    "ChargeAmount": "33.2800",
+                    "ChargeRatePerUnit": "4.7543",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2016-02-01",
+                    "IntervalStart": "2015-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221634,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7788-4f57-d804-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-02-29",
+            "peak_demand": null,
+            "start": "2016-02-01",
+            "tariff": null,
+            "total_charge": "33.2800",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.75429/HCF",
+                    "ChargeAmount": "33.2800",
+                    "ChargeRatePerUnit": "4.7543",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2016-03-01",
+                    "IntervalStart": "2016-02-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221480,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7788-0522-df1e-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-03-29",
+            "peak_demand": null,
+            "start": "2016-03-01",
+            "tariff": null,
+            "total_charge": "33.2800",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.75429/HCF",
+                    "ChargeAmount": "33.2800",
+                    "ChargeRatePerUnit": "4.7543",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2016-03-30",
+                    "IntervalStart": "2016-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222171,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7789-69d9-d4b1-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-04-27",
+            "peak_demand": null,
+            "start": "2016-03-30",
+            "tariff": null,
+            "total_charge": "35.9000",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 3.37931 HCF x $5.55143/HCF",
+                    "ChargeAmount": "18.7600",
+                    "ChargeRatePerUnit": "5.5514",
+                    "ChargeUnitsUsed": "3.3790",
+                    "IntervalEnd": "2016-04-28",
+                    "IntervalStart": "2016-04-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221118,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 3.62069 HCF x $4.7339/HCF",
+                    "ChargeAmount": "17.1400",
+                    "ChargeRatePerUnit": "4.7339",
+                    "ChargeUnitsUsed": "3.6210",
+                    "IntervalEnd": "2016-04-14",
+                    "IntervalStart": "2016-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221119,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e778a-47eb-ddd9-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-05-26",
+            "peak_demand": null,
+            "start": "2016-04-28",
+            "tariff": null,
+            "total_charge": "38.8700",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.55286/HCF",
+                    "ChargeAmount": "38.8700",
+                    "ChargeRatePerUnit": "5.5529",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2016-05-27",
+                    "IntervalStart": "2016-04-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221241,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e778a-9233-dfe4-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-06-28",
+            "peak_demand": null,
+            "start": "2016-05-27",
+            "tariff": null,
+            "total_charge": "44.4200",
+            "total_usage": "8.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 8 HCF x $5.5525/HCF",
+                    "ChargeAmount": "44.4200",
+                    "ChargeRatePerUnit": "5.5525",
+                    "ChargeUnitsUsed": "8.0000",
+                    "IntervalEnd": "2016-06-29",
+                    "IntervalStart": "2016-05-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221055,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7787-31a6-d425-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-07-27",
+            "peak_demand": null,
+            "start": "2016-06-29",
+            "tariff": null,
+            "total_charge": "32.5000",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 6.75862 HCF x $4.61041/HCF",
+                    "ChargeAmount": "31.1600",
+                    "ChargeRatePerUnit": "4.6104",
+                    "ChargeUnitsUsed": "6.7590",
+                    "IntervalEnd": "2016-07-28",
+                    "IntervalStart": "2016-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221952,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 0.24138 HCF x $5.55141/HCF",
+                    "ChargeAmount": "1.3400",
+                    "ChargeRatePerUnit": "5.5514",
+                    "ChargeUnitsUsed": "0.2410",
+                    "IntervalEnd": "2016-06-30",
+                    "IntervalStart": "2016-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221953,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7785-fefe-dd9d-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-08-25",
+            "peak_demand": null,
+            "start": "2016-07-28",
+            "tariff": null,
+            "total_charge": "32.2900",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.61286/HCF",
+                    "ChargeAmount": "32.2900",
+                    "ChargeRatePerUnit": "4.6129",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2016-08-26",
+                    "IntervalStart": "2016-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221510,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e778b-0949-dd5d-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-09-26",
+            "peak_demand": null,
+            "start": "2016-08-26",
+            "tariff": null,
+            "total_charge": "41.5200",
+            "total_usage": "9.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 9 HCF x $4.61333/HCF",
+                    "ChargeAmount": "41.5200",
+                    "ChargeRatePerUnit": "4.6133",
+                    "ChargeUnitsUsed": "9.0000",
+                    "IntervalEnd": "2016-09-27",
+                    "IntervalStart": "2016-08-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221883,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7788-e087-d7e7-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-10-26",
+            "peak_demand": null,
+            "start": "2016-09-27",
+            "tariff": null,
+            "total_charge": "66.9600",
+            "total_usage": "12.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 2 Water 3.62496 HCF x $7.81526/HCF",
+                    "ChargeAmount": "28.3300",
+                    "ChargeRatePerUnit": "7.8153",
+                    "ChargeUnitsUsed": "3.6250",
+                    "IntervalEnd": "2016-10-27",
+                    "IntervalStart": "2016-09-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222301,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 8.37504 HCF x $4.61252/HCF",
+                    "ChargeAmount": "38.6300",
+                    "ChargeRatePerUnit": "4.6125",
+                    "ChargeUnitsUsed": "8.3750",
+                    "IntervalEnd": "2016-10-27",
+                    "IntervalStart": "2016-09-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232222302,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7789-cb24-d826-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-11-29",
+            "peak_demand": null,
+            "start": "2016-10-27",
+            "tariff": null,
+            "total_charge": "32.2900",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.61286/HCF",
+                    "ChargeAmount": "32.2900",
+                    "ChargeRatePerUnit": "4.6129",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2016-11-30",
+                    "IntervalStart": "2016-10-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232221356,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e7787-afe5-d9c0-85bd-22000a8d9e6d"
+            ]
+        },
+        {
+            "end": "2016-12-29",
+            "peak_demand": null,
+            "start": "2016-11-30",
+            "tariff": null,
+            "total_charge": "32.2900",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $4.61286/HCF",
+                    "ChargeAmount": "32.2900",
+                    "ChargeRatePerUnit": "4.6129",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2016-12-30",
+                    "IntervalStart": "2016-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232214427,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e391d-2ce3-d04d-9f17-22000b9acc9c"
+            ]
+        },
+        {
+            "end": "2017-01-30",
+            "peak_demand": null,
+            "start": "2016-12-30",
+            "tariff": null,
+            "total_charge": "40.0900",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.72714/HCF",
+                    "ChargeAmount": "40.0900",
+                    "ChargeRatePerUnit": "5.7271",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2017-01-31",
+                    "IntervalStart": "2016-12-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232228288,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6e935e-9a8a-d1db-b79b-22000b831510"
+            ]
+        },
+        {
+            "end": "2017-02-28",
+            "peak_demand": null,
+            "start": "2017-01-31",
+            "tariff": null,
+            "total_charge": "40.3500",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.76429/HCF",
+                    "ChargeAmount": "40.3500",
+                    "ChargeRatePerUnit": "5.7643",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2017-03-01",
+                    "IntervalStart": "2017-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232268061,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e700605-e535-d79b-b188-22000b96d32e"
+            ]
+        },
+        {
+            "end": "2017-03-29",
+            "peak_demand": null,
+            "start": "2017-03-01",
+            "tariff": null,
+            "total_charge": "40.3500",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.76429/HCF",
+                    "ChargeAmount": "40.3500",
+                    "ChargeRatePerUnit": "5.7643",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2017-03-30",
+                    "IntervalStart": "2017-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232308261,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e716ee5-3430-dc78-b021-22000b198e7b"
+            ]
+        },
+        {
+            "end": "2017-04-27",
+            "peak_demand": null,
+            "start": "2017-03-30",
+            "tariff": null,
+            "total_charge": "34.5800",
+            "total_usage": "6.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 6 HCF x $5.76333/HCF",
+                    "ChargeAmount": "34.5800",
+                    "ChargeRatePerUnit": "5.7633",
+                    "ChargeUnitsUsed": "6.0000",
+                    "IntervalEnd": "2017-04-28",
+                    "IntervalStart": "2017-03-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232363361,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e730192-1de1-de53-b9c5-22000a95080b"
+            ]
+        },
+        {
+            "end": "2017-05-29",
+            "peak_demand": null,
+            "start": "2017-04-28",
+            "tariff": null,
+            "total_charge": "40.3500",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.76429/HCF",
+                    "ChargeAmount": "40.3500",
+                    "ChargeRatePerUnit": "5.7643",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2017-05-30",
+                    "IntervalStart": "2017-04-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232403681,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e746ffb-0d4c-dc49-bc79-22000a951e6d"
+            ]
+        },
+        {
+            "end": "2017-06-27",
+            "peak_demand": null,
+            "start": "2017-05-30",
+            "tariff": null,
+            "total_charge": "46.1000",
+            "total_usage": "8.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 8 HCF x $5.7625/HCF",
+                    "ChargeAmount": "46.1000",
+                    "ChargeRatePerUnit": "5.7625",
+                    "ChargeUnitsUsed": "8.0000",
+                    "IntervalEnd": "2017-06-28",
+                    "IntervalStart": "2017-05-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 232448407,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e75ec6b-9150-df96-849a-22000a8da10c"
+            ]
+        },
+        {
+            "end": "2017-07-27",
+            "peak_demand": null,
+            "start": "2017-06-28",
+            "tariff": null,
+            "total_charge": "38.8700",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 6.53333 HCF x $5.53929/HCF",
+                    "ChargeAmount": "36.1900",
+                    "ChargeRatePerUnit": "5.5393",
+                    "ChargeUnitsUsed": "6.5330",
+                    "IntervalEnd": "2017-07-28",
+                    "IntervalStart": "2017-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234861495,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 0.46667 HCF x $5.74282/HCF",
+                    "ChargeAmount": "2.6800",
+                    "ChargeRatePerUnit": "5.7428",
+                    "ChargeUnitsUsed": "0.4670",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-06-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234861496,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7779c7-48ad-db80-b422-22000a259c44"
+            ]
+        },
+        {
+            "end": "2017-08-27",
+            "peak_demand": null,
+            "start": "2017-07-28",
+            "tariff": null,
+            "total_charge": "67.0800",
+            "total_usage": "11.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 2 Water 1.95854 HCF x $8.66972/HCF",
+                    "ChargeAmount": "16.9800",
+                    "ChargeRatePerUnit": "8.6697",
+                    "ChargeUnitsUsed": "1.9590",
+                    "IntervalEnd": "2017-08-28",
+                    "IntervalStart": "2017-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234902944,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 9.04146 HCF x $5.54114/HCF",
+                    "ChargeAmount": "50.1000",
+                    "ChargeRatePerUnit": "5.5411",
+                    "ChargeUnitsUsed": "9.0410",
+                    "IntervalEnd": "2017-08-28",
+                    "IntervalStart": "2017-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234902945,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e78dc54-8d08-dbc1-855f-22000a3de4c7"
+            ]
+        },
+        {
+            "end": "2017-09-26",
+            "peak_demand": null,
+            "start": "2017-08-28",
+            "tariff": null,
+            "total_charge": "33.2500",
+            "total_usage": "6.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 6 HCF x $5.54167/HCF",
+                    "ChargeAmount": "33.2500",
+                    "ChargeRatePerUnit": "5.5417",
+                    "ChargeUnitsUsed": "6.0000",
+                    "IntervalEnd": "2017-09-27",
+                    "IntervalStart": "2017-08-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234963724,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7a5bfe-a065-d78f-ab85-22000ab79d7e"
+            ]
+        },
+        {
+            "end": "2017-10-26",
+            "peak_demand": null,
+            "start": "2017-09-27",
+            "tariff": null,
+            "total_charge": "207.9300",
+            "total_usage": "27.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 2 Water 18.62496 HCF x $8.6717/HCF",
+                    "ChargeAmount": "161.5100",
+                    "ChargeRatePerUnit": "8.6717",
+                    "ChargeUnitsUsed": "18.6250",
+                    "IntervalEnd": "2017-10-27",
+                    "IntervalStart": "2017-09-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235021711,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 8.37504 HCF x $5.54266/HCF",
+                    "ChargeAmount": "46.4200",
+                    "ChargeRatePerUnit": "5.5427",
+                    "ChargeUnitsUsed": "8.3750",
+                    "IntervalEnd": "2017-10-27",
+                    "IntervalStart": "2017-09-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235021712,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7bee5c-73bc-d301-ad21-22000b170482"
+            ]
+        },
+        {
+            "end": "2017-11-28",
+            "peak_demand": null,
+            "start": "2017-10-27",
+            "tariff": null,
+            "total_charge": "38.7900",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.54143/HCF",
+                    "ChargeAmount": "38.7900",
+                    "ChargeRatePerUnit": "5.5414",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2017-11-29",
+                    "IntervalStart": "2017-10-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235112238,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7d7558-67cf-df26-9b6a-22000ab6429f"
+            ]
+        },
+        {
+            "end": "2018-01-01",
+            "peak_demand": null,
+            "start": "2017-11-29",
+            "tariff": null,
+            "total_charge": "44.2100",
+            "total_usage": "8.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 8 HCF x $5.52625/HCF",
+                    "ChargeAmount": "44.2100",
+                    "ChargeRatePerUnit": "5.5263",
+                    "ChargeUnitsUsed": "8.0000",
+                    "IntervalEnd": "2018-01-02",
+                    "IntervalStart": "2017-11-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235156494,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7f093c-3bb4-dbeb-abaa-22000a5bec5b"
+            ]
+        },
+        {
+            "end": "2018-01-29",
+            "peak_demand": null,
+            "start": "2018-01-02",
+            "tariff": null,
+            "total_charge": "52.1600",
+            "total_usage": "9.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 2 Water 1.22216 HCF x $8.96773/HCF",
+                    "ChargeAmount": "10.9600",
+                    "ChargeRatePerUnit": "8.9677",
+                    "ChargeUnitsUsed": "1.2220",
+                    "IntervalEnd": "2018-01-30",
+                    "IntervalStart": "2018-01-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235230394,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 7.77784 HCF x $5.2971/HCF",
+                    "ChargeAmount": "41.2000",
+                    "ChargeRatePerUnit": "5.2971",
+                    "ChargeUnitsUsed": "7.7780",
+                    "IntervalEnd": "2018-01-30",
+                    "IntervalStart": "2018-01-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235230395,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8078ae-1631-dc11-a096-22000b2f0b87"
+            ]
+        },
+        {
+            "end": "2018-02-27",
+            "peak_demand": null,
+            "start": "2018-01-30",
+            "tariff": null,
+            "total_charge": "37.0700",
+            "total_usage": "7.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 7 HCF x $5.29571/HCF",
+                    "ChargeAmount": "37.0700",
+                    "ChargeRatePerUnit": "5.2957",
+                    "ChargeUnitsUsed": "7.0000",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235279597,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e81e5db-69d6-d402-8391-22000a9ae8b3"
+            ]
+        },
+        {
+            "end": "2018-03-28",
+            "peak_demand": null,
+            "start": "2018-02-28",
+            "tariff": null,
+            "total_charge": "42.3700",
+            "total_usage": "8.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 8 HCF x $5.29625/HCF",
+                    "ChargeAmount": "42.3700",
+                    "ChargeRatePerUnit": "5.2963",
+                    "ChargeUnitsUsed": "8.0000",
+                    "IntervalEnd": "2018-03-29",
+                    "IntervalStart": "2018-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235351742,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e835162-a490-d05a-a9a6-22000ab86cc6"
+            ]
+        },
+        {
+            "end": "2018-04-26",
+            "peak_demand": null,
+            "start": "2018-03-29",
+            "tariff": null,
+            "total_charge": "221.2300",
+            "total_usage": "28.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 2 Water 19.94438 HCF x $8.9529/HCF",
+                    "ChargeAmount": "178.5600",
+                    "ChargeRatePerUnit": "8.9529",
+                    "ChargeUnitsUsed": "19.9440",
+                    "IntervalEnd": "2018-04-27",
+                    "IntervalStart": "2018-03-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235407508,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 8.05562 HCF x $5.29692/HCF",
+                    "ChargeAmount": "42.6700",
+                    "ChargeRatePerUnit": "5.2969",
+                    "ChargeUnitsUsed": "8.0560",
+                    "IntervalEnd": "2018-04-27",
+                    "IntervalStart": "2018-03-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235407509,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e84d402-40cb-dc28-92e3-22000b350b46"
+            ]
+        },
+        {
+            "end": "2018-05-28",
+            "peak_demand": null,
+            "start": "2018-04-27",
+            "tariff": null,
+            "total_charge": "66.0100",
+            "total_usage": "11.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 2 Water 2.11104 HCF x $8.95767/HCF",
+                    "ChargeAmount": "18.9100",
+                    "ChargeRatePerUnit": "8.9577",
+                    "ChargeUnitsUsed": "2.1110",
+                    "IntervalEnd": "2018-05-29",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235561004,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 8.88896 HCF x $5.29871/HCF",
+                    "ChargeAmount": "47.1000",
+                    "ChargeRatePerUnit": "5.2987",
+                    "ChargeUnitsUsed": "8.8890",
+                    "IntervalEnd": "2018-05-29",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235561005,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e864f00-20aa-d20b-a113-22000b35052f"
+            ]
+        },
+        {
+            "end": "2018-06-26",
+            "peak_demand": null,
+            "start": "2018-05-29",
+            "tariff": null,
+            "total_charge": "49.7700",
+            "total_usage": "9.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 2 Water 0.56962 HCF x $8.98845/HCF",
+                    "ChargeAmount": "5.1200",
+                    "ChargeRatePerUnit": "8.9885",
+                    "ChargeUnitsUsed": "0.5700",
+                    "IntervalEnd": "2018-06-27",
+                    "IntervalStart": "2018-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235643011,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 8.43038 HCF x $5.29632/HCF",
+                    "ChargeAmount": "44.6500",
+                    "ChargeRatePerUnit": "5.2963",
+                    "ChargeUnitsUsed": "8.4300",
+                    "IntervalEnd": "2018-06-27",
+                    "IntervalStart": "2018-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235643012,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e87bda5-b9e7-dc39-aa82-22000ae1a397"
+            ]
+        },
+        {
+            "end": "2018-07-26",
+            "peak_demand": null,
+            "start": "2018-06-27",
+            "tariff": null,
+            "total_charge": "49.4300",
+            "total_usage": "9.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 2 Water 0.22518 HCF x $8.92619/HCF",
+                    "ChargeAmount": "2.0100",
+                    "ChargeRatePerUnit": "8.9262",
+                    "ChargeUnitsUsed": "0.2250",
+                    "IntervalEnd": "2018-07-27",
+                    "IntervalStart": "2018-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235707061,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 7.87482 HCF x $5.40457/HCF",
+                    "ChargeAmount": "42.5600",
+                    "ChargeRatePerUnit": "5.4046",
+                    "ChargeUnitsUsed": "7.8750",
+                    "IntervalEnd": "2018-07-27",
+                    "IntervalStart": "2018-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235707062,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 2 Water 0.02502 HCF x $8.79297/HCF",
+                    "ChargeAmount": "0.2200",
+                    "ChargeRatePerUnit": "8.7930",
+                    "ChargeUnitsUsed": "0.0250",
+                    "IntervalEnd": "2018-06-30",
+                    "IntervalStart": "2018-06-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235707063,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                },
+                {
+                    "ChargeActualName": "Tier 1 Water 0.87498 HCF x $5.30298/HCF",
+                    "ChargeAmount": "4.6400",
+                    "ChargeRatePerUnit": "5.3030",
+                    "ChargeUnitsUsed": "0.8750",
+                    "IntervalEnd": "2018-06-30",
+                    "IntervalStart": "2018-06-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235707064,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e894c0e-8f48-d279-9b61-22000a9e9026"
+            ]
+        },
+        {
+            "end": "2018-08-27",
+            "peak_demand": null,
+            "start": "2018-07-27",
+            "tariff": null,
+            "total_charge": "21.6000",
+            "total_usage": "4.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 4 HCF x $5.4/HCF",
+                    "ChargeAmount": "21.6000",
+                    "ChargeRatePerUnit": "5.4000",
+                    "ChargeUnitsUsed": "4.0000",
+                    "IntervalEnd": "2018-08-28",
+                    "IntervalStart": "2018-07-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235844843,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8abc82-0949-dfa7-912e-22000aa41c88"
+            ]
+        },
+        {
+            "end": "2018-09-25",
+            "peak_demand": null,
+            "start": "2018-08-28",
+            "tariff": null,
+            "total_charge": "10.8200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 2 HCF x $5.41/HCF",
+                    "ChargeAmount": "10.8200",
+                    "ChargeRatePerUnit": "5.4100",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2018-09-26",
+                    "IntervalStart": "2018-08-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236074382,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8c3613-a230-ded3-8909-22000a1ec484"
+            ]
+        },
+        {
+            "end": "2018-10-25",
+            "peak_demand": null,
+            "start": "2018-09-26",
+            "tariff": null,
+            "total_charge": "27.0400",
+            "total_usage": "5.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 5 HCF x $5.408/HCF",
+                    "ChargeAmount": "27.0400",
+                    "ChargeRatePerUnit": "5.4080",
+                    "ChargeUnitsUsed": "5.0000",
+                    "IntervalEnd": "2018-10-26",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236217424,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8dc5ef-7abd-d4f8-96d0-22000a47ffcb"
+            ]
+        },
+        {
+            "end": "2018-11-28",
+            "peak_demand": null,
+            "start": "2018-10-26",
+            "tariff": null,
+            "total_charge": "27.0400",
+            "total_usage": "5.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 5 HCF x $5.408/HCF",
+                    "ChargeAmount": "27.0400",
+                    "ChargeRatePerUnit": "5.4080",
+                    "ChargeUnitsUsed": "5.0000",
+                    "IntervalEnd": "2018-11-29",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236384596,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8f5b5f-68e8-d0a3-9cb4-0e72bbd9c5ba"
+            ]
+        },
+        {
+            "end": "2018-12-30",
+            "peak_demand": null,
+            "start": "2018-11-29",
+            "tariff": null,
+            "total_charge": "16.2100",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 3 HCF x $5.40333/HCF",
+                    "ChargeAmount": "16.2100",
+                    "ChargeRatePerUnit": "5.4033",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-11-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236474314,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e90f833-8c15-df44-8577-0ea74fc5977c"
+            ]
+        },
+        {
+            "end": "2019-01-29",
+            "peak_demand": null,
+            "start": "2018-12-31",
+            "tariff": null,
+            "total_charge": "15.7900",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 3 HCF x $5.26333/HCF",
+                    "ChargeAmount": "15.7900",
+                    "ChargeRatePerUnit": "5.2633",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2019-01-30",
+                    "IntervalStart": "2018-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236590983,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9267fe-0d30-da6b-82c9-0e57fadcafca"
+            ]
+        },
+        {
+            "end": "2019-02-27",
+            "peak_demand": null,
+            "start": "2019-01-30",
+            "tariff": null,
+            "total_charge": "21.0500",
+            "total_usage": "4.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 4 HCF x $5.2625/HCF",
+                    "ChargeAmount": "21.0500",
+                    "ChargeRatePerUnit": "5.2625",
+                    "ChargeUnitsUsed": "4.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-01-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236674540,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e93e497-0628-d422-bd2d-0ef9a94238f6"
+            ]
+        },
+        {
+            "end": "2019-03-29",
+            "peak_demand": null,
+            "start": "2019-02-28",
+            "tariff": null,
+            "total_charge": "15.7900",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 Water 3 HCF x $5.26333/HCF",
+                    "ChargeAmount": "15.7900",
+                    "ChargeRatePerUnit": "5.2633",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2019-03-29",
+                    "IntervalStart": "2019-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236752448,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "HCF"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9552f2-148e-d5db-85e4-0e79590deae2"
+            ]
+        }
+    ]
+}

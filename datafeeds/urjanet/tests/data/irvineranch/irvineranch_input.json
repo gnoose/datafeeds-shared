@@ -1,0 +1,1519 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "4782.9200",
+            "IntervalEnd": "2019-03-11",
+            "IntervalStart": "2019-02-09",
+            "NewCharges": "4509.4600",
+            "OutstandingBalance": "273.4600",
+            "PK": 5656004,
+            "PreviousBalance": "2377.9400",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-957d-d0aa-8201-0eca164b64b4",
+            "StatementDate": "2019-03-12",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "4782.9200",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-03-11",
+                    "IntervalStart": "2019-02-09",
+                    "MeterNumber": "1378275",
+                    "PK": 20292913,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 294 CCF @ $13.35",
+                            "ChargeAmount": "3924.9000",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "294.0000",
+                            "IntervalEnd": "2019-03-11",
+                            "IntervalStart": "2019-02-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398253,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 63 CCF @ $4.73",
+                            "ChargeAmount": "297.9900",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "63.0000",
+                            "IntervalEnd": "2019-03-11",
+                            "IntervalStart": "2019-02-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398254,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 63 CCF @ $1.89",
+                            "ChargeAmount": "119.0700",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "63.0000",
+                            "IntervalEnd": "2019-03-11",
+                            "IntervalStart": "2019-02-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398255,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 42 CCF @ $1.40",
+                            "ChargeAmount": "58.8000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "42.0000",
+                            "IntervalEnd": "2019-03-11",
+                            "IntervalStart": "2019-02-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398256,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 30 Days @ $3.6233 per Day",
+                            "ChargeAmount": "108.7000",
+                            "ChargeRatePerUnit": "3.6233",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-11",
+                            "IntervalStart": "2019-02-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398257,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-03-11",
+                            "IntervalStart": "2019-02-09",
+                            "PK": 73075603,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "462.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "2377.9400",
+            "IntervalEnd": "2019-02-09",
+            "IntervalStart": "2019-01-09",
+            "NewCharges": "2377.9400",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656035,
+            "PreviousBalance": "5218.3900",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-9dda-d2b0-8201-0eca164b64b4",
+            "StatementDate": "2019-02-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "2377.9400",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-02-09",
+                    "IntervalStart": "2019-01-09",
+                    "MeterNumber": "1378275",
+                    "PK": 20292967,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 137 CCF @ $13.35",
+                            "ChargeAmount": "1828.9500",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "137.0000",
+                            "IntervalEnd": "2019-02-09",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398357,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 58 CCF @ $4.73",
+                            "ChargeAmount": "274.3400",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "58.0000",
+                            "IntervalEnd": "2019-02-09",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398358,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 57 CCF @ $1.89",
+                            "ChargeAmount": "107.7300",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "57.0000",
+                            "IntervalEnd": "2019-02-09",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398359,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 39 CCF @ $1.40",
+                            "ChargeAmount": "54.6000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "39.0000",
+                            "IntervalEnd": "2019-02-09",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398360,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 31 Days @ $3.6232 per Day",
+                            "ChargeAmount": "112.3200",
+                            "ChargeRatePerUnit": "3.6232",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-09",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398361,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-02-09",
+                            "IntervalStart": "2019-01-09",
+                            "PK": 73075657,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "291.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "5218.3900",
+            "IntervalEnd": "2019-01-09",
+            "IntervalStart": "2018-12-08",
+            "NewCharges": "5218.3900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656066,
+            "PreviousBalance": "4945.5500",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-a4f0-d262-8201-0eca164b64b4",
+            "StatementDate": "2019-01-10",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "5218.3900",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-01-09",
+                    "IntervalStart": "2018-12-08",
+                    "MeterNumber": "1378275",
+                    "PK": 20293021,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 349 CCF @ $13.35",
+                            "ChargeAmount": "4659.1500",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "349.0000",
+                            "IntervalEnd": "2019-01-09",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398462,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 59 CCF @ $4.73",
+                            "ChargeAmount": "279.0700",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "59.0000",
+                            "IntervalEnd": "2019-01-09",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398463,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 58 CCF @ $1.89",
+                            "ChargeAmount": "109.6200",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "58.0000",
+                            "IntervalEnd": "2019-01-09",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398464,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 39 CCF @ $1.40",
+                            "ChargeAmount": "54.6000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "39.0000",
+                            "IntervalEnd": "2019-01-09",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398465,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 32 Days @ $3.6234 per Day",
+                            "ChargeAmount": "115.9500",
+                            "ChargeRatePerUnit": "3.6234",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-09",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398466,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-01-09",
+                            "IntervalStart": "2018-12-08",
+                            "PK": 73075711,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "505.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "7896.0400",
+            "IntervalEnd": "2019-07-10",
+            "IntervalStart": "2019-06-11",
+            "NewCharges": "7896.0400",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656073,
+            "PreviousBalance": "8571.6800",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-7604-d60a-8201-0eca164b64b4",
+            "StatementDate": "2019-07-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "7896.0400",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-07-10",
+                    "IntervalStart": "2019-06-11",
+                    "MeterNumber": "1378275",
+                    "PK": 20293032,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 514 CCF @ $13.35",
+                            "ChargeAmount": "6861.9000",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "514.0000",
+                            "IntervalEnd": "2019-07-10",
+                            "IntervalStart": "2019-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398488,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 123 CCF @ $4.73",
+                            "ChargeAmount": "581.7900",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "123.0000",
+                            "IntervalEnd": "2019-07-10",
+                            "IntervalStart": "2019-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398489,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 123 CCF @ $1.89",
+                            "ChargeAmount": "232.4700",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "123.0000",
+                            "IntervalEnd": "2019-07-10",
+                            "IntervalStart": "2019-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398490,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 82 CCF @ $1.40",
+                            "ChargeAmount": "114.8000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "82.0000",
+                            "IntervalEnd": "2019-07-10",
+                            "IntervalStart": "2019-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398491,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 29 Days @ $3.6234 per Day",
+                            "ChargeAmount": "105.0800",
+                            "ChargeRatePerUnit": "3.6234",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-10",
+                            "IntervalStart": "2019-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398492,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-07-10",
+                            "IntervalStart": "2019-06-11",
+                            "PK": 73075722,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "842.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "4945.5500",
+            "IntervalEnd": "2018-12-08",
+            "IntervalStart": "2018-11-07",
+            "NewCharges": "4945.5500",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656098,
+            "PreviousBalance": "5667.4200",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-ac9f-de10-8201-0eca164b64b4",
+            "StatementDate": "2018-12-10",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "4945.5500",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-12-08",
+                    "IntervalStart": "2018-11-07",
+                    "MeterNumber": "1378275",
+                    "PK": 20293078,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 323 CCF @ $13.35",
+                            "ChargeAmount": "4312.0500",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "323.0000",
+                            "IntervalEnd": "2018-12-08",
+                            "IntervalStart": "2018-11-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398577,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 69 CCF @ $4.73",
+                            "ChargeAmount": "326.3700",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "69.0000",
+                            "IntervalEnd": "2018-12-08",
+                            "IntervalStart": "2018-11-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398578,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 69 CCF @ $1.89",
+                            "ChargeAmount": "130.4100",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "69.0000",
+                            "IntervalEnd": "2018-12-08",
+                            "IntervalStart": "2018-11-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398579,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 46 CCF @ $1.40",
+                            "ChargeAmount": "64.4000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "46.0000",
+                            "IntervalEnd": "2018-12-08",
+                            "IntervalStart": "2018-11-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398580,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 31 Days @ $3.6232 per Day",
+                            "ChargeAmount": "112.3200",
+                            "ChargeRatePerUnit": "3.6232",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-08",
+                            "IntervalStart": "2018-11-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398581,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-12-08",
+                            "IntervalStart": "2018-11-07",
+                            "PK": 73075768,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "507.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "8571.6800",
+            "IntervalEnd": "2019-06-11",
+            "IntervalStart": "2019-05-08",
+            "NewCharges": "8571.6800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656105,
+            "PreviousBalance": "8532.0500",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-7fcd-d430-8201-0eca164b64b4",
+            "StatementDate": "2019-06-12",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "8571.6800",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-06-11",
+                    "IntervalStart": "2019-05-08",
+                    "MeterNumber": "1378275",
+                    "PK": 20293091,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 560 CCF @ $13.35",
+                            "ChargeAmount": "7476.0000",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "560.0000",
+                            "IntervalEnd": "2019-06-11",
+                            "IntervalStart": "2019-05-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398603,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 129 CCF @ $4.73",
+                            "ChargeAmount": "610.1700",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "129.0000",
+                            "IntervalEnd": "2019-06-11",
+                            "IntervalStart": "2019-05-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398604,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 128 CCF @ $1.89",
+                            "ChargeAmount": "241.9200",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "128.0000",
+                            "IntervalEnd": "2019-06-11",
+                            "IntervalStart": "2019-05-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398605,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 86 CCF @ $1.40",
+                            "ChargeAmount": "120.4000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "86.0000",
+                            "IntervalEnd": "2019-06-11",
+                            "IntervalStart": "2019-05-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398606,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 34 Days @ $3.6232 per Day",
+                            "ChargeAmount": "123.1900",
+                            "ChargeRatePerUnit": "3.6232",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-11",
+                            "IntervalStart": "2019-05-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398607,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-06-11",
+                            "IntervalStart": "2019-05-08",
+                            "PK": 73075781,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "903.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "11234.4200",
+            "IntervalEnd": "2019-08-08",
+            "IntervalStart": "2019-07-10",
+            "NewCharges": "11234.4200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656122,
+            "PreviousBalance": "7896.0400",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ceebb-6710-dfe6-a243-0ea3d4b03ed6",
+            "StatementDate": "2019-08-09",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "11234.4200",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-08-08",
+                    "IntervalStart": "2019-07-10",
+                    "MeterNumber": "1378275",
+                    "PK": 20293122,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 724 CCF @ $13.63",
+                            "ChargeAmount": "9868.1200",
+                            "ChargeRatePerUnit": "13.6300",
+                            "ChargeUnitsUsed": "724.0000",
+                            "IntervalEnd": "2019-08-08",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398668,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 161 CCF @ $4.86",
+                            "ChargeAmount": "782.4600",
+                            "ChargeRatePerUnit": "4.8600",
+                            "ChargeUnitsUsed": "161.0000",
+                            "IntervalEnd": "2019-08-08",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398669,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 160 CCF @ $2.00",
+                            "ChargeAmount": "320.0000",
+                            "ChargeRatePerUnit": "2.0000",
+                            "ChargeUnitsUsed": "160.0000",
+                            "IntervalEnd": "2019-08-08",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398670,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 108 CCF @ $1.47",
+                            "ChargeAmount": "158.7600",
+                            "ChargeRatePerUnit": "1.4700",
+                            "ChargeUnitsUsed": "108.0000",
+                            "IntervalEnd": "2019-08-08",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398671,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 29 Days @ $3.6234 per Day",
+                            "ChargeAmount": "105.0800",
+                            "ChargeRatePerUnit": "3.6234",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-08",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398672,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-08-08",
+                            "IntervalStart": "2019-07-10",
+                            "PK": 73075812,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "1153.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "5667.4200",
+            "IntervalEnd": "2018-11-07",
+            "IntervalStart": "2018-10-05",
+            "NewCharges": "5667.4200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656129,
+            "PreviousBalance": "4736.1100",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-b5f6-d09a-8201-0eca164b64b4",
+            "StatementDate": "2018-11-08",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "5667.4200",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-11-07",
+                    "IntervalStart": "2018-10-05",
+                    "MeterNumber": "1378275",
+                    "PK": 20293134,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USAGE - LOW VOLUME",
+                            "ChargeAmount": "95.2000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "68.0000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398691,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - WASTEFUL",
+                            "ChargeAmount": "4779.3000",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "358.0000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398692,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - INEFFICIENT",
+                            "ChargeAmount": "482.4600",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "102.0000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398693,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - CONSERVATION BASE RATE",
+                            "ChargeAmount": "190.8900",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "101.0000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398694,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "WATER SERVICE CHARGE",
+                            "ChargeAmount": "119.5700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398695,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-05",
+                            "PK": 73075824,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "629.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "8532.0500",
+            "IntervalEnd": "2019-05-08",
+            "IntervalStart": "2019-04-05",
+            "NewCharges": "8532.0500",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656136,
+            "PreviousBalance": "5068.4800",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-8705-d692-8201-0eca164b64b4",
+            "StatementDate": "2019-05-09",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "8532.0500",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-05-08",
+                    "IntervalStart": "2019-04-05",
+                    "MeterNumber": "1378275",
+                    "PK": 20293147,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 559 CCF @ $13.35",
+                            "ChargeAmount": "7462.6500",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "559.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398718,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 126 CCF @ $4.73",
+                            "ChargeAmount": "595.9800",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "126.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398719,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 125 CCF @ $1.89",
+                            "ChargeAmount": "236.2500",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "125.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398720,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 84 CCF @ $1.40",
+                            "ChargeAmount": "117.6000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "84.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398721,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 33 Days @ $3.6233 per Day",
+                            "ChargeAmount": "119.5700",
+                            "ChargeRatePerUnit": "3.6233",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-05",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398722,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-05",
+                            "PK": 73075837,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "894.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "4736.1100",
+            "IntervalEnd": "2018-10-05",
+            "IntervalStart": "2018-09-07",
+            "NewCharges": "4736.1100",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656160,
+            "PreviousBalance": "4615.7500",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-bcec-d3bc-8201-0eca164b64b4",
+            "StatementDate": "2018-10-08",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "4736.1100",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-10-05",
+                    "IntervalStart": "2018-09-07",
+                    "MeterNumber": "1378275",
+                    "PK": 20293191,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USAGE - LOW VOLUME",
+                            "ChargeAmount": "103.6000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "74.0000",
+                            "IntervalEnd": "2018-10-05",
+                            "IntervalStart": "2018-09-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398803,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - WASTEFUL",
+                            "ChargeAmount": "3804.7500",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "285.0000",
+                            "IntervalEnd": "2018-10-05",
+                            "IntervalStart": "2018-09-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398804,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - INEFFICIENT",
+                            "ChargeAmount": "520.3000",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "110.0000",
+                            "IntervalEnd": "2018-10-05",
+                            "IntervalStart": "2018-09-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398805,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - CONSERVATION BASE RATE",
+                            "ChargeAmount": "206.0100",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "109.0000",
+                            "IntervalEnd": "2018-10-05",
+                            "IntervalStart": "2018-09-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398806,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "WATER SERVICE CHARGE",
+                            "ChargeAmount": "101.4500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-05",
+                            "IntervalStart": "2018-09-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398807,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-10-05",
+                            "IntervalStart": "2018-09-07",
+                            "PK": 73075881,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "578.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "5068.4800",
+            "IntervalEnd": "2019-04-05",
+            "IntervalStart": "2019-03-11",
+            "NewCharges": "5068.4800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656167,
+            "PreviousBalance": "4782.9200",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-8ec8-db90-8201-0eca164b64b4",
+            "StatementDate": "2019-04-08",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "5068.4800",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-04-05",
+                    "IntervalStart": "2019-03-11",
+                    "MeterNumber": "1378275",
+                    "PK": 20293204,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Tier 4 - Wasteful 321 CCF @ $13.35",
+                            "ChargeAmount": "4285.3500",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "321.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398829,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 3 - Inefficient 92 CCF @ $4.73",
+                            "ChargeAmount": "435.1600",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "92.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398830,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 2 - Base Rate 91 CCF @ $1.89",
+                            "ChargeAmount": "171.9900",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "91.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398831,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Tier 1 - Low Volume 61 CCF @ $1.40",
+                            "ChargeAmount": "85.4000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "61.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398832,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "Water Service 25 Days @ $3.62320 per Day",
+                            "ChargeAmount": "90.5800",
+                            "ChargeRatePerUnit": "3.6232",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398833,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-11",
+                            "PK": 73075894,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "565.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "4615.7500",
+            "IntervalEnd": "2018-09-07",
+            "IntervalStart": "2018-08-13",
+            "NewCharges": "4615.7500",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656191,
+            "PreviousBalance": "5939.8000",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-c572-de2a-8201-0eca164b64b4",
+            "StatementDate": "2018-09-10",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "4615.7500",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-09-07",
+                    "IntervalStart": "2018-08-13",
+                    "MeterNumber": "1378275",
+                    "PK": 20293248,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USAGE - LOW VOLUME",
+                            "ChargeAmount": "100.8000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "72.0000",
+                            "IntervalEnd": "2018-09-07",
+                            "IntervalStart": "2018-08-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398914,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - WASTEFUL",
+                            "ChargeAmount": "3711.3000",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "278.0000",
+                            "IntervalEnd": "2018-09-07",
+                            "IntervalStart": "2018-08-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398915,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - INEFFICIENT",
+                            "ChargeAmount": "510.8400",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "108.0000",
+                            "IntervalEnd": "2018-09-07",
+                            "IntervalStart": "2018-08-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398916,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - CONSERVATION BASE RATE",
+                            "ChargeAmount": "202.2300",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "107.0000",
+                            "IntervalEnd": "2018-09-07",
+                            "IntervalStart": "2018-08-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398917,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "WATER SERVICE CHARGE",
+                            "ChargeAmount": "90.5800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-07",
+                            "IntervalStart": "2018-08-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237398918,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-09-07",
+                            "IntervalStart": "2018-08-13",
+                            "PK": 73075938,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "565.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "5939.8000",
+            "IntervalEnd": "2018-08-13",
+            "IntervalStart": "2018-07-10",
+            "NewCharges": "5939.8000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656220,
+            "PreviousBalance": "4505.9400",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-cc97-d794-8201-0eca164b64b4",
+            "StatementDate": "2018-08-15",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "5939.8000",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-08-13",
+                    "IntervalStart": "2018-07-10",
+                    "MeterNumber": "1378275",
+                    "PK": 20293300,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USAGE - LOW VOLUME",
+                            "ChargeAmount": "168.0000",
+                            "ChargeRatePerUnit": "1.4000",
+                            "ChargeUnitsUsed": "120.0000",
+                            "IntervalEnd": "2018-08-13",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399015,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - WASTEFUL",
+                            "ChargeAmount": "4458.9000",
+                            "ChargeRatePerUnit": "13.3500",
+                            "ChargeUnitsUsed": "334.0000",
+                            "IntervalEnd": "2018-08-13",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399016,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - INEFFICIENT",
+                            "ChargeAmount": "851.4000",
+                            "ChargeRatePerUnit": "4.7300",
+                            "ChargeUnitsUsed": "180.0000",
+                            "IntervalEnd": "2018-08-13",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399017,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - CONSERVATION BASE RATE",
+                            "ChargeAmount": "338.3100",
+                            "ChargeRatePerUnit": "1.8900",
+                            "ChargeUnitsUsed": "179.0000",
+                            "IntervalEnd": "2018-08-13",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399018,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "WATER SERVICE CHARGE",
+                            "ChargeAmount": "123.1900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-13",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399019,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-08-13",
+                            "IntervalStart": "2018-07-10",
+                            "PK": 73075990,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "813.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "4505.9400",
+            "IntervalEnd": "2018-07-10",
+            "IntervalStart": "2018-06-11",
+            "NewCharges": "4505.9400",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656250,
+            "PreviousBalance": "5588.4800",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-d47c-dffa-8201-0eca164b64b4",
+            "StatementDate": "2018-07-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "4505.9400",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-07-10",
+                    "IntervalStart": "2018-06-11",
+                    "MeterNumber": "1378275",
+                    "PK": 20293352,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USAGE - LOW VOLUME",
+                            "ChargeAmount": "138.7200",
+                            "ChargeRatePerUnit": "1.3600",
+                            "ChargeUnitsUsed": "102.0000",
+                            "IntervalEnd": "2018-07-10",
+                            "IntervalStart": "2018-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399120,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - WASTEFUL",
+                            "ChargeAmount": "3376.8000",
+                            "ChargeRatePerUnit": "12.0600",
+                            "ChargeUnitsUsed": "280.0000",
+                            "IntervalEnd": "2018-07-10",
+                            "IntervalStart": "2018-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399121,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - INEFFICIENT",
+                            "ChargeAmount": "625.7700",
+                            "ChargeRatePerUnit": "4.0900",
+                            "ChargeUnitsUsed": "153.0000",
+                            "IntervalEnd": "2018-07-10",
+                            "IntervalStart": "2018-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399122,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - CONSERVATION BASE RATE",
+                            "ChargeAmount": "260.1000",
+                            "ChargeRatePerUnit": "1.7000",
+                            "ChargeUnitsUsed": "153.0000",
+                            "IntervalEnd": "2018-07-10",
+                            "IntervalStart": "2018-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399123,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "WATER SERVICE CHARGE",
+                            "ChargeAmount": "104.5500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-10",
+                            "IntervalStart": "2018-06-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399124,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-07-10",
+                            "IntervalStart": "2018-06-11",
+                            "PK": 73076042,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "688.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "9064900000",
+            "AmountDue": "5588.4800",
+            "IntervalEnd": "2018-06-11",
+            "IntervalStart": "2018-05-10",
+            "NewCharges": "5588.4800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5656280,
+            "PreviousBalance": "3898.5400",
+            "RawAccountNumber": "9064900000",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9cef45-de28-d90c-8201-0eca164b64b4",
+            "StatementDate": "2018-06-12",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "5588.4800",
+            "UtilityProvider": "IrvineRanchWaterDistrict",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-06-11",
+                    "IntervalStart": "2018-05-10",
+                    "MeterNumber": "1378275",
+                    "PK": 20293405,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "POTABLE IRRIGATION WATER",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USAGE - LOW VOLUME",
+                            "ChargeAmount": "114.2400",
+                            "ChargeRatePerUnit": "1.3600",
+                            "ChargeUnitsUsed": "84.0000",
+                            "IntervalEnd": "2018-06-11",
+                            "IntervalStart": "2018-05-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399222,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - WASTEFUL",
+                            "ChargeAmount": "4631.0400",
+                            "ChargeRatePerUnit": "12.0600",
+                            "ChargeUnitsUsed": "384.0000",
+                            "IntervalEnd": "2018-06-11",
+                            "IntervalStart": "2018-05-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399223,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - INEFFICIENT",
+                            "ChargeAmount": "515.3400",
+                            "ChargeRatePerUnit": "4.0900",
+                            "ChargeUnitsUsed": "126.0000",
+                            "IntervalEnd": "2018-06-11",
+                            "IntervalStart": "2018-05-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399224,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USAGE - CONSERVATION BASE RATE",
+                            "ChargeAmount": "212.5000",
+                            "ChargeRatePerUnit": "1.7000",
+                            "ChargeUnitsUsed": "125.0000",
+                            "IntervalEnd": "2018-06-11",
+                            "IntervalStart": "2018-05-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399225,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "WATER SERVICE CHARGE",
+                            "ChargeAmount": "115.3600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-11",
+                            "IntervalStart": "2018-05-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237399226,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-06-11",
+                            "IntervalStart": "2018-05-10",
+                            "PK": 73076095,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "719.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

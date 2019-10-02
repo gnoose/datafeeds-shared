@@ -122,5 +122,5 @@ def batch_launch(scraper_class, account: SnapmeterAccount, meter: Meter,
         index.index_etl_run(task_id, {"status": status, "error": error})
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("Hello world!")

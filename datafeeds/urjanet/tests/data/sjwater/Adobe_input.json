@@ -1,0 +1,2748 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "103.7700",
+            "IntervalEnd": "2016-10-20",
+            "IntervalStart": "2016-09-20",
+            "NewCharges": "103.7700",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646133,
+            "PreviousBalance": "103.7700",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992942-6cc5-d112-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2016-10-20",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "103.7700",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-10-20",
+                    "IntervalStart": "2016-09-20",
+                    "MeterNumber": "",
+                    "PK": 20264606,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.17%",
+                            "ChargeAmount": "1.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-10-20",
+                            "IntervalStart": "2016-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097471,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "4.9400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-10-20",
+                            "IntervalStart": "2016-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097472,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "97.6900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-10-20",
+                            "IntervalStart": "2016-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097473,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2016-10-20",
+                            "IntervalStart": "2016-09-20",
+                            "PK": 72989419,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.9600",
+            "IntervalEnd": "2018-10-22",
+            "IntervalStart": "2018-09-20",
+            "NewCharges": "108.9600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646137,
+            "PreviousBalance": "108.9000",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992929-af04-da00-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-10-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.9600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-10-22",
+                    "IntervalStart": "2018-09-20",
+                    "MeterNumber": "",
+                    "PK": 20264610,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097501,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097502,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.3500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097503,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-20",
+                            "PK": 72989424,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "109.6600",
+            "IntervalEnd": "2017-12-27",
+            "IntervalStart": "2017-11-21",
+            "NewCharges": "109.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646142,
+            "PreviousBalance": "109.6600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992932-fb94-d73d-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-12-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "109.6600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-12-27",
+                    "IntervalStart": "2017-11-21",
+                    "MeterNumber": "",
+                    "PK": 20264615,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-12-27",
+                            "IntervalStart": "2017-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097522,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-12-27",
+                            "IntervalStart": "2017-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097523,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-12-27",
+                            "IntervalStart": "2017-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097524,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-12-27",
+                            "IntervalStart": "2017-11-21",
+                            "PK": 72989430,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "109.6600",
+            "IntervalEnd": "2017-11-21",
+            "IntervalStart": "2017-10-20",
+            "NewCharges": "109.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646154,
+            "PreviousBalance": "109.6600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992933-be6f-d484-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-11-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "109.6600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-11-21",
+                    "IntervalStart": "2017-10-20",
+                    "MeterNumber": "",
+                    "PK": 20264627,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-11-21",
+                            "IntervalStart": "2017-10-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097626,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-11-21",
+                            "IntervalStart": "2017-10-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097627,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-11-21",
+                            "IntervalStart": "2017-10-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097628,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-11-21",
+                            "IntervalStart": "2017-10-20",
+                            "PK": 72989447,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "109.6600",
+            "IntervalEnd": "2017-08-22",
+            "IntervalStart": "2017-07-24",
+            "NewCharges": "109.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646158,
+            "PreviousBalance": "109.6600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992937-0649-dba3-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-08-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "109.6600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-08-22",
+                    "IntervalStart": "2017-07-24",
+                    "MeterNumber": "",
+                    "PK": 20264631,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-08-22",
+                            "IntervalStart": "2017-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097663,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-08-22",
+                            "IntervalStart": "2017-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097664,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-08-22",
+                            "IntervalStart": "2017-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097665,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-08-22",
+                            "IntervalStart": "2017-07-24",
+                            "PK": 72989451,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "109.6600",
+            "IntervalEnd": "2017-07-24",
+            "IntervalStart": "2017-06-23",
+            "NewCharges": "109.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646170,
+            "PreviousBalance": "109.6600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992937-f163-d3f5-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-07-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "109.6600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-07-24",
+                    "IntervalStart": "2017-06-23",
+                    "MeterNumber": "",
+                    "PK": 20264643,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-07-24",
+                            "IntervalStart": "2017-06-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097745,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-07-24",
+                            "IntervalStart": "2017-06-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097746,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-07-24",
+                            "IntervalStart": "2017-06-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097747,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-07-24",
+                            "IntervalStart": "2017-06-23",
+                            "PK": 72989468,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "148.8000",
+            "IntervalEnd": "2019-04-26",
+            "IntervalStart": "2019-03-27",
+            "NewCharges": "148.8000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646199,
+            "PreviousBalance": "126.5800",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992924-eb16-d62d-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2019-04-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "148.8000",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-04-26",
+                    "IntervalStart": "2019-03-27",
+                    "MeterNumber": "",
+                    "PK": 20264672,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.23%",
+                            "ChargeAmount": "1.7200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-26",
+                            "IntervalStart": "2019-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097990,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "7.0800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-26",
+                            "IntervalStart": "2019-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097991,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "140.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-26",
+                            "IntervalStart": "2019-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237097992,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-04-26",
+                            "IntervalStart": "2019-03-27",
+                            "PK": 72989509,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "112.4600",
+            "IntervalEnd": "2018-06-25",
+            "IntervalStart": "2018-05-24",
+            "NewCharges": "112.4600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646221,
+            "PreviousBalance": "112.4600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99292c-f787-d8cc-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-06-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "112.4600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-24",
+                    "MeterNumber": "",
+                    "PK": 20264694,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-25",
+                            "IntervalStart": "2018-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098167,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.3600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-25",
+                            "IntervalStart": "2018-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098168,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "105.6200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-25",
+                            "IntervalStart": "2018-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098169,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-06-25",
+                            "IntervalStart": "2018-05-24",
+                            "PK": 72989539,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "112.4600",
+            "IntervalEnd": "2018-05-24",
+            "IntervalStart": "2018-04-26",
+            "NewCharges": "112.4600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646233,
+            "PreviousBalance": "112.4600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99292d-c613-d80a-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-05-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "112.4600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-05-24",
+                    "IntervalStart": "2018-04-26",
+                    "MeterNumber": "",
+                    "PK": 20264706,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-24",
+                            "IntervalStart": "2018-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098252,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.3600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-24",
+                            "IntervalStart": "2018-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098253,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "105.6200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-24",
+                            "IntervalStart": "2018-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098254,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-05-24",
+                            "IntervalStart": "2018-04-26",
+                            "PK": 72989554,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "148.8000",
+            "IntervalEnd": "2019-05-24",
+            "IntervalStart": "2019-04-26",
+            "NewCharges": "148.8000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646244,
+            "PreviousBalance": "148.8000",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9928c6-59e9-d91a-af19-0e8d5d7d6ec4",
+            "StatementDate": "2019-05-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "148.8000",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-05-24",
+                    "IntervalStart": "2019-04-26",
+                    "MeterNumber": "",
+                    "PK": 20264717,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.23%",
+                            "ChargeAmount": "1.7200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-24",
+                            "IntervalStart": "2019-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098349,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "7.0800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-24",
+                            "IntervalStart": "2019-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098350,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "140.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-24",
+                            "IntervalStart": "2019-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098351,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-05-24",
+                            "IntervalStart": "2019-04-26",
+                            "PK": 72989569,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "103.7700",
+            "IntervalEnd": "2016-12-23",
+            "IntervalStart": "2016-11-21",
+            "NewCharges": "103.7700",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646245,
+            "PreviousBalance": "103.7700",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992940-053f-dd4b-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2016-12-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "103.7700",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-12-23",
+                    "IntervalStart": "2016-11-21",
+                    "MeterNumber": "",
+                    "PK": 20264718,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.17%",
+                            "ChargeAmount": "1.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-12-23",
+                            "IntervalStart": "2016-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098352,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "4.9400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-12-23",
+                            "IntervalStart": "2016-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098353,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "97.6900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-12-23",
+                            "IntervalStart": "2016-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098354,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2016-12-23",
+                            "IntervalStart": "2016-11-21",
+                            "PK": 72989570,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "149.0500",
+            "IntervalEnd": "2019-02-27",
+            "IntervalStart": "2019-01-28",
+            "NewCharges": "149.0500",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646248,
+            "PreviousBalance": "144.0300",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992926-73b2-d30b-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2019-02-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "149.0500",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-02-27",
+                    "IntervalStart": "2019-01-28",
+                    "MeterNumber": "",
+                    "PK": 20264721,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-27",
+                            "IntervalStart": "2019-01-28",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098369,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "7.0900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-27",
+                            "IntervalStart": "2019-01-28",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098370,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "140.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-27",
+                            "IntervalStart": "2019-01-28",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098371,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-02-27",
+                            "IntervalStart": "2019-01-28",
+                            "PK": 72989573,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.0700",
+            "IntervalEnd": "2018-08-22",
+            "IntervalStart": "2018-07-24",
+            "NewCharges": "108.0700",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646266,
+            "PreviousBalance": "108.8200",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99292b-45fa-dbaf-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-08-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.0700",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-08-22",
+                    "IntervalStart": "2018-07-24",
+                    "MeterNumber": "",
+                    "PK": 20264739,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-22",
+                            "IntervalStart": "2018-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098536,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-22",
+                            "IntervalStart": "2018-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098537,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "101.5100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-22",
+                            "IntervalStart": "2018-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098538,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-08-22",
+                            "IntervalStart": "2018-07-24",
+                            "PK": 72989598,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "114.2400",
+            "IntervalEnd": "2018-02-27",
+            "IntervalStart": "2018-01-26",
+            "NewCharges": "114.2400",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646275,
+            "PreviousBalance": "113.6200",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992930-dcce-d483-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-02-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "114.2400",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-02-27",
+                    "IntervalStart": "2018-01-26",
+                    "MeterNumber": "",
+                    "PK": 20264748,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.5000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-27",
+                            "IntervalStart": "2018-01-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098623,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.4400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-27",
+                            "IntervalStart": "2018-01-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098624,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "107.3000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-27",
+                            "IntervalStart": "2018-01-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098625,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-02-27",
+                            "IntervalStart": "2018-01-26",
+                            "PK": 72989612,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.7300",
+            "IntervalEnd": "2017-04-26",
+            "IntervalStart": "2017-03-27",
+            "NewCharges": "108.7300",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646284,
+            "PreviousBalance": "108.0300",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99293b-ea7b-d38f-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-04-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.7300",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Utility Users Tax Adjustment",
+                    "ChargeAmount": "-0.0400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-26",
+                    "IntervalStart": "2017-03-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237098678,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-04-26",
+                    "IntervalStart": "2017-03-27",
+                    "MeterNumber": "",
+                    "PK": 20264757,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge Adjustment",
+                            "ChargeAmount": "-0.0100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-04-26",
+                            "IntervalStart": "2017-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098679,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-04-26",
+                            "IntervalStart": "2017-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098680,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-04-26",
+                            "IntervalStart": "2017-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098681,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge Adjustment",
+                            "ChargeAmount": "-0.8800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-04-26",
+                            "IntervalStart": "2017-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098682,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-04-26",
+                            "IntervalStart": "2017-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098683,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-04-26",
+                            "IntervalStart": "2017-03-27",
+                            "PK": 72989624,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.9600",
+            "IntervalEnd": "2018-12-27",
+            "IntervalStart": "2018-11-21",
+            "NewCharges": "108.9600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646286,
+            "PreviousBalance": "108.9600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992928-1431-db4b-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-12-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.9600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-12-27",
+                    "IntervalStart": "2018-11-21",
+                    "MeterNumber": "",
+                    "PK": 20264759,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-27",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098695,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-27",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098696,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.3500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-27",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098697,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-12-27",
+                            "IntervalStart": "2018-11-21",
+                            "PK": 72989626,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "113.6200",
+            "IntervalEnd": "2018-01-26",
+            "IntervalStart": "2017-12-27",
+            "NewCharges": "113.6200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646289,
+            "PreviousBalance": "109.6600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992931-c39d-d289-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-01-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "113.6200",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-01-26",
+                    "IntervalStart": "2017-12-27",
+                    "MeterNumber": "",
+                    "PK": 20264762,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-01-26",
+                            "IntervalStart": "2017-12-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098716,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.4100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-01-26",
+                            "IntervalStart": "2017-12-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098717,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "106.7200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-01-26",
+                            "IntervalStart": "2017-12-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098718,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-01-26",
+                            "IntervalStart": "2017-12-27",
+                            "PK": 72989630,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.0300",
+            "IntervalEnd": "2017-03-27",
+            "IntervalStart": "2017-02-27",
+            "NewCharges": "108.0300",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646295,
+            "PreviousBalance": "108.0300",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99293c-eae5-d564-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-03-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.0300",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-03-27",
+                    "IntervalStart": "2017-02-27",
+                    "MeterNumber": "",
+                    "PK": 20264768,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-03-27",
+                            "IntervalStart": "2017-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098749,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-03-27",
+                            "IntervalStart": "2017-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098750,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "101.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-03-27",
+                            "IntervalStart": "2017-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098751,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-03-27",
+                            "IntervalStart": "2017-02-27",
+                            "PK": 72989637,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "103.7700",
+            "IntervalEnd": "2016-09-20",
+            "IntervalStart": "2016-08-22",
+            "NewCharges": "103.7700",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646307,
+            "PreviousBalance": "103.7700",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992943-947c-d2ed-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2016-09-20",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "103.7700",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-09-20",
+                    "IntervalStart": "2016-08-22",
+                    "MeterNumber": "",
+                    "PK": 20264780,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.17%",
+                            "ChargeAmount": "1.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-09-20",
+                            "IntervalStart": "2016-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098851,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "4.9400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-09-20",
+                            "IntervalStart": "2016-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098852,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "97.6900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-09-20",
+                            "IntervalStart": "2016-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237098853,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2016-09-20",
+                            "IntervalStart": "2016-08-22",
+                            "PK": 72989652,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "103.7700",
+            "IntervalEnd": "2016-11-21",
+            "IntervalStart": "2016-10-20",
+            "NewCharges": "103.7700",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646330,
+            "PreviousBalance": "103.7700",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992941-1675-d394-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2016-11-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "103.7700",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-11-21",
+                    "IntervalStart": "2016-10-20",
+                    "MeterNumber": "",
+                    "PK": 20264803,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.17%",
+                            "ChargeAmount": "1.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-11-21",
+                            "IntervalStart": "2016-10-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099037,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "4.9400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-11-21",
+                            "IntervalStart": "2016-10-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099038,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "97.6900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-11-21",
+                            "IntervalStart": "2016-10-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099039,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2016-11-21",
+                            "IntervalStart": "2016-10-20",
+                            "PK": 72989686,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "109.6600",
+            "IntervalEnd": "2017-10-20",
+            "IntervalStart": "2017-09-20",
+            "NewCharges": "109.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646332,
+            "PreviousBalance": "109.6600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992934-fc5e-dd6e-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-10-20",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "109.6600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-10-20",
+                    "IntervalStart": "2017-09-20",
+                    "MeterNumber": "",
+                    "PK": 20264805,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-10-20",
+                            "IntervalStart": "2017-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099054,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-10-20",
+                            "IntervalStart": "2017-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099055,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-10-20",
+                            "IntervalStart": "2017-09-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099056,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-10-20",
+                            "IntervalStart": "2017-09-20",
+                            "PK": 72989688,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "109.6600",
+            "IntervalEnd": "2017-09-20",
+            "IntervalStart": "2017-08-22",
+            "NewCharges": "109.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646344,
+            "PreviousBalance": "109.6600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992935-e546-deac-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-09-20",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "109.6600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-09-20",
+                    "IntervalStart": "2017-08-22",
+                    "MeterNumber": "",
+                    "PK": 20264817,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-09-20",
+                            "IntervalStart": "2017-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099164,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-09-20",
+                            "IntervalStart": "2017-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099165,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-09-20",
+                            "IntervalStart": "2017-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099166,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-09-20",
+                            "IntervalStart": "2017-08-22",
+                            "PK": 72989705,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "109.6600",
+            "IntervalEnd": "2017-06-23",
+            "IntervalStart": "2017-05-24",
+            "NewCharges": "109.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646361,
+            "PreviousBalance": "109.6600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992939-47ae-d365-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-06-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "109.6600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-06-23",
+                    "IntervalStart": "2017-05-24",
+                    "MeterNumber": "",
+                    "PK": 20264834,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-06-23",
+                            "IntervalStart": "2017-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099320,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-06-23",
+                            "IntervalStart": "2017-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099321,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-06-23",
+                            "IntervalStart": "2017-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099322,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-06-23",
+                            "IntervalStart": "2017-05-24",
+                            "PK": 72989729,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "126.5800",
+            "IntervalEnd": "2019-03-27",
+            "IntervalStart": "2019-02-27",
+            "NewCharges": "126.5800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646375,
+            "PreviousBalance": "149.0500",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992925-8dfc-d0a5-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2019-03-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "126.5800",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-02-27",
+                    "MeterNumber": "",
+                    "PK": 20264848,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-27",
+                            "IntervalStart": "2019-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099431,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "7.0900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-27",
+                            "IntervalStart": "2019-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099432,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge Proration Refund",
+                            "ChargeAmount": "-22.4700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-27",
+                            "IntervalStart": "2019-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099433,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "140.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-27",
+                            "IntervalStart": "2019-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099434,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-03-27",
+                            "IntervalStart": "2019-02-27",
+                            "PK": 72989748,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "112.4600",
+            "IntervalEnd": "2018-04-26",
+            "IntervalStart": "2018-03-27",
+            "NewCharges": "112.4600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646387,
+            "PreviousBalance": "114.2400",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99292e-d155-d793-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-04-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "112.4600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-04-26",
+                    "IntervalStart": "2018-03-27",
+                    "MeterNumber": "",
+                    "PK": 20264860,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-26",
+                            "IntervalStart": "2018-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099518,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.3600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-26",
+                            "IntervalStart": "2018-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099519,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "105.6200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-26",
+                            "IntervalStart": "2018-03-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099520,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-04-26",
+                            "IntervalStart": "2018-03-27",
+                            "PK": 72989764,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.8200",
+            "IntervalEnd": "2018-07-24",
+            "IntervalStart": "2018-06-25",
+            "NewCharges": "108.8200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646405,
+            "PreviousBalance": "112.4600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99292b-edb6-d2cb-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-07-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.8200",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-07-24",
+                    "IntervalStart": "2018-06-25",
+                    "MeterNumber": "",
+                    "PK": 20264878,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-24",
+                            "IntervalStart": "2018-06-25",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099643,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-24",
+                            "IntervalStart": "2018-06-25",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099644,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-24",
+                            "IntervalStart": "2018-06-25",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099645,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-07-24",
+                            "IntervalStart": "2018-06-25",
+                            "PK": 72989784,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "144.0300",
+            "IntervalEnd": "2019-01-28",
+            "IntervalStart": "2018-12-27",
+            "NewCharges": "144.0300",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646412,
+            "PreviousBalance": "108.9600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992927-29bb-dbf3-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2019-01-28",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "144.0300",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-01-28",
+                    "IntervalStart": "2018-12-27",
+                    "MeterNumber": "",
+                    "PK": 20264885,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.8900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-28",
+                            "IntervalStart": "2018-12-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099721,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "6.8500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-28",
+                            "IntervalStart": "2018-12-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099722,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "135.2900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-28",
+                            "IntervalStart": "2018-12-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237099723,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-01-28",
+                            "IntervalStart": "2018-12-27",
+                            "PK": 72989795,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.0300",
+            "IntervalEnd": "2017-02-27",
+            "IntervalStart": "2017-01-26",
+            "NewCharges": "108.0300",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646448,
+            "PreviousBalance": "108.0300",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99293e-2336-defc-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-02-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.0300",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-02-27",
+                    "IntervalStart": "2017-01-26",
+                    "MeterNumber": "",
+                    "PK": 20264921,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-02-27",
+                            "IntervalStart": "2017-01-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100019,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-02-27",
+                            "IntervalStart": "2017-01-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100020,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "101.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-02-27",
+                            "IntervalStart": "2017-01-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100021,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-02-27",
+                            "IntervalStart": "2017-01-26",
+                            "PK": 72989846,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "114.2400",
+            "IntervalEnd": "2018-03-27",
+            "IntervalStart": "2018-02-27",
+            "NewCharges": "114.2400",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646458,
+            "PreviousBalance": "114.2400",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99292f-bdae-dd5b-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-03-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "114.2400",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-03-27",
+                    "IntervalStart": "2018-02-27",
+                    "MeterNumber": "",
+                    "PK": 20264931,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.5000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-27",
+                            "IntervalStart": "2018-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100075,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.4400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-27",
+                            "IntervalStart": "2018-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100076,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "107.3000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-27",
+                            "IntervalStart": "2018-02-27",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100077,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-03-27",
+                            "IntervalStart": "2018-02-27",
+                            "PK": 72989857,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.9600",
+            "IntervalEnd": "2018-11-21",
+            "IntervalStart": "2018-10-22",
+            "NewCharges": "108.9600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646459,
+            "PreviousBalance": "108.9600",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e992928-bcef-df3a-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-11-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.9600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-11-21",
+                    "IntervalStart": "2018-10-22",
+                    "MeterNumber": "",
+                    "PK": 20264932,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100078,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100079,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.3500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100080,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "PK": 72989858,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.0300",
+            "IntervalEnd": "2017-01-26",
+            "IntervalStart": "2016-12-23",
+            "NewCharges": "108.0300",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646461,
+            "PreviousBalance": "103.7700",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99293e-f50d-d2fd-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-01-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.0300",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-01-26",
+                    "IntervalStart": "2016-12-23",
+                    "MeterNumber": "",
+                    "PK": 20264934,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-01-26",
+                            "IntervalStart": "2016-12-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100096,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-01-26",
+                            "IntervalStart": "2016-12-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100097,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "101.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-01-26",
+                            "IntervalStart": "2016-12-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100098,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-01-26",
+                            "IntervalStart": "2016-12-23",
+                            "PK": 72989861,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "109.6600",
+            "IntervalEnd": "2017-05-24",
+            "IntervalStart": "2017-04-26",
+            "NewCharges": "109.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646474,
+            "PreviousBalance": "108.7300",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99293a-8fa6-d279-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2017-05-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "109.6600",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-05-24",
+                    "IntervalStart": "2017-04-26",
+                    "MeterNumber": "",
+                    "PK": 20264947,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.44%",
+                            "ChargeAmount": "1.4800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-05-24",
+                            "IntervalStart": "2017-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100220,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-05-24",
+                            "IntervalStart": "2017-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100221,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.9600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-05-24",
+                            "IntervalStart": "2017-04-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100222,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-05-24",
+                            "IntervalStart": "2017-04-26",
+                            "PK": 72989880,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "108.9000",
+            "IntervalEnd": "2018-09-20",
+            "IntervalStart": "2018-08-22",
+            "NewCharges": "108.9000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5646480,
+            "PreviousBalance": "108.0700",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99292a-58ad-d382-89e4-0e8d5d7d6ec4",
+            "StatementDate": "2018-09-20",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "108.9000",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-09-20",
+                    "IntervalStart": "2018-08-22",
+                    "MeterNumber": "",
+                    "PK": 20264953,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.4%",
+                            "ChargeAmount": "1.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-20",
+                            "IntervalStart": "2018-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100254,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "5.1800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-20",
+                            "IntervalStart": "2018-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100255,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "102.2900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-20",
+                            "IntervalStart": "2018-08-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237100256,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-09-20",
+                            "IntervalStart": "2018-08-22",
+                            "PK": 72989888,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "148.8000",
+            "IntervalEnd": "2019-06-25",
+            "IntervalStart": "2019-05-24",
+            "NewCharges": "148.8000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5649131,
+            "PreviousBalance": "148.8000",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e99903b-aceb-d05e-9d4f-0e3046197e1e",
+            "StatementDate": "2019-06-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "148.8000",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-06-25",
+                    "IntervalStart": "2019-05-24",
+                    "MeterNumber": "",
+                    "PK": 20273199,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.23%",
+                            "ChargeAmount": "1.7200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-25",
+                            "IntervalStart": "2019-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237147167,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "7.0800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-25",
+                            "IntervalStart": "2019-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237147168,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "140.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-25",
+                            "IntervalStart": "2019-05-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237147169,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-06-25",
+                            "IntervalStart": "2019-05-24",
+                            "PK": 73008572,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33097200001",
+            "AmountDue": "148.8000",
+            "IntervalEnd": "2019-07-25",
+            "IntervalStart": "2019-06-25",
+            "NewCharges": "148.8000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5651469,
+            "PreviousBalance": "148.8000",
+            "RawAccountNumber": "3309720000-1",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9b0b94-9a3f-d157-9b85-0e12f241c134",
+            "StatementDate": "2019-07-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "148.8000",
+            "UtilityProvider": "SanJoseWaterCompany",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-07-25",
+                    "IntervalStart": "2019-06-25",
+                    "MeterNumber": "",
+                    "PK": 20280371,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "FS_M",
+                    "charges": [
+                        {
+                            "ChargeActualName": "PUC Surcharge 1.23%",
+                            "ChargeAmount": "1.7200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-25",
+                            "IntervalStart": "2019-06-25",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237235091,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "City Utility Users Tax 5%",
+                            "ChargeAmount": "7.0800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-25",
+                            "IntervalStart": "2019-06-25",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237235092,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Service Charge",
+                            "ChargeAmount": "140.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-25",
+                            "IntervalStart": "2019-06-25",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237235093,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2019-07-25",
+                            "IntervalStart": "2019-06-25",
+                            "PK": 73035341,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

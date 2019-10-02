@@ -1,0 +1,331 @@
+{
+    "periods": [
+        {
+            "end": "2019-05-14",
+            "peak_demand": null,
+            "start": "2019-04-17",
+            "tariff": null,
+            "total_charge": "789.9200",
+            "total_usage": "64.43376000",
+            "line_items": [
+                {
+                    "ChargeActualName": "VOLUMETRIC RATE",
+                    "ChargeAmount": "149.9000",
+                    "ChargeRatePerUnit": "3.1100",
+                    "ChargeUnitsUsed": "48.2000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237065359,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "TGAL"
+                },
+                {
+                    "ChargeActualName": "BASE RATE",
+                    "ChargeAmount": "16.7800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237065360,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "DRAINAGE-COMMERCIAL",
+                    "ChargeAmount": "265.9700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237065361,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "VOLUMETRIC RATE",
+                    "ChargeAmount": "199.5500",
+                    "ChargeRatePerUnit": "4.1400",
+                    "ChargeUnitsUsed": "48.2000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237065362,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "TGAL"
+                },
+                {
+                    "ChargeActualName": "UTILITY CAPITAL PROJECTS RATE",
+                    "ChargeAmount": "22.9000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237065363,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "BASE RATE",
+                    "ChargeAmount": "134.8200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237065364,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Deposits",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237065357,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Penalty/Adjustments",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237065358,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e98cd2a-363d-d441-b147-0ec6f4db0cc4"
+            ]
+        },
+        {
+            "end": "2019-06-16",
+            "peak_demand": null,
+            "start": "2019-05-15",
+            "tariff": null,
+            "total_charge": "576.7700",
+            "total_usage": "25.13184000",
+            "line_items": [
+                {
+                    "ChargeActualName": "VOLUMETRIC RATE",
+                    "ChargeAmount": "58.4700",
+                    "ChargeRatePerUnit": "3.1100",
+                    "ChargeUnitsUsed": "18.8000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143683,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "TGAL"
+                },
+                {
+                    "ChargeActualName": "BASE RATE",
+                    "ChargeAmount": "16.7800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143684,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "DRAINAGE-COMMERCIAL",
+                    "ChargeAmount": "265.9700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143685,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "VOLUMETRIC RATE",
+                    "ChargeAmount": "77.8300",
+                    "ChargeRatePerUnit": "4.1400",
+                    "ChargeUnitsUsed": "18.8000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143686,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "TGAL"
+                },
+                {
+                    "ChargeActualName": "UTILITY CAPITAL PROJECTS RATE",
+                    "ChargeAmount": "22.9000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143687,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "BASE RATE",
+                    "ChargeAmount": "134.8200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143688,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Deposits",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143681,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Penalty/Adjustments",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143682,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9982ac-2af2-dfd8-9674-0ec0bbfb710e"
+            ]
+        },
+        {
+            "end": "2019-07-17",
+            "peak_demand": null,
+            "start": "2019-06-17",
+            "tariff": null,
+            "total_charge": "460.0500",
+            "total_usage": "3.60936000",
+            "line_items": [
+                {
+                    "ChargeActualName": "VOLUMETRIC RATE",
+                    "ChargeAmount": "8.4000",
+                    "ChargeRatePerUnit": "3.1100",
+                    "ChargeUnitsUsed": "2.7000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242547,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "TGAL"
+                },
+                {
+                    "ChargeActualName": "BASE RATE",
+                    "ChargeAmount": "16.7800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242548,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "DRAINAGE-COMMERCIAL",
+                    "ChargeAmount": "265.9700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242549,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "VOLUMETRIC RATE",
+                    "ChargeAmount": "11.1800",
+                    "ChargeRatePerUnit": "4.1400",
+                    "ChargeUnitsUsed": "2.7000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242550,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "TGAL"
+                },
+                {
+                    "ChargeActualName": "UTILITY CAPITAL PROJECTS RATE",
+                    "ChargeAmount": "22.9000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242551,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "BASE RATE",
+                    "ChargeAmount": "134.8200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242552,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Deposits",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242545,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Penalty/Adjustments",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242546,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9b38a2-0b12-d655-a2c5-0eaf945c6c54"
+            ]
+        }
+    ]
+}

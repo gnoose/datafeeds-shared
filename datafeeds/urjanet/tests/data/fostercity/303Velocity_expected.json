@@ -1,0 +1,2542 @@
+{
+    "periods": [
+        {
+            "end": "2013-06-29",
+            "peak_demand": null,
+            "start": "2012-07-01",
+            "tariff": null,
+            "total_charge": "0.0000",
+            "total_usage": "355.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "NET OVER WATER CCF @ $1.57/CCF: 355",
+                    "ChargeAmount": "12.5600",
+                    "ChargeRatePerUnit": "0.0354",
+                    "ChargeUnitsUsed": "355.0000",
+                    "IntervalEnd": "2013-06-30",
+                    "IntervalStart": "2012-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650959,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92e1db-3c8c-d7cd-b2f5-0ef3bcedde5e"
+            ]
+        },
+        {
+            "end": "2013-07-30",
+            "peak_demand": null,
+            "start": "2013-06-30",
+            "tariff": null,
+            "total_charge": "821.2600",
+            "total_usage": "222.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 222.00",
+                    "ChargeAmount": "694.8600",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "222.0000",
+                    "IntervalEnd": "2013-07-31",
+                    "IntervalStart": "2013-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650041,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2013-07-31",
+                    "IntervalStart": "2013-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650042,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924666-03ec-d0c0-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2013-08-30",
+            "peak_demand": null,
+            "start": "2013-07-31",
+            "tariff": null,
+            "total_charge": "902.6400",
+            "total_usage": "248.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 248.00",
+                    "ChargeAmount": "776.2400",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "248.0000",
+                    "IntervalEnd": "2013-08-31",
+                    "IntervalStart": "2013-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644712,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2013-08-31",
+                    "IntervalStart": "2013-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644713,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924672-8cee-d630-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2013-09-29",
+            "peak_demand": null,
+            "start": "2013-08-31",
+            "tariff": null,
+            "total_charge": "517.6500",
+            "total_usage": "125.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 125.00",
+                    "ChargeAmount": "391.2500",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "125.0000",
+                    "IntervalEnd": "2013-09-30",
+                    "IntervalStart": "2013-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645164,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2013-09-30",
+                    "IntervalStart": "2013-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645165,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92467d-85d8-d67a-97d7-0e4914a2f444"
+            ]
+        },
+        {
+            "end": "2013-10-30",
+            "peak_demand": null,
+            "start": "2013-09-30",
+            "tariff": null,
+            "total_charge": "545.8200",
+            "total_usage": "134.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 134.00",
+                    "ChargeAmount": "419.4200",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "134.0000",
+                    "IntervalEnd": "2013-10-31",
+                    "IntervalStart": "2013-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647411,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2013-10-31",
+                    "IntervalStart": "2013-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647412,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246f2-8f8e-d23d-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2013-11-29",
+            "peak_demand": null,
+            "start": "2013-10-31",
+            "tariff": null,
+            "total_charge": "430.0100",
+            "total_usage": "97.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 97.00",
+                    "ChargeAmount": "303.6100",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "97.0000",
+                    "IntervalEnd": "2013-11-30",
+                    "IntervalStart": "2013-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645893,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2013-11-30",
+                    "IntervalStart": "2013-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645894,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924667-4bd0-d72b-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2013-12-30",
+            "peak_demand": null,
+            "start": "2013-11-30",
+            "tariff": null,
+            "total_charge": "210.9100",
+            "total_usage": "27.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 27.00",
+                    "ChargeAmount": "84.5100",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2013-12-31",
+                    "IntervalStart": "2013-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645112,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2013-12-31",
+                    "IntervalStart": "2013-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645113,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a8-bbe5-d2fb-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2014-01-30",
+            "peak_demand": null,
+            "start": "2013-12-31",
+            "tariff": null,
+            "total_charge": "220.3000",
+            "total_usage": "30.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 30.00",
+                    "ChargeAmount": "93.9000",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "30.0000",
+                    "IntervalEnd": "2014-01-31",
+                    "IntervalStart": "2013-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645704,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-01-31",
+                    "IntervalStart": "2013-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645705,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246e4-aa1a-d23f-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2014-02-27",
+            "peak_demand": null,
+            "start": "2014-01-31",
+            "tariff": null,
+            "total_charge": "163.9600",
+            "total_usage": "12.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 12.00",
+                    "ChargeAmount": "37.5600",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "12.0000",
+                    "IntervalEnd": "2014-02-28",
+                    "IntervalStart": "2014-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644697,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-02-28",
+                    "IntervalStart": "2014-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644698,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246ac-d7b1-d652-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2014-03-30",
+            "peak_demand": null,
+            "start": "2014-02-28",
+            "tariff": null,
+            "total_charge": "248.4700",
+            "total_usage": "39.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 39.00",
+                    "ChargeAmount": "122.0700",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "39.0000",
+                    "IntervalEnd": "2014-03-31",
+                    "IntervalStart": "2014-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648281,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-03-31",
+                    "IntervalStart": "2014-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648282,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924685-198d-d5a3-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2014-04-29",
+            "peak_demand": null,
+            "start": "2014-03-31",
+            "tariff": null,
+            "total_charge": "401.8400",
+            "total_usage": "88.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 88.00",
+                    "ChargeAmount": "275.4400",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "88.0000",
+                    "IntervalEnd": "2014-04-30",
+                    "IntervalStart": "2014-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648885,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-04-30",
+                    "IntervalStart": "2014-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648886,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246b7-1e51-d5c6-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2014-05-30",
+            "peak_demand": null,
+            "start": "2014-04-30",
+            "tariff": null,
+            "total_charge": "558.3400",
+            "total_usage": "138.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 138.00",
+                    "ChargeAmount": "431.9400",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "138.0000",
+                    "IntervalEnd": "2014-05-31",
+                    "IntervalStart": "2014-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646355,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-05-31",
+                    "IntervalStart": "2014-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646356,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924697-c8ea-d583-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2014-06-29",
+            "peak_demand": null,
+            "start": "2014-05-31",
+            "tariff": null,
+            "total_charge": "746.1400",
+            "total_usage": "198.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 198.00",
+                    "ChargeAmount": "619.7400",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "198.0000",
+                    "IntervalEnd": "2014-06-30",
+                    "IntervalStart": "2014-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646157,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "126.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-06-30",
+                    "IntervalStart": "2014-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646158,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246b8-9393-d8da-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2014-07-30",
+            "peak_demand": null,
+            "start": "2014-06-30",
+            "tariff": null,
+            "total_charge": "754.2700",
+            "total_usage": "189.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 182.90",
+                    "ChargeAmount": "607.2300",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "182.9000",
+                    "IntervalEnd": "2014-07-31",
+                    "IntervalStart": "2014-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644619,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 6.10",
+                    "ChargeAmount": "19.0900",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "6.1000",
+                    "IntervalEnd": "2014-07-31",
+                    "IntervalStart": "2014-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644620,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "123.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-07-31",
+                    "IntervalStart": "2014-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644621,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "4.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-07-31",
+                    "IntervalStart": "2014-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644622,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92467d-0685-d303-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2014-08-30",
+            "peak_demand": null,
+            "start": "2014-07-31",
+            "tariff": null,
+            "total_charge": "775.4000",
+            "total_usage": "195.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 195.00",
+                    "ChargeAmount": "647.4000",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "195.0000",
+                    "IntervalEnd": "2014-08-31",
+                    "IntervalStart": "2014-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646321,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-08-31",
+                    "IntervalStart": "2014-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646322,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246f9-f38f-d2c1-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2014-09-29",
+            "peak_demand": null,
+            "start": "2014-08-31",
+            "tariff": null,
+            "total_charge": "649.2400",
+            "total_usage": "157.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 157.00",
+                    "ChargeAmount": "521.2400",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "157.0000",
+                    "IntervalEnd": "2014-09-30",
+                    "IntervalStart": "2014-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644988,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-09-30",
+                    "IntervalStart": "2014-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644989,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246e4-757c-dec2-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2014-10-30",
+            "peak_demand": null,
+            "start": "2014-09-30",
+            "tariff": null,
+            "total_charge": "559.6000",
+            "total_usage": "130.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 130.00",
+                    "ChargeAmount": "431.6000",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "130.0000",
+                    "IntervalEnd": "2014-10-31",
+                    "IntervalStart": "2014-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651196,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-10-31",
+                    "IntervalStart": "2014-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651197,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924695-4d34-dafa-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2014-11-29",
+            "peak_demand": null,
+            "start": "2014-10-31",
+            "tariff": null,
+            "total_charge": "260.8000",
+            "total_usage": "40.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 40.00",
+                    "ChargeAmount": "132.8000",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "40.0000",
+                    "IntervalEnd": "2014-11-30",
+                    "IntervalStart": "2014-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650487,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-11-30",
+                    "IntervalStart": "2014-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650488,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924695-3076-d463-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2014-12-30",
+            "peak_demand": null,
+            "start": "2014-11-30",
+            "tariff": null,
+            "total_charge": "164.5200",
+            "total_usage": "11.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 11.00",
+                    "ChargeAmount": "36.5200",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "11.0000",
+                    "IntervalEnd": "2014-12-31",
+                    "IntervalStart": "2014-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651062,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-12-31",
+                    "IntervalStart": "2014-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651063,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246fe-4095-dfc6-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2015-01-30",
+            "peak_demand": null,
+            "start": "2014-12-31",
+            "tariff": null,
+            "total_charge": "164.5200",
+            "total_usage": "11.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 11.00",
+                    "ChargeAmount": "36.5200",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "11.0000",
+                    "IntervalEnd": "2015-01-31",
+                    "IntervalStart": "2014-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649124,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-01-31",
+                    "IntervalStart": "2014-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649125,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924686-6b22-d43f-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2015-02-27",
+            "peak_demand": null,
+            "start": "2015-01-31",
+            "tariff": null,
+            "total_charge": "154.5600",
+            "total_usage": "8.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 8.00",
+                    "ChargeAmount": "26.5600",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "8.0000",
+                    "IntervalEnd": "2015-02-28",
+                    "IntervalStart": "2015-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648328,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-02-28",
+                    "IntervalStart": "2015-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648329,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924672-b88f-dd2d-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2015-03-30",
+            "peak_demand": null,
+            "start": "2015-02-28",
+            "tariff": null,
+            "total_charge": "343.8000",
+            "total_usage": "65.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 65.00",
+                    "ChargeAmount": "215.8000",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "65.0000",
+                    "IntervalEnd": "2015-03-31",
+                    "IntervalStart": "2015-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647781,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-03-31",
+                    "IntervalStart": "2015-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647782,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924687-948b-df63-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2015-04-29",
+            "peak_demand": null,
+            "start": "2015-03-31",
+            "tariff": null,
+            "total_charge": "443.4000",
+            "total_usage": "95.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 95.00",
+                    "ChargeAmount": "315.4000",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "95.0000",
+                    "IntervalEnd": "2015-04-30",
+                    "IntervalStart": "2015-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644704,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-04-30",
+                    "IntervalStart": "2015-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644705,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924698-d0d0-df61-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2015-05-30",
+            "peak_demand": null,
+            "start": "2015-04-30",
+            "tariff": null,
+            "total_charge": "453.3600",
+            "total_usage": "98.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 98.00",
+                    "ChargeAmount": "325.3600",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "98.0000",
+                    "IntervalEnd": "2015-05-31",
+                    "IntervalStart": "2015-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647659,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-05-31",
+                    "IntervalStart": "2015-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647660,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a7-40e2-dced-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2015-06-29",
+            "peak_demand": null,
+            "start": "2015-05-31",
+            "tariff": null,
+            "total_charge": "483.2400",
+            "total_usage": "107.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 107.00",
+                    "ChargeAmount": "355.2400",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "107.0000",
+                    "IntervalEnd": "2015-06-30",
+                    "IntervalStart": "2015-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651639,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "128.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-06-30",
+                    "IntervalStart": "2015-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651640,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92467c-9230-dee8-9d0a-0ee5c08238c0"
+            ]
+        },
+        {
+            "end": "2015-07-30",
+            "peak_demand": null,
+            "start": "2015-06-30",
+            "tariff": null,
+            "total_charge": "562.6900",
+            "total_usage": "110.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 106.45",
+                    "ChargeAmount": "457.7400",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "106.4500",
+                    "IntervalEnd": "2015-07-31",
+                    "IntervalStart": "2015-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648164,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 3.55",
+                    "ChargeAmount": "11.7900",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "3.5500",
+                    "IntervalEnd": "2015-07-31",
+                    "IntervalStart": "2015-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648165,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "89.0300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-07-31",
+                    "IntervalStart": "2015-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648166,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "4.1300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-07-31",
+                    "IntervalStart": "2015-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648167,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924673-5a86-d31e-97d7-0e4914a2f444"
+            ]
+        },
+        {
+            "end": "2015-08-30",
+            "peak_demand": null,
+            "start": "2015-07-31",
+            "tariff": null,
+            "total_charge": "620.9000",
+            "total_usage": "123.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 123.00",
+                    "ChargeAmount": "528.9000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "123.0000",
+                    "IntervalEnd": "2015-08-31",
+                    "IntervalStart": "2015-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647305,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-08-31",
+                    "IntervalStart": "2015-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647306,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246ae-c3b4-d08e-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2015-09-29",
+            "peak_demand": null,
+            "start": "2015-08-31",
+            "tariff": null,
+            "total_charge": "569.3000",
+            "total_usage": "111.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 111.00",
+                    "ChargeAmount": "477.3000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "111.0000",
+                    "IntervalEnd": "2015-09-30",
+                    "IntervalStart": "2015-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648524,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-09-30",
+                    "IntervalStart": "2015-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648525,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92468c-06b0-db63-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2015-10-30",
+            "peak_demand": null,
+            "start": "2015-09-30",
+            "tariff": null,
+            "total_charge": "573.6000",
+            "total_usage": "112.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 112.00",
+                    "ChargeAmount": "481.6000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "112.0000",
+                    "IntervalEnd": "2015-10-31",
+                    "IntervalStart": "2015-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644739,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-10-31",
+                    "IntervalStart": "2015-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644740,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246f3-d0a8-d4c8-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2015-11-29",
+            "peak_demand": null,
+            "start": "2015-10-31",
+            "tariff": null,
+            "total_charge": "143.6000",
+            "total_usage": "12.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 12.00",
+                    "ChargeAmount": "51.6000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "12.0000",
+                    "IntervalEnd": "2015-11-30",
+                    "IntervalStart": "2015-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651534,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-11-30",
+                    "IntervalStart": "2015-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651535,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924672-335c-da8d-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2015-12-30",
+            "peak_demand": null,
+            "start": "2015-11-30",
+            "tariff": null,
+            "total_charge": "92.0000",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-12-31",
+                    "IntervalStart": "2015-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644514,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924701-c4d8-d41d-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2016-01-30",
+            "peak_demand": null,
+            "start": "2015-12-31",
+            "tariff": null,
+            "total_charge": "96.3000",
+            "total_usage": "1.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 1.00",
+                    "ChargeAmount": "4.3000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "1.0000",
+                    "IntervalEnd": "2016-01-31",
+                    "IntervalStart": "2015-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645870,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-01-31",
+                    "IntervalStart": "2015-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645871,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92466f-24e1-dbaa-9d0a-0ee5c08238c0"
+            ]
+        },
+        {
+            "end": "2016-02-28",
+            "peak_demand": null,
+            "start": "2016-01-31",
+            "tariff": null,
+            "total_charge": "246.8000",
+            "total_usage": "36.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 36.00",
+                    "ChargeAmount": "154.8000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "36.0000",
+                    "IntervalEnd": "2016-02-29",
+                    "IntervalStart": "2016-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650744,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-02-29",
+                    "IntervalStart": "2016-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650745,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924706-7d1c-db63-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2016-03-30",
+            "peak_demand": null,
+            "start": "2016-02-29",
+            "tariff": null,
+            "total_charge": "242.5000",
+            "total_usage": "35.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 35.00",
+                    "ChargeAmount": "150.5000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "35.0000",
+                    "IntervalEnd": "2016-03-31",
+                    "IntervalStart": "2016-02-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648946,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-03-31",
+                    "IntervalStart": "2016-02-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648947,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924674-5692-d22b-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2016-04-29",
+            "peak_demand": null,
+            "start": "2016-03-31",
+            "tariff": null,
+            "total_charge": "466.1000",
+            "total_usage": "87.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 87.00",
+                    "ChargeAmount": "374.1000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "87.0000",
+                    "IntervalEnd": "2016-04-30",
+                    "IntervalStart": "2016-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648215,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-04-30",
+                    "IntervalStart": "2016-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648216,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924666-70b0-d483-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2016-05-30",
+            "peak_demand": null,
+            "start": "2016-04-30",
+            "tariff": null,
+            "total_charge": "513.4000",
+            "total_usage": "98.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 98.00",
+                    "ChargeAmount": "421.4000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "98.0000",
+                    "IntervalEnd": "2016-05-31",
+                    "IntervalStart": "2016-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645530,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-05-31",
+                    "IntervalStart": "2016-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645531,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a4-feac-d51c-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2016-06-29",
+            "peak_demand": null,
+            "start": "2016-05-31",
+            "tariff": null,
+            "total_charge": "711.2000",
+            "total_usage": "144.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 144.00",
+                    "ChargeAmount": "619.2000",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "144.0000",
+                    "IntervalEnd": "2016-06-30",
+                    "IntervalStart": "2016-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651047,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "92.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-06-30",
+                    "IntervalStart": "2016-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651048,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924682-08d9-d8e9-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2016-07-30",
+            "peak_demand": null,
+            "start": "2016-06-30",
+            "tariff": null,
+            "total_charge": "867.6700",
+            "total_usage": "163.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 157.74",
+                    "ChargeAmount": "744.5300",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "157.7400",
+                    "IntervalEnd": "2016-07-31",
+                    "IntervalStart": "2016-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644225,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.30 5.26",
+                    "ChargeAmount": "22.6200",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "5.2600",
+                    "IntervalEnd": "2016-07-31",
+                    "IntervalStart": "2016-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644226,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "97.5500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-07-31",
+                    "IntervalStart": "2016-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644227,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "2.9700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-07-31",
+                    "IntervalStart": "2016-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644228,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92469f-2411-dc0b-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2016-08-30",
+            "peak_demand": null,
+            "start": "2016-07-31",
+            "tariff": null,
+            "total_charge": "1073.1200",
+            "total_usage": "206.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 206.00",
+                    "ChargeAmount": "972.3200",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "206.0000",
+                    "IntervalEnd": "2016-08-31",
+                    "IntervalStart": "2016-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648979,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-08-31",
+                    "IntervalStart": "2016-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648980,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246b8-bb22-d7cc-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2016-09-29",
+            "peak_demand": null,
+            "start": "2016-08-31",
+            "tariff": null,
+            "total_charge": "794.6400",
+            "total_usage": "147.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 147.00",
+                    "ChargeAmount": "693.8400",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "147.0000",
+                    "IntervalEnd": "2016-09-30",
+                    "IntervalStart": "2016-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650896,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-09-30",
+                    "IntervalStart": "2016-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650897,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924675-2c3d-ddc5-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2016-10-30",
+            "peak_demand": null,
+            "start": "2016-09-30",
+            "tariff": null,
+            "total_charge": "407.6000",
+            "total_usage": "65.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 65.00",
+                    "ChargeAmount": "306.8000",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "65.0000",
+                    "IntervalEnd": "2016-10-31",
+                    "IntervalStart": "2016-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647936,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-10-31",
+                    "IntervalStart": "2016-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647937,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924681-64cc-d74d-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2016-11-29",
+            "peak_demand": null,
+            "start": "2016-10-31",
+            "tariff": null,
+            "total_charge": "176.3200",
+            "total_usage": "16.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 16.00",
+                    "ChargeAmount": "75.5200",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "16.0000",
+                    "IntervalEnd": "2016-11-30",
+                    "IntervalStart": "2016-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648303,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-11-30",
+                    "IntervalStart": "2016-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648304,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924694-1b0c-d2d6-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2016-12-30",
+            "peak_demand": null,
+            "start": "2016-11-30",
+            "tariff": null,
+            "total_charge": "129.1200",
+            "total_usage": "6.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 6.00",
+                    "ChargeAmount": "28.3200",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "6.0000",
+                    "IntervalEnd": "2016-12-31",
+                    "IntervalStart": "2016-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649043,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-12-31",
+                    "IntervalStart": "2016-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649044,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924668-c071-d8c4-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2017-01-30",
+            "peak_demand": null,
+            "start": "2016-12-31",
+            "tariff": null,
+            "total_charge": "100.8000",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-01-31",
+                    "IntervalStart": "2016-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650118,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924676-579e-d7d1-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2017-02-27",
+            "peak_demand": null,
+            "start": "2017-01-31",
+            "tariff": null,
+            "total_charge": "110.2400",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 2.00",
+                    "ChargeAmount": "9.4400",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2017-02-28",
+                    "IntervalStart": "2017-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645246,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-02-28",
+                    "IntervalStart": "2017-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645247,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924694-9d91-d4b4-97d7-0e4914a2f444"
+            ]
+        },
+        {
+            "end": "2017-03-29",
+            "peak_demand": null,
+            "start": "2017-02-28",
+            "tariff": null,
+            "total_charge": "105.5200",
+            "total_usage": "1.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 1.00",
+                    "ChargeAmount": "4.7200",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "1.0000",
+                    "IntervalEnd": "2017-03-30",
+                    "IntervalStart": "2017-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650022,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-30",
+                    "IntervalStart": "2017-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650023,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246b6-abef-d1d7-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2017-04-29",
+            "peak_demand": null,
+            "start": "2017-03-30",
+            "tariff": null,
+            "total_charge": "232.9600",
+            "total_usage": "28.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 28.00",
+                    "ChargeAmount": "132.1600",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-03-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651051,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-03-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651052,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92edb4-41ab-dfcd-96e2-0e4d18d7a134"
+            ]
+        },
+        {
+            "end": "2017-05-30",
+            "peak_demand": null,
+            "start": "2017-04-30",
+            "tariff": null,
+            "total_charge": "851.2800",
+            "total_usage": "159.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 159.00",
+                    "ChargeAmount": "750.4800",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "159.0000",
+                    "IntervalEnd": "2017-05-31",
+                    "IntervalStart": "2017-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647587,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-31",
+                    "IntervalStart": "2017-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647588,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246b8-a293-de67-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2017-06-29",
+            "peak_demand": null,
+            "start": "2017-05-31",
+            "tariff": null,
+            "total_charge": "1087.2800",
+            "total_usage": "209.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 209.00",
+                    "ChargeAmount": "986.4800",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "209.0000",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647539,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "100.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647540,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92469a-f371-d7ec-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2017-07-30",
+            "peak_demand": null,
+            "start": "2017-06-30",
+            "tariff": null,
+            "total_charge": "1004.2800",
+            "total_usage": "179.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 173.23",
+                    "ChargeAmount": "871.3500",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "173.2300",
+                    "IntervalEnd": "2017-07-31",
+                    "IntervalStart": "2017-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645638,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.72 5.77",
+                    "ChargeAmount": "27.2300",
+                    "ChargeRatePerUnit": "4.7200",
+                    "ChargeUnitsUsed": "5.7700",
+                    "IntervalEnd": "2017-07-31",
+                    "IntervalStart": "2017-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645639,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "102.4500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-31",
+                    "IntervalStart": "2017-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645640,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER CHG 2",
+                    "ChargeAmount": "3.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-31",
+                    "IntervalStart": "2017-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645641,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e1f-5539-d935-ba61-0e78b12deaa6"
+            ]
+        },
+        {
+            "end": "2017-08-30",
+            "peak_demand": null,
+            "start": "2017-07-31",
+            "tariff": null,
+            "total_charge": "945.8800",
+            "total_usage": "167.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 167.00",
+                    "ChargeAmount": "840.0100",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "167.0000",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648140,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648141,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e4a-c6d0-d114-84b1-0e578d5d5508"
+            ]
+        },
+        {
+            "end": "2017-09-29",
+            "peak_demand": null,
+            "start": "2017-08-31",
+            "tariff": null,
+            "total_charge": "714.5000",
+            "total_usage": "121.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 121.00",
+                    "ChargeAmount": "608.6300",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "121.0000",
+                    "IntervalEnd": "2017-09-30",
+                    "IntervalStart": "2017-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645804,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-30",
+                    "IntervalStart": "2017-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645805,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931dfb-88b3-d715-a202-0e78b12deaa6"
+            ]
+        },
+        {
+            "end": "2017-10-30",
+            "peak_demand": null,
+            "start": "2017-09-30",
+            "tariff": null,
+            "total_charge": "784.9200",
+            "total_usage": "135.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 135.00",
+                    "ChargeAmount": "679.0500",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "135.0000",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649753,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649754,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e04-c6da-d449-a202-0e78b12deaa6"
+            ]
+        },
+        {
+            "end": "2017-11-29",
+            "peak_demand": null,
+            "start": "2017-10-31",
+            "tariff": null,
+            "total_charge": "302.0400",
+            "total_usage": "39.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 39.00",
+                    "ChargeAmount": "196.1700",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "39.0000",
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649360,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649361,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e45-984a-d376-84b1-0e578d5d5508"
+            ]
+        },
+        {
+            "end": "2017-12-30",
+            "peak_demand": null,
+            "start": "2017-11-30",
+            "tariff": null,
+            "total_charge": "382.5200",
+            "total_usage": "55.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 55.00",
+                    "ChargeAmount": "276.6500",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "55.0000",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647599,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647600,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e40-371e-d109-84b1-0e578d5d5508"
+            ]
+        },
+        {
+            "end": "2018-01-30",
+            "peak_demand": null,
+            "start": "2017-12-31",
+            "tariff": null,
+            "total_charge": "201.4400",
+            "total_usage": "19.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 19.00",
+                    "ChargeAmount": "95.5700",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "19.0000",
+                    "IntervalEnd": "2018-01-31",
+                    "IntervalStart": "2017-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647561,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-31",
+                    "IntervalStart": "2017-12-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647562,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931df3-1d15-d0fb-a0cc-0e578d5d5508"
+            ]
+        },
+        {
+            "end": "2018-02-27",
+            "peak_demand": null,
+            "start": "2018-01-31",
+            "tariff": null,
+            "total_charge": "422.7600",
+            "total_usage": "63.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 63.00",
+                    "ChargeAmount": "316.8900",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "63.0000",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646611,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646612,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e42-4ba1-d4e8-84b1-0e578d5d5508"
+            ]
+        },
+        {
+            "end": "2018-03-30",
+            "peak_demand": null,
+            "start": "2018-02-28",
+            "tariff": null,
+            "total_charge": "427.7900",
+            "total_usage": "64.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 64.00",
+                    "ChargeAmount": "321.9200",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "64.0000",
+                    "IntervalEnd": "2018-03-31",
+                    "IntervalStart": "2018-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645367,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-31",
+                    "IntervalStart": "2018-02-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645368,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e07-647c-d1b4-a202-0e78b12deaa6"
+            ]
+        },
+        {
+            "end": "2018-04-29",
+            "peak_demand": null,
+            "start": "2018-03-31",
+            "tariff": null,
+            "total_charge": "478.0900",
+            "total_usage": "74.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 74.00",
+                    "ChargeAmount": "372.2200",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "74.0000",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645017,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-03-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645018,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92467e-63f4-dc7d-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2018-05-30",
+            "peak_demand": null,
+            "start": "2018-04-30",
+            "tariff": null,
+            "total_charge": "578.6900",
+            "total_usage": "94.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 94.00",
+                    "ChargeAmount": "472.8200",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "94.0000",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645400,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-04-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645401,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924676-6454-dd62-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2018-06-29",
+            "peak_demand": null,
+            "start": "2018-05-31",
+            "tariff": null,
+            "total_charge": "679.2900",
+            "total_usage": "114.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 114.00",
+                    "ChargeAmount": "573.4200",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "114.0000",
+                    "IntervalEnd": "2018-06-30",
+                    "IntervalStart": "2018-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648950,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-30",
+                    "IntervalStart": "2018-05-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648951,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924681-e5e0-dedb-9d0a-0ee5c08238c0"
+            ]
+        },
+        {
+            "end": "2018-07-30",
+            "peak_demand": null,
+            "start": "2018-06-30",
+            "tariff": null,
+            "total_charge": "900.6100",
+            "total_usage": "158.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 158.00",
+                    "ChargeAmount": "794.7400",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "158.0000",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651181,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-06-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651182,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924665-5e58-d5b4-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2018-08-30",
+            "peak_demand": null,
+            "start": "2018-07-31",
+            "tariff": null,
+            "total_charge": "2801.2300",
+            "total_usage": "164.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 164.00",
+                    "ChargeAmount": "824.9200",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "164.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647647,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647648,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "OVRUSE PENLTY FY1718",
+                    "ChargeAmount": "1870.4400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647646,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246ad-5fad-d67d-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2018-09-29",
+            "peak_demand": null,
+            "start": "2018-08-31",
+            "tariff": null,
+            "total_charge": "867.0400",
+            "total_usage": "139.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.43 134.37",
+                    "ChargeAmount": "729.6300",
+                    "ChargeRatePerUnit": "5.4300",
+                    "ChargeUnitsUsed": "134.3700",
+                    "IntervalEnd": "2018-09-30",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651007,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.03 4.63",
+                    "ChargeAmount": "23.2900",
+                    "ChargeRatePerUnit": "5.0300",
+                    "ChargeUnitsUsed": "4.6300",
+                    "IntervalEnd": "2018-09-30",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651008,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "110.5900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-30",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651009,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "3.5300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-30",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651010,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924708-14c2-d9b0-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2018-10-30",
+            "peak_demand": null,
+            "start": "2018-09-30",
+            "tariff": null,
+            "total_charge": "695.4100",
+            "total_usage": "107.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.43 107.00",
+                    "ChargeAmount": "581.0100",
+                    "ChargeRatePerUnit": "5.4300",
+                    "ChargeUnitsUsed": "107.0000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647953,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "114.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647954,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924671-0f95-dd93-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2018-11-30",
+            "peak_demand": null,
+            "start": "2018-10-31",
+            "tariff": null,
+            "total_charge": "559.6600",
+            "total_usage": "82.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.43 82.00",
+                    "ChargeAmount": "445.2600",
+                    "ChargeRatePerUnit": "5.4300",
+                    "ChargeUnitsUsed": "82.0000",
+                    "IntervalEnd": "2018-11-30",
+                    "IntervalStart": "2018-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649007,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "114.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-30",
+                    "IntervalStart": "2018-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649008,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a9-b079-d7b7-97d7-0e4914a2f444"
+            ]
+        }
+    ]
+}

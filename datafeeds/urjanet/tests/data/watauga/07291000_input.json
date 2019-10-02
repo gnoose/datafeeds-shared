@@ -1,0 +1,57 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "07291000",
+            "AmountDue": "1972.7300",
+            "IntervalEnd": "2019-08-15",
+            "IntervalStart": "2019-07-11",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658144,
+            "PreviousBalance": "1957.4400",
+            "RawAccountNumber": "07-2910-00",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9c5b21-bdfc-d158-9cb3-0e6fcd4edc32",
+            "StatementDate": "2019-08-15",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1972.7300",
+            "UtilityProvider": "CityOfWataugaTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Bill",
+                    "ChargeAmount": "1972.7300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-15",
+                    "IntervalStart": "2019-07-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237439779,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-08-15",
+                    "IntervalStart": "2019-07-11",
+                    "MeterNumber": "46507870",
+                    "PK": 20297656,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "unknown_tariff",
+                    "charges": [],
+                    "usages": [
+                        {
+                            "EnergyUnit": "HCF",
+                            "IntervalEnd": "2019-08-15",
+                            "IntervalStart": "2019-07-11",
+                            "PK": 73086634,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "4810.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,128 @@
+{
+    "periods": [
+        {
+            "end": "2018-08-30",
+            "peak_demand": null,
+            "start": "2018-08-01",
+            "tariff": null,
+            "total_charge": "143.4700",
+            "total_usage": "0",
+            "line_items": [
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "105.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644370,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "F ACCOUNT SET UP FEE",
+                    "ChargeAmount": "37.6000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644369,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92468f-c86c-d452-97d7-0e4914a2f444"
+            ]
+        },
+        {
+            "end": "2018-09-29",
+            "peak_demand": null,
+            "start": "2018-08-31",
+            "tariff": null,
+            "total_charge": "114.1200",
+            "total_usage": "0",
+            "line_items": [
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "110.5900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-30",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644845,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "3.5300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-30",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644846,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924692-e15f-dea1-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2018-10-30",
+            "peak_demand": null,
+            "start": "2018-09-30",
+            "tariff": null,
+            "total_charge": "114.4000",
+            "total_usage": "0",
+            "line_items": [
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "114.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-09-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236645074,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924677-7049-d0fb-9d0a-0ee5c08238c0"
+            ]
+        },
+        {
+            "end": "2018-11-30",
+            "peak_demand": null,
+            "start": "2018-10-31",
+            "tariff": null,
+            "total_charge": "114.4000",
+            "total_usage": "0",
+            "line_items": [
+                {
+                    "ChargeActualName": "METER WTR AVAIL 2",
+                    "ChargeAmount": "114.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-30",
+                    "IntervalStart": "2018-10-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644451,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a6-7446-d68a-80da-0e9932b54676"
+            ]
+        }
+    ]
+}

@@ -9,7 +9,7 @@ from datafeeds import db, config
 
 def _aes_key():
     # key must be exactly 32 bytes
-    return (config.AES_KEY or "snapmeter"*4)[:32].encode("utf-8")
+    return (config.AES_KEY or "snapmeter" * 4)[:32].encode("utf-8")
 
 
 def aes_encrypt(text):

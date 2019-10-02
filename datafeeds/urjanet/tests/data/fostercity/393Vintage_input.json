@@ -1,0 +1,1432 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "171.2600",
+            "IntervalEnd": "2018-03-31",
+            "IntervalStart": "2018-02-28",
+            "NewCharges": "171.2600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5634223,
+            "PreviousBalance": "176.2900",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e09-e7fc-d6ac-a225-0e578d5d5508",
+            "StatementDate": "2018-04-04",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "171.2600",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-03-31",
+                    "IntervalStart": "2018-02-28",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20216790,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 13.00",
+                            "ChargeAmount": "65.3900",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "13.0000",
+                            "IntervalEnd": "2018-03-31",
+                            "IntervalStart": "2018-02-28",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236644437,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-31",
+                            "IntervalStart": "2018-02-28",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236644438,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-03-31",
+                            "IntervalStart": "2018-02-28",
+                            "PK": 72847661,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "13.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "289.6000",
+            "IntervalEnd": "2017-05-31",
+            "IntervalStart": "2017-04-30",
+            "NewCharges": "289.6000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5634597,
+            "PreviousBalance": "115.3600",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924680-a80e-da1d-97d7-0e4914a2f444",
+            "StatementDate": "2017-06-05",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "289.6000",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-05-31",
+                    "IntervalStart": "2017-04-30",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20217248,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $4.72 40.00",
+                            "ChargeAmount": "188.8000",
+                            "ChargeRatePerUnit": "4.7200",
+                            "ChargeUnitsUsed": "40.0000",
+                            "IntervalEnd": "2017-05-31",
+                            "IntervalStart": "2017-04-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236645232,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER CHG 2",
+                            "ChargeAmount": "100.8000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-05-31",
+                            "IntervalStart": "2017-04-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236645233,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-05-31",
+                            "IntervalStart": "2017-04-30",
+                            "PK": 72848119,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "40.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "73.6400",
+            "IntervalEnd": "2017-06-30",
+            "IntervalStart": "2016-07-01",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5634618,
+            "PreviousBalance": "0.0000",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92e1d8-2d95-d122-b2f5-0ef3bcedde5e",
+            "StatementDate": null,
+            "StatementType": "statement_type_adjustment",
+            "TotalBillAmount": "73.6400",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2016-07-01",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20217273,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "water",
+                    "Tariff": "unknown_tariff",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Cumulative Penalty Fee @ $2.63 per Ccf",
+                            "ChargeAmount": "218.2900",
+                            "ChargeRatePerUnit": "7.7961",
+                            "ChargeUnitsUsed": "28.0000",
+                            "IntervalEnd": "2017-06-30",
+                            "IntervalStart": "2016-07-01",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236645279,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-06-30",
+                            "IntervalStart": "2016-07-01",
+                            "PK": 72848144,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "28.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "291.9800",
+            "IntervalEnd": "2018-05-31",
+            "IntervalStart": "2018-04-30",
+            "NewCharges": "291.9800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5634761,
+            "PreviousBalance": "236.6500",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924708-c38c-dae9-83c7-0edd7de0e1cc",
+            "StatementDate": "2018-06-06",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "291.9800",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-04-30",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20217456,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 37.00",
+                            "ChargeAmount": "186.1100",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "37.0000",
+                            "IntervalEnd": "2018-05-31",
+                            "IntervalStart": "2018-04-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236645601,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-31",
+                            "IntervalStart": "2018-04-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236645602,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-05-31",
+                            "IntervalStart": "2018-04-30",
+                            "PK": 72848327,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "37.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "190.4200",
+            "IntervalEnd": "2018-11-30",
+            "IntervalStart": "2018-10-31",
+            "NewCharges": "190.4200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5634961,
+            "PreviousBalance": "239.2900",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92469d-57f8-d22a-8051-0e1105e58474",
+            "StatementDate": "2018-12-07",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "190.4200",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-11-30",
+                    "IntervalStart": "2018-10-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20217728,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.43 14.00",
+                            "ChargeAmount": "76.0200",
+                            "ChargeRatePerUnit": "5.4300",
+                            "ChargeUnitsUsed": "14.0000",
+                            "IntervalEnd": "2018-11-30",
+                            "IntervalStart": "2018-10-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646053,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "114.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-30",
+                            "IntervalStart": "2018-10-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646054,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-11-30",
+                            "IntervalStart": "2018-10-31",
+                            "PK": 72848599,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "14.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "239.2900",
+            "IntervalEnd": "2018-10-31",
+            "IntervalStart": "2018-09-30",
+            "NewCharges": "239.2900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5634969,
+            "PreviousBalance": "254.9600",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92467a-e14a-d213-a904-0e527fc74ca8",
+            "StatementDate": "2018-11-02",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "239.2900",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-09-30",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20217738,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.43 23.00",
+                            "ChargeAmount": "124.8900",
+                            "ChargeRatePerUnit": "5.4300",
+                            "ChargeUnitsUsed": "23.0000",
+                            "IntervalEnd": "2018-10-31",
+                            "IntervalStart": "2018-09-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646071,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "114.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-31",
+                            "IntervalStart": "2018-09-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646072,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-10-31",
+                            "IntervalStart": "2018-09-30",
+                            "PK": 72848609,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "23.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "254.9600",
+            "IntervalEnd": "2018-09-30",
+            "IntervalStart": "2018-08-31",
+            "NewCharges": "254.9600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5635098,
+            "PreviousBalance": "517.1900",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924708-ee68-d66e-83c7-0edd7de0e1cc",
+            "StatementDate": "2018-10-08",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "254.9600",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-09-30",
+                    "IntervalStart": "2018-08-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20217910,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.43 25.13",
+                            "ChargeAmount": "136.4600",
+                            "ChargeRatePerUnit": "5.4300",
+                            "ChargeUnitsUsed": "25.1300",
+                            "IntervalEnd": "2018-09-30",
+                            "IntervalStart": "2018-08-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646375,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 0.87",
+                            "ChargeAmount": "4.3800",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "0.8700",
+                            "IntervalEnd": "2018-09-30",
+                            "IntervalStart": "2018-08-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646376,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "110.5900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-30",
+                            "IntervalStart": "2018-08-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646377,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "3.5300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-30",
+                            "IntervalStart": "2018-08-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646378,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-09-30",
+                            "IntervalStart": "2018-08-31",
+                            "PK": 72848781,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "26.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "321.5600",
+            "IntervalEnd": "2017-07-31",
+            "IntervalStart": "2017-06-30",
+            "NewCharges": "321.5600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5635139,
+            "PreviousBalance": "303.7600",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e41-543f-d371-8934-0e578d5d5508",
+            "StatementDate": "2017-08-09",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "321.5600",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-07-31",
+                    "IntervalStart": "2017-06-30",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20217961,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 41.61",
+                            "ChargeAmount": "209.3000",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "41.6100",
+                            "IntervalEnd": "2017-07-31",
+                            "IntervalStart": "2017-06-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646461,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "USED FLAT RATE $4.72 1.39",
+                            "ChargeAmount": "6.5600",
+                            "ChargeRatePerUnit": "4.7200",
+                            "ChargeUnitsUsed": "1.3900",
+                            "IntervalEnd": "2017-07-31",
+                            "IntervalStart": "2017-06-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646462,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "102.4500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-07-31",
+                            "IntervalStart": "2017-06-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646463,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "METER CHG 2",
+                            "ChargeAmount": "3.2500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-07-31",
+                            "IntervalStart": "2017-06-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646464,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-07-31",
+                            "IntervalStart": "2017-06-30",
+                            "PK": 72848832,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "43.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "115.3600",
+            "IntervalEnd": "2017-04-30",
+            "IntervalStart": "2017-04-23",
+            "NewCharges": "115.3600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5635206,
+            "PreviousBalance": "0.0000",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924661-b88b-d96f-a904-0e527fc74ca8",
+            "StatementDate": "2017-05-08",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "115.3600",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "C ACCOUNT SET UP FEE",
+                    "ChargeAmount": "35.2000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646600,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-23",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20218043,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $4.72 12.00",
+                            "ChargeAmount": "56.6400",
+                            "ChargeRatePerUnit": "4.7200",
+                            "ChargeUnitsUsed": "12.0000",
+                            "IntervalEnd": "2017-04-30",
+                            "IntervalStart": "2017-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646601,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER CHG 2",
+                            "ChargeAmount": "23.5200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-04-30",
+                            "IntervalStart": "2017-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236646602,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-04-30",
+                            "IntervalStart": "2017-04-23",
+                            "PK": 72848914,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "12.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "115.9300",
+            "IntervalEnd": "2017-11-30",
+            "IntervalStart": "2017-10-31",
+            "NewCharges": "115.9300",
+            "OutstandingBalance": "0.0000",
+            "PK": 5635812,
+            "PreviousBalance": "251.7400",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e41-c980-d4d9-84b1-0e578d5d5508",
+            "StatementDate": "2017-12-05",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "115.9300",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-10-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20218799,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 2.00",
+                            "ChargeAmount": "10.0600",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "2.0000",
+                            "IntervalEnd": "2017-11-30",
+                            "IntervalStart": "2017-10-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236647843,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-11-30",
+                            "IntervalStart": "2017-10-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236647844,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-11-30",
+                            "IntervalStart": "2017-10-31",
+                            "PK": 72849670,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "2.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "176.2900",
+            "IntervalEnd": "2018-02-28",
+            "IntervalStart": "2018-01-31",
+            "NewCharges": "176.2900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5636562,
+            "PreviousBalance": "105.8700",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e0a-a438-de55-a202-0e78b12deaa6",
+            "StatementDate": "2018-03-07",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "176.2900",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20219756,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 14.00",
+                            "ChargeAmount": "70.4200",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "14.0000",
+                            "IntervalEnd": "2018-02-28",
+                            "IntervalStart": "2018-01-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236649476,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-28",
+                            "IntervalStart": "2018-01-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236649477,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-02-28",
+                            "IntervalStart": "2018-01-31",
+                            "PK": 72850627,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "14.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "303.7600",
+            "IntervalEnd": "2017-06-30",
+            "IntervalStart": "2017-05-31",
+            "NewCharges": "303.7600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5636610,
+            "PreviousBalance": "289.6000",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924673-5eba-de44-a904-0e527fc74ca8",
+            "StatementDate": "2017-07-07",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "303.7600",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-05-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20219813,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $4.72 43.00",
+                            "ChargeAmount": "202.9600",
+                            "ChargeRatePerUnit": "4.7200",
+                            "ChargeUnitsUsed": "43.0000",
+                            "IntervalEnd": "2017-06-30",
+                            "IntervalStart": "2017-05-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236649565,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER CHG 2",
+                            "ChargeAmount": "100.8000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-06-30",
+                            "IntervalStart": "2017-05-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236649566,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-06-30",
+                            "IntervalStart": "2017-05-31",
+                            "PK": 72850684,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "43.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "365.6200",
+            "IntervalEnd": "2017-08-31",
+            "IntervalStart": "2017-07-31",
+            "NewCharges": "365.6200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5636787,
+            "PreviousBalance": "321.5600",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e2a-832e-db44-ba61-0e78b12deaa6",
+            "StatementDate": "2017-09-07",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "365.6200",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "OVRUSE PENLTY FY1617",
+                    "ChargeAmount": "73.6400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649944,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-07-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220033,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 37.00",
+                            "ChargeAmount": "186.1100",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "37.0000",
+                            "IntervalEnd": "2017-08-31",
+                            "IntervalStart": "2017-07-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236649945,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-08-31",
+                            "IntervalStart": "2017-07-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236649946,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-08-31",
+                            "IntervalStart": "2017-07-31",
+                            "PK": 72850904,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "37.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "517.1900",
+            "IntervalEnd": "2018-08-31",
+            "IntervalStart": "2018-07-31",
+            "NewCharges": "517.1900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5636817,
+            "PreviousBalance": "332.2200",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924673-2591-d142-80da-0e9932b54676",
+            "StatementDate": "2018-09-07",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "517.1900",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "OVRUSE PENLTY FY1718",
+                    "ChargeAmount": "220.1800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-07-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650003,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-07-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220066,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 38.00",
+                            "ChargeAmount": "191.1400",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "38.0000",
+                            "IntervalEnd": "2018-08-31",
+                            "IntervalStart": "2018-07-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650004,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-31",
+                            "IntervalStart": "2018-07-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650005,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-08-31",
+                            "IntervalStart": "2018-07-31",
+                            "PK": 72850937,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "38.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "332.2200",
+            "IntervalEnd": "2018-07-31",
+            "IntervalStart": "2018-06-30",
+            "NewCharges": "332.2200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5637002,
+            "PreviousBalance": "347.3100",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924680-3364-dde5-97d7-0e4914a2f444",
+            "StatementDate": "2018-08-07",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "332.2200",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-06-30",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220290,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 45.00",
+                            "ChargeAmount": "226.3500",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "45.0000",
+                            "IntervalEnd": "2018-07-31",
+                            "IntervalStart": "2018-06-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650384,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-31",
+                            "IntervalStart": "2018-06-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650385,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-07-31",
+                            "IntervalStart": "2018-06-30",
+                            "PK": 72851161,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "45.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "251.7400",
+            "IntervalEnd": "2017-10-31",
+            "IntervalStart": "2017-09-30",
+            "NewCharges": "251.7400",
+            "OutstandingBalance": "0.0000",
+            "PK": 5637048,
+            "PreviousBalance": "266.8300",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e02-555d-dc13-a8ac-0e78b12deaa6",
+            "StatementDate": "2017-11-08",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "251.7400",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-09-30",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220346,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 29.00",
+                            "ChargeAmount": "145.8700",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "29.0000",
+                            "IntervalEnd": "2017-10-31",
+                            "IntervalStart": "2017-09-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650483,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-10-31",
+                            "IntervalStart": "2017-09-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650484,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-10-31",
+                            "IntervalStart": "2017-09-30",
+                            "PK": 72851217,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "29.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "266.8300",
+            "IntervalEnd": "2017-09-30",
+            "IntervalStart": "2017-08-31",
+            "NewCharges": "266.8300",
+            "OutstandingBalance": "0.0000",
+            "PK": 5637206,
+            "PreviousBalance": "365.6200",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e15-d899-d1b0-bc78-0e578d5d5508",
+            "StatementDate": "2017-10-06",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "266.8300",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-09-30",
+                    "IntervalStart": "2017-08-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220543,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 32.00",
+                            "ChargeAmount": "160.9600",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "32.0000",
+                            "IntervalEnd": "2017-09-30",
+                            "IntervalStart": "2017-08-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650823,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-09-30",
+                            "IntervalStart": "2017-08-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650824,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-09-30",
+                            "IntervalStart": "2017-08-31",
+                            "PK": 72851414,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "32.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "131.0200",
+            "IntervalEnd": "2017-12-31",
+            "IntervalStart": "2017-11-30",
+            "NewCharges": "131.0200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5637235,
+            "PreviousBalance": "115.9300",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931dec-9d54-da53-9144-0e78b12deaa6",
+            "StatementDate": "2018-01-08",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "131.0200",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-11-30",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220579,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 5.00",
+                            "ChargeAmount": "25.1500",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "5.0000",
+                            "IntervalEnd": "2017-12-31",
+                            "IntervalStart": "2017-11-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650890,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-12-31",
+                            "IntervalStart": "2017-11-30",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650891,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2017-12-31",
+                            "IntervalStart": "2017-11-30",
+                            "PK": 72851450,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "5.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "347.3100",
+            "IntervalEnd": "2018-06-30",
+            "IntervalStart": "2018-05-31",
+            "NewCharges": "347.3100",
+            "OutstandingBalance": "0.0000",
+            "PK": 5637243,
+            "PreviousBalance": "291.9800",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92468c-6bbb-d643-9d0a-0ee5c08238c0",
+            "StatementDate": "2018-07-06",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "347.3100",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-06-30",
+                    "IntervalStart": "2018-05-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220587,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 48.00",
+                            "ChargeAmount": "241.4400",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "48.0000",
+                            "IntervalEnd": "2018-06-30",
+                            "IntervalStart": "2018-05-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650903,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-30",
+                            "IntervalStart": "2018-05-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236650904,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-06-30",
+                            "IntervalStart": "2018-05-31",
+                            "PK": 72851458,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "48.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "236.6500",
+            "IntervalEnd": "2018-04-30",
+            "IntervalStart": "2018-03-31",
+            "NewCharges": "236.6500",
+            "OutstandingBalance": "0.0000",
+            "PK": 5637379,
+            "PreviousBalance": "171.2600",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a0-492e-d619-b441-0eaf4bc895fe",
+            "StatementDate": "2018-05-09",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "236.6500",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-03-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220755,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "USED FLAT RATE $5.03 26.00",
+                            "ChargeAmount": "130.7800",
+                            "ChargeRatePerUnit": "5.0300",
+                            "ChargeUnitsUsed": "26.0000",
+                            "IntervalEnd": "2018-04-30",
+                            "IntervalStart": "2018-03-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236651191,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "ccf"
+                        },
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-30",
+                            "IntervalStart": "2018-03-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236651192,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-04-30",
+                            "IntervalStart": "2018-03-31",
+                            "PK": 72851626,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "26.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "AnonAccountNumber",
+            "AmountDue": "105.8700",
+            "IntervalEnd": "2018-01-31",
+            "IntervalStart": "2017-12-31",
+            "NewCharges": "105.8700",
+            "OutstandingBalance": "0.0000",
+            "PK": 5637381,
+            "PreviousBalance": "131.0200",
+            "RawAccountNumber": "AnonRawAccountNumber",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e4e-9a1f-d288-84b1-0e578d5d5508",
+            "StatementDate": "2018-02-07",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "105.8700",
+            "UtilityProvider": "AnonProvider",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-01-31",
+                    "IntervalStart": "2017-12-31",
+                    "MeterNumber": "AnonMeterNumber",
+                    "PK": 20220757,
+                    "PODid": "AnonPODid",
+                    "ServiceType": "irrigation",
+                    "Tariff": "Green Area",
+                    "charges": [
+                        {
+                            "ChargeActualName": "METER WTR AVAIL 2",
+                            "ChargeAmount": "105.8700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-01-31",
+                            "IntervalStart": "2017-12-31",
+                            "IsAdjustmentCharge": true,
+                            "PK": 236651195,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "ccf",
+                            "IntervalEnd": "2018-01-31",
+                            "IntervalStart": "2017-12-31",
+                            "PK": 72851628,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "0.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

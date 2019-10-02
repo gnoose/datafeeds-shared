@@ -1,0 +1,1617 @@
+{
+    "periods": [
+        {
+            "end": "2014-04-07",
+            "peak_demand": null,
+            "start": "2014-04-01",
+            "tariff": null,
+            "total_charge": "69.8200",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 3.00",
+                    "ChargeAmount": "9.3900",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2014-04-08",
+                    "IntervalStart": "2014-04-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644235,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "51.6100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-04-08",
+                    "IntervalStart": "2014-04-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644236,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 3.00",
+                    "ChargeAmount": "8.8200",
+                    "ChargeRatePerUnit": "2.9400",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2014-04-08",
+                    "IntervalStart": "2014-04-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644237,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924676-d6c5-dc08-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2014-06-07",
+            "peak_demand": null,
+            "start": "2014-04-08",
+            "tariff": null,
+            "total_charge": "903.7200",
+            "total_usage": "76.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 76.00",
+                    "ChargeAmount": "237.8800",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "76.0000",
+                    "IntervalEnd": "2014-06-08",
+                    "IntervalStart": "2014-04-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644511,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "442.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-06-08",
+                    "IntervalStart": "2014-04-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644512,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 76.00",
+                    "ChargeAmount": "223.4400",
+                    "ChargeRatePerUnit": "2.9400",
+                    "ChargeUnitsUsed": "76.0000",
+                    "IntervalEnd": "2014-06-08",
+                    "IntervalStart": "2014-04-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644513,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924680-a4eb-d5fd-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2014-08-07",
+            "peak_demand": null,
+            "start": "2014-06-08",
+            "tariff": null,
+            "total_charge": "1024.8900",
+            "total_usage": "93.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 57.93",
+                    "ChargeAmount": "192.3300",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "57.9300",
+                    "IntervalEnd": "2014-08-08",
+                    "IntervalStart": "2014-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644309,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.13 35.07",
+                    "ChargeAmount": "109.7700",
+                    "ChargeRatePerUnit": "3.1300",
+                    "ChargeUnitsUsed": "35.0700",
+                    "IntervalEnd": "2014-08-08",
+                    "IntervalStart": "2014-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644310,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "279.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-08-08",
+                    "IntervalStart": "2014-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644311,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "166.8100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-08-08",
+                    "IntervalStart": "2014-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644312,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 35.07",
+                    "ChargeAmount": "103.1100",
+                    "ChargeRatePerUnit": "2.9401",
+                    "ChargeUnitsUsed": "35.0700",
+                    "IntervalEnd": "2014-08-08",
+                    "IntervalStart": "2014-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644313,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "SEWER 57.93",
+                    "ChargeAmount": "173.7900",
+                    "ChargeRatePerUnit": "3.0000",
+                    "ChargeUnitsUsed": "57.9300",
+                    "IntervalEnd": "2014-08-08",
+                    "IntervalStart": "2014-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644314,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246af-f74f-d95f-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2014-10-07",
+            "peak_demand": null,
+            "start": "2014-08-08",
+            "tariff": null,
+            "total_charge": "2400.8800",
+            "total_usage": "309.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 309.00",
+                    "ChargeAmount": "1025.8800",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "309.0000",
+                    "IntervalEnd": "2014-10-08",
+                    "IntervalStart": "2014-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646710,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "448.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-10-08",
+                    "IntervalStart": "2014-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646711,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 309.00",
+                    "ChargeAmount": "927.0000",
+                    "ChargeRatePerUnit": "3.0000",
+                    "ChargeUnitsUsed": "309.0000",
+                    "IntervalEnd": "2014-10-08",
+                    "IntervalStart": "2014-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646712,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a6-eadf-dc56-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2014-12-07",
+            "peak_demand": null,
+            "start": "2014-10-08",
+            "tariff": null,
+            "total_charge": "2571.5200",
+            "total_usage": "336.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 336.00",
+                    "ChargeAmount": "1115.5200",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "336.0000",
+                    "IntervalEnd": "2014-12-08",
+                    "IntervalStart": "2014-10-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646846,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "448.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2014-12-08",
+                    "IntervalStart": "2014-10-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646847,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 336.00",
+                    "ChargeAmount": "1008.0000",
+                    "ChargeRatePerUnit": "3.0000",
+                    "ChargeUnitsUsed": "336.0000",
+                    "IntervalEnd": "2014-12-08",
+                    "IntervalStart": "2014-10-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646848,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246ed-311e-db72-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2015-02-06",
+            "peak_demand": null,
+            "start": "2014-12-08",
+            "tariff": null,
+            "total_charge": "1326.4800",
+            "total_usage": "139.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 139.00",
+                    "ChargeAmount": "461.4800",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "139.0000",
+                    "IntervalEnd": "2015-02-07",
+                    "IntervalStart": "2014-12-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648628,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "448.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-02-07",
+                    "IntervalStart": "2014-12-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648629,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 139.00",
+                    "ChargeAmount": "417.0000",
+                    "ChargeRatePerUnit": "3.0000",
+                    "ChargeUnitsUsed": "139.0000",
+                    "IntervalEnd": "2015-02-07",
+                    "IntervalStart": "2014-12-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648630,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924706-119f-d995-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2015-04-08",
+            "peak_demand": null,
+            "start": "2015-02-07",
+            "tariff": null,
+            "total_charge": "1844.7200",
+            "total_usage": "221.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 221.00",
+                    "ChargeAmount": "733.7200",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "221.0000",
+                    "IntervalEnd": "2015-04-09",
+                    "IntervalStart": "2015-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647913,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "448.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-04-09",
+                    "IntervalStart": "2015-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647914,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 221.00",
+                    "ChargeAmount": "663.0000",
+                    "ChargeRatePerUnit": "3.0000",
+                    "ChargeUnitsUsed": "221.0000",
+                    "IntervalEnd": "2015-04-09",
+                    "IntervalStart": "2015-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647915,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924683-9752-dd2c-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2015-06-08",
+            "peak_demand": null,
+            "start": "2015-04-09",
+            "tariff": null,
+            "total_charge": "2078.9200",
+            "total_usage": "256.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 256.00",
+                    "ChargeAmount": "849.9200",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "256.0000",
+                    "IntervalEnd": "2015-06-09",
+                    "IntervalStart": "2015-04-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649486,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "448.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-06-09",
+                    "IntervalStart": "2015-04-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649487,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 256.00",
+                    "ChargeAmount": "768.0000",
+                    "ChargeRatePerUnit": "3.0000",
+                    "ChargeUnitsUsed": "256.0000",
+                    "IntervalEnd": "2015-06-09",
+                    "IntervalStart": "2015-04-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649488,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "ACCOUNT HISTORY CHRG",
+                    "ChargeAmount": "13.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-06-09",
+                    "IntervalStart": "2015-04-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649485,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924668-1e01-d069-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2015-08-08",
+            "peak_demand": null,
+            "start": "2015-06-09",
+            "tariff": null,
+            "total_charge": "2865.5200",
+            "total_usage": "340.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.40 217.38",
+                    "ChargeAmount": "956.4700",
+                    "ChargeRatePerUnit": "4.4000",
+                    "ChargeUnitsUsed": "217.3800",
+                    "IntervalEnd": "2015-08-09",
+                    "IntervalStart": "2015-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651595,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $3.32 122.62",
+                    "ChargeAmount": "407.1000",
+                    "ChargeRatePerUnit": "3.3200",
+                    "ChargeUnitsUsed": "122.6200",
+                    "IntervalEnd": "2015-08-09",
+                    "IntervalStart": "2015-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651596,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "257.3400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-08-09",
+                    "IntervalStart": "2015-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651597,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "161.5700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-08-09",
+                    "IntervalStart": "2015-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651598,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 122.62",
+                    "ChargeAmount": "367.8600",
+                    "ChargeRatePerUnit": "3.0000",
+                    "ChargeUnitsUsed": "122.6200",
+                    "IntervalEnd": "2015-08-09",
+                    "IntervalStart": "2015-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651599,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "SEWER 217.38",
+                    "ChargeAmount": "715.1800",
+                    "ChargeRatePerUnit": "3.2900",
+                    "ChargeUnitsUsed": "217.3800",
+                    "IntervalEnd": "2015-08-09",
+                    "IntervalStart": "2015-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651600,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924675-3127-d2e3-97d7-0e4914a2f444"
+            ]
+        },
+        {
+            "end": "2015-10-08",
+            "peak_demand": null,
+            "start": "2015-08-09",
+            "tariff": null,
+            "total_charge": "3393.9100",
+            "total_usage": "389.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.40 389.00",
+                    "ChargeAmount": "1711.6000",
+                    "ChargeRatePerUnit": "4.4000",
+                    "ChargeUnitsUsed": "389.0000",
+                    "IntervalEnd": "2015-10-09",
+                    "IntervalStart": "2015-08-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646015,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "402.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-10-09",
+                    "IntervalStart": "2015-08-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646016,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 389.00",
+                    "ChargeAmount": "1279.8100",
+                    "ChargeRatePerUnit": "3.2900",
+                    "ChargeUnitsUsed": "389.0000",
+                    "IntervalEnd": "2015-10-09",
+                    "IntervalStart": "2015-08-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646017,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92467c-541b-d57b-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2015-12-08",
+            "peak_demand": null,
+            "start": "2015-10-09",
+            "tariff": null,
+            "total_charge": "2655.6700",
+            "total_usage": "293.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.40 293.00",
+                    "ChargeAmount": "1289.2000",
+                    "ChargeRatePerUnit": "4.4000",
+                    "ChargeUnitsUsed": "293.0000",
+                    "IntervalEnd": "2015-12-09",
+                    "IntervalStart": "2015-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650790,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "402.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2015-12-09",
+                    "IntervalStart": "2015-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650791,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 293.00",
+                    "ChargeAmount": "963.9700",
+                    "ChargeRatePerUnit": "3.2900",
+                    "ChargeUnitsUsed": "293.0000",
+                    "IntervalEnd": "2015-12-09",
+                    "IntervalStart": "2015-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650792,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92468a-06a9-d91e-bf2e-0e776fc09dce"
+            ]
+        },
+        {
+            "end": "2016-02-07",
+            "peak_demand": null,
+            "start": "2015-12-09",
+            "tariff": null,
+            "total_charge": "2086.6100",
+            "total_usage": "219.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.40 219.00",
+                    "ChargeAmount": "963.6000",
+                    "ChargeRatePerUnit": "4.4000",
+                    "ChargeUnitsUsed": "219.0000",
+                    "IntervalEnd": "2016-02-08",
+                    "IntervalStart": "2015-12-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651581,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "402.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-02-08",
+                    "IntervalStart": "2015-12-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651582,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 219.00",
+                    "ChargeAmount": "720.5100",
+                    "ChargeRatePerUnit": "3.2900",
+                    "ChargeUnitsUsed": "219.0000",
+                    "IntervalEnd": "2016-02-08",
+                    "IntervalStart": "2015-12-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651583,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246f3-ab5b-df4f-83c7-0edd7de0e1cc"
+            ]
+        },
+        {
+            "end": "2016-04-08",
+            "peak_demand": null,
+            "start": "2016-02-08",
+            "tariff": null,
+            "total_charge": "2863.3000",
+            "total_usage": "320.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.40 320.00",
+                    "ChargeAmount": "1408.0000",
+                    "ChargeRatePerUnit": "4.4000",
+                    "ChargeUnitsUsed": "320.0000",
+                    "IntervalEnd": "2016-04-09",
+                    "IntervalStart": "2016-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650748,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "402.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-04-09",
+                    "IntervalStart": "2016-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650749,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 320.00",
+                    "ChargeAmount": "1052.8000",
+                    "ChargeRatePerUnit": "3.2900",
+                    "ChargeUnitsUsed": "320.0000",
+                    "IntervalEnd": "2016-04-09",
+                    "IntervalStart": "2016-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650750,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a0-9aff-d3a3-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2016-06-08",
+            "peak_demand": null,
+            "start": "2016-04-09",
+            "tariff": null,
+            "total_charge": "2932.5100",
+            "total_usage": "329.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.40 329.00",
+                    "ChargeAmount": "1447.6000",
+                    "ChargeRatePerUnit": "4.4000",
+                    "ChargeUnitsUsed": "329.0000",
+                    "IntervalEnd": "2016-06-09",
+                    "IntervalStart": "2016-04-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644734,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "402.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-06-09",
+                    "IntervalStart": "2016-04-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644735,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 329.00",
+                    "ChargeAmount": "1082.4100",
+                    "ChargeRatePerUnit": "3.2900",
+                    "ChargeUnitsUsed": "329.0000",
+                    "IntervalEnd": "2016-06-09",
+                    "IntervalStart": "2016-04-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644736,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924688-7f30-d48c-97d7-0e4914a2f444"
+            ]
+        },
+        {
+            "end": "2016-08-08",
+            "peak_demand": null,
+            "start": "2016-06-09",
+            "tariff": null,
+            "total_charge": "2970.4800",
+            "total_usage": "307.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.97 196.28",
+                    "ChargeAmount": "975.5100",
+                    "ChargeRatePerUnit": "4.9700",
+                    "ChargeUnitsUsed": "196.2800",
+                    "IntervalEnd": "2016-08-09",
+                    "IntervalStart": "2016-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647069,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.40 110.72",
+                    "ChargeAmount": "487.1700",
+                    "ChargeRatePerUnit": "4.4000",
+                    "ChargeUnitsUsed": "110.7200",
+                    "IntervalEnd": "2016-08-09",
+                    "IntervalStart": "2016-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647070,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "281.9500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-08-09",
+                    "IntervalStart": "2016-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647071,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "145.1600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-08-09",
+                    "IntervalStart": "2016-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647072,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 110.72",
+                    "ChargeAmount": "364.2700",
+                    "ChargeRatePerUnit": "3.2900",
+                    "ChargeUnitsUsed": "110.7200",
+                    "IntervalEnd": "2016-08-09",
+                    "IntervalStart": "2016-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647073,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "SEWER 196.28",
+                    "ChargeAmount": "716.4200",
+                    "ChargeRatePerUnit": "3.6500",
+                    "ChargeUnitsUsed": "196.2800",
+                    "IntervalEnd": "2016-08-09",
+                    "IntervalStart": "2016-06-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647074,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924666-e073-d1f1-a904-0e527fc74ca8"
+            ]
+        },
+        {
+            "end": "2016-10-08",
+            "peak_demand": null,
+            "start": "2016-08-09",
+            "tariff": null,
+            "total_charge": "3483.8600",
+            "total_usage": "353.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.97 353.00",
+                    "ChargeAmount": "1754.4100",
+                    "ChargeRatePerUnit": "4.9700",
+                    "ChargeUnitsUsed": "353.0000",
+                    "IntervalEnd": "2016-10-09",
+                    "IntervalStart": "2016-08-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650910,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "441.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-10-09",
+                    "IntervalStart": "2016-08-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650911,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 353.00",
+                    "ChargeAmount": "1288.4500",
+                    "ChargeRatePerUnit": "3.6500",
+                    "ChargeUnitsUsed": "353.0000",
+                    "IntervalEnd": "2016-10-09",
+                    "IntervalStart": "2016-08-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236650912,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924680-e01f-d9f2-9d0a-0ee5c08238c0"
+            ]
+        },
+        {
+            "end": "2016-12-08",
+            "peak_demand": null,
+            "start": "2016-10-09",
+            "tariff": null,
+            "total_charge": "3311.4600",
+            "total_usage": "333.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.97 333.00",
+                    "ChargeAmount": "1655.0100",
+                    "ChargeRatePerUnit": "4.9700",
+                    "ChargeUnitsUsed": "333.0000",
+                    "IntervalEnd": "2016-12-09",
+                    "IntervalStart": "2016-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648842,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "441.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-12-09",
+                    "IntervalStart": "2016-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648843,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 333.00",
+                    "ChargeAmount": "1215.4500",
+                    "ChargeRatePerUnit": "3.6500",
+                    "ChargeUnitsUsed": "333.0000",
+                    "IntervalEnd": "2016-12-09",
+                    "IntervalStart": "2016-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648844,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924699-b9fd-d539-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2017-02-07",
+            "peak_demand": null,
+            "start": "2016-12-09",
+            "tariff": null,
+            "total_charge": "2604.6200",
+            "total_usage": "251.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.97 251.00",
+                    "ChargeAmount": "1247.4700",
+                    "ChargeRatePerUnit": "4.9700",
+                    "ChargeUnitsUsed": "251.0000",
+                    "IntervalEnd": "2017-02-08",
+                    "IntervalStart": "2016-12-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651495,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "441.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-02-08",
+                    "IntervalStart": "2016-12-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651496,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 251.00",
+                    "ChargeAmount": "916.1500",
+                    "ChargeRatePerUnit": "3.6500",
+                    "ChargeUnitsUsed": "251.0000",
+                    "IntervalEnd": "2017-02-08",
+                    "IntervalStart": "2016-12-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236651497,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9246a9-15f0-de8c-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2017-04-09",
+            "peak_demand": null,
+            "start": "2017-02-08",
+            "tariff": null,
+            "total_charge": "3690.7400",
+            "total_usage": "377.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.97 377.00",
+                    "ChargeAmount": "1873.6900",
+                    "ChargeRatePerUnit": "4.9700",
+                    "ChargeUnitsUsed": "377.0000",
+                    "IntervalEnd": "2017-04-10",
+                    "IntervalStart": "2017-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646406,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "441.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-10",
+                    "IntervalStart": "2017-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646407,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 377.00",
+                    "ChargeAmount": "1376.0500",
+                    "ChargeRatePerUnit": "3.6500",
+                    "ChargeUnitsUsed": "377.0000",
+                    "IntervalEnd": "2017-04-10",
+                    "IntervalStart": "2017-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646408,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92466b-a0a9-d2e9-b441-0eaf4bc895fe"
+            ]
+        },
+        {
+            "end": "2017-06-09",
+            "peak_demand": null,
+            "start": "2017-04-10",
+            "tariff": null,
+            "total_charge": "3130.4400",
+            "total_usage": "312.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.97 312.00",
+                    "ChargeAmount": "1550.6400",
+                    "ChargeRatePerUnit": "4.9700",
+                    "ChargeUnitsUsed": "312.0000",
+                    "IntervalEnd": "2017-06-10",
+                    "IntervalStart": "2017-04-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649798,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "441.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-10",
+                    "IntervalStart": "2017-04-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649799,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 312.00",
+                    "ChargeAmount": "1138.8000",
+                    "ChargeRatePerUnit": "3.6500",
+                    "ChargeUnitsUsed": "312.0000",
+                    "IntervalEnd": "2017-06-10",
+                    "IntervalStart": "2017-04-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649800,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92467a-8f46-d0c7-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2017-08-09",
+            "peak_demand": null,
+            "start": "2017-06-10",
+            "tariff": null,
+            "total_charge": "3469.7700",
+            "total_usage": "332.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.15 217.70",
+                    "ChargeAmount": "1121.1600",
+                    "ChargeRatePerUnit": "5.1500",
+                    "ChargeUnitsUsed": "217.7000",
+                    "IntervalEnd": "2017-08-10",
+                    "IntervalStart": "2017-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648935,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $4.97 114.30",
+                    "ChargeAmount": "568.0700",
+                    "ChargeRatePerUnit": "4.9700",
+                    "ChargeUnitsUsed": "114.3000",
+                    "IntervalEnd": "2017-08-10",
+                    "IntervalStart": "2017-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648936,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "303.7100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-10",
+                    "IntervalStart": "2017-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648937,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER CHG 3",
+                    "ChargeAmount": "151.8200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-10",
+                    "IntervalStart": "2017-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648938,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 114.30",
+                    "ChargeAmount": "417.2000",
+                    "ChargeRatePerUnit": "3.6500",
+                    "ChargeUnitsUsed": "114.3000",
+                    "IntervalEnd": "2017-08-10",
+                    "IntervalStart": "2017-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648939,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "SEWER 217.70",
+                    "ChargeAmount": "907.8100",
+                    "ChargeRatePerUnit": "4.1700",
+                    "ChargeUnitsUsed": "217.7000",
+                    "IntervalEnd": "2017-08-10",
+                    "IntervalStart": "2017-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236648940,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931de6-24e7-d38f-baf2-0e578d5d5508"
+            ]
+        },
+        {
+            "end": "2017-10-09",
+            "peak_demand": null,
+            "start": "2017-08-10",
+            "tariff": null,
+            "total_charge": "3669.2400",
+            "total_usage": "344.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.15 344.00",
+                    "ChargeAmount": "1771.6000",
+                    "ChargeRatePerUnit": "5.1500",
+                    "ChargeUnitsUsed": "344.0000",
+                    "IntervalEnd": "2017-10-10",
+                    "IntervalStart": "2017-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647492,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "463.1600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-10",
+                    "IntervalStart": "2017-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647493,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 344.00",
+                    "ChargeAmount": "1434.4800",
+                    "ChargeRatePerUnit": "4.1700",
+                    "ChargeUnitsUsed": "344.0000",
+                    "IntervalEnd": "2017-10-10",
+                    "IntervalStart": "2017-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647494,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e33-4030-d142-ba61-0e78b12deaa6"
+            ]
+        },
+        {
+            "end": "2017-12-09",
+            "peak_demand": null,
+            "start": "2017-10-10",
+            "tariff": null,
+            "total_charge": "2830.4400",
+            "total_usage": "254.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.15 254.00",
+                    "ChargeAmount": "1308.1000",
+                    "ChargeRatePerUnit": "5.1500",
+                    "ChargeUnitsUsed": "254.0000",
+                    "IntervalEnd": "2017-12-10",
+                    "IntervalStart": "2017-10-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647102,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "463.1600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-10",
+                    "IntervalStart": "2017-10-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647103,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 254.00",
+                    "ChargeAmount": "1059.1800",
+                    "ChargeRatePerUnit": "4.1700",
+                    "ChargeUnitsUsed": "254.0000",
+                    "IntervalEnd": "2017-12-10",
+                    "IntervalStart": "2017-10-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236647104,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e25-a166-de69-a225-0e578d5d5508"
+            ]
+        },
+        {
+            "end": "2018-02-09",
+            "peak_demand": null,
+            "start": "2017-12-10",
+            "tariff": null,
+            "total_charge": "2392.4000",
+            "total_usage": "207.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.15 207.00",
+                    "ChargeAmount": "1066.0500",
+                    "ChargeRatePerUnit": "5.1500",
+                    "ChargeUnitsUsed": "207.0000",
+                    "IntervalEnd": "2018-02-10",
+                    "IntervalStart": "2017-12-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644402,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "463.1600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-10",
+                    "IntervalStart": "2017-12-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644403,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 207.00",
+                    "ChargeAmount": "863.1900",
+                    "ChargeRatePerUnit": "4.1700",
+                    "ChargeUnitsUsed": "207.0000",
+                    "IntervalEnd": "2018-02-10",
+                    "IntervalStart": "2017-12-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236644404,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e36-1142-dd14-8a58-0e78b12deaa6"
+            ]
+        },
+        {
+            "end": "2018-04-09",
+            "peak_demand": null,
+            "start": "2018-02-10",
+            "tariff": null,
+            "total_charge": "2494.9200",
+            "total_usage": "218.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.15 218.00",
+                    "ChargeAmount": "1122.7000",
+                    "ChargeRatePerUnit": "5.1500",
+                    "ChargeUnitsUsed": "218.0000",
+                    "IntervalEnd": "2018-04-10",
+                    "IntervalStart": "2018-02-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646057,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "463.1600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-10",
+                    "IntervalStart": "2018-02-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646058,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 218.00",
+                    "ChargeAmount": "909.0600",
+                    "ChargeRatePerUnit": "4.1700",
+                    "ChargeUnitsUsed": "218.0000",
+                    "IntervalEnd": "2018-04-10",
+                    "IntervalStart": "2018-02-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646059,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e931e32-5470-d7fb-8a58-0e78b12deaa6"
+            ]
+        },
+        {
+            "end": "2018-06-09",
+            "peak_demand": null,
+            "start": "2018-04-10",
+            "tariff": null,
+            "total_charge": "2597.4400",
+            "total_usage": "229.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.15 229.00",
+                    "ChargeAmount": "1179.3500",
+                    "ChargeRatePerUnit": "5.1500",
+                    "ChargeUnitsUsed": "229.0000",
+                    "IntervalEnd": "2018-06-10",
+                    "IntervalStart": "2018-04-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649276,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "463.1600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-10",
+                    "IntervalStart": "2018-04-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649277,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 229.00",
+                    "ChargeAmount": "954.9300",
+                    "ChargeRatePerUnit": "4.1700",
+                    "ChargeUnitsUsed": "229.0000",
+                    "IntervalEnd": "2018-06-10",
+                    "IntervalStart": "2018-04-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649278,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92469f-6799-d56a-80da-0e9932b54676"
+            ]
+        },
+        {
+            "end": "2018-08-09",
+            "peak_demand": null,
+            "start": "2018-06-10",
+            "tariff": null,
+            "total_charge": "3472.2900",
+            "total_usage": "310.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.15 310.00",
+                    "ChargeAmount": "1596.5000",
+                    "ChargeRatePerUnit": "5.1500",
+                    "ChargeUnitsUsed": "310.0000",
+                    "IntervalEnd": "2018-08-10",
+                    "IntervalStart": "2018-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646700,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "463.1600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-10",
+                    "IntervalStart": "2018-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646701,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 106.72",
+                    "ChargeAmount": "445.0200",
+                    "ChargeRatePerUnit": "4.1700",
+                    "ChargeUnitsUsed": "106.7200",
+                    "IntervalEnd": "2018-08-10",
+                    "IntervalStart": "2018-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646702,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "SEWER 203.28",
+                    "ChargeAmount": "967.6100",
+                    "ChargeRatePerUnit": "4.7600",
+                    "ChargeUnitsUsed": "203.2800",
+                    "IntervalEnd": "2018-08-10",
+                    "IntervalStart": "2018-06-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236646703,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924678-7cab-d22e-8051-0e1105e58474"
+            ]
+        },
+        {
+            "end": "2018-10-09",
+            "peak_demand": null,
+            "start": "2018-08-10",
+            "tariff": null,
+            "total_charge": "3524.6800",
+            "total_usage": "299.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.54 191.16",
+                    "ChargeAmount": "1059.0300",
+                    "ChargeRatePerUnit": "5.5400",
+                    "ChargeUnitsUsed": "191.1600",
+                    "IntervalEnd": "2018-10-10",
+                    "IntervalStart": "2018-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649832,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.15 107.84",
+                    "ChargeAmount": "555.3800",
+                    "ChargeRatePerUnit": "5.1500",
+                    "ChargeUnitsUsed": "107.8400",
+                    "IntervalEnd": "2018-10-10",
+                    "IntervalStart": "2018-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649833,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "319.9900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-10",
+                    "IntervalStart": "2018-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649834,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "167.0400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-10",
+                    "IntervalStart": "2018-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649835,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 299.00",
+                    "ChargeAmount": "1423.2400",
+                    "ChargeRatePerUnit": "4.7600",
+                    "ChargeUnitsUsed": "299.0000",
+                    "IntervalEnd": "2018-10-10",
+                    "IntervalStart": "2018-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649836,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92469a-4713-d846-97d7-0e4914a2f444"
+            ]
+        },
+        {
+            "end": "2018-12-10",
+            "peak_demand": null,
+            "start": "2018-10-10",
+            "tariff": null,
+            "total_charge": "3312.4000",
+            "total_usage": "273.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "USED FLAT RATE $5.54 273.00",
+                    "ChargeAmount": "1512.4200",
+                    "ChargeRatePerUnit": "5.5400",
+                    "ChargeUnitsUsed": "273.0000",
+                    "IntervalEnd": "2018-12-10",
+                    "IntervalStart": "2018-10-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649718,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "METER WTR AVAIL 3",
+                    "ChargeAmount": "500.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-10",
+                    "IntervalStart": "2018-10-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649719,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "SEWER 273.00",
+                    "ChargeAmount": "1299.4800",
+                    "ChargeRatePerUnit": "4.7600",
+                    "ChargeUnitsUsed": "273.0000",
+                    "IntervalEnd": "2018-12-10",
+                    "IntervalStart": "2018-10-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236649720,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e924680-2cde-dfc2-b441-0eaf4bc895fe"
+            ]
+        }
+    ]
+}

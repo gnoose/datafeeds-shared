@@ -1,0 +1,633 @@
+{
+    "periods": [
+        {
+            "end": "2018-03-14",
+            "peak_demand": null,
+            "start": "2018-02-15",
+            "tariff": null,
+            "total_charge": "948.1700",
+            "total_usage": "103.06193280000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "399.2900",
+                    "ChargeRatePerUnit": "0.0078",
+                    "ChargeUnitsUsed": "51045.0000",
+                    "IntervalEnd": "2018-03-15",
+                    "IntervalStart": "2018-02-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422152,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "239.6400",
+                    "ChargeRatePerUnit": "0.0092",
+                    "ChargeUnitsUsed": "26051.0000",
+                    "IntervalEnd": "2018-03-15",
+                    "IntervalStart": "2018-02-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422153,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5d1f-d645-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2018-04-14",
+            "peak_demand": null,
+            "start": "2018-03-15",
+            "tariff": null,
+            "total_charge": "1186.7100",
+            "total_usage": "134.06767200000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "506.6400",
+                    "ChargeRatePerUnit": "0.0076",
+                    "ChargeUnitsUsed": "66626.0000",
+                    "IntervalEnd": "2018-04-15",
+                    "IntervalStart": "2018-03-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422170,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "285.2400",
+                    "ChargeRatePerUnit": "0.0085",
+                    "ChargeUnitsUsed": "33664.0000",
+                    "IntervalEnd": "2018-04-15",
+                    "IntervalStart": "2018-03-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422171,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5de7-d97f-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2018-05-14",
+            "peak_demand": null,
+            "start": "2018-04-15",
+            "tariff": null,
+            "total_charge": "1287.2700",
+            "total_usage": "147.22312080000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "547.2300",
+                    "ChargeRatePerUnit": "0.0076",
+                    "ChargeUnitsUsed": "72516.0000",
+                    "IntervalEnd": "2018-05-15",
+                    "IntervalStart": "2018-04-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422164,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "308.9000",
+                    "ChargeRatePerUnit": "0.0082",
+                    "ChargeUnitsUsed": "37615.0000",
+                    "IntervalEnd": "2018-05-15",
+                    "IntervalStart": "2018-04-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422165,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5da3-d361-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2018-06-15",
+            "peak_demand": null,
+            "start": "2018-05-15",
+            "tariff": null,
+            "total_charge": "743.7600",
+            "total_usage": "62.76810720000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "371.1000",
+                    "ChargeRatePerUnit": "0.0112",
+                    "ChargeUnitsUsed": "33221.0000",
+                    "IntervalEnd": "2018-06-15",
+                    "IntervalStart": "2018-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422188,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "174.6400",
+                    "ChargeRatePerUnit": "0.0127",
+                    "ChargeUnitsUsed": "13733.0000",
+                    "IntervalEnd": "2018-06-15",
+                    "IntervalStart": "2018-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422189,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5c91-dc8b-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2018-08-14",
+            "peak_demand": null,
+            "start": "2018-07-15",
+            "tariff": null,
+            "total_charge": "605.0800",
+            "total_usage": "48.73304400000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "301.9600",
+                    "ChargeRatePerUnit": "0.0104",
+                    "ChargeUnitsUsed": "28961.0000",
+                    "IntervalEnd": "2018-08-15",
+                    "IntervalStart": "2018-07-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422185,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "143.8400",
+                    "ChargeRatePerUnit": "0.0192",
+                    "ChargeUnitsUsed": "7494.0000",
+                    "IntervalEnd": "2018-08-15",
+                    "IntervalStart": "2018-07-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422186,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5c43-da2d-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2018-09-14",
+            "peak_demand": null,
+            "start": "2018-08-15",
+            "tariff": null,
+            "total_charge": "1602.1700",
+            "total_usage": "150.14803920000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "821.4700",
+                    "ChargeRatePerUnit": "0.0118",
+                    "ChargeUnitsUsed": "69665.0000",
+                    "IntervalEnd": "2018-09-15",
+                    "IntervalStart": "2018-08-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422146,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "341.4800",
+                    "ChargeRatePerUnit": "0.0080",
+                    "ChargeUnitsUsed": "42654.0000",
+                    "IntervalEnd": "2018-09-15",
+                    "IntervalStart": "2018-08-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422147,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5d06-df47-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2018-10-14",
+            "peak_demand": null,
+            "start": "2018-09-15",
+            "tariff": null,
+            "total_charge": "1403.2900",
+            "total_usage": "130.52114160000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "720.3100",
+                    "ChargeRatePerUnit": "0.0117",
+                    "ChargeUnitsUsed": "61853.0000",
+                    "IntervalEnd": "2018-10-15",
+                    "IntervalStart": "2018-09-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422167,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "297.9400",
+                    "ChargeRatePerUnit": "0.0083",
+                    "ChargeUnitsUsed": "35784.0000",
+                    "IntervalEnd": "2018-10-15",
+                    "IntervalStart": "2018-09-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422168,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5ab3-d417-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2018-11-14",
+            "peak_demand": null,
+            "start": "2018-10-15",
+            "tariff": null,
+            "total_charge": "1582.5600",
+            "total_usage": "139.48572240000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "799.9700",
+                    "ChargeRatePerUnit": "0.0121",
+                    "ChargeUnitsUsed": "65950.0000",
+                    "IntervalEnd": "2018-11-15",
+                    "IntervalStart": "2018-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422179,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "327.3000",
+                    "ChargeRatePerUnit": "0.0085",
+                    "ChargeUnitsUsed": "38393.0000",
+                    "IntervalEnd": "2018-11-15",
+                    "IntervalStart": "2018-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422180,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5b28-d6d3-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2018-12-14",
+            "peak_demand": null,
+            "start": "2018-11-15",
+            "tariff": null,
+            "total_charge": "1209.6200",
+            "total_usage": "104.15677200000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "609.9500",
+                    "ChargeRatePerUnit": "0.0119",
+                    "ChargeUnitsUsed": "51451.0000",
+                    "IntervalEnd": "2018-12-15",
+                    "IntervalStart": "2018-11-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422149,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "252.7400",
+                    "ChargeRatePerUnit": "0.0096",
+                    "ChargeUnitsUsed": "26464.0000",
+                    "IntervalEnd": "2018-12-15",
+                    "IntervalStart": "2018-11-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422150,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-57de-d26d-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2019-01-14",
+            "peak_demand": null,
+            "start": "2018-12-15",
+            "tariff": null,
+            "total_charge": "819.6400",
+            "total_usage": "65.96573280000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "404.5400",
+                    "ChargeRatePerUnit": "0.0115",
+                    "ChargeUnitsUsed": "35061.0000",
+                    "IntervalEnd": "2019-01-15",
+                    "IntervalStart": "2018-12-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422155,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "185.3000",
+                    "ChargeRatePerUnit": "0.0130",
+                    "ChargeUnitsUsed": "14285.0000",
+                    "IntervalEnd": "2019-01-15",
+                    "IntervalStart": "2018-12-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422156,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-59ef-df5b-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2019-02-14",
+            "peak_demand": null,
+            "start": "2019-01-15",
+            "tariff": null,
+            "total_charge": "1472.0900",
+            "total_usage": "129.17231040000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "744.5000",
+                    "ChargeRatePerUnit": "0.0120",
+                    "ChargeUnitsUsed": "61973.0000",
+                    "IntervalEnd": "2019-02-15",
+                    "IntervalStart": "2019-01-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422176,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "303.9300",
+                    "ChargeRatePerUnit": "0.0088",
+                    "ChargeUnitsUsed": "34655.0000",
+                    "IntervalEnd": "2019-02-15",
+                    "IntervalStart": "2019-01-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422177,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5e29-d78d-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2019-03-14",
+            "peak_demand": null,
+            "start": "2019-02-15",
+            "tariff": null,
+            "total_charge": "1053.3200",
+            "total_usage": "88.47209760000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "525.5900",
+                    "ChargeRatePerUnit": "0.0120",
+                    "ChargeUnitsUsed": "43883.0000",
+                    "IntervalEnd": "2019-03-15",
+                    "IntervalStart": "2019-02-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422173,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "228.9000",
+                    "ChargeRatePerUnit": "0.0103",
+                    "ChargeUnitsUsed": "22299.0000",
+                    "IntervalEnd": "2019-03-15",
+                    "IntervalStart": "2019-02-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422174,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5afe-df65-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2019-04-14",
+            "peak_demand": null,
+            "start": "2019-03-15",
+            "tariff": null,
+            "total_charge": "1445.8200",
+            "total_usage": "125.74475520000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "726.0600",
+                    "ChargeRatePerUnit": "0.0123",
+                    "ChargeUnitsUsed": "58980.0000",
+                    "IntervalEnd": "2019-04-15",
+                    "IntervalStart": "2019-03-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422161,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "306.6200",
+                    "ChargeRatePerUnit": "0.0087",
+                    "ChargeUnitsUsed": "35084.0000",
+                    "IntervalEnd": "2019-04-15",
+                    "IntervalStart": "2019-03-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422162,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5a65-d2b9-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2019-05-14",
+            "peak_demand": null,
+            "start": "2019-04-15",
+            "tariff": null,
+            "total_charge": "1442.5000",
+            "total_usage": "125.51081520000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "724.8000",
+                    "ChargeRatePerUnit": "0.0123",
+                    "ChargeUnitsUsed": "59021.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422158,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "305.2700",
+                    "ChargeRatePerUnit": "0.0088",
+                    "ChargeUnitsUsed": "34868.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422159,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5d85-df43-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2019-06-14",
+            "peak_demand": null,
+            "start": "2019-05-15",
+            "tariff": null,
+            "total_charge": "749.4900",
+            "total_usage": "59.97820560000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "372.3300",
+                    "ChargeRatePerUnit": "0.0109",
+                    "ChargeUnitsUsed": "34181.0000",
+                    "IntervalEnd": "2019-06-15",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422191,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "165.7200",
+                    "ChargeRatePerUnit": "0.0155",
+                    "ChargeUnitsUsed": "10686.0000",
+                    "IntervalEnd": "2019-06-15",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422192,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5cb1-d8b9-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2019-07-14",
+            "peak_demand": null,
+            "start": "2019-06-15",
+            "tariff": null,
+            "total_charge": "489.1400",
+            "total_usage": "28.90295280000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "225.2100",
+                    "ChargeRatePerUnit": "0.0111",
+                    "ChargeUnitsUsed": "20216.0000",
+                    "IntervalEnd": "2019-07-15",
+                    "IntervalStart": "2019-06-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422182,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "147.8000",
+                    "ChargeRatePerUnit": "0.1052",
+                    "ChargeUnitsUsed": "1405.0000",
+                    "IntervalEnd": "2019-07-15",
+                    "IntervalStart": "2019-06-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422183,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ce5-5bae-dbff-a89f-0ea0627b53f2"
+            ]
+        },
+        {
+            "end": "2019-08-15",
+            "peak_demand": null,
+            "start": "2019-07-15",
+            "tariff": null,
+            "total_charge": "658.6200",
+            "total_usage": "50.38532880000",
+            "line_items": [
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "153.7000",
+                    "ChargeRatePerUnit": "0.0186",
+                    "ChargeUnitsUsed": "8247.0000",
+                    "IntervalEnd": "2019-08-15",
+                    "IntervalStart": "2019-07-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422142,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "WATER SERVICE",
+                    "ChargeAmount": "322.9100",
+                    "ChargeRatePerUnit": "0.0110",
+                    "ChargeUnitsUsed": "29444.0000",
+                    "IntervalEnd": "2019-08-15",
+                    "IntervalStart": "2019-07-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237422143,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d1aae-4e59-df75-a377-0e932c8da198"
+            ]
+        }
+    ]
+}

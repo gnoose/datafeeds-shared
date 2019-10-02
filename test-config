@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export DATAFEEDS_UNDER_TEST="True"
+export POSTGRES_URL="postgresql+psycopg2://postgres@pg/gridium"
+export LOG_LEVEL="ERROR"
+export DEPENDENCY_LOG_LEVEL="ERROR"
+export WORKING_DIRECTORY="$(pwd)/workdir"

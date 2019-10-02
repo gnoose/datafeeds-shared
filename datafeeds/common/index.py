@@ -146,7 +146,7 @@ def update_readings_range(task_id: str, meter_id: int, readings: dict):
     max_dt = max(readings.keys())  # this is a string
     data = readings[max_dt]
     # go backwards through the readings to find the last non-empty index
-    for idx in range(len(data)-1, -1, -1):
+    for idx in range(len(data) - 1, -1, -1):
         if data[idx] is not None:  # 0 may be valid
             break
     missing = len(data) - idx

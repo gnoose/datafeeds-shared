@@ -1,0 +1,1216 @@
+{
+    "periods": [
+        {
+            "end": "2016-11-29",
+            "peak_demand": null,
+            "start": "2016-10-28",
+            "tariff": null,
+            "total_charge": "170.7100",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+                    "ChargeAmount": "14.2800",
+                    "ChargeRatePerUnit": "7.1400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2016-11-29",
+                    "IntervalStart": "2016-10-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269566,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "144.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-11-29",
+                    "IntervalStart": "2016-10-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269567,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "11.9100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-11-29",
+                    "IntervalStart": "2016-10-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269565,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7420-d6dd-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2016-12-28",
+            "peak_demand": null,
+            "start": "2016-11-30",
+            "tariff": null,
+            "total_charge": "178.3900",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.14",
+                    "ChargeAmount": "21.4200",
+                    "ChargeRatePerUnit": "7.1400",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2016-12-28",
+                    "IntervalStart": "2016-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269605,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "144.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-12-28",
+                    "IntervalStart": "2016-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269606,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.4500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-12-28",
+                    "IntervalStart": "2016-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269604,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7473-d6a6-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-01-27",
+            "peak_demand": null,
+            "start": "2016-12-29",
+            "tariff": null,
+            "total_charge": "170.7100",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+                    "ChargeAmount": "14.2800",
+                    "ChargeRatePerUnit": "7.1400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2017-01-27",
+                    "IntervalStart": "2016-12-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269599,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "144.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-01-27",
+                    "IntervalStart": "2016-12-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269600,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "11.9100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-01-27",
+                    "IntervalStart": "2016-12-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269598,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-786b-d02d-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-02-24",
+            "peak_demand": null,
+            "start": "2017-01-28",
+            "tariff": null,
+            "total_charge": "155.3600",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "144.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-02-24",
+                    "IntervalStart": "2017-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269579,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "10.8400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-02-24",
+                    "IntervalStart": "2017-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269578,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7850-d332-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-03-28",
+            "peak_demand": null,
+            "start": "2017-02-25",
+            "tariff": null,
+            "total_charge": "216.7600",
+            "total_usage": "8.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 8.00 units @ $7.14",
+                    "ChargeAmount": "57.1200",
+                    "ChargeRatePerUnit": "7.1400",
+                    "ChargeUnitsUsed": "8.0000",
+                    "IntervalEnd": "2017-03-28",
+                    "IntervalStart": "2017-02-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269602,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "144.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-28",
+                    "IntervalStart": "2017-02-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269603,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "15.1200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-28",
+                    "IntervalStart": "2017-02-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269601,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-724b-da49-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-04-26",
+            "peak_demand": null,
+            "start": "2017-03-29",
+            "tariff": null,
+            "total_charge": "170.7100",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+                    "ChargeAmount": "14.2800",
+                    "ChargeRatePerUnit": "7.1400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2017-04-26",
+                    "IntervalStart": "2017-03-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269554,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "144.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-26",
+                    "IntervalStart": "2017-03-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269555,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "11.9100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-26",
+                    "IntervalStart": "2017-03-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269553,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6f96-d424-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-05-26",
+            "peak_demand": null,
+            "start": "2017-04-27",
+            "tariff": null,
+            "total_charge": "170.7100",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+                    "ChargeAmount": "14.2800",
+                    "ChargeRatePerUnit": "7.1400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2017-05-26",
+                    "IntervalStart": "2017-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269536,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "144.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-26",
+                    "IntervalStart": "2017-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269537,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "11.9100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-26",
+                    "IntervalStart": "2017-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269535,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6e54-d08f-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-06-28",
+            "peak_demand": null,
+            "start": "2017-05-27",
+            "tariff": null,
+            "total_charge": "171.5600",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+                    "ChargeAmount": "14.2800",
+                    "ChargeRatePerUnit": "7.1400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2017-06-28",
+                    "IntervalStart": "2017-05-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269596,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "144.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-28",
+                    "IntervalStart": "2017-05-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269597,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "06/28/17 Late Charge",
+                    "ChargeAmount": "0.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-28",
+                    "IntervalStart": "2017-05-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269594,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "11.9100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-28",
+                    "IntervalStart": "2017-05-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269595,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-700b-d7e0-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-07-27",
+            "peak_demand": null,
+            "start": "2017-06-29",
+            "tariff": null,
+            "total_charge": "182.4500",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 1.86 units @ $7.64 (for 27 of 29 days)",
+                    "ChargeAmount": "14.2100",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "1.8600",
+                    "IntervalEnd": "2017-07-27",
+                    "IntervalStart": "2017-06-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269575,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Consumption Charge 0.14 units @ $7.14 (for 2 of 29 days)",
+                    "ChargeAmount": "1.0000",
+                    "ChargeRatePerUnit": "7.1400",
+                    "ChargeUnitsUsed": "0.1400",
+                    "IntervalEnd": "2017-07-27",
+                    "IntervalStart": "2017-06-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269576,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "155.3000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-27",
+                    "IntervalStart": "2017-06-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269577,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "06/28/17 Late Charge",
+                    "ChargeAmount": "-0.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-27",
+                    "IntervalStart": "2017-06-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269573,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.7900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-27",
+                    "IntervalStart": "2017-06-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269574,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6fd3-d509-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-08-25",
+            "peak_demand": null,
+            "start": "2017-07-28",
+            "tariff": null,
+            "total_charge": "184.2200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+                    "ChargeAmount": "15.2800",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2017-08-25",
+                    "IntervalStart": "2017-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269629,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-25",
+                    "IntervalStart": "2017-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269630,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-25",
+                    "IntervalStart": "2017-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269628,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7072-d032-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-09-26",
+            "peak_demand": null,
+            "start": "2017-08-26",
+            "tariff": null,
+            "total_charge": "192.4400",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
+                    "ChargeAmount": "22.9200",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2017-09-26",
+                    "IntervalStart": "2017-08-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269612,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-26",
+                    "IntervalStart": "2017-08-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269613,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "13.4300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-26",
+                    "IntervalStart": "2017-08-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269611,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7039-dd6d-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-10-27",
+            "peak_demand": null,
+            "start": "2017-09-27",
+            "tariff": null,
+            "total_charge": "184.2200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+                    "ChargeAmount": "15.2800",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2017-10-27",
+                    "IntervalStart": "2017-09-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269662,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-27",
+                    "IntervalStart": "2017-09-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269663,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-27",
+                    "IntervalStart": "2017-09-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269661,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-70ce-dc3c-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-11-29",
+            "peak_demand": null,
+            "start": "2017-10-28",
+            "tariff": null,
+            "total_charge": "192.4400",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
+                    "ChargeAmount": "22.9200",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2017-11-29",
+                    "IntervalStart": "2017-10-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269646,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-29",
+                    "IntervalStart": "2017-10-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269647,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "13.4300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-29",
+                    "IntervalStart": "2017-10-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269645,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-70a0-d6b7-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2017-12-28",
+            "peak_demand": null,
+            "start": "2017-11-30",
+            "tariff": null,
+            "total_charge": "176.0100",
+            "total_usage": "1.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 1.00 units @ $7.64",
+                    "ChargeAmount": "7.6400",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "1.0000",
+                    "IntervalEnd": "2017-12-28",
+                    "IntervalStart": "2017-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269682,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-28",
+                    "IntervalStart": "2017-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269683,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.2800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-28",
+                    "IntervalStart": "2017-11-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269681,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7377-df3a-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-01-26",
+            "peak_demand": null,
+            "start": "2017-12-29",
+            "tariff": null,
+            "total_charge": "184.2200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+                    "ChargeAmount": "15.2800",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2018-01-26",
+                    "IntervalStart": "2017-12-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269697,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-26",
+                    "IntervalStart": "2017-12-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269698,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-26",
+                    "IntervalStart": "2017-12-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269696,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-739c-d97f-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-02-26",
+            "peak_demand": null,
+            "start": "2018-01-27",
+            "tariff": null,
+            "total_charge": "184.2200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+                    "ChargeAmount": "15.2800",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2018-02-26",
+                    "IntervalStart": "2018-01-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269715,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-26",
+                    "IntervalStart": "2018-01-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269716,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-26",
+                    "IntervalStart": "2018-01-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269714,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-73be-dbb4-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-03-27",
+            "peak_demand": null,
+            "start": "2018-02-27",
+            "tariff": null,
+            "total_charge": "192.4400",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
+                    "ChargeAmount": "22.9200",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "3.0000",
+                    "IntervalEnd": "2018-03-27",
+                    "IntervalStart": "2018-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269636,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-27",
+                    "IntervalStart": "2018-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269637,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "13.4300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-27",
+                    "IntervalStart": "2018-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269635,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-74d2-d9ee-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-04-26",
+            "peak_demand": null,
+            "start": "2018-03-28",
+            "tariff": null,
+            "total_charge": "184.2200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+                    "ChargeAmount": "15.2800",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2018-04-26",
+                    "IntervalStart": "2018-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269669,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-26",
+                    "IntervalStart": "2018-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269670,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-26",
+                    "IntervalStart": "2018-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269668,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-754c-dae6-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-05-29",
+            "peak_demand": null,
+            "start": "2018-04-27",
+            "tariff": null,
+            "total_charge": "184.2200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+                    "ChargeAmount": "15.2800",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2018-05-29",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269547,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-29",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269548,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-29",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269546,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-73ef-d949-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-06-27",
+            "peak_demand": null,
+            "start": "2018-05-30",
+            "tariff": null,
+            "total_charge": "184.2200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+                    "ChargeAmount": "15.2800",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2018-06-27",
+                    "IntervalStart": "2018-05-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269587,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "156.0900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-27",
+                    "IntervalStart": "2018-05-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269588,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "12.8500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-27",
+                    "IntervalStart": "2018-05-30",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269586,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7453-da82-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-07-27",
+            "peak_demand": null,
+            "start": "2018-06-28",
+            "tariff": null,
+            "total_charge": "121.6800",
+            "total_usage": "3.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.70 units @ $8.43 (for 27 of 30 days)",
+                    "ChargeAmount": "22.7600",
+                    "ChargeRatePerUnit": "8.4300",
+                    "ChargeUnitsUsed": "2.7000",
+                    "IntervalEnd": "2018-07-27",
+                    "IntervalStart": "2018-06-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269625,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Consumption Charge 0.30 units @ $7.64 (for 3 of 30 days)",
+                    "ChargeAmount": "2.2900",
+                    "ChargeRatePerUnit": "7.6400",
+                    "ChargeUnitsUsed": "0.3000",
+                    "IntervalEnd": "2018-07-27",
+                    "IntervalStart": "2018-06-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269626,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "88.1400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-27",
+                    "IntervalStart": "2018-06-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269627,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "8.4900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-27",
+                    "IntervalStart": "2018-06-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269624,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-76e6-dd31-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-08-28",
+            "peak_demand": null,
+            "start": "2018-07-28",
+            "tariff": null,
+            "total_charge": "155.2200",
+            "total_usage": "4.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 4.00 units @ $8.43",
+                    "ChargeAmount": "33.7200",
+                    "ChargeRatePerUnit": "8.4300",
+                    "ChargeUnitsUsed": "4.0000",
+                    "IntervalEnd": "2018-08-28",
+                    "IntervalStart": "2018-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269672,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "80.5900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-28",
+                    "IntervalStart": "2018-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269673,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "8.5700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-28",
+                    "IntervalStart": "2018-07-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269671,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7763-d5ca-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-09-25",
+            "peak_demand": null,
+            "start": "2018-08-29",
+            "tariff": null,
+            "total_charge": "104.5200",
+            "total_usage": "1.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 1.00 units @ $8.43",
+                    "ChargeAmount": "8.4300",
+                    "ChargeRatePerUnit": "8.4300",
+                    "ChargeUnitsUsed": "1.0000",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-08-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269531,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "80.5900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-08-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269532,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "6.6800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-08-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269530,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7608-db23-acfb-22000a947383"
+            ]
+        },
+        {
+            "end": "2018-10-29",
+            "peak_demand": null,
+            "start": "2018-09-26",
+            "tariff": null,
+            "total_charge": "121.4200",
+            "total_usage": "2.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water Consumption Charge 2.00 units @ $8.43",
+                    "ChargeAmount": "16.8600",
+                    "ChargeRatePerUnit": "8.4300",
+                    "ChargeUnitsUsed": "2.0000",
+                    "IntervalEnd": "2018-10-29",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269590,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Service Charge",
+                    "ChargeAmount": "80.5900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-29",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269591,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Utility Tax",
+                    "ChargeAmount": "7.3100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-29",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236269589,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-768c-d7f3-acfb-22000a947383"
+            ]
+        }
+    ]
+}

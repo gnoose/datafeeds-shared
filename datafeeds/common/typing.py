@@ -87,8 +87,7 @@ def is_without_overlaps(bd: BillingData) -> bool:
 
     def comparator(acc, elem: BillingDatum):
         return elem.end \
-            if acc is True or (isinstance(acc, date)
-                               and acc <= elem.start - timedelta(days=1)) \
+            if acc is True or (isinstance(acc, date) and acc <= elem.start - timedelta(days=1)) \
             else False
 
     chronologically = sorted(bd, key=lambda b: b.start)

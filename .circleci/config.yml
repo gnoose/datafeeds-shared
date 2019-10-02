@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  build:
+    # The "circle" directory contains the specs for this container
+    docker:
+      - image: circleci/python:3.6.4
+        environment:
+          ANALYTICA_UNDER_TEST: True
+      - image: mdillon/postgis@sha256:f006ac612da048c54e49d7b2abd2862295070edcdd7d28efb24bccf859a87466
+    steps:
+      - checkout
+      - run: echo 127.0.0.1 pg | sudo tee -a /etc/hosts
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+      - run:
+          name: Setting up pipenv
+          command: sudo pip install pipenv
+      - run:
+          name: Installing dependencies
+          command: pipenv install -r requirements.txt
+      - run:
+          name: Installing development dependencies
+          command: pipenv install -r dev-requirements.txt
+      - run:
+          name: Running lint
+          command: pipenv run flake8 datafeeds
+      #- run:
+      #    name: Running static analysis
+      #    command: pipenv run mypy --ignore-missing-imports analytica
+      - run:
+          name: Running tests
+          command: pipenv run python -m unittest -v
+
+experimental:
+  notify:
+    branches:
+      only:
+        - master

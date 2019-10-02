@@ -5,3 +5,5 @@ docker/mysql/data
 *.log
 __pycache__
 .idea
+urjanet.sql
+.mypy_cache/

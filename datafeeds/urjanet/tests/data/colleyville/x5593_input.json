@@ -1,0 +1,310 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "10005593",
+            "AmountDue": "137.4100",
+            "IntervalEnd": "2019-05-15",
+            "IntervalStart": "2019-04-17",
+            "NewCharges": "137.4100",
+            "OutstandingBalance": "0.0000",
+            "PK": 5645256,
+            "PreviousBalance": "187.5000",
+            "RawAccountNumber": "10005593",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e988684-76bb-dd0b-ba29-0e2ee687911a",
+            "StatementDate": "2019-05-31",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "137.4100",
+            "UtilityProvider": "CityOfColleyvilleTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Deposits",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237043856,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Penalty/Adjustments",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237043857,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-05-15",
+                    "IntervalStart": "2019-04-17",
+                    "MeterNumber": "",
+                    "PK": 20260964,
+                    "PODid": "",
+                    "ServiceType": "irrigation",
+                    "Tariff": "unknown_tariff",
+                    "charges": [
+                        {
+                            "ChargeActualName": "VOLUMETRIC RATE",
+                            "ChargeAmount": "86.9400",
+                            "ChargeRatePerUnit": "4.1400",
+                            "ChargeUnitsUsed": "21.0000",
+                            "IntervalEnd": "2019-05-15",
+                            "IntervalStart": "2019-04-17",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237043858,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "TGAL"
+                        },
+                        {
+                            "ChargeActualName": "UTILITY CAPITAL PROJECTS RATE",
+                            "ChargeAmount": "7.3300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-15",
+                            "IntervalStart": "2019-04-17",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237043859,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "BASE RATE",
+                            "ChargeAmount": "43.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-15",
+                            "IntervalStart": "2019-04-17",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237043860,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "TGAL",
+                            "IntervalEnd": "2019-05-15",
+                            "IntervalStart": "2019-04-17",
+                            "PK": 72974973,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "21.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "10005593",
+            "AmountDue": "183.7800",
+            "IntervalEnd": "2019-06-17",
+            "IntervalStart": "2019-05-15",
+            "NewCharges": "183.7800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5649019,
+            "PreviousBalance": "137.4100",
+            "RawAccountNumber": "10005593",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9982ab-fcf8-df63-9674-0ec0bbfb710e",
+            "StatementDate": "2019-06-30",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "183.7800",
+            "UtilityProvider": "CityOfColleyvilleTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Deposits",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143694,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Penalty/Adjustments",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237143695,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-15",
+                    "MeterNumber": "",
+                    "PK": 20272952,
+                    "PODid": "",
+                    "ServiceType": "irrigation",
+                    "Tariff": "unknown_tariff",
+                    "charges": [
+                        {
+                            "ChargeActualName": "VOLUMETRIC RATE",
+                            "ChargeAmount": "133.3100",
+                            "ChargeRatePerUnit": "4.1400",
+                            "ChargeUnitsUsed": "32.2000",
+                            "IntervalEnd": "2019-06-17",
+                            "IntervalStart": "2019-05-15",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237143696,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "TGAL"
+                        },
+                        {
+                            "ChargeActualName": "UTILITY CAPITAL PROJECTS RATE",
+                            "ChargeAmount": "7.3300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-17",
+                            "IntervalStart": "2019-05-15",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237143697,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "BASE RATE",
+                            "ChargeAmount": "43.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-17",
+                            "IntervalStart": "2019-05-15",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237143698,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "TGAL",
+                            "IntervalEnd": "2019-06-17",
+                            "IntervalStart": "2019-05-15",
+                            "PK": 73007601,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "32.2000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "10005593",
+            "AmountDue": "453.2900",
+            "IntervalEnd": "2019-07-17",
+            "IntervalStart": "2019-06-17",
+            "NewCharges": "453.2900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5651640,
+            "PreviousBalance": "183.7800",
+            "RawAccountNumber": "10005593",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9b38a1-e167-ddd1-a2c5-0eaf945c6c54",
+            "StatementDate": "2019-07-31",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "453.2900",
+            "UtilityProvider": "CityOfColleyvilleTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Deposits",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242540,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Penalty/Adjustments",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237242541,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-17",
+                    "MeterNumber": "",
+                    "PK": 20280836,
+                    "PODid": "",
+                    "ServiceType": "irrigation",
+                    "Tariff": "unknown_tariff",
+                    "charges": [
+                        {
+                            "ChargeActualName": "VOLUMETRIC RATE",
+                            "ChargeAmount": "402.8200",
+                            "ChargeRatePerUnit": "4.1400",
+                            "ChargeUnitsUsed": "97.3000",
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-17",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237242542,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "TGAL"
+                        },
+                        {
+                            "ChargeActualName": "UTILITY CAPITAL PROJECTS RATE",
+                            "ChargeAmount": "7.3300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-17",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237242543,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "BASE RATE",
+                            "ChargeAmount": "43.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-17",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237242544,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "TGAL",
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-17",
+                            "PK": 73036789,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "97.3000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
