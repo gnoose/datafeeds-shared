@@ -2,6 +2,8 @@ import logging.config
 import os
 from os import path
 
+from typing import List
+
 
 DATAFEEDS_ROOT = path.normpath(path.join(path.dirname(path.abspath(__file__)), ".."))
 DATAFEEDS_LOG_NAME = os.environ.get("DATAFEEDS_LOG_NAME", "datafeeds.log")
@@ -16,10 +18,10 @@ POSTGRES_ECHO: bool = (os.environ.get("POSTGRES_ECHO", "False").lower() == "true
 ARCHIVE_S3_BUCKET: str = os.environ.get("ARCHIVE_S3_BUCKET", "gridium-dev-datafeeds-archive")
 UPLOAD_ARCHIVES: bool = os.environ.get("UPLOAD_ARCHIVES", "False").lower() == "true"
 
-URJANET_MYSQL_HOST: str = os.environ.get("URJANET_MYSQL_HOST")
-URJANET_MYSQL_USER: str = os.environ.get("URJANET_MYSQL_USER")
-URJANET_MYSQL_PASSWORD: str = os.environ.get("URJANET_MYSQL_PASSWORD")
-URJANET_MYSQL_DB: str = os.environ.get("URJANET_MYSQL_DB")
+URJANET_MYSQL_HOST: str = os.environ.get("URJANET_MYSQL_HOST", "urjanet")
+URJANET_MYSQL_USER: str = os.environ.get("URJANET_MYSQL_USER", "gridium")
+URJANET_MYSQL_PASSWORD: str = os.environ.get("URJANET_MYSQL_PASSWORD", "gridium")
+URJANET_MYSQL_DB: str = os.environ.get("URJANET_MYSQL_DB", "urjanet")
 
 ELASTICSEARCH_HOSTS: str = os.environ.get("ETL_ELASTICSEARCH_HOSTS")
 ELASTICSEARCH_AUTH: str = os.environ.get("ETL_ELASTICSEARCH_ATUH")
@@ -31,6 +33,13 @@ WEBAPPS_TOKEN: str = os.environ.get("WEBAPPS_TOKEN")
 AES_KEY: str = os.environ.get("AES_KEY")
 
 PLATFORM_API_URL: str = os.environ.get("PLATFORM_API_URL")
+
+FEATURE_FLAGS: List[str] = [u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")]
+
+
+def enabled(feature: str) -> bool:
+    return feature in FEATURE_FLAGS
+
 
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 DEPENDENCY_LOG_LEVEL = os.environ.get("DEPENDENCY_LOG_LEVEL", "WARN")

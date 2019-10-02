@@ -29,7 +29,8 @@ class SnapmeterAccountDataSource(ModelMixin, Base):
 
     oid = sa.Column(sa.BigInteger, primary_key=True)
     hex_id = sa.Column(sa.Unicode)
-    account = sa.Column(sa.BigInteger, sa.ForeignKey("snapmeter_account.oid"))
+    _account = sa.Column("account", sa.BigInteger, sa.ForeignKey("snapmeter_account.oid"))
+    account = relationship("SnapmeterAccount")
     source_account_type = sa.Column(sa.Unicode)
     name = sa.Column(sa.Unicode)
     # set this via sys_acct.encrypt_username
@@ -89,9 +90,13 @@ class SnapmeterMeterDataSource(ModelMixin, Base):
 
     oid = sa.Column(sa.BigInteger, primary_key=True)
     hex_id = sa.Column(sa.Unicode)
-    meter = sa.Column(sa.BigInteger, sa.ForeignKey("meter.oid"))
+    _meter = sa.Column("meter", sa.BigInteger, sa.ForeignKey("meter.oid"))  # Not a real foreign key constraint.
+    meter = relationship("Meter")
+
     name = sa.Column(sa.Unicode)
-    account_data_source = sa.Column(sa.BigInteger, sa.ForeignKey("snapmeter_account_data_source.oid"))
+    _account_data_source = sa.Column("account_data_source",
+                                     sa.BigInteger, sa.ForeignKey("snapmeter_account_data_source.oid"))
+    account_data_source = relationship("SnapmeterAccountDataSource")
     meta = sa.Column(JSONB)
     source_types = sa.Column(ARRAY(sa.Unicode))
 

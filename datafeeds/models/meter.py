@@ -45,7 +45,7 @@ class Meter(ModelMixin, Base):
     oid = sa.Column(sa.BigInteger, primary_key=True)
     billing = sa.Column(sa.Unicode)
     # foreign key for SQLAlchemy: does not actually exist in database
-    _building = sa.Column("building", sa.BigInteger, sa.ForeignKey("building.oid"))
+    # _building = sa.Column("building", sa.BigInteger, sa.ForeignKey("building.oid"))
     commodity = sa.Column(sa.Unicode)
     interval = sa.Column(sa.Integer)
     kind = sa.Column(sa.Unicode)
@@ -58,9 +58,11 @@ class Meter(ModelMixin, Base):
     system = sa.Column(sa.BigInteger)
     direction = sa.Column(sa.Enum(*[f.value for f in MeterFlowDirection]), default="forward")
 
-    building = relationship("Building", back_populates="meters")
+    # building = relationship("Building", back_populates="meters")
     utility_service = relationship("UtilityService")
     readings = relationship("MeterReading", back_populates="meter_obj")
+
+    snapmeter_account_meter = relationship("SnapmeterAccountMeter")
 
     def __init__(self, name, building=None, kind="main", interval=15, commodity="kw", direction="forward",
                  utility_service=None, parent=None):
@@ -247,3 +249,7 @@ class Meter(ModelMixin, Base):
             where meter=:meter
         """
         return db.session.execute(query, {"meter": self.oid}).first()
+
+    @property
+    def utility_account_id(self):
+        return self.snapmeter_account_meter[0].utility_account_id

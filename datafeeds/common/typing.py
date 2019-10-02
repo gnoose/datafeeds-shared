@@ -3,6 +3,10 @@ from typing import Dict, List, NamedTuple, Optional
 from collections import OrderedDict
 from datetime import date, timedelta
 from functools import reduce
+import logging
+
+
+log = logging.getLogger(__name__)
 
 
 class IntervalRange(NamedTuple):
@@ -189,18 +193,18 @@ def adjust_bill_dates(bills: BillingData) -> BillingData:
     return final_bills
 
 
-def show_bill_summary(printer, bills: List[BillingDatum], title=None):
+def show_bill_summary(bills: List[BillingDatum], title=None):  # FIXME: Move this to a better location.
     """Save our results to the log for easy reference."""
 
     if title:
-        printer("=" * 80)
-        printer(title)
-        printer("=" * 80)
+        log.info("=" * 80)
+        log.info(title)
+        log.info("=" * 80)
 
     fields = ("Start", "End", "Cost", "Use", "Peak", "Has PDF")
     fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s"
-    printer(fmt % fields)
+    log.info(fmt % fields)
     for b in bills:
         entries = [str(x) for x in b[:5]] + [b.attachments is not None]
-        printer(fmt % tuple(entries))
-    printer("=" * 80)
+        log.info(fmt % tuple(entries))
+    log.info("=" * 80)

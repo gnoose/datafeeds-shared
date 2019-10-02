@@ -15,7 +15,7 @@ from datafeeds.common.typing import BillingDatum, BillingDatumItemsEntry
 def _try_parse_float(x):
     try:
         return float(x)
-    except ValueError:
+    except (ValueError, TypeError):
         return None
 
 

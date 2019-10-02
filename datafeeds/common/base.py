@@ -97,19 +97,15 @@ class BaseScraper(Abstract):
         pass
 
     def scrape(self, readings_handler, bills_handler):
-        self.log()
-        self.log("Launching {}".format(self.name, level="info"))
-        self.log()
-        self.log("Username:   {}".format(self.username))
-        self.log("Start Date: {}".format(self._iso_str(self.start_date)))
-        self.log("End Date:   {}".format(self._iso_str(self.end_date)))
-        self.log()
-        self.log("Configuration:")
+        log.info("Launching {}".format(self.name, level="info"))
+        log.info("Username:   {}".format(self.username))
+        log.info("Start Date: {}".format(self._iso_str(self.start_date)))
+        log.info("End Date:   {}".format(self._iso_str(self.end_date)))
+        log.info("Configuration:")
         for prop, value in vars(self._configuration).items():
-            self.log("\t{}: {}".format(prop, value))
-        self.log()
+            log.info("\t{}: {}".format(prop, value))
 
-        expected = lambda data: self.log(
+        expected = lambda data: log.info(
             "Expected to find {} but none were returned".format(data),
             level="error"
         )
@@ -129,8 +125,8 @@ class BaseScraper(Abstract):
                 else:
                     expected("readings")
 
-        except Exception as e:
-            self.log("FAILED:\n{}".format(str(e)))
+        except Exception:
+            log.exception("Scraper run failed.")
             raise
 
     def _with_path(self, filename):

@@ -49,4 +49,4 @@ class SnapmeterAccountMeter(ModelMixin, Base):
     snapmeter_delivery = Column(Boolean, nullable=False, default=True)
 
     account_obj = relationship(SnapmeterAccount, backref=backref("snapmeter_account_meters"))
-    meter_obj = relationship("Meter")
+    meter_obj = relationship("Meter", back_populates="snapmeter_account_meter")
