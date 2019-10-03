@@ -16,19 +16,23 @@ parser.add_argument("name")
 
 def main():
     args = parser.parse_args()
-    ads = AccountDataSource(_account=args.account_oid,
-                            source_account_type=args.source_account_type,
-                            name=args.name)
+    is_urjanet = "urjanet" in args.source_account_type
+    # Urjanet data sources are meter-only
+    if not is_urjanet:
+        ads = AccountDataSource(_account=args.account_oid,
+                                source_account_type=args.source_account_type,
+                                name=args.name)
 
-    db.session.add(ads)
-    db.session.flush()
-    print("Added Account Data Source.")
+        db.session.add(ads)
+        db.session.flush()
+        print("Added Account Data Source.")
 
     mds = MeterDataSource(_meter=args.meter_oid, name=args.source_account_type)
-    mds.account_data_source = ads
+    if not is_urjanet:
+        mds.account_data_source = ads
     db.session.add(mds)
     db.session.flush()
-    print("Added Meter Data Source.")
+    print("Added Meter Data Source %s." % mds.oid)
     print("Done.")
     db.session.commit()
 

@@ -148,11 +148,11 @@ def urjanet_ingest_base(account: SnapmeterAccount, meter: Meter,
     conn = db.urjanet_connection()
 
     try:
-        urjanet_datasource.conn = conn
+        urja_datasource.conn = conn
         scraper_config = BaseUrjanetConfiguration(
             urja_datasource=urja_datasource,
             urja_transformer=transformer,
-            utility_name=utility_name,
+            utility_name=meter.utility_service.utility,
             fetch_attachments=True
         )
 

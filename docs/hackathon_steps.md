@@ -61,6 +61,7 @@ Before you begin, you'll need some resources. Make sure you have:
 pyenv virtualenv 3.6.4 datafeeds
 pyenv activate datafeeds
 pip install -r requirements.txt
+source test-config
 
 ```
 
@@ -71,7 +72,6 @@ pip install -r requirements.txt
   - search in the page for the utility name
   - click the account name to view a list of bill records for the account
   - click the pdf link to download a view a PDF of the bill (requires Urjanet password)
-
 
 5. Log into your Urjanet database and look up some bills in the `Accounts` table (AccountNumber from urjanet-explorer). You may want to write down a table of the bill period dates, cost, use, peak, and account numbers you found, for reference.
 
