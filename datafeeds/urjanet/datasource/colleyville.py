@@ -1,7 +1,5 @@
 from typing import List
 
-from pymysql import Connection
-
 from . import UrjanetPyMySqlDataSource
 from ..model import Account, Meter
 
@@ -12,8 +10,8 @@ class ColleyvilleWaterDatasource(UrjanetPyMySqlDataSource):
     This class accepts an account number. All meters are currently loaded from each bill.
     """
 
-    def __init__(self, conn: Connection, account_number: str):
-        super().__init__(conn)
+    def __init__(self, account_number: str):
+        super().__init__(account_number)
         self.account_number = self.normalize_account_number(account_number)
 
     @staticmethod

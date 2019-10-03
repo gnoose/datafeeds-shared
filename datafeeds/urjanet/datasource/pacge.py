@@ -9,14 +9,12 @@ Urjanet database, as identified by:
 """
 from typing import List
 
-from pymysql import Connection
-
 from . import UrjanetPyMySqlDataSource
 from ..model import Account, Meter
 
 
 class PacificGasElectricDataSource(UrjanetPyMySqlDataSource):
-    def __init__(self, conn: Connection, account_number: str, meter_id: str):
+    def __init__(self, account_number: str, meter_id: str):
         """Initialize a PacG&E datasource, for a given meter
 
         Currently, this class accepts the following account number representations:
@@ -25,12 +23,10 @@ class PacificGasElectricDataSource(UrjanetPyMySqlDataSource):
             (3) A 10 digit account number with no dash or check digit (0123456789)
 
         Args:
-            conn: A pymysql database connection
             account_number: A PG&E account number
             meter_id: A PG&E meter id
         """
-        super().__init__(conn)
-        self.account_number = account_number
+        super().__init__(account_number)
         self.meter_id = meter_id
         self.validate()
 
