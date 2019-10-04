@@ -6,7 +6,7 @@ This document goes over (roughly) what you need to do in order to set up a new u
 # Goals
 
 - Get familiar with building urjanet scrapers.
-- Explore running scrapers with a different model for parallel computing.
+- Explore running scrapers with a different model for distributed computing.
 
 # Background
 
@@ -15,7 +15,7 @@ Currently we use `celery` to distribute scraper jobs in production. The disadvan
 1. We have to manage some of the systems that support celery (flower, Redis).
 2. Flower loses job history after a set period (hours).
 3. No mechanism for scaling up/down the number of celery workers based on workload. The system is slow.
-4. Celery workers are stateful, we'd prefer to use docker to keep a fixed definition of a worker server.
+4. Celery workers are stateful. We'd prefer to use docker to keep a fixed definition of a worker server.
 5. Scraper jobs share the same workers. One scraper failure can impede its peers.
 
 Some advantages of AWS Batch:
@@ -38,7 +38,7 @@ reasonable to think that we could "transplant" our existing scraper code onto an
 
 # Resources
 
-Before you begin, you'll need some resources. Make sure you have:
+Make sure you have:
 
 1. A copy of the Urjanet database (warning: 1.1GB unzipped). `scp ops:/builds/urjanet_dumps/urjanet.sql.gz .`
 
@@ -57,28 +57,28 @@ Before you begin, you'll need some resources. Make sure you have:
 
 2. Create/activate a python 3.6 environment:
 
-```
-pyenv virtualenv 3.6.4 datafeeds
-pyenv activate datafeeds
-pip install -r requirements.txt
-pip install flake8
-```
+    ```
+    pyenv virtualenv 3.6.4 datafeeds
+    pyenv activate datafeeds
+    pip install -r requirements.txt
+    pip install flake8
+    ```
 
 3. From the top level of your `datafeeds` repo, run `export PYTHONPATH=$(pwd):$PYTHONPATH`
 
 4. Review bills for the utility you're working on
-  - go to https://urjanet-explorer.gridium.com/ and login with your Gridium Google account
-  - search in the page for the utility name
-  - click the account name to view a list of bill records for the account
-  - click the pdf link to download a view a PDF of the bill (requires Urjanet password)
+    - go to https://urjanet-explorer.gridium.com/ and login with your Gridium Google account
+    - search in the page for the utility name
+    - click the account name to view a list of bill records for the account
+    - click the pdf link to download a view a PDF of the bill (requires Urjanet password)
 
 5. Log into your Urjanet database and look up some bills in the `Accounts` table (AccountNumber from urjanet-explorer). See https://github.com/Gridium/tasks/blob/master/gridium_tasks/lib/urjanet/README.md#model for more info on the Urjanet schema. You may want to write down a table of the bill period dates, cost, use, peak, and account numbers you found, for reference.
 
-```
+    ```
     select c.IntervalStart, c.IntervalEnd, c.ChargeAmount, ChargeUnitsUsed, a.UtilityProvider
     from Charge c, Meter m, Account a
     where a.AccountNumber='07292000' and a.PK=c.AccountFK and a.PK=m.AccountFK and m.PK=c.MeterFK;
-```
+    ```
 
 6. Write a datasource class in `datafeeds/urjanet/datasource` for the scraper to load data from Urjanet. See [WataugaDatasource](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/datasource/watauga.py).
 
@@ -88,45 +88,46 @@ pip install flake8
 
 9. Create a data dump for your test account(s). Review and compare to PDF version of bills.
 
-```
+    ```
     cd datafeeds/urjanet/scripts
     mkdir ../tests/data/watauaga
     python dump_urja_json.py watauga 07292000 > ../tests/data/watauga/input_07292000.json
-```
+    ```
 
 10. Run your transformer on the extracted data. Review and compare to PDF version of bills.
 
-```
+    ```
     python transform_urja_json.py ../tests/data/watauga/input_07292000.json > ../tests/data/watauga/expected_07292000.json
-```
+    ```
 
 11. Write a test; see [TestUrjanetWataugaTransformer](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/tests/test_urjanet_watauga_transformer.py)
 
 
-## Add your new scraper to the job management tool / launch script.
+## Add your new scraper to the job management tool / launch script
 
 1. Open the [launch script](../launch.py).
 
 2. Using City of Watauga as an example, add a function similar to `watauga_ingest_batch` and a new key to the
  `scraper_functions` map.
 
-## Test your scraper.
+## Test your scraper
 
-1. Use the script `create_data_sources.py` to configure a meter in your dev setup to use your new datasource. Lookup the account oid in postgres with `select oid from snapmeter_account where hex_id='5661eab691f1a2508278c01d'`. This returns the meter data source oid you'll need to run the scraper.
-In the example below, we add `watauga-urjanet` to Snapmeter Account 999, Meter 4505071289158471.
+1. Use the script `create_data_sources.py` to configure a meter in your dev setup to use your new datasource. 
+    Lookup the account oid in postgres with `select oid from snapmeter_account where hex_id='5661eab691f1a2508278c01d'`.
+    This returns the meter data source oid you'll need to run the scraper. In the example below, we add 
+    `watauga-urjanet` to Snapmeter Account 999, Meter 4505071289158471.
 
     ```python scripts/create_data_sources.py 999 4505071289158471 watauga-urjanet city-of-watauga-demo```
 
     Make a note of the OID for the Snapmeter Meter Data Source created in this step.
 
 2. For most Urja scrapers you will need to update the field `utility_account_id` on the `SnapmeterAccountMeter` record
-associated with your meter, so that the scraper will associate Urjanet bills with that meter. 
-Once you have selected a target bill in the Urjanet DB, look up the "raw account number" associated with that bill. 
-Then in the `psql` shell, update the meter to use that raw account number as the utility account ID:
- 
-```
-update snapmeter_account_meter set utility_account_id = '151009074' where meter = '4505019811696256';
-``` 
+    associated with your meter, so that the scraper will associate Urjanet bills with that meter. 
+    Once you have selected a target bill in the Urjanet DB, look up the "raw account number" associated with that bill. 
+    Then in the `psql` shell, update the meter to use that raw account number as the utility account ID:
+    ```
+    update snapmeter_account_meter set utility_account_id = '151009074' where meter = '4505019811696256';
+    ``` 
 
 3. Run your scraper via the launch script: `python launch.py by-oid 29 2019-01-01 2019-12-31`. The oid is the meter data source oid; the dates are required but not used for Urjanet scrapers. This runs your scraper exactly the same way AWS batch will. If everything
 works, you should see something like this:
@@ -158,7 +159,7 @@ works, you should see something like this:
     2019-10-02 17:49:08,253 : INFO : ================================================================================
     ```
 
-## Finally, test in Dev.
+## Finally, test in Dev
 
 The final step is to try to accomplish the same run in our dev environment, on AWS batch.
 
@@ -168,7 +169,8 @@ The final step is to try to accomplish the same run in our dev environment, on A
 
 3. Go to `projects/datafeeds` and pull your changes in (`git pull origin master; git checkout my-branch`)
 
-4. Build your container and push to ECR. Use the tag you selected in step 1.
+4. Build your container and push to ECR. Use the tag you selected earlier for your work (e.g. `southlake`) so that
+    your image doesn't get overwritten by someone else.
     ```
     $(aws ecr get-login --no-include-email --region us-east-1)
     docker build -t gridium/datafeeds:<YOUR TAG> .
@@ -184,7 +186,7 @@ The final step is to try to accomplish the same run in our dev environment, on A
     and use the latest job definition (to get standard configurations like DB credentials). The job queue should be
      `datafeeds-dev`. Update the command to: 
     ```
-    python3.6 launch.py by-oid <Your Snapmeter Meter Data Source OID.> 2019-01-01 2019-12-31
+    python3.6 launch.py by-oid <Your Snapmeter Meter Data Source OID> 2019-01-01 2019-12-31
     ```
     You can obtain logs for your job by clicking the job ID link and looking under "attempts".
     
