@@ -105,9 +105,8 @@ class BaseScraper(Abstract):
         for prop, value in vars(self._configuration).items():
             log.info("\t{}: {}".format(prop, value))
 
-        expected = lambda data: log.info(
-            "Expected to find {} but none were returned".format(data),
-            level="error"
+        expected = lambda data: log.error(
+            "Expected to find {} but none were returned".format(data)
         )
 
         try:

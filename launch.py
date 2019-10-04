@@ -13,8 +13,9 @@ from datafeeds import db, config
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds.common.typing import BillingData, show_bill_summary
 from datafeeds.common import index
-from datafeeds.urjanet.datasource import UrjanetPyMySqlDataSource, WataugaDatasource
-from datafeeds.urjanet.transformer import WataugaTransformer
+from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
+import datafeeds.urjanet.datasource as urjanet_datasource
+import datafeeds.urjanet.transformer as urjanet_transformer
 from datafeeds.urjanet.transformer.base import UrjanetGridiumTransformer
 from datafeeds.urjanet.scraper import BaseUrjanetScraper, BaseUrjanetConfiguration
 from datafeeds.models import Meter, SnapmeterAccount, \
@@ -181,14 +182,31 @@ def watauga_ingest_batch(account: SnapmeterAccount, meter: Meter,
         meter,
         datasource,
         params,
-        WataugaDatasource(meter.utility_account_id),
-        WataugaTransformer(),
+        urjanet_datasource.WataugaDatasource(meter.utility_account_id),
+        urjanet_transformer.WataugaTransformer(),
+        task_id)
+
+
+def southlake_ingest_batch(account: SnapmeterAccount, meter: Meter,
+                         datasource: MeterDataSource, params: dict,
+                         task_id: Optional[str] = None):
+    """
+    Get data from Urjanet for a city-of-southlake meter.
+    """
+    urjanet_ingest_base(
+        account,
+        meter,
+        datasource,
+        params,
+        urjanet_datasource.SouthlakeDatasource(meter.utility_account_id),
+        urjanet_transformer.SouthlakeTransformer(),
         task_id)
 
 
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
     "watauga-urjanet": watauga_ingest_batch,
+    "southlake-urjanet": southlake_ingest_batch,
 }
 
 

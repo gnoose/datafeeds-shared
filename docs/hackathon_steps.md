@@ -61,8 +61,6 @@ Before you begin, you'll need some resources. Make sure you have:
 pyenv virtualenv 3.6.4 datafeeds
 pyenv activate datafeeds
 pip install -r requirements.txt
-source test-config
-
 ```
 
 3. From the top level of your `datafeeds` repo, run `export PYTHONPATH=$(pwd):$PYTHONPATH`
@@ -73,17 +71,17 @@ source test-config
   - click the account name to view a list of bill records for the account
   - click the pdf link to download a view a PDF of the bill (requires Urjanet password)
 
-5. Log into your Urjanet database and look up some bills in the `Accounts` table (AccountNumber from urjanet-explorer). You may want to write down a table of the bill period dates, cost, use, peak, and account numbers you found, for reference.
+5. Log into your Urjanet database and look up some bills in the `Accounts` table (AccountNumber from urjanet-explorer). See https://github.com/Gridium/tasks/blob/master/gridium_tasks/lib/urjanet/README.md#model for more info on the Urjanet schema. You may want to write down a table of the bill period dates, cost, use, peak, and account numbers you found, for reference.
 
 ```
-    select c.IntervalStart, c.IntervalEnd, c.ChargeAmount, ChargeUnitsUsed
+    select c.IntervalStart, c.IntervalEnd, c.ChargeAmount, ChargeUnitsUsed, a.UtilityProvider
     from Charge c, Meter m, Account a
-    where a.AccountNumber='151009077' and a.PK=c.AccountFK and a.PK=m.AccountFK and m.PK=c.MeterFK;
+    where a.AccountNumber='07292000' and a.PK=c.AccountFK and a.PK=m.AccountFK and m.PK=c.MeterFK;
 ```
 
-6. Write a datasource class for the scraper to load data from Urjanet. See [WataugaDatasource](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/datasource/watauga.py)
+6. Write a datasource class in `datafeeds/urjanet/datasource` for the scraper to load data from Urjanet. See [WataugaDatasource](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/datasource/watauga.py).
 
-7. Write a transformer for the scraper to adjust any unusual cases in the Urjanet data. See [WataugaTransformer](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/transformer/watauga.py).
+7. Write a transformer class in `datafeeds/urjanet/transformer` for the scraper to adjust any unusual cases in the Urjanet data. See [WataugaTransformer](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/transformer/watauga.py).
 
 8. Add your new utility to [cli_hooks.py](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/scripts/cli_hooks.py)
 
@@ -92,13 +90,13 @@ source test-config
 ```
     cd datafeeds/urjanet/scripts
     mkdir ../tests/data/watauaga
-    python dump_urja_json.py watauga 151009077 > ../tests/data/watauga/input_151009077.json
+    python dump_urja_json.py watauga 07292000 > ../tests/data/watauga/input_07292000.json
 ```
 
-10. Run your transformer on the extracted data. . Review and compare to PDF version of bills.
+10. Run your transformer on the extracted data. Review and compare to PDF version of bills.
 
 ```
-    python transform_urja_json.py ../tests/data/watauga/input_151009077.json > ../tests/data/watauga/expected_151009077.json
+    python transform_urja_json.py ../tests/data/watauga/input_07292000.json > ../tests/data/watauga/expected_07292000.json
 ```
 
 11. Write a test; see [TestUrjanetWataugaTransformer](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/tests/test_urjanet_watauga_transformer.py)
@@ -113,12 +111,12 @@ source test-config
 
 ## Test your scraper.
 
-1. Use the script `create_data_sources.py` to configure a meter in your dev setup to use your new datasource. Get the account oid from the hex id with `select oid from snapmeter_account where hex_id='5661eab691f1a2508278c01d`.
+1. Use the script `create_data_sources.py` to configure a meter in your dev setup to use your new datasource. Lookup the account oid in postgres with `select oid from snapmeter_account where hex_id='5661eab691f1a2508278c01d'`. This returns the meter data source oid you'll need to run the scraper.
 In the example below, we add `watauga-urjanet` to Snapmeter Account 999, Meter 4505071289158471.
 
     ```python scripts/create_data_sources.py 999 4505071289158471 watauga-urjanet city-of-watauga-demo```
 
-2. Run your scraper via the launch script: `python launch.py by-oid 1907085797026 2019-01-01 2019-12-31`. This runs your scraper exactly the same way AWS batch will. If everything
+2. Run your scraper via the launch script: `python launch.py by-oid 29 2019-01-01 2019-12-31`. The oid is the meter data source oid; the dates are required but not used for Urjanet scrapers. This runs your scraper exactly the same way AWS batch will. If everything
 works, you should see something like this:
     ```
     /Users/jsthomas/.pyenv/versions/datafeeds/bin/python /Users/jsthomas/repos/datafeeds/launch.py by-oid 4 2019-08-01 2019-12-01
