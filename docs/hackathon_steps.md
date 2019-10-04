@@ -152,15 +152,15 @@ The final step is to try to accomplish the same run in our dev environment, on A
 
 1. Commit your changes to your branch.
 
-2. SSH to the `energy-ops` EC2 in dev.
+2. SSH to the `energy-dev-ops` EC2 in dev (should be configured in your `~/.ssh/config`)
 
-3. Go to `projects/datafeeds` and pull your changes in.
+3. Go to `projects/datafeeds` and pull your changes in (`git pull origin master; git checkout my-branch`)
 
-4. Build your container and push to ECR.
+4. Build your container and push to ECR. Use the tag you selected in step 1.
     ```
     $(aws ecr get-login --no-include-email --region us-east-1)
     docker build -t gridium/datafeeds:<YOUR TAG> .
-    docker tag datafeeds:latest 634855895757.dkr.ecr.us-east-1.amazonaws.com/datafeeds:<YOUR TAG>
+    docker tag gridium/datafeeds:latest 634855895757.dkr.ecr.us-east-1.amazonaws.com/datafeeds:<YOUR TAG>
     docker push 634855895757.dkr.ecr.us-east-1.amazonaws.com/datafeeds:<YOUR TAG>
     ```
 
