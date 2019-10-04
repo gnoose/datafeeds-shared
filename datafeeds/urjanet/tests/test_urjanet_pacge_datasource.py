@@ -12,7 +12,7 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
         short_account_number = "012345"
         meter_number = "01234567890"
         with self.assertRaises(ValueError):
-            PacificGasElectricDataSource(conn, short_account_number, meter_number)
+            PacificGasElectricDataSource(short_account_number, meter_number)
 
 
 if __name__ == "__main__":
