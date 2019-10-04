@@ -117,7 +117,18 @@ In the example below, we add `watauga-urjanet` to Snapmeter Account 999, Meter 4
 
     ```python scripts/create_data_sources.py 999 4505071289158471 watauga-urjanet city-of-watauga-demo```
 
-2. Run your scraper via the launch script: `python launch.py by-oid 29 2019-01-01 2019-12-31`. The oid is the meter data source oid; the dates are required but not used for Urjanet scrapers. This runs your scraper exactly the same way AWS batch will. If everything
+    Make a note of the OID for the Snapmeter Meter Data Source created in this step.
+
+2. For most Urja scrapers you will need to update the field `utility_account_id` on the `SnapmeterAccountMeter` record
+associated with your meter, so that the scraper will associate Urjanet bills with that meter. 
+Once you have selected a target bill in the Urjanet DB, look up the "raw account number" associated with that bill. 
+Then in the `psql` shell, update the meter to use that raw account number as the utility account ID:
+ 
+```
+update snapmeter_account_meter set utility_account_id = '151009074' where meter = '4505019811696256';
+``` 
+
+3. Run your scraper via the launch script: `python launch.py by-oid 29 2019-01-01 2019-12-31`. The oid is the meter data source oid; the dates are required but not used for Urjanet scrapers. This runs your scraper exactly the same way AWS batch will. If everything
 works, you should see something like this:
     ```
     /Users/jsthomas/.pyenv/versions/datafeeds/bin/python /Users/jsthomas/repos/datafeeds/launch.py by-oid 4 2019-08-01 2019-12-01
@@ -165,9 +176,16 @@ The final step is to try to accomplish the same run in our dev environment, on A
     docker push 634855895757.dkr.ecr.us-east-1.amazonaws.com/datafeeds:<YOUR TAG>
     ```
 
-5. Create a revised Job Definition that uses your container in the Batch console.
+5. Configure a meter in the dev environment to use your data source, as you did locally. 
+    Run `source dev-config` in `projects/datafeeds` so that you will have the right DB hostnames/passwords
+    for the dev environment. 
 
-6. Configure a meter in the dev environment to use your data source, as you did locally.
+6. Under the "Jobs" menu, click "submit job". Give your job a unique name you'll recognize (like `southlake-test-00`),
+and use the latest job definition (to get standard configurations like DB credentials). The job queue should be `datafeeds-dev`.
+ Update the command to 
+ ```
+    python3.6 launch.py by-oid <Your Snapmeter Meter Data Source OID.> 2019-01-01 2019-12-31
+ ```
 
 7. Finally, try running your job on AWS Batch. If successful, you should see the same output from your local test
  in the cloudwatch logs.

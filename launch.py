@@ -114,8 +114,11 @@ def batch_launch(scraper_class, account: SnapmeterAccount, meter: Meter,
         params.get("interval_end")
     ))
 
-    parent: AccountDataSource = datasource.account_data_source
-    credentials = Credentials(parent.username, parent.password)
+    if datasource.account_data_source:
+        parent: AccountDataSource = datasource.account_data_source
+        credentials = Credentials(parent.username, parent.password)
+    else:
+        credentials = Credentials(None, None)
 
     if task_id and config.enabled("ES_TASK_INDEXING"):
         index.index_etl_run(task_id, {
@@ -217,8 +220,11 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
         log.error("No data source associated with OID %s. Aborting.", meter_data_source_oid)
         sys.exit(1)
 
-    ads = mds.account_data_source
-    account = ads.account
+    account = None
+    if mds.account_data_source is not None:
+        ads = mds.account_data_source
+        account = ads.account
+
     meter = mds.meter
 
     scraper_fn = scraper_functions.get(mds.name)
@@ -237,7 +243,6 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
     log.info("Scraper Launch Settings:")
     log.info("Meter Data Source OID: %s", meter_data_source_oid)
     log.info("Meter: %s (%s)", meter.name, meter.oid)
-    log.info("Account: %s (%s)", account.name, account.oid)
     log.info("Scraper: %s", mds.name)
     log.info("Date Range: %s - %s", start, end)
 

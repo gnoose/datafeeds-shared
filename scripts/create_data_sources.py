@@ -17,7 +17,8 @@ parser.add_argument("name")
 def main():
     args = parser.parse_args()
     is_urjanet = "urjanet" in args.source_account_type
-    # Urjanet data sources are meter-only
+
+    # Urjanet data sources are meter-only.
     if not is_urjanet:
         ads = AccountDataSource(_account=args.account_oid,
                                 source_account_type=args.source_account_type,
