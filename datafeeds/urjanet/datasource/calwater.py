@@ -1,7 +1,5 @@
 from typing import List
 
-from pymysql import Connection
-
 from . import UrjanetPyMySqlDataSource
 from ..model import Account, Meter
 
@@ -11,10 +9,6 @@ class CalWaterDatasource(UrjanetPyMySqlDataSource):
 
     This class accepts an account number. All meters are currently loaded from each bill.
     """
-
-    def __init__(self, conn: Connection, account_number: str):
-        super().__init__(conn)
-        self.account_number = account_number
 
     def load_accounts(self) -> List[Account]:
         """Load accounts based on the account id"""

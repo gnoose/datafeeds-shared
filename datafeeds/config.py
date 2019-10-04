@@ -8,11 +8,11 @@ from typing import List
 DATAFEEDS_ROOT = path.normpath(path.join(path.dirname(path.abspath(__file__)), ".."))
 DATAFEEDS_LOG_NAME = os.environ.get("DATAFEEDS_LOG_NAME", "datafeeds.log")
 DATAFEEDS_ENVIRONMENT = os.environ.get("DATAFEEDS_ENVIRONMENT", "local").lower()  # or development, production
-UNDER_TEST: bool = (os.environ.get("DATAFEEDS_UNDER_TEST", "False").lower() == "true")
+UNDER_TEST: bool = (os.environ.get("DATAFEEDS_UNDER_TEST", "True").lower() == "true")
 
 WORKING_DIRECTORY: str = os.environ.get("WORKING_DIRECTORY", path.join(DATAFEEDS_ROOT, "workdir"))
 
-POSTGRES_URL: str = os.environ.get("POSTGRES_URL", "postgresql+psycopg2://postgres@pg/gridium_test")
+POSTGRES_URL: str = os.environ.get("POSTGRES_URL", "postgresql+psycopg2://postgres@pg/gridium")
 POSTGRES_ECHO: bool = (os.environ.get("POSTGRES_ECHO", "False").lower() == "true")
 
 ARCHIVE_S3_BUCKET: str = os.environ.get("ARCHIVE_S3_BUCKET", "gridium-dev-datafeeds-archive")
@@ -41,7 +41,7 @@ def enabled(feature: str) -> bool:
     return feature in FEATURE_FLAGS
 
 
-LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
+LOG_LEVEL = os.environ.get("LOG_LEVEL", "DEBUG")
 DEPENDENCY_LOG_LEVEL = os.environ.get("DEPENDENCY_LOG_LEVEL", "WARN")
 LOGGING = {
     "version": 1,

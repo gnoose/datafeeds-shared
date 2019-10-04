@@ -1,14 +1,12 @@
 from typing import List
 
-from pymysql import Connection
-
 from . import UrjanetPyMySqlDataSource
 from ..model import Account, Meter
 
 
 class LadwpWaterDatasource(UrjanetPyMySqlDataSource):
-    def __init__(self, conn: Connection, account_number: str, service_id: str):
-        super().__init__(conn)
+    def __init__(self, account_number: str, service_id: str):
+        super().__init__(account_number)
         self.account_number = account_number
         self.service_id = service_id
 

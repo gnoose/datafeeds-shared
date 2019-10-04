@@ -2,8 +2,6 @@
 
 set -e
 
-source test-config
-
 printf "Running Lint ..."
 flake8 datafeeds
 printf " ok\n"

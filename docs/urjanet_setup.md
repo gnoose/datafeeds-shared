@@ -10,16 +10,16 @@ This document explains how to obtain a local urjanet MySQL instance for developm
     ```
     mysqldump -h urjanet-datastore.cu2ndqyknjku.us-west-1.rds.amazonaws.com \
        -u gridium -p --databases urjanet \
-       --compress --quick > /var/builds/urjanet_dumps/urjanet.sql    
-    ```    
-2. SFTP to the ops machine and download `/var/builds/urjanet_dumps/urjanet.sql`.
+       --compress --quick > /var/builds/urjanet_dumps/urjanet.sql
+    ```
+2. Or download a copy (warning: 1.1GB unzipped): `scp ops:/builds/urjanet_dumps/urjanet.sql.gz .`
 3. Start your local mysql instance via `docker-compose up -d`.
 4. Now load the snapshot into your local database via:
     ```
-    mysql -h urjanet -u gridium -p < urjanet.sql 
+    gzcat urjanet.sql.gz | mysql -h urjanet -u gridium -p
     ```
     The username/password for the local DB instance are `gridium/gridium`.
-     
+
 # Other Notes
 - You may not have the mysql client installed on your development machine. On Mac, you can get this tool with homebrew
  via `brew install mysql-client`. (I had to follow the post install instructions that `brew` prints in order to add

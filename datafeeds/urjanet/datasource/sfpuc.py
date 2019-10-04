@@ -1,7 +1,5 @@
 from typing import List
 
-from pymysql import Connection
-
 from . import UrjanetPyMySqlDataSource
 from ..model import Account, Meter
 
@@ -13,9 +11,8 @@ class SfpucWaterDatasource(UrjanetPyMySqlDataSource):
     are loaded from each bill.
     """
 
-    def __init__(self, conn: Connection, account_number: str, meter_number: str = None):
-        super().__init__(conn)
-        self.account_number = account_number
+    def __init__(self, account_number: str, meter_number: str = None):
+        super().__init__(account_number)
         self.meter_number = meter_number
 
     def load_accounts(self) -> List[Account]:

@@ -15,7 +15,6 @@ from datetime import datetime
 from typing import List, Dict, Callable, Any, Type
 
 from pymysql.cursors import DictCursor
-from pymysql import Connection
 
 from . import UrjanetDataSource
 from ..model import (UrjanetData, Account, Meter, Usage, Charge)
@@ -146,10 +145,11 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
     may require different logic to correctly identify these rows.
     """
 
-    def __init__(self, conn: Connection):
+    def __init__(self, account_number: str):
         """Initialize a datasource with a pymysql connection object."""
         super().__init__()
-        self.conn = conn
+        self.account_number = account_number
+        self.conn = None  # must set this before using
 
     def fetch_all(self, query: str, *argv) -> SqlQueryResult:
         """Helper function for executing a query and fetching all results"""

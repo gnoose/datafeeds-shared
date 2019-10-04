@@ -13,8 +13,10 @@ from datafeeds import db, config
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds.common.typing import BillingData, show_bill_summary
 from datafeeds.common import index
-from datafeeds.urjanet.datasource import WataugaDatasource
-from datafeeds.urjanet.transformer import WataugaTransformer
+from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
+import datafeeds.urjanet.datasource as urjanet_datasource
+import datafeeds.urjanet.transformer as urjanet_transformer
+from datafeeds.urjanet.transformer.base import UrjanetGridiumTransformer
 from datafeeds.urjanet.scraper import BaseUrjanetScraper, BaseUrjanetConfiguration
 from datafeeds.models import Meter, SnapmeterAccount, \
     SnapmeterMeterDataSource as MeterDataSource, \
@@ -139,24 +141,19 @@ def batch_launch(scraper_class, account: SnapmeterAccount, meter: Meter,
         index.index_etl_run(task_id, {"status": status, "error": error})
 
 
-def watauga_ingest_batch(account: SnapmeterAccount, meter: Meter,
+def urjanet_ingest_base(account: SnapmeterAccount, meter: Meter,
                          datasource: MeterDataSource, params: dict,
+                         urja_datasource: UrjanetPyMySqlDataSource,
+                         transformer: UrjanetGridiumTransformer,
                          task_id: Optional[str] = None):
-    """
-    Get data from Urjanet for a city-of-watauga meter.
-    This method is intended to run as a Batch (not celery) task. Pass in SQLAlchemy
-    objects and the batch job id.
-    """
     conn = db.urjanet_connection()
 
     try:
-        account_id = meter.utility_account_id
-        urja_datasource = WataugaDatasource(conn, account_id)
-        transformer = WataugaTransformer()
+        urja_datasource.conn = conn
         scraper_config = BaseUrjanetConfiguration(
             urja_datasource=urja_datasource,
             urja_transformer=transformer,
-            utility_name="city-of-watauga",
+            utility_name=meter.utility_service.utility,
             fetch_attachments=True
         )
 
@@ -172,9 +169,44 @@ def watauga_ingest_batch(account: SnapmeterAccount, meter: Meter,
         conn.close()
 
 
+def watauga_ingest_batch(account: SnapmeterAccount, meter: Meter,
+                         datasource: MeterDataSource, params: dict,
+                         task_id: Optional[str] = None):
+    """
+    Get data from Urjanet for a city-of-watauga meter.
+    This method is intended to run as a Batch (not celery) task. Pass in SQLAlchemy
+    objects and the batch job id.
+    """
+    urjanet_ingest_base(
+        account,
+        meter,
+        datasource,
+        params,
+        urjanet_datasource.WataugaDatasource(meter.utility_account_id),
+        urjanet_transformer.WataugaTransformer(),
+        task_id)
+
+
+def southlake_ingest_batch(account: SnapmeterAccount, meter: Meter,
+                         datasource: MeterDataSource, params: dict,
+                         task_id: Optional[str] = None):
+    """
+    Get data from Urjanet for a city-of-southlake meter.
+    """
+    urjanet_ingest_base(
+        account,
+        meter,
+        datasource,
+        params,
+        urjanet_datasource.SouthlakeDatasource(meter.utility_account_id),
+        urjanet_transformer.SouthlakeTransformer(),
+        task_id)
+
+
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
     "watauga-urjanet": watauga_ingest_batch,
+    "southlake-urjanet": southlake_ingest_batch,
 }
 
 
