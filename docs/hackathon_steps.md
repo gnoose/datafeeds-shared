@@ -61,6 +61,7 @@ Before you begin, you'll need some resources. Make sure you have:
 pyenv virtualenv 3.6.4 datafeeds
 pyenv activate datafeeds
 pip install -r requirements.txt
+pip install flake8
 ```
 
 3. From the top level of your `datafeeds` repo, run `export PYTHONPATH=$(pwd):$PYTHONPATH`
