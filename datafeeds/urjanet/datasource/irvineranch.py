@@ -1,7 +1,5 @@
 from typing import List
 
-from pymysql import Connection
-
 from . import UrjanetPyMySqlDataSource
 from ..model import Account, Meter
 

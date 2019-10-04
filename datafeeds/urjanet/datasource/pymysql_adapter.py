@@ -149,7 +149,7 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
         """Initialize a datasource with a pymysql connection object."""
         super().__init__()
         self.account_number = account_number
-        self.conn = None # must set this before using
+        self.conn = None  # must set this before using
 
     def fetch_all(self, query: str, *argv) -> SqlQueryResult:
         """Helper function for executing a query and fetching all results"""
