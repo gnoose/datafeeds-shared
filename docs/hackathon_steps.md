@@ -181,11 +181,13 @@ The final step is to try to accomplish the same run in our dev environment, on A
     for the dev environment. 
 
 6. Under the "Jobs" menu, click "submit job". Give your job a unique name you'll recognize (like `southlake-test-00`),
-and use the latest job definition (to get standard configurations like DB credentials). The job queue should be `datafeeds-dev`.
- Update the command to 
- ```
+    and use the latest job definition (to get standard configurations like DB credentials). The job queue should be
+     `datafeeds-dev`. Update the command to: 
+    ```
     python3.6 launch.py by-oid <Your Snapmeter Meter Data Source OID.> 2019-01-01 2019-12-31
- ```
+    ```
+    If your job fails, you can obtain logs by clicking the job ID link and looking under "attempts"
+    (or, go directly to cloudwatch logs). The "Clone Job" button can be helpful for retrying.
 
 7. Finally, try running your job on AWS Batch. If successful, you should see the same output from your local test
  in the cloudwatch logs.
