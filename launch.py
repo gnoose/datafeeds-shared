@@ -220,7 +220,7 @@ def pleasanton_ingest_batch(account: SnapmeterAccount, meter: Meter,
         datasource,
         params,
         urjanet_datasource.PleasantonDatasource(meter.utility_account_id),
-        urjanet_transformer.PleasantonTransformer(),
+        urjanet_transformer.GenericWaterTransformer(),
         task_id)
 
 
