@@ -22,7 +22,6 @@ from datafeeds.models import Meter, SnapmeterAccount, \
     SnapmeterMeterDataSource as MeterDataSource, \
     SnapmeterAccountDataSource as AccountDataSource
 
-
 log = logging.getLogger("datafeeds")
 
 
@@ -145,10 +144,10 @@ def batch_launch(scraper_class, account: SnapmeterAccount, meter: Meter,
 
 
 def urjanet_ingest_base(account: SnapmeterAccount, meter: Meter,
-                         datasource: MeterDataSource, params: dict,
-                         urja_datasource: UrjanetPyMySqlDataSource,
-                         transformer: UrjanetGridiumTransformer,
-                         task_id: Optional[str] = None):
+                        datasource: MeterDataSource, params: dict,
+                        urja_datasource: UrjanetPyMySqlDataSource,
+                        transformer: UrjanetGridiumTransformer,
+                        task_id: Optional[str] = None):
     conn = db.urjanet_connection()
 
     try:
@@ -191,8 +190,8 @@ def watauga_ingest_batch(account: SnapmeterAccount, meter: Meter,
 
 
 def southlake_ingest_batch(account: SnapmeterAccount, meter: Meter,
-                         datasource: MeterDataSource, params: dict,
-                         task_id: Optional[str] = None):
+                           datasource: MeterDataSource, params: dict,
+                           task_id: Optional[str] = None):
     """
     Get data from Urjanet for a city-of-southlake meter.
     """
@@ -206,10 +205,27 @@ def southlake_ingest_batch(account: SnapmeterAccount, meter: Meter,
         task_id)
 
 
+def american_ingest_batch(account: SnapmeterAccount, meter: Meter,
+                          datasource: MeterDataSource, params: dict,
+                          task_id: Optional[str] = None):
+    """
+    Get data from Urjanet for a city-of-southlake meter.
+    """
+    urjanet_ingest_base(
+        account,
+        meter,
+        datasource,
+        params,
+        urjanet_datasource.AmericanWaterDatasource(meter.utility_account_id),
+        urjanet_transformer.AmericanTransformer(),
+        task_id)
+
+
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
     "watauga-urjanet": watauga_ingest_batch,
     "southlake-urjanet": southlake_ingest_batch,
+    "american-urjanet": american_ingest_batch,
 }
 
 
@@ -277,4 +293,3 @@ if __name__ == "__main__":
     db.init()
     main()
     sys.exit(0)
-

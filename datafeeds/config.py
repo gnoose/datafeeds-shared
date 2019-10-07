@@ -18,7 +18,7 @@ POSTGRES_ECHO: bool = (os.environ.get("POSTGRES_ECHO", "False").lower() == "true
 ARCHIVE_S3_BUCKET: str = os.environ.get("ARCHIVE_S3_BUCKET", "gridium-dev-datafeeds-archive")
 UPLOAD_ARCHIVES: bool = os.environ.get("UPLOAD_ARCHIVES", "False").lower() == "true"
 
-URJANET_MYSQL_HOST: str = os.environ.get("URJANET_MYSQL_HOST", "urjanet")
+URJANET_MYSQL_HOST: str = os.environ.get("URJANET_MYSQL_HOST", "127.0.0.1")
 URJANET_MYSQL_USER: str = os.environ.get("URJANET_MYSQL_USER", "gridium")
 URJANET_MYSQL_PASSWORD: str = os.environ.get("URJANET_MYSQL_PASSWORD", "gridium")
 URJANET_MYSQL_DB: str = os.environ.get("URJANET_MYSQL_DB", "urjanet")
