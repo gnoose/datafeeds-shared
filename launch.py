@@ -206,10 +206,29 @@ def southlake_ingest_batch(account: SnapmeterAccount, meter: Meter,
         task_id)
 
 
+def pleasanton_ingest_batch(account: SnapmeterAccount, meter: Meter,
+                         datasource: MeterDataSource, params: dict,
+                         task_id: Optional[str] = None):
+    """
+    Get data from Urjanet for a city-of-pleasanton meter.
+    This method is intended to run as a Batch (not celery) task. Pass in SQLAlchemy
+    objects and the batch job id.
+    """
+    urjanet_ingest_base(
+        account,
+        meter,
+        datasource,
+        params,
+        urjanet_datasource.PleasantonDatasource(meter.utility_account_id),
+        urjanet_transformer.PleasantonTransformer(),
+        task_id)
+
+
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
     "watauga-urjanet": watauga_ingest_batch,
     "southlake-urjanet": southlake_ingest_batch,
+    "pleasanton-urjanet": pleasanton_ingest_batch,
 }
 
 
