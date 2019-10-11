@@ -261,3 +261,18 @@ class CalWaterCli(DatasourceCli):
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
+
+
+class MountainViewCli(DatasourceCli):
+    __cli_key__ = "mountainview"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            urja_datasource.MountainViewDatasource(args.account_number),
+            conn)
+
+    def make_transformer(self):
+        return urja_transformer.GenericWaterTransformer()

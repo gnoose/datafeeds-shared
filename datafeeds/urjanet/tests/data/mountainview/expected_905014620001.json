@@ -1,0 +1,1873 @@
+{
+    "periods": [
+        {
+            "end": "2017-01-09",
+            "peak_demand": null,
+            "start": "2016-12-07",
+            "tariff": null,
+            "total_charge": "2.6400",
+            "total_usage": "30.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1",
+                    "ChargeAmount": "190.5000",
+                    "ChargeRatePerUnit": "6.3500",
+                    "ChargeUnitsUsed": "30.0000",
+                    "IntervalEnd": "2017-01-09",
+                    "IntervalStart": "2016-12-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237577172,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "152.6600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-01-09",
+                    "IntervalStart": "2016-12-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237577173,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "30 SEWER-COMMERCIAL",
+                    "ChargeAmount": "134.7000",
+                    "ChargeRatePerUnit": "4.4900",
+                    "ChargeUnitsUsed": "30.0000",
+                    "IntervalEnd": "2017-01-09",
+                    "IntervalStart": "2016-12-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237577178,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.8700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-01-09",
+                    "IntervalStart": "2016-12-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237577171,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e4166-3e00-d537-9cf4-06d2fcbf437d"
+            ]
+        },
+        {
+            "end": "2017-02-06",
+            "peak_demand": null,
+            "start": "2017-01-10",
+            "tariff": null,
+            "total_charge": "2600.1800",
+            "total_usage": "29.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.350 29.0000",
+                    "ChargeAmount": "184.1500",
+                    "ChargeRatePerUnit": "6.3500",
+                    "ChargeUnitsUsed": "29.0000",
+                    "IntervalEnd": "2017-02-06",
+                    "IntervalStart": "2017-01-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544710,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "125.7200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-02-06",
+                    "IntervalStart": "2017-01-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544711,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "29 SEWER-COMMERCIAL",
+                    "ChargeAmount": "130.2100",
+                    "ChargeRatePerUnit": "4.4900",
+                    "ChargeUnitsUsed": "29.0000",
+                    "IntervalEnd": "2017-02-06",
+                    "IntervalStart": "2017-01-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544716,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c2-a50e-db6e-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-03-07",
+            "peak_demand": null,
+            "start": "2017-02-07",
+            "tariff": null,
+            "total_charge": "2604.6700",
+            "total_usage": "29.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.350 29.0000",
+                    "ChargeAmount": "184.1500",
+                    "ChargeRatePerUnit": "6.3500",
+                    "ChargeUnitsUsed": "29.0000",
+                    "IntervalEnd": "2017-03-07",
+                    "IntervalStart": "2017-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237569000,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "130.2100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-07",
+                    "IntervalStart": "2017-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237569001,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "29 SEWER-COMMERCIAL",
+                    "ChargeAmount": "130.2100",
+                    "ChargeRatePerUnit": "4.4900",
+                    "ChargeUnitsUsed": "29.0000",
+                    "IntervalEnd": "2017-03-07",
+                    "IntervalStart": "2017-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237569006,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "2.5700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-07",
+                    "IntervalStart": "2017-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237568999,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e3656-e7c1-db9d-bfe1-0e8de967fa2c"
+            ]
+        },
+        {
+            "end": "2017-04-06",
+            "peak_demand": null,
+            "start": "2017-03-08",
+            "tariff": null,
+            "total_charge": "2663.5200",
+            "total_usage": "33.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.350 33.0000",
+                    "ChargeAmount": "209.5500",
+                    "ChargeRatePerUnit": "6.3500",
+                    "ChargeUnitsUsed": "33.0000",
+                    "IntervalEnd": "2017-04-06",
+                    "IntervalStart": "2017-03-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544701,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "134.7000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-06",
+                    "IntervalStart": "2017-03-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544702,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "33 SEWER-COMMERCIAL",
+                    "ChargeAmount": "148.1700",
+                    "ChargeRatePerUnit": "4.4900",
+                    "ChargeUnitsUsed": "33.0000",
+                    "IntervalEnd": "2017-04-06",
+                    "IntervalStart": "2017-03-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544707,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "24 HOUR DOOR HANGER",
+                    "ChargeAmount": "11.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-06",
+                    "IntervalStart": "2017-03-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544699,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "11.9700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-06",
+                    "IntervalStart": "2017-03-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544700,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bb-e8ce-d05a-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-05-05",
+            "peak_demand": null,
+            "start": "2017-04-07",
+            "tariff": null,
+            "total_charge": "2669.7100",
+            "total_usage": "35.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.350 35.0000",
+                    "ChargeAmount": "222.2500",
+                    "ChargeRatePerUnit": "6.3500",
+                    "ChargeUnitsUsed": "35.0000",
+                    "IntervalEnd": "2017-05-05",
+                    "IntervalStart": "2017-04-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544751,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "130.2100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-05",
+                    "IntervalStart": "2017-04-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544752,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "35 SEWER-COMMERCIAL",
+                    "ChargeAmount": "157.1500",
+                    "ChargeRatePerUnit": "4.4900",
+                    "ChargeUnitsUsed": "35.0000",
+                    "IntervalEnd": "2017-05-05",
+                    "IntervalStart": "2017-04-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544757,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c2-cf0c-d457-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-06-07",
+            "peak_demand": null,
+            "start": "2017-05-06",
+            "tariff": null,
+            "total_charge": "2655.1500",
+            "total_usage": "32.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.350 32.0000",
+                    "ChargeAmount": "203.2000",
+                    "ChargeRatePerUnit": "6.3500",
+                    "ChargeUnitsUsed": "32.0000",
+                    "IntervalEnd": "2017-06-07",
+                    "IntervalStart": "2017-05-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544791,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "148.1700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-07",
+                    "IntervalStart": "2017-05-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544792,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "32 SEWER-COMMERCIAL",
+                    "ChargeAmount": "143.6800",
+                    "ChargeRatePerUnit": "4.4900",
+                    "ChargeUnitsUsed": "32.0000",
+                    "IntervalEnd": "2017-06-07",
+                    "IntervalStart": "2017-05-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544797,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.0200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-07",
+                    "IntervalStart": "2017-05-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544790,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05be-0723-df3e-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-07-05",
+            "peak_demand": null,
+            "start": "2017-06-08",
+            "tariff": null,
+            "total_charge": "2576.1100",
+            "total_usage": "25.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 25.0000",
+                    "ChargeAmount": "160.3600",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "25.0000",
+                    "IntervalEnd": "2017-07-05",
+                    "IntervalStart": "2017-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544578,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "127.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-05",
+                    "IntervalStart": "2017-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544579,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "25 SEWER-COMMERCIAL",
+                    "ChargeAmount": "115.6300",
+                    "ChargeRatePerUnit": "4.6252",
+                    "ChargeUnitsUsed": "25.0000",
+                    "IntervalEnd": "2017-07-05",
+                    "IntervalStart": "2017-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544584,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "6.1300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-05",
+                    "IntervalStart": "2017-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544577,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c5-3623-da5f-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-08-07",
+            "peak_demand": null,
+            "start": "2017-07-06",
+            "tariff": null,
+            "total_charge": "2761.3400",
+            "total_usage": "34.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 34.0000",
+                    "ChargeAmount": "231.2000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "34.0000",
+                    "IntervalEnd": "2017-08-07",
+                    "IntervalStart": "2017-07-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544688,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "158.7300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-07",
+                    "IntervalStart": "2017-07-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544689,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "34 SEWER-COMMERCIAL",
+                    "ChargeAmount": "167.9600",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "34.0000",
+                    "IntervalEnd": "2017-08-07",
+                    "IntervalStart": "2017-07-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544694,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.8900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-07",
+                    "IntervalStart": "2017-07-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544687,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c2-7c5a-dd56-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-09-06",
+            "peak_demand": null,
+            "start": "2017-08-08",
+            "tariff": null,
+            "total_charge": "2664.7300",
+            "total_usage": "27.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 27.0000",
+                    "ChargeAmount": "183.6000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2017-09-06",
+                    "IntervalStart": "2017-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544823,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "144.3000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-06",
+                    "IntervalStart": "2017-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544824,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "27 SEWER-COMMERCIAL",
+                    "ChargeAmount": "133.3800",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2017-09-06",
+                    "IntervalStart": "2017-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544829,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.0600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-06",
+                    "IntervalStart": "2017-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544822,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c3-421e-d3ce-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-10-04",
+            "peak_demand": null,
+            "start": "2017-09-07",
+            "tariff": null,
+            "total_charge": "2713.8100",
+            "total_usage": "32.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 32.0000",
+                    "ChargeAmount": "217.6000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "32.0000",
+                    "IntervalEnd": "2017-10-04",
+                    "IntervalStart": "2017-09-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544624,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "134.6800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-04",
+                    "IntervalStart": "2017-09-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544625,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "32 SEWER-COMMERCIAL",
+                    "ChargeAmount": "158.0800",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "32.0000",
+                    "IntervalEnd": "2017-10-04",
+                    "IntervalStart": "2017-09-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544630,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.0600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-04",
+                    "IntervalStart": "2017-09-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544623,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bd-239a-d680-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-11-06",
+            "peak_demand": null,
+            "start": "2017-10-05",
+            "tariff": null,
+            "total_charge": "2761.3400",
+            "total_usage": "34.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 34.0000",
+                    "ChargeAmount": "231.2000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "34.0000",
+                    "IntervalEnd": "2017-11-06",
+                    "IntervalStart": "2017-10-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544744,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "158.7300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-06",
+                    "IntervalStart": "2017-10-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544745,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "34 SEWER-COMMERCIAL",
+                    "ChargeAmount": "167.9600",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "34.0000",
+                    "IntervalEnd": "2017-11-06",
+                    "IntervalStart": "2017-10-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544750,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.0600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-06",
+                    "IntervalStart": "2017-10-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544743,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bd-ba6d-d3dc-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2017-12-04",
+            "peak_demand": null,
+            "start": "2017-11-07",
+            "tariff": null,
+            "total_charge": "2690.3300",
+            "total_usage": "30.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 30.0000",
+                    "ChargeAmount": "204.0000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "30.0000",
+                    "IntervalEnd": "2017-12-04",
+                    "IntervalStart": "2017-11-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544641,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "134.6800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-04",
+                    "IntervalStart": "2017-11-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544642,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "30 SEWER-COMMERCIAL",
+                    "ChargeAmount": "148.2000",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "30.0000",
+                    "IntervalEnd": "2017-12-04",
+                    "IntervalStart": "2017-11-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544647,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.0500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-04",
+                    "IntervalStart": "2017-11-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544640,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bb-8e2a-def1-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-01-04",
+            "peak_demand": null,
+            "start": "2017-12-05",
+            "tariff": null,
+            "total_charge": "2634.3200",
+            "total_usage": "24.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 24.0000",
+                    "ChargeAmount": "163.2000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "24.0000",
+                    "IntervalEnd": "2018-01-04",
+                    "IntervalStart": "2017-12-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544839,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "149.1100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-04",
+                    "IntervalStart": "2017-12-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544840,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "24 SEWER-COMMERCIAL",
+                    "ChargeAmount": "118.5600",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "24.0000",
+                    "IntervalEnd": "2018-01-04",
+                    "IntervalStart": "2017-12-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544845,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "3.6300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-04",
+                    "IntervalStart": "2017-12-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544838,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c5-0c08-dd34-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-02-01",
+            "peak_demand": null,
+            "start": "2018-01-05",
+            "tariff": null,
+            "total_charge": "2655.1100",
+            "total_usage": "27.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 27.0000",
+                    "ChargeAmount": "183.6000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2018-02-01",
+                    "IntervalStart": "2018-01-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544831,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "134.6800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-01",
+                    "IntervalStart": "2018-01-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544832,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "27 SEWER-COMMERCIAL",
+                    "ChargeAmount": "133.3800",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2018-02-01",
+                    "IntervalStart": "2018-01-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544837,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.0700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-01",
+                    "IntervalStart": "2018-01-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544830,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bf-ffbd-d317-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-03-06",
+            "peak_demand": null,
+            "start": "2018-02-02",
+            "tariff": null,
+            "total_charge": "2690.9000",
+            "total_usage": "28.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 28.0000",
+                    "ChargeAmount": "190.4000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2018-03-06",
+                    "IntervalStart": "2018-02-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544560,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "158.7300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-06",
+                    "IntervalStart": "2018-02-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544561,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "28 SEWER-COMMERCIAL",
+                    "ChargeAmount": "138.3200",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2018-03-06",
+                    "IntervalStart": "2018-02-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544566,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "13.9100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-06",
+                    "IntervalStart": "2018-02-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544559,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c1-bbc7-d785-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-04-04",
+            "peak_demand": null,
+            "start": "2018-03-07",
+            "tariff": null,
+            "total_charge": "2648.1800",
+            "total_usage": "26.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 26.0000",
+                    "ChargeAmount": "176.8000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "26.0000",
+                    "IntervalEnd": "2018-04-04",
+                    "IntervalStart": "2018-03-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544726,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "139.4900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-04",
+                    "IntervalStart": "2018-03-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544727,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "26 SEWER-COMMERCIAL",
+                    "ChargeAmount": "128.4400",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "26.0000",
+                    "IntervalEnd": "2018-04-04",
+                    "IntervalStart": "2018-03-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544732,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "13.9300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-04",
+                    "IntervalStart": "2018-03-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544725,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c4-7243-d959-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-05-03",
+            "peak_demand": null,
+            "start": "2018-04-05",
+            "tariff": null,
+            "total_charge": "2765.5800",
+            "total_usage": "36.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 36.0000",
+                    "ChargeAmount": "244.8000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "36.0000",
+                    "IntervalEnd": "2018-05-03",
+                    "IntervalStart": "2018-04-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544799,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "139.4900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-03",
+                    "IntervalStart": "2018-04-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544800,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "36 SEWER-COMMERCIAL",
+                    "ChargeAmount": "177.8400",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "36.0000",
+                    "IntervalEnd": "2018-05-03",
+                    "IntervalStart": "2018-04-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544805,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bf-da51-d1fe-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-06-04",
+            "peak_demand": null,
+            "start": "2018-05-04",
+            "tariff": null,
+            "total_charge": "2686.0900",
+            "total_usage": "28.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.800 28.0000",
+                    "ChargeAmount": "190.4000",
+                    "ChargeRatePerUnit": "6.8000",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2018-06-04",
+                    "IntervalStart": "2018-05-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544779,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "153.9200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-04",
+                    "IntervalStart": "2018-05-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544780,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "28 SEWER-COMMERCIAL",
+                    "ChargeAmount": "138.3200",
+                    "ChargeRatePerUnit": "4.9400",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2018-06-04",
+                    "IntervalStart": "2018-05-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544785,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.1200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-04",
+                    "IntervalStart": "2018-05-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544778,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bf-aead-d387-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-07-05",
+            "peak_demand": null,
+            "start": "2018-06-05",
+            "tariff": null,
+            "total_charge": "2685.0900",
+            "total_usage": "28.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 28.0000",
+                    "ChargeAmount": "190.6500",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2018-07-05",
+                    "IntervalStart": "2018-06-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544769,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "149.3100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-05",
+                    "IntervalStart": "2018-06-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544770,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "28 SEWER-COMMERCIAL",
+                    "ChargeAmount": "141.6800",
+                    "ChargeRatePerUnit": "5.0600",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2018-07-05",
+                    "IntervalStart": "2018-06-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544775,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.1200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-05",
+                    "IntervalStart": "2018-06-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544768,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c1-4f2c-dc20-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-08-07",
+            "peak_demand": null,
+            "start": "2018-07-06",
+            "tariff": null,
+            "total_charge": "2717.9200",
+            "total_usage": "29.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 29.0000",
+                    "ChargeAmount": "199.2300",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "29.0000",
+                    "IntervalEnd": "2018-08-07",
+                    "IntervalStart": "2018-07-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544603,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "160.3800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-07",
+                    "IntervalStart": "2018-07-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544604,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "29 SEWER-COMMERCIAL",
+                    "ChargeAmount": "154.8600",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "29.0000",
+                    "IntervalEnd": "2018-08-07",
+                    "IntervalStart": "2018-07-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544609,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05be-cc8d-d0ce-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-09-04",
+            "peak_demand": null,
+            "start": "2018-08-08",
+            "tariff": null,
+            "total_charge": "2620.3600",
+            "total_usage": "23.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 23.0000",
+                    "ChargeAmount": "158.0100",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "23.0000",
+                    "IntervalEnd": "2018-09-04",
+                    "IntervalStart": "2018-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544677,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "136.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-04",
+                    "IntervalStart": "2018-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544678,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "23 SEWER-COMMERCIAL",
+                    "ChargeAmount": "122.8200",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "23.0000",
+                    "IntervalEnd": "2018-09-04",
+                    "IntervalStart": "2018-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544683,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c0-b9e7-de07-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-10-03",
+            "peak_demand": null,
+            "start": "2018-09-05",
+            "tariff": null,
+            "total_charge": "2674.0600",
+            "total_usage": "27.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 27.0000",
+                    "ChargeAmount": "185.4900",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2018-10-03",
+                    "IntervalStart": "2018-09-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544807,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "140.9400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-03",
+                    "IntervalStart": "2018-09-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544808,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "27 SEWER-COMMERCIAL",
+                    "ChargeAmount": "144.1800",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2018-10-03",
+                    "IntervalStart": "2018-09-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544813,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bc-8cb6-d78b-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-11-05",
+            "peak_demand": null,
+            "start": "2018-10-04",
+            "tariff": null,
+            "total_charge": "2742.3400",
+            "total_usage": "31.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 31.0000",
+                    "ChargeAmount": "212.9700",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "31.0000",
+                    "IntervalEnd": "2018-11-05",
+                    "IntervalStart": "2018-10-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544670,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "160.3800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-05",
+                    "IntervalStart": "2018-10-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544671,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "31 SEWER-COMMERCIAL",
+                    "ChargeAmount": "165.5400",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "31.0000",
+                    "IntervalEnd": "2018-11-05",
+                    "IntervalStart": "2018-10-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544676,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bb-c246-dbd8-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2018-12-04",
+            "peak_demand": null,
+            "start": "2018-11-06",
+            "tariff": null,
+            "total_charge": "2661.8500",
+            "total_usage": "26.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 26.0000",
+                    "ChargeAmount": "178.6200",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "26.0000",
+                    "IntervalEnd": "2018-12-04",
+                    "IntervalStart": "2018-11-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544648,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "140.9400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-04",
+                    "IntervalStart": "2018-11-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544649,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "26 SEWER-COMMERCIAL",
+                    "ChargeAmount": "138.8400",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "26.0000",
+                    "IntervalEnd": "2018-12-04",
+                    "IntervalStart": "2018-11-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544654,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c0-9173-d712-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-01-08",
+            "peak_demand": null,
+            "start": "2018-12-05",
+            "tariff": null,
+            "total_charge": "2715.4300",
+            "total_usage": "28.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 28.0000",
+                    "ChargeAmount": "192.3600",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2019-01-08",
+                    "IntervalStart": "2018-12-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544734,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "170.1000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-08",
+                    "IntervalStart": "2018-12-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544735,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "28 SEWER-COMMERCIAL",
+                    "ChargeAmount": "149.5200",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2019-01-08",
+                    "IntervalStart": "2018-12-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544740,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "8.7500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-08",
+                    "IntervalStart": "2018-12-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544733,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bc-0fc0-dc53-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-02-06",
+            "peak_demand": null,
+            "start": "2019-01-09",
+            "tariff": null,
+            "total_charge": "2686.2700",
+            "total_usage": "28.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 28.0000",
+                    "ChargeAmount": "192.3600",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2019-02-06",
+                    "IntervalStart": "2019-01-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544660,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "140.9400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-06",
+                    "IntervalStart": "2019-01-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544661,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "28 SEWER-COMMERCIAL",
+                    "ChargeAmount": "149.5200",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2019-02-06",
+                    "IntervalStart": "2019-01-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544666,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "4.3800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-06",
+                    "IntervalStart": "2019-01-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544659,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c2-510e-dcbe-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-03-06",
+            "peak_demand": null,
+            "start": "2019-02-07",
+            "tariff": null,
+            "total_charge": "2632.5700",
+            "total_usage": "24.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 24.0000",
+                    "ChargeAmount": "164.8800",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "24.0000",
+                    "IntervalEnd": "2019-03-06",
+                    "IntervalStart": "2019-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544616,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "136.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-06",
+                    "IntervalStart": "2019-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544617,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "24 SEWER-COMMERCIAL",
+                    "ChargeAmount": "128.1600",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "24.0000",
+                    "IntervalEnd": "2019-03-06",
+                    "IntervalStart": "2019-02-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544622,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c5-89a4-d929-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-04-03",
+            "peak_demand": null,
+            "start": "2019-03-07",
+            "tariff": null,
+            "total_charge": "2669.2000",
+            "total_usage": "27.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 27.0000",
+                    "ChargeAmount": "185.4900",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2019-04-03",
+                    "IntervalStart": "2019-03-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544586,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "136.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-03",
+                    "IntervalStart": "2019-03-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544587,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "27 SEWER-COMMERCIAL",
+                    "ChargeAmount": "144.1800",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "27.0000",
+                    "IntervalEnd": "2019-04-03",
+                    "IntervalStart": "2019-03-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544592,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "0.0400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-03",
+                    "IntervalStart": "2019-03-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544585,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bc-d7ba-d9be-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-05-02",
+            "peak_demand": null,
+            "start": "2019-04-04",
+            "tariff": null,
+            "total_charge": "2637.4300",
+            "total_usage": "24.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 24.0000",
+                    "ChargeAmount": "164.8800",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "24.0000",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-04-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544718,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "140.9400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-04-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544719,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "24 SEWER-COMMERCIAL",
+                    "ChargeAmount": "128.1600",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "24.0000",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-04-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544724,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Finance Charges",
+                    "ChargeAmount": "13.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-04-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544717,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bf-61d9-d3a6-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-06-04",
+            "peak_demand": null,
+            "start": "2019-05-03",
+            "tariff": null,
+            "total_charge": "2705.7100",
+            "total_usage": "28.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.870 28.0000",
+                    "ChargeAmount": "192.3600",
+                    "ChargeRatePerUnit": "6.8700",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2019-06-04",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544632,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "160.3800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-04",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544633,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "28 SEWER-COMMERCIAL",
+                    "ChargeAmount": "149.5200",
+                    "ChargeRatePerUnit": "5.3400",
+                    "ChargeUnitsUsed": "28.0000",
+                    "IntervalEnd": "2019-06-04",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544638,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05be-f3f7-d58f-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-07-03",
+            "peak_demand": null,
+            "start": "2019-06-05",
+            "tariff": null,
+            "total_charge": "2781.4000",
+            "total_usage": "34.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.940 34.0000",
+                    "ChargeAmount": "233.7400",
+                    "ChargeRatePerUnit": "6.9400",
+                    "ChargeUnitsUsed": "34.0000",
+                    "IntervalEnd": "2019-07-03",
+                    "IntervalStart": "2019-06-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544758,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "141.0600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-03",
+                    "IntervalStart": "2019-06-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544759,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "34 SEWER-COMMERCIAL",
+                    "ChargeAmount": "183.2900",
+                    "ChargeRatePerUnit": "5.3909",
+                    "ChargeUnitsUsed": "34.0000",
+                    "IntervalEnd": "2019-07-03",
+                    "IntervalStart": "2019-06-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544764,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05bf-88d0-dd82-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-08-06",
+            "peak_demand": null,
+            "start": "2019-07-04",
+            "tariff": null,
+            "total_charge": "2760.5200",
+            "total_usage": "26.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.940 26.0000",
+                    "ChargeAmount": "180.4400",
+                    "ChargeRatePerUnit": "6.9400",
+                    "ChargeUnitsUsed": "26.0000",
+                    "IntervalEnd": "2019-08-06",
+                    "IntervalStart": "2019-07-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544815,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "167.2200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-06",
+                    "IntervalStart": "2019-07-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544816,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "26 SEWER-COMMERCIAL",
+                    "ChargeAmount": "143.2600",
+                    "ChargeRatePerUnit": "5.5100",
+                    "ChargeUnitsUsed": "26.0000",
+                    "IntervalEnd": "2019-08-06",
+                    "IntervalStart": "2019-07-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544821,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05be-319b-d81e-a9f7-0eefb9af33c6"
+            ]
+        },
+        {
+            "end": "2019-09-05",
+            "peak_demand": null,
+            "start": "2019-08-07",
+            "tariff": null,
+            "total_charge": "2691.0500",
+            "total_usage": "22.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Tier 1 0 + 6.940 22.0000",
+                    "ChargeAmount": "152.6800",
+                    "ChargeRatePerUnit": "6.9400",
+                    "ChargeUnitsUsed": "22.0000",
+                    "IntervalEnd": "2019-09-05",
+                    "IntervalStart": "2019-08-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544568,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "\"Meter 2\"\" BACKFLOW METER\"",
+                    "ChargeAmount": "147.5500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-05",
+                    "IntervalStart": "2019-08-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544569,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "22 SEWER-COMMERCIAL",
+                    "ChargeAmount": "121.2200",
+                    "ChargeRatePerUnit": "5.5100",
+                    "ChargeUnitsUsed": "22.0000",
+                    "IntervalEnd": "2019-09-05",
+                    "IntervalStart": "2019-08-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544574,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e05c3-6e17-d8ca-a9f7-0eefb9af33c6"
+            ]
+        }
+    ]
+}
