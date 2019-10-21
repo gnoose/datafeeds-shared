@@ -2,7 +2,7 @@ import logging.config
 import os
 from os import path
 
-from typing import List
+from typing import Set
 
 
 DATAFEEDS_ROOT = path.normpath(path.join(path.dirname(path.abspath(__file__)), ".."))
@@ -34,14 +34,18 @@ AES_KEY: str = os.environ.get("AES_KEY")
 
 PLATFORM_API_URL: str = os.environ.get("PLATFORM_API_URL")
 
-FEATURE_FLAGS: List[str] = [u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")]
+VALID_FEATURE_FLAGS: Set[str] = {"S3_BILL_UPLOAD", "PLATFORM_UPLOAD", "ES_INDEX_JOBS"}
+FEATURE_FLAGS: Set[str] = \
+    set(u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")) - VALID_FEATURE_FLAGS
 
 
 def enabled(feature: str) -> bool:
+    if feature not in VALID_FEATURE_FLAGS:
+        raise Exception("%s is not a valid feature flag. Add it to VALID_FEATURE_FLAGS in the config module.")
     return feature in FEATURE_FLAGS
 
 
-LOG_LEVEL = os.environ.get("LOG_LEVEL", "DEBUG")
+LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 DEPENDENCY_LOG_LEVEL = os.environ.get("DEPENDENCY_LOG_LEVEL", "WARN")
 LOGGING = {
     "version": 1,

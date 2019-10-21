@@ -1,5 +1,6 @@
 from abc import ABC as Abstract, abstractmethod
 import csv
+import os
 from typing import List
 import logging
 
@@ -96,8 +97,12 @@ class BaseScraper(Abstract):
     def stop(self):
         pass
 
+    # FIXME: Refactor this to just return whatever bills/intervals were acquired.
+    # Passing in the handlers would make sense if this function was responsible for handling
+    # whatever exceptions they might throw. But since it raises and the caller is obliged to
+    # wrap this in a try-catch, there's no benefit to the current interface.
     def scrape(self, readings_handler, bills_handler):
-        log.info("Launching {}".format(self.name, level="info"))
+        log.info("Launching {}".format(self.name))
         log.info("Username:   {}".format(self.username))
         log.info("Start Date: {}".format(self._iso_str(self.start_date)))
         log.info("End Date:   {}".format(self._iso_str(self.end_date)))
@@ -128,26 +133,24 @@ class BaseScraper(Abstract):
             log.exception("Scraper run failed.")
             raise
 
-    def _with_path(self, filename):
-        return "{}/{}".format(config.WORKING_DIRECTORY, filename)
-
-    def log(self, msg="", level="debug"):
-        getattr(log, level)(msg)
-
-    def log_bills(self, bills: List[BillingDatum]):
+    @staticmethod
+    def log_bills(bills: List[BillingDatum]):
         if not bills:
             return
-        with open(self._with_path("bills.csv"), "w") as f:
+        path = os.path.join(config.WORKING_DIRECTORY, "bills.csv")
+        with open(path, "w") as f:
             writer = csv.writer(f)
             writer.writerow(["start", "end", "cost", "used", "peak"])
             for bill in bills:
                 data_row = [bill.start, bill.end, bill.cost, bill.used, bill.peak]
                 writer.writerow(data_row)
 
-    def log_readings(self, readings):
+    @staticmethod
+    def log_readings(readings):
         if not readings:
             return
-        with open(self._with_path("readings.csv"), "w") as f:
+        path = os.path.join(config.WORKING_DIRECTORY, "readings.csv")
+        with open(path, "w") as f:
             keys = sorted(readings.keys())
             writer = csv.writer(f)
             for key in keys:
