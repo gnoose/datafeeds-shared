@@ -3,6 +3,7 @@ import unittest
 from unittest import mock
 from datetime import date
 
+from datafeeds import config as project_config
 import datafeeds.urjanet.tests.util as test_util
 from datafeeds.urjanet.scraper import (
     BaseUrjanetScraper,
@@ -13,11 +14,20 @@ from datafeeds.urjanet.transformer import PacGeGridiumTransfomer
 
 from datafeeds.common.typing import BillingDatum, BillingDatumItemsEntry
 
+
 TEST_DIR = os.path.split(__file__)[0]
 DATA_DIR = os.path.join(TEST_DIR, "data/pacge")
 
 
 class TestUrjanetScraper(unittest.TestCase):
+    def setUp(self) -> None:
+        self.upload_enabled_before = project_config.enabled("S3_BILL_UPLOAD")
+        project_config.FEATURE_FLAGS.add("S3_BILL_UPLOAD")
+
+    def tearDown(self) -> None:
+        if not self.upload_enabled_before:
+            project_config.FEATURE_FLAGS.remove("S3_BILL_UPLOAD")
+
     def test_get_charge_kind(self):
         """Ensure that the get_charge_kind function works as expected"""
         for usage_unit in ["kwh", "therms", "ccf", "hcf"]:
@@ -79,28 +89,11 @@ class TestUrjanetScraper(unittest.TestCase):
 
         self.assertEqual(expected, result.bills)
 
-    # @mock.patch("gridium_tasks.lib.scrapers.urjanet.EtlLogHandler.emit")
-    # def test_basic_scraper_logging(self, emit):
-    #    """Ensure that the Urjanet logging handler is sent messages"""
-    #    datasource = test_util.FixtureDataSource(os.path.join(DATA_DIR, "simple_fixture_input.json"))
-    #    transformer = PacGeGridiumTransfomer()
-    #    config = BaseUrjanetConfiguration(datasource, transformer, "pge", False, log_level=logging.DEBUG)
-    #    etl_logging.create(logger=etl_logging.StdoutETLRunLogger)
-    #    scraper = BaseUrjanetScraper(None, None, config)
-    #
-    #    self.assertEqual("Urjanet Scraper: pge", scraper.name)
-    #
-    #    scraper._execute()
-    #    self.assertTrue(len(emit.call_args_list) > 0)
-
-    # FIXME: Enable Urjanet S3 Upload
-    @unittest.skip
-    @mock.patch("gridium_tasks.lib.scrapers.urjanet.urjanet_pdf")
-    def test_basic_scraper_run_with_attachments(self, mock_urja_pdf):
+    @mock.patch("datafeeds.urjanet.scraper.statement_to_s3")
+    def test_basic_scraper_run_with_attachments(self, mock_call):
         """Ensure that we can run the base Urjanet scraper with simple inputs, with attachments enabled"""
-
         # Mock out the library that uploads to S3, returning 'test_key' as the destination s3 entity
-        mock_urja_pdf.statement_to_s3.return_value = "test_key"
+        mock_call.return_value = "test_key"
         datasource = test_util.FixtureDataSource(os.path.join(DATA_DIR, "simple_fixture_input.json"))
         transformer = PacGeGridiumTransfomer()
 
@@ -121,14 +114,11 @@ class TestUrjanetScraper(unittest.TestCase):
         self.assertEqual(attachment.kind, "bill")
         self.assertEqual(attachment.format, "PDF")
 
-    # FIXME: Enable Urjanet S3 Upload
-    @unittest.skip
-    @mock.patch("gridium_tasks.lib.scrapers.urjanet.urjanet_pdf")
-    def test_basic_scraper_run_with_multiple_attachments(self, mock_urja_pdf):
+    @mock.patch("datafeeds.urjanet.scraper.statement_to_s3")
+    def test_basic_scraper_run_with_multiple_attachments(self, mock_call):
         """Ensure that the Urjanet scraper gracefully handles a bill upload with multiple source links"""
-
         # Mock out the library that uploads to S3, returning 'test_key' as the destination s3 entity
-        mock_urja_pdf.statement_to_s3.return_value = "test_key"
+        mock_call.return_value = "test_key"
         datasource = test_util.FixtureDataSource(os.path.join(DATA_DIR, "multi_source_link_input.json"))
         transformer = PacGeGridiumTransfomer()
 
