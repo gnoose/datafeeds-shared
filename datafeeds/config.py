@@ -1,3 +1,4 @@
+import json
 import logging.config
 import os
 from os import path
@@ -33,9 +34,6 @@ BILL_PDF_S3_BUCKET = os.environ.get("BILL_PDF_S3_BUCKET")
 # Which S3 bucket should store the compressed working directory of artifacts for each scraper run?
 ARTIFACT_S3_BUCKET: str = os.environ.get("ARCHIVE_S3_BUCKET", "gridium-dev-datafeeds-archive")
 
-# Shall datafeeds upload an archive of work artifacts for each scraper run?
-UPLOAD_ARTIFACTS: bool = os.environ.get("UPLOAD_ARCHIVES", "False").lower() == "true"
-
 # What are the network details and credentials needed to connect to the urjanet MySQL database?
 URJANET_MYSQL_HOST: str = os.environ.get("URJANET_MYSQL_HOST", "urjanet")
 URJANET_MYSQL_USER: str = os.environ.get("URJANET_MYSQL_USER", "gridium")
@@ -47,9 +45,19 @@ URJANET_HTTP_USER: str = os.environ.get("URJANET_HTTP_USER")
 URJANET_HTTP_PASSWORD: str = os.environ.get("URJANET_HTTP_PASSWORD")
 
 # Which Elasticsearch host should receive index details about running scraper jobs?
-ELASTICSEARCH_HOSTS: str = os.environ.get("ETL_ELASTICSEARCH_HOSTS")
-ELASTICSEARCH_AUTH: str = os.environ.get("ETL_ELASTICSEARCH_AUTH")
-ELASTICSEARCH_SSL: bool = os.environ.get("ETL_ELASTICSEARCH_SSL", "False").lower() == "true"
+try:
+    ELASTICSEARCH_HOST = json.loads(os.environ.get("ETL_ELASTICSEARCH_HOSTS", "{}"))
+except json.decoder.JSONDecodeError:
+    ELASTICSEARCH_HOST = {}
+
+try:
+    # As an environment variable, this should look like a two element list we can convert to a tuple.
+    ELASTICSEARCH_AUTH = tuple(json.loads(os.environ.get("ETL_ELASTICSEARCH_AUTH", "[]")))
+except json.decoder.JSONDecodeError:
+    ELASTICSEARCH_AUTH = ()
+
+# Will we use SSL to connect to ES? For most cases, the default can be used here.
+ELASTICSEARCH_SSL: tuple = os.environ.get("ETL_ELASTICSEARCH_SSL", ())
 
 # How does datafeeds connect to webapps?
 WEBAPPS_DOMAIN: str = os.environ.get("WEBAPPS_DOMAIN")
@@ -63,12 +71,14 @@ PLATFORM_API_URL: str = os.environ.get("PLATFORM_API_URL")
 
 #
 # What features are enabled?
+# S3_ARTIFACT_UPLOAD: After each scraper run, datafeeds should upload a compressed archive of log data,
+#                     screenshots, etc. to S3.
 # S3_BILL_UPLOAD: As bill PDFs are discovered by scrapers, they will be uploaded to an S3 bucket for consumption
 #                 via the energy-analytics UI.
 # PLATFORM_UPLOAD: After a scraper run, scrapers will upload their interval/bill data to platform.
 # ES_INDEX_JOBS: As part of the scraping process, we will upload current task to elasticsearch for use in dashboards.
 #
-VALID_FEATURE_FLAGS: Set[str] = {"S3_BILL_UPLOAD", "PLATFORM_UPLOAD", "ES_INDEX_JOBS"}
+VALID_FEATURE_FLAGS: Set[str] = {"S3_ARTIFACT_UPLOAD", "S3_BILL_UPLOAD", "PLATFORM_UPLOAD", "ES_INDEX_JOBS"}
 FEATURE_FLAGS: Set[str] = \
     set(u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")) - VALID_FEATURE_FLAGS
 
