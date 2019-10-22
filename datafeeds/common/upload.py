@@ -16,9 +16,11 @@ UPLOAD_DATA_BATCH_SIZE = 20
 
 def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
     if config.enabled("PLATFORM_UPLOAD"):
+        log.info("Uploading bills to platform via HTTP request.")
         _upload_to_platform(service_id, billing_data)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
+        log.info("Updating billing range in Elasticsearch.")
         index.update_billing_range(task_id, billing_data)
 
     title = "Final Billing Summary"

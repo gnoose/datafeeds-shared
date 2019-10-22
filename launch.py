@@ -53,6 +53,7 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
     log.info("Meter: %s (%s)", meter.name, meter.oid)
     log.info("Scraper: %s", mds.name)
     log.info("Date Range: %s - %s", start, end)
+    log.info("Task ID: %s", task_id)
 
     scraper_fn(account, meter, mds, parameters, task_id=task_id)
 

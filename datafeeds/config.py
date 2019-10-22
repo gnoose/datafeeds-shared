@@ -80,7 +80,7 @@ PLATFORM_API_URL: str = os.environ.get("PLATFORM_API_URL")
 #
 VALID_FEATURE_FLAGS: Set[str] = {"S3_ARTIFACT_UPLOAD", "S3_BILL_UPLOAD", "PLATFORM_UPLOAD", "ES_INDEX_JOBS"}
 FEATURE_FLAGS: Set[str] = \
-    set(u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")) - VALID_FEATURE_FLAGS
+    set(u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")) & VALID_FEATURE_FLAGS
 
 
 def enabled(feature: str) -> bool:

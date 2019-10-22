@@ -15,4 +15,4 @@ def datafeed(account: SnapmeterAccount, meter: Meter,
         params,
         WataugaDatasource(meter.utility_account_id),
         WataugaTransformer(),
-        task_id)
+        task_id=task_id)

@@ -61,6 +61,7 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
         credentials = Credentials(None, None)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
+        log.info("Uploading task information to Elasticsearch.")
         index.index_etl_run(task_id, {
             "started": datetime.now(),
             "status": "STARTED",
@@ -81,6 +82,7 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
         error = repr(exc)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
+        log.info("Uploading final task status to Elasticsearch.")
         index.index_etl_run(task_id, {"status": status, "error": error})
 
 
