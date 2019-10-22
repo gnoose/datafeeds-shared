@@ -21,9 +21,9 @@ LOG_URL_PATTERN = "https://snapmeter.com/api/admin/etl-tasks/%s/log"
 
 def _get_es_connection():
     return Elasticsearch(
-        config.ELASTICSEARCH_HOSTS,
+        [dict(host=config.ELASTICSEARCH_HOST, port=config.ELASTICSEARCH_PORT)],
         connection_class=RequestsHttpConnection,
-        http_auth=config.ELASTICSEARCH_AUTH,
+        http_auth=(config.ELASTICSEARCH_USER, config.ELASTICSEARCH_PASSWORD),
         use_ssl=True
     )
 

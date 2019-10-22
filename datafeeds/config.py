@@ -1,7 +1,5 @@
-import json
 import logging.config
 import os
-import sys
 from os import path
 
 
@@ -47,19 +45,10 @@ URJANET_HTTP_USER: str = os.environ.get("URJANET_HTTP_USER")
 URJANET_HTTP_PASSWORD: str = os.environ.get("URJANET_HTTP_PASSWORD")
 
 # Which Elasticsearch host should receive index details about running scraper jobs?
-try:
-    ELASTICSEARCH_HOSTS = json.loads(os.environ.get("ETL_ELASTICSEARCH_HOSTS", "{}"))
-except json.decoder.JSONDecodeError:
-    sys.stderr.writeln("Failed to parse environment variable ETL_ELASTICSEARCH_HOSTS to JSON: %s\n" %
-                       os.environ.get("ETL_ELASTICSEARCH_HOSTS"))
-    ELASTICSEARCH_HOSTS = {}
-
-try:
-    # As an environment variable, this should look like a two element list we can convert to a tuple.
-    ELASTICSEARCH_AUTH = tuple(json.loads(os.environ.get("ETL_ELASTICSEARCH_AUTH", "[]")))
-except json.decoder.JSONDecodeError:
-    ELASTICSEARCH_AUTH = ()
-
+ELASTICSEARCH_HOST: str = os.environ.get("ELASTICSEARCH_HOST")
+ELASTICSEARCH_PORT: str = os.environ.get("ELASTICSEARCH_PORT")
+ELASTICSEARCH_USER: str = os.environ.get("ELASTICSEARCH_USER")
+ELASTICSEARCH_PASSWORD: str = os.environ.get("ELASTICSEARCH_PASSWORD")
 
 # How does datafeeds connect to webapps?
 WEBAPPS_DOMAIN: str = os.environ.get("WEBAPPS_DOMAIN")
