@@ -2,10 +2,9 @@ import json
 import logging
 
 from deprecation import deprecated
-import requests
 
 from datafeeds import config
-from datafeeds.common import webapps, index
+from datafeeds.common import webapps, index, platform
 from datafeeds.common.typing import BillingData, show_bill_summary
 from datafeeds.common import interval_transform
 
@@ -57,12 +56,11 @@ def _upload_to_platform(service_id: str, billing_data: BillingData):
             "attachments": bill.attachments or []
         })
 
-    response = requests.post(
-        "%s/rest/object/utility-service/%s/bills/import" % (config.PLATFORM_API_URL, service_id),
-        data={"bills": bills},
-        headers={"Content-type": "application/json", "Accept": "*"}
+    log.info("Posting data to platform.")
+    platform.post(
+        "/object/utility-service/{}/bills/import".format(service_id),
+        {"bills": bills}
     )
-    response.raise_for_status()
 
 
 @deprecated(details="To be replaced by ORM module.")

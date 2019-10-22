@@ -46,7 +46,7 @@ URJANET_HTTP_PASSWORD: str = os.environ.get("URJANET_HTTP_PASSWORD")
 
 # Which Elasticsearch host should receive index details about running scraper jobs?
 ELASTICSEARCH_HOST: str = os.environ.get("ELASTICSEARCH_HOST")
-ELASTICSEARCH_PORT: int = int(os.environ.get("ELASTICSEARCH_PORT"))
+ELASTICSEARCH_PORT: int = int(os.environ.get("ELASTICSEARCH_PORT", "9200"))
 ELASTICSEARCH_USER: str = os.environ.get("ELASTICSEARCH_USER")
 ELASTICSEARCH_PASSWORD: str = os.environ.get("ELASTICSEARCH_PASSWORD")
 
@@ -58,7 +58,8 @@ WEBAPPS_TOKEN: str = os.environ.get("WEBAPPS_TOKEN")
 AES_KEY: str = os.environ.get("AES_KEY")
 
 # How does datafeeds connect to platform?
-PLATFORM_API_URL: str = os.environ.get("PLATFORM_API_URL")
+PLATFORM_HOST: str = os.environ.get("PLATFORM_HOST")
+PLATFORM_PORT: str = os.environ.get("PLATFORM_PORT", "9229")
 
 #
 # What features are enabled?
