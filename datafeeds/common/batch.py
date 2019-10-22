@@ -46,7 +46,7 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
     acct_hex_id = account.hex_id if account else ""
     acct_name = account.name if account else ""
 
-    bill_handler = ft.partial(upload_bills, meter.utility_service.service_id, task_id)
+    bill_handler = ft.partial(upload_bills, meter.utility_service, task_id)
     readings_handler = ft.partial(upload_readings, transforms, task_id,
                                   meter.oid, acct_hex_id, scraper_class.__name__)
     date_range = DateRange(*iso_to_dates(

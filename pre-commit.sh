@@ -3,7 +3,7 @@
 set -e
 
 printf "Running Lint ..."
-flake8 datafeeds
+flake8 datafeeds launch.py
 printf " ok\n"
 
 # FIXME: Get incremental typechecking working.

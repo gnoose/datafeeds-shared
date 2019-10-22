@@ -56,7 +56,7 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
     log.info("Task ID: %s", task_id)
     log.info("Elasticsearch Host/Port: %s : %s", config.ELASTICSEARCH_HOST, config.ELASTICSEARCH_PORT)
     log.info("Elasticsearch Credentials: %s : %s", config.ELASTICSEARCH_USER, config.ELASTICSEARCH_PASSWORD)
-    log.info("Platform URL: %s", config.PLATFORM_API_URL)
+    log.info("Platform Host/Port: %s : %s", config.PLATFORM_HOST, config.PLATFORM_PORT)
 
     scraper_fn(account, meter, mds, parameters, task_id=task_id)
 
@@ -89,4 +89,3 @@ if __name__ == "__main__":
     db.init()
     main()
     sys.exit(0)
-

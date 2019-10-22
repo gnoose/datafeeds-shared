@@ -13,10 +13,10 @@ log = logging.getLogger(__name__)
 UPLOAD_DATA_BATCH_SIZE = 20
 
 
-def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
+def upload_bills(utility_service_oid: int, task_id: str, billing_data: BillingData):
     if config.enabled("PLATFORM_UPLOAD"):
         log.info("Uploading bills to platform via HTTP request.")
-        _upload_to_platform(service_id, billing_data)
+        _upload_to_platform(utility_service_oid, billing_data)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
@@ -41,7 +41,7 @@ def upload_readings(transforms, task_id: str, meter_oid: int, account_hex_id: st
 
 
 @deprecated(details="To be replaced by ORM module.")
-def _upload_to_platform(service_id: str, billing_data: BillingData):
+def _upload_to_platform(utility_service_oid: str, billing_data: BillingData):
     bills = []
     for bill in billing_data:
         if not bill:
@@ -58,7 +58,7 @@ def _upload_to_platform(service_id: str, billing_data: BillingData):
 
     log.info("Posting data to platform.")
     platform.post(
-        "/object/utility-service/{}/bills/import".format(service_id),
+        "/object/utility-service/{}/bills/import".format(utility_service_oid),
         {"bills": bills}
     )
 
