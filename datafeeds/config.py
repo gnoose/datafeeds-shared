@@ -1,7 +1,9 @@
 import json
 import logging.config
 import os
+import sys
 from os import path
+
 
 from typing import Set
 
@@ -48,6 +50,8 @@ URJANET_HTTP_PASSWORD: str = os.environ.get("URJANET_HTTP_PASSWORD")
 try:
     ELASTICSEARCH_HOSTS = json.loads(os.environ.get("ETL_ELASTICSEARCH_HOSTS", "{}"))
 except json.decoder.JSONDecodeError:
+    sys.stderr.writeln("Failed to parse environment variable ETL_ELASTICSEARCH_HOSTS to JSON: %s\n" %
+                       os.environ.get("ETL_ELASTICSEARCH_HOSTS"))
     ELASTICSEARCH_HOSTS = {}
 
 try:
@@ -56,8 +60,6 @@ try:
 except json.decoder.JSONDecodeError:
     ELASTICSEARCH_AUTH = ()
 
-# Will we use SSL to connect to ES? For most cases, the default can be used here.
-ELASTICSEARCH_SSL: tuple = os.environ.get("ETL_ELASTICSEARCH_SSL", ())
 
 # How does datafeeds connect to webapps?
 WEBAPPS_DOMAIN: str = os.environ.get("WEBAPPS_DOMAIN")

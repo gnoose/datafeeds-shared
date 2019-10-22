@@ -24,7 +24,7 @@ def _get_es_connection():
         config.ELASTICSEARCH_HOSTS,
         connection_class=RequestsHttpConnection,
         http_auth=config.ELASTICSEARCH_AUTH,
-        use_ssl=config.ELASTICSEARCH_SSL
+        use_ssl=True
     )
 
 

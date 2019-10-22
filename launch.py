@@ -6,7 +6,7 @@ import uuid
 from argparse import Namespace
 from datetime import datetime, date
 
-from datafeeds import db
+from datafeeds import db, config
 from datafeeds.datasources import southlake, watauga
 from datafeeds.models import SnapmeterMeterDataSource as MeterDataSource
 
@@ -54,6 +54,8 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
     log.info("Scraper: %s", mds.name)
     log.info("Date Range: %s - %s", start, end)
     log.info("Task ID: %s", task_id)
+    log.info("Elasticsearch Connection Data: %s", config.ELASTICSEARCH_HOSTS)
+    log.info("Elasticsearch Auth Data: %s", config.ELASTICSEARCH_AUTH)
 
     scraper_fn(account, meter, mds, parameters, task_id=task_id)
 
