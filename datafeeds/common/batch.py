@@ -43,9 +43,12 @@ def iso_to_dates(start_iso, end_iso):
 def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
                  datasource: MeterDataSource, params: dict, configuration=None,
                  task_id=None, transforms=None):
-    bill_handler = ft.partial(upload_bills, meter.utility_service.service, task_id)
+    acct_hex_id = account.hex_id if account else ""
+    acct_name = account.name if account else ""
+
+    bill_handler = ft.partial(upload_bills, meter.utility_service.service_id, task_id)
     readings_handler = ft.partial(upload_readings, transforms, task_id,
-                                  meter.oid, account.hex_id, scraper_class.__name__)
+                                  meter.oid, acct_hex_id, scraper_class.__name__)
     date_range = DateRange(*iso_to_dates(
         params.get("interval_start"),
         params.get("interval_end")
@@ -57,12 +60,12 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
     else:
         credentials = Credentials(None, None)
 
-    if task_id and config.enabled("ES_TASK_INDEXING"):
+    if task_id and config.enabled("ES_INDEX_JOBS"):
         index.index_etl_run(task_id, {
             "started": datetime.now(),
             "status": "STARTED",
-            "accountId": account.hex_id,
-            "accountName": account.name,
+            "accountId": acct_hex_id,
+            "accountName": acct_name,
             "meterId": meter.oid,
             "meterName": meter.name,
             "scraper": scraper_class.__name__,
@@ -77,7 +80,7 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
         status = "FAILURE"
         error = repr(exc)
 
-    if task_id and config.enabled("ES_TASK_INDEXING"):
+    if task_id and config.enabled("ES_INDEX_JOBS"):
         index.index_etl_run(task_id, {"status": status, "error": error})
 
 

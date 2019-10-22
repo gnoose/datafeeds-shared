@@ -138,8 +138,8 @@ def get_decimal(row: SqlRowDict, colname: str, transform: Transform = Decimal, n
 class UrjanetPyMySqlDataSource(UrjanetDataSource):
     """Load data from a MySQL database into a data model.
 
-    This implemention is currently an abstract class. The method for selecting
-    appropriate "Acccount" and "Meter" rows from the SQL database must be
+    This implementation is currently an abstract class. The method for selecting
+    appropriate "Account" and "Meter" rows from the SQL database must be
     specified by implementers via the "load_accounts" and "load_meters"
     functions. The justification for this design is that different utilities
     may require different logic to correctly identify these rows.
