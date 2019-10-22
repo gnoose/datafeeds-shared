@@ -46,7 +46,7 @@ URJANET_HTTP_PASSWORD: str = os.environ.get("URJANET_HTTP_PASSWORD")
 
 # Which Elasticsearch host should receive index details about running scraper jobs?
 ELASTICSEARCH_HOST: str = os.environ.get("ELASTICSEARCH_HOST")
-ELASTICSEARCH_PORT: str = os.environ.get("ELASTICSEARCH_PORT")
+ELASTICSEARCH_PORT: int = int(os.environ.get("ELASTICSEARCH_PORT"))
 ELASTICSEARCH_USER: str = os.environ.get("ELASTICSEARCH_USER")
 ELASTICSEARCH_PASSWORD: str = os.environ.get("ELASTICSEARCH_PASSWORD")
 

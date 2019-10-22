@@ -58,8 +58,8 @@ def _upload_to_platform(service_id: str, billing_data: BillingData):
         })
 
     response = requests.post(
-        "%s/object/utility-service/%s/bills/import" % (config.PLATFORM_API_URL, service_id),
-        data={"importance": "product", "bills": bills},
+        "%s/rest/object/utility-service/%s/bills/import" % (config.PLATFORM_API_URL, service_id),
+        data={"bills": bills},
         headers={"Content-type": "application/json", "Accept": "*"}
     )
     response.raise_for_status()
