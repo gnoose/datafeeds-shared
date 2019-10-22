@@ -46,9 +46,9 @@ URJANET_HTTP_PASSWORD: str = os.environ.get("URJANET_HTTP_PASSWORD")
 
 # Which Elasticsearch host should receive index details about running scraper jobs?
 try:
-    ELASTICSEARCH_HOST = json.loads(os.environ.get("ETL_ELASTICSEARCH_HOSTS", "{}"))
+    ELASTICSEARCH_HOSTS = json.loads(os.environ.get("ETL_ELASTICSEARCH_HOSTS", "{}"))
 except json.decoder.JSONDecodeError:
-    ELASTICSEARCH_HOST = {}
+    ELASTICSEARCH_HOSTS = {}
 
 try:
     # As an environment variable, this should look like a two element list we can convert to a tuple.
