@@ -1,8 +1,11 @@
 import http
 import json
 import urllib
+import logging
 
 from datafeeds import config
+
+log = logging.getLogger(__name__)
 
 
 class PlatformException(Exception):
@@ -24,6 +27,8 @@ def _request(method, path, data, params):
             "Content-type": "application/json",
             "Accept": "*"
         }
+
+    log.debug("Platform request: %s : %s : data=%s, headers=%s", method, url, data, headers)
     conn.request(method, url, data, headers=headers)
     response = conn.getresponse()
     if response.code >= 400:

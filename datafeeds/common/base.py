@@ -102,17 +102,13 @@ class BaseScraper(Abstract):
     # whatever exceptions they might throw. But since it raises and the caller is obliged to
     # wrap this in a try-catch, there's no benefit to the current interface.
     def scrape(self, readings_handler, bills_handler):
-        log.info("Launching {}".format(self.name))
-        log.info("Username:   {}".format(self.username))
-        log.info("Start Date: {}".format(self._iso_str(self.start_date)))
-        log.info("End Date:   {}".format(self._iso_str(self.end_date)))
+        log.info("Launching %s", self.name)
+        if self.username:
+            log.info("Username: %s", self.username)
+        log.info("Date Range: %s - %s", self.start_date.strftime("%Y-%m-%d"), self.end_date.strftime("%Y-%m-%d"))
         log.info("Configuration:")
         for prop, value in vars(self._configuration).items():
-            log.info("\t{}: {}".format(prop, value))
-
-        expected = lambda data: log.error(
-            "Expected to find {} but none were returned".format(data)
-        )
+            log.info("\t%s: %s", prop, value)
 
         try:
             results = self._execute()
@@ -121,13 +117,13 @@ class BaseScraper(Abstract):
                 if results.bills:
                     bills_handler(results.bills)
                 else:
-                    expected("bills")
+                    log.error("Expected to find bills but none were returned.")
 
             if self.scrape_readings:
                 if results.readings:
                     readings_handler(results.readings)
                 else:
-                    expected("readings")
+                    log.error("Expected to find interval data but none was returned.")
 
         except Exception:
             log.exception("Scraper run failed.")
@@ -156,14 +152,6 @@ class BaseScraper(Abstract):
             for key in keys:
                 data_row = [key] + readings[key]
                 writer.writerow(data_row)
-
-    @staticmethod
-    def _iso_str(dt):
-        return dt.strftime("%Y-%m-%d")
-
-    @staticmethod
-    def _date_str(dt):
-        return dt.strftime("%m/%d/%Y")
 
 
 class BaseApiScraper(BaseScraper):
