@@ -47,37 +47,31 @@ def _upload_to_platform(service_id: str, billing_data: BillingData):
         if not bill:
             continue
 
-        log.info("Bill Items: %s", bill.items)
-        log.info("Bill Attachments: %s", bill.attachments)
         bills.append({
             "start": bill.start.strftime("%Y-%m-%d"),
             "end": bill.end.strftime("%Y-%m-%d"),
             "cost": str(bill.cost),
             "used": str(bill.used) if bill.used else "0.0",
             "peak": str(bill.peak) if bill.peak else "0.0",
-            "items": json.dumps(
-                [
-                    {
-                        "description": item.description,
-                        "quantity": item.quantity,
-                        "rate": item.rate,
-                        "total": item.total,
-                        "kind": item.kind,
-                        "unit": item.unit
-                    }
-                    for item in (bill.items or [])
-                ]
-            ),
-            "attachments": json.dumps(
-                [
-                    {
-                        "key": attachment.key,
-                        "kind": attachment.kind,
-                        "format": attachment.format
-                    }
-                    for attachment in (bill.attachments or [])
-                ]
-            )
+            "items": [
+                {
+                    "description": item.description,
+                    "quantity": item.quantity,
+                    "rate": item.rate,
+                    "total": item.total,
+                    "kind": item.kind,
+                    "unit": item.unit
+                }
+                for item in (bill.items or [])
+            ],
+            "attachments": [
+                {
+                    "key": attachment.key,
+                    "kind": attachment.kind,
+                    "format": attachment.format
+                }
+                for attachment in (bill.attachments or [])
+            ]
         })
 
     log.info("Posting data to platform.")
