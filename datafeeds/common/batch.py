@@ -25,7 +25,7 @@ def iso_to_dates(start_iso, end_iso):
     elif start_iso:
         start = dateparser.parse(start_iso).date()
     else:
-        start = date(2000, 1, 1)
+        start = date.today() - timedelta(days=365 * 2)
 
     if isinstance(end_iso, date):
         end = end_iso
