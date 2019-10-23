@@ -21,10 +21,10 @@ LOG_URL_PATTERN = "https://snapmeter.com/api/admin/etl-tasks/%s/log"
 
 def _get_es_connection():
     return Elasticsearch(
-        config.ELASTICSEARCH_HOSTS,
+        [dict(host=config.ELASTICSEARCH_HOST, port=config.ELASTICSEARCH_PORT)],
         connection_class=RequestsHttpConnection,
-        http_auth=config.ELASTICSEARCH_AUTH,
-        use_ssl=config.ELASTICSEARCH_SSL
+        http_auth=(config.ELASTICSEARCH_USER, config.ELASTICSEARCH_PASSWORD),
+        use_ssl=True
     )
 
 
@@ -97,7 +97,7 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
         max_dt = max(max_dt, billing_to)
     if max_dt > min_dt:
         doc["maxFetched"] = max_dt
-    log.info("indexing %s (update=%s): %s", task_id, update, doc)
+    log.debug("Transmitted to Elasticsearch: task_id=%s, update=%s, document=%s", task_id, update, doc)
     es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc)
 
 

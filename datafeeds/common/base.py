@@ -1,5 +1,6 @@
 from abc import ABC as Abstract, abstractmethod
 import csv
+import os
 from typing import List
 import logging
 
@@ -96,18 +97,18 @@ class BaseScraper(Abstract):
     def stop(self):
         pass
 
+    # FIXME: Refactor this to just return whatever bills/intervals were acquired.
+    # Passing in the handlers would make sense if this function was responsible for handling
+    # whatever exceptions they might throw. But since it raises and the caller is obliged to
+    # wrap this in a try-catch, there's no benefit to the current interface.
     def scrape(self, readings_handler, bills_handler):
-        log.info("Launching {}".format(self.name, level="info"))
-        log.info("Username:   {}".format(self.username))
-        log.info("Start Date: {}".format(self._iso_str(self.start_date)))
-        log.info("End Date:   {}".format(self._iso_str(self.end_date)))
+        log.info("Launching %s", self.name)
+        if self.username:
+            log.info("Username: %s", self.username)
+        log.info("Date Range: %s - %s", self.start_date.strftime("%Y-%m-%d"), self.end_date.strftime("%Y-%m-%d"))
         log.info("Configuration:")
         for prop, value in vars(self._configuration).items():
-            log.info("\t{}: {}".format(prop, value))
-
-        expected = lambda data: log.error(
-            "Expected to find {} but none were returned".format(data)
-        )
+            log.info("\t%s: %s", prop, value)
 
         try:
             results = self._execute()
@@ -116,51 +117,41 @@ class BaseScraper(Abstract):
                 if results.bills:
                     bills_handler(results.bills)
                 else:
-                    expected("bills")
+                    log.error("Expected to find bills but none were returned.")
 
             if self.scrape_readings:
                 if results.readings:
                     readings_handler(results.readings)
                 else:
-                    expected("readings")
+                    log.error("Expected to find interval data but none was returned.")
 
         except Exception:
             log.exception("Scraper run failed.")
             raise
 
-    def _with_path(self, filename):
-        return "{}/{}".format(config.WORKING_DIRECTORY, filename)
-
-    def log(self, msg="", level="debug"):
-        getattr(log, level)(msg)
-
-    def log_bills(self, bills: List[BillingDatum]):
+    @staticmethod
+    def log_bills(bills: List[BillingDatum]):
         if not bills:
             return
-        with open(self._with_path("bills.csv"), "w") as f:
+        path = os.path.join(config.WORKING_DIRECTORY, "bills.csv")
+        with open(path, "w") as f:
             writer = csv.writer(f)
             writer.writerow(["start", "end", "cost", "used", "peak"])
             for bill in bills:
                 data_row = [bill.start, bill.end, bill.cost, bill.used, bill.peak]
                 writer.writerow(data_row)
 
-    def log_readings(self, readings):
+    @staticmethod
+    def log_readings(readings):
         if not readings:
             return
-        with open(self._with_path("readings.csv"), "w") as f:
+        path = os.path.join(config.WORKING_DIRECTORY, "readings.csv")
+        with open(path, "w") as f:
             keys = sorted(readings.keys())
             writer = csv.writer(f)
             for key in keys:
                 data_row = [key] + readings[key]
                 writer.writerow(data_row)
-
-    @staticmethod
-    def _iso_str(dt):
-        return dt.strftime("%Y-%m-%d")
-
-    @staticmethod
-    def _date_str(dt):
-        return dt.strftime("%m/%d/%Y")
 
 
 class BaseApiScraper(BaseScraper):
