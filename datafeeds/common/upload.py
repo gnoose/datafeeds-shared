@@ -52,14 +52,14 @@ def _upload_to_platform(utility_service_oid: str, billing_data: BillingData):
             "cost": str(bill.cost),
             "used": str(bill.used) if bill.used else "0.0",
             "peak": str(bill.peak) if bill.peak else "0.0",
-            "items": bill.items or [],
-            "attachments": bill.attachments or []
+            "items": [],        # bill.items or [],  FIXME
+            "attachments":  []  # bill.attachments or [] FIXME
         })
 
     log.info("Posting data to platform.")
     platform.post(
         "/object/utility-service/{}/bills/import".format(utility_service_oid),
-        {"bills": bills}
+        {"importance": "product", "bills": bills}
     )
 
 

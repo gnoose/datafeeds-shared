@@ -83,7 +83,7 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading final task status to Elasticsearch.")
-        index.index_etl_run(task_id, {"status": status, "error": error})
+        index.index_etl_run(task_id, {"status": status, "error": error}, update=True)
 
 
 def run_urjanet_datafeed(account: SnapmeterAccount, meter: Meter,
