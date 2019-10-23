@@ -50,8 +50,8 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
     readings_handler = ft.partial(upload_readings, transforms, task_id,
                                   meter.oid, acct_hex_id, scraper_class.__name__)
     date_range = DateRange(*iso_to_dates(
-        params.get("interval_start"),
-        params.get("interval_end")
+        params.get("data_start"),
+        params.get("data_end")
     ))
 
     if datasource.account_data_source:

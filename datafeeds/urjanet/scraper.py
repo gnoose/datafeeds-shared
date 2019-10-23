@@ -58,9 +58,9 @@ def statement_to_s3(source_link, s3_key=None):
             verify=False
         )
 
-        if bill.status_code != 200 or 'content-disposition' not in bill.headers:
+        if bill.status_code != 200 or "content-disposition" not in bill.headers:
             log.info("bill download failed. url=%s, status_code=%d, content-disposition=%s",
-                     bill_link, bill.status_code, bill.headers.get('content-disposition'))
+                     bill_link, bill.status_code, bill.headers.get("content-disposition"))
             return None
     except Exception as e:
         log.info("bill download failed. url=%s, exception=%s", (bill_link, e))

@@ -42,8 +42,8 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
         sys.exit(1)
 
     parameters = {
-        "interval_start": start.strftime("%Y-%m-%d"),
-        "interval_end": end.strftime("%Y-%m-%d")
+        "data_start": start.strftime("%Y-%m-%d"),
+        "data_end": end.strftime("%Y-%m-%d")
     }
 
     task_id = os.environ.get("AWS_BATCH_JOB_ID", uuid.uuid4())
