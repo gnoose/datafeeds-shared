@@ -8,3 +8,4 @@ __pycache__
 urjanet.sql
 .mypy_cache/
 workdir/*
+run.env
