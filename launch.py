@@ -19,6 +19,7 @@ scraper_functions = {
     "watauga-urjanet": datasources.watauga.datafeed,
     "southlake-urjanet": datasources.southlake.datafeed,
     "mountainview-urjanet": datasources.mountainview.datafeed,
+    "austin-tx-urjanet": datasources.austin_tx.datafeed,
 }
 
 
