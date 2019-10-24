@@ -11,7 +11,7 @@ import uuid
 
 import boto3
 
-from common.typing import Status
+from datafeeds.common.typing import Status
 from datafeeds import db, config
 from datafeeds.datasources import southlake, watauga
 from datafeeds.models import SnapmeterMeterDataSource as MeterDataSource

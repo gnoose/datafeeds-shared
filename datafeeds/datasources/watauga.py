@@ -1,6 +1,6 @@
 from typing import Optional
 
-from common.typing import Status
+from datafeeds.common.typing import Status
 from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource as MeterDataSource
 from datafeeds.urjanet.datasource import WataugaDatasource
 from datafeeds.urjanet.transformer import WataugaTransformer

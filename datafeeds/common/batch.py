@@ -5,7 +5,7 @@ from typing import Optional
 
 from dateutil import parser as dateparser
 
-from common.typing import Status
+from datafeeds.common.typing import Status
 from datafeeds import db, config
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds.common import index
