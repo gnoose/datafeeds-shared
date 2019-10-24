@@ -32,7 +32,7 @@ POSTGRES_ECHO: bool = (os.environ.get("POSTGRES_ECHO", "False").lower() == "true
 BILL_PDF_S3_BUCKET = os.environ.get("BILL_PDF_S3_BUCKET")
 
 # Which S3 bucket should store the compressed working directory of artifacts for each scraper run?
-ARTIFACT_S3_BUCKET: str = os.environ.get("ARCHIVE_S3_BUCKET", "gridium-dev-datafeeds-archive")
+ARTIFACT_S3_BUCKET: str = os.environ.get("ARTIFACT_S3_BUCKET", "gridium-dev-datafeeds-archive")
 
 # What are the network details and credentials needed to connect to the urjanet MySQL database?
 URJANET_MYSQL_HOST: str = os.environ.get("URJANET_MYSQL_HOST", "urjanet")

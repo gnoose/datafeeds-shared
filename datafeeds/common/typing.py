@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 from typing import Dict, List, NamedTuple, Optional
 from collections import OrderedDict
 from datetime import date, timedelta
@@ -7,6 +8,11 @@ import logging
 
 
 log = logging.getLogger(__name__)
+
+
+class Status(Enum):
+    SUCCEEDED = 0
+    FAILED = 1
 
 
 class IntervalRange(NamedTuple):
