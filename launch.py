@@ -10,7 +10,6 @@ from datafeeds import db, config
 from datafeeds import datasources
 from datafeeds.models import SnapmeterMeterDataSource as MeterDataSource
 
-
 log = logging.getLogger("datafeeds")
 
 
@@ -20,6 +19,7 @@ scraper_functions = {
     "southlake-urjanet": datasources.southlake.datafeed,
     "mountainview-urjanet": datasources.mountainview.datafeed,
     "austin-tx-urjanet": datasources.austin_tx.datafeed,
+    "american-urjanet": datasources.american.datafeed,
 }
 
 

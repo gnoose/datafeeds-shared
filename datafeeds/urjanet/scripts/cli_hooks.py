@@ -277,6 +277,22 @@ class MountainViewCli(DatasourceCli):
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
 
+
+class AmericanWaterCli(DatasourceCli):
+    __cli_key__ = "american"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            urja_datasource.AmericanWaterDatasource(args.account_number),
+            conn)
+
+    def make_transformer(self):
+        return urja_transformer.AmericanTransformer()
+
+
 class AustinTXCli(DatasourceCli):
     __cli_key__ = "austin-tx"
 

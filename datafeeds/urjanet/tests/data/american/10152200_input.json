@@ -1,0 +1,3742 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "409.0900",
+            "IntervalEnd": "2018-06-07",
+            "IntervalStart": "2018-05-09",
+            "NewCharges": "409.0900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658149,
+            "PreviousBalance": "428.0600",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-a7fd-dcd8-9596-0ee6cfe8086c",
+            "StatementDate": "2018-06-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "409.0900",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "5.5400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-07",
+                    "IntervalStart": "2018-05-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237439797,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "7.9100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-07",
+                    "IntervalStart": "2018-05-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237439798,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-06-07",
+                    "IntervalStart": "2018-05-09",
+                    "MeterNumber": "53633482",
+                    "PK": 20297662,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 553.52",
+                            "ChargeAmount": "13.1200",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "553.5200",
+                            "IntervalEnd": "2018-06-07",
+                            "IntervalStart": "2018-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439799,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0005",
+                            "ChargeUnitsUsed": "55352.0000",
+                            "IntervalEnd": "2018-06-07",
+                            "IntervalStart": "2018-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439800,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 553.52)",
+                            "ChargeAmount": "34.3700",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "553.5200",
+                            "IntervalEnd": "2018-06-07",
+                            "IntervalStart": "2018-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439801,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.54500000 x 553.52)",
+                            "ChargeAmount": "301.6700",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "553.5200",
+                            "IntervalEnd": "2018-06-07",
+                            "IntervalStart": "2018-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439802,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-07",
+                            "IntervalStart": "2018-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439803,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "20.5400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-07",
+                            "IntervalStart": "2018-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439804,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-06-07",
+                            "IntervalStart": "2018-05-09",
+                            "PK": 73086639,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "55352.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "420.9900",
+            "IntervalEnd": "2018-08-09",
+            "IntervalStart": "2018-07-10",
+            "NewCharges": "420.9900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658169,
+            "PreviousBalance": "426.2300",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-d83b-d8dc-9596-0ee6cfe8086c",
+            "StatementDate": "2018-08-13",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "420.9900",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "5.7000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-09",
+                    "IntervalStart": "2018-07-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237439926,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "8.1400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-09",
+                    "IntervalStart": "2018-07-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237439927,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-08-09",
+                    "IntervalStart": "2018-07-10",
+                    "MeterNumber": "53633482",
+                    "PK": 20297685,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 561.00",
+                            "ChargeAmount": "13.3000",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "561.0000",
+                            "IntervalEnd": "2018-08-09",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439928,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0004",
+                            "ChargeUnitsUsed": "56100.0000",
+                            "IntervalEnd": "2018-08-09",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439929,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 561.00)",
+                            "ChargeAmount": "34.8400",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "561.0000",
+                            "IntervalEnd": "2018-08-09",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439930,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.54500000 x 561.00)",
+                            "ChargeAmount": "305.7500",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "561.0000",
+                            "IntervalEnd": "2018-08-09",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439931,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-09",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439932,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "27.3200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-09",
+                            "IntervalStart": "2018-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237439933,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-08-09",
+                            "IntervalStart": "2018-07-10",
+                            "PK": 73086655,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "56100.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "114.7400",
+            "IntervalEnd": "2019-04-05",
+            "IntervalStart": "2019-03-13",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658199,
+            "PreviousBalance": "52.6500",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-c37e-dcc4-9596-0ee6cfe8086c",
+            "StatementDate": "2019-04-10",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "114.7400",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "1.5500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-05",
+                    "IntervalStart": "2019-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440115,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "2.2200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-05",
+                    "IntervalStart": "2019-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440116,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-04-05",
+                    "IntervalStart": "2019-03-13",
+                    "MeterNumber": "53633482",
+                    "PK": 20297719,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Water Usage Charge (134.64 x $0.5191)",
+                            "ChargeAmount": "69.8900",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "134.6400",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440117,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account",
+                            "ChargeAmount": "4.2400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440118,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "19.5100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440119,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "0.9500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440120,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "8.0200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440121,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge (134.64 x $0.0621)",
+                            "ChargeAmount": "8.3600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440122,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-04-05",
+                            "IntervalStart": "2019-03-13",
+                            "PK": 73086683,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "13464.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "209.0800",
+            "IntervalEnd": "2017-09-07",
+            "IntervalStart": "2017-08-09",
+            "NewCharges": "209.0800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658220,
+            "PreviousBalance": "225.4700",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-f4a4-d7b8-9596-0ee6cfe8086c",
+            "StatementDate": "2017-09-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "209.0800",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "2.9000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-07",
+                    "IntervalStart": "2017-08-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440254,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "4.0200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-07",
+                    "IntervalStart": "2017-08-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440255,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-09-07",
+                    "IntervalStart": "2017-08-09",
+                    "MeterNumber": "53633482",
+                    "PK": 20297744,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.04060000 x 276.76)",
+                            "ChargeAmount": "11.2400",
+                            "ChargeRatePerUnit": "0.0406",
+                            "ChargeUnitsUsed": "276.7600",
+                            "IntervalEnd": "2017-09-07",
+                            "IntervalStart": "2017-08-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440256,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 276.76",
+                            "ChargeAmount": "6.5600",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "276.7600",
+                            "IntervalEnd": "2017-09-07",
+                            "IntervalStart": "2017-08-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440257,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.2000",
+                            "ChargeRatePerUnit": "0.0009",
+                            "ChargeUnitsUsed": "27676.0000",
+                            "IntervalEnd": "2017-09-07",
+                            "IntervalStart": "2017-08-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440258,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Conservation Surcharge ($0.00390000 x 276.76)",
+                            "ChargeAmount": "1.0800",
+                            "ChargeRatePerUnit": "0.0039",
+                            "ChargeUnitsUsed": "276.7600",
+                            "IntervalEnd": "2017-09-07",
+                            "IntervalStart": "2017-08-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440259,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.53330000 x 276.76)",
+                            "ChargeAmount": "147.6000",
+                            "ChargeRatePerUnit": "0.5333",
+                            "ChargeUnitsUsed": "276.7600",
+                            "IntervalEnd": "2017-09-07",
+                            "IntervalStart": "2017-08-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440260,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-09-07",
+                            "IntervalStart": "2017-08-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440261,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "10.2700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-09-07",
+                            "IntervalStart": "2017-08-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440262,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2017-09-07",
+                            "IntervalStart": "2017-08-09",
+                            "PK": 73086700,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "27676.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "428.0600",
+            "IntervalEnd": "2018-05-08",
+            "IntervalStart": "2018-04-07",
+            "NewCharges": "428.0600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658249,
+            "PreviousBalance": "98.8100",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-dafc-d037-9596-0ee6cfe8086c",
+            "StatementDate": "2018-05-10",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "428.0600",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "5.8000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-08",
+                    "IntervalStart": "2018-04-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440448,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "8.2800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-08",
+                    "IntervalStart": "2018-04-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440449,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-05-08",
+                    "IntervalStart": "2018-04-07",
+                    "MeterNumber": "53633482",
+                    "PK": 20297781,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 598.40)",
+                            "ChargeAmount": "37.1600",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "598.4000",
+                            "IntervalEnd": "2018-05-08",
+                            "IntervalStart": "2018-04-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440450,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 598.40",
+                            "ChargeAmount": "14.1800",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "598.4000",
+                            "IntervalEnd": "2018-05-08",
+                            "IntervalStart": "2018-04-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440451,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 05/01/18 to 05/08/18 ($0.54500000 x 149.60)",
+                            "ChargeAmount": "81.5300",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "149.6000",
+                            "IntervalEnd": "2018-05-08",
+                            "IntervalStart": "2018-05-01",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440452,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0004",
+                            "ChargeUnitsUsed": "59840.0000",
+                            "IntervalEnd": "2018-05-08",
+                            "IntervalStart": "2018-04-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440453,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 04/07/18 to 04/30/18 ($0.51910000 x 448.80)",
+                            "ChargeAmount": "232.9700",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "448.8000",
+                            "IntervalEnd": "2018-04-30",
+                            "IntervalStart": "2018-04-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440454,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-08",
+                            "IntervalStart": "2018-04-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440455,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "22.2000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-08",
+                            "IntervalStart": "2018-04-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440456,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-05-08",
+                            "IntervalStart": "2018-04-07",
+                            "PK": 73086728,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "59840.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "426.2300",
+            "IntervalEnd": "2018-07-09",
+            "IntervalStart": "2018-06-08",
+            "NewCharges": "426.2300",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658270,
+            "PreviousBalance": "409.0900",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3db0-1020-d9b3-9596-0ee6cfe8086c",
+            "StatementDate": "2018-07-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "426.2300",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "5.7700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-09",
+                    "IntervalStart": "2018-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440588,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "8.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-09",
+                    "IntervalStart": "2018-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440589,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-07-09",
+                    "IntervalStart": "2018-06-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20297807,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 568.48",
+                            "ChargeAmount": "13.4700",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "568.4800",
+                            "IntervalEnd": "2018-07-09",
+                            "IntervalStart": "2018-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440590,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0004",
+                            "ChargeUnitsUsed": "56848.0000",
+                            "IntervalEnd": "2018-07-09",
+                            "IntervalStart": "2018-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440591,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 568.48)",
+                            "ChargeAmount": "35.3000",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "568.4800",
+                            "IntervalEnd": "2018-07-09",
+                            "IntervalStart": "2018-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440592,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.54500000 x 568.48)",
+                            "ChargeAmount": "309.8200",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "568.4800",
+                            "IntervalEnd": "2018-07-09",
+                            "IntervalStart": "2018-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440593,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-09",
+                            "IntervalStart": "2018-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440594,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "27.6800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-09",
+                            "IntervalStart": "2018-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440595,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-07-09",
+                            "IntervalStart": "2018-06-08",
+                            "PK": 73086745,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "56848.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "360.8900",
+            "IntervalEnd": "2019-01-08",
+            "IntervalStart": "2018-12-08",
+            "NewCharges": "360.8900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658281,
+            "PreviousBalance": "258.1000",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dad-b0d8-dc1d-9596-0ee6cfe8086c",
+            "StatementDate": "2019-01-10",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "360.8900",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "4.8900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-08",
+                    "IntervalStart": "2018-12-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440655,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "6.9800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-08",
+                    "IntervalStart": "2018-12-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440656,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-01-08",
+                    "IntervalStart": "2018-12-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20297821,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 486.20",
+                            "ChargeAmount": "11.5200",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "486.2000",
+                            "IntervalEnd": "2019-01-08",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440657,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0005",
+                            "ChargeUnitsUsed": "48620.0000",
+                            "IntervalEnd": "2019-01-08",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440658,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 486.20)",
+                            "ChargeAmount": "30.1900",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "486.2000",
+                            "IntervalEnd": "2019-01-08",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440659,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.51910000 x 486.20)",
+                            "ChargeAmount": "252.3900",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "486.2000",
+                            "IntervalEnd": "2019-01-08",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440660,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-08",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440661,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "28.9800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-08",
+                            "IntervalStart": "2018-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440662,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-01-08",
+                            "IntervalStart": "2018-12-08",
+                            "PK": 73086755,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "48620.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "219.6600",
+            "IntervalEnd": "2019-07-09",
+            "IntervalStart": "2019-06-08",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658300,
+            "PreviousBalance": "179.7000",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-f6c1-d5fe-9596-0ee6cfe8086c",
+            "StatementDate": "2019-07-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "219.6600",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "2.5900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-09",
+                    "IntervalStart": "2019-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440771,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "4.2100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-09",
+                    "IntervalStart": "2019-06-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440772,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-07-09",
+                    "IntervalStart": "2019-06-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20297846,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Conservation Surcharge (254.32 x $0.0094)",
+                            "ChargeAmount": "2.3900",
+                            "ChargeRatePerUnit": "0.0094",
+                            "ChargeUnitsUsed": "254.3200",
+                            "IntervalEnd": "2019-07-09",
+                            "IntervalStart": "2019-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440773,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge (254.32 x $0.5978)",
+                            "ChargeAmount": "152.0300",
+                            "ChargeRatePerUnit": "0.5978",
+                            "ChargeUnitsUsed": "254.3200",
+                            "IntervalEnd": "2019-07-09",
+                            "IntervalStart": "2019-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440774,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account",
+                            "ChargeAmount": "8.9000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-09",
+                            "IntervalStart": "2019-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440775,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "25.1000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-09",
+                            "IntervalStart": "2019-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440776,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.8100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-09",
+                            "IntervalStart": "2019-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440777,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "6.8400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-09",
+                            "IntervalStart": "2019-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440778,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge (254.32 x $0.0621)",
+                            "ChargeAmount": "15.7900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-09",
+                            "IntervalStart": "2019-06-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440779,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-07-09",
+                            "IntervalStart": "2019-06-08",
+                            "PK": 73086771,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "25432.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "272.9500",
+            "IntervalEnd": "2017-12-07",
+            "IntervalStart": "2017-11-08",
+            "NewCharges": "272.9500",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658320,
+            "PreviousBalance": "246.6600",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3db0-2c90-ddbf-9596-0ee6cfe8086c",
+            "StatementDate": "2017-12-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "272.9500",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "3.7800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-07",
+                    "IntervalStart": "2017-11-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440910,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "5.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-07",
+                    "IntervalStart": "2017-11-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440911,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-12-07",
+                    "IntervalStart": "2017-11-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20297871,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.04060000 x 388.96)",
+                            "ChargeAmount": "15.7900",
+                            "ChargeRatePerUnit": "0.0406",
+                            "ChargeUnitsUsed": "388.9600",
+                            "IntervalEnd": "2017-12-07",
+                            "IntervalStart": "2017-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440912,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 388.96",
+                            "ChargeAmount": "9.2200",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "388.9600",
+                            "IntervalEnd": "2017-12-07",
+                            "IntervalStart": "2017-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440913,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.2000",
+                            "ChargeRatePerUnit": "0.0006",
+                            "ChargeUnitsUsed": "38896.0000",
+                            "IntervalEnd": "2017-12-07",
+                            "IntervalStart": "2017-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440914,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Conservation Surcharge ($0.00390000 x 388.96)",
+                            "ChargeAmount": "1.5200",
+                            "ChargeRatePerUnit": "0.0039",
+                            "ChargeUnitsUsed": "388.9600",
+                            "IntervalEnd": "2017-12-07",
+                            "IntervalStart": "2017-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440915,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.50790000 x 388.96)",
+                            "ChargeAmount": "197.5500",
+                            "ChargeRatePerUnit": "0.5079",
+                            "ChargeUnitsUsed": "388.9600",
+                            "IntervalEnd": "2017-12-07",
+                            "IntervalStart": "2017-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440916,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-12-07",
+                            "IntervalStart": "2017-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440917,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "14.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-12-07",
+                            "IntervalStart": "2017-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440918,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2017-12-07",
+                            "IntervalStart": "2017-11-08",
+                            "PK": 73086788,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "38896.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "258.1000",
+            "IntervalEnd": "2018-12-07",
+            "IntervalStart": "2018-11-08",
+            "NewCharges": "258.1000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658331,
+            "PreviousBalance": "313.2200",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dad-cf5a-dcb9-9596-0ee6cfe8086c",
+            "StatementDate": "2018-12-12",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "258.1000",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "3.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-07",
+                    "IntervalStart": "2018-11-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440985,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "4.9900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-07",
+                    "IntervalStart": "2018-11-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237440986,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-12-07",
+                    "IntervalStart": "2018-11-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20297886,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 336.60",
+                            "ChargeAmount": "7.9800",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "336.6000",
+                            "IntervalEnd": "2018-12-07",
+                            "IntervalStart": "2018-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440987,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0007",
+                            "ChargeUnitsUsed": "33660.0000",
+                            "IntervalEnd": "2018-12-07",
+                            "IntervalStart": "2018-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440988,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 336.60)",
+                            "ChargeAmount": "20.9000",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "336.6000",
+                            "IntervalEnd": "2018-12-07",
+                            "IntervalStart": "2018-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440989,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.51910000 x 336.60)",
+                            "ChargeAmount": "174.7300",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "336.6000",
+                            "IntervalEnd": "2018-12-07",
+                            "IntervalStart": "2018-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440990,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-07",
+                            "IntervalStart": "2018-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440991,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "20.0600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-07",
+                            "IntervalStart": "2018-11-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237440992,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-12-07",
+                            "IntervalStart": "2018-11-08",
+                            "PK": 73086798,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "33660.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "98.8100",
+            "IntervalEnd": "2018-04-06",
+            "IntervalStart": "2018-03-09",
+            "NewCharges": "98.8100",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658350,
+            "PreviousBalance": "173.7800",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-10ca-d644-9596-0ee6cfe8086c",
+            "StatementDate": "2018-04-10",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "98.8100",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "1.3400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-06",
+                    "IntervalStart": "2018-03-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441097,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "1.9100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-06",
+                    "IntervalStart": "2018-03-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441098,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-04-06",
+                    "IntervalStart": "2018-03-09",
+                    "MeterNumber": "53633482",
+                    "PK": 20297911,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 112.20",
+                            "ChargeAmount": "2.6600",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "112.2000",
+                            "IntervalEnd": "2018-04-06",
+                            "IntervalStart": "2018-03-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441099,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0022",
+                            "ChargeUnitsUsed": "11220.0000",
+                            "IntervalEnd": "2018-04-06",
+                            "IntervalStart": "2018-03-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441100,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.04060000 x 112.20)",
+                            "ChargeAmount": "4.5600",
+                            "ChargeRatePerUnit": "0.0406",
+                            "ChargeUnitsUsed": "112.2000",
+                            "IntervalEnd": "2018-04-06",
+                            "IntervalStart": "2018-03-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441101,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.51910000 x 112.20)",
+                            "ChargeAmount": "58.2400",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "112.2000",
+                            "IntervalEnd": "2018-04-06",
+                            "IntervalStart": "2018-03-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441102,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-06",
+                            "IntervalStart": "2018-03-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441103,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "4.1600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-06",
+                            "IntervalStart": "2018-03-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441104,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-04-06",
+                            "IntervalStart": "2018-03-09",
+                            "PK": 73086814,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "11220.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "52.6500",
+            "IntervalEnd": "2019-03-12",
+            "IntervalStart": "2019-02-08",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658381,
+            "PreviousBalance": "78.2200",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dad-ed1e-d675-9596-0ee6cfe8086c",
+            "StatementDate": "2019-03-18",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "52.6500",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "0.7100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-12",
+                    "IntervalStart": "2019-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441309,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "1.0200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-12",
+                    "IntervalStart": "2019-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441310,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-03-12",
+                    "IntervalStart": "2019-02-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20297949,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account 02/08/19 to 02/25/19 (20.4 x $0.0237)",
+                            "ChargeAmount": "0.4800",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "20.4000",
+                            "IntervalEnd": "2019-02-25",
+                            "IntervalStart": "2019-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441311,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account 02/26/19 to 03/12/19 (17 x $0.0315)",
+                            "ChargeAmount": "0.5400",
+                            "ChargeRatePerUnit": "0.0315",
+                            "ChargeUnitsUsed": "17.0000",
+                            "IntervalEnd": "2019-03-12",
+                            "IntervalStart": "2019-02-26",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441312,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge (37.4 x $0.5191)",
+                            "ChargeAmount": "19.4100",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "37.4000",
+                            "IntervalEnd": "2019-03-12",
+                            "IntervalStart": "2019-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441313,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-12",
+                            "IntervalStart": "2019-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441314,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-12",
+                            "IntervalStart": "2019-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441315,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "2.2300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-12",
+                            "IntervalStart": "2019-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441316,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge (37.4 x $0.0621)",
+                            "ChargeAmount": "2.3200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-12",
+                            "IntervalStart": "2019-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441317,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-03-12",
+                            "IntervalStart": "2019-02-08",
+                            "PK": 73086843,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "3740.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "179.7000",
+            "IntervalEnd": "2019-06-07",
+            "IntervalStart": "2019-05-09",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658400,
+            "PreviousBalance": "247.2600",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-2bfa-dd22-9596-0ee6cfe8086c",
+            "StatementDate": "2019-06-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "179.7000",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "2.1200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-07",
+                    "IntervalStart": "2019-05-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441431,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "3.4500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-07",
+                    "IntervalStart": "2019-05-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441432,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-06-07",
+                    "IntervalStart": "2019-05-09",
+                    "MeterNumber": "53633482",
+                    "PK": 20297973,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Water Usage Charge 05/11/19 to 06/07/19 (188.5 x $0.5978)",
+                            "ChargeAmount": "112.6900",
+                            "ChargeRatePerUnit": "0.5978",
+                            "ChargeUnitsUsed": "188.5000",
+                            "IntervalEnd": "2019-06-07",
+                            "IntervalStart": "2019-05-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441433,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Conservation Surcharge (188.5 x $0.0094)",
+                            "ChargeAmount": "1.7700",
+                            "ChargeRatePerUnit": "0.0094",
+                            "ChargeUnitsUsed": "188.5000",
+                            "IntervalEnd": "2019-06-07",
+                            "IntervalStart": "2019-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441434,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 05/09/19 to 05/10/19 (13.46 x $0.545)",
+                            "ChargeAmount": "7.3400",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "13.4600",
+                            "IntervalEnd": "2019-05-10",
+                            "IntervalStart": "2019-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441435,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account",
+                            "ChargeAmount": "7.0700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-07",
+                            "IntervalStart": "2019-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441436,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge 05/09/19 to 05/10/19",
+                            "ChargeAmount": "1.6500",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-10",
+                            "IntervalStart": "2019-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441437,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge 05/09/19 to 05/10/19",
+                            "ChargeAmount": "0.8000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-10",
+                            "IntervalStart": "2019-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441438,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge 05/11/19 to 06/07/19",
+                            "ChargeAmount": "5.0700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-07",
+                            "IntervalStart": "2019-05-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441439,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge 05/11/19 to 06/07/19",
+                            "ChargeAmount": "23.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-07",
+                            "IntervalStart": "2019-05-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441440,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water 05/09/19 to 05/10/19",
+                            "ChargeAmount": "0.0800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-10",
+                            "IntervalStart": "2019-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441441,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water 05/11/19 to 06/07/19",
+                            "ChargeAmount": "1.6900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-07",
+                            "IntervalStart": "2019-05-11",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441442,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge (201.96 x $0.0621)",
+                            "ChargeAmount": "12.5400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-07",
+                            "IntervalStart": "2019-05-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441443,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-06-07",
+                            "IntervalStart": "2019-05-09",
+                            "PK": 73086859,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "20196.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "78.2200",
+            "IntervalEnd": "2019-02-07",
+            "IntervalStart": "2019-01-09",
+            "NewCharges": "78.2200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658431,
+            "PreviousBalance": "360.8900",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-0869-dbea-9596-0ee6cfe8086c",
+            "StatementDate": "2019-02-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "78.2200",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "1.0600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-07",
+                    "IntervalStart": "2019-01-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441634,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "1.5100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-07",
+                    "IntervalStart": "2019-01-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441635,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-02-07",
+                    "IntervalStart": "2019-01-09",
+                    "MeterNumber": "53633482",
+                    "PK": 20298011,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 74.80)",
+                            "ChargeAmount": "1.7700",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "74.8000",
+                            "IntervalEnd": "2019-02-07",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441636,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0033",
+                            "ChargeUnitsUsed": "7480.0000",
+                            "IntervalEnd": "2019-02-07",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441637,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 74.80)",
+                            "ChargeAmount": "4.6500",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "74.8000",
+                            "IntervalEnd": "2019-02-07",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441638,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.51910000 x 74.80)",
+                            "ChargeAmount": "38.8300",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "74.8000",
+                            "IntervalEnd": "2019-02-07",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441639,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-07",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441640,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "4.4600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-07",
+                            "IntervalStart": "2019-01-09",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441641,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-02-07",
+                            "IntervalStart": "2019-01-09",
+                            "PK": 73086887,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "7480.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "173.7800",
+            "IntervalEnd": "2018-03-08",
+            "IntervalStart": "2018-02-08",
+            "NewCharges": "173.7800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658450,
+            "PreviousBalance": "218.7800",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-48b4-d628-9596-0ee6cfe8086c",
+            "StatementDate": "2018-03-12",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "173.7800",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Intervenor Comp Schg NRDC",
+                    "ChargeAmount": "2.9400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-08",
+                    "IntervalStart": "2018-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441741,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "2.3100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-08",
+                    "IntervalStart": "2018-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441742,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Intervenor Comp Schg CFC",
+                    "ChargeAmount": "0.0300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-08",
+                    "IntervalStart": "2018-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441743,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "3.3100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-08",
+                    "IntervalStart": "2018-02-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441744,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-03-08",
+                    "IntervalStart": "2018-02-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20298035,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 224.40",
+                            "ChargeAmount": "5.3200",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "224.4000",
+                            "IntervalEnd": "2018-03-08",
+                            "IntervalStart": "2018-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441745,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0011",
+                            "ChargeUnitsUsed": "22440.0000",
+                            "IntervalEnd": "2018-03-08",
+                            "IntervalStart": "2018-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441746,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.04060000 x 224.40)",
+                            "ChargeAmount": "9.1100",
+                            "ChargeRatePerUnit": "0.0406",
+                            "ChargeUnitsUsed": "224.4000",
+                            "IntervalEnd": "2018-03-08",
+                            "IntervalStart": "2018-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441747,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.51910000 x 224.40)",
+                            "ChargeAmount": "116.4900",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "224.4000",
+                            "IntervalEnd": "2018-03-08",
+                            "IntervalStart": "2018-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441748,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-08",
+                            "IntervalStart": "2018-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441749,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "8.3300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-08",
+                            "IntervalStart": "2018-02-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441750,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-03-08",
+                            "IntervalStart": "2018-02-08",
+                            "PK": 73086902,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "22440.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "313.2200",
+            "IntervalEnd": "2018-11-07",
+            "IntervalStart": "2018-10-10",
+            "NewCharges": "313.2200",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658480,
+            "PreviousBalance": "294.8600",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-240c-deb6-9596-0ee6cfe8086c",
+            "StatementDate": "2018-11-09",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "313.2200",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "4.2400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-07",
+                    "IntervalStart": "2018-10-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441966,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "6.0600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-07",
+                    "IntervalStart": "2018-10-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237441967,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-11-07",
+                    "IntervalStart": "2018-10-10",
+                    "MeterNumber": "53633482",
+                    "PK": 20298071,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 411.40)",
+                            "ChargeAmount": "25.5500",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "411.4000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441968,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 411.40",
+                            "ChargeAmount": "9.7500",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "411.4000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441969,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 11/01/18 to 11/07/18 ($0.51910000 x 99.30)",
+                            "ChargeAmount": "51.5500",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "99.3000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-11-01",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441970,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0006",
+                            "ChargeUnitsUsed": "41140.0000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441971,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 10/10/18 to 10/31/18 ($0.54500000 x 312.10)",
+                            "ChargeAmount": "170.0900",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "312.1000",
+                            "IntervalEnd": "2018-10-31",
+                            "IntervalStart": "2018-10-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441972,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441973,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "20.0400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237441974,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-11-07",
+                            "IntervalStart": "2018-10-10",
+                            "PK": 73086929,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "41140.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "294.8600",
+            "IntervalEnd": "2018-10-09",
+            "IntervalStart": "2018-09-12",
+            "NewCharges": "294.8600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658498,
+            "PreviousBalance": "363.1700",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-6564-d211-9596-0ee6cfe8086c",
+            "StatementDate": "2018-10-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "294.8600",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "3.9900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-09",
+                    "IntervalStart": "2018-09-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442131,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "5.7100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-09",
+                    "IntervalStart": "2018-09-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442132,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-10-09",
+                    "IntervalStart": "2018-09-12",
+                    "MeterNumber": "53633482",
+                    "PK": 20298093,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 381.48",
+                            "ChargeAmount": "9.0400",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "381.4800",
+                            "IntervalEnd": "2018-10-09",
+                            "IntervalStart": "2018-09-12",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442133,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0007",
+                            "ChargeUnitsUsed": "38148.0000",
+                            "IntervalEnd": "2018-10-09",
+                            "IntervalStart": "2018-09-12",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442134,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 381.48)",
+                            "ChargeAmount": "23.6900",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "381.4800",
+                            "IntervalEnd": "2018-10-09",
+                            "IntervalStart": "2018-09-12",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442135,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.54500000 x 381.48)",
+                            "ChargeAmount": "207.9100",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "381.4800",
+                            "IntervalEnd": "2018-10-09",
+                            "IntervalStart": "2018-09-12",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442136,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-09",
+                            "IntervalStart": "2018-09-12",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442137,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "18.5800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-09",
+                            "IntervalStart": "2018-09-12",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442138,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-10-09",
+                            "IntervalStart": "2018-09-12",
+                            "PK": 73086944,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "38148.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "218.7800",
+            "IntervalEnd": "2018-02-07",
+            "IntervalStart": "2018-01-10",
+            "NewCharges": "218.7800",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658528,
+            "PreviousBalance": "335.6400",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-40de-dd5d-9596-0ee6cfe8086c",
+            "StatementDate": "2018-02-12",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "218.7800",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "2.9600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-07",
+                    "IntervalStart": "2018-01-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442329,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "4.2300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-07",
+                    "IntervalStart": "2018-01-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442330,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-02-07",
+                    "IntervalStart": "2018-01-10",
+                    "MeterNumber": "53633482",
+                    "PK": 20298131,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 299.20",
+                            "ChargeAmount": "7.0900",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "299.2000",
+                            "IntervalEnd": "2018-02-07",
+                            "IntervalStart": "2018-01-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442331,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0008",
+                            "ChargeUnitsUsed": "29920.0000",
+                            "IntervalEnd": "2018-02-07",
+                            "IntervalStart": "2018-01-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442332,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.04060000 x 299.20)",
+                            "ChargeAmount": "12.1500",
+                            "ChargeRatePerUnit": "0.0406",
+                            "ChargeUnitsUsed": "299.2000",
+                            "IntervalEnd": "2018-02-07",
+                            "IntervalStart": "2018-01-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442333,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.51910000 x 299.20)",
+                            "ChargeAmount": "155.3100",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "299.2000",
+                            "IntervalEnd": "2018-02-07",
+                            "IntervalStart": "2018-01-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442334,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-07",
+                            "IntervalStart": "2018-01-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442335,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "11.1000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-07",
+                            "IntervalStart": "2018-01-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442336,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-02-07",
+                            "IntervalStart": "2018-01-10",
+                            "PK": 73086974,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "29920.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "246.6600",
+            "IntervalEnd": "2017-11-07",
+            "IntervalStart": "2017-10-07",
+            "NewCharges": "246.6600",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658546,
+            "PreviousBalance": "149.7900",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-8224-df2d-9596-0ee6cfe8086c",
+            "StatementDate": "2017-11-10",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "246.6600",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "3.4200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-07",
+                    "IntervalStart": "2017-10-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442437,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "4.7400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-07",
+                    "IntervalStart": "2017-10-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442438,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-11-07",
+                    "IntervalStart": "2017-10-07",
+                    "MeterNumber": "53633482",
+                    "PK": 20298154,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 336.60",
+                            "ChargeAmount": "7.9800",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "336.6000",
+                            "IntervalEnd": "2017-11-07",
+                            "IntervalStart": "2017-10-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442439,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Conservation Surcharge ($0.00390000 x 336.60)",
+                            "ChargeAmount": "1.3100",
+                            "ChargeRatePerUnit": "0.0039",
+                            "ChargeUnitsUsed": "336.6000",
+                            "IntervalEnd": "2017-11-07",
+                            "IntervalStart": "2017-10-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442440,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.04060000 x 336.60)",
+                            "ChargeAmount": "13.6700",
+                            "ChargeRatePerUnit": "0.0406",
+                            "ChargeUnitsUsed": "336.6000",
+                            "IntervalEnd": "2017-11-07",
+                            "IntervalStart": "2017-10-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442441,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 11/01/17 to 11/07/17 ($0.50790000 x 73.63)",
+                            "ChargeAmount": "37.4000",
+                            "ChargeRatePerUnit": "0.5079",
+                            "ChargeUnitsUsed": "73.6300",
+                            "IntervalEnd": "2017-11-07",
+                            "IntervalStart": "2017-11-01",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442442,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.2000",
+                            "ChargeRatePerUnit": "0.0007",
+                            "ChargeUnitsUsed": "33660.0000",
+                            "IntervalEnd": "2017-11-07",
+                            "IntervalStart": "2017-10-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442443,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 10/07/17 to 10/31/17 ($0.53330000 x 262.97)",
+                            "ChargeAmount": "140.2400",
+                            "ChargeRatePerUnit": "0.5333",
+                            "ChargeUnitsUsed": "262.9700",
+                            "IntervalEnd": "2017-10-31",
+                            "IntervalStart": "2017-10-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442444,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-11-07",
+                            "IntervalStart": "2017-10-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442445,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "12.4900",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-11-07",
+                            "IntervalStart": "2017-10-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442446,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2017-11-07",
+                            "IntervalStart": "2017-10-07",
+                            "PK": 73086988,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "33660.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "335.6400",
+            "IntervalEnd": "2018-01-09",
+            "IntervalStart": "2017-12-08",
+            "NewCharges": "335.6400",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658575,
+            "PreviousBalance": "272.9500",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-73f0-d919-9596-0ee6cfe8086c",
+            "StatementDate": "2018-01-15",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "335.6400",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "4.5300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-09",
+                    "IntervalStart": "2017-12-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442634,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "6.4600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-09",
+                    "IntervalStart": "2017-12-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442635,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-01-09",
+                    "IntervalStart": "2017-12-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20298188,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.04060000 x 486.20)",
+                            "ChargeAmount": "19.7400",
+                            "ChargeRatePerUnit": "0.0406",
+                            "ChargeUnitsUsed": "486.2000",
+                            "IntervalEnd": "2018-01-09",
+                            "IntervalStart": "2017-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442636,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 486.20",
+                            "ChargeAmount": "11.5200",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "486.2000",
+                            "IntervalEnd": "2018-01-09",
+                            "IntervalStart": "2017-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442637,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge 01/01/18 to 01/09/18",
+                            "ChargeAmount": "6.7400",
+                            "ChargeRatePerUnit": "0.0001",
+                            "ChargeUnitsUsed": "48620.0000",
+                            "IntervalEnd": "2018-01-09",
+                            "IntervalStart": "2018-01-01",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442638,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Conservation Surcharge ($0.00390000 x 353.60)",
+                            "ChargeAmount": "1.3800",
+                            "ChargeRatePerUnit": "0.0039",
+                            "ChargeUnitsUsed": "353.6000",
+                            "IntervalEnd": "2018-01-09",
+                            "IntervalStart": "2017-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442639,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 01/01/18 to 01/09/18 ($0.51910000 x 132.60)",
+                            "ChargeAmount": "68.8300",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "132.6000",
+                            "IntervalEnd": "2018-01-09",
+                            "IntervalStart": "2018-01-01",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442640,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge 12/08/17 to 12/31/17",
+                            "ChargeAmount": "17.6000",
+                            "ChargeRatePerUnit": "0.0004",
+                            "ChargeUnitsUsed": "48620.0000",
+                            "IntervalEnd": "2017-12-31",
+                            "IntervalStart": "2017-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442641,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 12/08/17 to 12/31/17 ($0.50790000 x 353.60)",
+                            "ChargeAmount": "179.5900",
+                            "ChargeRatePerUnit": "0.5079",
+                            "ChargeUnitsUsed": "353.6000",
+                            "IntervalEnd": "2017-12-31",
+                            "IntervalStart": "2017-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442642,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-01-09",
+                            "IntervalStart": "2017-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442643,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "18.0400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-01-09",
+                            "IntervalStart": "2017-12-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442644,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-01-09",
+                            "IntervalStart": "2017-12-08",
+                            "PK": 73087015,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "48620.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "363.1700",
+            "IntervalEnd": "2018-09-11",
+            "IntervalStart": "2018-08-10",
+            "NewCharges": "363.1700",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658594,
+            "PreviousBalance": "420.9900",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-9dde-d1d5-9596-0ee6cfe8086c",
+            "StatementDate": "2018-09-13",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "363.1700",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "4.9200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-11",
+                    "IntervalStart": "2018-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442752,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "7.0200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-11",
+                    "IntervalStart": "2018-08-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442753,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-09-11",
+                    "IntervalStart": "2018-08-10",
+                    "MeterNumber": "53633482",
+                    "PK": 20298212,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 478.72",
+                            "ChargeAmount": "11.3500",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "478.7200",
+                            "IntervalEnd": "2018-09-11",
+                            "IntervalStart": "2018-08-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442754,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0005",
+                            "ChargeUnitsUsed": "47872.0000",
+                            "IntervalEnd": "2018-09-11",
+                            "IntervalStart": "2018-08-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442755,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.06210000 x 478.72)",
+                            "ChargeAmount": "29.7300",
+                            "ChargeRatePerUnit": "0.0621",
+                            "ChargeUnitsUsed": "478.7200",
+                            "IntervalEnd": "2018-09-11",
+                            "IntervalStart": "2018-08-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442756,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.54500000 x 478.72)",
+                            "ChargeAmount": "260.9000",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "478.7200",
+                            "IntervalEnd": "2018-09-11",
+                            "IntervalStart": "2018-08-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442757,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-11",
+                            "IntervalStart": "2018-08-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442758,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "23.3100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-11",
+                            "IntervalStart": "2018-08-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442759,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-09-11",
+                            "IntervalStart": "2018-08-10",
+                            "PK": 73087030,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "47872.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "247.2600",
+            "IntervalEnd": "2019-05-08",
+            "IntervalStart": "2019-04-06",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658623,
+            "PreviousBalance": "114.7400",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3dae-8fa2-d6a7-9596-0ee6cfe8086c",
+            "StatementDate": "2019-05-13",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "247.2600",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "3.3500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-08",
+                    "IntervalStart": "2019-04-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442927,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "4.7800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-08",
+                    "IntervalStart": "2019-04-06",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237442928,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-05-08",
+                    "IntervalStart": "2019-04-06",
+                    "MeterNumber": "53633482",
+                    "PK": 20298251,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Water Usage Charge 05/01/19 to 05/08/19 (76.16 x $0.545)",
+                            "ChargeAmount": "41.5100",
+                            "ChargeRatePerUnit": "0.5450",
+                            "ChargeUnitsUsed": "76.1600",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-05-01",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442929,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge 04/06/19 to 04/30/19 (238 x $0.5191)",
+                            "ChargeAmount": "123.5500",
+                            "ChargeRatePerUnit": "0.5191",
+                            "ChargeUnitsUsed": "238.0000",
+                            "IntervalEnd": "2019-04-30",
+                            "IntervalStart": "2019-04-06",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442930,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account",
+                            "ChargeAmount": "9.9000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-06",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442931,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.7300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-06",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442932,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-06",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442933,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "18.7200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-06",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442934,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge (314.16 x $0.0621)",
+                            "ChargeAmount": "19.5100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-06",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237442935,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-05-08",
+                            "IntervalStart": "2019-04-06",
+                            "PK": 73087057,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "31416.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "149.7900",
+            "IntervalEnd": "2017-10-06",
+            "IntervalStart": "2017-09-08",
+            "NewCharges": "149.7900",
+            "OutstandingBalance": "0.0000",
+            "PK": 5658641,
+            "PreviousBalance": "209.0800",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3daf-bcb8-d0b1-9596-0ee6cfe8086c",
+            "StatementDate": "2017-10-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "149.7900",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "2.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-06",
+                    "IntervalStart": "2017-09-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237443043,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "2.8800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-06",
+                    "IntervalStart": "2017-09-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237443044,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-10-06",
+                    "IntervalStart": "2017-09-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20298273,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge ($0.04060000 x 187.00)",
+                            "ChargeAmount": "7.5900",
+                            "ChargeRatePerUnit": "0.0406",
+                            "ChargeUnitsUsed": "187.0000",
+                            "IntervalEnd": "2017-10-06",
+                            "IntervalStart": "2017-09-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237443045,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account ($0.02370000 x 187.00",
+                            "ChargeAmount": "4.4300",
+                            "ChargeRatePerUnit": "0.0237",
+                            "ChargeUnitsUsed": "187.0000",
+                            "IntervalEnd": "2017-10-06",
+                            "IntervalStart": "2017-09-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237443046,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "24.2000",
+                            "ChargeRatePerUnit": "0.0013",
+                            "ChargeUnitsUsed": "18700.0000",
+                            "IntervalEnd": "2017-10-06",
+                            "IntervalStart": "2017-09-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237443047,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Conservation Surcharge ($0.00390000 x 187.00)",
+                            "ChargeAmount": "0.7300",
+                            "ChargeRatePerUnit": "0.0039",
+                            "ChargeUnitsUsed": "187.0000",
+                            "IntervalEnd": "2017-10-06",
+                            "IntervalStart": "2017-09-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237443048,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge ($0.53330000 x 187.00)",
+                            "ChargeAmount": "99.7300",
+                            "ChargeRatePerUnit": "0.5333",
+                            "ChargeUnitsUsed": "187.0000",
+                            "IntervalEnd": "2017-10-06",
+                            "IntervalStart": "2017-09-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237443049,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.2100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-10-06",
+                            "IntervalStart": "2017-09-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237443050,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "6.9400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2017-10-06",
+                            "IntervalStart": "2017-09-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237443051,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2017-10-06",
+                            "IntervalStart": "2017-09-08",
+                            "PK": 73087073,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total water used this billing period",
+                            "UsageAmount": "18700.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "150.4800",
+            "IntervalEnd": "2019-09-06",
+            "IntervalStart": "2019-08-08",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5659840,
+            "PreviousBalance": "173.9200",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d60f0-5443-d41b-9c2a-0ee6cfe8086c",
+            "StatementDate": "2019-09-11",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "150.4800",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "TCJA ADIT Surcredit",
+                    "ChargeAmount": "-1.4200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-06",
+                    "IntervalStart": "2019-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237482284,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "1.7700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-06",
+                    "IntervalStart": "2019-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237482285,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "2.8900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-06",
+                    "IntervalStart": "2019-08-08",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237482286,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-09-06",
+                    "IntervalStart": "2019-08-08",
+                    "MeterNumber": "53633482",
+                    "PK": 20302936,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Conservation Surcharge (164.56 x $0.0094)",
+                            "ChargeAmount": "1.5500",
+                            "ChargeRatePerUnit": "0.0094",
+                            "ChargeUnitsUsed": "164.5600",
+                            "IntervalEnd": "2019-09-06",
+                            "IntervalStart": "2019-08-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237482287,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge (164.56 x $0.5978)",
+                            "ChargeAmount": "98.3700",
+                            "ChargeRatePerUnit": "0.5978",
+                            "ChargeUnitsUsed": "164.5600",
+                            "IntervalEnd": "2019-09-06",
+                            "IntervalStart": "2019-08-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237482288,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account",
+                            "ChargeAmount": "5.7600",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-09-06",
+                            "IntervalStart": "2019-08-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237482289,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "25.1000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-09-06",
+                            "IntervalStart": "2019-08-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237482290,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.8100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-09-06",
+                            "IntervalStart": "2019-08-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237482291,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "4.4300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-09-06",
+                            "IntervalStart": "2019-08-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237482292,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge (164.56 x $0.0621)",
+                            "ChargeAmount": "10.2200",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-09-06",
+                            "IntervalStart": "2019-08-08",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237482293,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-09-06",
+                            "IntervalStart": "2019-08-08",
+                            "PK": 73097642,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "16456.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "1015220015100140",
+            "AmountDue": "173.9200",
+            "IntervalEnd": "2019-08-07",
+            "IntervalStart": "2019-07-10",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5660291,
+            "PreviousBalance": "219.6600",
+            "RawAccountNumber": "1015-220015100140",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d3cc0-7e4e-d0f9-97bc-0ee6cfe8086c",
+            "StatementDate": "2019-08-09",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "173.9200",
+            "UtilityProvider": "AmericanWater",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Commission Surcharge Adj",
+                    "ChargeAmount": "-0.6000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-07",
+                    "IntervalStart": "2019-07-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237490769,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Commission Surcharge",
+                    "ChargeAmount": "2.0600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-07",
+                    "IntervalStart": "2019-07-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237490770,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "County Franchise Taxes",
+                    "ChargeAmount": "3.3400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-07",
+                    "IntervalStart": "2019-07-10",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237490771,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-08-07",
+                    "IntervalStart": "2019-07-10",
+                    "MeterNumber": "53633482",
+                    "PK": 20304091,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Conservation Surcharge (194.48 x $0.0094)",
+                            "ChargeAmount": "1.8300",
+                            "ChargeRatePerUnit": "0.0094",
+                            "ChargeUnitsUsed": "194.4800",
+                            "IntervalEnd": "2019-08-07",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237490772,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Water Usage Charge (194.48 x $0.5978)",
+                            "ChargeAmount": "116.2600",
+                            "ChargeRatePerUnit": "0.5978",
+                            "ChargeUnitsUsed": "194.4800",
+                            "IntervalEnd": "2019-08-07",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237490773,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "HGAL"
+                        },
+                        {
+                            "ChargeActualName": "Consolidated Expense Balancing Account",
+                            "ChargeAmount": "6.8100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-07",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237490774,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water Service Charge",
+                            "ChargeAmount": "25.1000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-07",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237490775,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Payment Assistance Surcharge Water",
+                            "ChargeAmount": "1.8100",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-07",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237490776,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Purchased Water Surcharge",
+                            "ChargeAmount": "5.2300",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-07",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237490777,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "WRAM/MCBA Surcharge (194.48 x $0.0621)",
+                            "ChargeAmount": "12.0800",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-07",
+                            "IntervalStart": "2019-07-10",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237490778,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-08-07",
+                            "IntervalStart": "2019-07-10",
+                            "PK": 73100844,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "19448.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
