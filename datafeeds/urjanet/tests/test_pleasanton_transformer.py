@@ -21,7 +21,7 @@ class TestUrjanetPleasantonTransformer(test_util.UrjaFixtureText):
 
     def test_4097_fixture(self):
         """Tests the water transformer on account Pleasanton."""
-        self.pleasanton_fixture_test("4097_input.json", "4097_expected.json")
+        self.pleasanton_fixture_test("input_4097.json", "expected_4097.json")
 
 
 if __name__ == "__main__":
