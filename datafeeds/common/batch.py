@@ -5,6 +5,7 @@ from typing import Optional
 
 from dateutil import parser as dateparser
 
+from common.typing import Status
 from datafeeds import db, config
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds.common import index
@@ -15,6 +16,7 @@ from datafeeds.models import Meter, SnapmeterAccount, \
     SnapmeterMeterDataSource as MeterDataSource, \
     SnapmeterAccountDataSource as AccountDataSource
 from datafeeds.common.upload import upload_bills, upload_readings
+
 
 log = logging.getLogger("datafeeds")
 
@@ -42,7 +44,7 @@ def iso_to_dates(start_iso, end_iso):
 
 def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
                  datasource: MeterDataSource, params: dict, configuration=None,
-                 task_id=None, transforms=None):
+                 task_id=None, transforms=None) -> Status:
     acct_hex_id = account.hex_id if account else ""
     acct_name = account.name if account else ""
 
@@ -76,21 +78,26 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
         with scraper_class(credentials, date_range, configuration) as scraper:
             scraper.scrape(readings_handler=readings_handler, bills_handler=bill_handler)
             status = "SUCCESS"
+            retval = Status.SUCCEEDED
+
     except Exception as exc:
         log.exception("Scraper run failed.")
         status = "FAILURE"
+        retval = Status.FAILED
         error = repr(exc)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading final task status to Elasticsearch.")
         index.index_etl_run(task_id, {"status": status, "error": error}, update=True)
 
+    return retval
+
 
 def run_urjanet_datafeed(account: SnapmeterAccount, meter: Meter,
                          datasource: MeterDataSource, params: dict,
                          urja_datasource: UrjanetPyMySqlDataSource,
                          transformer: UrjanetGridiumTransformer,
-                         task_id: Optional[str] = None):
+                         task_id: Optional[str] = None) -> Status:
     conn = db.urjanet_connection()
 
     try:
@@ -102,7 +109,7 @@ def run_urjanet_datafeed(account: SnapmeterAccount, meter: Meter,
             fetch_attachments=True
         )
 
-        run_datafeed(
+        return run_datafeed(
             BaseUrjanetScraper,
             account,
             meter,

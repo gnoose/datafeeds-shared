@@ -1,11 +1,17 @@
 import argparse
-import logging
-import os
-import sys
-import uuid
+import shutil
+import zipfile
 from argparse import Namespace
 from datetime import datetime, date
+import logging
+import os
+import subprocess
+import sys
+import uuid
 
+import boto3
+
+from common.typing import Status
 from datafeeds import db, config
 from datafeeds.datasources import southlake, watauga
 from datafeeds.models import SnapmeterMeterDataSource as MeterDataSource
@@ -21,7 +27,48 @@ scraper_functions = {
 }
 
 
+def cleanup_workdir():
+    try:
+        subprocess.check_output("rm -r *", stderr=subprocess.STDOUT, cwd=config.WORKING_DIRECTORY, shell=True)
+    except subprocess.CalledProcessError as e:  # noqa E722
+        log.error("Failed to clear working directory %s. Output: %s", config.WORKING_DIRECTORY, e.output)
+
+
+def archive_run(task_id: str):
+    """Write the files acquired during the scraper run to S3."""
+
+    # Copy the scraper process log into the archive bundle if available."""
+    logpath = os.path.join(config.DATAFEEDS_ROOT, config.DATAFEEDS_LOG_NAME)
+    if os.path.isfile(logpath):
+        dest = os.path.join(config.WORKING_DIRECTORY, config.DATAFEEDS_LOG_NAME)
+        shutil.copy(logpath, dest)
+
+    zip_filename = "{}.zip".format(task_id)
+    archive_path = os.path.join(config.WORKING_DIRECTORY, zip_filename)
+
+    try:
+        zipf = zipfile.ZipFile(archive_path, "w", zipfile.ZIP_DEFLATED)
+        for root, dirs, files in os.walk(config.WORKING_DIRECTORY):
+            for filename in files:
+                if filename != zip_filename:
+                    archive_name = os.path.join(root, filename) \
+                        .replace(config.WORKING_DIRECTORY, task_id)
+                    zipf.write(os.path.join(root, filename), arcname=archive_name)
+        zipf.close()
+    except:  # noqa E722
+        log.exception("Failed to compress artifacts in archive %s.", zip_filename)
+        raise
+
+    try:
+        boto3.resource("s3").meta.client.upload_file(archive_path, config.ARTIFACT_S3_BUCKET, zip_filename)
+        log.info("Successfully uploaded archive %s to S3 bucket %s.", archive_path, config.ARTIFACT_S3_BUCKET)
+    except:  # noqa E722
+        log.exception("Failed to upload archive %s to S3 bucket %s.", zip_filename, config.ARTIFACT_S3_BUCKET)
+        raise
+
+
 def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
+    db.init()
     mds = db.session.query(MeterDataSource).get(meter_data_source_oid)
 
     if mds is None:
@@ -58,7 +105,17 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
     log.debug("Elasticsearch Credentials: %s : %s", config.ELASTICSEARCH_USER, config.ELASTICSEARCH_PASSWORD)
     log.info("Platform Host/Port: %s : %s", config.PLATFORM_HOST, config.PLATFORM_PORT)
 
-    scraper_fn(account, meter, mds, parameters, task_id=task_id)
+    cleanup_workdir()
+    try:
+        status = scraper_fn(account, meter, mds, parameters, task_id=task_id)
+        if config.enabled("S3_ARTIFACT_UPLOAD"):
+            archive_run(task_id)
+    except:  # noqa=E722
+        log.exception("The scraper run has failed due to an unhandled exception.")
+        status = Status.FAILED
+
+    db.session.close()
+    sys.exit(status.value)
 
 
 def launch_by_oid_args(args: Namespace):
@@ -86,6 +143,4 @@ def main():
 
 
 if __name__ == "__main__":
-    db.init()
     main()
-    sys.exit(0)
