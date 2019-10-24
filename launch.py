@@ -93,7 +93,7 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
         "data_end": end.strftime("%Y-%m-%d")
     }
 
-    task_id = os.environ.get("AWS_BATCH_JOB_ID", uuid.uuid4())
+    task_id = os.environ.get("AWS_BATCH_JOB_ID", str(uuid.uuid4()))
 
     log.info("Scraper Launch Settings:")
     log.info("Enabled Features: %s", config.FEATURE_FLAGS)
