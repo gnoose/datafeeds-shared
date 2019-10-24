@@ -20,6 +20,7 @@ scraper_functions = {
     "mountainview-urjanet": datasources.mountainview.datafeed,
     "austin-tx-urjanet": datasources.austin_tx.datafeed,
     "american-urjanet": datasources.american.datafeed,
+    "pleasanton-urjanet": datasources.pleasanton.datafeed,
 }
 
 

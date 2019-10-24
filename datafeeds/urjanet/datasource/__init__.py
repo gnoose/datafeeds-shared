@@ -15,10 +15,12 @@ from .watauga import WataugaDatasource
 from .mountainview import MountainViewDatasource
 from .austin_tx import AustinTXWaterDatasource
 from .american import AmericanWaterDatasource
+from .pleasanton import PleasantonDatasource
+
 
 __all__ = ["UrjanetDataSource", "UrjanetPyMySqlDataSource", "PacificGasElectricDataSource",
            "LadwpWaterDatasource", "SfpucWaterDatasource", "FosterCityWaterDatasource",
            "ColleyvilleWaterDatasource", "FortWorthWaterDatasource", "SjWaterDatasource",
            "SanDiegoWaterDatasource", "IrvineRanchWaterDatasource", "CalWaterDatasource",
            "SouthlakeDatasource", "WataugaDatasource", "MountainViewDatasource",
-           "AustinTXWaterDatasource", "AmericanWaterDatasource"]
+           "AustinTXWaterDatasource", "AmericanWaterDatasource", "PleasantonDatasource"]
