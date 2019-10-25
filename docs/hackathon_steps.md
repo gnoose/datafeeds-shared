@@ -97,7 +97,7 @@ Make sure you have:
 10. Run your transformer on the extracted data. Review and compare to PDF version of bills.
 
     ```
-    python transform_urja_json.py ../tests/data/watauga/input_07292000.json > ../tests/data/watauga/expected_07292000.json
+    python transform_urja_json.py ../tests/data/watauga/input_07292000.json watauga > ../tests/data/watauga/expected_07292000.json
     ```
 
 11. Write a test; see [TestUrjanetWataugaTransformer](https://github.com/Gridium/datafeeds/blob/master/datafeeds/urjanet/tests/test_urjanet_watauga_transformer.py)

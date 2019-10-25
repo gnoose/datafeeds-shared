@@ -261,3 +261,65 @@ class CalWaterCli(DatasourceCli):
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
+
+
+class MountainViewCli(DatasourceCli):
+    __cli_key__ = "mountainview"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            urja_datasource.MountainViewDatasource(args.account_number),
+            conn)
+
+    def make_transformer(self):
+        return urja_transformer.GenericWaterTransformer()
+
+
+class PleasantonCli(DatasourceCli):
+    __cli_key__ = "pleasanton"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            urja_datasource.PleasantonDatasource(args.account_number),
+            conn)
+
+    def make_transformer(self):
+        return urja_transformer.GenericWaterTransformer()
+
+
+class AmericanWaterCli(DatasourceCli):
+    __cli_key__ = "american"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            urja_datasource.AmericanWaterDatasource(args.account_number),
+            conn)
+
+    def make_transformer(self):
+        return urja_transformer.AmericanTransformer()
+
+
+class AustinTXCli(DatasourceCli):
+    __cli_key__ = "austin-tx"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("commodity_type")
+        parser.add_argument("meter_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            urja_datasource.AustinTXWaterDatasource(args.account_number, args.commodity_type, args.meter_number),
+            conn)
+
+    def make_transformer(self):
+        return urja_transformer.AustinTXTransformer()

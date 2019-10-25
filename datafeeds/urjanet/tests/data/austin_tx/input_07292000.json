@@ -1,0 +1,2914 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1614.0700",
+            "IntervalEnd": "2018-08-23",
+            "IntervalStart": "2018-07-23",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "-45.3600",
+            "PK": 5660970,
+            "PreviousBalance": "-45.3600",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-641f-d68e-99b9-0e7827f74e98",
+            "StatementDate": "2018-08-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1614.0700",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-23",
+                    "IntervalStart": "2018-07-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503450,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-23",
+                    "IntervalStart": "2018-07-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503451,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-08-23",
+                    "IntervalStart": "2018-07-23",
+                    "MeterNumber": "234114",
+                    "PK": 20304905,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "74,400 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "3.7200",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "74400.0000",
+                            "IntervalEnd": "2018-08-23",
+                            "IntervalStart": "2018-07-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503457,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "74,400 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "11.1600",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "74400.0000",
+                            "IntervalEnd": "2018-08-23",
+                            "IntervalStart": "2018-07-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503458,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "74,400 Gallons at $5.66 per 1,000 - On Peak",
+                            "ChargeAmount": "421.1000",
+                            "ChargeRatePerUnit": "5.6600",
+                            "ChargeUnitsUsed": "74400.0000",
+                            "IntervalEnd": "2018-08-23",
+                            "IntervalStart": "2018-07-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503459,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-23",
+                            "IntervalStart": "2018-07-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503460,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-23",
+                            "IntervalStart": "2018-07-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503461,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-08-23",
+                            "IntervalStart": "2018-07-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503462,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-08-23",
+                            "IntervalStart": "2018-07-23",
+                            "PK": 73104000,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "74400.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1735.4600",
+            "IntervalEnd": "2019-03-22",
+            "IntervalStart": "2019-02-21",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5660978,
+            "PreviousBalance": "1598.6700",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-6485-df49-99b9-0e7827f74e98",
+            "StatementDate": "2019-03-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1735.4600",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-22",
+                    "IntervalStart": "2019-02-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503612,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-22",
+                    "IntervalStart": "2019-02-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503613,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-03-22",
+                    "IntervalStart": "2019-02-21",
+                    "MeterNumber": "234114",
+                    "PK": 20304927,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "87,900 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.4000",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "87900.0000",
+                            "IntervalEnd": "2019-03-22",
+                            "IntervalStart": "2019-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503619,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "87,900 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "13.1900",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "87900.0000",
+                            "IntervalEnd": "2019-03-22",
+                            "IntervalStart": "2019-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503620,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "87,900 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "463.2300",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "87900.0000",
+                            "IntervalEnd": "2019-03-22",
+                            "IntervalStart": "2019-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503621,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-22",
+                            "IntervalStart": "2019-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503622,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-22",
+                            "IntervalStart": "2019-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503623,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-03-22",
+                            "IntervalStart": "2019-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503624,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-03-22",
+                            "IntervalStart": "2019-02-21",
+                            "PK": 73104035,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "87900.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1577.2600",
+            "IntervalEnd": "2018-03-21",
+            "IntervalStart": "2018-02-21",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5660983,
+            "PreviousBalance": "1612.6800",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-612f-d743-99b9-0e7827f74e98",
+            "StatementDate": "2018-03-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1577.2600",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-21",
+                    "IntervalStart": "2018-02-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503690,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-21",
+                    "IntervalStart": "2018-02-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503691,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-03-21",
+                    "IntervalStart": "2018-02-21",
+                    "MeterNumber": "234114",
+                    "PK": 20304939,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "73,000 Gallons at $0.19 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "13.8700",
+                            "ChargeRatePerUnit": "0.1900",
+                            "ChargeUnitsUsed": "73000.0000",
+                            "IntervalEnd": "2018-03-21",
+                            "IntervalStart": "2018-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503697,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "73,000 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "10.9500",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "73000.0000",
+                            "IntervalEnd": "2018-03-21",
+                            "IntervalStart": "2018-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503698,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "73,000 Gallons at $5.82 per 1,000 - Off Peak",
+                            "ChargeAmount": "424.8600",
+                            "ChargeRatePerUnit": "5.8200",
+                            "ChargeUnitsUsed": "73000.0000",
+                            "IntervalEnd": "2018-03-21",
+                            "IntervalStart": "2018-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503699,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "86.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-21",
+                            "IntervalStart": "2018-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503700,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 5 @ $2.60 ea",
+                            "ChargeAmount": "13.0000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-21",
+                            "IntervalStart": "2018-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503701,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "42.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-03-21",
+                            "IntervalStart": "2018-02-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503702,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-03-21",
+                            "IntervalStart": "2018-02-21",
+                            "PK": 73104055,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "73000.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1973.1400",
+            "IntervalEnd": "2019-04-23",
+            "IntervalStart": "2019-03-22",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5660986,
+            "PreviousBalance": "1735.4600",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-64c2-dff4-99b9-0e7827f74e98",
+            "StatementDate": "2019-04-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1973.1400",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-23",
+                    "IntervalStart": "2019-03-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503761,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-23",
+                    "IntervalStart": "2019-03-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503762,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-04-23",
+                    "IntervalStart": "2019-03-22",
+                    "MeterNumber": "234114",
+                    "PK": 20304949,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "95,700 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.7900",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "95700.0000",
+                            "IntervalEnd": "2019-04-23",
+                            "IntervalStart": "2019-03-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503768,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "95,700 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "14.3600",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "95700.0000",
+                            "IntervalEnd": "2019-04-23",
+                            "IntervalStart": "2019-03-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503769,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "95,700 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "504.3400",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "95700.0000",
+                            "IntervalEnd": "2019-04-23",
+                            "IntervalStart": "2019-03-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503770,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-23",
+                            "IntervalStart": "2019-03-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503771,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-23",
+                            "IntervalStart": "2019-03-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503772,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-04-23",
+                            "IntervalStart": "2019-03-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503773,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-04-23",
+                            "IntervalStart": "2019-03-22",
+                            "PK": 73104068,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "95700.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1612.6800",
+            "IntervalEnd": "2018-02-21",
+            "IntervalStart": "2018-01-23",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5660991,
+            "PreviousBalance": "2070.0600",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-61ae-d6a2-99b9-0e7827f74e98",
+            "StatementDate": "2018-02-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1612.6800",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-21",
+                    "IntervalStart": "2018-01-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503856,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-21",
+                    "IntervalStart": "2018-01-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503857,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-02-21",
+                    "IntervalStart": "2018-01-23",
+                    "MeterNumber": "234114",
+                    "PK": 20304963,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "75,700 Gallons at $0.19 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "14.3800",
+                            "ChargeRatePerUnit": "0.1900",
+                            "ChargeUnitsUsed": "75700.0000",
+                            "IntervalEnd": "2018-02-21",
+                            "IntervalStart": "2018-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503863,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "75,700 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "11.3600",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "75700.0000",
+                            "IntervalEnd": "2018-02-21",
+                            "IntervalStart": "2018-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503864,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "75,700 Gallons at $5.82 per 1,000 - Off Peak",
+                            "ChargeAmount": "440.5700",
+                            "ChargeRatePerUnit": "5.8200",
+                            "ChargeUnitsUsed": "75700.0000",
+                            "IntervalEnd": "2018-02-21",
+                            "IntervalStart": "2018-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503865,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "86.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-21",
+                            "IntervalStart": "2018-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503866,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 5 @ $2.60 ea",
+                            "ChargeAmount": "13.0000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-21",
+                            "IntervalStart": "2018-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503867,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "42.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-02-21",
+                            "IntervalStart": "2018-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503868,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-02-21",
+                            "IntervalStart": "2018-01-23",
+                            "PK": 73104089,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "75700.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1806.8500",
+            "IntervalEnd": "2019-01-23",
+            "IntervalStart": "2018-12-20",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5660994,
+            "PreviousBalance": "1534.7800",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-64fd-d88f-99b9-0e7827f74e98",
+            "StatementDate": "2019-01-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1806.8500",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-23",
+                    "IntervalStart": "2018-12-20",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503930,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-23",
+                    "IntervalStart": "2018-12-20",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237503931,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-01-23",
+                    "IntervalStart": "2018-12-20",
+                    "MeterNumber": "234114",
+                    "PK": 20304973,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "92,600 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.6300",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "92600.0000",
+                            "IntervalEnd": "2019-01-23",
+                            "IntervalStart": "2018-12-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503937,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "92,600 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "13.8900",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "92600.0000",
+                            "IntervalEnd": "2019-01-23",
+                            "IntervalStart": "2018-12-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503938,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "92,600 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "488.0000",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "92600.0000",
+                            "IntervalEnd": "2019-01-23",
+                            "IntervalStart": "2018-12-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503939,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-23",
+                            "IntervalStart": "2018-12-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503940,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-23",
+                            "IntervalStart": "2018-12-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503941,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-01-23",
+                            "IntervalStart": "2018-12-20",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237503942,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-01-23",
+                            "IntervalStart": "2018-12-20",
+                            "PK": 73104102,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "92600.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1598.3500",
+            "IntervalEnd": "2018-05-22",
+            "IntervalStart": "2018-04-23",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5660999,
+            "PreviousBalance": "1898.4500",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-6214-de61-99b9-0e7827f74e98",
+            "StatementDate": "2018-05-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1598.3500",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-22",
+                    "IntervalStart": "2018-04-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504025,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-22",
+                    "IntervalStart": "2018-04-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504026,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-05-22",
+                    "IntervalStart": "2018-04-23",
+                    "MeterNumber": "234114",
+                    "PK": 20304987,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "77,100 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "3.8600",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "77100.0000",
+                            "IntervalEnd": "2018-05-22",
+                            "IntervalStart": "2018-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504032,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "77,100 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "11.5700",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "77100.0000",
+                            "IntervalEnd": "2018-05-22",
+                            "IntervalStart": "2018-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504033,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "77,100 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "406.3200",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "77100.0000",
+                            "IntervalEnd": "2018-05-22",
+                            "IntervalStart": "2018-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504034,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-22",
+                            "IntervalStart": "2018-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504035,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 5 @ $2.60 ea",
+                            "ChargeAmount": "13.0000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-22",
+                            "IntervalStart": "2018-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504036,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-05-22",
+                            "IntervalStart": "2018-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504037,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-05-22",
+                            "IntervalStart": "2018-04-23",
+                            "PK": 73104123,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "77100.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1598.6700",
+            "IntervalEnd": "2019-02-21",
+            "IntervalStart": "2019-01-23",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661002,
+            "PreviousBalance": "1806.8500",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-653d-d04a-99b9-0e7827f74e98",
+            "StatementDate": "2019-03-05",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1598.6700",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-21",
+                    "IntervalStart": "2019-01-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504112,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-21",
+                    "IntervalStart": "2019-01-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504113,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-02-21",
+                    "IntervalStart": "2019-01-23",
+                    "MeterNumber": "234114",
+                    "PK": 20304998,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "80,400 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.0200",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "80400.0000",
+                            "IntervalEnd": "2019-02-21",
+                            "IntervalStart": "2019-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504119,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "80,400 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "12.0600",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "80400.0000",
+                            "IntervalEnd": "2019-02-21",
+                            "IntervalStart": "2019-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504120,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "80,400 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "423.7100",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "80400.0000",
+                            "IntervalEnd": "2019-02-21",
+                            "IntervalStart": "2019-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504121,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-21",
+                            "IntervalStart": "2019-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504122,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-21",
+                            "IntervalStart": "2019-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504123,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-02-21",
+                            "IntervalStart": "2019-01-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504124,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-02-21",
+                            "IntervalStart": "2019-01-23",
+                            "PK": 73104138,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "80400.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1898.4500",
+            "IntervalEnd": "2018-04-23",
+            "IntervalStart": "2018-03-21",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661007,
+            "PreviousBalance": "1577.2600",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-6276-d900-99b9-0e7827f74e98",
+            "StatementDate": "2018-04-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1898.4500",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-23",
+                    "IntervalStart": "2018-03-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504206,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-23",
+                    "IntervalStart": "2018-03-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504207,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-04-23",
+                    "IntervalStart": "2018-03-21",
+                    "MeterNumber": "234114",
+                    "PK": 20305012,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "86,500 Gallons at $0.19 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "16.4400",
+                            "ChargeRatePerUnit": "0.1900",
+                            "ChargeUnitsUsed": "86500.0000",
+                            "IntervalEnd": "2018-04-23",
+                            "IntervalStart": "2018-03-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504213,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "86,500 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "12.9800",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "86500.0000",
+                            "IntervalEnd": "2018-04-23",
+                            "IntervalStart": "2018-03-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504214,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "86,500 Gallons at $5.82 per 1,000 - Off Peak",
+                            "ChargeAmount": "503.4300",
+                            "ChargeRatePerUnit": "5.8200",
+                            "ChargeUnitsUsed": "86500.0000",
+                            "IntervalEnd": "2018-04-23",
+                            "IntervalStart": "2018-03-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504215,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "86.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-23",
+                            "IntervalStart": "2018-03-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504216,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 5 @ $2.60 ea",
+                            "ChargeAmount": "13.0000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-23",
+                            "IntervalStart": "2018-03-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504217,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "42.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-04-23",
+                            "IntervalStart": "2018-03-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504218,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-04-23",
+                            "IntervalStart": "2018-03-21",
+                            "PK": 73104159,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "86500.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "2044.5300",
+            "IntervalEnd": "2019-07-24",
+            "IntervalStart": "2019-06-21",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661010,
+            "PreviousBalance": "1885.7300",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-6570-d4b5-99b9-0e7827f74e98",
+            "StatementDate": "2019-07-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "2044.5300",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-24",
+                    "IntervalStart": "2019-06-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504280,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-24",
+                    "IntervalStart": "2019-06-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504281,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-07-24",
+                    "IntervalStart": "2019-06-21",
+                    "MeterNumber": "234114",
+                    "PK": 20305022,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "89,900 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.5000",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "89900.0000",
+                            "IntervalEnd": "2019-07-24",
+                            "IntervalStart": "2019-06-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504287,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "89,900 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "13.4900",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "89900.0000",
+                            "IntervalEnd": "2019-07-24",
+                            "IntervalStart": "2019-06-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504288,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "89,900 Gallons at $5.66 per 1,000 - On Peak",
+                            "ChargeAmount": "508.8300",
+                            "ChargeRatePerUnit": "5.6600",
+                            "ChargeUnitsUsed": "89900.0000",
+                            "IntervalEnd": "2019-07-24",
+                            "IntervalStart": "2019-06-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504289,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-24",
+                            "IntervalStart": "2019-06-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504290,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-24",
+                            "IntervalStart": "2019-06-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504291,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-07-24",
+                            "IntervalStart": "2019-06-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504292,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-07-24",
+                            "IntervalStart": "2019-06-21",
+                            "PK": 73104172,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "89900.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "-45.3600",
+            "IntervalEnd": "2018-07-23",
+            "IntervalStart": "2018-06-22",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "-1875.7500",
+            "PK": 5661015,
+            "PreviousBalance": "1875.7500",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-62bf-dcff-99b9-0e7827f74e98",
+            "StatementDate": "2018-07-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "-45.3600",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-23",
+                    "IntervalStart": "2018-06-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504375,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-23",
+                    "IntervalStart": "2018-06-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504376,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-07-23",
+                    "IntervalStart": "2018-06-22",
+                    "MeterNumber": "234114",
+                    "PK": 20305036,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "84,300 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.2200",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "84300.0000",
+                            "IntervalEnd": "2018-07-23",
+                            "IntervalStart": "2018-06-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504382,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "84,300 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "12.6500",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "84300.0000",
+                            "IntervalEnd": "2018-07-23",
+                            "IntervalStart": "2018-06-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504383,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "84,300 Gallons at $5.66 per 1,000 - On Peak",
+                            "ChargeAmount": "477.1400",
+                            "ChargeRatePerUnit": "5.6600",
+                            "ChargeUnitsUsed": "84300.0000",
+                            "IntervalEnd": "2018-07-23",
+                            "IntervalStart": "2018-06-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504384,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-23",
+                            "IntervalStart": "2018-06-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504385,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-23",
+                            "IntervalStart": "2018-06-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504386,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-07-23",
+                            "IntervalStart": "2018-06-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504387,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-07-23",
+                            "IntervalStart": "2018-06-22",
+                            "PK": 73104193,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "84300.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "2428.9100",
+            "IntervalEnd": "2016-01-22",
+            "IntervalStart": "2015-12-21",
+            "NewCharges": "2428.9100",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661018,
+            "PreviousBalance": "2405.7000",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-65e0-d9cb-99b9-0e7827f74e98",
+            "StatementDate": "2016-01-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "2428.9100",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "6.7000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-01-22",
+                    "IntervalStart": "2015-12-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504450,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "14.7500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-01-22",
+                    "IntervalStart": "2015-12-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504451,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-01-22",
+                    "IntervalStart": "2015-12-21",
+                    "MeterNumber": "234114",
+                    "PK": 20305046,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "101,400 Gallons at $0.19 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "19.2700",
+                            "ChargeRatePerUnit": "0.1900",
+                            "ChargeUnitsUsed": "101400.0000",
+                            "IntervalEnd": "2016-01-22",
+                            "IntervalStart": "2015-12-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504458,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "101,400 Gallons at $5.82 per 1,000 - Off Peak",
+                            "ChargeAmount": "590.1500",
+                            "ChargeRatePerUnit": "5.8200",
+                            "ChargeUnitsUsed": "101400.0000",
+                            "IntervalEnd": "2016-01-22",
+                            "IntervalStart": "2015-12-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504459,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "87.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-01-22",
+                            "IntervalStart": "2015-12-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504460,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-01-22",
+                            "IntervalStart": "2015-12-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504461,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "41.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-01-22",
+                            "IntervalStart": "2015-12-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504462,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water - Late Payment Fees",
+                            "ChargeAmount": "23.1400",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-01-22",
+                            "IntervalStart": "2015-12-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504463,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Water - Late Payment Fees",
+                            "ChargeAmount": "17.0700",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2016-01-22",
+                            "IntervalStart": "2015-12-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504464,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2016-01-22",
+                            "IntervalStart": "2015-12-21",
+                            "PK": 73104206,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "101400.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1751.5600",
+            "IntervalEnd": "2018-11-21",
+            "IntervalStart": "2018-10-22",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661023,
+            "PreviousBalance": "2177.2000",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-62fc-ddae-99b9-0e7827f74e98",
+            "StatementDate": "2018-11-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1751.5600",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-21",
+                    "IntervalStart": "2018-10-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504545,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-21",
+                    "IntervalStart": "2018-10-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504546,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-11-21",
+                    "IntervalStart": "2018-10-22",
+                    "MeterNumber": "234114",
+                    "PK": 20305060,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "88,200 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.4100",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "88200.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504552,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "88,200 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "13.2300",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "88200.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504553,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "88,200 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "464.8100",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "88200.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504554,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504555,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504556,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504557,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-11-21",
+                            "IntervalStart": "2018-10-22",
+                            "PK": 73104227,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "88200.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1757.1900",
+            "IntervalEnd": "2019-05-22",
+            "IntervalStart": "2019-04-23",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661026,
+            "PreviousBalance": "1973.1400",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-6611-d71b-99b9-0e7827f74e98",
+            "StatementDate": "2019-05-29",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1757.1900",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-22",
+                    "IntervalStart": "2019-04-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504619,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-22",
+                    "IntervalStart": "2019-04-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504620,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-05-22",
+                    "IntervalStart": "2019-04-23",
+                    "MeterNumber": "234114",
+                    "PK": 20305070,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "72,800 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "3.6400",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "72800.0000",
+                            "IntervalEnd": "2019-05-22",
+                            "IntervalStart": "2019-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504626,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "72,800 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "10.9200",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "72800.0000",
+                            "IntervalEnd": "2019-05-22",
+                            "IntervalStart": "2019-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504627,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "72,800 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "383.6600",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "72800.0000",
+                            "IntervalEnd": "2019-05-22",
+                            "IntervalStart": "2019-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504628,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-22",
+                            "IntervalStart": "2019-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504629,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-22",
+                            "IntervalStart": "2019-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504630,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-05-22",
+                            "IntervalStart": "2019-04-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504631,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-05-22",
+                            "IntervalStart": "2019-04-23",
+                            "PK": 73104240,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "72800.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1875.7500",
+            "IntervalEnd": "2018-06-22",
+            "IntervalStart": "2018-05-22",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661031,
+            "PreviousBalance": "1598.3500",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-633c-d569-99b9-0e7827f74e98",
+            "StatementDate": "2018-06-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1875.7500",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-22",
+                    "IntervalStart": "2018-05-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504714,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-22",
+                    "IntervalStart": "2018-05-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504715,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-06-22",
+                    "IntervalStart": "2018-05-22",
+                    "MeterNumber": "234114",
+                    "PK": 20305084,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "88,400 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.4200",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "88400.0000",
+                            "IntervalEnd": "2018-06-22",
+                            "IntervalStart": "2018-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504721,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "88,400 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "13.2600",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "88400.0000",
+                            "IntervalEnd": "2018-06-22",
+                            "IntervalStart": "2018-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504722,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "88,400 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "465.8700",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "88400.0000",
+                            "IntervalEnd": "2018-06-22",
+                            "IntervalStart": "2018-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504723,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-22",
+                            "IntervalStart": "2018-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504724,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 5 @ $2.60 ea",
+                            "ChargeAmount": "13.0000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-22",
+                            "IntervalStart": "2018-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504725,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-06-22",
+                            "IntervalStart": "2018-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504726,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-06-22",
+                            "IntervalStart": "2018-05-22",
+                            "PK": 73104261,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "88400.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1885.7300",
+            "IntervalEnd": "2019-06-21",
+            "IntervalStart": "2019-05-22",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661033,
+            "PreviousBalance": "1757.1900",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-6662-d046-99b9-0e7827f74e98",
+            "StatementDate": "2019-06-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1885.7300",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-21",
+                    "IntervalStart": "2019-05-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504759,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-21",
+                    "IntervalStart": "2019-05-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504760,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-06-21",
+                    "IntervalStart": "2019-05-22",
+                    "MeterNumber": "234114",
+                    "PK": 20305091,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "78,400 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "3.9200",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "78400.0000",
+                            "IntervalEnd": "2019-06-21",
+                            "IntervalStart": "2019-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504766,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "78,400 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "11.7600",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "78400.0000",
+                            "IntervalEnd": "2019-06-21",
+                            "IntervalStart": "2019-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504767,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "78,400 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "413.1700",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "78400.0000",
+                            "IntervalEnd": "2019-06-21",
+                            "IntervalStart": "2019-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504768,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-21",
+                            "IntervalStart": "2019-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504769,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-21",
+                            "IntervalStart": "2019-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504770,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-06-21",
+                            "IntervalStart": "2019-05-22",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504771,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-06-21",
+                            "IntervalStart": "2019-05-22",
+                            "PK": 73104269,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "78400.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1534.7800",
+            "IntervalEnd": "2018-12-20",
+            "IntervalStart": "2018-11-21",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661038,
+            "PreviousBalance": "1751.5600",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-6385-d968-99b9-0e7827f74e98",
+            "StatementDate": "2018-12-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1534.7800",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-20",
+                    "IntervalStart": "2018-11-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504854,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-20",
+                    "IntervalStart": "2018-11-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504855,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-12-20",
+                    "IntervalStart": "2018-11-21",
+                    "MeterNumber": "234114",
+                    "PK": 20305105,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "76,800 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "3.8400",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "76800.0000",
+                            "IntervalEnd": "2018-12-20",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504861,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "76,800 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "11.5200",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "76800.0000",
+                            "IntervalEnd": "2018-12-20",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504862,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "76,800 Gallons at $5.27 per 1,000 - Off Peak",
+                            "ChargeAmount": "404.7400",
+                            "ChargeRatePerUnit": "5.2700",
+                            "ChargeUnitsUsed": "76800.0000",
+                            "IntervalEnd": "2018-12-20",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504863,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-20",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504864,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-20",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504865,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-12-20",
+                            "IntervalStart": "2018-11-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504866,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-12-20",
+                            "IntervalStart": "2018-11-21",
+                            "PK": 73104290,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "76800.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "2177.2000",
+            "IntervalEnd": "2018-10-22",
+            "IntervalStart": "2018-09-21",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661040,
+            "PreviousBalance": "1967.1400",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-66b2-d971-99b9-0e7827f74e98",
+            "StatementDate": "2018-10-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "2177.2000",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-22",
+                    "IntervalStart": "2018-09-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504882,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-22",
+                    "IntervalStart": "2018-09-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237504883,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-10-22",
+                    "IntervalStart": "2018-09-21",
+                    "MeterNumber": "234114",
+                    "PK": 20305110,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "101,100 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "5.0600",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "101100.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504889,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "101,100 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "15.1700",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "101100.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504890,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "101,100 Gallons at $5.66 per 1,000 - On Peak",
+                            "ChargeAmount": "572.2300",
+                            "ChargeRatePerUnit": "5.6600",
+                            "ChargeUnitsUsed": "101100.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504891,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504892,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504893,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237504894,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-10-22",
+                            "IntervalStart": "2018-09-21",
+                            "PK": 73104297,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "101100.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "1967.1400",
+            "IntervalEnd": "2018-09-21",
+            "IntervalStart": "2018-08-23",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661046,
+            "PreviousBalance": "1614.0700",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc8c-63cc-d653-99b9-0e7827f74e98",
+            "StatementDate": "2018-09-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "1967.1400",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-21",
+                    "IntervalStart": "2018-08-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237505003,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-21",
+                    "IntervalStart": "2018-08-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237505004,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-09-21",
+                    "IntervalStart": "2018-08-23",
+                    "MeterNumber": "234114",
+                    "PK": 20305128,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "86,700 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.3400",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "86700.0000",
+                            "IntervalEnd": "2018-09-21",
+                            "IntervalStart": "2018-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505010,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "86,700 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "13.0100",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "86700.0000",
+                            "IntervalEnd": "2018-09-21",
+                            "IntervalStart": "2018-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505011,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "86,700 Gallons at $5.66 per 1,000 - On Peak",
+                            "ChargeAmount": "490.7200",
+                            "ChargeRatePerUnit": "5.6600",
+                            "ChargeUnitsUsed": "86700.0000",
+                            "IntervalEnd": "2018-09-21",
+                            "IntervalStart": "2018-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505012,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-21",
+                            "IntervalStart": "2018-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505013,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-21",
+                            "IntervalStart": "2018-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505014,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2018-09-21",
+                            "IntervalStart": "2018-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505015,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2018-09-21",
+                            "IntervalStart": "2018-08-23",
+                            "PK": 73104323,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "86700.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "2085.9000",
+            "IntervalEnd": "2019-08-23",
+            "IntervalStart": "2019-07-24",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5661049,
+            "PreviousBalance": "2044.5300",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddc25-1d41-dc87-afe4-0e1ea5985ce2",
+            "StatementDate": "2019-08-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "2085.9000",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237505061,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237505062,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-24",
+                    "MeterNumber": "234114",
+                    "PK": 20305136,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "87,500 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "4.3800",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "87500.0000",
+                            "IntervalEnd": "2019-08-23",
+                            "IntervalStart": "2019-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505068,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "87,500 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "13.1300",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "87500.0000",
+                            "IntervalEnd": "2019-08-23",
+                            "IntervalStart": "2019-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505069,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "87,500 Gallons at $5.66 per 1,000 - On Peak",
+                            "ChargeAmount": "495.2500",
+                            "ChargeRatePerUnit": "5.6600",
+                            "ChargeUnitsUsed": "87500.0000",
+                            "IntervalEnd": "2019-08-23",
+                            "IntervalStart": "2019-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505070,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-23",
+                            "IntervalStart": "2019-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505071,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-23",
+                            "IntervalStart": "2019-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505072,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-08-23",
+                            "IntervalStart": "2019-07-24",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237505073,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-08-23",
+                            "IntervalStart": "2019-07-24",
+                            "PK": 73104335,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "87500.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "2537.3500",
+            "IntervalEnd": "2019-09-23",
+            "IntervalStart": "2019-08-23",
+            "NewCharges": "2537.3500",
+            "OutstandingBalance": "0.0000",
+            "PK": 5663218,
+            "PreviousBalance": "2085.9000",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e064f-0dc9-d4ce-b4e4-0e87abf5ac60",
+            "StatementDate": "2019-09-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "2537.3500",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237560789,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237560790,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-23",
+                    "MeterNumber": "234114",
+                    "PK": 20311835,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "113,500 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "5.6800",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "113500.0000",
+                            "IntervalEnd": "2019-09-23",
+                            "IntervalStart": "2019-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237560796,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "113,500 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "17.0300",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "113500.0000",
+                            "IntervalEnd": "2019-09-23",
+                            "IntervalStart": "2019-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237560797,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "113,500 Gallons at $5.66 per 1,000 - On Peak",
+                            "ChargeAmount": "642.4100",
+                            "ChargeRatePerUnit": "5.6600",
+                            "ChargeUnitsUsed": "113500.0000",
+                            "IntervalEnd": "2019-09-23",
+                            "IntervalStart": "2019-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237560798,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-09-23",
+                            "IntervalStart": "2019-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237560799,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-09-23",
+                            "IntervalStart": "2019-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237560800,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-09-23",
+                            "IntervalStart": "2019-08-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237560801,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-09-23",
+                            "IntervalStart": "2019-08-23",
+                            "PK": 73122445,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "113500.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

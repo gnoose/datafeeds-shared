@@ -12,10 +12,15 @@ from .irvineranch import IrvineRanchWaterDatasource
 from .calwater import CalWaterDatasource
 from .southlake import SouthlakeDatasource
 from .watauga import WataugaDatasource
+from .mountainview import MountainViewDatasource
+from .austin_tx import AustinTXWaterDatasource
+from .american import AmericanWaterDatasource
+from .pleasanton import PleasantonDatasource
 
 
 __all__ = ["UrjanetDataSource", "UrjanetPyMySqlDataSource", "PacificGasElectricDataSource",
            "LadwpWaterDatasource", "SfpucWaterDatasource", "FosterCityWaterDatasource",
            "ColleyvilleWaterDatasource", "FortWorthWaterDatasource", "SjWaterDatasource",
            "SanDiegoWaterDatasource", "IrvineRanchWaterDatasource", "CalWaterDatasource",
-           "SouthlakeDatasource", "WataugaDatasource"]
+           "SouthlakeDatasource", "WataugaDatasource", "MountainViewDatasource",
+           "AustinTXWaterDatasource", "AmericanWaterDatasource", "PleasantonDatasource"]

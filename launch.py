@@ -13,17 +13,20 @@ import boto3
 
 from datafeeds.common.typing import Status
 from datafeeds import db, config
-from datafeeds.datasources import southlake, watauga
+from datafeeds import datasources
 from datafeeds.models import SnapmeterMeterDataSource as MeterDataSource
-
 
 log = logging.getLogger("datafeeds")
 
 
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
-    "watauga-urjanet": watauga.datafeed,
-    "southlake-urjanet": southlake.datafeed,
+    "watauga-urjanet": datasources.watauga.datafeed,
+    "southlake-urjanet": datasources.southlake.datafeed,
+    "mountainview-urjanet": datasources.mountainview.datafeed,
+    "austin-tx-urjanet": datasources.austin_tx.datafeed,
+    "american-urjanet": datasources.american.datafeed,
+    "pleasanton-urjanet": datasources.pleasanton.datafeed,
 }
 
 
