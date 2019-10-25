@@ -20,7 +20,7 @@ class AustinTXWaterDatasource(UrjanetPyMySqlDataSource):
     def normalize_account_number(account_number: str) -> str:
         """Converts Austin TX account numbers into a normalized format
 
-        Raw Colleyville account numbers have a dash ("-") in them ("10005589 - 105267").
+        Raw Austin account numbers have a dash ("-") in them ("10005589 - 105267").
         In their terminology, the first part ("10005589") is the "account number" and the
         second part is the "customer number" ("105267").
         """
