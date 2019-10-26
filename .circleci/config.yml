@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.5.0
 jobs:
   build:
     # The "circle" directory contains the specs for this container
@@ -30,6 +32,40 @@ jobs:
       - run:
           name: Running tests
           command: pipenv run python -m unittest -v
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - build
+      - aws-ecr/build-and-push-image:
+          requires:
+            - build
+          extra-build-args: "--build-arg REPO_HOST=${AWS_DEV_ECR_ACCOUNT_URL}"
+          attach-workspace: true
+          account-url: AWS_DEV_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_DEV_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_DEV_SECRET_ACCESS_KEY
+          #  context: myContext
+          #  path: pathToMyDockerfile
+          #  profile-name: myProfileName
+          region: AWS_DEV_DEFAULT_REGION
+          repo: $CIRCLE_PROJECT_REPONAME
+          tag: $CIRCLE_SHA1
+      - aws-ecr/build-and-push-image:
+          requires:
+            - build
+          extra-build-args: "--build-arg REPO_HOST=${AWS_PROD_ECR_ACCOUNT_URL}"
+          #attach-workspace: true
+          account-url: AWS_PROD_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_PROD_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_PROD_SECRET_ACCESS_KEY
+          #  context: myContext
+          #  path: pathToMyDockerfile
+          #  profile-name: myProfileName
+          region: AWS_PROD_DEFAULT_REGION
+          repo: $CIRCLE_PROJECT_REPONAME
+          tag: $CIRCLE_SHA1
+
 
 experimental:
   notify:
