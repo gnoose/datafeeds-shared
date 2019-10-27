@@ -11,7 +11,7 @@ from datafeeds import config
 MULTIPART_BOUNDARY = 'AaB03x'
 
 
-@deprecated
+@deprecated(details="To be removed when we deprecate stasis transactions.")
 def post(uri, params=None):
     if params is None:
         params = {}
@@ -36,7 +36,7 @@ def post(uri, params=None):
     return json.loads(response.read().decode('utf-8'))
 
 
-@deprecated
+@deprecated(details="To be removed when we deprecate stasis transactions.")
 def _create_request():
     if "https" in config.WEBAPPS_DOMAIN:
         conn = client.HTTPSConnection(config.WEBAPPS_DOMAIN)
@@ -46,7 +46,7 @@ def _create_request():
     return conn
 
 
-@deprecated
+@deprecated(details="To be removed when we deprecate stasis transactions.")
 def _build_uri(uri, params=None):
     if params is None:
         params = {}
