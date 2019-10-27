@@ -3,10 +3,13 @@
 from http import client
 import json
 from urllib import parse
+import logging
 
 from deprecation import deprecated
 
 from datafeeds import config
+
+log = logging.getLogger(__name__)
 
 MULTIPART_BOUNDARY = 'AaB03x'
 
@@ -18,6 +21,8 @@ def post(uri, params=None):
 
     uri = _build_uri(uri)
     data = parse.urlencode(params).encode('utf-8')
+
+    log.debug("Webapps Request: %s : %s", uri, data)
 
     try:
         conn = _create_request()
@@ -33,17 +38,14 @@ def post(uri, params=None):
     if response.code >= 400:
         raise Exception(response.code, response.reason, response.read())
 
-    return json.loads(response.read().decode('utf-8'))
+    data = response.read()
+    log.debug("Webapps Response: %s : %s", response.code, data)
+    return json.loads(data.decode('utf-8'))
 
 
 @deprecated(details="To be removed when we deprecate stasis transactions.")
 def _create_request():
-    if "https" in config.WEBAPPS_DOMAIN:
-        conn = client.HTTPSConnection(config.WEBAPPS_DOMAIN)
-    else:
-        conn = client.HTTPConnection(config.WEBAPPS_DOMAIN)
-
-    return conn
+    return client.HTTPSConnection(config.WEBAPPS_DOMAIN)
 
 
 @deprecated(details="To be removed when we deprecate stasis transactions.")

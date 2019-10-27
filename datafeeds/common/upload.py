@@ -156,4 +156,4 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
         )
 
     webapps.post("/transactions/commit", {"oid": transaction_oid})
-    log.debug("Committed stasis transaction.", transaction_oid)
+    log.debug("Committed stasis transaction.")
