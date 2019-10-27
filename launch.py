@@ -1,32 +1,39 @@
 import argparse
-import shutil
-import zipfile
 from argparse import Namespace
 from datetime import datetime, date
+import json
 import logging
 import os
+import shutil
 import subprocess
 import sys
+from typing import Optional
 import uuid
+import zipfile
 
 import boto3
 
 from datafeeds.common.typing import Status
 from datafeeds import db, config
 from datafeeds import datasources
-from datafeeds.models import SnapmeterMeterDataSource as MeterDataSource
+from datafeeds.models import \
+    SnapmeterMeterDataSource as MeterDataSource, \
+    SnapmeterAccount, SnapmeterAccountMeter, \
+    SnapmeterAccountDataSource as AccountDataSource, \
+    Meter, UtilityService
 
 log = logging.getLogger("datafeeds")
 
 
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
-    "watauga-urjanet": datasources.watauga.datafeed,
-    "southlake-urjanet": datasources.southlake.datafeed,
-    "mountainview-urjanet": datasources.mountainview.datafeed,
-    "austin-tx-urjanet": datasources.austin_tx.datafeed,
     "american-urjanet": datasources.american.datafeed,
+    "austin-tx-urjanet": datasources.austin_tx.datafeed,
+    "mountainview-urjanet": datasources.mountainview.datafeed,
+    "nve-myaccount": datasources.nvenergy_myaccount.datafeed,
     "pleasanton-urjanet": datasources.pleasanton.datafeed,
+    "watauga-urjanet": datasources.watauga.datafeed,
+    "southlake-urjanet": datasources.southlake.datafeed
 }
 
 
@@ -122,8 +129,84 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
     sys.exit(status.value)
 
 
+def launch_by_name(scraper_id: str,
+                   start: date, end: date,
+                   account_id: str, service_id: str,
+                   username: Optional[str], password: Optional[str], meta: Optional[dict]):
+    db.init()
+    config.FEATURE_FLAGS = set()  # A manual run is just for dev testing. Disable all data upload features.
+
+    scraper_fn = scraper_functions.get(scraper_id)
+    if scraper_fn is None:
+        log.error("No scraping procedure associated with the identifier \"%s\". Aborting", scraper_id)
+        sys.exit(1)
+
+    parameters = {
+        "data_start": start.strftime("%Y-%m-%d"),
+        "data_end": end.strftime("%Y-%m-%d")
+    }
+
+    log.info("Scraper Launch Settings:")
+    log.info("Scraper: %s", scraper_id)
+    log.info("Date Range: %s - %s", start, end)
+    log.info("Metadata: %s", meta)
+
+    # Set up the necessary objects to make a local run look like one in production.
+    service = UtilityService(service_id)
+    db.session.add(service)
+    db.session.flush()
+
+    meter = Meter("dummy")
+    meter.service = service.oid
+    db.session.add(meter)
+    db.session.flush()
+
+    account = SnapmeterAccount(name="dummy", created=datetime.now())
+    db.session.add(account)
+    db.session.flush()
+
+    sam = SnapmeterAccountMeter(account=account.oid, meter=meter.oid, utility_account_id=account_id)
+    db.session.add(sam)
+    db.session.flush()
+
+    ads = AccountDataSource(_account=account.oid, source_account_type="%s-dummy" % scraper_id, name="dummy")
+    ads.encrypt_username(username)
+    ads.encrypt_password(password)
+    db.session.add(ads)
+    db.session.flush()
+
+    mds = MeterDataSource(name=scraper_id, meta=meta)
+    mds.meter = meter
+    mds.account_data_source = ads
+    db.session.add(mds)
+    db.session.flush()
+
+    cleanup_workdir()
+    try:
+        status = scraper_fn(account, meter, mds, parameters)
+    except:  # noqa=E722
+        log.exception("The scraper run has failed due to an unhandled exception.")
+        status = Status.FAILED
+
+    db.session.rollback()  # Don't commit fake objects to the database.
+    db.session.close()
+    sys.exit(status.value)
+
+
 def launch_by_oid_args(args: Namespace):
     launch_by_oid(args.oid, args.start, args.end)
+
+
+def launch_by_name_args(args: Namespace):
+    if args.meta:
+        meta = json.loads(args.meta)
+    else:
+        meta = None
+
+    launch_by_name(args.scraper_id,
+                   args.start, args.end,
+                   args.account_id, args.service_id,
+                   args.username, args.password, meta)
 
 
 def _date(d):
@@ -139,6 +222,19 @@ sp_by_oid.set_defaults(func=launch_by_oid_args)
 sp_by_oid.add_argument("oid", type=int, help="Snapmeter Meter Data Source OID.")
 sp_by_oid.add_argument("start", type=_date, help="Start date of the range to scrape (YYYY-MM-DD, inclusive)")
 sp_by_oid.add_argument("end", type=_date, help="Final date of the range to scrape (YYYY-MM-DD, exclusive)")
+
+
+sp_by_name = subparser.add_parser("by-name", help="...based on a Scraper name.")
+sp_by_name.set_defaults(func=launch_by_name_args)
+sp_by_name.add_argument("scraper_id", type=str, help="Scraper name (e.g. nve-myaccount)")
+sp_by_name.add_argument("account_id", type=str, help="Utility's identifier for the account to be scraped.")
+sp_by_name.add_argument("service_id", type=str, help="Utility's identifier for the meter to be scraped.")
+sp_by_name.add_argument("start", type=_date, help="Start date of the range to scrape (YYYY-MM-DD, inclusive)")
+sp_by_name.add_argument("end", type=_date, help="Final date of the range to scrape (YYYY-MM-DD, exclusive)")
+sp_by_name.add_argument("--username", type=str, help="Username for utility login.")
+sp_by_name.add_argument("--password", type=str, help="Password for utility login.")
+sp_by_name.add_argument("--meta", type=str,
+                        help="Additional scraper parameters in a JSON blob. (e.g. {\"foo\": \"bar\"}")
 
 
 def main():
