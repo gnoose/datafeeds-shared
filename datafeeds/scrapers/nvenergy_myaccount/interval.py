@@ -97,7 +97,6 @@ class NvEnergyMyAccountScraper(BaseApiScraper):
                 log.info(msg)
 
                 token_refresh = datetime.now()
-                #jwt = _login("myenergy159", "DcqN5qYmmxc5")
                 jwt = _login(self.username, self.password)
                 log.info("NV Energy login succeeded.")
 

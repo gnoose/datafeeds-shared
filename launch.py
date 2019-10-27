@@ -39,7 +39,7 @@ scraper_functions = {
 
 def cleanup_workdir():
     try:
-        subprocess.check_output("rm -r *", stderr=subprocess.STDOUT, cwd=config.WORKING_DIRECTORY, shell=True)
+        subprocess.check_output("rm -rf *", stderr=subprocess.STDOUT, cwd=config.WORKING_DIRECTORY, shell=True)
     except subprocess.CalledProcessError as e:  # noqa E722
         log.error("Failed to clear working directory %s. Output: %s", config.WORKING_DIRECTORY, e.output)
 

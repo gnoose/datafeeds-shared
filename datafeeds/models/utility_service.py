@@ -28,4 +28,3 @@ class UtilityService(ModelMixin, Base):
     def __init__(self, service_id: str):
         self.oid = UtilityService.get_new_oid()
         self.service_id = service_id
-
