@@ -119,6 +119,8 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
     response = webapps.post("/transactions/create", {"target": meter_id})
     transaction_oid = response["oid"]
 
+    log.debug("Opened stasis transaction. Transaction OID: %s.", transaction_oid)
+
     for key in data.keys():
         data_to_upload[key] = data[key]
         if len(data_to_upload) == UPLOAD_DATA_BATCH_SIZE:
@@ -143,7 +145,7 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
             batch_number += 1
 
     if data_to_upload:
-        log.debug("Uploading last data batch")
+        log.debug("Uploading last data batch.")
         webapps.post(
             "/accounts/%s/meters/%s/readings" % (account_id, meter_id),
             dict(
@@ -154,3 +156,4 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
         )
 
     webapps.post("/transactions/commit", {"oid": transaction_oid})
+    log.debug("Committed stasis transaction.", transaction_oid)

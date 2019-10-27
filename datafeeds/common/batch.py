@@ -72,6 +72,7 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
             "meterId": meter.oid,
             "meterName": meter.name,
             "scraper": scraper_class.__name__,
+            "origin": "datafeeds"
         })
     try:
         error = None
