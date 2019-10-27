@@ -37,7 +37,7 @@ def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
 
 
 def upload_readings(transforms, task_id: str, meter_oid: int, account_hex_id: str, scraper: str, readings):
-    if transforms and readings and config.enabled("PLATFORM_UPLOAD"):
+    if readings and config.enabled("PLATFORM_UPLOAD"):
         readings = interval_transform.transform(transforms, task_id, scraper, meter_oid, readings)
         _upload_via_webapps(readings, account_hex_id, meter_oid)
 

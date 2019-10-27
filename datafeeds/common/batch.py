@@ -1,7 +1,7 @@
 from datetime import datetime, date, timedelta
 import functools as ft
 import logging
-from typing import Optional
+from typing import Optional, List
 
 from dateutil import parser as dateparser
 
@@ -16,6 +16,7 @@ from datafeeds.models import Meter, SnapmeterAccount, \
     SnapmeterMeterDataSource as MeterDataSource, \
     SnapmeterAccountDataSource as AccountDataSource
 from datafeeds.common.upload import upload_bills, upload_readings
+from datafeeds.common.interval_transform import Transforms
 
 
 log = logging.getLogger("datafeeds")
@@ -44,7 +45,8 @@ def iso_to_dates(start_iso, end_iso):
 
 def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
                  datasource: MeterDataSource, params: dict, configuration=None,
-                 task_id=None, transforms=None) -> Status:
+                 task_id=None, transforms: Optional[List[Transforms]] = None) -> Status:
+    transforms = [] if transforms is None else transforms
     acct_hex_id = account.hex_id if account else ""
     acct_name = account.name if account else ""
 
