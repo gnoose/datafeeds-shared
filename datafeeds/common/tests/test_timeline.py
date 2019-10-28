@@ -39,7 +39,7 @@ class TimelineTests(unittest.TestCase):
         tl.insert(dt3, 3.0)
         tl.insert(dt4, 4.0)
 
-        # This insert should be disregarded by tl, since it"s outsid
+        # This insert should be disregarded by tl, since it's outside
         # the interval.
         tl.insert(dt5, 1000.0)
 

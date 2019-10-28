@@ -11,7 +11,7 @@ these endpoints:
 userAccount/retrieveAccountList
 viewusage/getMeterList
 
-However, we already have this data in our DBs, so we don"t utilize
+However, we already have this data in our DBs, so we don't utilize
 these endpoints.
 
 Some acronyms:
