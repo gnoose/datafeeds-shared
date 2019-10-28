@@ -61,7 +61,7 @@ def remove_image_tag(tag_to_remove, ecr_repo='datafeeds'):
 def retag_image(current_tag, new_tag, ecr_repo='datafeeds'):
     image_manifest = ecr_client.batch_get_image(repositoryName=ecr_repo, imageIds=[{'imageTag': current_tag}])['images'][0]['imageManifest']
     ecr_client.put_image(repositoryName='datafeeds', imageManifest=image_manifest, imageTag=new_tag)
-
+    print(f'Tagged image with existing tag {current_tag} with {new_tag} tag') 
 
 commit_id = get_commit_id(GIT_BRANCH)
 image_tag_exists = find_image_tag(commit_id)
