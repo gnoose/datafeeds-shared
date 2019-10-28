@@ -30,7 +30,13 @@ jobs:
       - run:
           name: Running tests
           command: pipenv run python -m unittest -v
-
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run: |
+          TAG=$CIRCLE_SHA1
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker build -t gridium/$CIRCLE_PROJECT_REPONAME:$TAG .     
+          docker push gridium/$CIRCLE_PROJECT_REPONAME:$TAG
 experimental:
   notify:
     branches:
