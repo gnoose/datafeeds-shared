@@ -251,5 +251,9 @@ class Meter(ModelMixin, Base):
         return db.session.execute(query, {"meter": self.oid}).first()
 
     @property
-    def utility_account_id(self):
+    def utility_account_id(self) -> str:
         return self.snapmeter_account_meter[0].utility_account_id
+
+    @property
+    def service_id(self) -> str:
+        return self.utility_service.service_id
