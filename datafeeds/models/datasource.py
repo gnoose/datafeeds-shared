@@ -71,6 +71,9 @@ class SnapmeterAccountDataSource(ModelMixin, Base):
             return None
         return aes_decrypt(self._password_bytes)
 
+    def encrypt_username(self, username):
+        self._username_bytes = aes_encrypt(username) if username else None
+
     def to_json(self, include_password=False, str_ids=False):
         # stringify ids to avoid JSON parsing rollover issues
         rval = {

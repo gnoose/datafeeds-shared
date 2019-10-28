@@ -1,7 +1,9 @@
 import json
 import logging
-
+import csv
 from deprecation import deprecated
+import os
+
 
 from datafeeds import config
 from datafeeds.common import webapps, index, platform
@@ -25,9 +27,17 @@ def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
     title = "Final Billing Summary"
     show_bill_summary(billing_data, title)
 
+    path = os.path.join(config.WORKING_DIRECTORY, "bills.csv")
+    with open(path, "w") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Service ID", "Start", "End", "Cost", "Used", "Peak"])
+        for b in billing_data:
+            writer.writerow([service_id, b.start, b.end, b.cost, b.used, b.peak])
+    log.info("Wrote bill data to %s." % path)
+
 
 def upload_readings(transforms, task_id: str, meter_oid: int, account_hex_id: str, scraper: str, readings):
-    if transforms and readings and config.enabled("PLATFORM_UPLOAD"):
+    if readings and config.enabled("PLATFORM_UPLOAD"):
         readings = interval_transform.transform(transforms, task_id, scraper, meter_oid, readings)
         _upload_via_webapps(readings, account_hex_id, meter_oid)
 
@@ -37,7 +47,14 @@ def upload_readings(transforms, task_id: str, meter_oid: int, account_hex_id: st
     log.info("Final Interval Summary")
     for when, intervals in readings.items():
         log.info("%s: %s intervals." % (when, len(intervals)))
-    return
+
+    path = os.path.join(config.WORKING_DIRECTORY, "readings.csv")
+    with open(path, "w") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Service", "Date", "Readings"])
+        for when, intervals in readings.items():
+            writer.writerow([meter_oid, str(when)] + [str(x) for x in intervals])
+    log.info("Wrote interval data to %s." % path)
 
 
 @deprecated(details="To be replaced by ORM module.")
@@ -102,6 +119,8 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
     response = webapps.post("/transactions/create", {"target": meter_id})
     transaction_oid = response["oid"]
 
+    log.debug("Opened stasis transaction. Transaction OID: %s.", transaction_oid)
+
     for key in data.keys():
         data_to_upload[key] = data[key]
         if len(data_to_upload) == UPLOAD_DATA_BATCH_SIZE:
@@ -126,7 +145,7 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
             batch_number += 1
 
     if data_to_upload:
-        log.debug("Uploading last data batch")
+        log.debug("Uploading last data batch.")
         webapps.post(
             "/accounts/%s/meters/%s/readings" % (account_id, meter_id),
             dict(
@@ -137,3 +156,4 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
         )
 
     webapps.post("/transactions/commit", {"oid": transaction_oid})
+    log.debug("Committed stasis transaction.")
