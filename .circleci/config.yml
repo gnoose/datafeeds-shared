@@ -25,7 +25,7 @@ jobs:
           command: pipenv install -r dev-requirements.txt
       - run:
           name: Running lint
-          command: pipenv run flake8 datafeeds
+          command: pipenv run flake8 datafeeds ops
       #- run:
       #    name: Running static analysis
       #    command: pipenv run mypy --ignore-missing-imports analytica

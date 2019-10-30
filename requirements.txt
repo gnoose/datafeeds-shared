@@ -2,7 +2,6 @@ addict==2.1.2
 boto3==1.10.4
 deprecation==2.0.7
 elasticsearch==6.3.1
-gitpython==3.0.4
 intervaltree==3.0.2
 jsonobject==0.9.8
 psycopg2-binary==2.8.3
