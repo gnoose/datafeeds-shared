@@ -17,8 +17,8 @@ import boto3
 import config
 import logging
 import slack
-import sys
 import slack.chat
+import sys
 
 DEPLOY_TAG = "deployed"
 GIT_BRANCH = "master"
@@ -34,8 +34,8 @@ def post_message(message, channel, icon=':mega:'):
 
     try:
         slack.api_token = config.SLACK_TOKEN
-        slack.chat.post_message(channel, message, username='webapps', icon_emoji=icon)   # pylint: disable=no-member
-    except:
+        slack.chat.post_message(channel, message, username='webapps', icon_emoji=icon)
+    except Exception:
         log.exception('Failed to post error message to slack. Channel: %s, Message: %s', channel, message)
 
 
@@ -57,7 +57,7 @@ def find_image_tag(docker_tag: str, repo: str = "datafeeds") -> bool:
     # assume we're getting region and creds from environment
     try:
         response = ecr_client.list_images(repositoryName=repo)
-    except:
+    except Exception:
         log.exception("Exception raised: failed to get list of images")
         raise
     for image in response["imageIds"]:
@@ -95,7 +95,7 @@ def main():
             log.info("Retagging image completed successfully for %s.", commit_id)
             post_message("Retagging image completed successfully for %s." % commit_id, "#ops")
 
-        except:
+        except Exception:
             log.exception("Retagging image failed for %s", commit_id)
             post_message("Retagging image failed for %s" % commit_id, '#ops', icon=":x:")
             sys.exit(1)
