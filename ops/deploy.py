@@ -99,7 +99,7 @@ def main():
     if args.githash:
         post_message("Datafeeds image re-tagging has started. (Git Hash: %s)" % args.githash, slack_channel)
         log.info("Attempting to retag the image with git hash %s.", args.githash)
-        # already have the hash to search for
+        commit_id = args.githash
     elif args.branch:
         post_message("A webapps deploy has started. (Branch: %s)" % args.branch, slack_channel)
         log.info("Attempting to deploy the image for branch %s.", args.branch)
@@ -109,7 +109,6 @@ def main():
         log.info("Attempting to deploy the image for branch %s.", args.branch)
         commit_id = get_commit_id()
 
-    commit_id = get_commit_id(GIT_BRANCH)
     image_tag_exists = find_image_tag(commit_id)
 
     if image_tag_exists:
