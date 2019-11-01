@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 
 ############################
-# Two options for use:
+# Three options for use:
 # 1) Default behavior:
-#     find commit ID of HEAD on git on master branch
+#    find commit ID of HEAD on git on master branch
 #    confirm this exists as docker tag on ECR
 #    retag this as "deployed"
 #    print error if the latest master commit ID doesn't exist on ECR
 # 2) specify a specific commit ID
-#     other steps same as above
-#     to use this option, run "python retag.py <COMMIT_ID>"
+#    other steps same as above
+#    to use this option, run "python retag.py --githash <COMMIT_ID>"
+# 3) specify a specific branch
+#    to use this option, run "python retag.py --branch <BRANCH_NAME>"
 ############################
 
 from git import Repo
@@ -129,6 +131,6 @@ if __name__ == "__main__":
     formatter = logging.Formatter("%(asctime)s: %(message)s")
     ch = logging.StreamHandler()
     ch.setFormatter(formatter)
-    log.addHandler(ch)
+    #log.addHandler(ch) # https://stackoverflow.com/a/7175288
 
     main()
