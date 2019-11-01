@@ -131,6 +131,7 @@ if __name__ == "__main__":
     formatter = logging.Formatter("%(asctime)s: %(message)s")
     ch = logging.StreamHandler()
     ch.setFormatter(formatter)
-    #log.addHandler(ch) # https://stackoverflow.com/a/7175288
+    # log.addHandler(ch)
+    # https://stackoverflow.com/a/7175288
 
     main()
