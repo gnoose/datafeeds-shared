@@ -10,3 +10,4 @@ ABQ Hackathon Repo / Project to support scrapers on AWS Batch.
     building new Uranet scrapers. 
 - [Q4 2019 Hackathon Guide](docs/hackathon_steps.md)
 - [Testing on AWS](docs/testing_on_aws.md) explains how to run integration tests in an AWS environment. 
+- [Deploying a new image](docs/deploy.md) explains how to select an image for use in production
