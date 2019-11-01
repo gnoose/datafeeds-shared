@@ -1,21 +1,24 @@
 #!/usr/bin/env python
 
 ############################
-# Two options for use:
+# Three options for use:
 # 1) Default behavior:
-#     find commit ID of HEAD on git on master branch
+#    find commit ID of HEAD on git on master branch
 #    confirm this exists as docker tag on ECR
 #    retag this as "deployed"
 #    print error if the latest master commit ID doesn't exist on ECR
 # 2) specify a specific commit ID
-#     other steps same as above
-#     to use this option, run "python retag.py <COMMIT_ID>"
+#    other steps same as above
+#    to use this option, run "python retag.py --githash <COMMIT_ID>"
+# 3) specify a specific branch
+#    to use this option, run "python retag.py --branch <BRANCH_NAME>"
 ############################
 
 from git import Repo
 import argparse
 import boto3
 import config
+from datafeeds.config import DATAFEEDS_ROOT
 import logging
 import slack
 import slack.chat
@@ -27,7 +30,7 @@ slack_channel = config.SLACK_CHANNEL
 
 log = logging.getLogger(__name__)
 
-ecr_client = boto3.client("ecr")
+ecr_client = boto3.client("ecr", region_name=config.AWS_REGION_NAME)
 
 
 def post_message(message, channel, icon=':mega:'):
@@ -41,15 +44,15 @@ def post_message(message, channel, icon=':mega:'):
         log.exception("Failed to post error message to slack. Channel: %s, Message: %s", channel, message)
 
 
-def get_commit_id(branch: str = "master") -> str:
-    repo = Repo()
+def get_commit_id(branch: str) -> str:
+    repo = Repo(DATAFEEDS_ROOT)
     # assumes remote is named "origin"
     log.info("Fetching latest from remote")
     repo.remotes.origin.fetch()
     branch_head = getattr(repo.heads, branch)
-    id = branch_head.commit.hexsha
-    log.info("Commit ID at head of %s: %s", branch_head, id)
-    return id
+    commit_id = branch_head.commit.hexsha
+    log.info("Commit ID at head of %s: %s", branch_head, commit_id)
+    return commit_id
 
 
 def find_image_tag(docker_tag: str, repo: str = "datafeeds") -> bool:
@@ -97,18 +100,15 @@ def main():
     args = parser.parse_args()
 
     if args.githash:
-        post_message("Datafeeds image re-tagging has started. (Git Hash: %s)" % args.githash, slack_channel)
+        how = "Git Hash: %s" % args.githash
         log.info("Attempting to retag the image with git hash %s.", args.githash)
         commit_id = args.githash
-    elif args.branch:
-        post_message("A webapps deploy has started. (Branch: %s)" % args.branch, slack_channel)
+    else:
+        how = "Branch: %s" % args.branch
         log.info("Attempting to deploy the image for branch %s.", args.branch)
         commit_id = get_commit_id(args.branch)
-    else:
-        post_message("A webapps deploy has started. (Branch: %s)" % args.branch, slack_channel)
-        log.info("Attempting to deploy the image for branch %s.", args.branch)
-        commit_id = get_commit_id()
 
+    post_message("A datafeeds deploy has started. (%s)" % how, slack_channel)
     image_tag_exists = find_image_tag(commit_id)
 
     if image_tag_exists:
@@ -117,8 +117,7 @@ def main():
             retag_image(commit_id, DEPLOY_TAG)
             log.info("Retagging image completed successfully for %s.", commit_id)
             post_message("Retagging image completed successfully for %s." % commit_id, slack_channel)
-
-        except Exception:
+        except Exception:  # noqa E722
             log.exception("Retagging image failed for %s", commit_id)
             post_message("Retagging image failed for %s" % commit_id, slack_channel, icon=":x:")
             sys.exit(1)
@@ -132,6 +131,7 @@ if __name__ == "__main__":
     formatter = logging.Formatter("%(asctime)s: %(message)s")
     ch = logging.StreamHandler()
     ch.setFormatter(formatter)
-    log.addHandler(ch)
+    # log.addHandler(ch)
+    # https://stackoverflow.com/a/7175288
 
     main()
