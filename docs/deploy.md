@@ -10,9 +10,11 @@ To add the deployed tag to an image run the `ops/deploy.py` script. There are tw
 python ops/deploy.py
 ```
 
-A specific commit ID can also be provided:
+A deploy can also be made by commit ID or branch can also be provided:
 ```
-python ops/deploy.py 8af19fe8e797caf65d1090e98c97c0f9eb58498f
+python ops/deploy.py --githash 8af19fe8e797caf65d1090e98c97c0f9eb58498f
+python ops/deploy.py --branch my-scraper-branch
 ```
+Note: If you want to be able deploy by branch, it's best to limit your branch's name to alphanumeric characters, underscores, and dashes (avoid special characters like slashes and colons, which docker uses as delimeters).
 
 The script exits if it doesn't find the commit ID/tag in the ECR. If it does find the tag, it moves the "deployed" tag to the new image.  
