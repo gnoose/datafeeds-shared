@@ -323,3 +323,22 @@ class AustinTXCli(DatasourceCli):
 
     def make_transformer(self):
         return urja_transformer.AustinTXTransformer()
+
+
+class HecoCli(DatasourceCli):
+    __cli_key__ = "heco"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("commodity_type")
+        parser.add_argument("meter_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            urja_datasource.AustinTXWaterDatasource(args.account_number, args.commodity_type, args.meter_number),
+            conn)
+
+    #def make_transformer(self):
+    #    return urja_transformer.HecoTransformer()
+
+
