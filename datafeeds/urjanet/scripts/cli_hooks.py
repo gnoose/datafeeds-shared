@@ -335,6 +335,6 @@ class HecoCli(DatasourceCli):
         return self.setup_datasource(
             urja_datasource.HecoDatasource(args.account_number),
             conn)
-    
+
     def make_transformer(self):
         return urja_transformer.HecoTransformer()

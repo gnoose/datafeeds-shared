@@ -21,7 +21,6 @@ class HecoDatasource(UrjanetPyMySqlDataSource):
         """
         return account_number.replace("-", "")
 
-
     def load_accounts(self) -> List[Account]:
         """Load accounts based on the account id"""
         query = """
