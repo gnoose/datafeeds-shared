@@ -309,7 +309,7 @@ class AmericanWaterCli(DatasourceCli):
 
 
 class AustinTXCli(DatasourceCli):
-    __cli_key__ = "city-of-austin" # match utility identifier
+    __cli_key__ = "city-of-austin"  # match utility identifier
 
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")

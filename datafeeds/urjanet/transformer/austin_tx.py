@@ -23,7 +23,7 @@ class AustinTXBillingPeriod(GenericWaterBillingPeriod):
 
         Get the max ChargeUnitsUsed for charges with UsageUnit kW
         """
-        peak = -1 # want to be able to tell if it was set
+        peak = -1  # want to be able to tell if it was set; won't be for water
         for meter in self.account.meters:
             for charges in meter.charges:
                 if charges.UsageUnit == "kW":
