@@ -19,9 +19,9 @@ class TestUrjanetHecoTransformer(test_util.UrjaFixtureText):
             end_date=end_date
         )
 
-    def test_202013401833_fixture(self):
+    def test_202013447091_fixture(self):
         """Tests the HECO transformer on account 202013447091."""
-        self.202013447091_fixture_test("heco_202013447091.json", "expected_202013447091.json")
+        self.heco_fixture_test("heco_202013447091.json", "expected_202013447091.json")
 
 
 if __name__ == "__main__":
