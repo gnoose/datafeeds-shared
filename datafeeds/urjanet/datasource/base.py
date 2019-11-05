@@ -6,7 +6,14 @@ a little excessive, from the python perspective, but mainly serves
 a documentation purpose
 """
 from abc import ABC, abstractmethod
+from enum import Enum
 from ..model import UrjanetData
+
+
+class CommodityType(Enum):
+    """Use this to convert between the meter table commodity and Urjanet's ServiceType."""
+    ccf = "water"
+    kw = "electric"
 
 
 class UrjanetDataSource(ABC):

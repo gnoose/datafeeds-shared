@@ -115,9 +115,7 @@ class GenericWaterTransformer(UrjanetGridiumTransformer):
     def billing_period(account: Account) -> GenericWaterBillingPeriod:
         return GenericWaterBillingPeriod(account)
 
-    def urja_to_gridium(self, urja_data: UrjanetData) -> GridiumBillingPeriodCollection:
-        """Transform Urjanet data for water bills into Gridium billing periods"""
-
+    def bill_history(self, urja_data: UrjanetData) -> DateIntervalTree:
         filtered_accounts = self.filtered_accounts(urja_data)
         ordered_accounts = self.ordered_accounts(filtered_accounts)
 
@@ -139,7 +137,12 @@ class GenericWaterTransformer(UrjanetGridiumTransformer):
 
         # Log the billing periods we determined
         log_generic_water_billing_periods(bill_history)
+        return bill_history
 
+    def urja_to_gridium(self, urja_data: UrjanetData) -> GridiumBillingPeriodCollection:
+        """Transform Urjanet data for water bills into Gridium billing periods"""
+
+        bill_history = self.bill_history(urja_data)
         # Compute the final set of gridium billing periods
         gridium_periods = []
         for ival in sorted(bill_history.intervals()):

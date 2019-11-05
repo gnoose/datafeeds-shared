@@ -1,6 +1,6 @@
 from typing import Optional
 from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource as MeterDataSource
-from datafeeds.urjanet.datasource import AustinTXWaterDatasource
+from datafeeds.urjanet.datasource import AustinTXDatasource, CommodityType
 from datafeeds.urjanet.transformer import AustinTXTransformer
 from datafeeds.common.batch import run_urjanet_datafeed
 
@@ -13,6 +13,6 @@ def datafeed(account: SnapmeterAccount, meter: Meter,
         meter,
         datasource,
         params,
-        AustinTXWaterDatasource(meter.utility_account_id),
+        AustinTXDatasource(meter.utility_account_id, CommodityType[meter.commodity]),
         AustinTXTransformer(),
         task_id)

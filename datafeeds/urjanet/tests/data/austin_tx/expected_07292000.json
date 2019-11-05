@@ -2193,7 +2193,7 @@
             ]
         },
         {
-            "end": "2019-09-23",
+            "end": "2019-09-22",
             "peak_demand": null,
             "start": "2019-08-23",
             "tariff": null,
@@ -2299,6 +2299,115 @@
             ],
             "source_urls": [
                 "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e064f-0dc9-d4ce-b4e4-0e87abf5ac60"
+            ]
+        },
+        {
+            "end": "2019-10-23",
+            "peak_demand": null,
+            "start": "2019-09-23",
+            "tariff": null,
+            "total_charge": "739.5100",
+            "total_usage": "146.11224000000",
+            "line_items": [
+                {
+                    "ChargeActualName": "109,300 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                    "ChargeAmount": "5.4700",
+                    "ChargeRatePerUnit": "0.0500",
+                    "ChargeUnitsUsed": "109300.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691139,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "109,300 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                    "ChargeAmount": "16.4000",
+                    "ChargeRatePerUnit": "0.1500",
+                    "ChargeUnitsUsed": "109300.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691140,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "109,300 Gallons at $5.66 per 1,000 - On Peak",
+                    "ChargeAmount": "618.6400",
+                    "ChargeRatePerUnit": "5.6600",
+                    "ChargeUnitsUsed": "109300.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691141,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "gallons"
+                },
+                {
+                    "ChargeActualName": "Fixed Charge",
+                    "ChargeAmount": "58.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691142,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                    "ChargeAmount": "15.6000",
+                    "ChargeRatePerUnit": "2.6000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691143,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge",
+                    "ChargeAmount": "25.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691144,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691132,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691133,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9f83a2-f87e-def3-ac8d-0e8a2705e3c6"
             ]
         }
     ]

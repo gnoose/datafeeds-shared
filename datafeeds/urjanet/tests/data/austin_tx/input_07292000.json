@@ -2909,6 +2909,144 @@
                     ]
                 }
             ]
+        },
+        {
+            "AccountNumber": "4183840241",
+            "AmountDue": "2474.2400",
+            "IntervalEnd": "2019-10-23",
+            "IntervalStart": "2019-09-23",
+            "NewCharges": "2474.2400",
+            "OutstandingBalance": "0.0000",
+            "PK": 5671435,
+            "PreviousBalance": "2537.3500",
+            "RawAccountNumber": "41838 40241",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9f83a2-f87e-def3-ac8d-0e8a2705e3c6",
+            "StatementDate": "2019-10-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "2474.2400",
+            "UtilityProvider": "CityofAustinTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Austin Code Department",
+                    "ChargeAmount": "4.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691132,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Austin Resource Recovery",
+                    "ChargeAmount": "16.5000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691133,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-23",
+                    "MeterNumber": "234114",
+                    "PK": 20326374,
+                    "PODid": "",
+                    "ServiceType": "water",
+                    "Tariff": "City of Austin Water - Commercial",
+                    "charges": [
+                        {
+                            "ChargeActualName": "109,300 Gallons at $0.05 per 1,000 - Reserve Fund Surcharge",
+                            "ChargeAmount": "5.4700",
+                            "ChargeRatePerUnit": "0.0500",
+                            "ChargeUnitsUsed": "109300.0000",
+                            "IntervalEnd": "2019-10-23",
+                            "IntervalStart": "2019-09-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237691139,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "109,300 Gallons at $0.15 per 1,000 - Water Community Benefit Charge",
+                            "ChargeAmount": "16.4000",
+                            "ChargeRatePerUnit": "0.1500",
+                            "ChargeUnitsUsed": "109300.0000",
+                            "IntervalEnd": "2019-10-23",
+                            "IntervalStart": "2019-09-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237691140,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "109,300 Gallons at $5.66 per 1,000 - On Peak",
+                            "ChargeAmount": "618.6400",
+                            "ChargeRatePerUnit": "5.6600",
+                            "ChargeUnitsUsed": "109300.0000",
+                            "IntervalEnd": "2019-10-23",
+                            "IntervalStart": "2019-09-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237691141,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "gallons"
+                        },
+                        {
+                            "ChargeActualName": "Fixed Charge",
+                            "ChargeAmount": "58.0000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-10-23",
+                            "IntervalStart": "2019-09-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237691142,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Backflow Prev Fee 6 @ $2.60 ea",
+                            "ChargeAmount": "15.6000",
+                            "ChargeRatePerUnit": "2.6000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-10-23",
+                            "IntervalStart": "2019-09-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237691143,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        },
+                        {
+                            "ChargeActualName": "Customer Charge",
+                            "ChargeAmount": "25.4000",
+                            "ChargeRatePerUnit": "0.0000",
+                            "ChargeUnitsUsed": "0.0000",
+                            "IntervalEnd": "2019-10-23",
+                            "IntervalStart": "2019-09-23",
+                            "IsAdjustmentCharge": true,
+                            "PK": 237691144,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "gallons",
+                            "IntervalEnd": "2019-10-23",
+                            "IntervalStart": "2019-09-23",
+                            "PK": 73164804,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "Total Consumption in Gallons",
+                            "UsageAmount": "109300.0000"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
