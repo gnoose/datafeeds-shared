@@ -330,15 +330,11 @@ class HecoCli(DatasourceCli):
 
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
-        parser.add_argument("commodity_type")
-        parser.add_argument("meter_number")
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.AustinTXWaterDatasource(args.account_number, args.commodity_type, args.meter_number),
+            urja_datasource.HecoDatasource(args.account_number),
             conn)
-
-    #def make_transformer(self):
-    #    return urja_transformer.HecoTransformer()
-
-
+    
+    def make_transformer(self):
+        return urja_transformer.HecoTransformer()

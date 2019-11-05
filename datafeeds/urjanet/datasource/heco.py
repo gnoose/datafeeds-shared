@@ -14,6 +14,14 @@ class HecoDatasource(UrjanetPyMySqlDataSource):
         super().__init__(account_number)
         self.account_number = self.normalize_account_number(account_number)
 
+    @staticmethod
+    def normalize_account_number(account_number: str):
+        """Converts Watauga account numbers into a normalized format
+        Raw Watauga account numbers have a dash ("-") in them. This function removes that dash.
+        """
+        return account_number.replace("-", "")
+
+
     def load_accounts(self) -> List[Account]:
         """Load accounts based on the account id"""
         query = """

@@ -29,6 +29,7 @@ log = logging.getLogger("datafeeds")
 scraper_functions = {
     "american-urjanet": datasources.american.datafeed,
     "austin-tx-urjanet": datasources.austin_tx.datafeed,
+    "heco-urjanet": datasources.heco.datafeed,
     "mountainview-urjanet": datasources.mountainview.datafeed,
     "nve-myaccount": datasources.nvenergy_myaccount.datafeed,
     "pleasanton-urjanet": datasources.pleasanton.datafeed,

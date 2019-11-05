@@ -20,12 +20,8 @@ class TestUrjanetHecoTransformer(test_util.UrjaFixtureText):
         )
 
     def test_202013401833_fixture(self):
-        """Tests the HECO transformer on account 202013401833."""
-        self.202013401833_fixture_test("202013401833_input.json", "202013401833_expected.json")
-
-    def test_202013401833_fixture(self):
-        """Tests the water transformer on account 07292000."""
-        self.watauga_fixture_test("07292000_input.json", "07292000_expected.json")
+        """Tests the HECO transformer on account 202013447091."""
+        self.202013447091_fixture_test("heco_202013447091.json", "expected_202013447091.json")
 
 
 if __name__ == "__main__":
