@@ -19,9 +19,13 @@ class TestUrjanetAustinTXTransformer(test_util.UrjaFixtureText):
             end_date=end_date
         )
 
-    def test_austin_tx(self):
-        """Tests the AustinTXTransformer on an account with water charges."""
-        self.austin_tx_fixture_test("input_07292000.json", "expected_07292000.json")
+    def test_austin_tx_water(self):
+        """Tests on an account with water charges."""
+        self.austin_tx_fixture_test("input_4183840241.json", "expected_4183840241.json")
+
+    def test_austin_tx_electric(self):
+        """Tests on an account with electric charges."""
+        self.austin_tx_fixture_test("input_0375958587.json", "expected_0375958587.json")
 
 
 if __name__ == "__main__":

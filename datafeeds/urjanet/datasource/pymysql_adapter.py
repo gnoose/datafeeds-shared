@@ -278,7 +278,8 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             ThirdPartyProvider=get_str(row, "ThirdPartyProvider"),
             IsAdjustmentCharge=get_bool(row, "IsAdjustmentCharge"),
             IntervalStart=get_date(row, "IntervalStart"),
-            IntervalEnd=get_date(row, "IntervalEnd"))
+            IntervalEnd=get_date(row, "IntervalEnd"),
+            ChargeId=get_str(row, "ChargeId"))
 
     @staticmethod
     def parse_usage_row(row: SqlRowDict) -> Usage:
