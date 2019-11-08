@@ -309,16 +309,16 @@ class AmericanWaterCli(DatasourceCli):
 
 
 class AustinTXCli(DatasourceCli):
-    __cli_key__ = "austin-tx"
+    __cli_key__ = "city-of-austin"  # match utility identifier
 
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
-        parser.add_argument("commodity_type")
-        parser.add_argument("meter_number")
+        parser.add_argument("commodity_type", help="meter table commodity: kw or ccf")
 
     def make_datasource(self, conn, args):
+        commodity_type = urja_datasource.CommodityType[args.commodity_type]
         return self.setup_datasource(
-            urja_datasource.AustinTXWaterDatasource(args.account_number, args.commodity_type, args.meter_number),
+            urja_datasource.AustinTXDatasource(args.account_number, commodity_type),
             conn)
 
     def make_transformer(self):

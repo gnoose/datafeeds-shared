@@ -1,9 +1,9 @@
-from datafeeds.urjanet.transformer import GenericWaterBillingPeriod
+from datafeeds.urjanet.transformer import GenericBillingPeriod
 from datafeeds.urjanet.transformer import GenericWaterTransformer
 from datafeeds.urjanet.model import Account
 
 
-class AmericanBillingPeriod(GenericWaterBillingPeriod):
+class AmericanBillingPeriod(GenericBillingPeriod):
     def get_total_charge(self):
         if self.account.NewCharges > 0:
             return self.account.NewCharges
