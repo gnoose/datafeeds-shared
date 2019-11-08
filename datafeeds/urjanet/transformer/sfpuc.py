@@ -13,8 +13,8 @@ log = logging.getLogger(__name__)
 class SfpucWaterBillingPeriod(GenericBillingPeriod):
     """Simple model of a SFPUC water billing period.
 
-    This is an exceptionally simple model. Each billing period is represented by a Urjanet "account"
-    object. This design is based on the limited billing data we've received so far through
+    This is an exceptionally simple model. Each billing period is represented by an Urjanet
+    "account" object. This design is based on the limited billing data we've received so far through
     Urjanet, and might need to change as we support more SFPUC water customers.
 
     Currently, both water and sewer charges are included in the billing period.
