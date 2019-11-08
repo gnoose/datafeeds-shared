@@ -279,6 +279,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "IsAdjustmentCharge": 0,
             "IntervalStart": date(2000, 2, 1),
             "IntervalEnd": date(2000, 3, 1),
+            "ChargeId": None,
             "__EXTRA1": "EXTRA1",  # It's okay to have extra fields
             "__EXTRA2": "EXTRA2"
         }
@@ -302,7 +303,8 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "ThirdPartyProvider": None,
             "IsAdjustmentCharge": 0,
             "IntervalStart": date(2000, 2, 1),
-            "IntervalEnd": date(2000, 3, 1)
+            "IntervalEnd": date(2000, 3, 1),
+            "ChargeId": None,
         }
         result = UrjanetPyMySqlDataSource.parse_charge_row(charge_row)
         for field in charge_row:
@@ -320,7 +322,8 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "ThirdPartyProvider": "test_provider",
             "IsAdjustmentCharge": 0,
             "IntervalStart": date(2000, 2, 1),
-            "IntervalEnd": date(2000, 3, 1)
+            "IntervalEnd": date(2000, 3, 1),
+            "ChargeId": None,
         }
         with self.assertRaises(ValueError):
             UrjanetPyMySqlDataSource.parse_charge_row(charge_row)
@@ -369,7 +372,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "IntervalStart": date(2000, 2, 1),
             "IntervalEnd": date(2000, 3, 1),
             "__EXTRA1": "EXTRA1",  # It's okay to have extra fields
-            "__EXTRA2": "EXTRA2"
+            "__EXTRA2": "EXTRA2",
         }
         result = UrjanetPyMySqlDataSource.parse_usage_row(usage_row)
         for field in usage_row:
