@@ -28,7 +28,7 @@ log = logging.getLogger("datafeeds")
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
     "american-urjanet": datasources.american.datafeed,
-    "austin-tx-urjanet": datasources.austin_tx.datafeed,
+    "austin-urjanet": datasources.austin_tx.datafeed,
     "mountainview-urjanet": datasources.mountainview.datafeed,
     "nve-myaccount": datasources.nvenergy_myaccount.datafeed,
     "pleasanton-urjanet": datasources.pleasanton.datafeed,

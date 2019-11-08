@@ -120,6 +120,8 @@ class Charge(JsonObject):
     # The end date for the period the charge applies to
     IntervalEnd = DateProperty()
 
+    ChargeId = StringProperty()
+
 
 class Meter(JsonObject):
     """An Urjanet "Meter" object

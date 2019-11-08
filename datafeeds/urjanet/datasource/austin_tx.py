@@ -40,7 +40,7 @@ class AustinTXDatasource(UrjanetPyMySqlDataSource):
 
     def load_meters(self, account_pk: str) -> List[Meter]:
         """Load all meters of the specified service type for an account."""
-        query = "SELECT * FROM Meter WHERE ServiceType = %s AND AccountFK=%s"
+        query = "SELECT * FROM Meter WHERE ServiceType in %s AND AccountFK=%s"
         result_set = self.fetch_all(query, self.commodity_type.value, account_pk)
         return [
             UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set

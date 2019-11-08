@@ -12,8 +12,8 @@ from ..model import UrjanetData
 
 class CommodityType(Enum):
     """Use this to convert between the meter table commodity and Urjanet's ServiceType."""
-    ccf = "water"
-    kw = "electric"
+    ccf = ["water", "irrigation"]
+    kw = ["electric"]
 
 
 class UrjanetDataSource(ABC):
