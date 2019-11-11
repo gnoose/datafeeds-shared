@@ -4,6 +4,8 @@ This document describes how to select a particular docker image for production u
 
 Datafeeds images are hosted in AWS ECR. The system is designed to use a docker image in the ECR with the "deployed" tag. Images are built in CircleCI and pushed to the dev and prod ECR's after passing tests. They are tagged with the associated git commit ID. 
 
+Each environment has a handful of configuration variables and python dependencies that are needed in order for the deploy automation to work. Before you start your deployment, activate the virtual environment in the root of the project folder, and run `source deploy.env` inside the ops folder to set the appropriate environment variables.
+
 To add the deployed tag to an image run the `ops/deploy.py` script. There are two ways to run the script. The default method has no additional arguments and will look for the latest commit to master:
 
 ```
