@@ -29,29 +29,6 @@ Debugging integration problems is a very slow workflow if you only use the AWS c
 - Use `deploy.sh` to push your image to ECR. Copy your environment variable changes to the batch console.
 - Re-run your test on batch to confirm the changes you tested on ops.
 
-## Test your new scraper
-
-First, add your new scraper to a test meter in admin (admin / account / meter page / scrapers / Add new).
-
-    ./build.sh
-    ./run.sh by-meter meterOid billing|interval
-
-If readings or bills don't appear within a few minutes, stasis transactions may be backed up.
-To verify, run `select oid, target, status from stasis_transaction where target=meteOid` on the
-production database. If the `status` is `verifying`, you can jump the queue by posting a message
-to the immediate queue. Starting from ops:
-
-    ssh platform2.gridium.prod
-    cd ~/groovy/analytics
-
-Edit `bifrost-immediate.groovy` to set `meterOid` to your meter, and `transactionOid` to the stasis_transaction.oid from above. Then,
-
-    morph
-    groovy analytics/bifrost-immediate.groovy
-
-This will put a message on the immediate queue, which should go through within a few minutes to unfreeze your data.
-
-
 ## More details on `run.sh`
 
 This shell script runs the `launch.py` command inside of a datafeeds docker container. In this way, you can run
