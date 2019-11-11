@@ -8,11 +8,8 @@ from .southlake import SouthlakeTransformer
 from .watauga import WataugaTransformer
 from .fostercity import FosterCityTransformer
 from .american import AmericanTransformer
-<<<<<<< HEAD
 from .heco import HecoTransformer
-=======
 from .austin_tx import AustinTXTransformer
->>>>>>> master
 
 
 __all__ = ["UrjanetGridiumTransformer", "urja_to_json", "json_to_urja",
