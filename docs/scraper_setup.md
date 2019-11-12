@@ -149,6 +149,17 @@ Then run your scraper from ops:
     ./build.sh
     ./run.sh by-meter meterOid billing|interval
 
+
+Once testing is complete, enable the scraper for the scheduler by updating the database record:
+
+    update datafeeds_feed_config set enabled=TRUE where name='launch_key_here';
+
+Finally, announce in the `#scrapers` Slack channel that the new scraper is ready for use.
+
+### stasis transaction backup
+
+(remove this section once we get rid of stasis transactions)
+
 If readings or bills don't appear within a few minutes, stasis transactions may be backed up.
 To verify, run `select oid, target, status from stasis_transaction where target=meterOid` on the
 production database. If the `status` is `verifying`, you can jump the queue by posting a message
