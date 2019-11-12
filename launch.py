@@ -78,10 +78,7 @@ def archive_run(task_id: str):
         raise
 
 
-def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
-    db.init()
-    mds = db.session.query(MeterDataSource).get(meter_data_source_oid)
-
+def _launch_meter_datasource(SnapmeterMeterDataSource mds, start: date, end: date):
     if mds is None:
         log.error("No data source associated with OID %s. Aborting.", meter_data_source_oid)
         sys.exit(1)
@@ -128,6 +125,23 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
 
     db.session.close()
     sys.exit(status.value)
+
+
+def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
+    db.init()
+    _launch_meter_data_source(
+        db.session.query(MeterDataSource).get(meter_data_source_oid),
+        start,
+        end)
+
+
+def launch_by_meter(meter_oid: int, start: date, end: date, source_type: str):
+    db.init()
+    mds = db.session.query(MeterDataSource).\
+        filter_by(meter=meter_oid).\
+        filter(SnapmeterMeterDataSource.source_types.any(source_type)).\
+        first()
+    _launch_meter_data_source(mds, start, end)
 
 
 def launch_by_name(scraper_id: str,
@@ -210,6 +224,10 @@ def launch_by_name_args(args: Namespace):
                    args.username, args.password, meta)
 
 
+def launch_by_meter_args(args: Namespace):
+    launch_by_meter(args.oid, args.start, args.end, args.source_type)
+
+
 def _date(d):
     return datetime.strptime(d, "%Y-%m-%d").date()
 
@@ -236,6 +254,15 @@ sp_by_name.add_argument("--username", type=str, help="Username for utility login
 sp_by_name.add_argument("--password", type=str, help="Password for utility login.")
 sp_by_name.add_argument("--meta", type=str,
                         help="Additional scraper parameters in a JSON blob. (e.g. {\"foo\": \"bar\"}")
+
+
+sp_by_oid = subparser.add_parser("by-meter", help="...based on a Meter OID and source type")
+sp_by_oid.set_defaults(func=launch_by_meter_args)
+sp_by_oid.add_argument("oid", type=int, help="Meter OID.")
+sp_by_oid.add_argument("start", type=_date, help="Start date of the range to scrape (YYYY-MM-DD, inclusive)")
+sp_by_oid.add_argument("end", type=_date, help="Final date of the range to scrape (YYYY-MM-DD, exclusive)")
+sp_by_oid.add_argument("source_type", type=str, help="billing or interval")
+
 
 
 def main():

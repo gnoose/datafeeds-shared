@@ -2,7 +2,7 @@
 
 This document covers how to manually run scraper jobs in an AWS environment. Typical use cases for these instructions are:
 - Debugging integration problems with a production resource. (e.g. Why can't I ship data to elasticsearch properly?)
-- Debugging configuration problems with AWS Batch itself. 
+- Debugging configuration problems with AWS Batch itself.
 (e.g. Did batch use the right container? Did I put the right hostname in that environment variable?)
 
 Debugging integration problems without some simple automation is tedious. This document explains some (very simple)
@@ -10,8 +10,8 @@ scripts that can make the process more efficient.
 
 ## Where to go...
 
-In each environment, the ops machine will have a copy of the datafeeds repo at `~/projects/datafeeds`. 
-The datafeeds container is about 500 MB, so it is often more efficient to manage ECR (build images, push, retag) 
+In each environment, the ops machine will have a copy of the datafeeds repo at `~/projects/datafeeds`.
+The datafeeds container is about 500 MB, so it is often more efficient to manage ECR (build images, push, retag)
 from the ops machine than your laptop.
 
 ## What to do...
