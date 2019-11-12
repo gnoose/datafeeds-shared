@@ -74,7 +74,7 @@ Also contains a list of `Charge` and `Usage` instances associated with
 the Meter.
 - `Charge`: Represents an Urjanet Charge entity, as described above. In brief,
 a Charge is an individual bill line item. Contains data like line item name, cost,
-date ranges, and so on. Usually associated with a meter, but not also (see
+date ranges, and so on. Usually associated with a meter, but not always (see
 discussion of floating charges above, under `Account`)
 - `Usage`: Represents an Urjanet Usage entity, as described above. In brief,
 a Usage entity represents an individual usage measurement on a utility bill.
