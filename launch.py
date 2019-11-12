@@ -138,7 +138,7 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
 def launch_by_meter(meter_oid: int, start: date, end: date, source_type: str):
     db.init()
     mds = db.session.query(MeterDataSource).\
-        filter_by(meter=meter_oid).\
+        filter_by(_meter=meter_oid).\
         filter(MeterDataSource.source_types.any(source_type)).\
         first()
     _launch_meter_datasource(mds, start, end)
