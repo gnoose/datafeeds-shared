@@ -24,7 +24,7 @@ class SfpucWaterBillingPeriod(GenericBillingPeriod):
         # We only look at water meters because some bills also have "sewer" meters that also
         # report usage, but it's just some percentage of the water meter usage and therefore
         # redundant.
-        for meter in self.account.meters:
+        for meter in self.account.meters:americ
             if meter.ServiceType == "water":
                 for usage in meter.usages:
                     yield usage

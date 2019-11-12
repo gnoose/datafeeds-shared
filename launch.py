@@ -259,9 +259,9 @@ sp_by_name.add_argument("--meta", type=str,
 sp_by_oid = subparser.add_parser("by-meter", help="...based on a Meter OID and source type")
 sp_by_oid.set_defaults(func=launch_by_meter_args)
 sp_by_oid.add_argument("oid", type=int, help="Meter OID.")
-sp_by_oid.add_argument("start", type=_date, help="Start date of the range to scrape (YYYY-MM-DD, inclusive)")
-sp_by_oid.add_argument("end", type=_date, help="Final date of the range to scrape (YYYY-MM-DD, exclusive)")
 sp_by_oid.add_argument("source_type", type=str, help="billing or interval")
+sp_by_oid.add_argument("--start", type=_date, help="Start date of the range to scrape (YYYY-MM-DD, inclusive)")
+sp_by_oid.add_argument("--end", type=_date, help="Final date of the range to scrape (YYYY-MM-DD, exclusive)")
 
 
 def main():

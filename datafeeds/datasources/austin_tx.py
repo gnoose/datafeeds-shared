@@ -8,7 +8,7 @@ from datafeeds.common.batch import run_urjanet_datafeed
 def datafeed(account: SnapmeterAccount, meter: Meter,
              datasource: MeterDataSource, params: dict,
              task_id: Optional[str] = None):
-    run_urjanet_datafeed(
+    return run_urjanet_datafeed(
         account,
         meter,
         datasource,
