@@ -28,8 +28,8 @@ log = logging.getLogger("datafeeds")
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
     "american-urjanet": datasources.american.datafeed,
-    "heco-urjanet": datasources.heco.datafeed,
     "austin-urjanet": datasources.austin_tx.datafeed,
+    "heco-urjanet": datasources.heco.datafeed,
     "mountainview-urjanet": datasources.mountainview.datafeed,
     "nve-myaccount": datasources.nvenergy_myaccount.datafeed,
     "pleasanton-urjanet": datasources.pleasanton.datafeed,
@@ -78,9 +78,9 @@ def archive_run(task_id: str):
         raise
 
 
-def _launch_meter_datasource(SnapmeterMeterDataSource mds, start: date, end: date):
+def _launch_meter_datasource(mds: MeterDataSource, start: date, end: date):
     if mds is None:
-        log.error("No data source associated with OID %s. Aborting.", meter_data_source_oid)
+        log.error("No data source. Aborting.")
         sys.exit(1)
 
     account = None
@@ -105,7 +105,7 @@ def _launch_meter_datasource(SnapmeterMeterDataSource mds, start: date, end: dat
 
     log.info("Scraper Launch Settings:")
     log.info("Enabled Features: %s", config.FEATURE_FLAGS)
-    log.info("Meter Data Source OID: %s", meter_data_source_oid)
+    log.info("Meter Data Source OID: %s", mds.oid)
     log.info("Meter: %s (%s)", meter.name, meter.oid)
     log.info("Scraper: %s", mds.name)
     log.info("Date Range: %s - %s", start, end)
@@ -129,7 +129,7 @@ def _launch_meter_datasource(SnapmeterMeterDataSource mds, start: date, end: dat
 
 def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
     db.init()
-    _launch_meter_data_source(
+    _launch_meter_datasource(
         db.session.query(MeterDataSource).get(meter_data_source_oid),
         start,
         end)
@@ -139,9 +139,9 @@ def launch_by_meter(meter_oid: int, start: date, end: date, source_type: str):
     db.init()
     mds = db.session.query(MeterDataSource).\
         filter_by(meter=meter_oid).\
-        filter(SnapmeterMeterDataSource.source_types.any(source_type)).\
+        filter(MeterDataSource.source_types.any(source_type)).\
         first()
-    _launch_meter_data_source(mds, start, end)
+    _launch_meter_datasource(mds, start, end)
 
 
 def launch_by_name(scraper_id: str,
@@ -262,7 +262,6 @@ sp_by_oid.add_argument("oid", type=int, help="Meter OID.")
 sp_by_oid.add_argument("start", type=_date, help="Start date of the range to scrape (YYYY-MM-DD, inclusive)")
 sp_by_oid.add_argument("end", type=_date, help="Final date of the range to scrape (YYYY-MM-DD, exclusive)")
 sp_by_oid.add_argument("source_type", type=str, help="billing or interval")
-
 
 
 def main():

@@ -137,7 +137,12 @@ See [deploy directions](./deploy.md) for more details.
 
 ## Test your new scraper
 
-First, add your new scraper to a test meter in admin (admin / Scraper staging / meter page / Scrapers / Add new).
+Merge and deploy the changes to add your scraper to the admin UI.
+
+Add your new scraper to a test meter in admin (admin / Scraper staging / meter page / Scrapers / Add new).
+For Urjanet scrapers, set the utility account id (edit meter / Account ID) to an
+Account Number from the
+[Production Urjanet Explorer sheet](https://docs.google.com/spreadsheets/d/1qJcgRpf7BgdhgWHE2Nd-HE0w4vyk3a0NbnoLTrBR2CM/edit).
 
 Then run your scraper from ops:
 
@@ -145,7 +150,7 @@ Then run your scraper from ops:
     ./run.sh by-meter meterOid billing|interval
 
 If readings or bills don't appear within a few minutes, stasis transactions may be backed up.
-To verify, run `select oid, target, status from stasis_transaction where target=meteOid` on the
+To verify, run `select oid, target, status from stasis_transaction where target=meterOid` on the
 production database. If the `status` is `verifying`, you can jump the queue by posting a message
 to the immediate queue. Starting from ops:
 
