@@ -16,6 +16,7 @@ from .mountainview import MountainViewDatasource
 from .austin_tx import AustinTXDatasource
 from .american import AmericanWaterDatasource
 from .pleasanton import PleasantonDatasource
+from .heco import HecoDatasource
 
 
 __all__ = ["CommodityType", "UrjanetDataSource", "UrjanetPyMySqlDataSource",
@@ -23,4 +24,5 @@ __all__ = ["CommodityType", "UrjanetDataSource", "UrjanetPyMySqlDataSource",
            "FosterCityWaterDatasource", "ColleyvilleWaterDatasource", "FortWorthWaterDatasource",
            "SjWaterDatasource", "SanDiegoWaterDatasource", "IrvineRanchWaterDatasource",
            "CalWaterDatasource", "SouthlakeDatasource", "WataugaDatasource", "MountainViewDatasource",
-           "AustinTXDatasource", "AmericanWaterDatasource", "PleasantonDatasource"]
+           "AustinTXDatasource", "AmericanWaterDatasource",
+           "PleasantonDatasource", "HecoDatasource"]
