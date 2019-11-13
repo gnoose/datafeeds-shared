@@ -65,6 +65,9 @@ class Usage(JsonObject):
     # The rate component, e.g. "on peak", "off peak", etc.
     RateComponent = StringProperty()
 
+    # The measurement type, "general_consumption", "demand", or "reactive_consumption"
+    MeasurementType = StringProperty()
+
     # Unit of measure, typically kW or kWh
     EnergyUnit = StringProperty()
 
