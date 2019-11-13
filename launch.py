@@ -135,8 +135,13 @@ def launch_by_oid(meter_data_source_oid: int, start: date, end: date):
         end)
 
 
-def launch_by_meter(meter_oid: int, start: date, end: date, source_type: str):
+def launch_by_meter(meter_oid: int, start: Optional[date], end: Optional[date], source_type: str):
+    print('launch_by_meter: meter=%s start=%s end=%s source_type=%s' % (meter_oid, start, end, source_type))
     db.init()
+    if not start:
+        start = date(2015, 1, 1)
+    if not end:
+        end = date.today()
     mds = db.session.query(MeterDataSource).\
         filter_by(_meter=meter_oid).\
         filter(MeterDataSource.source_types.any(source_type)).\

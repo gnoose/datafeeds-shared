@@ -25,11 +25,7 @@ class AustinTXBillingPeriod(GenericBillingPeriod):
             conversion = Decimal("1.0")
         else:
             unit = units.pop().lower().strip()
-            # kWh need to be multiplied by 1000
-            if unit.lower() == "kwh":
-                conversion = Decimal("1000.0")
-            else:
-                conversion = CONVERSIONS.get(unit, Decimal("1.0"))
+            conversion = CONVERSIONS.get(unit, Decimal("1.0"))
         return sum([u.UsageAmount for u in usages]) * conversion
 
 

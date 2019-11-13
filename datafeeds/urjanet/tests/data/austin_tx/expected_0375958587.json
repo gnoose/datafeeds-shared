@@ -6,7 +6,7 @@
             "start": "2014-07-08",
             "tariff": null,
             "total_charge": "35613.9300",
-            "total_usage": "337000.00000",
+            "total_usage": "337.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Electric - Late Payment Fee",
@@ -279,7 +279,7 @@
             "start": "2014-08-06",
             "tariff": null,
             "total_charge": "46251.5300",
-            "total_usage": "421000.00000",
+            "total_usage": "421.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Customer Charge",
@@ -526,7 +526,7 @@
             "start": "2014-09-08",
             "tariff": null,
             "total_charge": "38966.3100",
-            "total_usage": "383000.00000",
+            "total_usage": "383.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Electric - Late Payment Fee",
@@ -877,7 +877,7 @@
             "start": "2014-10-07",
             "tariff": null,
             "total_charge": "37848.0600",
-            "total_usage": "384000.00000",
+            "total_usage": "384.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Electric - Late Payment Fee -",
@@ -1228,7 +1228,7 @@
             "start": "2014-11-06",
             "tariff": null,
             "total_charge": "39191.2800",
-            "total_usage": "377000.00000",
+            "total_usage": "377.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Customer Charge",
@@ -1475,7 +1475,7 @@
             "start": "2015-06-04",
             "tariff": null,
             "total_charge": "34397.6300",
-            "total_usage": "326000.00000",
+            "total_usage": "326.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 590.00 kW at $2.60 per kW",
@@ -1722,7 +1722,7 @@
             "start": "2015-10-05",
             "tariff": null,
             "total_charge": "32125.4200",
-            "total_usage": "305000.00000",
+            "total_usage": "305.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 560.00 kW at $4.43 per kW",
@@ -1995,7 +1995,7 @@
             "start": "2015-11-03",
             "tariff": null,
             "total_charge": "38960.3900",
-            "total_usage": "356000.00000",
+            "total_usage": "356.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 690.00 kW at $4.43 per kW",
@@ -2281,7 +2281,7 @@
             "start": "2015-12-03",
             "tariff": null,
             "total_charge": "44507.3300",
-            "total_usage": "423000.00000",
+            "total_usage": "423.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 730.00 kW at $4.43 per kW",
@@ -2567,7 +2567,7 @@
             "start": "2016-01-06",
             "tariff": null,
             "total_charge": "38823.0800",
-            "total_usage": "353000.00000",
+            "total_usage": "353.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 720.00 kW at $4.43 per kW",
@@ -2853,7 +2853,7 @@
             "start": "2016-02-03",
             "tariff": null,
             "total_charge": "32057.1800",
-            "total_usage": "287000.00000",
+            "total_usage": "287.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 640.00 kW at $4.43 per kW",
@@ -3139,7 +3139,7 @@
             "start": "2016-03-04",
             "tariff": null,
             "total_charge": "29054.2800",
-            "total_usage": "274000.00000",
+            "total_usage": "274.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 590.00 kW at $4.43 per kW",
@@ -3386,7 +3386,7 @@
             "start": "2016-04-05",
             "tariff": null,
             "total_charge": "24167.0500",
-            "total_usage": "230000.00000",
+            "total_usage": "230.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 490.00 kW at $4.43 per kW",
@@ -3633,7 +3633,7 @@
             "start": "2016-05-04",
             "tariff": null,
             "total_charge": "23281.0300",
-            "total_usage": "211000.00000",
+            "total_usage": "211.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 420.00 kW at $4.43 per kW",
@@ -3880,7 +3880,7 @@
             "start": "2016-06-03",
             "tariff": null,
             "total_charge": "22260.2300",
-            "total_usage": "215000.00000",
+            "total_usage": "215.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 380.00 kW at $4.43 per kW",
@@ -4127,7 +4127,7 @@
             "start": "2016-09-06",
             "tariff": null,
             "total_charge": "20057.2200",
-            "total_usage": "201000.00000",
+            "total_usage": "201.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 400.00 kW at $4.43 per kW",
@@ -4374,7 +4374,7 @@
             "start": "2016-12-05",
             "tariff": null,
             "total_charge": "32396.3500",
-            "total_usage": "301000.00000",
+            "total_usage": "301.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 620.00 kW at $3.75 per kW",
@@ -4647,7 +4647,7 @@
             "start": "2017-01-05",
             "tariff": null,
             "total_charge": "32073.8300",
-            "total_usage": "297000.00000",
+            "total_usage": "297.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 640.00 kW at $3.75 per kW",
@@ -4920,7 +4920,7 @@
             "start": "2018-02-05",
             "tariff": null,
             "total_charge": "28616.9900",
-            "total_usage": "291115000.00000",
+            "total_usage": "291115.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 650.00 kW at $3.80 per kW",
@@ -5180,7 +5180,7 @@
             "start": "2018-03-05",
             "tariff": null,
             "total_charge": "22976.3700",
-            "total_usage": "255919000.00000",
+            "total_usage": "255919.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 540.00 kW at $3.80 per kW",
@@ -5440,7 +5440,7 @@
             "start": "2018-04-04",
             "tariff": null,
             "total_charge": "22622.5600",
-            "total_usage": "247761000.00000",
+            "total_usage": "247761.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 550.00 kW at $3.80 per kW",
@@ -5700,7 +5700,7 @@
             "start": "2018-05-03",
             "tariff": null,
             "total_charge": "19740.1600",
-            "total_usage": "245620000.00000",
+            "total_usage": "245620.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 390.00 kW at $3.80 per kW",
@@ -5960,7 +5960,7 @@
             "start": "2018-06-05",
             "tariff": null,
             "total_charge": "18348.4800",
-            "total_usage": "218780000.00000",
+            "total_usage": "218780.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 390.00 kW at $3.80 per kW",
@@ -6220,7 +6220,7 @@
             "start": "2018-07-05",
             "tariff": null,
             "total_charge": "19157.7200",
-            "total_usage": "216064000.00000",
+            "total_usage": "216064.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 400.00 kW at $3.80 per kW",
@@ -6480,7 +6480,7 @@
             "start": "2018-08-03",
             "tariff": null,
             "total_charge": "22047.1600",
-            "total_usage": "260497000.00000",
+            "total_usage": "260497.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 400.00 kW at $3.80 per kW",
@@ -6740,7 +6740,7 @@
             "start": "2018-09-06",
             "tariff": null,
             "total_charge": "20175.6900",
-            "total_usage": "213446000.00000",
+            "total_usage": "213446.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 410.00 kW at $3.80 per kW",
@@ -7000,7 +7000,7 @@
             "start": "2018-10-03",
             "tariff": null,
             "total_charge": "31002.6700",
-            "total_usage": "311694000.00000",
+            "total_usage": "311694.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 640.00 kW at $3.74 per kW",
@@ -7260,7 +7260,7 @@
             "start": "2018-11-05",
             "tariff": null,
             "total_charge": "31945.9800",
-            "total_usage": "331059000.00000",
+            "total_usage": "331059.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 650.00 kW at $3.74 per kW",
@@ -7520,7 +7520,7 @@
             "start": "2018-12-04",
             "tariff": null,
             "total_charge": "37106.5300",
-            "total_usage": "382000000.00000",
+            "total_usage": "382000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 700.00 kW at $3.74 per kW",
@@ -7689,7 +7689,7 @@
             "start": "2019-01-04",
             "tariff": null,
             "total_charge": "35974.8300",
-            "total_usage": "370000000.00000",
+            "total_usage": "370000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 680.00 kW at $3.74 per kW",
@@ -7858,7 +7858,7 @@
             "start": "2019-02-05",
             "tariff": null,
             "total_charge": "32579.9400",
-            "total_usage": "327000000.00000",
+            "total_usage": "327000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 650.00 kW at $3.74 per kW",
@@ -8027,7 +8027,7 @@
             "start": "2019-03-05",
             "tariff": null,
             "total_charge": "30271.3500",
-            "total_usage": "300000000.00000",
+            "total_usage": "300000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 620.00 kW at $3.74 per kW",
@@ -8196,7 +8196,7 @@
             "start": "2019-04-04",
             "tariff": null,
             "total_charge": "25314.5400",
-            "total_usage": "248000000.00000",
+            "total_usage": "248000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 530.00 kW at $3.74 per kW",
@@ -8365,7 +8365,7 @@
             "start": "2019-05-03",
             "tariff": null,
             "total_charge": "26378.0000",
-            "total_usage": "273000000.00000",
+            "total_usage": "273000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 490.00 kW at $3.74 per kW",
@@ -8534,7 +8534,7 @@
             "start": "2019-06-05",
             "tariff": null,
             "total_charge": "22688.6700",
-            "total_usage": "235000000.00000",
+            "total_usage": "235000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 420.00 kW at $3.74 per kW",
@@ -8703,7 +8703,7 @@
             "start": "2019-07-05",
             "tariff": null,
             "total_charge": "22009.5400",
-            "total_usage": "232000000.00000",
+            "total_usage": "232000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 390.00 kW at $3.74 per kW",
@@ -8872,7 +8872,7 @@
             "start": "2019-08-05",
             "tariff": null,
             "total_charge": "21488.9000",
-            "total_usage": "229000000.00000",
+            "total_usage": "229000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 370.00 kW at $3.74 per kW",
@@ -9041,7 +9041,7 @@
             "start": "2019-09-05",
             "tariff": null,
             "total_charge": "20991.1200",
-            "total_usage": "217000000.00000",
+            "total_usage": "217000.00000",
             "line_items": [
                 {
                     "ChargeActualName": "Regulatory Charges 390.00 kW at $3.74 per kW",
