@@ -24,8 +24,9 @@ class TestUrjanetAustinTXTransformer(test_util.UrjaFixtureText):
         self.austin_tx_fixture_test("input_4183840241.json", "expected_4183840241.json")
 
     def test_austin_tx_electric(self):
-        """Tests on an account with electric charges."""
+        """Tests on accounts with electric charges."""
         self.austin_tx_fixture_test("input_0375958587.json", "expected_0375958587.json")
+        self.austin_tx_fixture_test("input_8166749309.json", "expected_8166749309.json")
 
 
 if __name__ == "__main__":
