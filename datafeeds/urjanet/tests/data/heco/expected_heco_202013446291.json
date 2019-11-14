@@ -1734,7 +1734,7 @@
             "peak_demand": null,
             "start": "2018-03-24",
             "tariff": null,
-            "total_charge": "0",
+            "total_charge": "45821.0900",
             "total_usage": "188880.00000",
             "line_items": [
                 {
