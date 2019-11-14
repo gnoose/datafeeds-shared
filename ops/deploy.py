@@ -47,9 +47,10 @@ def post_message(message, channel, icon=':mega:'):
 def get_commit_id(branch: str) -> str:
     repo = Repo(DATAFEEDS_ROOT)
     # assumes remote is named "origin"
-    log.info("Fetching latest from remote")
-    repo.remotes.origin.fetch()
+    log.info("Pulling latest from remote")
     branch_head = getattr(repo.heads, branch)
+    branch_head.checkout()
+    repo.remotes.origin.pull()
     commit_id = branch_head.commit.hexsha
     log.info("Commit ID at head of %s: %s", branch_head, commit_id)
     return commit_id
