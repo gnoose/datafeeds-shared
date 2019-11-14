@@ -367,6 +367,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "PK": 1,
             "UsageActualName": "test_charge_name",
             "UsageAmount": Decimal(100.00),
+            "MeasurementType": "test_type",
             "RateComponent": "test_component",
             "EnergyUnit": "test_unit",
             "IntervalStart": date(2000, 2, 1),

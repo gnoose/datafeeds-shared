@@ -287,6 +287,7 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
         return Usage(
             PK=get_int(row, "PK", nullable=False),
             UsageActualName=get_str(row, "UsageActualName"),
+            MeasurementType=get_str(row, "MeasurementType"),
             UsageAmount=get_decimal(row, "UsageAmount"),
             RateComponent=get_str(row, "RateComponent"),
             EnergyUnit=get_str(row, "EnergyUnit"),

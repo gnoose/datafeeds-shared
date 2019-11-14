@@ -29,6 +29,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.08",
                             "ChargeAmount": "22.0800",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-09-20",
@@ -41,6 +42,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $349.03",
                             "ChargeAmount": "349.0300",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-09-20",
@@ -53,6 +55,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $284.96-",
                             "ChargeAmount": "-284.9600",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-09-20",
@@ -65,6 +68,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $24.00",
                             "ChargeAmount": "24.0000",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-09-20",
@@ -77,6 +81,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $8.37",
                             "ChargeAmount": "8.3700",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-09-20",
@@ -89,6 +94,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $281.76",
                             "ChargeAmount": "281.7600",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-09-20",
@@ -101,6 +107,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-09-20",
@@ -113,6 +120,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.97",
                             "ChargeAmount": "317.9700",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6901",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2017-09-20",
@@ -125,6 +133,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,145.44",
                             "ChargeAmount": "2145.4400",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12640.0000",
                             "IntervalEnd": "2017-09-20",
@@ -140,6 +149,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-09-20",
                             "IntervalStart": "2017-08-23",
+                            "MeasurementType": "general_consumption",
                             "PK": 72465914,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -149,6 +159,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-09-20",
                             "IntervalStart": "2017-08-23",
+                            "MeasurementType": "demand",
                             "PK": 72465915,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -187,6 +198,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.40",
                             "ChargeAmount": "23.4000",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-06-22",
@@ -199,6 +211,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $380.43",
                             "ChargeAmount": "380.4300",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-06-22",
@@ -211,6 +224,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $290.22-",
                             "ChargeAmount": "-290.2200",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-06-22",
@@ -223,6 +237,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $30.98",
                             "ChargeAmount": "30.9800",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-06-22",
@@ -235,6 +250,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $8.53",
                             "ChargeAmount": "8.5300",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-06-22",
@@ -247,6 +263,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $282.65",
                             "ChargeAmount": "282.6500",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-06-22",
@@ -259,6 +276,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-06-22",
@@ -271,6 +289,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.96",
                             "ChargeAmount": "317.9600",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6897",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2017-06-22",
@@ -283,6 +302,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,186.17",
                             "ChargeAmount": "2186.1700",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12880.0000",
                             "IntervalEnd": "2017-06-22",
@@ -298,6 +318,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-06-22",
                             "IntervalStart": "2017-05-23",
+                            "MeasurementType": "general_consumption",
                             "PK": 72465916,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -307,6 +328,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-06-22",
                             "IntervalStart": "2017-05-23",
+                            "MeasurementType": "demand",
                             "PK": 72465917,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -345,6 +367,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.08",
                             "ChargeAmount": "22.0800",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-10-20",
@@ -357,6 +380,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $355.40",
                             "ChargeAmount": "355.4000",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-10-20",
@@ -369,6 +393,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $288.51-",
                             "ChargeAmount": "-288.5100",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-10-20",
@@ -381,6 +406,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $24.46",
                             "ChargeAmount": "24.4600",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-10-20",
@@ -393,6 +419,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $8.53",
                             "ChargeAmount": "8.5300",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-10-20",
@@ -405,6 +432,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $287.11",
                             "ChargeAmount": "287.1100",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-10-20",
@@ -417,6 +445,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-10-20",
@@ -429,6 +458,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.97",
                             "ChargeAmount": "317.9700",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6901",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2017-10-20",
@@ -441,6 +471,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,186.17",
                             "ChargeAmount": "2186.1700",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12880.0000",
                             "IntervalEnd": "2017-10-20",
@@ -456,6 +487,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-10-20",
                             "IntervalStart": "2017-09-21",
+                            "MeasurementType": "general_consumption",
                             "PK": 72465944,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -465,6 +497,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-10-20",
                             "IntervalStart": "2017-09-21",
+                            "MeasurementType": "demand",
                             "PK": 72465945,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -503,6 +536,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.08",
                             "ChargeAmount": "22.0800",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-11-20",
@@ -515,6 +549,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $344.86",
                             "ChargeAmount": "344.8600",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-11-20",
@@ -527,6 +562,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $267.94-",
                             "ChargeAmount": "-267.9400",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-11-20",
@@ -539,6 +575,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $23.70",
                             "ChargeAmount": "23.7000",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-11-20",
@@ -551,6 +588,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $8.26",
                             "ChargeAmount": "8.2600",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-11-20",
@@ -563,6 +601,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $278.19",
                             "ChargeAmount": "278.1900",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-11-20",
@@ -575,6 +614,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-11-20",
@@ -587,6 +627,7 @@
                         {
                             "ChargeActualName": "Demand Charge $313.29",
                             "ChargeAmount": "313.2900",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6899",
                             "ChargeUnitsUsed": "26.8000",
                             "IntervalEnd": "2017-11-20",
@@ -599,6 +640,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,118.28",
                             "ChargeAmount": "2118.2800",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12480.0000",
                             "IntervalEnd": "2017-11-20",
@@ -614,6 +656,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-11-20",
                             "IntervalStart": "2017-10-21",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466003,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -623,6 +666,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-11-20",
                             "IntervalStart": "2017-10-21",
+                            "MeasurementType": "demand",
                             "PK": 72466004,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -661,6 +705,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.96",
                             "ChargeAmount": "23.9600",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-01-19",
@@ -673,6 +718,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $318.82",
                             "ChargeAmount": "318.8200",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-01-19",
@@ -685,6 +731,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $152.35-",
                             "ChargeAmount": "-152.3500",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-01-19",
@@ -697,6 +744,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $21.88",
                             "ChargeAmount": "21.8800",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-01-19",
@@ -709,6 +757,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $7.63",
                             "ChargeAmount": "7.6300",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-01-19",
@@ -721,6 +770,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $256.79",
                             "ChargeAmount": "256.7900",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-01-19",
@@ -733,6 +783,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-01-19",
@@ -745,6 +796,7 @@
                         {
                             "ChargeActualName": "Demand Charge $308.62",
                             "ChargeAmount": "308.6200",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6902",
                             "ChargeUnitsUsed": "26.4000",
                             "IntervalEnd": "2018-01-19",
@@ -757,6 +809,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,955.34",
                             "ChargeAmount": "1955.3400",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "11520.0000",
                             "IntervalEnd": "2018-01-19",
@@ -772,6 +825,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-01-19",
                             "IntervalStart": "2017-12-21",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466026,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -781,6 +835,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-01-19",
                             "IntervalStart": "2017-12-21",
+                            "MeasurementType": "demand",
                             "PK": 72466027,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -819,6 +874,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.08",
                             "ChargeAmount": "22.0800",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-12-20",
@@ -831,6 +887,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $329.56",
                             "ChargeAmount": "329.5600",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-12-20",
@@ -843,6 +900,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $213.25-",
                             "ChargeAmount": "-213.2500",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-12-20",
@@ -855,6 +913,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $22.64",
                             "ChargeAmount": "22.6400",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-12-20",
@@ -867,6 +926,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $7.89",
                             "ChargeAmount": "7.8900",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-12-20",
@@ -879,6 +939,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $265.71",
                             "ChargeAmount": "265.7100",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-12-20",
@@ -891,6 +952,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-12-20",
@@ -903,6 +965,7 @@
                         {
                             "ChargeActualName": "Demand Charge $308.61",
                             "ChargeAmount": "308.6100",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6898",
                             "ChargeUnitsUsed": "26.4000",
                             "IntervalEnd": "2017-12-20",
@@ -915,6 +978,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,023.23",
                             "ChargeAmount": "2023.2300",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "11920.0000",
                             "IntervalEnd": "2017-12-20",
@@ -930,6 +994,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-12-20",
                             "IntervalStart": "2017-11-21",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466055,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -939,6 +1004,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-12-20",
                             "IntervalStart": "2017-11-21",
+                            "MeasurementType": "demand",
                             "PK": 72466056,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -977,6 +1043,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.04",
                             "ChargeAmount": "25.0400",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-03-23",
@@ -989,6 +1056,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $334.85",
                             "ChargeAmount": "334.8500",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-03-23",
@@ -1001,6 +1069,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $41.66-",
                             "ChargeAmount": "-41.6600",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-03-23",
@@ -1013,6 +1082,7 @@
                         {
                             "ChargeActualName": "Interim Increase 2017 $230.49",
                             "ChargeAmount": "230.4900",
+                            "ChargeId": "ch.rate_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-03-23",
@@ -1025,6 +1095,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $22.03",
                             "ChargeAmount": "22.0300",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-03-23",
@@ -1037,6 +1108,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $82.55",
                             "ChargeAmount": "82.5500",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-03-23",
@@ -1049,6 +1121,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-03-23",
@@ -1061,6 +1134,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.97",
                             "ChargeAmount": "317.9700",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6901",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2018-03-23",
@@ -1073,6 +1147,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,968.91",
                             "ChargeAmount": "1968.9100",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "11600.0000",
                             "IntervalEnd": "2018-03-23",
@@ -1088,6 +1163,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-03-23",
                             "IntervalStart": "2018-02-22",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466086,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -1097,6 +1173,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-03-23",
                             "IntervalStart": "2018-02-22",
+                            "MeasurementType": "demand",
                             "PK": 72466087,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -1135,6 +1212,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.04",
                             "ChargeAmount": "25.0400",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1147,6 +1225,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $353.22",
                             "ChargeAmount": "353.2200",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1159,6 +1238,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $72.23-",
                             "ChargeAmount": "-72.2300",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1171,6 +1251,7 @@
                         {
                             "ChargeActualName": "Interim Increase 2017 $44.15",
                             "ChargeAmount": "44.1500",
+                            "ChargeId": "ch.rate_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1183,6 +1264,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $23.55",
                             "ChargeAmount": "23.5500",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1195,6 +1277,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $6.72",
                             "ChargeAmount": "6.7200",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1207,6 +1290,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $242.19",
                             "ChargeAmount": "242.1900",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1219,6 +1303,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1231,6 +1316,7 @@
                         {
                             "ChargeActualName": "Demand Charge $308.61",
                             "ChargeAmount": "308.6100",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6898",
                             "ChargeUnitsUsed": "26.4000",
                             "IntervalEnd": "2018-02-21",
@@ -1243,6 +1329,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,104.70",
                             "ChargeAmount": "2104.7000",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12400.0000",
                             "IntervalEnd": "2018-02-21",
@@ -1258,6 +1345,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-02-21",
                             "IntervalStart": "2018-01-20",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466119,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -1267,6 +1355,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-02-21",
                             "IntervalStart": "2018-01-20",
+                            "MeasurementType": "demand",
                             "PK": 72466120,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -1305,6 +1394,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.40",
                             "ChargeAmount": "23.4000",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-04-21",
@@ -1317,6 +1407,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $340.98",
                             "ChargeAmount": "340.9800",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-04-21",
@@ -1329,6 +1420,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $191.74-",
                             "ChargeAmount": "-191.7400",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-04-21",
@@ -1341,6 +1433,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $28.09",
                             "ChargeAmount": "28.0900",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-04-21",
@@ -1353,6 +1446,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $8.00",
                             "ChargeAmount": "8.0000",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-04-21",
@@ -1365,6 +1459,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $246.42",
                             "ChargeAmount": "246.4200",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-04-21",
@@ -1377,6 +1472,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-04-21",
@@ -1389,6 +1485,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.97",
                             "ChargeAmount": "317.9700",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6901",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2017-04-21",
@@ -1401,6 +1498,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,982.49",
                             "ChargeAmount": "1982.4900",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "11680.0000",
                             "IntervalEnd": "2017-04-21",
@@ -1416,6 +1514,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-04-21",
                             "IntervalStart": "2017-03-24",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466121,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -1425,6 +1524,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-04-21",
                             "IntervalStart": "2017-03-24",
+                            "MeasurementType": "demand",
                             "PK": 72466122,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -1463,6 +1563,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.04",
                             "ChargeAmount": "25.0400",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1475,6 +1576,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $338.78",
                             "ChargeAmount": "338.7800",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1487,6 +1589,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $54.04-",
                             "ChargeAmount": "-54.0400",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1499,6 +1602,7 @@
                         {
                             "ChargeActualName": "Interim Increase 2017 $209.51",
                             "ChargeAmount": "209.5100",
+                            "ChargeId": "ch.rate_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1511,6 +1615,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $22.33",
                             "ChargeAmount": "22.3300",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1523,6 +1628,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $1.76-",
                             "ChargeAmount": "-1.7600",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1535,6 +1641,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $83.68",
                             "ChargeAmount": "83.6800",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1547,6 +1654,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1559,6 +1667,7 @@
                         {
                             "ChargeActualName": "Demand Charge $346.03",
                             "ChargeAmount": "346.0300",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6902",
                             "ChargeUnitsUsed": "29.6000",
                             "IntervalEnd": "2018-04-24",
@@ -1571,6 +1680,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,996.07",
                             "ChargeAmount": "1996.0700",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "11760.0000",
                             "IntervalEnd": "2018-04-24",
@@ -1586,6 +1696,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-04-24",
                             "IntervalStart": "2018-03-24",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466145,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -1595,6 +1706,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-04-24",
                             "IntervalStart": "2018-03-24",
+                            "MeasurementType": "demand",
                             "PK": 72466146,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -1633,6 +1745,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.41",
                             "ChargeAmount": "22.4100",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-07-24",
@@ -1645,6 +1758,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $395.55",
                             "ChargeAmount": "395.5500",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-07-24",
@@ -1657,6 +1771,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $276.32-",
                             "ChargeAmount": "-276.3200",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-07-24",
@@ -1669,6 +1784,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $27.22",
                             "ChargeAmount": "27.2200",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-07-24",
@@ -1681,6 +1797,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $8.90",
                             "ChargeAmount": "8.9000",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-07-24",
@@ -1693,6 +1810,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $299.59",
                             "ChargeAmount": "299.5900",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-07-24",
@@ -1705,6 +1823,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-07-24",
@@ -1717,6 +1836,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.97",
                             "ChargeAmount": "317.9700",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6901",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2017-07-24",
@@ -1729,6 +1849,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,281.22",
                             "ChargeAmount": "2281.2200",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "13440.0000",
                             "IntervalEnd": "2017-07-24",
@@ -1744,6 +1865,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-07-24",
                             "IntervalStart": "2017-06-23",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466157,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -1753,6 +1875,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-07-24",
                             "IntervalStart": "2017-06-23",
+                            "MeasurementType": "demand",
                             "PK": 72466158,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -1791,6 +1914,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.40",
                             "ChargeAmount": "23.4000",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-05-22",
@@ -1803,6 +1927,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $370.76",
                             "ChargeAmount": "370.7600",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-05-22",
@@ -1815,6 +1940,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $269.54-",
                             "ChargeAmount": "-269.5400",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-05-22",
@@ -1827,6 +1953,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $30.40",
                             "ChargeAmount": "30.4000",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-05-22",
@@ -1839,6 +1966,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $8.37",
                             "ChargeAmount": "8.3700",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-05-22",
@@ -1851,6 +1979,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $266.68",
                             "ChargeAmount": "266.6800",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-05-22",
@@ -1863,6 +1992,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-05-22",
@@ -1875,6 +2005,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.96",
                             "ChargeAmount": "317.9600",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6897",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2017-05-22",
@@ -1887,6 +2018,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,145.44",
                             "ChargeAmount": "2145.4400",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12640.0000",
                             "IntervalEnd": "2017-05-22",
@@ -1902,6 +2034,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-05-22",
                             "IntervalStart": "2017-04-22",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466159,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -1911,6 +2044,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-05-22",
                             "IntervalStart": "2017-04-22",
+                            "MeasurementType": "demand",
                             "PK": 72466160,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -1949,6 +2083,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.08",
                             "ChargeAmount": "22.0800",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-08-22",
@@ -1961,6 +2096,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $349.50",
                             "ChargeAmount": "349.5000",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-08-22",
@@ -1973,6 +2109,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $266.73-",
                             "ChargeAmount": "-266.7300",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-08-22",
@@ -1985,6 +2122,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $23.70",
                             "ChargeAmount": "23.7000",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-08-22",
@@ -1997,6 +2135,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $8.26",
                             "ChargeAmount": "8.2600",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-08-22",
@@ -2009,6 +2148,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $278.19",
                             "ChargeAmount": "278.1900",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-08-22",
@@ -2021,6 +2161,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2017-08-22",
@@ -2033,6 +2174,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.97",
                             "ChargeAmount": "317.9700",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6901",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2017-08-22",
@@ -2045,6 +2187,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,118.28",
                             "ChargeAmount": "2118.2800",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12480.0000",
                             "IntervalEnd": "2017-08-22",
@@ -2060,6 +2203,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2017-08-22",
                             "IntervalStart": "2017-07-25",
+                            "MeasurementType": "general_consumption",
                             "PK": 72466180,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -2069,6 +2213,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2017-08-22",
                             "IntervalStart": "2017-07-25",
+                            "MeasurementType": "demand",
                             "PK": 72466181,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -2107,6 +2252,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.04",
                             "ChargeAmount": "25.0400",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2119,6 +2265,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $236.88",
                             "ChargeAmount": "236.8800",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2131,6 +2278,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $67.26",
                             "ChargeAmount": "67.2600",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2143,6 +2291,7 @@
                         {
                             "ChargeActualName": "Interim Increase 2017 $150.67",
                             "ChargeAmount": "150.6700",
+                            "ChargeId": "ch.rate_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2155,6 +2304,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $20.21",
                             "ChargeAmount": "20.2100",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2167,6 +2317,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $2.12-",
                             "ChargeAmount": "-2.1200",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2179,6 +2330,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $75.71",
                             "ChargeAmount": "75.7100",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2191,6 +2343,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2203,6 +2356,7 @@
                         {
                             "ChargeActualName": "Demand Charge $317.97",
                             "ChargeAmount": "317.9700",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6901",
                             "ChargeUnitsUsed": "27.2000",
                             "IntervalEnd": "2018-05-23",
@@ -2215,6 +2369,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,805.97",
                             "ChargeAmount": "1805.9700",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "10640.0000",
                             "IntervalEnd": "2018-05-23",
@@ -2230,6 +2385,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-05-23",
                             "IntervalStart": "2018-04-25",
+                            "MeasurementType": "general_consumption",
                             "PK": 72477320,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -2239,6 +2395,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-05-23",
                             "IntervalStart": "2018-04-25",
+                            "MeasurementType": "demand",
                             "PK": 72477321,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -2277,6 +2434,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.04",
                             "ChargeAmount": "25.0400",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2289,6 +2447,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $251.28",
                             "ChargeAmount": "251.2800",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2301,6 +2460,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $158.62",
                             "ChargeAmount": "158.6200",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2313,6 +2473,7 @@
                         {
                             "ChargeActualName": "Interim Increase 2017 $162.43",
                             "ChargeAmount": "162.4300",
+                            "ChargeId": "ch.rate_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2325,6 +2486,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $22.03",
                             "ChargeAmount": "22.0300",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2337,6 +2499,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $2.31-",
                             "ChargeAmount": "-2.3100",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2349,6 +2512,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $110.06",
                             "ChargeAmount": "110.0600",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2361,6 +2525,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2373,6 +2538,7 @@
                         {
                             "ChargeActualName": "Demand Charge $327.32",
                             "ChargeAmount": "327.3200",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6900",
                             "ChargeUnitsUsed": "28.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2385,6 +2551,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,968.91",
                             "ChargeAmount": "1968.9100",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "11600.0000",
                             "IntervalEnd": "2018-06-22",
@@ -2400,6 +2567,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-06-22",
                             "IntervalStart": "2018-05-24",
+                            "MeasurementType": "general_consumption",
                             "PK": 72509240,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -2409,6 +2577,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-06-22",
                             "IntervalStart": "2018-05-24",
+                            "MeasurementType": "demand",
                             "PK": 72509241,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -2447,6 +2616,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.55",
                             "ChargeAmount": "23.5500",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2459,6 +2629,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $331.66",
                             "ChargeAmount": "331.6600",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2471,6 +2642,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $154.54",
                             "ChargeAmount": "154.5400",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2483,6 +2655,7 @@
                         {
                             "ChargeActualName": "Interim Increase 2017 $167.39",
                             "ChargeAmount": "167.3900",
+                            "ChargeId": "ch.rate_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2495,6 +2668,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $25.85",
                             "ChargeAmount": "25.8500",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2507,6 +2681,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $2.39-",
                             "ChargeAmount": "-2.3900",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2519,6 +2694,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $124.20",
                             "ChargeAmount": "124.2000",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2531,6 +2707,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2543,6 +2720,7 @@
                         {
                             "ChargeActualName": "Demand Charge $332.00",
                             "ChargeAmount": "332.0000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6901",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2018-07-23",
@@ -2555,6 +2733,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,036.81",
                             "ChargeAmount": "2036.8100",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12000.0000",
                             "IntervalEnd": "2018-07-23",
@@ -2570,6 +2749,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-07-23",
                             "IntervalStart": "2018-06-23",
+                            "MeasurementType": "general_consumption",
                             "PK": 72529717,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -2579,6 +2759,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-07-23",
                             "IntervalStart": "2018-06-23",
+                            "MeasurementType": "demand",
                             "PK": 72529718,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -2617,6 +2798,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.03",
                             "ChargeAmount": "23.0300",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2629,6 +2811,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $397.16",
                             "ChargeAmount": "397.1600",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2641,6 +2824,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $114.19",
                             "ChargeAmount": "114.1900",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2653,6 +2837,7 @@
                         {
                             "ChargeActualName": "Interim Increase 2017 $174.20",
                             "ChargeAmount": "174.2000",
+                            "ChargeId": "ch.rate_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2665,6 +2850,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $28.17",
                             "ChargeAmount": "28.1700",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2677,6 +2863,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $1.89-",
                             "ChargeAmount": "-1.8900",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2689,6 +2876,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $130.00",
                             "ChargeAmount": "130.0000",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2701,6 +2889,7 @@
                         {
                             "ChargeActualName": "Customer Charge $82.00",
                             "ChargeAmount": "82.0000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2713,6 +2902,7 @@
                         {
                             "ChargeActualName": "Demand Charge $336.67",
                             "ChargeAmount": "336.6700",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "11.6899",
                             "ChargeUnitsUsed": "28.8000",
                             "IntervalEnd": "2018-08-22",
@@ -2725,6 +2915,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,131.86",
                             "ChargeAmount": "2131.8600",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1697",
                             "ChargeUnitsUsed": "12560.0000",
                             "IntervalEnd": "2018-08-22",
@@ -2740,6 +2931,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-08-22",
                             "IntervalStart": "2018-07-24",
+                            "MeasurementType": "general_consumption",
                             "PK": 72576186,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -2749,6 +2941,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-08-22",
                             "IntervalStart": "2018-07-24",
+                            "MeasurementType": "demand",
                             "PK": 72576187,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -2787,6 +2980,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.03",
                             "ChargeAmount": "23.0300",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2799,6 +2993,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $420.59",
                             "ChargeAmount": "420.5900",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2811,6 +3006,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $389.39",
                             "ChargeAmount": "389.3900",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2823,6 +3019,7 @@
                         {
                             "ChargeActualName": "Interim Increase 2017 $51.05",
                             "ChargeAmount": "51.0500",
+                            "ChargeId": "ch.rate_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2835,6 +3032,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $27.45",
                             "ChargeAmount": "27.4500",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2847,6 +3045,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $1.62-",
                             "ChargeAmount": "-1.6200",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2859,6 +3058,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $126.68",
                             "ChargeAmount": "126.6800",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2871,6 +3071,7 @@
                         {
                             "ChargeActualName": "Customer Charge $93.34",
                             "ChargeAmount": "93.3400",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2883,6 +3084,7 @@
                         {
                             "ChargeActualName": "Demand Charge $358.04",
                             "ChargeAmount": "358.0400",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "12.6070",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2018-09-21",
@@ -2895,6 +3097,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,955.20",
                             "ChargeAmount": "1955.2000",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1597",
                             "ChargeUnitsUsed": "12240.0000",
                             "IntervalEnd": "2018-09-21",
@@ -2910,6 +3113,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-09-21",
                             "IntervalStart": "2018-08-23",
+                            "MeasurementType": "general_consumption",
                             "PK": 72659588,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -2919,6 +3123,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-09-21",
                             "IntervalStart": "2018-08-23",
+                            "MeasurementType": "demand",
                             "PK": 72659589,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -2957,6 +3162,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.03",
                             "ChargeAmount": "23.0300",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-10-23",
@@ -2969,6 +3175,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $464.16",
                             "ChargeAmount": "464.1600",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-10-23",
@@ -2981,6 +3188,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $536.22",
                             "ChargeAmount": "536.2200",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-10-23",
@@ -2993,6 +3201,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $29.61",
                             "ChargeAmount": "29.6100",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-10-23",
@@ -3005,6 +3214,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $1.74-",
                             "ChargeAmount": "-1.7400",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-10-23",
@@ -3017,6 +3227,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $136.62",
                             "ChargeAmount": "136.6200",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-10-23",
@@ -3029,6 +3240,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-10-23",
@@ -3041,6 +3253,7 @@
                         {
                             "ChargeActualName": "Demand Charge $374.40",
                             "ChargeAmount": "374.4000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.8000",
                             "IntervalEnd": "2018-10-23",
@@ -3053,6 +3266,7 @@
                         {
                             "ChargeActualName": "Energy Charge $2,052.01",
                             "ChargeAmount": "2052.0100",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1555",
                             "ChargeUnitsUsed": "13200.0000",
                             "IntervalEnd": "2018-10-23",
@@ -3068,6 +3282,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-10-23",
                             "IntervalStart": "2018-09-22",
+                            "MeasurementType": "general_consumption",
                             "PK": 72710920,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -3077,6 +3292,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-10-23",
                             "IntervalStart": "2018-09-22",
+                            "MeasurementType": "demand",
                             "PK": 72710921,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -3115,6 +3331,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.03",
                             "ChargeAmount": "23.0300",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-11-21",
@@ -3127,6 +3344,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $354.67",
                             "ChargeAmount": "354.6700",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-11-21",
@@ -3139,6 +3357,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $537.73",
                             "ChargeAmount": "537.7300",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-11-21",
@@ -3151,6 +3370,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $24.94",
                             "ChargeAmount": "24.9400",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-11-21",
@@ -3163,6 +3383,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $0.45-",
                             "ChargeAmount": "-0.4500",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-11-21",
@@ -3175,6 +3396,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $115.09",
                             "ChargeAmount": "115.0900",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-11-21",
@@ -3187,6 +3409,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-11-21",
@@ -3199,6 +3422,7 @@
                         {
                             "ChargeActualName": "Demand Charge $369.20",
                             "ChargeAmount": "369.2000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2018-11-21",
@@ -3211,6 +3435,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,728.66",
                             "ChargeAmount": "1728.6600",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1555",
                             "ChargeUnitsUsed": "11120.0000",
                             "IntervalEnd": "2018-11-21",
@@ -3226,6 +3451,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-11-21",
                             "IntervalStart": "2018-10-24",
+                            "MeasurementType": "general_consumption",
                             "PK": 72763035,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -3235,6 +3461,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-11-21",
                             "IntervalStart": "2018-10-24",
+                            "MeasurementType": "demand",
                             "PK": 72763036,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -3273,6 +3500,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.03",
                             "ChargeAmount": "23.0300",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-12-21",
@@ -3285,6 +3513,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $360.48",
                             "ChargeAmount": "360.4800",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-12-21",
@@ -3297,6 +3526,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $638.85",
                             "ChargeAmount": "638.8500",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-12-21",
@@ -3309,6 +3539,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $26.38",
                             "ChargeAmount": "26.3800",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-12-21",
@@ -3321,6 +3552,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $0.07-",
                             "ChargeAmount": "-0.0700",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-12-21",
@@ -3333,6 +3565,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $121.72",
                             "ChargeAmount": "121.7200",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-12-21",
@@ -3345,6 +3578,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2018-12-21",
@@ -3357,6 +3591,7 @@
                         {
                             "ChargeActualName": "Demand Charge $369.20",
                             "ChargeAmount": "369.2000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2018-12-21",
@@ -3369,6 +3604,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,828.15",
                             "ChargeAmount": "1828.1500",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.1555",
                             "ChargeUnitsUsed": "11760.0000",
                             "IntervalEnd": "2018-12-21",
@@ -3384,6 +3620,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2018-12-21",
                             "IntervalStart": "2018-11-22",
+                            "MeasurementType": "general_consumption",
                             "PK": 72794017,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -3393,6 +3630,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2018-12-21",
                             "IntervalStart": "2018-11-22",
+                            "MeasurementType": "demand",
                             "PK": 72794018,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -3431,6 +3669,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $24.97",
                             "ChargeAmount": "24.9700",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-01-22",
@@ -3443,6 +3682,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $386.33",
                             "ChargeAmount": "386.3300",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-01-22",
@@ -3455,6 +3695,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $1,435.06",
                             "ChargeAmount": "1435.0600",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-01-22",
@@ -3467,6 +3708,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $28.17",
                             "ChargeAmount": "28.1700",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-01-22",
@@ -3479,6 +3721,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $0.08-",
                             "ChargeAmount": "-0.0800",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-01-22",
@@ -3491,6 +3734,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $130.00",
                             "ChargeAmount": "130.0000",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-01-22",
@@ -3503,6 +3747,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-01-22",
@@ -3515,6 +3760,7 @@
                         {
                             "ChargeActualName": "Demand Charge $369.21",
                             "ChargeAmount": "369.2100",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0004",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2019-01-22",
@@ -3527,6 +3773,7 @@
                         {
                             "ChargeActualName": "Energy Charge $1,069.34",
                             "ChargeAmount": "1069.3400",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0851",
                             "ChargeUnitsUsed": "12560.0000",
                             "IntervalEnd": "2019-01-22",
@@ -3542,6 +3789,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-01-22",
                             "IntervalStart": "2018-12-22",
+                            "MeasurementType": "general_consumption",
                             "PK": 72858693,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -3551,6 +3799,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-01-22",
                             "IntervalStart": "2018-12-22",
+                            "MeasurementType": "demand",
                             "PK": 72858694,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -3589,6 +3838,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.85",
                             "ChargeAmount": "25.8500",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-02-21",
@@ -3601,6 +3851,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $356.36",
                             "ChargeAmount": "356.3600",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-02-21",
@@ -3613,6 +3864,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $1,590.01",
                             "ChargeAmount": "1590.0100",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-02-21",
@@ -3625,6 +3877,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $28.17",
                             "ChargeAmount": "28.1700",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-02-21",
@@ -3637,6 +3890,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $0.02-",
                             "ChargeAmount": "-0.0200",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-02-21",
@@ -3649,6 +3903,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $130.00",
                             "ChargeAmount": "130.0000",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-02-21",
@@ -3661,6 +3916,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-02-21",
@@ -3673,6 +3929,7 @@
                         {
                             "ChargeActualName": "Demand Charge $374.40",
                             "ChargeAmount": "374.4000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.8000",
                             "IntervalEnd": "2019-02-21",
@@ -3685,6 +3942,7 @@
                         {
                             "ChargeActualName": "Energy Charge $667.90",
                             "ChargeAmount": "667.9000",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "12560.0000",
                             "IntervalEnd": "2019-02-21",
@@ -3700,6 +3958,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-02-21",
                             "IntervalStart": "2019-01-23",
+                            "MeasurementType": "general_consumption",
                             "PK": 72858695,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -3709,6 +3968,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-02-21",
                             "IntervalStart": "2019-01-23",
+                            "MeasurementType": "demand",
                             "PK": 72858696,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -3747,6 +4007,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.85",
                             "ChargeAmount": "25.8500",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-03-22",
@@ -3759,6 +4020,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $332.66",
                             "ChargeAmount": "332.6600",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-03-22",
@@ -3771,6 +4033,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $1,594.16",
                             "ChargeAmount": "1594.1600",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-03-22",
@@ -3783,6 +4046,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $27.27",
                             "ChargeAmount": "27.2700",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-03-22",
@@ -3795,6 +4059,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $125.86",
                             "ChargeAmount": "125.8600",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-03-22",
@@ -3807,6 +4072,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-03-22",
@@ -3819,6 +4085,7 @@
                         {
                             "ChargeActualName": "Demand Charge $369.20",
                             "ChargeAmount": "369.2000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2019-03-22",
@@ -3831,6 +4098,7 @@
                         {
                             "ChargeActualName": "Energy Charge $646.63",
                             "ChargeAmount": "646.6300",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "12160.0000",
                             "IntervalEnd": "2019-03-22",
@@ -3846,6 +4114,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-03-22",
                             "IntervalStart": "2019-02-22",
+                            "MeasurementType": "general_consumption",
                             "PK": 72882653,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -3855,6 +4124,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-03-22",
                             "IntervalStart": "2019-02-22",
+                            "MeasurementType": "demand",
                             "PK": 72882654,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -3893,6 +4163,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.85",
                             "ChargeAmount": "25.8500",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-04-24",
@@ -3905,6 +4176,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $396.39",
                             "ChargeAmount": "396.3900",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-04-24",
@@ -3917,6 +4189,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $2,041.03",
                             "ChargeAmount": "2041.0300",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-04-24",
@@ -3929,6 +4202,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $32.48",
                             "ChargeAmount": "32.4800",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-04-24",
@@ -3941,6 +4215,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $149.87",
                             "ChargeAmount": "149.8700",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-04-24",
@@ -3953,6 +4228,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-04-24",
@@ -3965,6 +4241,7 @@
                         {
                             "ChargeActualName": "Demand Charge $374.40",
                             "ChargeAmount": "374.4000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.8000",
                             "IntervalEnd": "2019-04-24",
@@ -3977,6 +4254,7 @@
                         {
                             "ChargeActualName": "Energy Charge $770.00",
                             "ChargeAmount": "770.0000",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "14480.0000",
                             "IntervalEnd": "2019-04-24",
@@ -3992,6 +4270,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-04-24",
                             "IntervalStart": "2019-03-23",
+                            "MeasurementType": "general_consumption",
                             "PK": 72921697,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -4001,6 +4280,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-04-24",
                             "IntervalStart": "2019-03-23",
+                            "MeasurementType": "demand",
                             "PK": 72921698,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -4039,6 +4319,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.85",
                             "ChargeAmount": "25.8500",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-05-23",
@@ -4051,6 +4332,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $375.05",
                             "ChargeAmount": "375.0500",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-05-23",
@@ -4063,6 +4345,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $1,862.43",
                             "ChargeAmount": "1862.4300",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-05-23",
@@ -4075,6 +4358,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $28.53",
                             "ChargeAmount": "28.5300",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-05-23",
@@ -4087,6 +4371,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $1.01",
                             "ChargeAmount": "1.0100",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-05-23",
@@ -4099,6 +4384,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $131.65",
                             "ChargeAmount": "131.6500",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-05-23",
@@ -4111,6 +4397,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-05-23",
@@ -4123,6 +4410,7 @@
                         {
                             "ChargeActualName": "Demand Charge $374.40",
                             "ChargeAmount": "374.4000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.8000",
                             "IntervalEnd": "2019-05-23",
@@ -4135,6 +4423,7 @@
                         {
                             "ChargeActualName": "Energy Charge $676.41",
                             "ChargeAmount": "676.4100",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "12720.0000",
                             "IntervalEnd": "2019-05-23",
@@ -4150,6 +4439,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-05-23",
                             "IntervalStart": "2019-04-25",
+                            "MeasurementType": "general_consumption",
                             "PK": 72964354,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -4159,6 +4449,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-05-23",
                             "IntervalStart": "2019-04-25",
+                            "MeasurementType": "demand",
                             "PK": 72964355,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -4197,6 +4488,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $25.85",
                             "ChargeAmount": "25.8500",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-06-22",
@@ -4209,6 +4501,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $338.83",
                             "ChargeAmount": "338.8300",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-06-22",
@@ -4221,6 +4514,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $1,868.87",
                             "ChargeAmount": "1868.8700",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-06-22",
@@ -4233,6 +4527,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $27.81",
                             "ChargeAmount": "27.8100",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-06-22",
@@ -4245,6 +4540,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $1.24",
                             "ChargeAmount": "1.2400",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-06-22",
@@ -4257,6 +4553,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $119.49",
                             "ChargeAmount": "119.4900",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-06-22",
@@ -4269,6 +4566,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-06-22",
@@ -4281,6 +4579,7 @@
                         {
                             "ChargeActualName": "Demand Charge $374.40",
                             "ChargeAmount": "374.4000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.8000",
                             "IntervalEnd": "2019-06-22",
@@ -4293,6 +4592,7 @@
                         {
                             "ChargeActualName": "Energy Charge $659.39",
                             "ChargeAmount": "659.3900",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "12400.0000",
                             "IntervalEnd": "2019-06-22",
@@ -4308,6 +4608,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-06-22",
                             "IntervalStart": "2019-05-24",
+                            "MeasurementType": "general_consumption",
                             "PK": 73007602,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -4317,6 +4618,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-06-22",
                             "IntervalStart": "2019-05-24",
+                            "MeasurementType": "demand",
                             "PK": 73007603,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -4355,6 +4657,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $23.46",
                             "ChargeAmount": "23.4600",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4367,6 +4670,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $373.00",
                             "ChargeAmount": "373.0000",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4379,6 +4683,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $2,011.44",
                             "ChargeAmount": "2011.4400",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4391,6 +4696,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $32.60",
                             "ChargeAmount": "32.6000",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4403,6 +4709,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $1.37",
                             "ChargeAmount": "1.3700",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4415,6 +4722,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $128.26",
                             "ChargeAmount": "128.2600",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4427,6 +4735,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4439,6 +4748,7 @@
                         {
                             "ChargeActualName": "Demand Charge $364.00",
                             "ChargeAmount": "364.0000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4451,6 +4761,7 @@
                         {
                             "ChargeActualName": "Energy Charge $727.46",
                             "ChargeAmount": "727.4600",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "13680.0000",
                             "IntervalEnd": "2019-07-25",
@@ -4466,6 +4777,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-07-25",
                             "IntervalStart": "2019-06-23",
+                            "MeasurementType": "general_consumption",
                             "PK": 73033690,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -4475,6 +4787,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-07-25",
                             "IntervalStart": "2019-06-23",
+                            "MeasurementType": "demand",
                             "PK": 73033691,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -4513,6 +4826,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.69",
                             "ChargeAmount": "22.6900",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-08-23",
@@ -4525,6 +4839,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $347.50",
                             "ChargeAmount": "347.5000",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-08-23",
@@ -4537,6 +4852,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $1,756.23",
                             "ChargeAmount": "1756.2300",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-08-23",
@@ -4549,6 +4865,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $29.72",
                             "ChargeAmount": "29.7200",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-08-23",
@@ -4561,6 +4878,7 @@
                         {
                             "ChargeActualName": "IRP Cost Recovery $0.25",
                             "ChargeAmount": "0.2500",
+                            "ChargeId": "ch.recovery_surcharge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-08-23",
@@ -4573,6 +4891,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $114.76",
                             "ChargeAmount": "114.7600",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-08-23",
@@ -4585,6 +4904,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-08-23",
@@ -4597,6 +4917,7 @@
                         {
                             "ChargeActualName": "Demand Charge $369.20",
                             "ChargeAmount": "369.2000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2019-08-23",
@@ -4609,6 +4930,7 @@
                         {
                             "ChargeActualName": "Energy Charge $650.89",
                             "ChargeAmount": "650.8900",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "12240.0000",
                             "IntervalEnd": "2019-08-23",
@@ -4624,6 +4946,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-08-23",
                             "IntervalStart": "2019-07-26",
+                            "MeasurementType": "general_consumption",
                             "PK": 73066489,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -4633,6 +4956,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-08-23",
                             "IntervalStart": "2019-07-26",
+                            "MeasurementType": "demand",
                             "PK": 73066490,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -4671,6 +4995,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.69",
                             "ChargeAmount": "22.6900",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-09-23",
@@ -4683,6 +5008,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $363.90",
                             "ChargeAmount": "363.9000",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-09-23",
@@ -4695,6 +5021,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $1,718.83",
                             "ChargeAmount": "1718.8300",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-09-23",
@@ -4707,6 +5034,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $30.88",
                             "ChargeAmount": "30.8800",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-09-23",
@@ -4719,6 +5047,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $119.26",
                             "ChargeAmount": "119.2600",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-09-23",
@@ -4731,6 +5060,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-09-23",
@@ -4743,6 +5073,7 @@
                         {
                             "ChargeActualName": "Demand Charge $369.20",
                             "ChargeAmount": "369.2000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2019-09-23",
@@ -4755,6 +5086,7 @@
                         {
                             "ChargeActualName": "Non-Fuel Energy Charge $676.41",
                             "ChargeAmount": "676.4100",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "12720.0000",
                             "IntervalEnd": "2019-09-23",
@@ -4770,6 +5102,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-09-23",
                             "IntervalStart": "2019-08-24",
+                            "MeasurementType": "general_consumption",
                             "PK": 73114437,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -4779,6 +5112,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-09-23",
                             "IntervalStart": "2019-08-24",
+                            "MeasurementType": "demand",
                             "PK": 73114438,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
@@ -4817,6 +5151,7 @@
                         {
                             "ChargeActualName": "Green Infrastructure Fee $22.69",
                             "ChargeAmount": "22.6900",
+                            "ChargeId": "ch.infrastructure_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-10-23",
@@ -4829,6 +5164,7 @@
                         {
                             "ChargeActualName": "Purchased Power Adjustment $361.62",
                             "ChargeAmount": "361.6200",
+                            "ChargeId": "ch.power_cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-10-23",
@@ -4841,6 +5177,7 @@
                         {
                             "ChargeActualName": "Energy Cost Adjustment $1,645.53",
                             "ChargeAmount": "1645.5300",
+                            "ChargeId": "ch.cost_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-10-23",
@@ -4853,6 +5190,7 @@
                         {
                             "ChargeActualName": "PBF Surcharge $30.69",
                             "ChargeAmount": "30.6900",
+                            "ChargeId": "ch.public_purpose_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-10-23",
@@ -4865,6 +5203,7 @@
                         {
                             "ChargeActualName": "RBA Rate Adjustment $118.51",
                             "ChargeAmount": "118.5100",
+                            "ChargeId": "ch.revenue_normalization_adjustment",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-10-23",
@@ -4877,6 +5216,7 @@
                         {
                             "ChargeActualName": "Customer Charge $98.20",
                             "ChargeAmount": "98.2000",
+                            "ChargeId": "ch.customer_charge",
                             "ChargeRatePerUnit": "0.0000",
                             "ChargeUnitsUsed": "0.0000",
                             "IntervalEnd": "2019-10-23",
@@ -4889,6 +5229,7 @@
                         {
                             "ChargeActualName": "Demand Charge $369.20",
                             "ChargeAmount": "369.2000",
+                            "ChargeId": "ch.demand_charge",
                             "ChargeRatePerUnit": "13.0000",
                             "ChargeUnitsUsed": "28.4000",
                             "IntervalEnd": "2019-10-23",
@@ -4901,6 +5242,7 @@
                         {
                             "ChargeActualName": "Non-Fuel Energy Charge $672.16",
                             "ChargeAmount": "672.1600",
+                            "ChargeId": "ch.energy_charge",
                             "ChargeRatePerUnit": "0.0532",
                             "ChargeUnitsUsed": "12640.0000",
                             "IntervalEnd": "2019-10-23",
@@ -4916,6 +5258,7 @@
                             "EnergyUnit": "kWh",
                             "IntervalEnd": "2019-10-23",
                             "IntervalStart": "2019-09-24",
+                            "MeasurementType": "general_consumption",
                             "PK": 73164817,
                             "RateComponent": "[total]",
                             "UsageActualName": "KWH",
@@ -4925,6 +5268,7 @@
                             "EnergyUnit": "kW",
                             "IntervalEnd": "2019-10-23",
                             "IntervalStart": "2019-09-24",
+                            "MeasurementType": "demand",
                             "PK": 73164818,
                             "RateComponent": "[max_peak]",
                             "UsageActualName": "KW",
