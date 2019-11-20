@@ -314,11 +314,12 @@ class AustinTXCli(DatasourceCli):
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
         parser.add_argument("commodity_type", help="meter table commodity: kw or ccf")
+        parser.add_argument("said", help="utility_service.service_id")
 
     def make_datasource(self, conn, args):
         commodity_type = urja_datasource.CommodityType[args.commodity_type]
         return self.setup_datasource(
-            urja_datasource.AustinTXDatasource(args.account_number, commodity_type),
+            urja_datasource.AustinTXDatasource(args.account_number, commodity_type, args.said),
             conn)
 
     def make_transformer(self):

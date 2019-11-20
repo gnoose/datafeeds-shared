@@ -13,6 +13,7 @@ def datafeed(account: SnapmeterAccount, meter: Meter,
         meter,
         datasource,
         params,
-        AustinTXDatasource(meter.utility_account_id, CommodityType[meter.commodity]),
+        AustinTXDatasource(meter.utility_account_id, CommodityType[meter.commodity],
+                           meter.utility_service.service_id),
         AustinTXTransformer(),
         task_id)
