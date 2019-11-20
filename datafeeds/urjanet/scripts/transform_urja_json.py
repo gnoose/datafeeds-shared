@@ -7,8 +7,11 @@ import argparse
 import logging
 from datetime import datetime
 
+from datafeeds import config
 from datafeeds.urjanet.model import UrjanetData, order_json
 from datafeeds.urjanet.scripts.cli_hooks import get_cli_hooks
+
+logging.config.dictConfig(config.LOGGING)
 
 
 def process_json(args):
@@ -62,7 +65,7 @@ def main():
     args = parser.parse_args()
 
     if args.verbose:
-        logging.getLogger("gridium_tasks").setLevel(level=logging.DEBUG)
+        logging.getLogger("datafeeds").setLevel(level=logging.DEBUG)
 
     process_json(args)
 
