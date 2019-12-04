@@ -3704,6 +3704,370 @@
             "source_urls": [
                 "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9b0b98-f94e-d9a6-8699-0ed73a45c13e"
             ]
+        },
+        {
+            "end": "2019-08-23",
+            "peak_demand": "28.4000",
+            "start": "2019-07-26",
+            "tariff": null,
+            "total_charge": "3389.4400",
+            "total_usage": "12240.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Green Infrastructure Fee $22.69",
+                    "ChargeAmount": "22.6900",
+                    "ChargeId": "ch.infrastructure_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370888,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Purchased Power Adjustment $347.50",
+                    "ChargeAmount": "347.5000",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370889,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Cost Adjustment $1,756.23",
+                    "ChargeAmount": "1756.2300",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370890,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "PBF Surcharge $29.72",
+                    "ChargeAmount": "29.7200",
+                    "ChargeId": "ch.public_purpose_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370891,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "IRP Cost Recovery $0.25",
+                    "ChargeAmount": "0.2500",
+                    "ChargeId": "ch.recovery_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370892,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "RBA Rate Adjustment $114.76",
+                    "ChargeAmount": "114.7600",
+                    "ChargeId": "ch.revenue_normalization_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370893,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge $98.20",
+                    "ChargeAmount": "98.2000",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370894,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge $369.20",
+                    "ChargeAmount": "369.2000",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "13.0000",
+                    "ChargeUnitsUsed": "28.4000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370895,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Charge $650.89",
+                    "ChargeAmount": "650.8900",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0532",
+                    "ChargeUnitsUsed": "12240.0000",
+                    "IntervalEnd": "2019-08-23",
+                    "IntervalStart": "2019-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237370896,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9c8b18-9a5c-d5c2-b826-0e42cab39266"
+            ]
+        },
+        {
+            "end": "2019-09-23",
+            "peak_demand": "28.4000",
+            "start": "2019-08-24",
+            "tariff": null,
+            "total_charge": "3399.3700",
+            "total_usage": "12720.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Green Infrastructure Fee $22.69",
+                    "ChargeAmount": "22.6900",
+                    "ChargeId": "ch.infrastructure_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544846,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Purchased Power Adjustment $363.90",
+                    "ChargeAmount": "363.9000",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544847,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Cost Adjustment $1,718.83",
+                    "ChargeAmount": "1718.8300",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544848,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "PBF Surcharge $30.88",
+                    "ChargeAmount": "30.8800",
+                    "ChargeId": "ch.public_purpose_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544849,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "RBA Rate Adjustment $119.26",
+                    "ChargeAmount": "119.2600",
+                    "ChargeId": "ch.revenue_normalization_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544850,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge $98.20",
+                    "ChargeAmount": "98.2000",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544851,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge $369.20",
+                    "ChargeAmount": "369.2000",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "13.0000",
+                    "ChargeUnitsUsed": "28.4000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544852,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Non-Fuel Energy Charge $676.41",
+                    "ChargeAmount": "676.4100",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0532",
+                    "ChargeUnitsUsed": "12720.0000",
+                    "IntervalEnd": "2019-09-23",
+                    "IntervalStart": "2019-08-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237544853,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9dfa69-7e5d-dd9a-9fd1-0e09ff897312"
+            ]
+        },
+        {
+            "end": "2019-10-23",
+            "peak_demand": "28.4000",
+            "start": "2019-09-24",
+            "tariff": null,
+            "total_charge": "3318.6000",
+            "total_usage": "12640.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Green Infrastructure Fee $22.69",
+                    "ChargeAmount": "22.6900",
+                    "ChargeId": "ch.infrastructure_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691175,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Purchased Power Adjustment $361.62",
+                    "ChargeAmount": "361.6200",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691176,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Cost Adjustment $1,645.53",
+                    "ChargeAmount": "1645.5300",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691177,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "PBF Surcharge $30.69",
+                    "ChargeAmount": "30.6900",
+                    "ChargeId": "ch.public_purpose_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691178,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "RBA Rate Adjustment $118.51",
+                    "ChargeAmount": "118.5100",
+                    "ChargeId": "ch.revenue_normalization_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691179,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge $98.20",
+                    "ChargeAmount": "98.2000",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691180,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge $369.20",
+                    "ChargeAmount": "369.2000",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "13.0000",
+                    "ChargeUnitsUsed": "28.4000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691181,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Non-Fuel Energy Charge $672.16",
+                    "ChargeAmount": "672.1600",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0532",
+                    "ChargeUnitsUsed": "12640.0000",
+                    "IntervalEnd": "2019-10-23",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237691182,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9f8371-7d75-db2c-96fe-0e64bd28df4a"
+            ]
         }
     ]
 }

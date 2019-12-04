@@ -1,8 +1,9 @@
 from decimal import Decimal
+from typing import List
 
 from datafeeds.urjanet.transformer import GenericBillingPeriod
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
-from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.model import Account, UrjanetData
 from datafeeds.urjanet.transformer.base import CONVERSIONS
 
 
@@ -27,6 +28,17 @@ class HecoBillingPeriod(GenericBillingPeriod):
 
 
 class HecoTransformer(UrjanetGridiumTransformer):
+    def filtered_accounts(self, urja_data: UrjanetData) -> List[Account]:  # pylint: disable=no-self-use
+        """StatementDate is not set for some Heco"""
+        return [account for account in urja_data.accounts
+                if account.IntervalEnd is not None and account.IntervalStart is not None]
+
     @staticmethod
     def billing_period(account: Account) -> HecoBillingPeriod:
         return HecoBillingPeriod(account)
+
+    @staticmethod
+    def ordered_accounts(filtered_accounts: List[Account]) -> List[Account]:
+        """StatementDate is not set, so sort by IntervalEnd"""
+        return sorted(
+            filtered_accounts, key=lambda x: (x.IntervalEnd, -x.PK), reverse=True)
