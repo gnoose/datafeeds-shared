@@ -16,7 +16,8 @@ def datafeed(account: SnapmeterAccount, meter: Meter,
         meter,
         datasource,
         params,
-        HecoDatasource(meter.utility_account_id),
+        HecoDatasource(meter.utility_account_id,
+                       meter.utility_service.service_id),
         HecoTransformer(),
         task_id
     )

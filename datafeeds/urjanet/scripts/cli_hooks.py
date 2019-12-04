@@ -331,10 +331,11 @@ class HecoCli(DatasourceCli):
 
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
+        parser.add_argument("said", help="utility_service.service_id")
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.HecoDatasource(args.account_number),
+            urja_datasource.HecoDatasource(args.account_number, args.said),
             conn)
 
     def make_transformer(self):
