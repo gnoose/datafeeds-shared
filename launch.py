@@ -34,6 +34,7 @@ scraper_functions = {
     "mountainview-urjanet": datasources.mountainview.datafeed,
     "nve-myaccount": datasources.nvenergy_myaccount.datafeed,
     "pleasanton-urjanet": datasources.pleasanton.datafeed,
+    "solren": datasources.solren.datafeed,
     "watauga-urjanet": datasources.watauga.datafeed,
     "southlake-urjanet": datasources.southlake.datafeed
 }

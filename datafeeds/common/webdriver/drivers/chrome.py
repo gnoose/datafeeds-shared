@@ -22,4 +22,5 @@ class ChromeDriver(BaseDriver):
         prefs["plugins.plugins_list"] = [{"enabled": False, "name": "Chrome PDF Viewer"}]
 
         options.add_experimental_option("prefs", prefs)
+        options.add_argument('--disable-dev-shm-usage')
         return options
