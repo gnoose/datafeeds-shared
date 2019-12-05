@@ -1,12 +1,14 @@
 from abc import ABC as Abstract, abstractmethod
 import csv
 import os
+import time
 from typing import List
 import logging
 
 from datafeeds import config
 from datafeeds.common.typing import BillingDatum
 from datafeeds.common.support import Configuration
+from datafeeds.common.webdriver.virtualdisplay import VirtualDisplay
 
 
 log = logging.getLogger(__name__)
@@ -169,3 +171,84 @@ class BaseApiScraper(BaseScraper):
 
     def stop(self):
         pass
+
+
+class BaseWebScraper(BaseScraper):
+    """
+    Base scraper to handle common initialization, setup, and teardown
+    shared between all web scrapers that run via a headless browser.
+
+    Manages a VirtualDisplay and the browser driver (eg. chromedriver),
+    including stopping processes once finished, and adds specialized
+    methods like screenshotting.
+    """
+
+    @abstractmethod
+    def _execute(self):
+        pass
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._shot_number = 0
+
+        if config.USE_VIRTUAL_DISPLAY:
+            self._display = VirtualDisplay()
+
+        self._driver = None
+        # This allows classes extending base to select a different
+        # browser for scraping.
+        self.browser_name = config.SELENIUM_BROWSER
+
+    def start(self):
+        # Virtual display needs to be started before webdriver can be loaded
+        if config.USE_VIRTUAL_DISPLAY:
+            self._display.start()
+
+        self._driver = self._get_driver()
+        self._driver.start()
+
+    def stop(self):
+        self._driver.stop()
+        if config.USE_VIRTUAL_DISPLAY:
+            self._display.stop()
+
+    def scrape(self, readings_handler, bills_handler):
+        try:
+            super().scrape(readings_handler, bills_handler)
+        except Exception:
+            self.screenshot("error")
+            raise
+
+    def screenshot(self, filename, whole=True):
+        self._shot_number += 1
+        path = os.path.join(
+            config.WORKING_DIRECTORY,
+            "screenshot{:02} - {}.png".format(self._shot_number, filename)
+        )
+        self._driver.screenshot(path, whole=whole)
+
+    def _get_driver(self):
+        """
+        Return an instance of ChromeDriver trying several times to load the
+        desired driver in case it takes awhile to connect to browser
+        """
+
+        # Drivers are references dynamically, so we need the imports
+        from datafeeds.common.webdriver.drivers.chrome import ChromeDriver  # noqa
+
+        browser = self.browser_name
+        outputpath = config.WORKING_DIRECTORY
+
+        if browser != "Chrome":
+            raise UnsupportedBrowserError("Browser specified in config is not supported")
+
+        for _ in range(1, 11):
+            log.info("Connecting to {}".format(browser))
+
+            try:
+                return locals()["{}Driver".format(browser)](outputpath)
+            except Exception as e:
+                log.info("Failed to connect. Exception: %s" % repr(e))
+                time.sleep(3)
+
+        raise BrowserConnectionError("Unable to connect to {}".format(browser))

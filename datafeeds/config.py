@@ -88,6 +88,13 @@ LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 # What log level shall datafeeds dependencies use?
 DEPENDENCY_LOG_LEVEL = os.environ.get("DEPENDENCY_LOG_LEVEL", "WARN")
 
+# Are we running the web scraper in headless mode?
+USE_VIRTUAL_DISPLAY = os.environ.get("USE_VIRTUAL_DISPLAY", False)
+
+DEBUG_SELENIUM_SCRAPERS = 0
+
+# Default selenium browser
+SELENIUM_BROWSER = "Chrome"
 
 LOGGING = {
     "version": 1,
