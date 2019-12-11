@@ -1,6 +1,6 @@
 from datetime import datetime, date
 import logging
-from typing import Optional
+from typing import Optional, List
 
 from dateutil.relativedelta import relativedelta
 import requests
@@ -142,6 +142,21 @@ def process_bill(b: Bill) -> Optional[Bill]:
     )
 
 
+def correct_bills(bills: List[BillingDatum]):
+    # SCE sent us a large amount of bad bill information where the cost is the same as a more
+    # recent bill b and the use value is 100x the use listed on b. We have to exclude these
+    # with custom logic since SCE will not correct the problem.
+    observed_cost_use_pairs = set(
+        (b.cost, round(b.used, 2)) for b in bills if b.used is not None
+    )
+
+    return [
+        b
+        for b in bills
+        if b.used is None or (b.cost, round(b.used / 100, 2)) not in observed_cost_use_pairs
+    ]
+
+
 class Scraper(BaseApiScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -227,9 +242,13 @@ class Scraper(BaseApiScraper):
                     )
                 )
 
+        corrected_bills = correct_bills(bills)
+
         # If bills arrived in a large historical block, ingest will return the block.
         # Filter the bills for just those relevant to the scraped time period.
-        filtered_bills = [b for b in bills if start <= b.start and b.end <= end]
+        filtered_bills = [
+            b for b in corrected_bills if start <= b.start and b.end <= end
+        ]
         final_bills = adjust_bill_dates(filtered_bills)
 
         return Results(

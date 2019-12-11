@@ -12,6 +12,7 @@ from datafeeds.scrapers.sce_greenbutton import (
     CostDetail,
     process_bill,
     Scraper,
+    correct_bills,
 )
 
 
@@ -132,3 +133,47 @@ class TestSCEGreenButtonSync(TestCase):
                 with self.assertRaises(IngestApiError):
                     scraper._execute()
                     self.assertEqual(1, log_mock.call_count)
+
+    def test_bill_exclusion_logic(self):
+        """The scraper rejects a bill if it has equal cost and 100x the use of another scraped bill."""
+        input = [
+            BillingDatum(
+                start=date(2019, 1, 1),
+                end=date(2019, 1, 31),
+                cost=1.0,
+                used=200.0,
+                peak=None,
+                items=None,
+                attachments=None,
+            ),
+            BillingDatum(
+                start=date(2019, 2, 1),
+                end=date(2019, 2, 28),
+                cost=1000.0,
+                used=200.0,
+                peak=None,
+                items=None,
+                attachments=None,
+            ),
+            BillingDatum(
+                start=date(2019, 3, 1),
+                end=date(2019, 3, 31),
+                cost=1.0,
+                used=2.0,
+                peak=None,
+                items=None,
+                attachments=None,
+            ),
+            BillingDatum(
+                start=date(2019, 4, 1),
+                end=date(2019, 4, 30),
+                cost=1.0,
+                used=None,
+                peak=None,
+                items=None,
+                attachments=None,
+            ),
+        ]
+
+        actual = correct_bills(input)
+        self.assertEqual(input[1:], actual)
