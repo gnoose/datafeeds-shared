@@ -36,7 +36,8 @@ scraper_functions = {
     "pleasanton-urjanet": datasources.pleasanton.datafeed,
     "solren": datasources.solren.datafeed,
     "watauga-urjanet": datasources.watauga.datafeed,
-    "southlake-urjanet": datasources.southlake.datafeed
+    "southlake-urjanet": datasources.southlake.datafeed,
+    "sce-green-button": datasources.sce_greenbutton.datafeed,
 }
 
 
@@ -211,7 +212,7 @@ def launch_by_name(scraper_id: str,
 
     db.session.rollback()  # Don't commit fake objects to the database.
     db.session.close()
-    sys.exit(status.value)
+    sys.exit(1 if status == Status.FAILED else 0)
 
 
 def launch_by_oid_args(args: Namespace):

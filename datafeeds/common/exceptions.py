@@ -11,3 +11,7 @@ class ApiError(Exception):
 
 class InvalidDateRangeError(Exception):
     pass
+
+
+class DataSourceConfigurationError(Exception):
+    pass

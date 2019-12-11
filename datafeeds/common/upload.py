@@ -68,8 +68,8 @@ def _upload_to_platform(service_id: str, billing_data: BillingData):
             "start": bill.start.strftime("%Y-%m-%d"),
             "end": bill.end.strftime("%Y-%m-%d"),
             "cost": str(bill.cost),
-            "used": str(bill.used) if bill.used else "0.0",
-            "peak": str(bill.peak) if bill.peak else "0.0",
+            "used": bill.used,
+            "peak": bill.peak,
             "items": [
                 {
                     "description": item.description,

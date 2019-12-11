@@ -61,6 +61,10 @@ AES_KEY: str = os.environ.get("AES_KEY")
 PLATFORM_HOST: str = os.environ.get("PLATFORM_HOST")
 PLATFORM_PORT: str = os.environ.get("PLATFORM_PORT", "9229")
 
+
+# Where can we find the Ingest REST API?
+INGEST_ENDPOINT: str = os.environ.get("INGEST_ENDPOINT")
+
 #
 # What features are enabled?
 # S3_ARTIFACT_UPLOAD: After each scraper run, datafeeds should upload a compressed archive of log data,
@@ -83,7 +87,6 @@ def enabled(feature: str) -> bool:
 
 # What log level should datafeeds' logger use?
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
-
 
 # What log level shall datafeeds dependencies use?
 DEPENDENCY_LOG_LEVEL = os.environ.get("DEPENDENCY_LOG_LEVEL", "WARN")

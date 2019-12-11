@@ -13,6 +13,7 @@ log = logging.getLogger(__name__)
 class Status(Enum):
     SUCCEEDED = 0
     FAILED = 1
+    SKIPPED = 2
 
 
 class IntervalRange(NamedTuple):

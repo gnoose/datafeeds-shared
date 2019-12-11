@@ -6,10 +6,11 @@ from datafeeds.datasources import (
     mountainview,
     nvenergy_myaccount,
     pleasanton,
+    sce_greenbutton,
     solren,
     southlake,
-    watauga
+    watauga,
 )
 
 __all__ = ["american", "austin_tx", "heco", "heco_interval", "mountainview", "nvenergy_myaccount",
-           "pleasanton", "solren", "southlake", "watauga"]
+           "pleasanton", "sce_greenbutton", "solren", "southlake", "watauga"]
