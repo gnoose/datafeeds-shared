@@ -147,7 +147,7 @@ def correct_bills(bills: List[BillingDatum]):
     # recent bill b and the use value is 100x the use listed on b. We have to exclude these
     # with custom logic since SCE will not correct the problem.
     observed_cost_use_pairs = set(
-        (b.cost, round(b.used, 2)) for b in bills if b.used is not None
+        (b.cost, round(b.used, 2)) for b in bills if b.used is not None and b.used > 0
     )
 
     return [

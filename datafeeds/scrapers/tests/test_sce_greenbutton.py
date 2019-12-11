@@ -173,6 +173,24 @@ class TestSCEGreenButtonSync(TestCase):
                 items=None,
                 attachments=None,
             ),
+            BillingDatum(
+                start=date(2019, 5, 1),
+                end=date(2019, 5, 31),
+                cost=10.0,
+                used=0.0,
+                peak=None,
+                items=None,
+                attachments=None,
+            ),
+            BillingDatum(
+                start=date(2019, 6, 1),
+                end=date(2019, 6, 30),
+                cost=10.0,
+                used=0.0,
+                peak=None,
+                items=None,
+                attachments=None,
+            ),
         ]
 
         actual = correct_bills(input)
