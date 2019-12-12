@@ -245,9 +245,9 @@ class Scraper(BaseApiScraper):
         corrected_bills = correct_bills(bills)
 
         # If bills arrived in a large historical block, ingest will return the block.
-        # Filter the bills for just those relevant to the scraped time period.
+        # Filter the bills for just those whose start date appears in the scraped time period.
         filtered_bills = [
-            b for b in corrected_bills if start <= b.start and b.end <= end
+            b for b in corrected_bills if start <= b.start <= end
         ]
         final_bills = adjust_bill_dates(filtered_bills)
 
