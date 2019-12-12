@@ -39,6 +39,7 @@ class SnapmeterAccountDataSource(ModelMixin, Base):
     # set this via sys_acct.encrypt_password
     # get unencrypted value via sys_acct.password
     _password_bytes = sa.Column("password_bytes", sa.LargeBinary)
+    enabled = sa.Column(sa.Boolean, default=True)
 
     # One-to-many SnapmeterMeterDataSource with backref, eg. meter_data_source.account_ds
     # Defaults to lazy-loading when loading either side of the relationship.
@@ -124,6 +125,7 @@ class SnapmeterMeterDataSource(ModelMixin, Base):
             "meta": self.meta or {},
             "sourceTypes": self.source_types,
             "accountDataSource": None,
+            "enabled": self.enabled
         }
         if self.account_data_source:
             rval["accountDataSource"] = str(self.account_data_source) if str_ids \
