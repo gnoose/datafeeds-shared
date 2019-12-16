@@ -78,7 +78,10 @@ class SiteAnalyticsPage:
         )
         element.click()
         try:
-            self._driver.click(xpath.format(inverter_id), xpath=True)
+            element = self._driver.find_element_by_xpath(xpath.format(inverter_id))
+            # A property that actually scrolls the element into view
+            element.location_once_scrolled_into_view
+            element.click()
         except NoSuchElementException:
             raise Exception("Inverter {} not found in dropdown".format(inverter_id))
         self._driver.sleep(1)
@@ -199,7 +202,11 @@ class DatePickerSection:
                 self._driver.wait().until(EC.element_to_be_clickable(
                     (By.XPATH, self.export_data_xpath))
                 )
-                self._driver.click(self.export_data_xpath, xpath=True)
+                self._driver.sleep(2)
+
+                export_button = self._driver.find_element_by_xpath(self.export_data_xpath)
+                self._driver.execute_script('arguments[0].click();', export_button)
+
                 # Wait for csv to download
                 download_dir = self._driver.download_dir
                 filename = self._driver.wait(60).until(
