@@ -3,7 +3,7 @@ from unittest.mock import patch, ANY
 
 from datafeeds import db
 from datafeeds.common import test_utils
-from datafeeds.common.exceptions import LoginError
+from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
 from datafeeds.datasources import sdge_myaccount as sdge_ds
 from datafeeds.models.account import SnapmeterAccount
 from datafeeds.models.datasource import SnapmeterMeterDataSource
@@ -25,6 +25,26 @@ class SDGEMyAccountTests(unittest.TestCase):
     @classmethod
     def tearDown(cls):
         db.session.rollback()
+
+    @patch("datafeeds.common.alert.post_slack_message")
+    def test_skip_disabled(self, slack):
+        """Verify that a disabled datasource does not run."""
+        meter_id = self.meter_ids[0]
+        mds = db.session.query(SnapmeterMeterDataSource).filter_by(_meter=meter_id).one()
+        account = db.session.query(SnapmeterAccount).get(self.account_oid)
+        meter = db.session.query(Meter).get(meter_id)
+        mds.utility_account_id = str(meter_id)
+        db.session.add(mds)
+        params = {}
+        # disable data source
+        account_ds = mds.account_data_source
+        account_ds.enabled = False
+        db.session.add(account_ds)
+        db.session.flush()
+        self.assertRaises(
+            DataSourceConfigurationError,
+            sdge_ds.datafeed, account, meter, mds, params)
+        slack.assert_not_called()
 
     @patch("datafeeds.datasources.sdge_myaccount.run_datafeed")
     @patch("datafeeds.common.alert.post_slack_message")
@@ -48,18 +68,8 @@ class SDGEMyAccountTests(unittest.TestCase):
             self.assertEqual("abc", mds.meta["test"], "meta.test still set")
             self.assertFalse(mds.meta.get("disabled"), "meta.disabled unset")
 
-        # disable data source
-        account_ds = mds.account_data_source
-        account_ds.enabled = False
-        db.session.add(account_ds)
-        db.session.flush()
-        self.assertRaises(
-            LoginError,
-            sdge_ds.datafeed, account, meter, mds, params)
-        run_datafeed.assert_not_called()
-        slack.assert_not_called()
-
         # LoginException disables
+        account_ds = mds.account_data_source
         account_ds.enabled = True
         db.session.add(account_ds)
         db.session.flush()

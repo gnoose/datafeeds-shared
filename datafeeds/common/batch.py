@@ -7,8 +7,9 @@ from dateutil import parser as dateparser
 
 from datafeeds.common.typing import Status
 from datafeeds import db, config
-from datafeeds.common.support import Credentials, DateRange
 from datafeeds.common import index
+from datafeeds.common.exceptions import DataSourceConfigurationError
+from datafeeds.common.support import Credentials, DateRange
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.transformer.base import UrjanetGridiumTransformer
 from datafeeds.urjanet.scraper import BaseUrjanetScraper, BaseUrjanetConfiguration
@@ -61,6 +62,9 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
     if datasource.account_data_source:
         parent: AccountDataSource = datasource.account_data_source
         credentials = Credentials(parent.username, parent.password)
+        if not datasource.account_data_source.enabled:
+            raise DataSourceConfigurationError("%s scraper for %s is disabled" % (
+                datasource.account_data_source.name, meter.oid))
     else:
         credentials = Credentials(None, None)
 
