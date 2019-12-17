@@ -38,7 +38,7 @@ def init_test_db():
         db.engine.echo = False
 
         # create non-SQLAlchemy tables
-        source_sql_file("fixtures/init.sql")
+        source_sql_file("fixtures/init_test.sql")
         source_sql_file("fixtures/schema.sql")
 
         db.engine.echo = old_echo_value
