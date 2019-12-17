@@ -1,19 +1,47 @@
 from datetime import datetime
+import os
 from typing import Tuple, List
 import uuid
 
+from sqlalchemy_utils.functions import database_exists, create_database
+
+from datafeeds.config import DATAFEEDS_ROOT
 from datafeeds import db
 from datafeeds.models import SnapmeterAccount, SnapmeterAccountDataSource, SnapmeterMeterDataSource
 from datafeeds.models import Meter, UtilityService
 
 
+CONNSTR = "postgresql+psycopg2://postgres@pg/gridium_test"
+
+
 def init_test_db():
     """Create a connection to the test database.
 
-    This database should be created and upgraded by webapps. Run a webapps test to apply migrations
-    to the test database if needed.
+    Create if needed, using a static fixture file. Update fixtures/schema.sql for any schema
+    changes that affect datafeeds.
     """
-    db.init("postgresql+psycopg2://postgres@pg/gridium_test")
+    exists = database_exists(CONNSTR)
+    if not exists:
+        create_database(CONNSTR)
+
+    db.init(CONNSTR, statement_timeout=10000)
+
+    def source_sql_file(pathname):
+        with open(os.path.join(DATAFEEDS_ROOT, pathname)) as f:
+            sql = f.read()
+        with db.engine.begin() as connection:
+            connection.execute(sql)
+
+    if not exists:
+        # turn off echo for now
+        old_echo_value = db.engine.echo
+        db.engine.echo = False
+
+        # create non-SQLAlchemy tables
+        source_sql_file("fixtures/init.sql")
+        source_sql_file("fixtures/schema.sql")
+
+        db.engine.echo = old_echo_value
 
 
 def create_meters() -> Tuple[SnapmeterAccount, List[Meter]]:

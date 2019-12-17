@@ -27,7 +27,7 @@ class SDGEMyAccountTests(unittest.TestCase):
         db.session.rollback()
 
     @patch("datafeeds.datasources.sdge_myaccount.run_datafeed")
-    @patch("datafeeds.common.alert.slack")
+    @patch("datafeeds.common.alert.post_slack_message")
     def test_login_error(self, slack, run_datafeed):
         """Verify that a LoginException disables related data sources."""
         meter_id = self.meter_ids[0]
