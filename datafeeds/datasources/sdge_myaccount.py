@@ -6,7 +6,7 @@ from datafeeds import db
 from datafeeds.models import SnapmeterAccount, SnapmeterAccountMeter, Meter
 from datafeeds.models import SnapmeterMeterDataSource as MeterDataSource
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
+from datafeeds.common.exceptions import LoginError
 from datafeeds.scrapers import sdge_myaccount as sdge
 
 

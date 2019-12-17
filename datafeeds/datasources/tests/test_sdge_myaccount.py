@@ -16,7 +16,6 @@ class SDGEMyAccountTests(unittest.TestCase):
         test_utils.init_test_db()
 
     def setUp(self):
-        db.session.begin(subtransactions=True)
         (account, meters) = test_utils.create_meters()
         test_utils.add_datasources(account, meters, "sdge_myaccount")
         self.account_oid = account.oid
