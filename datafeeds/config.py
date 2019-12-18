@@ -22,7 +22,7 @@ UNDER_TEST: bool = (os.environ.get("DATAFEEDS_UNDER_TEST", "True").lower() == "t
 WORKING_DIRECTORY: str = os.environ.get("WORKING_DIRECTORY", path.join(DATAFEEDS_ROOT, "workdir"))
 
 # What is the full URL needed to log into the PostgreSQL instance? (Hostname, username, password, and dbname)
-POSTGRES_URL: str = os.environ.get("POSTGRES_URL", "postgresql+psycopg2://postgres@pg/gridium")
+POSTGRES_URL: str = os.environ.get("POSTGRES_URL", "postgresql+psycopg2://postgres@pg/gridium_test")
 
 # Should every SQL query run by datafeeds be echoed to the console?
 POSTGRES_ECHO: bool = (os.environ.get("POSTGRES_ECHO", "False").lower() == "true")
@@ -93,6 +93,8 @@ DEPENDENCY_LOG_LEVEL = os.environ.get("DEPENDENCY_LOG_LEVEL", "WARN")
 
 # Are we running the web scraper in headless mode?
 USE_VIRTUAL_DISPLAY = os.environ.get("USE_VIRTUAL_DISPLAY", False)
+
+SLACK_TOKEN = os.environ.get("SLACK_TOKEN", None)
 
 DEBUG_SELENIUM_SCRAPERS = 0
 

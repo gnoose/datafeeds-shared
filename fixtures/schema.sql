@@ -3771,7 +3771,8 @@ CREATE TABLE public.snapmeter_account_data_source (
     source_account_type character varying NOT NULL,
     name character varying NOT NULL,
     username_bytes bytea,
-    password_bytes bytea
+    password_bytes bytea,
+    enabled boolean DEFAULT true NOT NULL
 );
 
 
