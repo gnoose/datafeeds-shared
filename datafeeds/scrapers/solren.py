@@ -348,16 +348,21 @@ class CSVParser:
                 power = float(row[power_idx] or 0)
 
                 current_date = self.date_to_final_str(date_obj)
-                current_time = self.round_up_to_quarter_hour(date_obj)
+                rounded_time = self.round_up_to_quarter_hour(date_obj)
 
                 if current_date not in self.intermediate_readings:
                     self.intermediate_readings[current_date] = self.build_intermediate_dict()
 
-                current_reading = self.intermediate_readings[current_date][current_time]
-                # Here's where we sum power readings together - rounded to fifteen min intervals
-                self.intermediate_readings[current_date][current_time] = round(
-                    float(current_reading + power), 2
-                )
+                current_reading = self.intermediate_readings[current_date][rounded_time]
+                # Here's where we sum power readings together - in to fifteen min intervals
+                self.intermediate_readings[current_date][rounded_time] = current_reading + power
+
+                actual_time = self.date_to_intermediate_time_str(date_obj)
+                if rounded_time == actual_time:
+                    # Here's where we average power readings together, in fifteen minute intervals
+                    self.intermediate_readings[current_date][rounded_time] = round(
+                        float(self.intermediate_readings[current_date][rounded_time] / 3), 2
+                    )
 
         return self.finalize_readings()
 
