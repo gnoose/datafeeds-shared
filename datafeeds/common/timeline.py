@@ -45,7 +45,7 @@ class Timeline:
             self.index[d][t] = value
 
     def lookup(self, dt):
-        """Insert a value at the input datetime."""
+        """Lookup a value at the input datetime."""
         d = dt.date()
         t = dt.time()
         if self._start <= d <= self._end:

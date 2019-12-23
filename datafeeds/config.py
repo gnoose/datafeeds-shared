@@ -61,6 +61,7 @@ AES_KEY: str = os.environ.get("AES_KEY")
 PLATFORM_HOST: str = os.environ.get("PLATFORM_HOST")
 PLATFORM_PORT: str = os.environ.get("PLATFORM_PORT", "9229")
 
+SOLAREDGE_API_KEY: str = os.environ.get("SOLAREDGE_API_KEY")
 
 # Where can we find the Ingest REST API?
 INGEST_ENDPOINT: str = os.environ.get("INGEST_ENDPOINT")
