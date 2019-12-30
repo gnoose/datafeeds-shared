@@ -36,7 +36,9 @@ celery task you are replacing. Use `run_datafeed` instead of `launch`.
 3. At this point, the IDE is likely flagging several errors, because the scraper and configuration objects are not
 defined in the repo yet. This is good; all that remains to do now is fix each undefined value/object/function error.
 
-4. In your original celery task definition, there is likely an import like
+4. Add an import for your new datasource to `datafeeds/__init__.py`.
+
+5. In your original celery task definition, there is likely an import like
     ```
     import gridium_tasks.lib.scrapers.nvenergy_myaccount.interval as nve
     ```
