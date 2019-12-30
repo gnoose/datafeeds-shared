@@ -37,7 +37,7 @@ scraper_functions = {
     "pacific-power-interval": datasources.pacific_power_interval.datafeed,
     "pleasanton-urjanet": datasources.pleasanton.datafeed,
     "sce-green-button": datasources.sce_greenbutton.datafeed,
-    "smud-energyprofiler-interval": datasources.smud_interval.datafeed,
+    "smud-energyprofiler-interval": datasources.smud_energyprofiler_interval.datafeed,
     "solaredge": datasources.solaredge.datafeed,
     "solren": datasources.solren.datafeed,
     "southlake-urjanet": datasources.southlake.datafeed,

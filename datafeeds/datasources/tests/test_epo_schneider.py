@@ -4,7 +4,7 @@ from unittest.mock import patch, ANY
 from datafeeds import db
 from datafeeds.common import test_utils
 from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
-from datafeeds.datasources import austin_energy_interval, pacific_power_interval, smud_interval
+from datafeeds.datasources import austin_energy_interval, pacific_power_interval, smud_energyprofiler_interval
 from datafeeds.models.account import SnapmeterAccount
 from datafeeds.models.datasource import SnapmeterMeterDataSource
 from datafeeds.models.meter import Meter
@@ -14,7 +14,7 @@ from datafeeds.models.meter import Meter
 DATA_SOURCES = {
     "austin-energy-interval": austin_energy_interval,
     "pacific-power-interval": pacific_power_interval,
-    "smud-energyprofiler-interval": smud_interval,
+    "smud-energyprofiler-interval": smud_energyprofiler_interval,
 }
 
 
@@ -51,8 +51,8 @@ class EPOSchneiderTests(unittest.TestCase):
             db.session.add(account_ds)
             db.session.flush()
             self.assertRaises(
-               DataSourceConfigurationError,
-               DATA_SOURCES[ds_name].datafeed, account, meter, mds, params)
+                DataSourceConfigurationError,
+                DATA_SOURCES[ds_name].datafeed, account, meter, mds, params)
             slack.assert_not_called()
 
     @patch("datafeeds.common.alert.post_slack_message")

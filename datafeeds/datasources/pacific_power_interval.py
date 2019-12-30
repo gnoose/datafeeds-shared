@@ -9,6 +9,7 @@ from datafeeds.common.batch import run_datafeed
 from datafeeds.common.exceptions import LoginError
 from datafeeds.scrapers import epo_schneider
 
+
 def datafeed(account: SnapmeterAccount, meter: Meter,
              datasource: MeterDataSource, params: dict, task_id: Optional[str] = None) -> Status:
     """Check if datasource is enabled; disable on bad login attempts.

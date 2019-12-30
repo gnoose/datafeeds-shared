@@ -38,4 +38,3 @@ def datafeed(account: SnapmeterAccount, meter: Meter,
         db.session.add(acct_ds)
         alert.disable_logins(acct_ds)
         raise exc
-
