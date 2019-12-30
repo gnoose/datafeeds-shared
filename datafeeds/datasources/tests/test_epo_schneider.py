@@ -14,7 +14,7 @@ from datafeeds.models.meter import Meter
 DATA_SOURCES = {
     "austin-energy-interval": austin_energy_interval,
     "pacific-power-interval": pacific_power_interval,
-    "smud-interval": smud_interval,
+    "smud-energyprofiler-interval": smud_interval,
 }
 
 
