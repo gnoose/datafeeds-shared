@@ -6,7 +6,7 @@ from math import isnan
 import requests
 from requests import codes
 
-from datafeeds import config
+#  from datafeeds import config
 from datafeeds.common.exceptions import ApiError
 from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.support import Configuration
@@ -144,7 +144,7 @@ class SolarEdgeScraper(BaseApiScraper):
         super().__init__(*args, **kwargs)
         self.name = 'SolarEdge API Scraper'
         self.site_url = "https://monitoringapi.solaredge.com/site/{}".format(
-            self._configuration.site_id
+            self.username  # self._configuration.site_id
         )
         self.install_date = None
         self.readings = {}
@@ -159,7 +159,9 @@ class SolarEdgeScraper(BaseApiScraper):
         return self._configuration.meter_id
 
     def _open_session(self):
-        sess = Session(self.site_url, config.SOLAREDGE_API_KEY)
+        api_key = self.password
+        sess = Session(self.site_url, api_key)
+        #  sess = Session(self.site_url, config.SOLAREDGE_API_KEY)
         site = sess.site()
         self.site_tz = site.time_zone
         self.install_date = site.installation_date

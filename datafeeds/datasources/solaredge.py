@@ -9,11 +9,12 @@ from datafeeds.common.batch import run_datafeed
 def datafeed(account: SnapmeterAccount, meter: Meter,
              datasource: MeterDataSource, params: dict, task_id: Optional[str] = None) -> Status:
 
+    acct_ds = datasource.account_data_source
     configuration = solaredge.SolarEdgeConfiguration(
         meter_id=meter.service_id,
-        site_id=datasource.meta.get('site_id')
+        site_id=acct_ds.username
+        #  site_id=datasource.meta.get('site_id')
     )
-
     return run_datafeed(
         solaredge.SolarEdgeScraper,
         account,
