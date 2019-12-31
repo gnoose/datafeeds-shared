@@ -31,4 +31,3 @@ def datafeed(account: SnapmeterAccount, meter: Meter,
         configuration=configuration,
         task_id=task_id,
         disable_login_on_error=True)
-

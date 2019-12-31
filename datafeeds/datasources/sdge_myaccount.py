@@ -15,7 +15,6 @@ def datafeed(account: SnapmeterAccount, meter: Meter,
     Retrying a bad login will lock the account. If a login fails, mark all data sources
     for this account as disabled.
     """
-    acct_ds = datasource.account_data_source
     acct_meter = db.session.query(SnapmeterAccountMeter).\
         filter_by(meter=meter.oid, account=account.oid).first()
     configuration = sdge.SdgeMyAccountConfiguration(
