@@ -15,9 +15,9 @@ As we overhaul our ETL system, I think it's important to keep our end-goals in m
 # Steps
 
 Tips:
-- This [pull request](https://github.com/Gridium/datafeeds/pull/11/files) shows how we migrated an interval scraper. 
+- This [pull request](https://github.com/Gridium/datafeeds/pull/11/files) shows how we migrated an interval scraper.
     It may be helpful as a model of what your end result will look like.
-- I highly recommend using PyCharm or some other IDE with static analysis capabilities for this work. 
+- I highly recommend using PyCharm or some other IDE with static analysis capabilities for this work.
     If you don't have the ability to quickly search the tasks and datafeeds repos for particular modules and symbols,
     your progress will (likely) be very slow.
 
@@ -25,21 +25,23 @@ Below is my process for moving a scraper.
 
 ## Move code from Tasks
 
-1. Look in `gridium_tasks/data_sources/scrapers` for a module named after your utility. 
+1. Look in `gridium_tasks/data_sources/scrapers` for a module named after your utility.
 There should be a file called `task.py` or similar, containing a celery task definition.
 
 2. Inside `datafeeds/datasources`, create a file named after your utility that defines a function called `datafeed`.
 This function plays a role similar to the celery task definition; namely, it creates whatever configuration object
-is needed to launch the API/Web Scraper code. The body of the `datafeed` function should be almost the same as the 
+is needed to launch the API/Web Scraper code. The body of the `datafeed` function should be almost the same as the
 celery task you are replacing. Use `run_datafeed` instead of `launch`.
 
 3. At this point, the IDE is likely flagging several errors, because the scraper and configuration objects are not
 defined in the repo yet. This is good; all that remains to do now is fix each undefined value/object/function error.
 
-4. In your original celery task definition, there is likely an import like 
+4. Add an import for your new datasource to `datafeeds/__init__.py`.
+
+5. In your original celery task definition, there is likely an import like
     ```
     import gridium_tasks.lib.scrapers.nvenergy_myaccount.interval as nve
-    ``` 
+    ```
     Create a corresponding module in `datafeeds/scrapers`. For each `gridium_tasks` import, there should already be
     an analogous module existing in `datafeeds` for you to use. The IDE can helpfully suggest what to import from
     datafeeds. Dependencies not authored by Gridium can be added to `requirements.txt`.
@@ -48,8 +50,8 @@ defined in the repo yet. This is good; all that remains to do now is fix each un
 
 Open `launch.py` and add your new datafeed function to the `scraper_functions` dictionary. The key that you use *must*
 be the same as the `name` field attached to `SnapmeterMeterDataSource` records in production, or we won't be able to
- dispatch scraper jobs correctly. 
- 
+ dispatch scraper jobs correctly.
+
 Example, the NVEnergy celery task looks like this:
 
 ```
@@ -93,7 +95,7 @@ and the correct key is `nve-myaccount`.
 
 2. Clone that meter's building, account ID, and service ID information to create a meter in the
  "Scraper Staging" account or the dev environment.
- 
+
 3. Make a note of the credentials the scraper uses (from the "utility logins" tab in admin).
 
 4. Find the logs from an existing scraper run, so that you know what output to expect when the scraper succeeds.
@@ -114,4 +116,9 @@ In a dev/staging environment, you should also test your scraper against a test m
 ./run.sh by-oid 115769 2019-01-01 2019-12-31
 ```
 
+## Update config to use the datafeeds version
 
+Create a webapps migration to add/update a row in the `datafeeds_feed_config`
+table: scraper name in the `name` column and `TRUE` in the `enabled` column.
+
+See [sample migration](https://github.com/Gridium/webapps/blob/master/alembic/versions/6a9f6da93a55_add_solren_scraper.py)

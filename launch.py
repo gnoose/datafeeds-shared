@@ -28,17 +28,20 @@ log = logging.getLogger("datafeeds")
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
     "american-urjanet": datasources.american.datafeed,
+    "austin-energy-interval": datasources.austin_energy_interval.datafeed,
     "austin-urjanet": datasources.austin_tx.datafeed,
     "heco-interval": datasources.heco_interval.datafeed,
     "heco-urjanet": datasources.heco.datafeed,
     "mountainview-urjanet": datasources.mountainview.datafeed,
     "nve-myaccount": datasources.nvenergy_myaccount.datafeed,
+    "pacific-power-interval": datasources.pacific_power_interval.datafeed,
     "pleasanton-urjanet": datasources.pleasanton.datafeed,
+    "sce-green-button": datasources.sce_greenbutton.datafeed,
+    "smud-energyprofiler-interval": datasources.smud_energyprofiler_interval.datafeed,
     "solaredge": datasources.solaredge.datafeed,
     "solren": datasources.solren.datafeed,
-    "watauga-urjanet": datasources.watauga.datafeed,
     "southlake-urjanet": datasources.southlake.datafeed,
-    "sce-green-button": datasources.sce_greenbutton.datafeed,
+    "watauga-urjanet": datasources.watauga.datafeed,
 }
 
 
@@ -127,6 +130,7 @@ def _launch_meter_datasource(mds: MeterDataSource, start: date, end: date):
         log.exception("The scraper run has failed due to an unhandled exception.")
         status = Status.FAILED
 
+    db.session.commit()
     db.session.close()
     sys.exit(status.value)
 
