@@ -226,7 +226,7 @@ def clear_downloads(download_dir):
     """Clean files from the download directory."""
     to_remove = []
     for filename in os.listdir(download_dir):
-        if filename.endswith(".zip") or filename.endswith(".csv"):
+        if filename.endswith(".zip") or filename.endswith(".csv") or filename.endswith(".xlsx"):
             to_remove.append(os.path.join(download_dir, filename))
 
     for path in to_remove:

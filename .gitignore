@@ -9,3 +9,4 @@ urjanet.sql
 .mypy_cache/
 workdir/*
 run.env
+.DS_Store

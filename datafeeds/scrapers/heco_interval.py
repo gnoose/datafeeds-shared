@@ -1,4 +1,3 @@
-import os
 import csv
 import time
 import logging
@@ -7,22 +6,16 @@ from typing import Optional, Tuple, List, Dict
 from datetime import timedelta, datetime, date
 from dateutil import parser as dateparser
 from dateutil.relativedelta import relativedelta
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support.ui import WebDriverWait
 from retrying import retry
 
 from datafeeds.common.support import DateRange
 from datafeeds.common.support import Results
-from datafeeds.common.base import BaseWebScraper
+from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration
 from datafeeds.common.util.selenium import (
-    file_exists_in_dir,
     IFrameSwitch,
-    ec_or,
     clear_downloads,
 )
 
@@ -43,96 +36,7 @@ class MeterNotFoundException(Exception):
     pass
 
 
-class BasePageObject(object):
-    def __init__(self, driver):
-        self._driver = driver
-
-    def find_element(self, selector: str):
-        """Convenience method to find element by css selector
-        :return: element
-        """
-        return self._driver.find_element_by_css_selector(selector)
-
-    def element_exists(self, selector: str) -> bool:
-        """Convenience method to determine if an element exists using
-        CSS selectors
-        """
-        try:
-            self.find_element(selector)
-        except NoSuchElementException:
-            return False
-        return True
-
-    def wait_for_condition_or_error(self, condition, error_condition=None,
-                                    error_cls=None, error_msg: Optional[str] = None):
-        """Convenience method that waits for a specific condition to be detected
-        before proceeding.
-
-        :param condition: ExpectedCondition instance
-        :param error_condition: ExpectedCondition instance if there's an error
-        :param error_cls: Custom exception class
-        :param error_msg: Error message if selector not found
-        """
-        if error_condition:
-            # Waits for successful condition or error condition before proceeding
-            self._driver.wait().until(
-                ec_or(
-                    condition,
-                    error_condition
-                )
-            )
-            # Pulls the css selector off of the expected conditions object
-            if self.element_exists(error_condition.locator[1]):
-                raise error_cls(error_msg) if error_cls else Exception(error_msg)
-        else:
-            self._driver.wait().until(
-                condition
-            )
-
-    def wait_until_ready(self, selector: str, error_selector: Optional[str] = None,
-                         error_cls=None, error_msg: Optional[str] = None):
-        """Convenience method that waits until an element is detected via a css
-        selector before proceeding.
-        """
-        log.info("Waiting for {} to be ready.".format(self.__class__.__name__))
-
-        condition = EC.presence_of_element_located((By.CSS_SELECTOR, selector))
-        error_condition = None
-
-        if error_selector:
-            error_condition = EC.presence_of_element_located(
-                (By.CSS_SELECTOR, error_selector)
-            )
-
-        self.wait_for_condition_or_error(
-            condition=condition,
-            error_condition=error_condition,
-            error_cls=error_cls,
-            error_msg=error_msg
-        )
-
-    def wait_until_text_visible(self, selector: str, text: str, error_selector: Optional[str] = None,
-                                alt_text: Optional[str] = None, error_cls=None,
-                                error_msg: Optional[str] = None):
-        """Convenience method for waiting until specific text is present in the element.
-        """
-        log.info("Waiting for {} text to load.".format(self.__class__.__name__))
-
-        condition = EC.text_to_be_present_in_element((By.CSS_SELECTOR, selector), text)
-        error_condition = None
-
-        if error_selector:
-            error_condition = EC.text_to_be_present_in_element((By.CSS_SELECTOR, error_selector), alt_text)
-
-        self.wait_for_condition_or_error(
-            condition=condition,
-            error_condition=error_condition,
-            error_cls=error_cls,
-            error_msg=error_msg
-        )
-
-
-class IFrameBasePageObject(BasePageObject):
+class IFrameBasePageObject(CSSSelectorBasePageObject):
     IFrameSelector = "div.powertrax > iframe"
 
     def get_iframe_selector(self):
@@ -188,7 +92,7 @@ class HECOGridConfiguration(Configuration):
         self.meter_id = meter_id
 
 
-class LoginPage(BasePageObject):
+class LoginPage(CSSSelectorBasePageObject):
     """Represents the authenticate page in the web UI.
 
     A very basic login page with username and password fields.
@@ -212,7 +116,7 @@ class LoginPage(BasePageObject):
         self.get_signin_button().click()
 
 
-class AccountOverviewPage(BasePageObject):
+class AccountOverviewPage(CSSSelectorBasePageObject):
     LoginErrorSelector = "div.error_msg"
     PowerTraxLinkSelector = 'a[href$="/MyBusinessPortal/PowerTrax"]'
 
@@ -358,12 +262,6 @@ class IntervalForm(IFrameBasePageObject):
         self.find_element(self.DemandButton).click()
         # Click Save
         self.find_element(self.SaveButton).click()
-        # Wait for csv to download
-        wait = WebDriverWait(self._driver, timeout)
-        download_dir = self._driver.download_dir
-        filename = wait.until(file_exists_in_dir(download_dir, r".*\.csv$"))
-        file_path = os.path.join(download_dir, filename)
-        return file_path
 
 
 class HECOScraper(BaseWebScraper):
@@ -575,10 +473,12 @@ class HECOScraper(BaseWebScraper):
             end = sub_range.end_date
 
             # Fill out interval form and click save to download data
-            file_path = interval_form.fill_out_interval_form_and_download(
+            interval_form.fill_out_interval_form_and_download(
                 start,
                 end
             )
+            file_path = self.download_file('csv')
+
             # Extract intermediate info from csv
             self._process_csv(file_path, readings)
 

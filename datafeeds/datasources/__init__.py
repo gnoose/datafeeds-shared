@@ -2,6 +2,7 @@ from datafeeds.datasources import (
     american,
     austin_energy_interval,
     austin_tx,
+    bloom,
     heco,
     heco_interval,
     mountainview,
@@ -17,6 +18,6 @@ from datafeeds.datasources import (
 )
 
 __all__ = [
-    "american", "austin_energy_interval", "austin_tx", "heco", "heco_interval", "mountainview",
+    "american", "austin_energy_interval", "austin_tx", "bloom", "heco", "heco_interval", "mountainview",
     "nvenergy_myaccount", "pleasanton", "pacific_power_interval", "sce_greenbutton",
     "smud_energyprofiler_interval", "solaredge", "solren", "southlake", "watauga"]
