@@ -45,9 +45,12 @@ class SDGEMyAccountTests(unittest.TestCase):
             sdge_ds.datafeed, account, meter, mds, params)
         slack.assert_not_called()
 
-    @patch("datafeeds.datasources.sdge_myaccount.run_datafeed")
+    @patch("datafeeds.common.batch.log")
+    @patch("datafeeds.common.base.BaseWebScraper.start")
+    @patch("datafeeds.common.base.BaseWebScraper.stop")
     @patch("datafeeds.common.alert.post_slack_message")
-    def test_login_error(self, slack, run_datafeed):
+    @patch("datafeeds.scrapers.sdge_myaccount.SdgeMyAccountScraper.scrape")
+    def test_login_error(self, scrape, slack, _stop, _start, _log):
         """Verify that a LoginException disables related data sources."""
         meter_id = self.meter_ids[0]
         mds = db.session.query(SnapmeterMeterDataSource).filter_by(_meter=meter_id).one()
@@ -59,23 +62,20 @@ class SDGEMyAccountTests(unittest.TestCase):
 
         # meter data source not disabled: call run_datafeed
         sdge_ds.datafeed(account, meter, mds, params)
-        self.assertEqual(1, run_datafeed.call_count)
+        self.assertEqual(1, scrape.call_count, "called scrape")
         slack.assert_not_called()
-        run_datafeed.reset_mock()
         for mid in self.meter_ids:
             mds = db.session.query(SnapmeterMeterDataSource).filter_by(_meter=mid).one()
             self.assertEqual("abc", mds.meta["test"], "meta.test still set")
             self.assertFalse(mds.meta.get("disabled"), "meta.disabled unset")
 
-        # LoginException disables
+        # LoginError disables
         account_ds = mds.account_data_source
         account_ds.enabled = True
         db.session.add(account_ds)
         db.session.flush()
-        run_datafeed.side_effect = LoginError()
-        self.assertRaises(
-            LoginError,
-            sdge_ds.datafeed, account, meter, mds, params)
+        scrape.side_effect = LoginError()
+        sdge_ds.datafeed(account, meter, mds, params)
         msg = slack.call_args_list[0][0][0]
         self.assertTrue(account.name in msg)
         for meter_id in self.meter_ids:

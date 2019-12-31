@@ -55,8 +55,12 @@ class EPOSchneiderTests(unittest.TestCase):
                 DATA_SOURCES[ds_name].datafeed, account, meter, mds, params)
             slack.assert_not_called()
 
+    @patch("datafeeds.common.batch.log")
+    @patch("datafeeds.common.base.BaseWebScraper.start")
+    @patch("datafeeds.common.base.BaseWebScraper.stop")
     @patch("datafeeds.common.alert.post_slack_message")
-    def test_login_error(self, slack):
+    @patch("datafeeds.scrapers.epo_schneider.EnergyProfilerScraper.scrape")
+    def test_login_error(self, scrape, slack, _stop, _start, _log):
         """Verify that a LoginException disables related data sources."""
         meter_id = self.meter_ids[0]
         mds = db.session.query(SnapmeterMeterDataSource).filter_by(_meter=meter_id).one()
@@ -66,35 +70,36 @@ class EPOSchneiderTests(unittest.TestCase):
         db.session.add(mds)
         params = {}
         for ds_name in DATA_SOURCES:
-            with patch("datafeeds.datasources.%s.run_datafeed" % ds_name.replace("-", "_")) as run:
-                # meter data source not disabled: call run_datafeed
-                DATA_SOURCES[ds_name].datafeed(account, meter, mds, params)
-                self.assertEqual(1, run.call_count)
-                slack.assert_not_called()
-                run.reset_mock()
-                for mid in self.meter_ids:
-                    mds = db.session.query(SnapmeterMeterDataSource).filter_by(_meter=mid).one()
-                    self.assertEqual("abc", mds.meta["test"], "meta.test still set")
-                    self.assertFalse(mds.meta.get("disabled"), "meta.disabled unset")
+            scrape.side_effect = None
+            scrape.reset_mock()
+            # meter data source not disabled: call scrape
+            DATA_SOURCES[ds_name].datafeed(account, meter, mds, params)
+            self.assertEqual(1, scrape.call_count, "called scrape once for %s" % ds_name)
+            slack.assert_not_called()
+            for mid in self.meter_ids:
+                mds = db.session.query(SnapmeterMeterDataSource).filter_by(_meter=mid).one()
+                self.assertEqual("abc", mds.meta["test"], "meta.test still set")
+                self.assertFalse(mds.meta.get("disabled"), "meta.disabled unset")
 
-                # LoginException disables
-                account_ds = mds.account_data_source
-                account_ds.enabled = True
-                account_ds.source_account_type = ds_name
-                db.session.add(account_ds)
-                db.session.flush()
-                run.side_effect = LoginError()
-                self.assertRaises(
-                    LoginError,
-                    DATA_SOURCES[ds_name].datafeed, account, meter, mds, params)
-                msg = slack.call_args_list[0][0][0]
-                self.assertTrue(account.name in msg)
-                for meter_id in self.meter_ids:
-                    self.assertTrue(db.session.query(Meter).get(meter_id).name in msg)
-                slack.called_once_with(
-                    ANY, "#scrapers", ":exclamation:", username="Scraper monitor")
-                slack.reset_mock()
-                # account data source disabled
-                db.session.flush()
-                db.session.refresh(account_ds)
-                self.assertFalse(account_ds.enabled)
+            # LoginError disables
+            account_ds = mds.account_data_source
+            account_ds.enabled = True
+            account_ds.source_account_type = ds_name
+            db.session.add(account_ds)
+            db.session.flush()
+            scrape.side_effect = LoginError()
+            DATA_SOURCES[ds_name].datafeed(account, meter, mds, params)
+            msg = slack.call_args_list[0][0][0]
+            self.assertTrue(account.name in msg)
+            for meter_id in self.meter_ids:
+                self.assertTrue(db.session.query(Meter).get(meter_id).name in msg)
+            slack.called_once_with(
+                ANY, "#scrapers", ":exclamation:", username="Scraper monitor")
+            slack.reset_mock()
+            # account data source disabled
+            db.session.flush()
+            db.session.refresh(account_ds)
+            self.assertFalse(account_ds.enabled)
+            account_ds.enabled = True
+            db.session.add(account_ds)
+            db.session.flush()

@@ -7,8 +7,8 @@ from dateutil import parser as dateparser
 
 from datafeeds.common.typing import Status
 from datafeeds import db, config
-from datafeeds.common import index
-from datafeeds.common.exceptions import DataSourceConfigurationError
+from datafeeds.common import alert, index
+from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.transformer.base import UrjanetGridiumTransformer
@@ -46,7 +46,8 @@ def iso_to_dates(start_iso, end_iso):
 
 def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
                  datasource: MeterDataSource, params: dict, configuration=None,
-                 task_id=None, transforms: Optional[List[Transforms]] = None) -> Status:
+                 task_id=None, transforms: Optional[List[Transforms]] = None,
+                 disable_login_on_error: Optional[bool] = False) -> Status:
     transforms = [] if transforms is None else transforms
     acct_hex_id = account.hex_id if account else ""
     acct_name = account.name if account else ""
@@ -59,8 +60,9 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
         params.get("data_end")
     ))
 
+    parent: AccountDataSource = None
     if datasource.account_data_source:
-        parent: AccountDataSource = datasource.account_data_source
+        parent = datasource.account_data_source
         credentials = Credentials(parent.username, parent.password)
         if not datasource.account_data_source.enabled:
             raise DataSourceConfigurationError("%s scraper for %s is disabled" % (
@@ -92,6 +94,12 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
         status = "FAILURE"
         retval = Status.FAILED
         error = repr(exc)
+        # disable the login if scraping threw a LoginError, caller requested disabling on error,
+        # and meter data source has a parent account data source
+        if isinstance(exc, LoginError) and disable_login_on_error and parent:
+            parent.enabled = False
+            db.session.add(parent)
+            alert.disable_logins(parent)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading final task status to Elasticsearch.")

@@ -130,6 +130,7 @@ def _launch_meter_datasource(mds: MeterDataSource, start: date, end: date):
         log.exception("The scraper run has failed due to an unhandled exception.")
         status = Status.FAILED
 
+    db.session.commit()
     db.session.close()
     sys.exit(status.value)
 
