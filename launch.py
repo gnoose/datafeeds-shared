@@ -30,7 +30,7 @@ scraper_functions = {
     "american-urjanet": datasources.american.datafeed,
     "austin-energy-interval": datasources.austin_energy_interval.datafeed,
     "austin-urjanet": datasources.austin_tx.datafeed,
-    "bloom-interval": datasources.bloom.datafeed,
+    "bloom": datasources.bloom.datafeed,
     "heco-interval": datasources.heco_interval.datafeed,
     "heco-urjanet": datasources.heco.datafeed,
     "mountainview-urjanet": datasources.mountainview.datafeed,
