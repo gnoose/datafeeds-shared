@@ -46,16 +46,22 @@ class TestCSVParser(SetupBase):
         self.assertEqual(date_obj.minute, 25)
 
     def test_date_to_final_str(self):
-        self.assertEqual(self.csv_parser.date_to_final_str(self.start_date), "2019-01-01")
+        self.assertEqual(
+            self.csv_parser.date_to_final_str(self.start_date), "2019-01-01"
+        )
         self.assertEqual(self.csv_parser.date_to_final_str(self.end_date), "2019-12-31")
 
     def test_date_to_intermediate_time_str(self):
         now = datetime.now()
         date_obj = now.replace(hour=5, minute=30, second=0, microsecond=0)
-        self.assertEqual(self.csv_parser.date_to_intermediate_time_str(date_obj), "05:30")
+        self.assertEqual(
+            self.csv_parser.date_to_intermediate_time_str(date_obj), "05:30"
+        )
 
         date_obj = now.replace(hour=13, minute=59, second=0, microsecond=0)
-        self.assertEqual(self.csv_parser.date_to_intermediate_time_str(date_obj), "13:59")
+        self.assertEqual(
+            self.csv_parser.date_to_intermediate_time_str(date_obj), "13:59"
+        )
 
     def test_build_intermediate_dict(self):
         intermediate_dict = self.csv_parser.build_intermediate_dict()
@@ -68,31 +74,48 @@ class TestCSVParser(SetupBase):
         start_time = self.start_date.replace(hour=0, minute=0, second=0, microsecond=0)
 
         self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time), "00:00")
-        self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=1)), "00:15")
-        self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=14)), "00:15")
-        self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=15)), "00:15")
-        self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=16)), "00:30")
-        self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=29)), "00:30")
-        self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=30)), "00:30")
-        self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=45)), "00:45")
-        self.assertEqual(self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=59)), "01:00")
+        self.assertEqual(
+            self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=1)),
+            "00:15",
+        )
+        self.assertEqual(
+            self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=14)),
+            "00:15",
+        )
+        self.assertEqual(
+            self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=15)),
+            "00:15",
+        )
+        self.assertEqual(
+            self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=16)),
+            "00:30",
+        )
+        self.assertEqual(
+            self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=29)),
+            "00:30",
+        )
+        self.assertEqual(
+            self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=30)),
+            "00:30",
+        )
+        self.assertEqual(
+            self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=45)),
+            "00:45",
+        )
+        self.assertEqual(
+            self.csv_parser.round_up_to_quarter_hour(start_time.replace(minute=59)),
+            "01:00",
+        )
 
     def test_finalize_readings(self):
         self.csv_parser.intermediate_readings = {
-            "2019-01-01": {
-                "00:00": 5.03,
-                "00:15": 9.24,
-                "00:30": 10.2
-            }
+            "2019-01-01": {"00:00": 5.03, "00:15": 9.24, "00:30": 10.2}
         }
         finalized_readings = self.csv_parser.finalize_readings()
-        self.assertEqual(finalized_readings, {
-            "2019-01-01": [5.03, 9.24, 10.2]
-        })
+        self.assertEqual(finalized_readings, {"2019-01-01": [5.03, 9.24, 10.2]})
 
 
 class TestDatePicker(SetupBase):
-
     def test_date_to_string(self):
         self.datepicker = solren.DatePickerSection
         self.assertEqual(self.datepicker.date_to_string(self.start_date), "2019-01-01")
@@ -103,12 +126,16 @@ class TestSolrenScraper(SetupBase):
         super().setUp()
         config = Configuration()
         config.site_id = "12345"
-        self.scraper = solren.SolrenScraper(credentials=None, date_range=DateRange(
-            self.start_date.date(), self.end_date.date()), configuration=config
+        self.scraper = solren.SolrenScraper(
+            credentials=None,
+            date_range=DateRange(self.start_date.date(), self.end_date.date()),
+            configuration=config,
         )
 
     def test_string_to_date(self):
-        self.assertEqual(self.scraper.string_to_date("2019-01-01"), self.start_date.date())
+        self.assertEqual(
+            self.scraper.string_to_date("2019-01-01"), self.start_date.date()
+        )
 
     def test_adjust_start_and_end_dates(self):
         self.scraper.install_date = self.end_date.date()
@@ -117,4 +144,6 @@ class TestSolrenScraper(SetupBase):
         self.scraper.adjust_start_and_end_dates()
         self.assertEqual(self.scraper.start_date, self.end_date.date())
         # End date earlier than start date, so moved to one day past start
-        self.assertEqual(self.scraper.end_date, self.scraper.start_date + timedelta(days=1))
+        self.assertEqual(
+            self.scraper.end_date, self.scraper.start_date + timedelta(days=1)
+        )

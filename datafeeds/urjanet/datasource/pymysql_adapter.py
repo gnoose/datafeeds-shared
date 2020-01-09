@@ -17,7 +17,7 @@ from typing import List, Dict, Callable, Any, Type
 from pymysql.cursors import DictCursor
 
 from . import UrjanetDataSource
-from ..model import (UrjanetData, Account, Meter, Usage, Charge)
+from ..model import UrjanetData, Account, Meter, Usage, Charge
 
 SqlRowDict = Dict[str, Any]
 SqlQueryResult = List[SqlRowDict]
@@ -25,11 +25,12 @@ Transform = Callable[[Any], Any]
 
 
 def get_column(
-        row: SqlRowDict,
-        colname: str,
-        transform: Transform = None,
-        enforce_type: Type = None,
-        nullable: bool = True) -> Any:
+    row: SqlRowDict,
+    colname: str,
+    transform: Transform = None,
+    enforce_type: Type = None,
+    nullable: bool = True,
+) -> Any:
     """Pull a value out of a pymysql DictCursor row, with various constraints
 
     Args:
@@ -76,31 +77,39 @@ def get_column(
     # Check the type if requested, raising a TypeError on failure
     if enforce_type and not isinstance(value, enforce_type):
         actual_type = type(value)
-        raise TypeError("Column '{}' should be type '{}', but was '{}'".format(
-            colname, enforce_type.__name__, actual_type.__name__))
+        raise TypeError(
+            "Column '{}' should be type '{}', but was '{}'".format(
+                colname, enforce_type.__name__, actual_type.__name__
+            )
+        )
     return value
 
 
-def get_int(row: SqlRowDict, colname: str, transform: Transform = int, nullable: bool = True) -> int:
+def get_int(
+    row: SqlRowDict, colname: str, transform: Transform = int, nullable: bool = True
+) -> int:
     """Extract an integer value from a query result"""
     return get_column(
-        row, colname, enforce_type=int, transform=transform, nullable=nullable)
+        row, colname, enforce_type=int, transform=transform, nullable=nullable
+    )
 
 
-def get_bool(row: SqlRowDict, colname: str, transform: Transform = bool, nullable: bool = True) -> bool:
+def get_bool(
+    row: SqlRowDict, colname: str, transform: Transform = bool, nullable: bool = True
+) -> bool:
     """Extract a boolean value from a query result"""
     return get_column(
-        row,
-        colname,
-        enforce_type=bool,
-        transform=transform,
-        nullable=nullable)
+        row, colname, enforce_type=bool, transform=transform, nullable=nullable
+    )
 
 
-def get_str(row: SqlRowDict, colname: str, transform: Transform = str, nullable: bool = True) -> str:
+def get_str(
+    row: SqlRowDict, colname: str, transform: Transform = str, nullable: bool = True
+) -> str:
     """Extract a string value from a query result"""
     return get_column(
-        row, colname, enforce_type=str, transform=transform, nullable=nullable)
+        row, colname, enforce_type=str, transform=transform, nullable=nullable
+    )
 
 
 def date_transform(value: Any) -> date:
@@ -115,24 +124,25 @@ def date_transform(value: Any) -> date:
     raise ValueError("Invalid date value: {}".format(value))
 
 
-def get_date(row: SqlRowDict, colname: str, transform: Transform = date_transform, nullable: bool = True) -> date:
+def get_date(
+    row: SqlRowDict,
+    colname: str,
+    transform: Transform = date_transform,
+    nullable: bool = True,
+) -> date:
     """Extract a date value from a query result"""
     return get_column(
-        row,
-        colname,
-        enforce_type=date,
-        transform=transform,
-        nullable=nullable)
+        row, colname, enforce_type=date, transform=transform, nullable=nullable
+    )
 
 
-def get_decimal(row: SqlRowDict, colname: str, transform: Transform = Decimal, nullable: bool = True) -> Decimal:
+def get_decimal(
+    row: SqlRowDict, colname: str, transform: Transform = Decimal, nullable: bool = True
+) -> Decimal:
     """Extract a decimal value from a query result"""
     return get_column(
-        row,
-        colname,
-        enforce_type=Decimal,
-        transform=transform,
-        nullable=nullable)
+        row, colname, enforce_type=Decimal, transform=transform, nullable=nullable
+    )
 
 
 class UrjanetPyMySqlDataSource(UrjanetDataSource):
@@ -175,10 +185,7 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             WHERE AccountFK=%s AND MeterFK=%s
         """
         result_set = self.fetch_all(query, account_pk, meter_pk)
-        return [
-            UrjanetPyMySqlDataSource.parse_charge_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_charge_row(row) for row in result_set]
 
     def load_meter_usages(self, account_pk: int, meter_pk: int) -> List[Usage]:
         """Fetch all usage info for a given meter"""
@@ -188,9 +195,7 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             WHERE AccountFK=%s AND MeterFK=%s
         """
         result_set = self.fetch_all(query, account_pk, meter_pk)
-        return [
-            UrjanetPyMySqlDataSource.parse_usage_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_usage_row(row) for row in result_set]
 
     def load_floating_charges(self, account_pk: int) -> List[Charge]:
         """Floating charges are charges on a statement attached to no meter"""
@@ -200,10 +205,7 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             WHERE AccountFK=%s AND MeterFK is null
         """
         result_set = self.fetch_all(query, account_pk)
-        return [
-            UrjanetPyMySqlDataSource.parse_charge_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_charge_row(row) for row in result_set]
 
     def load(self) -> UrjanetData:
         """Load Urjanet data from the MySQL connection.
@@ -227,7 +229,9 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
                 meter.charges.extend(charges)
                 meter.usages.extend(usages)
 
-        accounts_with_data = [a for a in accounts if len(a.meters) > 0 or len(a.floating_charges) > 0]
+        accounts_with_data = [
+            a for a in accounts if len(a.meters) > 0 or len(a.floating_charges) > 0
+        ]
         return UrjanetData(accounts=accounts_with_data)
 
     @staticmethod
@@ -249,7 +253,8 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             OutstandingBalance=get_decimal(row, "OutstandingBalance"),
             PreviousBalance=get_decimal(row, "PreviousBalance"),
             meters=[],
-            floating_charges=[])
+            floating_charges=[],
+        )
 
     @staticmethod
     def parse_meter_row(row: SqlRowDict) -> Meter:
@@ -263,7 +268,8 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             IntervalStart=get_date(row, "IntervalStart"),
             IntervalEnd=get_date(row, "IntervalEnd"),
             charges=[],
-            usages=[])
+            usages=[],
+        )
 
     @staticmethod
     def parse_charge_row(row: SqlRowDict) -> Charge:
@@ -279,7 +285,8 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             IsAdjustmentCharge=get_bool(row, "IsAdjustmentCharge"),
             IntervalStart=get_date(row, "IntervalStart"),
             IntervalEnd=get_date(row, "IntervalEnd"),
-            ChargeId=get_str(row, "ChargeId"))
+            ChargeId=get_str(row, "ChargeId"),
+        )
 
     @staticmethod
     def parse_usage_row(row: SqlRowDict) -> Usage:
@@ -292,4 +299,5 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             RateComponent=get_str(row, "RateComponent"),
             EnergyUnit=get_str(row, "EnergyUnit"),
             IntervalStart=get_date(row, "IntervalStart"),
-            IntervalEnd=get_date(row, "IntervalEnd"))
+            IntervalEnd=get_date(row, "IntervalEnd"),
+        )

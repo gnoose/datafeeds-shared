@@ -29,8 +29,8 @@ class DateIntervalTree:
     def from_date_interval(ival: Interval) -> Interval:
         """Convert an ordinal interval to a date interval"""
         return Interval(
-            date.fromordinal(ival.begin), date.fromordinal(ival.end),
-            ival.data)
+            date.fromordinal(ival.begin), date.fromordinal(ival.end), ival.data
+        )
 
     def add(self, begin: date, end: date, data: Any = None):
         """Add a date interval to the interval tree, along with any associated date"""
@@ -51,10 +51,7 @@ class DateIntervalTree:
         """Return all date intervals in this tree"""
 
         # Note we convert from ordinal values to actual date objects
-        return [
-            DateIntervalTree.from_date_interval(ival)
-            for ival in self.tree.items()
-        ]
+        return [DateIntervalTree.from_date_interval(ival) for ival in self.tree.items()]
 
     def overlaps(self, begin: date, end: date) -> bool:
         """Determine whether the given date interval (strictly) overlaps with any interval in the tree"""
@@ -76,7 +73,7 @@ class DateIntervalTree:
         ]
 
     @staticmethod
-    def shift_endpoints(date_tree: 'DateIntervalTree') -> 'DateIntervalTree':
+    def shift_endpoints(date_tree: "DateIntervalTree") -> "DateIntervalTree":
         """Produce a new tree where adjacent intervals are guaranteed to not match at a boundary
 
         E.g., the intervals
@@ -92,6 +89,8 @@ class DateIntervalTree:
             if work_list:
                 next_ival = work_list[0]
                 if cur_ival.end == next_ival.begin:
-                    cur_ival = Interval(cur_ival.begin, cur_ival.end - timedelta(days=1), cur_ival.data)
+                    cur_ival = Interval(
+                        cur_ival.begin, cur_ival.end - timedelta(days=1), cur_ival.data
+                    )
             adjusted.add(cur_ival.begin, cur_ival.end, cur_ival.data)
         return adjusted

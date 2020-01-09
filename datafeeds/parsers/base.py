@@ -8,8 +8,8 @@ from jsonschema import validate as js_validate, ValidationError, FormatChecker
 from addict import Dict
 
 
-KwhInterval = namedtuple('Interval', 'start, end, kwh')
-KwInterval = namedtuple('Interval', 'start, end, kw')
+KwhInterval = namedtuple("Interval", "start, end, kwh")
+KwInterval = namedtuple("Interval", "start, end, kw")
 
 
 class JsonParseFailure(Exception):
@@ -26,6 +26,7 @@ class DataIntegrityFailure(Exception):
     For example, when one part of the record says 96 points of interval data are present,
     but actually only 3 numbers are in the list.
     """
+
     pass
 
 

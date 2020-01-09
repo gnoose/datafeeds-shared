@@ -31,7 +31,15 @@ def process_json(args):
         if args.csv:
             writer = csv.writer(outstream)
             for item in result.periods:
-                writer.writerow([item.start, item.end, item.total_charge, item.total_usage, item.peak_demand])
+                writer.writerow(
+                    [
+                        item.start,
+                        item.end,
+                        item.total_charge,
+                        item.total_usage,
+                        item.peak_demand,
+                    ]
+                )
         else:
             json_data = result.to_json()
             ordered = order_json(json_data)

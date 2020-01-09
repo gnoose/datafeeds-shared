@@ -27,7 +27,7 @@ def _urlencoded_time(dt: datetime) -> str:
     # Specifically, the space character = "%20"
     # isoformat example: 2019-11-01T11:00:00+00:00
     # Desired format: 2019-11-01%2011:00:00
-    return dt.isoformat().split('+')[0].replace('T', '%20')
+    return dt.isoformat().split("+")[0].replace("T", "%20")
 
 
 class SolarEdgeConfiguration(Configuration):
@@ -43,6 +43,7 @@ class Session:
     performs basic validation that API responses meet a schema, and
     imposes some types on the results.
     """
+
     def __init__(self, api_base="https://monitoringapi.solaredge.com", api_key=None):
         self.api_base = api_base
         self.api_key = api_key
@@ -50,7 +51,7 @@ class Session:
 
     # SolarEdge API has maximum of 1 month interval per request
     def _get_results(self, url, endpoint_parser, extra_params: dict = None):
-        params = {'api_key': self.api_key, 'format': self.format}
+        params = {"api_key": self.api_key, "format": self.format}
         if extra_params is not None:
             params.update(extra_params)
         # requests url-encodes things that break the API call.
@@ -84,15 +85,20 @@ class Session:
         while t0 < t1 and t0 < datetime(end.year, end.month, end.day):
             start_time = _urlencoded_time(t0)
             end_time = _urlencoded_time(t1)
-            required_params = {"timeUnit": "QUARTER_OF_AN_HOUR",
-                               "startTime": start_time,
-                               "endTime": end_time
-                               }
-            results = self._get_results(url, parser.parse_intervals, extra_params=required_params)
+            required_params = {
+                "timeUnit": "QUARTER_OF_AN_HOUR",
+                "startTime": start_time,
+                "endTime": end_time,
+            }
+            results = self._get_results(
+                url, parser.parse_intervals, extra_params=required_params
+            )
             for ind, result in enumerate(results):
-                results[ind] = Interval(start=start,
-                                        kwh=result.kwh,
-                                        serial_number=result.serial_number),
+                results[ind] = (
+                    Interval(
+                        start=start, kwh=result.kwh, serial_number=result.serial_number
+                    ),
+                )
 
             accum += results
 
@@ -121,18 +127,18 @@ class Session:
             new_ivls_list.append(ivls[k])
             if k == 0:
                 prev = v[0].kwh
-                new_ivl = Interval(start=v[0].start,
-                                   kwh=None,
-                                   serial_number=v[0].serial_number)
+                new_ivl = Interval(
+                    start=v[0].start, kwh=None, serial_number=v[0].serial_number
+                )
                 new_ivls_list[k] = new_ivl
                 continue
             if isnan(v[0].kwh):
                 continue
             curr = v[0].kwh
             this_reading = curr - prev
-            new_ivl = Interval(start=v[0].start,
-                               kwh=this_reading,
-                               serial_number=v[0].serial_number)
+            new_ivl = Interval(
+                start=v[0].start, kwh=this_reading, serial_number=v[0].serial_number
+            )
             new_ivls_list[k] = new_ivl
             prev = curr
 
@@ -142,7 +148,7 @@ class Session:
 class SolarEdgeScraper(BaseApiScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.name = 'SolarEdge API Scraper'
+        self.name = "SolarEdge API Scraper"
         self.site_url = "https://monitoringapi.solaredge.com/site/{}".format(
             self.username  # self._configuration.site_id
         )
@@ -169,15 +175,14 @@ class SolarEdgeScraper(BaseApiScraper):
         return site, sess
 
     def _compute_meter_readings(self) -> Timeline:
-        start_time_pst = date_to_datetime(self.start_date, 'US/Pacific')
+        start_time_pst = date_to_datetime(self.start_date, "US/Pacific")
         start_time = start_time_pst.astimezone(self.site_tz)
-        end_time = date_to_datetime(self.end_date, 'US/Pacific')
+        end_time = date_to_datetime(self.end_date, "US/Pacific")
         end_time = end_time.astimezone(self.site_tz)
         site, sess = self._open_session()
-        ivls = sess.get_intervals(self.site_url,
-                                  start_time,
-                                  end_time,
-                                  self.install_date)
+        ivls = sess.get_intervals(
+            self.site_url, start_time, end_time, self.install_date
+        )
         meter_ivls = sess.meter_readings(ivls, self.meter_self)
         relative_ivls = sess.relative_energy(meter_ivls)
 
@@ -202,8 +207,7 @@ class SolarEdgeScraper(BaseApiScraper):
                 #  Multiply by 4 to get the kW reading we store
                 kw = iv.kwh * 4
                 final_timeline.insert(current_time, kw)
-                log.info("Approximate time of reading: %s, kW: %s",
-                         current_time, kw)
+                log.info("Approximate time of reading: %s, kW: %s", current_time, kw)
                 current_time = current_time + delta
         return final_timeline
 

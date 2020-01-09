@@ -9,7 +9,8 @@ from datafeeds.urjanet.scraper import (
     BaseUrjanetScraper,
     BaseUrjanetConfiguration,
     get_charge_kind,
-    get_charge_units)
+    get_charge_units,
+)
 from datafeeds.urjanet.transformer import PacGeGridiumTransfomer
 
 from datafeeds.common.typing import BillingDatum, BillingDatumItemsEntry
@@ -54,7 +55,9 @@ class TestUrjanetScraper(unittest.TestCase):
 
     def test_basic_scraper_run_no_attachments(self):
         """Ensure that we can run the base Urjanet scraper with simple inputs, without attachments disabled"""
-        datasource = test_util.FixtureDataSource(os.path.join(DATA_DIR, "simple_fixture_input.json"))
+        datasource = test_util.FixtureDataSource(
+            os.path.join(DATA_DIR, "simple_fixture_input.json")
+        )
         transformer = PacGeGridiumTransfomer()
         config = BaseUrjanetConfiguration(datasource, transformer, "pge", False)
         scraper = BaseUrjanetScraper(None, None, config)
@@ -72,20 +75,25 @@ class TestUrjanetScraper(unittest.TestCase):
                 peak=0.0,
                 items=[
                     BillingDatumItemsEntry(
-                        description='test_charge1',
+                        description="test_charge1",
                         quantity=16.0,
                         rate=5.0,
                         total=80.0,
-                        kind='use',
-                        unit='kwh'),
+                        kind="use",
+                        unit="kwh",
+                    ),
                     BillingDatumItemsEntry(
-                        description='test_charge2',
+                        description="test_charge2",
                         quantity=0.0,
                         rate=0.0,
                         total=20.0,
-                        kind='other',
-                        unit='other')],
-                attachments=None)]
+                        kind="other",
+                        unit="other",
+                    ),
+                ],
+                attachments=None,
+            )
+        ]
 
         self.assertEqual(expected, result.bills)
 
@@ -94,7 +102,9 @@ class TestUrjanetScraper(unittest.TestCase):
         """Ensure that we can run the base Urjanet scraper with simple inputs, with attachments enabled"""
         # Mock out the library that uploads to S3, returning 'test_key' as the destination s3 entity
         mock_call.return_value = "test_key"
-        datasource = test_util.FixtureDataSource(os.path.join(DATA_DIR, "simple_fixture_input.json"))
+        datasource = test_util.FixtureDataSource(
+            os.path.join(DATA_DIR, "simple_fixture_input.json")
+        )
         transformer = PacGeGridiumTransfomer()
 
         config = BaseUrjanetConfiguration(datasource, transformer, "pge", True)
@@ -119,7 +129,9 @@ class TestUrjanetScraper(unittest.TestCase):
         """Ensure that the Urjanet scraper gracefully handles a bill upload with multiple source links"""
         # Mock out the library that uploads to S3, returning 'test_key' as the destination s3 entity
         mock_call.return_value = "test_key"
-        datasource = test_util.FixtureDataSource(os.path.join(DATA_DIR, "multi_source_link_input.json"))
+        datasource = test_util.FixtureDataSource(
+            os.path.join(DATA_DIR, "multi_source_link_input.json")
+        )
         transformer = PacGeGridiumTransfomer()
 
         config = BaseUrjanetConfiguration(datasource, transformer, "pge", True)

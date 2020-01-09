@@ -9,7 +9,7 @@ from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 from datafeeds.urjanet.model import (
     GridiumBillingPeriod,
     GridiumBillingPeriodCollection,
-    UrjanetData
+    UrjanetData,
 )
 
 
@@ -34,5 +34,7 @@ class GenericWaterTransformer(UrjanetGridiumTransformer):
                     total_usage=period_data.get_total_usage(),
                     source_urls=period_data.get_source_urls(),
                     line_items=list(period_data.iter_charges()),
-                    tariff=None))
+                    tariff=None,
+                )
+            )
         return GridiumBillingPeriodCollection(periods=gridium_periods)

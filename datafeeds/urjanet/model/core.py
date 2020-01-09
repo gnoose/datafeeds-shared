@@ -40,7 +40,7 @@ from jsonobject import (
     DateProperty,
     IntegerProperty,
     ListProperty,
-    BooleanProperty
+    BooleanProperty,
 )
 
 
@@ -53,6 +53,7 @@ class Usage(JsonObject):
       | read types, present and previous meter readings, and units
       | of measure.
     """
+
     # The primary key of the Usage object in the Urjanet database
     PK = IntegerProperty(required=True)
 
@@ -91,6 +92,7 @@ class Charge(JsonObject):
     Note especially the description of proration, which can
     manifest in some somewhat difficult to interpret data.
     """
+
     # The primary key of the Charge object in the Urjanet database
     PK = IntegerProperty(required=True)
 
@@ -184,6 +186,7 @@ class Account(JsonObject):
 
     For our purposes, Account is a synonym for "Billing Statement"
     """
+
     # The primary key of the Account object in the Urjanet database
     PK = IntegerProperty(required=True)
 
@@ -240,6 +243,7 @@ class Account(JsonObject):
 
 class UrjanetData(JsonObject):
     """A top-level object representing a collection of Urjanet data."""
+
     accounts = ListProperty(Account)
 
 
@@ -273,15 +277,18 @@ class GridiumBillingPeriod(JsonObject):
 
 class GridiumBillingPeriodCollection(JsonObject):
     """A top-level collection of billing periods."""
+
     periods = ListProperty(GridiumBillingPeriod)
 
 
 # Some utility functions
-def filter_urja_data(urjanet_data: UrjanetData,
-                     account_filter: Callable[[Account], bool] = None,
-                     meter_filter: Callable[[Meter], bool] = None,
-                     charge_filter: Callable[[Charge], bool] = None,
-                     usage_filter: Callable[[Usage], bool] = None) -> UrjanetData:
+def filter_urja_data(
+    urjanet_data: UrjanetData,
+    account_filter: Callable[[Account], bool] = None,
+    meter_filter: Callable[[Meter], bool] = None,
+    charge_filter: Callable[[Charge], bool] = None,
+    usage_filter: Callable[[Usage], bool] = None,
+) -> UrjanetData:
     """Filter a collection of Urjanet data by caller-defined criteria
 
     Filters are implemented by functions that accept the various Urjanet objects
@@ -307,27 +314,21 @@ def filter_urja_data(urjanet_data: UrjanetData,
     charge_filter = charge_filter if charge_filter else null_filter
     usage_filter = usage_filter if usage_filter else null_filter
 
-    accounts = [
-        copy.copy(a) for a in urjanet_data.accounts if account_filter(a)
-    ]
+    accounts = [copy.copy(a) for a in urjanet_data.accounts if account_filter(a)]
     for account in accounts:
-        account.meters = [
-            copy.copy(m) for m in account.meters if meter_filter(m)
-        ]
+        account.meters = [copy.copy(m) for m in account.meters if meter_filter(m)]
         for meter in account.meters:
-            meter.charges = [
-                copy.copy(c) for c in meter.charges if charge_filter(c)
-            ]
-            meter.usages = [
-                copy.copy(u) for u in meter.usages if usage_filter(u)
-            ]
+            meter.charges = [copy.copy(c) for c in meter.charges if charge_filter(c)]
+            meter.usages = [copy.copy(u) for u in meter.usages if usage_filter(u)]
         account.floating_charges = [
             copy.copy(c) for c in account.floating_charges if charge_filter(c)
         ]
     return UrjanetData(accounts=accounts)
 
 
-def filter_by_date_range(urjanet_data: UrjanetData, after: date = None, before: date = None) -> UrjanetData:
+def filter_by_date_range(
+    urjanet_data: UrjanetData, after: date = None, before: date = None
+) -> UrjanetData:
     """Filter Urjanet data by date
 
     The after/before filters apply to the IntervalStart field of Charge and Usage objects.
@@ -346,8 +347,7 @@ def filter_by_date_range(urjanet_data: UrjanetData, after: date = None, before: 
         is_before = (before is None) or (elem.IntervalStart <= before)
         return is_after and is_before
 
-    return filter_urja_data(
-        urjanet_data, charge_filter=in_range, usage_filter=in_range)
+    return filter_urja_data(urjanet_data, charge_filter=in_range, usage_filter=in_range)
 
 
 def order_json(json_elem: Any) -> Any:

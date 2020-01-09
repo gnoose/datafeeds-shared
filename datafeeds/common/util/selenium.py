@@ -15,11 +15,14 @@ from selenium.common.exceptions import InvalidElementStateException
 # Code to stitch full page screenshots together, credit to:
 # https://gist.github.com/fabtho/13e4a2e7cfbfde671b8fa81bbe9359fb
 
+
 def whole_page_screenshot(driver, filename):
     # from here http://stackoverflow.com/questions/1145850/how-to-get-height-of-entire-document-with-javascript
-    js = "return Math.max( document.body.scrollHeight, document.body.offsetHeight, " + \
-         "document.documentElement.clientHeight,  document.documentElement.scrollHeight, " + \
-         "document.documentElement.offsetHeight);"
+    js = (
+        "return Math.max( document.body.scrollHeight, document.body.offsetHeight, "
+        + "document.documentElement.clientHeight,  document.documentElement.scrollHeight, "
+        + "document.documentElement.offsetHeight);"
+    )
     scrollheight = driver.execute_script(js)
 
     slices = []
@@ -42,7 +45,7 @@ def whole_page_screenshot(driver, filename):
             img.close()
 
 
-class ec_in_frame():
+class ec_in_frame:
     """Evaluate an expected condition within the context of a given iframe
 
     Args:
@@ -61,7 +64,7 @@ class ec_in_frame():
             return self.condition
 
 
-class ec_or():
+class ec_or:
     """Construct an expected condition which is the logical OR of multiple other conditions
 
     The provided conditions are evaluated in the order provided. The first condition to evaluate
@@ -82,7 +85,7 @@ class ec_or():
         return None
 
 
-class ec_and():
+class ec_and:
     """Construct an expected condition which is the logical AND of multiple other conditions
 
     The provided conditions are evaluated in the order provided. If all conditions evaluate to True,
@@ -110,7 +113,7 @@ def scroll_to(driver, elem):
     driver.execute_script("arguments[0].scrollIntoView();", elem)
 
 
-class element_text_doesnt_contain():
+class element_text_doesnt_contain:
     def __init__(self, locator, value):
         self.locator = locator
         self.value = value
@@ -120,7 +123,7 @@ class element_text_doesnt_contain():
         return self.value not in element.text
 
 
-class element_cleared():
+class element_cleared:
     def __init__(self, locator):
         self.locator = locator
 
@@ -133,7 +136,7 @@ class element_cleared():
             return False
 
 
-class window_count_equals():
+class window_count_equals:
     def __init__(self, count):
         self.count = count
 
@@ -141,7 +144,7 @@ class window_count_equals():
         return len(driver.window_handles) == self.count
 
 
-class file_exists_in_dir():
+class file_exists_in_dir:
     """Wait until a file matching a regex appears in a directory.
 
     This is passed to a Selenium wait().until construct. This takes a
@@ -163,7 +166,7 @@ class file_exists_in_dir():
         return False
 
 
-class WindowSwitch():
+class WindowSwitch:
     """Simple context manager for Selenium windows
 
     You can use this to temporarily switch to an iframe, then go back
@@ -194,7 +197,7 @@ class WindowSwitch():
         self.driver.switch_to.window(self.previous_window_handle)
 
 
-class IFrameSwitch():
+class IFrameSwitch:
     """Simple context manager for Selenium iframes.
 
     You can use this to temporarily switch to an iframe, then go back
@@ -226,7 +229,11 @@ def clear_downloads(download_dir):
     """Clean files from the download directory."""
     to_remove = []
     for filename in os.listdir(download_dir):
-        if filename.endswith(".zip") or filename.endswith(".csv") or filename.endswith(".xlsx"):
+        if (
+            filename.endswith(".zip")
+            or filename.endswith(".csv")
+            or filename.endswith(".xlsx")
+        ):
             to_remove.append(os.path.join(download_dir, filename))
 
     for path in to_remove:

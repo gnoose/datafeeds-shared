@@ -8,7 +8,16 @@ likely a refactor opportunity here to eliminate this module.
 """
 
 from sqlalchemy.dialects.postgresql import JSONB
-from sqlalchemy import BigInteger, Boolean, Column, DateTime, Enum, ForeignKey, Integer, Unicode
+from sqlalchemy import (
+    BigInteger,
+    Boolean,
+    Column,
+    DateTime,
+    Enum,
+    ForeignKey,
+    Integer,
+    Unicode,
+)
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.sql import func
@@ -32,8 +41,11 @@ class SnapmeterAccount(ModelMixin, Base):
     status = Column(Unicode, nullable=False, default="setup")
     token_login = Column(Boolean, nullable=False, default=True)
 
-    meters = association_proxy("snapmeter_account_meters", "meter_obj",
-                               creator=lambda m: SnapmeterAccountMeter(meter_obj=m))
+    meters = association_proxy(
+        "snapmeter_account_meters",
+        "meter_obj",
+        creator=lambda m: SnapmeterAccountMeter(meter_obj=m),
+    )
 
 
 class SnapmeterAccountMeter(ModelMixin, Base):
@@ -45,8 +57,12 @@ class SnapmeterAccountMeter(ModelMixin, Base):
     utility_account_id = Column(Unicode)
     estimated_changes = Column(MutableDict.as_mutable(JSONB))
     created = Column(DateTime, default=func.now())
-    generation_provider = Column(Enum(*GENERATION_PROVIDERS), default=GENERATION_PROVIDERS[0])
+    generation_provider = Column(
+        Enum(*GENERATION_PROVIDERS), default=GENERATION_PROVIDERS[0]
+    )
     snapmeter_delivery = Column(Boolean, nullable=False, default=True)
 
-    account_obj = relationship(SnapmeterAccount, backref=backref("snapmeter_account_meters"))
+    account_obj = relationship(
+        SnapmeterAccount, backref=backref("snapmeter_account_meters")
+    )
     meter_obj = relationship("Meter", back_populates="snapmeter_account_meter")

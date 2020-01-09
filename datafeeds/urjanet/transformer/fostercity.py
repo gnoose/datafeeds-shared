@@ -1,9 +1,7 @@
 from typing import List
 
 from datafeeds.urjanet.transformer import GenericWaterTransformer
-from datafeeds.urjanet.model import (
-    Account, UrjanetData
-)
+from datafeeds.urjanet.model import Account, UrjanetData
 
 
 class FosterCityTransformer(GenericWaterTransformer):
@@ -16,5 +14,6 @@ class FosterCityTransformer(GenericWaterTransformer):
         return [
             account
             for account in urja_data.accounts
-            if account.StatementDate is not None and account.IntervalStart != account.IntervalEnd
+            if account.StatementDate is not None
+            and account.IntervalStart != account.IntervalEnd
         ]

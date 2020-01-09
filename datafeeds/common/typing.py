@@ -84,9 +84,9 @@ def is_contiguous(bd: BillingData) -> bool:
     """A contiguous date range with neither overlaps nor gaps"""
 
     def comparator(acc, elem: BillingDatum):
-        return elem.end \
-            if acc is True or acc == elem.start - timedelta(days=1) \
-            else False
+        return (
+            elem.end if acc is True or acc == elem.start - timedelta(days=1) else False
+        )
 
     chronologically = sorted(bd, key=lambda b: b.start)
 
@@ -97,9 +97,12 @@ def is_without_overlaps(bd: BillingData) -> bool:
     """A date range that's permissive of gaps but not overlaps or dupes"""
 
     def comparator(acc, elem: BillingDatum):
-        return elem.end \
-            if acc is True or (isinstance(acc, date) and acc <= elem.start - timedelta(days=1)) \
+        return (
+            elem.end
+            if acc is True
+            or (isinstance(acc, date) and acc <= elem.start - timedelta(days=1))
             else False
+        )
 
     chronologically = sorted(bd, key=lambda b: b.start)
 
@@ -115,47 +118,51 @@ def _log_invalid_date_range(bd: BillingData, log) -> None:
             yield c
 
     def gap_or_acc(acc, elem: BillingDatum):
-        new_gap = lambda e: '%s - %s' % (fmt(acc['prev'].end), fmt(e.start))
+        new_gap = lambda e: "%s - %s" % (fmt(acc["prev"].end), fmt(e.start))
 
-        return {'prev': elem, 'gaps': acc['gaps'] + [new_gap(elem)]} \
-            if acc['prev'] and elem.start > (acc['prev'].end + timedelta(days=1)) \
-            else {'prev': elem, 'gaps': acc['gaps']}
+        return (
+            {"prev": elem, "gaps": acc["gaps"] + [new_gap(elem)]}
+            if acc["prev"] and elem.start > (acc["prev"].end + timedelta(days=1))
+            else {"prev": elem, "gaps": acc["gaps"]}
+        )
 
     def full_log_msg():
-        full_range_msg = '\n\nFULL RANGE:\n%s\n' % '\n'.join(periods)
+        full_range_msg = "\n\nFULL RANGE:\n%s\n" % "\n".join(periods)
 
-        dupes_msg = '\n\nDUPLICATES:\n%s\n' % '\n'.join(
-            ('%s: %s' % (k, v) for k, v in dupes.items())) \
-            if dupes \
-            else '\n\nDUPLICATES: 0\n'
+        dupes_msg = (
+            "\n\nDUPLICATES:\n%s\n"
+            % "\n".join(("%s: %s" % (k, v) for k, v in dupes.items()))
+            if dupes
+            else "\n\nDUPLICATES: 0\n"
+        )
 
-        overlaps_msg = '\n\nOVERLAPS:\n%s\n' % '\n'.join(
-            ('%s: %s' % (k, len(v)) for k, v in overlaps.items() if len(v)))
+        overlaps_msg = "\n\nOVERLAPS:\n%s\n" % "\n".join(
+            ("%s: %s" % (k, len(v)) for k, v in overlaps.items() if len(v))
+        )
 
-        gaps_msg = '\n\nGAPS:\n%s\n' % '\n'.join(gaps) \
-            if gaps \
-            else '\n\nGAPS: 0\n'
+        gaps_msg = "\n\nGAPS:\n%s\n" % "\n".join(gaps) if gaps else "\n\nGAPS: 0\n"
 
-        return ('INVALID BILL HISTORY DATES!%s%s%s%s' %
-                (full_range_msg, dupes_msg, gaps_msg, overlaps_msg))
+        return "INVALID BILL HISTORY DATES!%s%s%s%s" % (
+            full_range_msg,
+            dupes_msg,
+            gaps_msg,
+            overlaps_msg,
+        )
 
-    fmt = lambda d: d.strftime('%Y/%m/%d')
-    fmt_range = lambda b: '%s - %s' % (fmt(b.start), fmt(b.end))
+    fmt = lambda d: d.strftime("%Y/%m/%d")
+    fmt_range = lambda b: "%s - %s" % (fmt(b.start), fmt(b.end))
 
     chronologically = sorted(bd, key=fmt_range)
 
     periods = [fmt_range(b) for b in chronologically]
 
-    dupes = OrderedDict(
-        (p, periods.count(p)) for p in periods if periods.count(p) > 1)
+    dupes = OrderedDict((p, periods.count(p)) for p in periods if periods.count(p) > 1)
 
     overlaps = OrderedDict(
-        (fmt_range(b), list(overlaps_for(b))) for b in chronologically)
+        (fmt_range(b), list(overlaps_for(b))) for b in chronologically
+    )
 
-    gaps = reduce(gap_or_acc, chronologically, {
-        'prev': None,
-        'gaps': []
-    })['gaps']
+    gaps = reduce(gap_or_acc, chronologically, {"prev": None, "gaps": []})["gaps"]
 
     log(full_log_msg())
 
@@ -200,7 +207,9 @@ def adjust_bill_dates(bills: BillingData) -> BillingData:
     return final_bills
 
 
-def show_bill_summary(bills: List[BillingDatum], title=None):  # FIXME: Move this to a better location.
+def show_bill_summary(
+    bills: List[BillingDatum], title=None
+):  # FIXME: Move this to a better location.
     """Save our results to the log for easy reference."""
 
     if title:

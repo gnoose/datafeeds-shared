@@ -5,8 +5,14 @@ from datetime import date
 from decimal import Decimal
 
 from datafeeds.urjanet.datasource.pymysql_adapter import (
-    get_column, get_bool, get_date, get_int, get_str, get_decimal,
-    UrjanetPyMySqlDataSource)
+    get_column,
+    get_bool,
+    get_date,
+    get_int,
+    get_str,
+    get_decimal,
+    UrjanetPyMySqlDataSource,
+)
 
 
 class TestUrjanetPyMySqlAdapter(unittest.TestCase):
@@ -64,8 +70,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
         """Test the transform and enforce_type arguments together in get_column"""
         row = {"col1": "1", "col2": 2}
 
-        self.assertEqual(
-            get_column(row, "col1", transform=int, enforce_type=int), 1)
+        self.assertEqual(get_column(row, "col1", transform=int, enforce_type=int), 1)
 
         with self.assertRaises(TypeError):
             get_column(row, "col1", transform=str, enforce_type=int)
@@ -157,8 +162,8 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
 
     def test_get_decimal(self):
         """Test the basic functionality of the get_decimal function"""
-        row = {"col1": Decimal('100.00')}
-        self.assertEqual(get_decimal(row, "col1"), Decimal('100.00'))
+        row = {"col1": Decimal("100.00")}
+        self.assertEqual(get_decimal(row, "col1"), Decimal("100.00"))
 
     def test_get_decimal_nullable(self):
         """Ensure that the nullable argument to get_decimal works as expected"""
@@ -186,7 +191,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "OutstandingBalance": Decimal("90.00"),
             "PreviousBalance": Decimal("120.00"),
             "__EXTRA1": "EXTRA1",  # It's okay to have extra fields
-            "__EXTRA2": "EXTRA2"
+            "__EXTRA2": "EXTRA2",
         }
         result = UrjanetPyMySqlDataSource.parse_account_row(account_row)
         for field in account_row:
@@ -212,7 +217,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "AmountDue": Decimal("200.00"),
             "NewCharges": Decimal("80.00"),
             "OutstandingBalance": Decimal("90.00"),
-            "PreviousBalance": Decimal("120.00")
+            "PreviousBalance": Decimal("120.00"),
         }
         with self.assertRaises(ValueError):
             UrjanetPyMySqlDataSource.parse_account_row(account_row)
@@ -228,7 +233,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "IntervalStart": date(2000, 2, 1),
             "IntervalEnd": date(2000, 3, 1),
             "__EXTRA1": "EXTRA1",  # It's okay to have extra fields
-            "__EXTRA2": "EXTRA2"
+            "__EXTRA2": "EXTRA2",
         }
         result = UrjanetPyMySqlDataSource.parse_meter_row(meter_row)
         for field in meter_row:
@@ -247,7 +252,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "PODid": "12345",
             "MeterNumber": "67890",
             "IntervalStart": date(2000, 2, 1),
-            "IntervalEnd": date(2000, 3, 1)
+            "IntervalEnd": date(2000, 3, 1),
         }
         with self.assertRaises(ValueError):
             UrjanetPyMySqlDataSource.parse_meter_row(meter_row)
@@ -261,7 +266,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "PODid": "12345",
             "MeterNumber": "67890",
             "IntervalStart": date(2000, 2, 1),
-            "IntervalEnd": date(2000, 3, 1)
+            "IntervalEnd": date(2000, 3, 1),
         }
         with self.assertRaises(KeyError):
             UrjanetPyMySqlDataSource.parse_meter_row(meter_row)
@@ -281,7 +286,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "IntervalEnd": date(2000, 3, 1),
             "ChargeId": None,
             "__EXTRA1": "EXTRA1",  # It's okay to have extra fields
-            "__EXTRA2": "EXTRA2"
+            "__EXTRA2": "EXTRA2",
         }
         result = UrjanetPyMySqlDataSource.parse_charge_row(charge_row)
         for field in charge_row:
@@ -340,7 +345,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             "ThirdPartyProvider": "test_provider",
             "IsAdjustmentCharge": 0,
             "IntervalStart": date(2000, 2, 1),
-            "IntervalEnd": date(2000, 3, 1)
+            "IntervalEnd": date(2000, 3, 1),
         }
         with self.assertRaises(ValueError):
             UrjanetPyMySqlDataSource.parse_charge_row(charge_row)
@@ -356,7 +361,7 @@ class TestUrjanetPyMySqlAdapter(unittest.TestCase):
             # Exclude this field: "ChargeAmount": Decimal(100.00)
             "ThirdPartyProvider": "test_provider",
             "IntervalStart": date(2000, 2, 1),
-            "IntervalEnd": date(2000, 3, 1)
+            "IntervalEnd": date(2000, 3, 1),
         }
         with self.assertRaises(KeyError):
             UrjanetPyMySqlDataSource.parse_charge_row(charge_row)

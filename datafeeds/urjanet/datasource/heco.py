@@ -30,10 +30,7 @@ class HecoDatasource(UrjanetPyMySqlDataSource):
             WHERE AccountNumber=%s AND UtilityProvider = 'HawaiianElectricCompanyHI'
         """
         result_set = self.fetch_all(query, self.account_number)
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: str) -> List[Meter]:
         """Load meters matching a Gridium meter SAID.
@@ -43,8 +40,5 @@ class HecoDatasource(UrjanetPyMySqlDataSource):
         # The utility may totalize submeters, and have two meter numbers for one set of charges.
         # In this case, the SAID should contain both meter ids, separated by commas.
         query = "SELECT * FROM Meter WHERE ServiceType='electric' AND AccountFK=%s AND MeterNumber in %s"
-        result_set = self.fetch_all(query, account_pk,
-                                    self.said.split(","))
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        result_set = self.fetch_all(query, account_pk, self.said.split(","))
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]

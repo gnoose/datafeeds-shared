@@ -19,10 +19,25 @@ from .pleasanton import PleasantonDatasource
 from .heco import HecoDatasource
 
 
-__all__ = ["CommodityType", "UrjanetDataSource", "UrjanetPyMySqlDataSource",
-           "PacificGasElectricDataSource", "LadwpWaterDatasource", "SfpucWaterDatasource",
-           "FosterCityWaterDatasource", "ColleyvilleWaterDatasource", "FortWorthWaterDatasource",
-           "SjWaterDatasource", "SanDiegoWaterDatasource", "IrvineRanchWaterDatasource",
-           "CalWaterDatasource", "SouthlakeDatasource", "WataugaDatasource", "MountainViewDatasource",
-           "AustinTXDatasource", "AmericanWaterDatasource",
-           "PleasantonDatasource", "HecoDatasource"]
+__all__ = [
+    "CommodityType",
+    "UrjanetDataSource",
+    "UrjanetPyMySqlDataSource",
+    "PacificGasElectricDataSource",
+    "LadwpWaterDatasource",
+    "SfpucWaterDatasource",
+    "FosterCityWaterDatasource",
+    "ColleyvilleWaterDatasource",
+    "FortWorthWaterDatasource",
+    "SjWaterDatasource",
+    "SanDiegoWaterDatasource",
+    "IrvineRanchWaterDatasource",
+    "CalWaterDatasource",
+    "SouthlakeDatasource",
+    "WataugaDatasource",
+    "MountainViewDatasource",
+    "AustinTXDatasource",
+    "AmericanWaterDatasource",
+    "PleasantonDatasource",
+    "HecoDatasource",
+]

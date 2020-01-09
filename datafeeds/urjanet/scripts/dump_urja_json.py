@@ -34,24 +34,25 @@ def write_data(writer, data):
 def main():
     parser = argparse.ArgumentParser()
 
+    parser.add_argument("--outfile", help="The file to write to (else stdout is used)")
     parser.add_argument(
-        "--outfile", help="The file to write to (else stdout is used)")
-    parser.add_argument(
-        "--anon", action="store_true", help="Anonymize sensitive fields")
+        "--anon", action="store_true", help="Anonymize sensitive fields"
+    )
 
     subparsers = parser.add_subparsers()
     for _, hook_cls in get_cli_hooks().items():
         hook_cls().add_subparser(subparsers)
 
     args = parser.parse_args()
-    if not hasattr(args, 'datasource_cli'):
+    if not hasattr(args, "datasource_cli"):
         parser.error("Specify a subcommand.")
 
     conn = pymysql.connect(
         host=config.URJANET_MYSQL_HOST,
         user=config.URJANET_MYSQL_USER,
         passwd=config.URJANET_MYSQL_PASSWORD,
-        db=config.URJANET_MYSQL_DB)
+        db=config.URJANET_MYSQL_DB,
+    )
 
     writer = None
     try:
@@ -60,7 +61,7 @@ def main():
 
         writer = sys.stdout
         if args.outfile:
-            writer = open(args.outfile, 'w')
+            writer = open(args.outfile, "w")
         write_data(writer, urja_data)
     finally:
         if conn:

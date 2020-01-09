@@ -13,7 +13,11 @@ from datafeeds.urjanet.datasource import UrjanetDataSource
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 from datafeeds.common.base import BaseScraper
 from datafeeds.common.support import Results, Configuration
-from datafeeds.common.typing import AttachmentEntry, BillingDatum, BillingDatumItemsEntry
+from datafeeds.common.typing import (
+    AttachmentEntry,
+    BillingDatum,
+    BillingDatumItemsEntry,
+)
 
 
 log = logging.getLogger(__name__)
@@ -45,7 +49,8 @@ def statement_to_s3(source_link, s3_key=None):
     # Let's fix this where we find it.
     bill_link = source_link.replace(
         "https://sources.o2.urjanet.net/source?",
-        "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?")
+        "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?",
+    )
 
     # Download bill into memory
     # Not ideal, but verify=False prevents:
@@ -55,12 +60,16 @@ def statement_to_s3(source_link, s3_key=None):
         bill = requests.get(
             bill_link,
             auth=(config.URJANET_HTTP_USER, config.URJANET_HTTP_PASSWORD),
-            verify=False
+            verify=False,
         )
 
         if bill.status_code != 200 or "content-disposition" not in bill.headers:
-            log.info("bill download failed. url=%s, status_code=%d, content-disposition=%s",
-                     bill_link, bill.status_code, bill.headers.get("content-disposition"))
+            log.info(
+                "bill download failed. url=%s, status_code=%d, content-disposition=%s",
+                bill_link,
+                bill.status_code,
+                bill.headers.get("content-disposition"),
+            )
             return None
     except Exception as e:
         log.info("bill download failed. url=%s, exception=%s", (bill_link, e))
@@ -73,13 +82,17 @@ def statement_to_s3(source_link, s3_key=None):
     if s3_key:
         s3_filename = s3_key
     else:
-        s3_filename = "%s.%s" % (key, bill.headers["content-disposition"].split('"')[1].split(".")[1])
+        s3_filename = "%s.%s" % (
+            key,
+            bill.headers["content-disposition"].split('"')[1].split(".")[1],
+        )
     upload_file_to_s3(
         bill.content,
         config.BILL_PDF_S3_BUCKET,
         s3_filename,
         file_display_name=urja_filename,
-        content_type=content_type)
+        content_type=content_type,
+    )
 
     return s3_filename
 
@@ -122,7 +135,8 @@ def make_line_items(bill: GridiumBillingPeriod):
             rate=_try_parse_float(charge.ChargeRatePerUnit),
             total=_try_parse_float(charge.ChargeAmount),
             kind=get_charge_kind(charge),
-            unit=get_charge_units(charge))
+            unit=get_charge_units(charge),
+        )
         for charge in charges
     ]
 
@@ -136,14 +150,20 @@ def make_attachments(bill: GridiumBillingPeriod):
         return None
 
     s3_keys = [statement_to_s3(url) for url in source_urls]
-    attachments = [AttachmentEntry(key=key, kind="bill", format="PDF") for key in s3_keys if key is not None]
+    attachments = [
+        AttachmentEntry(key=key, kind="bill", format="PDF")
+        for key in s3_keys
+        if key is not None
+    ]
     if attachments:
         return attachments
 
     return None
 
 
-def make_billing_datum(bill: GridiumBillingPeriod, fetch_attachments=False) -> BillingDatum:
+def make_billing_datum(
+    bill: GridiumBillingPeriod, fetch_attachments=False
+) -> BillingDatum:
     return BillingDatum(
         start=bill.start,
         end=bill.end,
@@ -151,17 +171,14 @@ def make_billing_datum(bill: GridiumBillingPeriod, fetch_attachments=False) -> B
         used=_try_parse_float(bill.total_usage),
         peak=_try_parse_float(bill.peak_demand),
         items=make_line_items(bill),
-        attachments=make_attachments(bill) if fetch_attachments else None
+        attachments=make_attachments(bill) if fetch_attachments else None,
     )
 
 
 class BaseUrjanetConfiguration(Configuration):
     def __init__(
-            self,
-            urja_datasource,
-            urja_transformer,
-            utility_name,
-            fetch_attachments):
+        self, urja_datasource, urja_transformer, utility_name, fetch_attachments
+    ):
         super().__init__(scrape_bills=True)
         self.urja_datasource = urja_datasource
         self.urja_transformer = urja_transformer

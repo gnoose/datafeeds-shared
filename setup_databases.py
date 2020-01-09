@@ -21,9 +21,9 @@ CONNSTR = "postgresql+psycopg2://postgres@pg/gridium"
 
 
 def init_mongo():
-    client = MongoClient(host='localhost', port=27017)
+    client = MongoClient(host="localhost", port=27017)
     # db = client['admin']
-    db = client['webapps']
+    db = client["webapps"]
     db.command("createUser", "gridium", pwd="mongo_pwd", roles=["readWrite"])
 
 

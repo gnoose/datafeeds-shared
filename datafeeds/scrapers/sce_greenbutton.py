@@ -153,7 +153,8 @@ def correct_bills(bills: List[BillingDatum]):
     return [
         b
         for b in bills
-        if b.used is None or (b.cost, round(b.used / 100, 2)) not in observed_cost_use_pairs
+        if b.used is None
+        or (b.cost, round(b.used / 100, 2)) not in observed_cost_use_pairs
     ]
 
 
@@ -246,9 +247,7 @@ class Scraper(BaseApiScraper):
 
         # If bills arrived in a large historical block, ingest will return the block.
         # Filter the bills for just those whose start date appears in the scraped time period.
-        filtered_bills = [
-            b for b in corrected_bills if start <= b.start <= end
-        ]
+        filtered_bills = [b for b in corrected_bills if start <= b.start <= end]
         final_bills = adjust_bill_dates(filtered_bills)
 
         return Results(

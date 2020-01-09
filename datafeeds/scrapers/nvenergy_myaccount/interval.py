@@ -39,7 +39,9 @@ from datafeeds.common.timeline import Timeline
 
 log = logging.getLogger(__name__)
 
-NVE_CERT_BUNDLE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cert_bundle.pem")
+NVE_CERT_BUNDLE = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "cert_bundle.pem"
+)
 
 
 logger = None
@@ -65,7 +67,6 @@ class NvEnergyMyAccountConfiguration(Configuration):
 
 
 class NvEnergyMyAccountScraper(BaseApiScraper):
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = "NV Energy My Account"
@@ -88,7 +89,9 @@ class NvEnergyMyAccountScraper(BaseApiScraper):
         timeline = Timeline(self.start_date, self.end_date)
 
         while current <= self.end_date:
-            if not token_refresh or datetime.now() - token_refresh > timedelta(minutes=5):
+            if not token_refresh or datetime.now() - token_refresh > timedelta(
+                minutes=5
+            ):
                 if not token_refresh:
                     msg = "Attempting login to NV Energy"
                 else:
@@ -101,9 +104,11 @@ class NvEnergyMyAccountScraper(BaseApiScraper):
                 log.info("NV Energy login succeeded.")
 
             readings = _fetch_usage_data(jwt, self.account_id, self.meter_id, current)
-            log.info("Acquired {} non-null readings for date {}. Account ID: {}, Meter ID: {}".format(
-                len(readings), str(current), self.account_id, self.meter_id
-            ))
+            log.info(
+                "Acquired {} non-null readings for date {}. Account ID: {}, Meter ID: {}".format(
+                    len(readings), str(current), self.account_id, self.meter_id
+                )
+            )
 
             for upoint in readings:
                 timeline.insert(upoint.datetime, upoint.kW)
@@ -130,7 +135,7 @@ def _parse_hostile_json(text):
         value = json.loads(text)
         return value
     except ValueError:
-        text = text.replace(")]}\",\n", "")
+        text = text.replace(')]}",\n', "")
         return json.loads(text)
 
 
@@ -140,19 +145,25 @@ def _login(username, password):
         "username": username,
         "password": password,
         "isLoggingInFromMobileApp": False,
-        "nvesource": "CUSTOMER WEB ACCESS(CWA)"
+        "nvesource": "CUSTOMER WEB ACCESS(CWA)",
     }
-    response = requests.post(NVE_API + "auth/retrieveAuthentication", json=body, verify=NVE_CERT_BUNDLE)
+    response = requests.post(
+        NVE_API + "auth/retrieveAuthentication", json=body, verify=NVE_CERT_BUNDLE
+    )
 
     if response.status_code != requests.codes.ok:
-        raise NveLoginError("Failed to login to NVE My Energy. status %d" % response.status_code)
+        raise NveLoginError(
+            "Failed to login to NVE My Energy. status %d" % response.status_code
+        )
 
     content = Dict(_parse_hostile_json(response.text))
 
     jwt = content.ResponseBody.user.jwt
 
     if not jwt or not isinstance(jwt, str) or not jwt.startswith("JWT "):
-        msg = "Invalid JWT authorization. Expected string of the form 'JWT ...', found %s"
+        msg = (
+            "Invalid JWT authorization. Expected string of the form 'JWT ...', found %s"
+        )
         raise NveLoginError(msg % str(jwt))
 
     return jwt
@@ -173,14 +184,17 @@ def _fetch_usage_data(jwt, account_id, meter_id, end_date):
         "hideDetailInNet": False,
         "billType": "G",  # Not clear we can treat this as a constant.
         "nvesource": "CUSTOMER WEB ACCESS(CWA)",
-        "userAccountNumber": account_id
+        "userAccountNumber": account_id,
     }
 
-    headers = {
-        "Authorization": jwt
-    }
+    headers = {"Authorization": jwt}
 
-    response = requests.post(NVE_API + "viewusage/getChartData", json=body, headers=headers, verify=NVE_CERT_BUNDLE)
+    response = requests.post(
+        NVE_API + "viewusage/getChartData",
+        json=body,
+        headers=headers,
+        verify=NVE_CERT_BUNDLE,
+    )
 
     if response.status_code == requests.codes.unauthorized:
         raise NveApiError("JWT failed to authorize data fetch.")
@@ -238,8 +252,9 @@ def _fetch_usage_data(jwt, account_id, meter_id, end_date):
         try:
             # Must convert from use to demand, eg:
             # 1 kWh / 15 minutes = 4 kW
-            pt = UsagePoint(datetime=parse_datetime(record.date),
-                            kW=float(record.kWh) * 4.0)
+            pt = UsagePoint(
+                datetime=parse_datetime(record.date), kW=float(record.kWh) * 4.0
+            )
             results.append(pt)
         except:  # noqa:E722
             continue  # Could not parse that data point, skip
@@ -250,7 +265,7 @@ def _fetch_usage_data(jwt, account_id, meter_id, end_date):
 def _assert_type(record, key, expected_t):
     if not isinstance(record[key], expected_t):
         msg = "Expected %s to have type %s, found %s. (value was %s)"
-        raise ValueError(msg % (key,
-                                expected_t.__name__,
-                                type(record[key]).__name__,
-                                str(record[key])))
+        raise ValueError(
+            msg
+            % (key, expected_t.__name__, type(record[key]).__name__, str(record[key]))
+        )

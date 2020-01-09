@@ -17,7 +17,7 @@ from datafeeds.common.support import Configuration
 from datafeeds.common.util.selenium import (
     IFrameSwitch,
     file_exists_in_dir,
-    clear_downloads
+    clear_downloads,
 )
 
 
@@ -43,8 +43,8 @@ class OverviewPage:
     def wait_until_ready(self):
         with IFrameSwitch(self._driver, "childFrame"):
             log.info("Waiting to see the site analytics tab.")
-            self._driver.wait().until(EC.presence_of_element_located(
-                (By.XPATH, self.site_analytics_xpath))
+            self._driver.wait().until(
+                EC.presence_of_element_located((By.XPATH, self.site_analytics_xpath))
             )
 
     def navigate_to_site_analytics(self):
@@ -69,12 +69,15 @@ class SiteAnalyticsPage:
     def wait_until_ready(self):
         with IFrameSwitch(self._driver, "childFrame"):
             # Page blocked by a loading indicator - wait for this to disappear
-            self._driver.wait().until(EC.invisibility_of_element_located((By.XPATH, self.block_ui_xpath)))
+            self._driver.wait().until(
+                EC.invisibility_of_element_located((By.XPATH, self.block_ui_xpath))
+            )
 
-    def _select_individual_inverter(self, dropdown_button: str,
-                                    xpath: str, inverter_id: str):
-        element = self._driver.wait().until(EC.element_to_be_clickable(
-            (By.CSS_SELECTOR, dropdown_button))
+    def _select_individual_inverter(
+        self, dropdown_button: str, xpath: str, inverter_id: str
+    ):
+        element = self._driver.wait().until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, dropdown_button))
         )
         element.click()
         try:
@@ -97,16 +100,12 @@ class SiteAnalyticsPage:
             with IFrameSwitch(self._driver, "frame3"):
                 log.info("Selecting inverter from LHS dropdown.")
                 self._select_individual_inverter(
-                    self.dropdown_button_one_selector,
-                    self.lhs_li_xpath,
-                    inverter_id
+                    self.dropdown_button_one_selector, self.lhs_li_xpath, inverter_id
                 )
 
                 log.info("Selecting same inverter from RHS dropdown.")
                 self._select_individual_inverter(
-                    self.dropdown_button_two_selector,
-                    self.rhs_li_xpath,
-                    inverter_id
+                    self.dropdown_button_two_selector, self.rhs_li_xpath, inverter_id
                 )
 
     def click_ac_power_button(self):
@@ -116,8 +115,8 @@ class SiteAnalyticsPage:
         with IFrameSwitch(self._driver, "childFrame"):
             with IFrameSwitch(self._driver, "frame3"):
                 log.info("Waiting to see AC Power Button.")
-                self._driver.wait().until(EC.element_to_be_clickable(
-                    (By.ID, self.ac_power_id))
+                self._driver.wait().until(
+                    EC.element_to_be_clickable((By.ID, self.ac_power_id))
                 )
                 log.info("Clicking AC Power button.")
                 self._driver.find_element_by_id(self.ac_power_id).click()
@@ -158,8 +157,10 @@ class DatePickerSection:
         """
         with IFrameSwitch(self._driver, "childFrame"):
             with IFrameSwitch(self._driver, "frame3"):
-                self._driver.wait().until(EC.element_to_be_clickable(
-                    (By.CSS_SELECTOR, self.range_button_selector))
+                self._driver.wait().until(
+                    EC.element_to_be_clickable(
+                        (By.CSS_SELECTOR, self.range_button_selector)
+                    )
                 )
                 log.info("Clicking on Range button.")
                 self._driver.click(self.range_button_selector)
@@ -168,8 +169,10 @@ class DatePickerSection:
     def _enter_date(self, date_obj: datetime, date_input_selector):
         with IFrameSwitch(self._driver, "childFrame"):
             with IFrameSwitch(self._driver, "frame3"):
-                self._driver.wait().until(EC.presence_of_element_located(
-                    (By.CSS_SELECTOR, date_input_selector))
+                self._driver.wait().until(
+                    EC.presence_of_element_located(
+                        (By.CSS_SELECTOR, date_input_selector)
+                    )
                 )
                 self._driver.clear(date_input_selector)
                 date_string = self.date_to_string(date_obj)
@@ -190,8 +193,8 @@ class DatePickerSection:
         log.info("Submitting dates.")
         with IFrameSwitch(self._driver, "childFrame"):
             with IFrameSwitch(self._driver, "frame3"):
-                self._driver.wait().until(EC.element_to_be_clickable(
-                    (By.XPATH, self.done_button_xpath))
+                self._driver.wait().until(
+                    EC.element_to_be_clickable((By.XPATH, self.done_button_xpath))
                 )
                 self._driver.click(self.done_button_xpath, xpath=True)
 
@@ -199,13 +202,15 @@ class DatePickerSection:
         log.info("Exporting data.")
         with IFrameSwitch(self._driver, "childFrame"):
             with IFrameSwitch(self._driver, "frame3"):
-                self._driver.wait().until(EC.element_to_be_clickable(
-                    (By.XPATH, self.export_data_xpath))
+                self._driver.wait().until(
+                    EC.element_to_be_clickable((By.XPATH, self.export_data_xpath))
                 )
                 self._driver.sleep(2)
 
-                export_button = self._driver.find_element_by_xpath(self.export_data_xpath)
-                self._driver.execute_script('arguments[0].click();', export_button)
+                export_button = self._driver.find_element_by_xpath(
+                    self.export_data_xpath
+                )
+                self._driver.execute_script("arguments[0].click();", export_button)
 
                 # Wait for csv to download
                 download_dir = self._driver.download_dir
@@ -246,9 +251,7 @@ class CSVParser:
             if column_title.lower() in column.lower():
                 return pos
 
-        raise Exception("Expected column header not found for {}".format(
-            column_title)
-        )
+        raise Exception("Expected column header not found for {}".format(column_title))
 
     @staticmethod
     def csv_str_to_date(datestr: str) -> datetime:
@@ -351,17 +354,24 @@ class CSVParser:
                 rounded_time = self.round_up_to_quarter_hour(date_obj)
 
                 if current_date not in self.intermediate_readings:
-                    self.intermediate_readings[current_date] = self.build_intermediate_dict()
+                    self.intermediate_readings[
+                        current_date
+                    ] = self.build_intermediate_dict()
 
                 current_reading = self.intermediate_readings[current_date][rounded_time]
                 # Here's where we sum power readings together - in to fifteen min intervals
-                self.intermediate_readings[current_date][rounded_time] = current_reading + power
+                self.intermediate_readings[current_date][rounded_time] = (
+                    current_reading + power
+                )
 
                 actual_time = self.date_to_intermediate_time_str(date_obj)
                 if rounded_time == actual_time:
                     # Here's where we average power readings together, in fifteen minute intervals
                     self.intermediate_readings[current_date][rounded_time] = round(
-                        float(self.intermediate_readings[current_date][rounded_time] / 3), 2
+                        float(
+                            self.intermediate_readings[current_date][rounded_time] / 3
+                        ),
+                        2,
                     )
 
         return self.finalize_readings()
@@ -428,9 +438,7 @@ class SolrenScraper(BaseWebScraper):
         self.screenshot("before clicking on ac power button")
         site_analytics_page.click_ac_power_button()
         self.screenshot("after clicking on ac power button")
-        self.install_date = self.string_to_date(
-            site_analytics_page.get_install_date()
-        )
+        self.install_date = self.string_to_date(site_analytics_page.get_install_date())
 
         # Adjust start and end date, depending on inverter install date
         self.adjust_start_and_end_dates()

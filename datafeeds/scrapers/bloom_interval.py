@@ -29,7 +29,7 @@ class LoginPage(CSSSelectorBasePageObject):
     UsernameFieldSelector = 'input.form-control[name="username"]'
     PasswordFieldSelector = 'input.form-control[type="password"]'
     SigninButtonSelector = 'button[type="submit"]'
-    ErrorMessage = 'div.error-message'
+    ErrorMessage = "div.error-message"
 
     def login(self, username: str, password: str):
         """Authenticate with the web page.
@@ -48,8 +48,8 @@ class LandingPage(CSSSelectorBasePageObject):
 
     def go_to_data_extract(self):
         self.find_element(self.ReportTabSelector).click()
-        self._driver.wait().until(EC.element_to_be_clickable(
-            (By.CSS_SELECTOR, self.DataTabSelector))
+        self._driver.wait().until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, self.DataTabSelector))
         )
         self.find_element(self.DataTabSelector).click()
 
@@ -63,7 +63,7 @@ class DataExtractPage(CSSSelectorBasePageObject):
     CustomRadio = 'label[for="timescale-custom"]'
     FromDate = 'input[name="fromDate"]'
     ToDate = 'input[name="toDate"]'
-    SubmitButton = 'app-loading-button .btn-success'
+    SubmitButton = "app-loading-button .btn-success"
 
     def find_text_for_checkbox(self, text: str):
         label = self._driver.find("//*[contains(text(), '{}')]".format(text), True)
@@ -73,12 +73,12 @@ class DataExtractPage(CSSSelectorBasePageObject):
             raise ApiError("Label containing text '{}' not found".format(text))
 
     def get_earliest_year(self, page):
-        parent = self.find_element(self.FromDate).find_element_by_xpath('..')
-        parent.find_element_by_css_selector('.input-group-append').click()
-        page.wait_until_ready('select')
+        parent = self.find_element(self.FromDate).find_element_by_xpath("..")
+        parent.find_element_by_css_selector(".input-group-append").click()
+        page.wait_until_ready("select")
         from_year = parent.find_element_by_xpath('//select[@title="Select year"]')
 
-        return int(from_year.find_elements_by_tag_name('option')[0].text)
+        return int(from_year.find_elements_by_tag_name("option")[0].text)
 
     def handle_multiselect(self, select: str, select_list: str, text: str):
         self.find_element(select).click()
@@ -115,11 +115,17 @@ class ExcelParser:
         return None
 
     def parse_date(self, row_number: int):
-        return datetime(*xlrd.xldate_as_tuple(self.xl_sheet.cell(row_number, self.date_col).value,
-                                              self.xl_workbook.datemode))
+        return datetime(
+            *xlrd.xldate_as_tuple(
+                self.xl_sheet.cell(row_number, self.date_col).value,
+                self.xl_workbook.datemode,
+            )
+        )
 
     def parse_kwh(self, row_number: int):
-        return self._convert_kwh_to_kw(self.xl_sheet.cell(row_number, self.value_col).value)
+        return self._convert_kwh_to_kw(
+            self.xl_sheet.cell(row_number, self.value_col).value
+        )
 
     @staticmethod
     def _convert_kwh_to_kw(kwh: float):
@@ -195,7 +201,6 @@ class BloomScraper(BaseWebScraper):
             error_selector=login_page.ErrorMessage,
             error_cls=LoginError,
             error_msg="User ID and/or password not found.",
-
         )
         landing_page.go_to_data_extract()
 
@@ -209,18 +214,26 @@ class BloomScraper(BaseWebScraper):
         interval_size = relativedelta(days=MAX_DOWNLOAD_DAYS)
 
         extract_page.wait_until_ready(extract_page.SiteSelect)
-        extract_page.handle_multiselect(extract_page.SiteSelect, extract_page.SiteList, self.site_name)
+        extract_page.handle_multiselect(
+            extract_page.SiteSelect, extract_page.SiteList, self.site_name
+        )
         # Metric multi-select
-        extract_page.handle_multiselect(extract_page.MetricSelect, extract_page.MetricList,
-                                        "Fuel Cell Energy Generation")
+        extract_page.handle_multiselect(
+            extract_page.MetricSelect,
+            extract_page.MetricList,
+            "Fuel Cell Energy Generation",
+        )
         extract_page.handle_radio_buttons(extract_page.IntervalRadio)
         extract_page.handle_radio_buttons(extract_page.CustomRadio)
 
         for sub_range in date_range.split_iter(delta=interval_size):
             extract_page.wait_until_ready(extract_page.FromDate)
             # Minus one day because it will be missing midnight value for that day
-            extract_page.fill_in_dates(self._format_date(sub_range.start_date - timedelta(days=1)), self._format_date(sub_range.end_date))
-            excel_filename = self.download_file('xlsx')
+            extract_page.fill_in_dates(
+                self._format_date(sub_range.start_date - timedelta(days=1)),
+                self._format_date(sub_range.end_date),
+            )
+            excel_filename = self.download_file("xlsx")
 
             self._process_excel_file(excel_filename, sub_range.start_date)
 

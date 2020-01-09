@@ -1,6 +1,9 @@
 from decimal import Decimal
 
-from datafeeds.urjanet.transformer import GenericBillingPeriod, UrjanetGridiumTransformer
+from datafeeds.urjanet.transformer import (
+    GenericBillingPeriod,
+    UrjanetGridiumTransformer,
+)
 from datafeeds.urjanet.transformer.base import CONVERSIONS
 from datafeeds.urjanet.model import Account
 
@@ -17,8 +20,12 @@ class AustinTXBillingPeriod(GenericBillingPeriod):
 
     def get_total_usage(self) -> Decimal:
         """Get total usage from Usage records. Exclude solar by matching on name."""
-        usages = [u for u in self.iter_unique_usages()
-                  if u.RateComponent == "[total]" and "Total Generation" not in u.UsageActualName]
+        usages = [
+            u
+            for u in self.iter_unique_usages()
+            if u.RateComponent == "[total]"
+            and "Total Generation" not in u.UsageActualName
+        ]
 
         units = set(u.EnergyUnit for u in usages)
         if len(units) != 1:

@@ -1,8 +1,10 @@
 #!/bin/bash
 
 set -e
+printf "Running Black\n"
+black .
 
-printf "Running Lint ..."
+printf "Running lint ... "
 flake8 datafeeds launch.py
 printf " ok\n"
 

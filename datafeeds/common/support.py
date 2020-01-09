@@ -19,24 +19,24 @@ class ScraperArgs:
 
     def _set_default_args(self):
         """Set all common args for scrapers"""
-        self._parser.add_argument('username')
-        self._parser.add_argument('password')
+        self._parser.add_argument("username")
+        self._parser.add_argument("password")
         self._parser.add_argument(
-            '--start',
-            help='Start date for the scraper in iso format, eg: 2017-11-19',
+            "--start",
+            help="Start date for the scraper in iso format, eg: 2017-11-19",
             type=str,
-            default=None
+            default=None,
         )
         self._parser.add_argument(
-            '--end',
-            help='End date for the scraper in iso format',
+            "--end",
+            help="End date for the scraper in iso format",
             type=str,
-            default=None
+            default=None,
         )
         self._parser.add_argument(
-            '--skip-delete',
-            help='Delete the scraper folder in /tmp after run',
-            action='store_true'
+            "--skip-delete",
+            help="Delete the scraper folder in /tmp after run",
+            action="store_true",
         )
 
     def parse(self):
@@ -76,10 +76,7 @@ class DateRange:
             current += relativedelta(days=1)
 
     def __str__(self):
-        return '{} - {}'.format(
-            self._fmt(self.start_date),
-            self._fmt(self.end_date)
-        )
+        return "{} - {}".format(self._fmt(self.start_date), self._fmt(self.end_date))
 
     def split_iter(self, delta):
         """Split the range into evenly-sized time intervals
@@ -97,7 +94,7 @@ class DateRange:
 
     @staticmethod
     def _fmt(dt):
-        return dt.strftime('%m/%d/%Y')
+        return dt.strftime("%m/%d/%Y")
 
 
 class Results:

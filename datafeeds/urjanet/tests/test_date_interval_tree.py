@@ -91,7 +91,9 @@ class TestDateIntervalTree(unittest.TestCase):
         self.assertEqual(len(shifted_intervals), 3)
 
         self.assertEqual(shifted_intervals[0].begin, date(2019, 1, 1))
-        self.assertEqual(shifted_intervals[0].end, date(2019, 1, 9))  # this interval should be adjusted
+        self.assertEqual(
+            shifted_intervals[0].end, date(2019, 1, 9)
+        )  # this interval should be adjusted
         self.assertEqual(shifted_intervals[0].data, 1)  # Ensure the data remains intact
 
         self.assertEqual(shifted_intervals[1].begin, date(2019, 1, 10))

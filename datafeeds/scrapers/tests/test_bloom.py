@@ -19,8 +19,10 @@ class TestBloomScraper(SetupBase):
         super().setUp()
         config = Configuration()
         config.site_name = "Xilinx - San Jose"
-        self.scraper = bloom_interval.BloomScraper(credentials=None, date_range=DateRange(
-            self.start_date, self.end_date), configuration=config
+        self.scraper = bloom_interval.BloomScraper(
+            credentials=None,
+            date_range=DateRange(self.start_date, self.end_date),
+            configuration=config,
         )
 
     def test_check_start_and_end_dates(self):

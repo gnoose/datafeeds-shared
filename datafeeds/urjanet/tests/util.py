@@ -3,7 +3,13 @@ import unittest
 from datetime import date
 from decimal import Decimal
 
-from datafeeds.urjanet.model import (Account, Meter, Usage, Charge, GridiumBillingPeriodCollection)
+from datafeeds.urjanet.model import (
+    Account,
+    Meter,
+    Usage,
+    Charge,
+    GridiumBillingPeriodCollection,
+)
 from datafeeds.urjanet.model import filter_by_date_range
 from datafeeds.urjanet.datasource import UrjanetDataSource
 from datafeeds.urjanet.transformer import json_to_urja
@@ -28,10 +34,14 @@ class UrjaFixtureText(unittest.TestCase):
             json_dict = json.load(f)
         return GridiumBillingPeriodCollection(json_dict)
 
-    def fixture_test(self, transformer, input_path, expected_path, start_date=None, end_date=None):
+    def fixture_test(
+        self, transformer, input_path, expected_path, start_date=None, end_date=None
+    ):
         input_urja_data = FixtureDataSource(input_path).load()
         if start_date or end_date:
-            input_urja_data = filter_by_date_range(input_urja_data, after=start_date, before=end_date)
+            input_urja_data = filter_by_date_range(
+                input_urja_data, after=start_date, before=end_date
+            )
         expected_result = self.load_expected_results(expected_path)
         actual_result = transformer.urja_to_gridium(input_urja_data)
 
@@ -46,13 +56,15 @@ class UrjaFixtureText(unittest.TestCase):
             self.assertEqual(e.peak_demand, r.peak_demand)
 
 
-def default_usage(PK=1,
-                  UsageActualName="test_usage_actual_name",
-                  UsageAmount=Decimal(100.0),
-                  RateComponent="test_rate_component",
-                  EnergyUnit="test_energy_unit",
-                  IntervalStart=date(2000, 1, 1),
-                  IntervalEnd=date(2000, 2, 1)):
+def default_usage(
+    PK=1,
+    UsageActualName="test_usage_actual_name",
+    UsageAmount=Decimal(100.0),
+    RateComponent="test_rate_component",
+    EnergyUnit="test_energy_unit",
+    IntervalStart=date(2000, 1, 1),
+    IntervalEnd=date(2000, 2, 1),
+):
     """Create an Urjanet Usage object with all fields filled in"""
     return Usage(
         PK=PK,
@@ -61,19 +73,22 @@ def default_usage(PK=1,
         RateComponent=RateComponent,
         EnergyUnit=EnergyUnit,
         IntervalStart=IntervalStart,
-        IntervalEnd=IntervalEnd)
+        IntervalEnd=IntervalEnd,
+    )
 
 
-def default_charge(PK=1,
-                   ChargeActualName="test_charge_actual_name",
-                   ChargeAmount=Decimal(100.0),
-                   UsageUnit="kW",
-                   ChargeUnitsUsed=Decimal(20.0),
-                   ChargeRatePerUnit=Decimal(5.0),
-                   ThirdPartyProvider="test_third_party_provider",
-                   IsAdjustmentCharge=False,
-                   IntervalStart=date(2000, 1, 1),
-                   IntervalEnd=date(2000, 2, 1)):
+def default_charge(
+    PK=1,
+    ChargeActualName="test_charge_actual_name",
+    ChargeAmount=Decimal(100.0),
+    UsageUnit="kW",
+    ChargeUnitsUsed=Decimal(20.0),
+    ChargeRatePerUnit=Decimal(5.0),
+    ThirdPartyProvider="test_third_party_provider",
+    IsAdjustmentCharge=False,
+    IntervalStart=date(2000, 1, 1),
+    IntervalEnd=date(2000, 2, 1),
+):
     """Create an Urjanet Charge object with all fields filled in"""
     return Charge(
         PK=PK,
@@ -85,18 +100,21 @@ def default_charge(PK=1,
         ThirdPartyProvider=ThirdPartyProvider,
         IsAdjustmentCharge=IsAdjustmentCharge,
         IntervalStart=IntervalStart,
-        IntervalEnd=IntervalEnd)
+        IntervalEnd=IntervalEnd,
+    )
 
 
-def default_meter(PK=1,
-                  Tariff="test_tariff",
-                  ServiceType="test_service_type",
-                  PODid="test_podid",
-                  MeterNumber="test_meter_number",
-                  IntervalStart=date(2000, 1, 1),
-                  IntervalEnd=date(2000, 2, 1),
-                  charges=None,
-                  usages=None):
+def default_meter(
+    PK=1,
+    Tariff="test_tariff",
+    ServiceType="test_service_type",
+    PODid="test_podid",
+    MeterNumber="test_meter_number",
+    IntervalStart=date(2000, 1, 1),
+    IntervalEnd=date(2000, 2, 1),
+    charges=None,
+    usages=None,
+):
     """Create an Urjanet Meter object with all fields filled in"""
     return Meter(
         PK=PK,
@@ -107,26 +125,29 @@ def default_meter(PK=1,
         IntervalStart=IntervalStart,
         IntervalEnd=IntervalEnd,
         charges=[] if not charges else charges,
-        usages=[] if not usages else usages)
+        usages=[] if not usages else usages,
+    )
 
 
 # pylint: disable=R0913
-def default_account(PK=1,
-                    UtilityProvider="test_provider",
-                    AccountNumber="test_account_number",
-                    RawAccountNumber="test_raw_account_number",
-                    SourceLink="test_source_link",
-                    StatementType="test_statement_type",
-                    StatementDate=date(2000, 2, 5),
-                    IntervalStart=date(2000, 1, 1),
-                    IntervalEnd=date(2000, 2, 1),
-                    TotalBillAmount=Decimal(100.0),
-                    AmountDue=Decimal(90.0),
-                    NewCharges=Decimal(80.0),
-                    OutstandingBalance=Decimal(70.0),
-                    PreviousBalance=Decimal(60.0),
-                    meters=None,
-                    floating_charges=None):
+def default_account(
+    PK=1,
+    UtilityProvider="test_provider",
+    AccountNumber="test_account_number",
+    RawAccountNumber="test_raw_account_number",
+    SourceLink="test_source_link",
+    StatementType="test_statement_type",
+    StatementDate=date(2000, 2, 5),
+    IntervalStart=date(2000, 1, 1),
+    IntervalEnd=date(2000, 2, 1),
+    TotalBillAmount=Decimal(100.0),
+    AmountDue=Decimal(90.0),
+    NewCharges=Decimal(80.0),
+    OutstandingBalance=Decimal(70.0),
+    PreviousBalance=Decimal(60.0),
+    meters=None,
+    floating_charges=None,
+):
     """Create an Urjanet Account object with all fields filled in"""
     return Account(
         PK=PK,
@@ -144,4 +165,5 @@ def default_account(PK=1,
         OutstandingBalance=OutstandingBalance,
         PreviousBalance=PreviousBalance,
         meters=[] if not meters else meters,
-        floating_charges=[] if not floating_charges else floating_charges)
+        floating_charges=[] if not floating_charges else floating_charges,
+    )

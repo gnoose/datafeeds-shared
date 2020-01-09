@@ -8,8 +8,12 @@ from datafeeds.urjanet.model import (
     GridiumBillingPeriod,
     GridiumBillingPeriodCollection,
     DateIntervalTree,
-    log_charge, log_usage,
-    Charge, Usage, Account, UrjanetData
+    log_charge,
+    log_usage,
+    Charge,
+    Usage,
+    Account,
+    UrjanetData,
 )
 
 log = logging.getLogger(__name__)
@@ -40,7 +44,7 @@ class LadwpWaterBillingPeriod:
 
     def get_total_usage(self) -> Decimal:
         def filter_for_total(usage):
-            return usage.RateComponent == '[total]'
+            return usage.RateComponent == "[total]"
 
         return sum([u.UsageAmount for u in self.usages if filter_for_total(u)])
 
@@ -54,7 +58,7 @@ class LadwpWaterBillingPeriod:
         """Return a list of URLs to source statements for this period (e.g. PDFs)"""
         return [stmt.SourceLink for stmt in self.source_statements]
 
-    def merge(self, other: 'LadwpWaterBillingPeriod') -> bool:
+    def merge(self, other: "LadwpWaterBillingPeriod") -> bool:
         modified = False
         if other.has_utility_charges():
             if not self.has_utility_charges():
@@ -74,18 +78,35 @@ def log_ladwp_water_billing_periods(bill_history: DateIntervalTree) -> None:
     log.debug("Billing periods")
     for ival in sorted(bill_history.intervals()):
         period_data = ival.data
-        log.debug("\t{} to {} ({} days)".format(ival.begin, ival.end, (ival.end - ival.begin).days))
+        log.debug(
+            "\t{} to {} ({} days)".format(
+                ival.begin, ival.end, (ival.end - ival.begin).days
+            )
+        )
         log.debug("\t\tUtility Charges:")
         for chg in period_data.utility_charges:
             log.debug(
-                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}\t{3}\t{4}".format(chg.ChargeAmount, chg.ChargeActualName, chg.PK,
-                                                                      chg.IntervalStart, chg.IntervalEnd))
+                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}\t{3}\t{4}".format(
+                    chg.ChargeAmount,
+                    chg.ChargeActualName,
+                    chg.PK,
+                    chg.IntervalStart,
+                    chg.IntervalEnd,
+                )
+            )
         log.debug("\t\tTotal Charge: ${}".format(period_data.get_total_charge()))
         log.debug("\t\tUsages:")
         for usg in period_data.usages:
             log.debug(
                 "\t\t\tAmt={0}{1}\tComponent={2}\tPK={3}\t{4}\t{5}".format(
-                    usg.UsageAmount, usg.EnergyUnit, usg.RateComponent, usg.PK, usg.IntervalStart, usg.IntervalEnd))
+                    usg.UsageAmount,
+                    usg.EnergyUnit,
+                    usg.RateComponent,
+                    usg.PK,
+                    usg.IntervalStart,
+                    usg.IntervalEnd,
+                )
+            )
         log.debug("\t\tStatements:")
         for stmt in period_data.source_statements:
             log.debug("\t\t\t{0}\tPK={1}".format(stmt.SourceLink, stmt.PK))
@@ -100,7 +121,8 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
         # Process the account objects in reverse order by statement date. The main motivation here is corrections;
         # we want to process the most recent billing date first, and ignore earlier data for those same dates.
         ordered_accounts = sorted(
-            urja_data.accounts, key=lambda x: x.StatementDate, reverse=True)
+            urja_data.accounts, key=lambda x: x.StatementDate, reverse=True
+        )
 
         # First, we rough out the billing period dates, by iterating through the ordered accounts and pulling out
         # usage periods
@@ -109,11 +131,17 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
             account_periods = self.get_account_billing_periods(account)
             for ival in account_periods.intervals():
                 if bill_history.overlaps(ival.begin, ival.end):
-                    log.debug("Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, ival.begin, ival.end))
+                    log.debug(
+                        "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
+                            account.PK, ival.begin, ival.end
+                        )
+                    )
                 else:
-                    log.debug("Adding billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, ival.begin, ival.end))
+                    log.debug(
+                        "Adding billing period: account_pk={}, start={}, end={}".format(
+                            account.PK, ival.begin, ival.end
+                        )
+                    )
                     bill_history.add(ival.begin, ival.end, LadwpWaterBillingPeriod())
 
         # Next, we go through the accounts again and insert relevant charge/usage information into the computed
@@ -138,7 +166,9 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
                     total_usage=period_data.get_total_usage(),
                     source_urls=period_data.get_source_urls(),
                     line_items=period_data.utility_charges,
-                    tariff=None))
+                    tariff=None,
+                )
+            )
         return GridiumBillingPeriodCollection(periods=gridium_periods)
 
     def get_account_billing_periods(self, account: Account) -> DateIntervalTree:
@@ -149,7 +179,9 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
 
         return ival_tree
 
-    def merge_statement_data(self, bill_history: DateIntervalTree, urja_account: Account) -> None:
+    def merge_statement_data(
+        self, bill_history: DateIntervalTree, urja_account: Account
+    ) -> None:
         statement_data = defaultdict(LadwpWaterBillingPeriod)
 
         for meter in urja_account.meters:
@@ -159,7 +191,9 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
                     period = periods[0]
                     statement_data[period].add_utility_charge(charge)
                 elif not periods:
-                    log.debug("Charge doesn't belong to a known billing period, skipping:")
+                    log.debug(
+                        "Charge doesn't belong to a known billing period, skipping:"
+                    )
                     log_charge(log, charge, indent=1)
                 else:
                     log.debug("Charge maps to multiple billing periods, skipping:")
@@ -171,7 +205,9 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
                     period = periods[0]
                     statement_data[period].add_usage(usage)
                 elif not periods:
-                    log.debug("Usage doesn't belong to a known billing period, skipping:")
+                    log.debug(
+                        "Usage doesn't belong to a known billing period, skipping:"
+                    )
                     log_usage(log, usage, indent=1)
                 else:
                     log.debug("Usage maps to multiple billing periods, skipping:")

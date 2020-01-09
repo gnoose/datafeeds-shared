@@ -7,7 +7,10 @@ from collections import namedtuple
 import requests
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import ElementNotVisibleException, NoSuchElementException
+from selenium.common.exceptions import (
+    ElementNotVisibleException,
+    NoSuchElementException,
+)
 from selenium.common.exceptions import TimeoutException
 from dateutil.relativedelta import relativedelta
 from dateutil import parser as date_parser
@@ -39,11 +42,15 @@ class MissingChannelIdException(Exception):
     pass
 
 
-CsvRow = namedtuple("CsvRow", ["account", "date", "channel_id", "units", "interval_data"])
+CsvRow = namedtuple(
+    "CsvRow", ["account", "date", "channel_id", "units", "interval_data"]
+)
 
 
 class EnergyProfilerConfiguration(Configuration):
-    def __init__(self, base_url, account_id, epo_meter_id, channel_id=None, log_in=True):
+    def __init__(
+        self, base_url, account_id, epo_meter_id, channel_id=None, log_in=True
+    ):
         super().__init__(scrape_readings=True)
 
         # Login URL for the EPO Schneider whitelabel site.
@@ -90,7 +97,7 @@ class MeterElement:
             self.meter_description,  # {1}
             self.account_description,  # {2}
             self.min_date,  # {3}
-            self.max_date  # {4}
+            self.max_date,  # {4}
         )
 
     def __repr__(self):
@@ -117,7 +124,9 @@ class MeterElement:
         if len(cells) == 6:
             result = MeterElement()
             checkbox_cell = cells[0]
-            result.checkbox = checkbox_cell.find_element_by_css_selector('input[type="checkbox"]')
+            result.checkbox = checkbox_cell.find_element_by_css_selector(
+                'input[type="checkbox"]'
+            )
 
             result.meter_id = cells[1].text
             result.meter_description = cells[2].text
@@ -128,7 +137,9 @@ class MeterElement:
         if len(cells) == 7:
             result = MeterElement()
             checkbox_cell = cells[0]
-            result.checkbox = checkbox_cell.find_element_by_css_selector('input[type="checkbox"]')
+            result.checkbox = checkbox_cell.find_element_by_css_selector(
+                'input[type="checkbox"]'
+            )
 
             result.meter_id = cells[1].text
             result.meter_description = cells[2].text
@@ -160,12 +171,13 @@ class LoginPage:
     def wait_until_ready(self):
         _log("Waiting for 'Login' page to be ready...")
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            self.UsernameFieldSelector)))
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, self.UsernameFieldSelector)
+            )
+        )
 
     def get_continue_button(self):
-        return self._driver.find_element_by_css_selector(
-            self.ContinueButtonSelector)
+        return self._driver.find_element_by_css_selector(self.ContinueButtonSelector)
 
     def login(self, username, password):
         """Authenticate with the webpage.
@@ -207,10 +219,11 @@ class ConfigurationPage:
     def wait_until_ready(self):
         _log("Waiting for Configuration page to be ready")
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            self.DateRangeRadioButton)))
+            EC.presence_of_element_located((By.CSS_SELECTOR, self.DateRangeRadioButton))
+        )
         self._driver.wait().until(
-            EC.presence_of_element_located((By.ID, self.CheckAllAccountsId)))
+            EC.presence_of_element_located((By.ID, self.CheckAllAccountsId))
+        )
 
     def _goto_tab(self, tab_id, class_name):
         def _tab_loaded(_):
@@ -235,15 +248,14 @@ class ConfigurationPage:
 
         # Wait until the meter table loads
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            self.MeterTableCss)))
+            EC.presence_of_element_located((By.CSS_SELECTOR, self.MeterTableCss))
+        )
 
     def select_date_range_option(self):
         """Indicate that we wish to enter a custom date range."""
         _log("Selecting the custom date range option.")
         try:
-            self._driver.find_element_by_css_selector(
-                self.DateRangeRadioButton).click()
+            self._driver.find_element_by_css_selector(self.DateRangeRadioButton).click()
         except ElementNotVisibleException:
             # This seems to happen if you click the radio button
             # after it has been selected. So we eat this exception,
@@ -260,11 +272,11 @@ class ConfigurationPage:
         self.select_date_range_option()
 
         date_range_string = "{0} to {1}".format(
-            fmt_date(interval.start_date), fmt_date(interval.end_date))
+            fmt_date(interval.start_date), fmt_date(interval.end_date)
+        )
 
         # Enter the specified date range
-        selector = self._driver.find_element_by_css_selector(
-            self.DateRangeSelector)
+        selector = self._driver.find_element_by_css_selector(self.DateRangeSelector)
         selector.clear()
         selector.send_keys(date_range_string)
 
@@ -276,8 +288,7 @@ class ConfigurationPage:
     def iter_meters(self):
         """Generate the available meters on this page."""
         self.goto_meter_tab()
-        meter_table = self._driver.find_element_by_css_selector(
-            self.MeterTableCss)
+        meter_table = self._driver.find_element_by_css_selector(self.MeterTableCss)
         rows = meter_table.find_elements_by_css_selector("tr")
         for row in rows:
             meter = MeterElement.from_table_row(row)
@@ -289,6 +300,7 @@ class ConfigurationPage:
 
 class ExportCsvPage:
     """Represents a page for generating a CSV report of interval data."""
+
     ContinueButtonSelector = "aside#newemissionreport .button"
 
     def __init__(self, driver):
@@ -297,13 +309,14 @@ class ExportCsvPage:
     def wait_until_ready(self):
         _log("Waiting for 'Export CSV' page to be ready...")
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            self.ContinueButtonSelector)))
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, self.ContinueButtonSelector)
+            )
+        )
 
     def generate_report(self):
         _log("Generating a CSV report.")
-        self._driver.find_element_by_css_selector(
-            self.ContinueButtonSelector).click()
+        self._driver.find_element_by_css_selector(self.ContinueButtonSelector).click()
 
 
 class DownloadCsvPage:
@@ -317,8 +330,8 @@ class DownloadCsvPage:
     def wait_until_ready(self):
         _log("Waiting for 'Download CSV' page to be ready...")
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            self.CsvLinkSelector)))
+            EC.presence_of_element_located((By.CSS_SELECTOR, self.CsvLinkSelector))
+        )
 
     def get_csv_rows(self):
         """Download CSV data from the page.
@@ -337,7 +350,7 @@ class DownloadCsvPage:
         response = requests.get(href, stream=True)
         try:
             # Assumption: The file is utf-8 encoded
-            resp_reader = codecs.iterdecode(response.iter_lines(), 'utf-8')
+            resp_reader = codecs.iterdecode(response.iter_lines(), "utf-8")
             csv_reader = csv.reader(resp_reader)
             for row in csv_reader:
                 yield row
@@ -366,8 +379,7 @@ class Navigation:
 
     def goto_meter_selection(self):
         _log("Navigating to the meter selection page.")
-        self._driver.find_element_by_link_text(
-            self.MeterSelectionLinkText).click()
+        self._driver.find_element_by_link_text(self.MeterSelectionLinkText).click()
 
 
 class EnergyProfilerScraper(BaseWebScraper):
@@ -379,8 +391,8 @@ class EnergyProfilerScraper(BaseWebScraper):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.browser_name = 'Chrome'
-        self.name = 'Energy Profiler Online Scraper'
+        self.browser_name = "Chrome"
+        self.name = "Energy Profiler Online Scraper"
 
     @property
     def log_in(self):
@@ -419,27 +431,28 @@ class EnergyProfilerScraper(BaseWebScraper):
         try:
             return float(s)
         except Exception:
-            raise InvalidMeterDataException(
-                "Invalid meter reading: {0}".format(s))
+            raise InvalidMeterDataException("Invalid meter reading: {0}".format(s))
 
     def _parse_csv_row(self, row):
         if len(row) not in self.EXPECTED_CSV_COLUMNS:
             raise InvalidMeterDataException(
                 "Unexpected CSV row length ({0} not in {1})".format(
-                    len(row), self.EXPECTED_CSV_COLUMNS))
+                    len(row), self.EXPECTED_CSV_COLUMNS
+                )
+            )
 
         try:
             date = date_parser.parse(row[1])
         except Exception:
-            raise InvalidMeterDataException(
-                "Failed to parse date ({0})".format(row[1]))
+            raise InvalidMeterDataException("Failed to parse date ({0})".format(row[1]))
 
         return CsvRow(
             account=row[0],
             date=date,
             channel_id=str(row[2]).strip().lower(),
             units=row[3].lower().strip(),
-            interval_data=[self._parse_ival_data(s) for s in row[4:]])
+            interval_data=[self._parse_ival_data(s) for s in row[4:]],
+        )
 
     def _get_csv_kw_rows(self, csv_rows_iter):
         """Make a list of parsed usage rows"""
@@ -498,8 +511,7 @@ class EnergyProfilerScraper(BaseWebScraper):
 
         if matching_meter is None:
             _log("No meter with ID {0} was found.".format(meter_query))
-            raise InvalidMeterException(
-                "Meter {0} was not found".format(meter_query))
+            raise InvalidMeterException("Meter {0} was not found".format(meter_query))
         else:
             matching_meter.select()
             self.screenshot("meter selected")
@@ -510,12 +522,18 @@ class EnergyProfilerScraper(BaseWebScraper):
         #    errors. We restrict our start and end dates based on
         #    this information.
         if self.start_date < matching_meter.min_date:
-            _log("Adjusting start date from {0} to {1}".format(
-                self.start_date, matching_meter.min_date))
+            _log(
+                "Adjusting start date from {0} to {1}".format(
+                    self.start_date, matching_meter.min_date
+                )
+            )
             self.start_date = matching_meter.min_date
         if self.end_date > matching_meter.max_date:
-            _log("Adjusting end date from {0} to {1}".format(
-                self.end_date, matching_meter.max_date))
+            _log(
+                "Adjusting end date from {0} to {1}".format(
+                    self.end_date, matching_meter.max_date
+                )
+            )
             self.end_date = matching_meter.max_date
 
         # 2) Only a limited amount of data can be extracted at a time.
@@ -532,9 +550,11 @@ class EnergyProfilerScraper(BaseWebScraper):
 
             # First, set the date range for the selected meter
             config_page.set_date_range(interval)
-            self.screenshot("date range set {} to {}".format(
-                interval.start_date.isoformat(),
-                interval.end_date.isoformat()))
+            self.screenshot(
+                "date range set {} to {}".format(
+                    interval.start_date.isoformat(), interval.end_date.isoformat()
+                )
+            )
 
             # Navigate to the "Export" page, and request a CSV report
             navigation.goto_export()
@@ -550,11 +570,16 @@ class EnergyProfilerScraper(BaseWebScraper):
 
             csv_kw_rows = self._get_csv_kw_rows(csv_rows_iter)
             if self._is_multichannel(csv_kw_rows) and not self.channel_id:
-                raise MissingChannelIdException("Missing channel ID for multichannel meter")
+                raise MissingChannelIdException(
+                    "Missing channel ID for multichannel meter"
+                )
 
             # The intervals coefficient is a multiplier for the interval data.
-            intervals_coeff = 4   # For 15-minute intervals
-            if self._get_interval_data_length(csv_kw_rows) == self.READINGS_NUM_30_MIN_INT:
+            intervals_coeff = 4  # For 15-minute intervals
+            if (
+                self._get_interval_data_length(csv_kw_rows)
+                == self.READINGS_NUM_30_MIN_INT
+            ):
                 intervals_coeff = 2  # For 30-minute intervals
 
             for data_row in csv_kw_rows:
@@ -562,7 +587,8 @@ class EnergyProfilerScraper(BaseWebScraper):
                 # If no channel_id was passed in, add all usage rows.
                 if not self.channel_id or self.channel_id == data_row.channel_id:
                     readings[data_row.date.strftime("%Y-%m-%d")] = list(
-                        self._kwh_to_kw(data_row.interval_data, intervals_coeff))
+                        self._kwh_to_kw(data_row.interval_data, intervals_coeff)
+                    )
 
             # Navigate back to the meter selection page in preparation
             # for the next iteration. Note that we do not reselect the

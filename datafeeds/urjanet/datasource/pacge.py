@@ -37,7 +37,9 @@ class PacificGasElectricDataSource(UrjanetPyMySqlDataSource):
             (1) Account numbers are at least 10 characters long
         """
         if len(self.account_number) < 10:
-            raise ValueError("This data source expects PG&E account numbers to be at least 10 digits long")
+            raise ValueError(
+                "This data source expects PG&E account numbers to be at least 10 digits long"
+            )
 
     def load_accounts(self) -> List[Account]:
         """Load accounts based on the account id"""
@@ -57,11 +59,10 @@ class PacificGasElectricDataSource(UrjanetPyMySqlDataSource):
         """
 
         account_number_prefix_regex = "{}%".format(self.account_number)
-        result_set = self.fetch_all(query, account_number_prefix_regex, self.account_number)
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        result_set = self.fetch_all(
+            query, account_number_prefix_regex, self.account_number
+        )
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: str) -> List[Meter]:
         """Load meters based on the service id"""
@@ -74,6 +75,4 @@ class PacificGasElectricDataSource(UrjanetPyMySqlDataSource):
                 AND PODid LIKE %s
         """
         result_set = self.fetch_all(query, account_pk, self.meter_id)
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]

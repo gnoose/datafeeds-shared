@@ -44,7 +44,6 @@ log = logging.getLogger(__name__)
 
 
 class BaseDriver(Abstract):
-
     @abstractmethod
     def _options(self):
         pass

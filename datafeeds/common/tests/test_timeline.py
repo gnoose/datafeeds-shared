@@ -57,8 +57,9 @@ class TimelineTests(unittest.TestCase):
         self.assertEqual(result["2018-04-02"][46], 4.0)
 
         # All other entries are null
-        null_count = sum(sum(1 for x in result[d] if x is None)
-                         for d in ["2018-04-01", "2018-04-02"])
+        null_count = sum(
+            sum(1 for x in result[d] if x is None) for d in ["2018-04-01", "2018-04-02"]
+        )
         self.assertEqual(null_count, 2 * 96 - 4)
 
     def test_exception(self):

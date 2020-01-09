@@ -13,8 +13,9 @@ class TestUrjanetModel(unittest.TestCase):
         for idx in range(1, 12):
             meter.charges.append(
                 test_util.default_charge(
-                    IntervalStart=date(2000, idx, 1),
-                    IntervalEnd=date(2000, idx + 1, 1)))
+                    IntervalStart=date(2000, idx, 1), IntervalEnd=date(2000, idx + 1, 1)
+                )
+            )
         account.meters.append(meter)
 
         urja_data = urja_model.UrjanetData()
@@ -70,8 +71,7 @@ class TestUrjanetModel(unittest.TestCase):
         self.assertEqual(len(result_meter.charges), 5)
 
         # One day before should drop a charge
-        result = urja_model.filter_by_date_range(
-            urja_data, before=date(2000, 4, 30))
+        result = urja_model.filter_by_date_range(urja_data, before=date(2000, 4, 30))
         self.assertEqual(len(result.accounts), 1)
         result_account = result.accounts[0]
         self.assertEqual(len(result_account.meters), 1)

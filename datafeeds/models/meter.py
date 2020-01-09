@@ -35,6 +35,7 @@ class MeterReading(ModelMixin, Base):
 
 class MeterFlowDirection(Enum):
     """Flow directions for a meter."""
+
     forward = "forward"
     reverse = "reverse"
 
@@ -56,7 +57,9 @@ class Meter(ModelMixin, Base):
     # foreign key for SQLAlchemy: does not actually exist in database
     service = sa.Column(sa.BigInteger, sa.ForeignKey("utility_service.oid"))
     system = sa.Column(sa.BigInteger)
-    direction = sa.Column(sa.Enum(*[f.value for f in MeterFlowDirection]), default="forward")
+    direction = sa.Column(
+        sa.Enum(*[f.value for f in MeterFlowDirection]), default="forward"
+    )
 
     # building = relationship("Building", back_populates="meters")
     utility_service = relationship("UtilityService")
@@ -64,8 +67,17 @@ class Meter(ModelMixin, Base):
 
     snapmeter_account_meter = relationship("SnapmeterAccountMeter")
 
-    def __init__(self, name, building=None, kind="main", interval=15, commodity="kw", direction="forward",
-                 utility_service=None, parent=None):
+    def __init__(
+        self,
+        name,
+        building=None,
+        kind="main",
+        interval=15,
+        commodity="kw",
+        direction="forward",
+        utility_service=None,
+        parent=None,
+    ):
         self.oid = Meter.get_new_oid()
 
         if building:
@@ -89,11 +101,7 @@ class Meter(ModelMixin, Base):
 
     @property
     def unit_label(self):
-        label = {
-            "kw": "kW",
-            "therms": "thm",
-            "ccf": "ccf"
-        }
+        label = {"kw": "kW", "therms": "thm", "ccf": "ccf"}
         return label.get(self.commodity, self.commodity)
 
     @property
@@ -167,7 +175,7 @@ class Meter(ModelMixin, Base):
         """
 
     @classmethod
-    def signed_readings(cls, readings_row, direction='forward'):
+    def signed_readings(cls, readings_row, direction="forward"):
         """set the sign for an array of reading values (from meter_reading)
 
         use this before exporting or summing meter reading values; values from the database
@@ -175,13 +183,17 @@ class Meter(ModelMixin, Base):
         """
         rval = []
         sign = Meter.readings_sign(direction)
-        readings = json.loads(readings_row) if isinstance(readings_row, str) else readings_row
+        readings = (
+            json.loads(readings_row) if isinstance(readings_row, str) else readings_row
+        )
         for val in readings:
             val = Meter._replace_nan(val)
             rval.append(sign * val if val else val)
         return rval
 
-    def interval_data(self, start_dt: datetime, end_dt: datetime) -> List[Tuple[datetime, Optional[float]]]:
+    def interval_data(
+        self, start_dt: datetime, end_dt: datetime
+    ) -> List[Tuple[datetime, Optional[float]]]:
         """Return ordered interval data between the two input datetimes.
 
         The intervals in this query are half-open. For example, when
@@ -195,11 +207,10 @@ class Meter(ModelMixin, Base):
         start_d = start_dt.date()
         end_d = end_dt.date() + timedelta(days=1)
 
-        query = db.session.execute(self._readings_query(), {
-            "meters": (self.oid,),
-            "from_date": start_d,
-            "to_date": end_d,
-        })
+        query = db.session.execute(
+            self._readings_query(),
+            {"meters": (self.oid,), "from_date": start_d, "to_date": end_d,},
+        )
         # can return multiple rows per date for totalized meter
         by_date: Dict[date, list] = {}
 
@@ -209,7 +220,9 @@ class Meter(ModelMixin, Base):
         for row in query:
             readings = Meter.signed_readings(row.readings, row.direction)
             if row.occurred in by_date:
-                by_date[row.occurred] = list(map(add_readings, by_date[row.occurred], readings))
+                by_date[row.occurred] = list(
+                    map(add_readings, by_date[row.occurred], readings)
+                )
             else:
                 by_date[row.occurred] = readings
 
@@ -233,9 +246,9 @@ class Meter(ModelMixin, Base):
             day += timedelta(days=1)
 
         # Filter once more at the interval level.
-        return [(dt, v)
-                for (dt, v) in zip(labels, time_series)
-                if start_dt <= dt < end_dt]
+        return [
+            (dt, v) for (dt, v) in zip(labels, time_series) if start_dt <= dt < end_dt
+        ]
 
     @property
     def readings_range(self):

@@ -2,9 +2,10 @@ import argparse
 
 from datafeeds import db
 
-from datafeeds.models import \
-    SnapmeterAccountDataSource as AccountDataSource, \
-    SnapmeterMeterDataSource as MeterDataSource
+from datafeeds.models import (
+    SnapmeterAccountDataSource as AccountDataSource,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 
 
 parser = argparse.ArgumentParser("Add a new meter data source.")
@@ -20,9 +21,11 @@ def main():
 
     # Urjanet data sources are meter-only.
     if not is_urjanet:
-        ads = AccountDataSource(_account=args.account_oid,
-                                source_account_type=args.source_account_type,
-                                name=args.name)
+        ads = AccountDataSource(
+            _account=args.account_oid,
+            source_account_type=args.source_account_type,
+            name=args.name,
+        )
 
         db.session.add(ads)
         db.session.flush()
@@ -38,6 +41,6 @@ def main():
     db.session.commit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     db.init()
     main()

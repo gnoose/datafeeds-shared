@@ -13,9 +13,12 @@ from datafeeds.common.support import Credentials, DateRange
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.transformer.base import UrjanetGridiumTransformer
 from datafeeds.urjanet.scraper import BaseUrjanetScraper, BaseUrjanetConfiguration
-from datafeeds.models import Meter, SnapmeterAccount, \
-    SnapmeterMeterDataSource as MeterDataSource, \
-    SnapmeterAccountDataSource as AccountDataSource
+from datafeeds.models import (
+    Meter,
+    SnapmeterAccount,
+    SnapmeterMeterDataSource as MeterDataSource,
+    SnapmeterAccountDataSource as AccountDataSource,
+)
 from datafeeds.common.upload import upload_bills, upload_readings
 from datafeeds.common.interval_transform import Transforms
 
@@ -44,48 +47,67 @@ def iso_to_dates(start_iso, end_iso):
     return start, end
 
 
-def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
-                 datasource: MeterDataSource, params: dict, configuration=None,
-                 task_id=None, transforms: Optional[List[Transforms]] = None,
-                 disable_login_on_error: Optional[bool] = False) -> Status:
+def run_datafeed(
+    scraper_class,
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    configuration=None,
+    task_id=None,
+    transforms: Optional[List[Transforms]] = None,
+    disable_login_on_error: Optional[bool] = False,
+) -> Status:
     transforms = [] if transforms is None else transforms
     acct_hex_id = account.hex_id if account else ""
     acct_name = account.name if account else ""
 
     bill_handler = ft.partial(upload_bills, meter.utility_service.service_id, task_id)
-    readings_handler = ft.partial(upload_readings, transforms, task_id,
-                                  meter.oid, acct_hex_id, scraper_class.__name__)
-    date_range = DateRange(*iso_to_dates(
-        params.get("data_start"),
-        params.get("data_end")
-    ))
+    readings_handler = ft.partial(
+        upload_readings,
+        transforms,
+        task_id,
+        meter.oid,
+        acct_hex_id,
+        scraper_class.__name__,
+    )
+    date_range = DateRange(
+        *iso_to_dates(params.get("data_start"), params.get("data_end"))
+    )
 
     parent: AccountDataSource = None
     if datasource.account_data_source:
         parent = datasource.account_data_source
         credentials = Credentials(parent.username, parent.password)
         if not datasource.account_data_source.enabled:
-            raise DataSourceConfigurationError("%s scraper for %s is disabled" % (
-                datasource.account_data_source.name, meter.oid))
+            raise DataSourceConfigurationError(
+                "%s scraper for %s is disabled"
+                % (datasource.account_data_source.name, meter.oid)
+            )
     else:
         credentials = Credentials(None, None)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading task information to Elasticsearch.")
-        index.index_etl_run(task_id, {
-            "started": datetime.now(),
-            "status": "STARTED",
-            "accountId": acct_hex_id,
-            "accountName": acct_name,
-            "meterId": meter.oid,
-            "meterName": meter.name,
-            "scraper": scraper_class.__name__,
-            "origin": "datafeeds"
-        })
+        index.index_etl_run(
+            task_id,
+            {
+                "started": datetime.now(),
+                "status": "STARTED",
+                "accountId": acct_hex_id,
+                "accountName": acct_name,
+                "meterId": meter.oid,
+                "meterName": meter.name,
+                "scraper": scraper_class.__name__,
+                "origin": "datafeeds",
+            },
+        )
     try:
         error = None
         with scraper_class(credentials, date_range, configuration) as scraper:
-            scraper.scrape(readings_handler=readings_handler, bills_handler=bill_handler)
+            scraper.scrape(
+                readings_handler=readings_handler, bills_handler=bill_handler
+            )
             status = "SUCCESS"
             retval = Status.SUCCEEDED
 
@@ -108,11 +130,15 @@ def run_datafeed(scraper_class, account: SnapmeterAccount, meter: Meter,
     return retval
 
 
-def run_urjanet_datafeed(account: SnapmeterAccount, meter: Meter,
-                         datasource: MeterDataSource, params: dict,
-                         urja_datasource: UrjanetPyMySqlDataSource,
-                         transformer: UrjanetGridiumTransformer,
-                         task_id: Optional[str] = None) -> Status:
+def run_urjanet_datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    urja_datasource: UrjanetPyMySqlDataSource,
+    transformer: UrjanetGridiumTransformer,
+    task_id: Optional[str] = None,
+) -> Status:
     conn = db.urjanet_connection()
 
     try:
@@ -121,7 +147,7 @@ def run_urjanet_datafeed(account: SnapmeterAccount, meter: Meter,
             urja_datasource=urja_datasource,
             urja_transformer=transformer,
             utility_name=meter.utility_service.utility,
-            fetch_attachments=True
+            fetch_attachments=True,
         )
 
         return run_datafeed(
@@ -131,6 +157,7 @@ def run_urjanet_datafeed(account: SnapmeterAccount, meter: Meter,
             datasource,
             params,
             configuration=scraper_config,
-            task_id=task_id)
+            task_id=task_id,
+        )
     finally:
         conn.close()

@@ -15,6 +15,7 @@ SEQUENCE_ID = "webapps_platform_oid_adapter_seq"
 
 class OidGenerator:
     """The OidGenerator is a singleton (all state is stored in static members)."""
+
     _epoch = 1350654629.354
     node_id = None
 
@@ -77,7 +78,11 @@ class OidGenerator:
         # - Last 13 Bits: Counter State
 
         mask = 0x000FFFFFFFFFFFFF
-        result = mask & ((OidGenerator.node_id << 52) | (OidGenerator._clock << 13) | OidGenerator._counter)
+        result = mask & (
+            (OidGenerator.node_id << 52)
+            | (OidGenerator._clock << 13)
+            | OidGenerator._counter
+        )
         return result
 
 

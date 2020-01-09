@@ -49,7 +49,12 @@ def upload_file_to_s3(body, bucket, key, file_display_name=None, content_type=No
         The name of the key where the file is stored. Should be equal
         to the "key" argument.
     """
-    log.debug("S3 Upload Requested: key=%s, bucket=%s, display_name=%s", key, bucket, file_display_name)
+    log.debug(
+        "S3 Upload Requested: key=%s, bucket=%s, display_name=%s",
+        key,
+        bucket,
+        file_display_name,
+    )
 
     if not config.enabled("S3_BILL_UPLOAD"):
         log.debug("Bill upload disabled, skipping S3 upload.")
@@ -69,7 +74,8 @@ def upload_file_to_s3(body, bucket, key, file_display_name=None, content_type=No
         Bucket=bucket,
         ContentDisposition="inline; filename=%s" % file_display_name,
         ContentType=content_type,
-        Key=key)
+        Key=key,
+    )
 
     log.debug("Attempted S3 upload to %s %s: %s", bucket, key, resp)
 
@@ -77,4 +83,10 @@ def upload_file_to_s3(body, bucket, key, file_display_name=None, content_type=No
 
 
 def upload_pdf_to_s3(body, bucket, key, file_display_name=None):
-    return upload_file_to_s3(body, bucket, key, file_display_name=file_display_name, content_type="application/pdf")
+    return upload_file_to_s3(
+        body,
+        bucket,
+        key,
+        file_display_name=file_display_name,
+        content_type="application/pdf",
+    )

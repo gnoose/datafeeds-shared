@@ -60,26 +60,37 @@ class IFrameBasePageObject(CSSSelectorBasePageObject):
         return func_wrapper
 
     @iframe_decorator
-    def wait_until_ready(self, selector: str, error_selector: Optional[str] = None,
-                         error_cls=None, error_msg: Optional[str] = None):
+    def wait_until_ready(
+        self,
+        selector: str,
+        error_selector: Optional[str] = None,
+        error_cls=None,
+        error_msg: Optional[str] = None,
+    ):
         return super().wait_until_ready(
             selector=selector,
             error_selector=error_selector,
             error_cls=error_cls,
-            error_msg=error_msg
+            error_msg=error_msg,
         )
 
     @iframe_decorator
-    def wait_until_text_visible(self, selector: str, text: str, error_selector: Optional[str] = None,
-                                alt_text: Optional[str] = None, error_cls=None,
-                                error_msg: Optional[str] = None):
+    def wait_until_text_visible(
+        self,
+        selector: str,
+        text: str,
+        error_selector: Optional[str] = None,
+        alt_text: Optional[str] = None,
+        error_cls=None,
+        error_msg: Optional[str] = None,
+    ):
         return super().wait_until_text_visible(
             selector=selector,
             text=text,
             error_selector=error_selector,
             alt_text=alt_text,
             error_cls=error_cls,
-            error_msg=error_msg
+            error_msg=error_msg,
         )
 
 
@@ -166,7 +177,9 @@ class MeterPage(IFrameBasePageObject):
 
 class MeterSearchResult(IFrameBasePageObject):
     SearchResult = "table#meterTable tbody tr:first-child td:first-child.breakAll"
-    NoResultsFound = "table#meterTable tbody tr:first-child td:first-child.dataTables_empty"
+    NoResultsFound = (
+        "table#meterTable tbody tr:first-child td:first-child.dataTables_empty"
+    )
 
     def get_search_result(self):
         return self.find_element(self.SearchResult)
@@ -195,14 +208,15 @@ class AvailableDateComponent(IFrameBasePageObject):
         log.info("Extracting available dates.")
         available_date_arr = self._get_available_dates_element().text.split(" to ")
         start_date = datetime.strptime(
-            available_date_arr[0],
-            "Data available from {}".format(DATE_FORMAT)
+            available_date_arr[0], "Data available from {}".format(DATE_FORMAT)
         ).date()
         end_date = datetime.strptime(available_date_arr[1], DATE_FORMAT).date()
         return start_date, end_date
 
     @IFrameBasePageObject.iframe_decorator
-    def adjust_start_and_end_dates(self, start: datetime, end: datetime) -> Tuple[date, date]:
+    def adjust_start_and_end_dates(
+        self, start: datetime, end: datetime
+    ) -> Tuple[date, date]:
         min_start, max_end = self._extract_available_dates()
 
         if start < min_start:
@@ -251,8 +265,9 @@ class IntervalForm(IFrameBasePageObject):
         calendar_input.send_keys(IntervalForm._format_date(date_input))
 
     @IFrameBasePageObject.iframe_decorator
-    def fill_out_interval_form_and_download(self, start: datetime, end: datetime,
-                                            timeout: Optional[int] = 60):
+    def fill_out_interval_form_and_download(
+        self, start: datetime, end: datetime, timeout: Optional[int] = 60
+    ):
         log.info("Filling out interval form")
         # Fill out Report Start
         self._set_date(self.StartDate, IntervalForm._backup_start_date(start))
@@ -290,12 +305,12 @@ class HECOScraper(BaseWebScraper):
             if column_title.lower() in column.lower():
                 return pos
 
-        raise Exception("Expected column header not found for {}".format(
-            column_title)
-        )
+        raise Exception("Expected column header not found for {}".format(column_title))
 
     @staticmethod
-    def _remove_incomplete_demand_data(response: IntermediateReading, date_to_check: str):
+    def _remove_incomplete_demand_data(
+        response: IntermediateReading, date_to_check: str
+    ):
         """
         As we're iterating through the CSV, once all the demand data for a given
         day (date_to_check) is populated, we verify that the amount of data is
@@ -306,19 +321,25 @@ class HECOScraper(BaseWebScraper):
         """
         to_delete = False
         if len(response[date_to_check][DEMAND]) != EXPECTED_CSV_LEN:
-            log.info("Skipping partial day {}, unexpected CSV row length ({} != {}).".format(
-                date_to_check,
-                len(response[date_to_check]),
-                EXPECTED_CSV_LEN
-            ))
+            log.info(
+                "Skipping partial day {}, unexpected CSV row length ({} != {}).".format(
+                    date_to_check, len(response[date_to_check]), EXPECTED_CSV_LEN
+                )
+            )
             to_delete = True
 
         # First demand value expected at midnight
-        if response[date_to_check][TIME] and response[date_to_check][TIME][0] != "00:00":
+        if (
+            response[date_to_check][TIME]
+            and response[date_to_check][TIME][0] != "00:00"
+        ):
             to_delete = True
 
         # Final demand value for the day expected fifteen min before midnight
-        if response[date_to_check][TIME] and response[date_to_check][TIME][-1] != "23:45":
+        if (
+            response[date_to_check][TIME]
+            and response[date_to_check][TIME][-1] != "23:45"
+        ):
             to_delete = True
 
         if to_delete:
@@ -383,10 +404,7 @@ class HECOScraper(BaseWebScraper):
                     HECOScraper._remove_incomplete_demand_data(response, current_date)
 
                 if raw_date not in response:
-                    response[raw_date] = {
-                        TIME: [],
-                        DEMAND: []
-                    }
+                    response[raw_date] = {TIME: [], DEMAND: []}
 
                 # To cover gaps in csv data returned, some days may be pulled multiple times.
                 if len(response[raw_date][DEMAND]) < EXPECTED_CSV_LEN:
@@ -423,7 +441,6 @@ class HECOScraper(BaseWebScraper):
             error_selector=overview_page.LoginErrorSelector,
             error_cls=LoginError,
             error_msg="User ID and/or password not found.",
-
         )
         self.screenshot("before navigating to powertrax")
         overview_page.navigate_to_powertrax()
@@ -450,15 +467,14 @@ class HECOScraper(BaseWebScraper):
             error_selector=search_result.NoResultsFound,
             alt_text="No matching records found",
             error_cls=MeterNotFoundException,
-            error_msg="No matching records found for Meter ID {}".format(self.meter_id)
+            error_msg="No matching records found for Meter ID {}".format(self.meter_id),
         )
         self.screenshot("before clicking on meter result")
         search_result.click_on_meter_result()
 
         # Adjust start and end dates if supplied start and end are out of range
         adjusted_start, adjusted_end = available_dates.adjust_start_and_end_dates(
-            self.start_date,
-            self.end_date
+            self.start_date, self.end_date
         )
 
         date_range = DateRange(adjusted_start, adjusted_end)
@@ -473,11 +489,8 @@ class HECOScraper(BaseWebScraper):
             end = sub_range.end_date
 
             # Fill out interval form and click save to download data
-            interval_form.fill_out_interval_form_and_download(
-                start,
-                end
-            )
-            file_path = self.download_file('csv')
+            interval_form.fill_out_interval_form_and_download(start, end)
+            file_path = self.download_file("csv")
 
             # Extract intermediate info from csv
             self._process_csv(file_path, readings)

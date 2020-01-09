@@ -41,17 +41,17 @@ site_details_schema = {
                         "zip": {"type": "string"},
                         "timeZone": {"type": "string"},
                         "countryCode": {"type": "string"},
-                        "stateCode": {"type": "string"}
+                        "stateCode": {"type": "string"},
                     },
-                    "required": ["timeZone"]
+                    "required": ["timeZone"],
                 },
                 "primaryModule": {
                     "type": "object",
                     "properties": {
                         "manufacturerName": {"type": "string"},
                         "modelName": {"type": "string"},
-                        "maximumPower": {"type": "number"}
-                    }
+                        "maximumPower": {"type": "number"},
+                    },
                 },
                 "uris": {
                     "type": "object",
@@ -60,24 +60,20 @@ site_details_schema = {
                         "DATA_PERIOD": {"type": "string"},
                         "INSTALLER_IMAGE": {"type": "string"},
                         "DETAILS": {"type": "string"},
-                        "OVERVIEW": {"type": "string"}
-                    }
+                        "OVERVIEW": {"type": "string"},
+                    },
                 },
                 "publicSettings": {
                     "type": "object",
-                    "properties": {
-                        "isPublic": {"type": "boolean"}
-                    }
-                }
+                    "properties": {"isPublic": {"type": "boolean"}},
+                },
             },
-            "required": ["id", "name", "installationDate"]
+            "required": ["id", "name", "installationDate"],
         }
     },
     "type": "object",
-    "properties": {
-        "details": {"$ref": "#/definitions/site"}
-    },
-    "required": ["details"]
+    "properties": {"details": {"$ref": "#/definitions/site"}},
+    "required": ["details"],
 }
 
 
@@ -87,9 +83,9 @@ meter_energy_details_schema = {
             "type": "object",
             "properties": {
                 "date": {"type": "string", "format": "datetime"},
-                "value": {"type": "number"}
+                "value": {"type": "number"},
             },
-            "required": ["date"]
+            "required": ["date"],
         },
         "meter": {
             "type": "object",
@@ -100,33 +96,27 @@ meter_energy_details_schema = {
                 "meterType": {"type": "string"},
                 "values": {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/interval"}
+                    "items": {"$ref": "#/definitions/interval"},
                 },
             },
-            "required": ["meterSerialNumber"]
+            "required": ["meterSerialNumber"],
         },
         "site_readings": {
             "type": "object",
             "properties": {
                 "timeUnit": {"type": "string"},
                 "unit": {"type": "string"},
-                "meters": {
-                    "type": "array",
-                    "items": {"$ref": "#/definitions/meter"}
-                }
-            }
-        }
+                "meters": {"type": "array", "items": {"$ref": "#/definitions/meter"}},
+            },
+        },
     },
     "type": "object",
-    "properties": {
-        "meterEnergyDetails": {"$ref": "#/definitions/site_readings"}
-    }
+    "properties": {"meterEnergyDetails": {"$ref": "#/definitions/site_readings"}},
 }
 
-Site = namedtuple(
-    'Site', 'id, name, installation_date, link, time_zone, address')
+Site = namedtuple("Site", "id, name, installation_date, link, time_zone, address")
 # no end date here, so not importing from base
-Interval = namedtuple('Interval', 'start, kwh, serial_number')
+Interval = namedtuple("Interval", "start, kwh, serial_number")
 
 
 def _parse_datetime(text):
@@ -148,7 +138,7 @@ def parse_site(text):
         installation_date=rd.installationDate,
         time_zone=rd.location.timeZone,
         address=rd.location.address,
-        link=rd.uris.OVERVIEW
+        link=rd.uris.OVERVIEW,
     )
     return site
 
@@ -161,9 +151,11 @@ def parse_intervals(text):
             for reading in meter["values"]:
                 # Sometimes it doesn't have 'value'
                 if not reading.value:
-                    reading.value = float('nan')
-                ivl = Interval(start=_parse_datetime(reading.date),
-                               kwh=reading.value / 1000,
-                               serial_number=meter.meterSerialNumber)
+                    reading.value = float("nan")
+                ivl = Interval(
+                    start=_parse_datetime(reading.date),
+                    kwh=reading.value / 1000,
+                    serial_number=meter.meterSerialNumber,
+                )
                 intervals.append(ivl)
     return intervals

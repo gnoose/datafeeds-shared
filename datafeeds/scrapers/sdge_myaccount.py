@@ -41,21 +41,25 @@ from datafeeds.common.util.selenium import (
 
 class InvalidAccountException(Exception):
     """Raised when an account number cannot be found on the site."""
+
     pass
 
 
 class InvalidMeterException(Exception):
     """Raised when a meter number cannot be found on the site"""
+
     pass
 
 
 class InvalidIntervalDataException(Exception):
     """Indicates invalid interval (e.g. insufficient data for a day)"""
+
     pass
 
 
 class ScraperTimeout(Exception):
     """Indicates that a Selenium timeout occurred"""
+
     pass
 
 
@@ -64,10 +68,19 @@ log = logging.getLogger(__name__)
 
 # Represents a row in a CSV file downloaded from the SDGE MyAccount site.
 # The field names correspond to column names defined in such file.
-CsvRow = namedtuple("CsvRow", [
-    "MeterNumber", "Date", "StartTime", "Duration", "Value", "EditCode",
-    "FlowDirection", "TOU"
-])
+CsvRow = namedtuple(
+    "CsvRow",
+    [
+        "MeterNumber",
+        "Date",
+        "StartTime",
+        "Duration",
+        "Value",
+        "EditCode",
+        "FlowDirection",
+        "TOU",
+    ],
+)
 
 # An interval reading drawn from the SDGE CSV file. Has a date/time, and a
 # value (units, KW). The CSV has units of KWH, so the value here should
@@ -159,14 +172,15 @@ class ExportCsvDialog:
         """Wait until the page is ready to interact with."""
         with IFrameSwitch(self._driver, self.TargetIFrame):
             self._driver.wait().until(
-                EC.presence_of_element_located((By.CSS_SELECTOR,
-                                                self.StartDateCss)))
+                EC.presence_of_element_located((By.CSS_SELECTOR, self.StartDateCss))
+            )
 
     def get_available_meters(self):
         """Return an iterable of available meter ids"""
         with IFrameSwitch(self._driver, self.TargetIFrame):
             meter_selector = self._driver.find_element_by_css_selector(
-                self.SelectMeterCss)
+                self.SelectMeterCss
+            )
             for option in Select(meter_selector).options:
                 yield option.get_attribute("value")
 
@@ -178,7 +192,8 @@ class ExportCsvDialog:
         """
         with IFrameSwitch(self._driver, self.TargetIFrame):
             meter_selector = self._driver.find_element_by_css_selector(
-                self.SelectMeterCss)
+                self.SelectMeterCss
+            )
 
             select = Select(meter_selector)
 
@@ -210,8 +225,7 @@ class ExportCsvDialog:
         # elements occluding things I needed to interact with.
         with IFrameSwitch(self._driver, self.TargetIFrame):
             export = self._driver.find_element_by_css_selector(self.ExportCss)
-            background = self._driver.find_element_by_css_selector(
-                self.BackgroundCss)
+            background = self._driver.find_element_by_css_selector(self.BackgroundCss)
             action_chains = ActionChains(self._driver)
             action_chains.click(background)
             action_chains.pause(5)
@@ -226,13 +240,15 @@ class ExportCsvDialog:
             # Be a little more generous with this wait
             wait = WebDriverWait(self._driver, 120)
             wait.until(
-                EC.presence_of_element_located((By.CSS_SELECTOR,
-                                                self.DownloadCss)))
+                EC.presence_of_element_located((By.CSS_SELECTOR, self.DownloadCss))
+            )
 
             # Wait until the link has a certain href value (ends with .zip)
             self._driver.wait().until(
                 AttributeMatches(
-                    (By.CSS_SELECTOR, self.DownloadCss), "href", r".*\.zip"))
+                    (By.CSS_SELECTOR, self.DownloadCss), "href", r".*\.zip"
+                )
+            )
 
     def download_csv_file(self):
         """Download the CSV file to disk"""
@@ -265,10 +281,8 @@ class ExportCsvDialog:
     def set_date_range(self, start_date, end_date):
         """Set the export date range."""
         with IFrameSwitch(self._driver, self.TargetIFrame):
-            start_field = self._driver.find_element_by_css_selector(
-                self.StartDateCss)
-            end_field = self._driver.find_element_by_css_selector(
-                self.EndDateCss)
+            start_field = self._driver.find_element_by_css_selector(self.StartDateCss)
+            end_field = self._driver.find_element_by_css_selector(self.EndDateCss)
 
             # NOTE: we remove the readonly attribute on these elements
             # so that we can set their value directly (with send_keys)
@@ -288,8 +302,7 @@ class ExportCsvDialog:
     def get_min_start_date(self):
         """Get the min possible start date from the UI."""
         with IFrameSwitch(self._driver, self.TargetIFrame):
-            min_date_label = self._driver.find_element_by_css_selector(
-                self.MinDateCss)
+            min_date_label = self._driver.find_element_by_css_selector(self.MinDateCss)
             parts = min_date_label.text.split()
             date_str = parts[-1]
             return dateparser.parse(date_str).date()
@@ -297,8 +310,7 @@ class ExportCsvDialog:
     def get_max_start_date(self):
         """Get the max possible start date from the UI."""
         with IFrameSwitch(self._driver, self.TargetIFrame):
-            max_date_label = self._driver.find_element_by_css_selector(
-                self.MaxDateCss)
+            max_date_label = self._driver.find_element_by_css_selector(self.MaxDateCss)
             parts = max_date_label.text.split()
             date_str = parts[-1]
             return dateparser.parse(date_str).date()
@@ -341,7 +353,8 @@ class MyEnergyPage:
         account_selector = None
         try:
             account_selector = self._driver.find_element_by_css_selector(
-                self.AccountSelectorCss)
+                self.AccountSelectorCss
+            )
         except NoSuchElementException:
             pass
         return account_selector
@@ -350,16 +363,19 @@ class MyEnergyPage:
         """Wait until the page is ready to interact with."""
 
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            self.HiddenAccountNumberCss)))
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, self.HiddenAccountNumberCss)
+            )
+        )
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            self.ViewSelectorCss)))
+            EC.presence_of_element_located((By.CSS_SELECTOR, self.ViewSelectorCss))
+        )
 
     def get_active_account_number(self):
         """ Return the currently active account number."""
         hidden_input = self._driver.find_element_by_css_selector(
-            self.HiddenAccountNumberCss)
+            self.HiddenAccountNumberCss
+        )
         return hidden_input.get_attribute("value")
 
     def get_available_accounts(self):
@@ -396,8 +412,9 @@ class MyEnergyPage:
 
             self._driver.wait().until(
                 EC.text_to_be_present_in_element_value(
-                    (By.CSS_SELECTOR, self.HiddenAccountNumberCss),
-                    account_id))
+                    (By.CSS_SELECTOR, self.HiddenAccountNumberCss), account_id
+                )
+            )
             return True
 
         # Otherwise:
@@ -409,19 +426,19 @@ class MyEnergyPage:
 
     def select_my_energy_use(self):
         """Move to the 'Energy Use' view"""
-        view_selector = self._driver.find_element_by_css_selector(
-            self.ViewSelectorCss)
+        view_selector = self._driver.find_element_by_css_selector(self.ViewSelectorCss)
         Select(view_selector).select_by_visible_text("My Energy Use")
 
     def wait_until_energy_use_ready(self):
         """Wait until the 'Energy Use' view is ready to interact with."""
         self._driver.wait().until(
-            EC.presence_of_element_located((By.ID, self.TargetIFrame)))
+            EC.presence_of_element_located((By.ID, self.TargetIFrame))
+        )
 
         with IFrameSwitch(self._driver, self.TargetIFrame):
             self._driver.wait().until(
-                EC.presence_of_element_located((By.CSS_SELECTOR,
-                                                self.ExportLinkCss)))
+                EC.presence_of_element_located((By.CSS_SELECTOR, self.ExportLinkCss))
+            )
 
     def navigate_to_csv_export(self):
         """Open the export CSV dialog."""
@@ -429,8 +446,7 @@ class MyEnergyPage:
         @retry(stop_max_attempt_number=3, wait_fixed=10000)
         def click_csv_export():
             # This fails sometimes (for AJAX reasons), so retry.
-            self._driver.find_element_by_css_selector(
-                self.ExportLinkCss).click()
+            self._driver.find_element_by_css_selector(self.ExportLinkCss).click()
 
         with IFrameSwitch(self._driver, self.TargetIFrame):
             click_csv_export()
@@ -440,7 +456,7 @@ class HomePage:
     """Represents the SDGE MyAccount homepage, which appears post login."""
 
     AccountsCss = 'span[id="pt1:tblAccounts"]'
-    NavBarCss = 'div .navbar'
+    NavBarCss = "div .navbar"
     AccountCellCss = 'td[abbr="Account"]'
     PaperlessPopupCss = 'div[id="paperlessModal"]'
 
@@ -456,10 +472,11 @@ class HomePage:
         popup = None
         try:
             popup_wait.until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR,
-                                                  self.PaperlessPopupCss)))
-            popup = self._driver.find_element_by_css_selector(
-                self.PaperlessPopupCss)
+                EC.visibility_of_element_located(
+                    (By.CSS_SELECTOR, self.PaperlessPopupCss)
+                )
+            )
+            popup = self._driver.find_element_by_css_selector(self.PaperlessPopupCss)
         except:  # noqa: E722
             # If we can't find this popup, no worries
             pass
@@ -476,7 +493,8 @@ class HomePage:
         selectors = [self.NavBarCss, self.AccountsCss, self.AccountCellCss]
         for css in selectors:
             self._driver.wait().until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, css)))
+                EC.presence_of_element_located((By.CSS_SELECTOR, css))
+            )
 
     def navigate_to_my_energy(self):
         """Move to the 'My Energy' page"""
@@ -488,7 +506,8 @@ class HomePage:
         action_chains.perform()
 
         my_energy_overview = self._driver.find_element_by_link_text(
-            "My Energy Overview")
+            "My Energy Overview"
+        )
         my_energy_overview.click()
 
 
@@ -501,7 +520,7 @@ class LoginPage:
     PasswordFieldCss = 'input[id="Password"]'
     LoginButtonCss = 'button[id="jsLoginBtn"]'
     # always on page but hidden until bad credentials validated
-    FailedLoginSelector = '#UserIdPasswordInvalid'
+    FailedLoginSelector = "#UserIdPasswordInvalid"
 
     def __init__(self, driver):
         self._driver = driver
@@ -509,12 +528,11 @@ class LoginPage:
     def wait_until_ready(self):
         """Wait until the page is ready to interact with."""
         log.info("Waiting for 'Login' page to be ready...")
-        selectors = [
-            self.UsernameFieldCss, self.PasswordFieldCss, self.LoginButtonCss
-        ]
+        selectors = [self.UsernameFieldCss, self.PasswordFieldCss, self.LoginButtonCss]
         for css in selectors:
             self._driver.wait().until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, css)))
+                EC.presence_of_element_located((By.CSS_SELECTOR, css))
+            )
 
     def get_login_button(self):
         return self._driver.find_element_by_css_selector(self.LoginButtonCss)
@@ -526,7 +544,9 @@ class LoginPage:
         self.get_login_button().click()
         try:
             self._driver.wait(5).until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, self.FailedLoginSelector))
+                EC.visibility_of_element_located(
+                    (By.CSS_SELECTOR, self.FailedLoginSelector)
+                )
             )
             raise LoginError("Invalid username or login.")
         except TimeoutException:
@@ -574,14 +594,15 @@ def to_raw_reading(csv_row):
     kwh_value = float(csv_row.Value)
 
     # Multiply the KWH value by 4 to get KW
-    return RawReading(
-        date=reading_date, time=reading_time, value=kwh_value * 4)
+    return RawReading(date=reading_date, time=reading_time, value=kwh_value * 4)
 
 
-DST_STARTS = set(dt.date()
-                 for dt in rrule(YEARLY, bymonth=11, byweekday=SU(1),
-                                 dtstart=datetime(2000, 1, 1),
-                                 count=100))
+DST_STARTS = set(
+    dt.date()
+    for dt in rrule(
+        YEARLY, bymonth=11, byweekday=SU(1), dtstart=datetime(2000, 1, 1), count=100
+    )
+)
 
 
 def adjust_for_dst(day, readings):
@@ -599,9 +620,9 @@ class SdgeMyAccountScraper(BaseWebScraper):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.browser_name = 'Chrome'
-        self.name = 'SDGE MyAccount'
-        self.login_url = 'https://myaccount.sdge.com'
+        self.browser_name = "Chrome"
+        self.name = "SDGE MyAccount"
+        self.login_url = "https://myaccount.sdge.com"
 
     @property
     def account_id(self):
@@ -615,8 +636,7 @@ class SdgeMyAccountScraper(BaseWebScraper):
         try:
             return self._execute_internal()
         except TimeoutException:
-            raise ScraperTimeout(
-                "Scraper timed out waiting for an element to appear.")
+            raise ScraperTimeout("Scraper timed out waiting for an element to appear.")
 
     def _execute_internal(self):
         # Direct the driver to the login page
@@ -652,7 +672,8 @@ class SdgeMyAccountScraper(BaseWebScraper):
         if not my_energy_page.select_account(self.account_id):
             available_accounts = set(my_energy_page.get_available_accounts())
             error_msg = "Unable to find account with ID={0}. Available accounts are: {1}".format(
-                self.account_id, available_accounts)
+                self.account_id, available_accounts
+            )
             log.info(error_msg)
             raise InvalidAccountException(error_msg)
 
@@ -672,7 +693,8 @@ class SdgeMyAccountScraper(BaseWebScraper):
         if not export_csv_dialog.select_meter(self.service_id):
             available_meters = set(export_csv_dialog.get_available_meters())
             error_msg = "Unable to find meter with ID={0}. Available meters are: {1}".format(
-                self.service_id, available_meters)
+                self.service_id, available_meters
+            )
             raise InvalidMeterException(error_msg)
         self.screenshot("csv_export_dialog_meter_selected")
 
@@ -680,12 +702,14 @@ class SdgeMyAccountScraper(BaseWebScraper):
         min_date = export_csv_dialog.get_min_start_date()
         max_date = export_csv_dialog.get_max_start_date()
         if self.start_date < min_date:
-            log.info("Adjusting start date from {0} to {1}".format(
-                self.start_date, min_date))
+            log.info(
+                "Adjusting start date from {0} to {1}".format(self.start_date, min_date)
+            )
             self.start_date = min_date
         if self.end_date > max_date:
-            log.info("Adjusting end date from {0} to {1}".format(
-                self.end_date, max_date))
+            log.info(
+                "Adjusting end date from {0} to {1}".format(self.end_date, max_date)
+            )
             self.end_date = max_date
 
         # This page only allows you to download a certain amount of
@@ -703,8 +727,9 @@ class SdgeMyAccountScraper(BaseWebScraper):
             # Set the date range in the UI, then click "Export"
             log.info("Setting date range.")
             export_csv_dialog.set_date_range(start, end)
-            self.screenshot("csv_export_{0}-{1}".format(
-                start.isoformat(), end.isoformat()))
+            self.screenshot(
+                "csv_export_{0}-{1}".format(start.isoformat(), end.isoformat())
+            )
 
             log.info("Clicking 'Export' button.")
             export_csv_dialog.begin_export_csv()
@@ -745,7 +770,9 @@ class SdgeMyAccountScraper(BaseWebScraper):
             iso_str = key.strftime("%Y-%m-%d")
             sorted_readings = sorted(raw_readings[key], key=lambda r: r.time)
             if len(sorted_readings) == 96:
-                result[iso_str] = adjust_for_dst(key, [x.value for x in sorted_readings])
+                result[iso_str] = adjust_for_dst(
+                    key, [x.value for x in sorted_readings]
+                )
             else:
                 error_msg = "Incomplete interval data ({0}: {1} readings)"
                 error_msg = error_msg.format(iso_str, len(sorted_readings))

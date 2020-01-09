@@ -27,7 +27,7 @@ class AustinTXDatasource(UrjanetPyMySqlDataSource):
         Remove non-numeric values from the account number; the utility_account_id in the database
         may contain a letter.
         """
-        return re.sub(r'[^\d]', '', account_number.split("-")[0])
+        return re.sub(r"[^\d]", "", account_number.split("-")[0])
 
     def load_accounts(self) -> List[Account]:
         """Load accounts based on the account id"""
@@ -37,10 +37,7 @@ class AustinTXDatasource(UrjanetPyMySqlDataSource):
             WHERE AccountNumber=%s AND UtilityProvider = 'CityofAustinTX'
         """
         result_set = self.fetch_all(query, self.account_number)
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: str) -> List[Meter]:
         """Load meters matching a Gridium meter SAID.
@@ -51,8 +48,7 @@ class AustinTXDatasource(UrjanetPyMySqlDataSource):
         # The utility may totalize submeters, and have two meter numbers for one set of charges.
         # In this case, the SAID should contain both meter ids, separated by commas.
         query = "SELECT * FROM Meter WHERE ServiceType in %s AND AccountFK=%s AND MeterNumber in %s"
-        result_set = self.fetch_all(query, self.commodity_type.value, account_pk,
-                                    self.said.split(","))
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        result_set = self.fetch_all(
+            query, self.commodity_type.value, account_pk, self.said.split(",")
+        )
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]

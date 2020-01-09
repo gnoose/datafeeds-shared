@@ -14,8 +14,11 @@ class HecoBillingPeriod(GenericBillingPeriod):
         return self.account.TotalBillAmount - self.account.OutstandingBalance
 
     def get_total_usage(self) -> Decimal:
-        usages = [u for u in self.iter_unique_usages()
-                  if (u.MeasurementType == "general_consumption")]
+        usages = [
+            u
+            for u in self.iter_unique_usages()
+            if (u.MeasurementType == "general_consumption")
+        ]
 
         units = set(u.EnergyUnit for u in usages)
         if len(units) != 1:
@@ -28,10 +31,15 @@ class HecoBillingPeriod(GenericBillingPeriod):
 
 
 class HecoTransformer(UrjanetGridiumTransformer):
-    def filtered_accounts(self, urja_data: UrjanetData) -> List[Account]:  # pylint: disable=no-self-use
+    def filtered_accounts(
+        self, urja_data: UrjanetData
+    ) -> List[Account]:  # pylint: disable=no-self-use
         """StatementDate is not set for some Heco"""
-        return [account for account in urja_data.accounts
-                if account.IntervalEnd is not None and account.IntervalStart is not None]
+        return [
+            account
+            for account in urja_data.accounts
+            if account.IntervalEnd is not None and account.IntervalStart is not None
+        ]
 
     @staticmethod
     def billing_period(account: Account) -> HecoBillingPeriod:
@@ -41,4 +49,5 @@ class HecoTransformer(UrjanetGridiumTransformer):
     def ordered_accounts(filtered_accounts: List[Account]) -> List[Account]:
         """StatementDate is not set, so sort by IntervalEnd"""
         return sorted(
-            filtered_accounts, key=lambda x: (x.IntervalEnd, -x.PK), reverse=True)
+            filtered_accounts, key=lambda x: (x.IntervalEnd, -x.PK), reverse=True
+        )

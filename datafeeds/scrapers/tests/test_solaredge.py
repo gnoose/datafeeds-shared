@@ -289,7 +289,7 @@ class MockHttpResponse:
 
 
 class SessionTests(unittest.TestCase):
-    @patch('requests.get')
+    @patch("requests.get")
     def test_site_status_exceptions(self, requests_get):
         """The module throws an exception on an unexpected status code."""
         requests_get.side_effect = [MockHttpResponse(207, "some nonsense")]
@@ -298,7 +298,7 @@ class SessionTests(unittest.TestCase):
         with self.assertRaises(ApiError):
             sess.site()
 
-    @patch('requests.get')
+    @patch("requests.get")
     def test_site_returns_data(self, requests_get):
         """Module returns site data"""
         sd = json.loads(site_details.site_details)
@@ -308,44 +308,51 @@ class SessionTests(unittest.TestCase):
         site = sess.site()
         self.assertEqual(site.id, 12345678)
 
-    @patch('requests.get')
+    @patch("requests.get")
     def test_interval_returns_data(self, requests_get):
         """Module returns interval data"""
         mx = json.loads(meter_example.meter_example)
 
         requests_get.side_effect = [MockHttpResponse(200, json.dumps(mx))]
         sess = Session("API_BASE", "API_KEY")
-        ivls = sess.get_intervals("api_base",
-                                  datetime(2019, 11, 1, 11, 4, 16),
-                                  datetime(2019, 11, 2, 11, 4, 16),
-                                  "2019-01-01")
+        ivls = sess.get_intervals(
+            "api_base",
+            datetime(2019, 11, 1, 11, 4, 16),
+            datetime(2019, 11, 2, 11, 4, 16),
+            "2019-01-01",
+        )
         self.assertEqual(ivls[0][0].kwh, 15655.772)
 
-    @patch('requests.get')
+    @patch("requests.get")
     def test_interval_status_exceptions(self, requests_get):
         """The module throws an exception on an unexpected status code."""
         requests_get.side_effect = [MockHttpResponse(207, "some nonsense")]
 
         sess = Session("API_BASE", "API_KEY")
         with self.assertRaises(ApiError):
-            sess.get_intervals("api_base",
-                               datetime(2019, 11, 1, 11, 4, 16),
-                               datetime(2019, 11, 2, 11, 4, 16),
-                               "2019-01-01")
+            sess.get_intervals(
+                "api_base",
+                datetime(2019, 11, 1, 11, 4, 16),
+                datetime(2019, 11, 2, 11, 4, 16),
+                "2019-01-01",
+            )
 
-    @patch('requests.get')
+    @patch("requests.get")
     def test_interval_returns_data_multiple_months(self, requests_get):
         """For larger date ranges, the module gathers interval data month by
         month."""
         mx = json.loads(meter_example.meter_example)
         sess = Session("API_BASE", "API_KEY")
         datetimes = [datetime(2019, ii, 1) for ii in range(1, 10)]
-        requests_get.side_effect = [MockHttpResponse(200, json.dumps(mx))
-                                    for dt in datetimes]
-        ivls = sess.get_intervals("api_base",
-                                  datetime(2019, 1, 1, 11, 4, 16),
-                                  datetime(2019, 6, 2, 11, 4, 16),
-                                  "2019-01-01")
+        requests_get.side_effect = [
+            MockHttpResponse(200, json.dumps(mx)) for dt in datetimes
+        ]
+        ivls = sess.get_intervals(
+            "api_base",
+            datetime(2019, 1, 1, 11, 4, 16),
+            datetime(2019, 6, 2, 11, 4, 16),
+            "2019-01-01",
+        )
         print(ivls)
         # Example will produce 4 readings for each month
         self.assertEqual(len(ivls), 24)

@@ -6,7 +6,8 @@ from datafeeds.urjanet.model import (
     GridiumBillingPeriod,
     GridiumBillingPeriodCollection,
     DateIntervalTree,
-    Account, UrjanetData
+    Account,
+    UrjanetData,
 )
 
 log = logging.getLogger(__name__)
@@ -15,7 +16,7 @@ log = logging.getLogger(__name__)
 CONVERSIONS = {
     "ccf": Decimal("1.0"),
     "gallons": Decimal("0.0013368"),
-    "tgal": Decimal("1.3368")  # 1000 / 748.052
+    "tgal": Decimal("1.3368"),  # 1000 / 748.052
 }
 
 
@@ -42,7 +43,12 @@ class GenericBillingPeriod:
         seen = set()
         for meter in self.account.meters:
             for usage in meter.usages:
-                key = (usage.UsageAmount, usage.EnergyUnit, usage.IntervalStart, usage.IntervalEnd)
+                key = (
+                    usage.UsageAmount,
+                    usage.EnergyUnit,
+                    usage.IntervalStart,
+                    usage.IntervalEnd,
+                )
                 if key not in seen:
                     seen.add(key)
                     yield usage
@@ -89,37 +95,60 @@ def log_generic_billing_periods(bill_history: DateIntervalTree) -> None:
     log.debug("Billing periods")
     for ival in sorted(bill_history.intervals()):
         period_data = ival.data
-        log.debug("\t{} to {} ({} days)".format(ival.begin, ival.end, (ival.end - ival.begin).days))
+        log.debug(
+            "\t{} to {} ({} days)".format(
+                ival.begin, ival.end, (ival.end - ival.begin).days
+            )
+        )
         log.debug("\t\tUtility Charges:")
         for chg in period_data.iter_charges():
             log.debug(
                 "\t\t\tAmt=${0}\tName='{1}'\tPK={2}\t{3}\t{4}".format(
-                    chg.ChargeAmount, chg.ChargeActualName, chg.PK, chg.IntervalStart,
-                    chg.IntervalEnd))
+                    chg.ChargeAmount,
+                    chg.ChargeActualName,
+                    chg.PK,
+                    chg.IntervalStart,
+                    chg.IntervalEnd,
+                )
+            )
         log.debug("\t\tTotal Charge: ${}".format(period_data.get_total_charge()))
         log.debug("\t\tUsages:")
         for usg in period_data.iter_unique_usages():
             log.debug(
                 "\t\t\tAmt={0}{1}\tComponent={2}\tPK={3}\t{4}\t{5}".format(
-                    usg.UsageAmount, usg.EnergyUnit, usg.RateComponent, usg.PK, usg.IntervalStart,
-                    usg.IntervalEnd))
+                    usg.UsageAmount,
+                    usg.EnergyUnit,
+                    usg.RateComponent,
+                    usg.PK,
+                    usg.IntervalStart,
+                    usg.IntervalEnd,
+                )
+            )
         log.debug("\t\tTotal Usage: {}".format(period_data.get_total_usage()))
         log.debug("\t\tStatements:")
-        log.debug("\t\t\t{0}\tPK={1}".format(
-            period_data.account.SourceLink, period_data.account.PK))
+        log.debug(
+            "\t\t\t{0}\tPK={1}".format(
+                period_data.account.SourceLink, period_data.account.PK
+            )
+        )
 
 
 class UrjanetGridiumTransformer:
     @staticmethod
-    def filtered_accounts(urja_data: UrjanetData) -> List[Account]:  # pylint: disable=no-self-use
-        return [account for account in urja_data.accounts if account.StatementDate is not None]
+    def filtered_accounts(
+        urja_data: UrjanetData,
+    ) -> List[Account]:  # pylint: disable=no-self-use
+        return [
+            account
+            for account in urja_data.accounts
+            if account.StatementDate is not None
+        ]
 
     @staticmethod
     def ordered_accounts(filtered_accounts: List[Account]) -> List[Account]:
         # Process the account objects in reverse order by statement date, in case there are
         # corrections
-        return sorted(
-            filtered_accounts, key=lambda x: x.StatementDate, reverse=True)
+        return sorted(filtered_accounts, key=lambda x: x.StatementDate, reverse=True)
 
     @staticmethod
     def billing_period(account: Account) -> GenericBillingPeriod:
@@ -136,12 +165,20 @@ class UrjanetGridiumTransformer:
             if bill_history.overlaps(account.IntervalStart, account.IntervalEnd):
                 log.debug(
                     "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, account.IntervalStart, account.IntervalEnd))
+                        account.PK, account.IntervalStart, account.IntervalEnd
+                    )
+                )
             else:
-                log.debug("Adding billing period: account_pk={}, start={}, end={}".format(
-                    account.PK, account.IntervalStart, account.IntervalEnd))
-                bill_history.add(account.IntervalStart, account.IntervalEnd,
-                                 self.billing_period(account))
+                log.debug(
+                    "Adding billing period: account_pk={}, start={}, end={}".format(
+                        account.PK, account.IntervalStart, account.IntervalEnd
+                    )
+                )
+                bill_history.add(
+                    account.IntervalStart,
+                    account.IntervalEnd,
+                    self.billing_period(account),
+                )
 
         # Adjust date endpoints to avoid 1-day overlaps
         bill_history = DateIntervalTree.shift_endpoints(bill_history)
@@ -167,5 +204,7 @@ class UrjanetGridiumTransformer:
                     total_usage=period_data.get_total_usage(),
                     source_urls=period_data.get_source_urls(),
                     line_items=list(period_data.iter_charges()),
-                    tariff=None))
+                    tariff=None,
+                )
+            )
         return GridiumBillingPeriodCollection(periods=gridium_periods)

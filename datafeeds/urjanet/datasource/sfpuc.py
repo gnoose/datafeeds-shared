@@ -23,10 +23,7 @@ class SfpucWaterDatasource(UrjanetPyMySqlDataSource):
             WHERE AccountNumber=%s AND UtilityProvider = 'SanFranciscoPublicUtilities'
         """
         result_set = self.fetch_all(query, self.account_number)
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: str) -> List[Meter]:
         """Load meters for an account, optionally filtering by meter ID
@@ -41,6 +38,4 @@ class SfpucWaterDatasource(UrjanetPyMySqlDataSource):
         else:
             result_set = self.fetch_all(query, account_pk)
 
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]

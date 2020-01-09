@@ -24,6 +24,9 @@ jobs:
           name: Installing development dependencies
           command: pipenv install -r dev-requirements.txt
       - run:
+          name: Running Black (code formatting)
+          command: pipenv run black --check .
+      - run:
           name: Running lint
           command: pipenv run flake8 datafeeds ops
       #- run:

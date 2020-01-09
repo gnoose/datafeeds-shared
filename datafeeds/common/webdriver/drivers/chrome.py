@@ -4,7 +4,6 @@ from datafeeds.common.webdriver.drivers.base import BaseDriver
 
 
 class ChromeDriver(BaseDriver):
-
     def __init__(self, outputpath):
         super().__init__(outputpath)
         self._driver = webdriver.Chrome(chrome_options=self._options())
@@ -19,8 +18,10 @@ class ChromeDriver(BaseDriver):
         prefs["plugins.always_open_pdf_externally"] = True
         prefs["profile.default_content_setting_values.automatic_downloads"] = 1
         # Disable the PDF viewer so that PDFs are downloaded
-        prefs["plugins.plugins_list"] = [{"enabled": False, "name": "Chrome PDF Viewer"}]
+        prefs["plugins.plugins_list"] = [
+            {"enabled": False, "name": "Chrome PDF Viewer"}
+        ]
 
         options.add_experimental_option("prefs", prefs)
-        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument("--disable-dev-shm-usage")
         return options

@@ -19,22 +19,28 @@ DATA_DIR = os.path.join(TEST_DIR, "data/fortworth")
 
 
 class TestUrjanetFortWorthCityWaterTransformer(test_util.UrjaFixtureText):
-    def fort_worth_fixture_test(self, input_name, expected_name, start_date=None, end_date=None):
+    def fort_worth_fixture_test(
+        self, input_name, expected_name, start_date=None, end_date=None
+    ):
         self.fixture_test(
             transformer=GenericWaterTransformer(),
             input_path=os.path.join(DATA_DIR, input_name),
             expected_path=os.path.join(DATA_DIR, expected_name),
             start_date=start_date,
-            end_date=end_date
+            end_date=end_date,
         )
 
     def test_3821_staghorn_fixture(self):
         """Tests the Fort Worth water transformer on an account with water and sewer charges."""
-        self.fort_worth_fixture_test("3821_staghorn_input.json", "3821_staghorn_expected.json")
+        self.fort_worth_fixture_test(
+            "3821_staghorn_input.json", "3821_staghorn_expected.json"
+        )
 
     def test_12120_woodland_fixture(self):
         """Tests the Fort Worth water transformer on an account with water and sewer charges."""
-        self.fort_worth_fixture_test("12120_woodland_input.json", "12120_woodland_expected.json")
+        self.fort_worth_fixture_test(
+            "12120_woodland_input.json", "12120_woodland_expected.json"
+        )
 
 
 if __name__ == "__main__":

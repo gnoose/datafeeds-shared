@@ -51,7 +51,9 @@ class RegisteredCliHook(type):
         newclass = super(RegisteredCliHook, mcs).__new__(mcs, clsname, bases, attrs)
         cli_key = attrs.get("__cli_key__")
         if cli_key:
-            RegisteredCliHook.register(cli_key, newclass)  # here is your register function
+            RegisteredCliHook.register(
+                cli_key, newclass
+            )  # here is your register function
         return newclass
 
 
@@ -86,8 +88,11 @@ class PacgeCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.PacificGasElectricDataSource(args.account_number, args.service_id),
-            conn)
+            urja_datasource.PacificGasElectricDataSource(
+                args.account_number, args.service_id
+            ),
+            conn,
+        )
 
     def make_transformer(self):
         return urja_transformer.PacGeGridiumTransfomer()
@@ -103,7 +108,8 @@ class LadwpWaterCli(DatasourceCli):
     def make_datasource(self, conn, args):
         return self.setup_datasource(
             urja_datasource.LadwpWaterDatasource(args.account_number, args.service_id),
-            conn)
+            conn,
+        )
 
     def make_transformer(self):
         return urja_transformer.LadwpWaterTransformer()
@@ -117,8 +123,8 @@ class SfpucWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.SfpucWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.SfpucWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.SfpucWaterTransformer()
@@ -132,8 +138,8 @@ class FosterCityWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.FosterCityWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.FosterCityWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.FosterCityTransformer()
@@ -147,8 +153,8 @@ class ColleyvilleWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.ColleyvilleWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.ColleyvilleWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
@@ -162,8 +168,8 @@ class FortWorthWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.FortWorthWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.FortWorthWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
@@ -177,8 +183,8 @@ class SjWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.SjWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.SjWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
@@ -192,8 +198,8 @@ class SanDiegoWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.SanDiegoWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.SanDiegoWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
@@ -207,8 +213,8 @@ class SouthlakeCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.SouthlakeDatasource(args.account_number),
-            conn)
+            urja_datasource.SouthlakeDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.SouthlakeTransformer()
@@ -222,8 +228,8 @@ class WataugaCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.WataugaDatasource(args.account_number),
-            conn)
+            urja_datasource.WataugaDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.WataugaTransformer()
@@ -241,8 +247,8 @@ class IrvineRanchWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.IrvineRanchWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.IrvineRanchWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
@@ -256,8 +262,8 @@ class CalWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.CalWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.CalWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
@@ -271,8 +277,8 @@ class MountainViewCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.MountainViewDatasource(args.account_number),
-            conn)
+            urja_datasource.MountainViewDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
@@ -286,8 +292,8 @@ class PleasantonCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.PleasantonDatasource(args.account_number),
-            conn)
+            urja_datasource.PleasantonDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.GenericWaterTransformer()
@@ -301,8 +307,8 @@ class AmericanWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.AmericanWaterDatasource(args.account_number),
-            conn)
+            urja_datasource.AmericanWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.AmericanTransformer()
@@ -319,8 +325,11 @@ class AustinTXCli(DatasourceCli):
     def make_datasource(self, conn, args):
         commodity_type = urja_datasource.CommodityType[args.commodity_type]
         return self.setup_datasource(
-            urja_datasource.AustinTXDatasource(args.account_number, commodity_type, args.said),
-            conn)
+            urja_datasource.AustinTXDatasource(
+                args.account_number, commodity_type, args.said
+            ),
+            conn,
+        )
 
     def make_transformer(self):
         return urja_transformer.AustinTXTransformer()
@@ -335,8 +344,8 @@ class HecoCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            urja_datasource.HecoDatasource(args.account_number, args.said),
-            conn)
+            urja_datasource.HecoDatasource(args.account_number, args.said), conn
+        )
 
     def make_transformer(self):
         return urja_transformer.HecoTransformer()

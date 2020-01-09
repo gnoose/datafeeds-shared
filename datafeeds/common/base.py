@@ -113,7 +113,11 @@ class BaseScraper(Abstract):
         log.info("Launching %s", self.name)
         if self.username:
             log.info("Username: %s", self.username)
-        log.info("Date Range: %s - %s", self.start_date.strftime("%Y-%m-%d"), self.end_date.strftime("%Y-%m-%d"))
+        log.info(
+            "Date Range: %s - %s",
+            self.start_date.strftime("%Y-%m-%d"),
+            self.end_date.strftime("%Y-%m-%d"),
+        )
         log.info("Configuration:")
         for prop, value in vars(self._configuration).items():
             log.info("\t%s: %s", prop, value)
@@ -229,7 +233,7 @@ class BaseWebScraper(BaseScraper):
         self._shot_number += 1
         path = os.path.join(
             config.WORKING_DIRECTORY,
-            "screenshot{:02} - {}.png".format(self._shot_number, filename)
+            "screenshot{:02} - {}.png".format(self._shot_number, filename),
         )
         self._driver.screenshot(path, whole=whole)
 
@@ -237,7 +241,9 @@ class BaseWebScraper(BaseScraper):
         # Wait for csv to download
         wait = WebDriverWait(self._driver, timeout)
         download_dir = self._driver.download_dir
-        filename = wait.until(file_exists_in_dir(download_dir, r".*\.{}".format(extension)))
+        filename = wait.until(
+            file_exists_in_dir(download_dir, r".*\.{}".format(extension))
+        )
         file_path = os.path.join(download_dir, filename)
 
         return file_path
@@ -255,7 +261,9 @@ class BaseWebScraper(BaseScraper):
         outputpath = config.WORKING_DIRECTORY
 
         if browser != "Chrome":
-            raise UnsupportedBrowserError("Browser specified in config is not supported")
+            raise UnsupportedBrowserError(
+                "Browser specified in config is not supported"
+            )
 
         for _ in range(1, 11):
             log.info("Connecting to {}".format(browser))
@@ -273,6 +281,7 @@ class CSSSelectorBasePageObject(object):
     """
     Marker class for pages that only use CSS Selectors to interact.
     """
+
     def __init__(self, driver):
         self._driver = driver
 
@@ -292,8 +301,13 @@ class CSSSelectorBasePageObject(object):
             return False
         return True
 
-    def wait_for_condition_or_error(self, condition, error_condition=None,
-                                    error_cls=None, error_msg: Optional[str] = None):
+    def wait_for_condition_or_error(
+        self,
+        condition,
+        error_condition=None,
+        error_cls=None,
+        error_msg: Optional[str] = None,
+    ):
         """Convenience method that waits for a specific condition to be detected
         before proceeding.
 
@@ -304,26 +318,26 @@ class CSSSelectorBasePageObject(object):
         """
         if error_condition:
             # Waits for successful condition or error condition before proceeding
-            self._driver.wait().until(
-                ec_or(
-                    condition,
-                    error_condition
-                )
-            )
+            self._driver.wait().until(ec_or(condition, error_condition))
             # Pulls the css selector off of the expected conditions object
             if self.element_exists(error_condition.locator[1]):
                 raise error_cls(error_msg) if error_cls else Exception(error_msg)
         else:
-            self._driver.wait().until(
-                condition
-            )
+            self._driver.wait().until(condition)
 
-    def wait_until_ready(self, selector: str, error_selector: Optional[str] = None,
-                         error_cls=None, error_msg: Optional[str] = None):
+    def wait_until_ready(
+        self,
+        selector: str,
+        error_selector: Optional[str] = None,
+        error_cls=None,
+        error_msg: Optional[str] = None,
+    ):
         """Convenience method that waits until an element is detected via a css
         selector before proceeding.
         """
-        log.info("Waiting for {} ({}) to be ready.".format(self.__class__.__name__, selector))
+        log.info(
+            "Waiting for {} ({}) to be ready.".format(self.__class__.__name__, selector)
+        )
 
         condition = EC.presence_of_element_located((By.CSS_SELECTOR, selector))
         error_condition = None
@@ -337,12 +351,18 @@ class CSSSelectorBasePageObject(object):
             condition=condition,
             error_condition=error_condition,
             error_cls=error_cls,
-            error_msg=error_msg
+            error_msg=error_msg,
         )
 
-    def wait_until_text_visible(self, selector: str, text: str, error_selector: Optional[str] = None,
-                                alt_text: Optional[str] = None, error_cls=None,
-                                error_msg: Optional[str] = None):
+    def wait_until_text_visible(
+        self,
+        selector: str,
+        text: str,
+        error_selector: Optional[str] = None,
+        alt_text: Optional[str] = None,
+        error_cls=None,
+        error_msg: Optional[str] = None,
+    ):
         """Convenience method for waiting until specific text is present in the element.
         """
         log.info("Waiting for {} text to load.".format(self.__class__.__name__))
@@ -351,11 +371,13 @@ class CSSSelectorBasePageObject(object):
         error_condition = None
 
         if error_selector:
-            error_condition = EC.text_to_be_present_in_element((By.CSS_SELECTOR, error_selector), alt_text)
+            error_condition = EC.text_to_be_present_in_element(
+                (By.CSS_SELECTOR, error_selector), alt_text
+            )
 
         self.wait_for_condition_or_error(
             condition=condition,
             error_condition=error_condition,
             error_cls=error_cls,
-            error_msg=error_msg
+            error_msg=error_msg,
         )

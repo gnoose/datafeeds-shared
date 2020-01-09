@@ -38,7 +38,8 @@ class MockPyMySqlDataSource(UrjanetPyMySqlDataSource):
                 OutstandingBalance=Decimal(400),
                 PreviousBalance=Decimal(500),
                 meters=[],
-                floating_charges=[]),
+                floating_charges=[],
+            ),
             Account(
                 PK=2,
                 UtilityProvider="test_provider",
@@ -55,7 +56,8 @@ class MockPyMySqlDataSource(UrjanetPyMySqlDataSource):
                 OutstandingBalance=Decimal(401),
                 PreviousBalance=Decimal(501),
                 meters=[],
-                floating_charges=[]),
+                floating_charges=[],
+            ),
             Account(
                 PK=3,
                 UtilityProvider="test_provider",
@@ -72,7 +74,8 @@ class MockPyMySqlDataSource(UrjanetPyMySqlDataSource):
                 OutstandingBalance=Decimal(402),
                 PreviousBalance=Decimal(502),
                 meters=[],
-                floating_charges=[])
+                floating_charges=[],
+            ),
         ]
 
     def load_meters(self, account_pk):
@@ -85,7 +88,8 @@ class MockPyMySqlDataSource(UrjanetPyMySqlDataSource):
             IntervalStart=date(2016, 1, 1),
             IntervalEnd=date(2016, 2, 1),
             charges=[],
-            usages=[])
+            usages=[],
+        )
         if account_pk == 1:
             return [meter]
         return []
@@ -101,7 +105,8 @@ class MockPyMySqlDataSource(UrjanetPyMySqlDataSource):
             ChargeRatePerUnit=Decimal(4),
             IsAdjustmentCharge=False,
             IntervalStart=date(2016, 1, 1),
-            IntervalEnd=date(2016, 2, 1))
+            IntervalEnd=date(2016, 2, 1),
+        )
         if account_pk == 1 and meter_pk == 4:
             return [charge]
         return []
@@ -114,7 +119,8 @@ class MockPyMySqlDataSource(UrjanetPyMySqlDataSource):
             RateComponent="test_rate_component",
             EnergyUnit="test_energy_unit",
             IntervalStart=date(2016, 1, 1),
-            IntervalEnd=date(2016, 2, 1))
+            IntervalEnd=date(2016, 2, 1),
+        )
         if account_pk == 1 and meter_pk == 4:
             return [usage]
         return []
@@ -130,7 +136,8 @@ class MockPyMySqlDataSource(UrjanetPyMySqlDataSource):
             ChargeRatePerUnit=Decimal(4),
             IsAdjustmentCharge=False,
             IntervalStart=date(2017, 1, 1),
-            IntervalEnd=date(2017, 2, 1))
+            IntervalEnd=date(2017, 2, 1),
+        )
 
         if account_pk == 3:
             return [charge]

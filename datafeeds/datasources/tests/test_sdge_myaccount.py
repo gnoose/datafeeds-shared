@@ -29,7 +29,9 @@ class SDGEMyAccountTests(unittest.TestCase):
     def test_skip_disabled(self, slack):
         """Verify that a disabled datasource does not run."""
         meter_id = self.meter_ids[0]
-        mds = db.session.query(SnapmeterMeterDataSource).filter_by(_meter=meter_id).one()
+        mds = (
+            db.session.query(SnapmeterMeterDataSource).filter_by(_meter=meter_id).one()
+        )
         account = db.session.query(SnapmeterAccount).get(self.account_oid)
         meter = db.session.query(Meter).get(meter_id)
         mds.utility_account_id = str(meter_id)
@@ -41,8 +43,8 @@ class SDGEMyAccountTests(unittest.TestCase):
         db.session.add(account_ds)
         db.session.flush()
         self.assertRaises(
-            DataSourceConfigurationError,
-            sdge_ds.datafeed, account, meter, mds, params)
+            DataSourceConfigurationError, sdge_ds.datafeed, account, meter, mds, params
+        )
         slack.assert_not_called()
 
     @patch("datafeeds.common.batch.log")
@@ -53,7 +55,9 @@ class SDGEMyAccountTests(unittest.TestCase):
     def test_login_error(self, scrape, slack, _stop, _start, _log):
         """Verify that a LoginException disables related data sources."""
         meter_id = self.meter_ids[0]
-        mds = db.session.query(SnapmeterMeterDataSource).filter_by(_meter=meter_id).one()
+        mds = (
+            db.session.query(SnapmeterMeterDataSource).filter_by(_meter=meter_id).one()
+        )
         account = db.session.query(SnapmeterAccount).get(self.account_oid)
         meter = db.session.query(Meter).get(meter_id)
         mds.utility_account_id = str(meter_id)
@@ -80,7 +84,9 @@ class SDGEMyAccountTests(unittest.TestCase):
         self.assertTrue(account.name in msg)
         for meter_id in self.meter_ids:
             self.assertTrue(db.session.query(Meter).get(meter_id).name in msg)
-        slack.called_once_with(ANY, "#scrapers", ":exclamation:", username="Scraper monitor")
+        slack.called_once_with(
+            ANY, "#scrapers", ":exclamation:", username="Scraper monitor"
+        )
         # account data source disabled
         db.session.flush()
         db.session.refresh(account_ds)

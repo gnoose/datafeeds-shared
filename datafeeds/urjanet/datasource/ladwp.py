@@ -19,10 +19,7 @@ class LadwpWaterDatasource(UrjanetPyMySqlDataSource):
         """
         acct_no = self.account_number
         result_set = self.fetch_all(query, acct_no)
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: str) -> List[Meter]:
         """Load meters based on the service id"""
@@ -35,6 +32,4 @@ class LadwpWaterDatasource(UrjanetPyMySqlDataSource):
                 AND PODid=%s
         """
         result_set = self.fetch_all(query, account_pk, self.service_id)
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]

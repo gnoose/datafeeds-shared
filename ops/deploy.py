@@ -33,7 +33,7 @@ log = logging.getLogger(__name__)
 ecr_client = boto3.client("ecr", region_name=config.AWS_REGION_NAME)
 
 
-def post_message(message, channel, icon=':mega:'):
+def post_message(message, channel, icon=":mega:"):
     if not config.SLACK_TOKEN:
         return
 
@@ -41,7 +41,11 @@ def post_message(message, channel, icon=':mega:'):
         slack.api_token = config.SLACK_TOKEN
         slack.chat.post_message(channel, message, username="datafeeds", icon_emoji=icon)
     except Exception:
-        log.exception("Failed to post error message to slack. Channel: %s, Message: %s", channel, message)
+        log.exception(
+            "Failed to post error message to slack. Channel: %s, Message: %s",
+            channel,
+            message,
+        )
 
 
 def get_commit_id(branch: str) -> str:
@@ -76,25 +80,32 @@ def remove_image_tag(tag_to_remove: str, ecr_repo: str = "datafeeds") -> None:
     # note: the image is only removed if the only tag is removed
     tag_to_remove_exists = find_image_tag(tag_to_remove)
     if tag_to_remove_exists:
-        ecr_client.batch_delete_image(repositoryName=ecr_repo, imageIds=[{"imageTag": tag_to_remove}])
+        ecr_client.batch_delete_image(
+            repositoryName=ecr_repo, imageIds=[{"imageTag": tag_to_remove}]
+        )
     else:
         log.exception("No existing image found with tag: %s", tag_to_remove)
 
 
 def retag_image(current_tag: str, new_tag: str, ecr_repo: str = "datafeeds") -> None:
     image_manifest = ecr_client.batch_get_image(
-        repositoryName=ecr_repo, imageIds=[{"imageTag": current_tag}])["images"][0]["imageManifest"]
-    ecr_client.put_image(repositoryName="datafeeds", imageManifest=image_manifest, imageTag=new_tag)
+        repositoryName=ecr_repo, imageIds=[{"imageTag": current_tag}]
+    )["images"][0]["imageManifest"]
+    ecr_client.put_image(
+        repositoryName="datafeeds", imageManifest=image_manifest, imageTag=new_tag
+    )
     log.info("Tagged image with existing tag %s with %s tag", current_tag, new_tag)
 
 
 ######################################################
 
 
-parser = argparse.ArgumentParser(description='Deploy a datafeeds image')
+parser = argparse.ArgumentParser(description="Deploy a datafeeds image")
 group = parser.add_mutually_exclusive_group(required=False)
-group.add_argument('--branch', type=str, help='the git branch to deploy', default='master')
-group.add_argument('--githash', type=str, help='the git commit hash to deploy')
+group.add_argument(
+    "--branch", type=str, help="the git branch to deploy", default="master"
+)
+group.add_argument("--githash", type=str, help="the git commit hash to deploy")
 
 
 def main():
@@ -117,10 +128,15 @@ def main():
             remove_image_tag(DEPLOY_TAG)
             retag_image(commit_id, DEPLOY_TAG)
             log.info("Retagging image completed successfully for %s.", commit_id)
-            post_message("Retagging image completed successfully for %s." % commit_id, slack_channel)
+            post_message(
+                "Retagging image completed successfully for %s." % commit_id,
+                slack_channel,
+            )
         except Exception:  # noqa E722
             log.exception("Retagging image failed for %s", commit_id)
-            post_message("Retagging image failed for %s" % commit_id, slack_channel, icon=":x:")
+            post_message(
+                "Retagging image failed for %s" % commit_id, slack_channel, icon=":x:"
+            )
             sys.exit(1)
 
     log.info("Done.")

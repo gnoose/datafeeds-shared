@@ -36,9 +36,18 @@ def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
     log.info("Wrote bill data to %s." % path)
 
 
-def upload_readings(transforms, task_id: str, meter_oid: int, account_hex_id: str, scraper: str, readings):
+def upload_readings(
+    transforms,
+    task_id: str,
+    meter_oid: int,
+    account_hex_id: str,
+    scraper: str,
+    readings,
+):
     if readings and config.enabled("PLATFORM_UPLOAD"):
-        readings = interval_transform.transform(transforms, task_id, scraper, meter_oid, readings)
+        readings = interval_transform.transform(
+            transforms, task_id, scraper, meter_oid, readings
+        )
         _upload_via_webapps(readings, account_hex_id, meter_oid)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
@@ -64,37 +73,39 @@ def _upload_to_platform(service_id: str, billing_data: BillingData):
         if not bill:
             continue
 
-        bills.append({
-            "start": bill.start.strftime("%Y-%m-%d"),
-            "end": bill.end.strftime("%Y-%m-%d"),
-            "cost": str(bill.cost),
-            "used": bill.used,
-            "peak": bill.peak,
-            "items": [
-                {
-                    "description": item.description,
-                    "quantity": item.quantity,
-                    "rate": item.rate,
-                    "total": item.total,
-                    "kind": item.kind,
-                    "unit": item.unit
-                }
-                for item in (bill.items or [])
-            ],
-            "attachments": [
-                {
-                    "key": attachment.key,
-                    "kind": attachment.kind,
-                    "format": attachment.format
-                }
-                for attachment in (bill.attachments or [])
-            ]
-        })
+        bills.append(
+            {
+                "start": bill.start.strftime("%Y-%m-%d"),
+                "end": bill.end.strftime("%Y-%m-%d"),
+                "cost": str(bill.cost),
+                "used": bill.used,
+                "peak": bill.peak,
+                "items": [
+                    {
+                        "description": item.description,
+                        "quantity": item.quantity,
+                        "rate": item.rate,
+                        "total": item.total,
+                        "kind": item.kind,
+                        "unit": item.unit,
+                    }
+                    for item in (bill.items or [])
+                ],
+                "attachments": [
+                    {
+                        "key": attachment.key,
+                        "kind": attachment.kind,
+                        "format": attachment.format,
+                    }
+                    for attachment in (bill.attachments or [])
+                ],
+            }
+        )
 
     log.info("Posting data to platform.")
     platform.post(
         "/object/utility-service/{}/bills/import".format(service_id),
-        {"importance": "product", "bills": bills}
+        {"importance": "product", "bills": bills},
     )
 
 
@@ -125,10 +136,11 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
         data_to_upload[key] = data[key]
         if len(data_to_upload) == UPLOAD_DATA_BATCH_SIZE:
             log.debug(
-                "Uploading %d-%d of %d" % (
+                "Uploading %d-%d of %d"
+                % (
                     batch_number * UPLOAD_DATA_BATCH_SIZE,
                     (batch_number * UPLOAD_DATA_BATCH_SIZE) + UPLOAD_DATA_BATCH_SIZE,
-                    len(data)
+                    len(data),
                 )
             )
 
@@ -137,8 +149,8 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
                 dict(
                     transaction=transaction_oid,
                     readings=json.dumps(data_to_upload),
-                    dstStrategy=dst_strategy
-                )
+                    dstStrategy=dst_strategy,
+                ),
             )
 
             data_to_upload = {}
@@ -151,8 +163,8 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
             dict(
                 transaction=transaction_oid,
                 readings=json.dumps(data_to_upload),
-                dstStrategy=dst_strategy
-            )
+                dstStrategy=dst_strategy,
+            ),
         )
 
     webapps.post("/transactions/commit", {"oid": transaction_oid})

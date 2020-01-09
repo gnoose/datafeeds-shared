@@ -12,8 +12,12 @@ from datafeeds.urjanet.model import (
     GridiumBillingPeriod,
     GridiumBillingPeriodCollection,
     DateIntervalTree,
-    Charge, Usage, Account, UrjanetData,
-    log_usage, log_charge
+    Charge,
+    Usage,
+    Account,
+    UrjanetData,
+    log_usage,
+    log_charge,
 )
 
 
@@ -36,17 +40,25 @@ def log_pacge_billing_periods(bill_history: DateIntervalTree) -> None:
         log.debug("\t\tUtility Charges:")
         for chg in period_data.utility_charges:
             log.debug(
-                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}".format(chg.ChargeAmount, chg.ChargeActualName, chg.PK))
+                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}".format(
+                    chg.ChargeAmount, chg.ChargeActualName, chg.PK
+                )
+            )
         log.debug("\t\tThird Party Charges:")
         for chg in period_data.third_party_charges:
             log.debug(
-                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}".format(chg.ChargeAmount, chg.ChargeActualName, chg.PK))
+                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}".format(
+                    chg.ChargeAmount, chg.ChargeActualName, chg.PK
+                )
+            )
         log.debug("\t\tTotal Charge: ${}".format(period_data.get_total_charge()))
         log.debug("\t\tUsages:")
         for usg in period_data.usages:
             log.debug(
                 "\t\t\tAmt={0}{1}\tComponent={2}\tPK={3}".format(
-                    usg.UsageAmount, usg.EnergyUnit, usg.RateComponent, usg.PK))
+                    usg.UsageAmount, usg.EnergyUnit, usg.RateComponent, usg.PK
+                )
+            )
         log.debug("\t\tStatements:")
         for stmt in period_data.source_statements:
             log.debug("\t\t\t{0}\tPK={1}".format(stmt.SourceLink, stmt.PK))
@@ -104,9 +116,10 @@ class PacGeBillingPeriodData:
         """
 
         def filter_for_total(usage):
-            return \
-                usage.RateComponent == '[total]' \
-                and usage.EnergyUnit in ['kWh', 'therms']
+            return usage.RateComponent == "[total]" and usage.EnergyUnit in [
+                "kWh",
+                "therms",
+            ]
 
         return sum([u.UsageAmount for u in self.usages if filter_for_total(u)])
 
@@ -121,13 +134,14 @@ class PacGeBillingPeriodData:
         """
 
         def filter_for_peak(usage):
-            return usage.EnergyUnit in ['kW']
+            return usage.EnergyUnit in ["kW"]
 
         return max(
             [u.UsageAmount for u in self.usages if filter_for_peak(u)],
-            default=Decimal(0))
+            default=Decimal(0),
+        )
 
-    def merge(self, other: 'PacGeBillingPeriodData') -> bool:
+    def merge(self, other: "PacGeBillingPeriodData") -> bool:
         """Merge another set of billing period data into this billing period data
 
         Arguments:
@@ -143,14 +157,18 @@ class PacGeBillingPeriodData:
                 self.third_party_charges = other.third_party_charges
                 modified = True
             else:
-                log.debug("Billing period already has third party charges, not adding new data")
+                log.debug(
+                    "Billing period already has third party charges, not adding new data"
+                )
 
         if other.has_utility_charges():
             if not self.has_utility_charges():
                 self.utility_charges = other.utility_charges
                 modified = True
             else:
-                log.debug("Billing period already has utility charges, not adding new data")
+                log.debug(
+                    "Billing period already has utility charges, not adding new data"
+                )
 
         if other.has_usages():
             if not self.has_usages():
@@ -170,7 +188,8 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
         # Process the account objects in reverse order by statement date. The main motivation here is corrections;
         # we want to process the most recent billing date first, and ignore earlier data for those same dates.
         ordered_accounts = sorted(
-            urja_data.accounts, key=lambda x: x.StatementDate, reverse=True)
+            urja_data.accounts, key=lambda x: x.StatementDate, reverse=True
+        )
 
         # First, we rough out the billing period dates, by iterating through the ordered accounts and pulling out
         # usage periods
@@ -181,9 +200,7 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
                 if bill_history.overlaps(ival.begin, ival.end):
                     log.debug(
                         "Skipping overlapping usage period: account_pk={}, start={}, end={}".format(
-                            account.PK,
-                            ival.begin,
-                            ival.end
+                            account.PK, ival.begin, ival.end
                         )
                     )
                 else:
@@ -209,11 +226,17 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
                     peak_demand=period_data.get_peak_demand(),
                     total_usage=period_data.get_total_usage(),
                     source_urls=period_data.get_source_urls(),
-                    line_items=(period_data.utility_charges + period_data.third_party_charges),
-                    tariff=None))
+                    line_items=(
+                        period_data.utility_charges + period_data.third_party_charges
+                    ),
+                    tariff=None,
+                )
+            )
         return GridiumBillingPeriodCollection(periods=gridium_periods)
 
-    def get_best_interval_fits(self, bill_history: DateIntervalTree, begin: date, end: date) -> List[Interval]:
+    def get_best_interval_fits(
+        self, bill_history: DateIntervalTree, begin: date, end: date
+    ) -> List[Interval]:
         """Find the best matches for a given date range in the given interval tree
 
         This is a little fuzzier than we might like, because PG&E tends to shift start/end dates by one day
@@ -238,7 +261,9 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
                     candidates.append(overlap)
         return candidates
 
-    def merge_statement_data(self, bill_history: DateIntervalTree, urja_account: Account) -> None:
+    def merge_statement_data(
+        self, bill_history: DateIntervalTree, urja_account: Account
+    ) -> None:
         """Merge in data from a given statement into the overall bill history.
 
         Arguments:
@@ -259,7 +284,9 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
         # which existing billing period it falls into.
         for meter in urja_account.meters:
             for charge in meter.charges:
-                periods = self.get_best_interval_fits(bill_history, charge.IntervalStart, charge.IntervalEnd)
+                periods = self.get_best_interval_fits(
+                    bill_history, charge.IntervalStart, charge.IntervalEnd
+                )
                 if len(periods) == 1:
                     period = periods[0]
                     if charge.IntervalEnd <= period.end:
@@ -277,19 +304,25 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
                         log.debug("Charge end date exceeds billing period, skipping:")
                         log_charge(log, charge, indent=1)
                 elif not periods:
-                    log.debug("Charge doesn't belong to a known billing period, skipping:")
+                    log.debug(
+                        "Charge doesn't belong to a known billing period, skipping:"
+                    )
                     log_charge(log, charge, indent=1)
                 else:
                     log.debug("Charge maps to multiple billing periods, skipping:")
                     log_charge(log, charge, indent=1)
 
             for usage in meter.usages:
-                periods = self.get_best_interval_fits(bill_history, usage.IntervalStart, usage.IntervalEnd)
+                periods = self.get_best_interval_fits(
+                    bill_history, usage.IntervalStart, usage.IntervalEnd
+                )
                 if len(periods) == 1:
                     period = periods[0]
                     statement_data[period].add_usage(usage)
                 elif not periods:
-                    log.debug("Usage doesn't belong to a known billing period, skipping:")
+                    log.debug(
+                        "Usage doesn't belong to a known billing period, skipping:"
+                    )
                     log_usage(log, usage, indent=1)
                 else:
                     log.debug("Usage maps to multiple billing periods, skipping:")
@@ -303,7 +336,9 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
             if data_added:
                 cur_data.add_source_statement(urja_account)
 
-    def get_account_billing_periods(self, account: Account, max_duration: int = 45) -> DateIntervalTree:
+    def get_account_billing_periods(
+        self, account: Account, max_duration: int = 45
+    ) -> DateIntervalTree:
         """Extract the usage periods for a given Urjanet Account object
 
         Recall that the Account object in Urjanet contains data about a given utility account within a single
@@ -323,7 +358,10 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
                     duration = (usage_end - usage_start).days
                     if max_duration and duration > max_duration:
                         log.debug(
-                            "Filtering long usage period: {} to {} ({} days)".format(usage_start, usage_end, duration))
+                            "Filtering long usage period: {} to {} ({} days)".format(
+                                usage_start, usage_end, duration
+                            )
+                        )
                         continue
                     ival_tree.add(usage_start, usage_end)
         ival_tree.merge_overlaps()
@@ -332,7 +370,10 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
     def is_nem_charge(self, charge: Charge) -> bool:
         """Determines whether an Urjanet charge object represents an NEM charge"""
         nem_charge_names = ["Total NEM Charges Before Taxes"]
-        return any(charge.ChargeActualName.lower() == nem_name.lower() for nem_name in nem_charge_names)
+        return any(
+            charge.ChargeActualName.lower() == nem_name.lower()
+            for nem_name in nem_charge_names
+        )
 
     def is_correction_charge(self, charge: Charge) -> bool:
         """Determines whether an Urjanet charge object represents a correction.

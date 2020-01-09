@@ -11,7 +11,7 @@ from datafeeds import config
 
 log = logging.getLogger(__name__)
 
-MULTIPART_BOUNDARY = 'AaB03x'
+MULTIPART_BOUNDARY = "AaB03x"
 
 
 @deprecated(details="To be removed when we deprecate stasis transactions.")
@@ -20,19 +20,19 @@ def post(uri, params=None):
         params = {}
 
     uri = _build_uri(uri)
-    data = parse.urlencode(params).encode('utf-8')
+    data = parse.urlencode(params).encode("utf-8")
 
     log.debug("Webapps Request: %s : %s", uri, data)
 
     try:
         conn = _create_request()
-        conn.request('POST', uri, data)
+        conn.request("POST", uri, data)
         response = conn.getresponse()
     except client.HTTPException as e:
         if e.code == 500:
             errors = json.loads(e.read().decode())
             if errors:
-                raise Exception(errors['errors'])
+                raise Exception(errors["errors"])
         raise
 
     if response.code >= 400:
@@ -40,7 +40,7 @@ def post(uri, params=None):
 
     data = response.read()
     log.debug("Webapps Response: %s : %s", response.code, data)
-    return json.loads(data.decode('utf-8'))
+    return json.loads(data.decode("utf-8"))
 
 
 @deprecated(details="To be removed when we deprecate stasis transactions.")
@@ -53,11 +53,8 @@ def _build_uri(uri, params=None):
     if params is None:
         params = {}
 
-    params['token'] = config.WEBAPPS_TOKEN
-    if uri[0] != '/':
-        uri = '/' + uri
+    params["token"] = config.WEBAPPS_TOKEN
+    if uri[0] != "/":
+        uri = "/" + uri
 
-    return '%s?%s' % (
-        uri,
-        parse.urlencode(params)
-    )
+    return "%s?%s" % (uri, parse.urlencode(params))

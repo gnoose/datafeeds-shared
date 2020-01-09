@@ -1,13 +1,21 @@
 from typing import Optional
-from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource as MeterDataSource
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 from datafeeds.urjanet.datasource import MountainViewDatasource
 from datafeeds.urjanet.transformer import GenericWaterTransformer
 from datafeeds.common.batch import run_urjanet_datafeed
 
 
-def datafeed(account: SnapmeterAccount, meter: Meter,
-             datasource: MeterDataSource, params: dict,
-             task_id: Optional[str] = None):
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+):
     return run_urjanet_datafeed(
         account,
         meter,
@@ -15,4 +23,5 @@ def datafeed(account: SnapmeterAccount, meter: Meter,
         params,
         MountainViewDatasource(meter.utility_account_id),
         GenericWaterTransformer(),
-        task_id)
+        task_id,
+    )

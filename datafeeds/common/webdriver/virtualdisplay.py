@@ -9,12 +9,10 @@ from datafeeds import config
 log = logging.getLogger("datafeeds")
 
 
-class VirtualDisplay():
-
+class VirtualDisplay:
     def __init__(self):
         self._display = pyvirtualdisplay.Display(
-            visible=config.DEBUG_SELENIUM_SCRAPERS,
-            size=(1900, 1200)
+            visible=config.DEBUG_SELENIUM_SCRAPERS, size=(1900, 1200)
         )
 
     def __enter__(self):

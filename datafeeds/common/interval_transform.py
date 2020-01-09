@@ -27,7 +27,12 @@ def _interval_percentile(meter_id: int, readings: IntervalReadings):
     query = "select count(*) from meter_reading where meter=:meter and occurred >= :dt"
     days = db.session.execute(query, {"meter": meter_id, "dt": min_dt}).first()[0]
     if days < PERCENTILE_MIN_DAYS:
-        log.info("meter %s has %s days since %s; skipping outlier check", meter_id, days, min_dt)
+        log.info(
+            "meter %s has %s days since %s; skipping outlier check",
+            meter_id,
+            days,
+            min_dt,
+        )
         return None
     # get 95th percentile over previous 10 days
     # use json_array_elements to flatten readings array into values, then cast to numeric
@@ -47,7 +52,9 @@ def _interval_percentile(meter_id: int, readings: IntervalReadings):
     return db.session.execute(query, params).first()[0]
 
 
-def remove_outliers(readings: IntervalReadings, meter: Meter) -> Tuple[IntervalReadings, List[IntervalIssue]]:
+def remove_outliers(
+    readings: IntervalReadings, meter: Meter
+) -> Tuple[IntervalReadings, List[IntervalIssue]]:
     """Replace readings > 10x the 95th percentile with None.
 
     Return updated readings and list of issues.
@@ -68,10 +75,13 @@ def remove_outliers(readings: IntervalReadings, meter: Meter) -> Tuple[IntervalR
             bad_indexes.add(idx)
             interval_dt = day_dt + timedelta(minutes=(idx * meter.interval))
             meter_tz = tz.gettz(meter.timezone)
-            issues.append(IntervalIssue(
-                interval_dt=interval_dt.replace(tzinfo=meter_tz),
-                error="interval value > 10x 95th percentile",
-                value=val))
+            issues.append(
+                IntervalIssue(
+                    interval_dt=interval_dt.replace(tzinfo=meter_tz),
+                    error="interval value > 10x 95th percentile",
+                    value=val,
+                )
+            )
         for idx in bad_indexes:
             transformed[day][idx] = None
 
@@ -82,8 +92,13 @@ class Transforms(Enum):
     outliers = partial(remove_outliers)
 
 
-def transform(transforms: List[Transforms], task_id: Optional[str], scraper: str, meter_id: int,
-              readings: IntervalReadings) -> IntervalReadings:
+def transform(
+    transforms: List[Transforms],
+    task_id: Optional[str],
+    scraper: str,
+    meter_id: int,
+    readings: IntervalReadings,
+) -> IntervalReadings:
     """Transform interval readings data before sending to webapps.
 
     Readings data looks like {'2017-04-02' : [59.1, 30.2,...]}
@@ -94,10 +109,12 @@ def transform(transforms: List[Transforms], task_id: Optional[str], scraper: str
         return readings
     # get meter and account
     meter = db.session.query(Meter).get(meter_id)
-    account = db.session.query(SnapmeterAccount).\
-        filter(SnapmeterAccountMeter.meter == meter_id).\
-        filter(SnapmeterAccount.oid == SnapmeterAccountMeter.account).\
-        first()
+    account = (
+        db.session.query(SnapmeterAccount)
+        .filter(SnapmeterAccountMeter.meter == meter_id)
+        .filter(SnapmeterAccount.oid == SnapmeterAccountMeter.account)
+        .first()
+    )
     if not meter or not account:
         log.error("cannot load meter or account for meter %s", meter_id)
         return readings
@@ -111,9 +128,18 @@ def transform(transforms: List[Transforms], task_id: Optional[str], scraper: str
             all_issues += issues
         except Exception as e:
             # don't want to lose the data if something goes wrong
-            log.error("error transforming %s meter %s: %s %s", action, meter_id, readings, e)
+            log.error(
+                "error transforming %s meter %s: %s %s", action, meter_id, readings, e
+            )
     if all_issues:
-        index.index_etl_interval_issues(task_id, account.hex_id, account.name, meter.oid, meter.name, scraper,
-                                        all_issues)
+        index.index_etl_interval_issues(
+            task_id,
+            account.hex_id,
+            account.name,
+            meter.oid,
+            meter.name,
+            scraper,
+            all_issues,
+        )
 
     return transformed

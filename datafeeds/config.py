@@ -19,10 +19,14 @@ DATAFEEDS_ENVIRONMENT = os.environ.get("DATAFEEDS_ENVIRONMENT", "local").lower()
 UNDER_TEST: bool = (os.environ.get("DATAFEEDS_UNDER_TEST", "True").lower() == "true")
 
 # What directory should be used for storing scraper artifacts like screenshots and downloads?
-WORKING_DIRECTORY: str = os.environ.get("WORKING_DIRECTORY", path.join(DATAFEEDS_ROOT, "workdir"))
+WORKING_DIRECTORY: str = os.environ.get(
+    "WORKING_DIRECTORY", path.join(DATAFEEDS_ROOT, "workdir")
+)
 
 # What is the full URL needed to log into the PostgreSQL instance? (Hostname, username, password, and dbname)
-POSTGRES_URL: str = os.environ.get("POSTGRES_URL", "postgresql+psycopg2://postgres@pg/gridium_test")
+POSTGRES_URL: str = os.environ.get(
+    "POSTGRES_URL", "postgresql+psycopg2://postgres@pg/gridium_test"
+)
 
 # Should every SQL query run by datafeeds be echoed to the console?
 POSTGRES_ECHO: bool = (os.environ.get("POSTGRES_ECHO", "False").lower() == "true")
@@ -32,7 +36,9 @@ POSTGRES_ECHO: bool = (os.environ.get("POSTGRES_ECHO", "False").lower() == "true
 BILL_PDF_S3_BUCKET = os.environ.get("BILL_PDF_S3_BUCKET")
 
 # Which S3 bucket should store the compressed working directory of artifacts for each scraper run?
-ARTIFACT_S3_BUCKET: str = os.environ.get("ARTIFACT_S3_BUCKET", "gridium-dev-datafeeds-archive")
+ARTIFACT_S3_BUCKET: str = os.environ.get(
+    "ARTIFACT_S3_BUCKET", "gridium-dev-datafeeds-archive"
+)
 
 # What are the network details and credentials needed to connect to the urjanet MySQL database?
 URJANET_MYSQL_HOST: str = os.environ.get("URJANET_MYSQL_HOST", "urjanet")
@@ -73,14 +79,22 @@ INGEST_ENDPOINT: str = os.environ.get("INGEST_ENDPOINT")
 # PLATFORM_UPLOAD: After a scraper run, scrapers will upload their interval/bill data to platform.
 # ES_INDEX_JOBS: As part of the scraping process, we will upload current task to elasticsearch for use in dashboards.
 #
-VALID_FEATURE_FLAGS: Set[str] = {"S3_ARTIFACT_UPLOAD", "S3_BILL_UPLOAD", "PLATFORM_UPLOAD", "ES_INDEX_JOBS"}
-FEATURE_FLAGS: Set[str] = \
-    set(u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")) & VALID_FEATURE_FLAGS
+VALID_FEATURE_FLAGS: Set[str] = {
+    "S3_ARTIFACT_UPLOAD",
+    "S3_BILL_UPLOAD",
+    "PLATFORM_UPLOAD",
+    "ES_INDEX_JOBS",
+}
+FEATURE_FLAGS: Set[str] = set(
+    u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")
+) & VALID_FEATURE_FLAGS
 
 
 def enabled(feature: str) -> bool:
     if feature not in VALID_FEATURE_FLAGS:
-        raise Exception("%s is not a valid feature flag. Add it to VALID_FEATURE_FLAGS in the config module.")
+        raise Exception(
+            "%s is not a valid feature flag. Add it to VALID_FEATURE_FLAGS in the config module."
+        )
     return feature in FEATURE_FLAGS
 
 
@@ -104,33 +118,30 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,
     "formatters": {
-        "standard": {
-            "format": "%(asctime)s : %(levelname)s : %(message)s",
-        }
+        "standard": {"format": "%(asctime)s : %(levelname)s : %(message)s",}
     },
     "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-            "formatter": "standard"
-        },
+        "console": {"class": "logging.StreamHandler", "formatter": "standard"},
         "file": {
             "class": "logging.FileHandler",
             "filename": DATAFEEDS_LOG_NAME,
-            "formatter": "standard"
-        }
+            "formatter": "standard",
+        },
     },
     "root": {
         "handlers": ["console"],
         "level": DEPENDENCY_LOG_LEVEL,
-        "propagate": False
+        "propagate": False,
     },
     "loggers": {
         "datafeeds": {
             "level": LOG_LEVEL,
-            "handlers": ["console"] if DATAFEEDS_ENVIRONMENT == "local" else ["console", "file"],
-            "propagate": False
+            "handlers": ["console"]
+            if DATAFEEDS_ENVIRONMENT == "local"
+            else ["console", "file"],
+            "propagate": False,
         },
-    }
+    },
 }
 
 logging.config.dictConfig(LOGGING)

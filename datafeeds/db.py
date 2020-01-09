@@ -14,9 +14,7 @@ log = logging.getLogger(__name__)
 engine = session = session_factory = None
 
 
-def init(connstr=None,
-         application_name="datafeeds",
-         statement_timeout=60000):
+def init(connstr=None, application_name="datafeeds", statement_timeout=60000):
     """Initialize the ORM for this process.
 
     use_null_pool : If set to true, create and destroy database
@@ -31,9 +29,9 @@ def init(connstr=None,
         "echo": config.POSTGRES_ECHO,
         "connect_args": {
             "options": "-c statement_timeout={}".format(statement_timeout),
-            "application_name": application_name
+            "application_name": application_name,
         },
-        "poolclass": NullPool
+        "poolclass": NullPool,
     }
 
     if engine is None or session is None or session_factory is None:
@@ -61,6 +59,7 @@ def dbtask(fn=None, commit_on_fail=False, **conn_options):
     # so need to return another decorator that *does* and closes over options
     # See: http://typeandflow.blogspot.com/2011/06/python-decorator-with-optional-keyword.html)
     if not fn:
+
         def _partial(_fn):
             return dbtask(_fn, commit_on_fail=commit_on_fail, **conn_options)
 
@@ -105,4 +104,5 @@ def urjanet_connection():
         host=config.URJANET_MYSQL_HOST,
         user=config.URJANET_MYSQL_USER,
         passwd=config.URJANET_MYSQL_PASSWORD,
-        db=config.URJANET_MYSQL_DB)
+        db=config.URJANET_MYSQL_DB,
+    )

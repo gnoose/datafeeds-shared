@@ -32,10 +32,7 @@ class ColleyvilleWaterDatasource(UrjanetPyMySqlDataSource):
             WHERE AccountNumber=%s AND UtilityProvider = 'CityOfColleyvilleTX'
         """
         result_set = self.fetch_all(query, self.account_number)
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: str) -> List[Meter]:
         """Load all meters for an account
@@ -45,6 +42,4 @@ class ColleyvilleWaterDatasource(UrjanetPyMySqlDataSource):
 
         query = "SELECT * FROM Meter WHERE ServiceType in ('water', 'sewer', 'irrigation') AND AccountFK=%s"
         result_set = self.fetch_all(query, account_pk)
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
