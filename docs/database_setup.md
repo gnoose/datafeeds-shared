@@ -1,21 +1,18 @@
 # Database Setup
 
-This document explains how to set up databases in a test environment and load them with fixtures.
+This document explains how to set up databases under docker and load them with fixtures.
 
-# Steps
+In production, datafeeds receives jobs from `webapps`, which is responsible for managing scheduling
+and scraper configuration. Most developers utilize the `docker-compose` file in `webapps` to start/manage
+their local Postgres instance, and then allow their datafeeds instance to connect to those containers. See
+the webapps documentation for more details. In particular, we assume that you will have the following
+standard aliases in your `/etc/hosts` file:
 
-1. Run `docker-compose up -d`.
-2. Using `docker-compose logs -f pg`, confirm that Postgres has fully loaded 
-   (it takes the longest, due to GIS integrations).
-3. With your development virtual environment enabled, run `python setup_databases.py`. You should see:
-    ```
-    Creating PG database...
-    Loading PG fixtures...
-    ```
-4. Finally, use `testdata` to load an account into your local `pg` and `mongo` databases.
+```
+127.0.0.1       pg
+127.0.0.1       urjanet
+```
 
-# Logins
-
-- Postgres: Username `gridium`, no password.
-- Mongo: Username `gridium`, password `mongo_pwd`.
-- MySql: Username `gridium`, password `gridium`.
+One exception to this rule is the Urjanet MySQL database, which webapps developers typically do not need.
+The docker compose file in this repo will allow you to launch this database container, the username/password
+for this DB is `gridium`/`gridium`.

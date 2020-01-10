@@ -8,7 +8,6 @@ jsonschema==3.2.0
 Pillow==4.2.1
 psycopg2-binary==2.8.3
 pyaes==1.6.1
-pymongo==2.8
 python-dateutil==2.2
 PyMySQL==0.6.7
 PyVirtualDisplay==0.2.1
