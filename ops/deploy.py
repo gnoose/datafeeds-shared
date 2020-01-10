@@ -115,13 +115,13 @@ def main():
             remove_image_tag(DEPLOY_TAG)
             retag_image(commit_id, DEPLOY_TAG)
             log.info("Retagging image completed successfully for %s.", commit_id)
-            post_message(
+            post_slack_message(
                 "Retagging image completed successfully for %s." % commit_id,
                 slack_channel,
             )
         except Exception:  # noqa E722
             log.exception("Retagging image failed for %s", commit_id)
-            post_message(
+            post_slack_message(
                 "Retagging image failed for %s" % commit_id, slack_channel, icon=":x:"
             )
             sys.exit(1)
