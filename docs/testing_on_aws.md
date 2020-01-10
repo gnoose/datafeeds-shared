@@ -22,12 +22,31 @@ Datafeeds ships with several scripts:
 This is a file of environment variables (configuration) that should be kept up to date with respect to the batch environment.
 - `deploy.sh`: This pushes the local `gridium:datafeeds/deployed` to ECR.
 
-Debugging integration problems is a very slow workflow if you only use the AWS console. A more efficient process is:
+Debugging integration problems is a very slow workflow if you only use the AWS console. A more efficient process is to run locally from ops:
 
 - Make sure `run.env` is up to date (add any new configuration you may have introduced).
 - Use `build.sh` and `run.sh` until you have a successful run on the ops machine.
-- Use `deploy.sh` to push your image to ECR. Copy your environment variable changes to the batch console.
-- Re-run your test on batch to confirm the changes you tested on ops.
+- Use `deploy.sh` to push your image to ECR. (see [deploy.md](deploy.md))
+
+Once your job is running successfully from ops, you can run it via AWS Batch the same way webapps does with [launch_datafeed.py](https://github.com/Gridium/webapps/blob/master/scripts/launch_datafeed.py) in webapps. You'll need the name of your scraper and a meter oid (the meter must already be provisioned with the scraper). From ops:
+
+```
+cd ~/projects/webapps
+source venv/bin/activate
+cd scripts
+python launch_datafeed.py 1862307348482 bloom
+```
+
+This does the same database query that webapps uses to schedule jobs, so it should reveal any issues with product enrollment, scraper names, etc. If the meter and scraper were found, this will schedule a job in the `datafeeds-high` queue and print something like `<Datafeeds Job: uuid=d2915084-8a93-4cf7-8745-d69c75fc1409, source=117607, status=SUBMITTED, updated=2020-01-10 19:09:54.822632>`
+
+Your job should immediately be visible on the [AWS Batch dashboard](https://us-west-1.console.aws.amazon.com/batch/home?region=us-west-1#/dashboard), in the `datafeeds-high` row. You can also go directly to the job by adding the job UUID to the URL: https://us-west-1.console.aws.amazon.com/batch/home?region=us-west-1#/jobs/queue/arn:aws:batch:us-west-1:891208296108:job-queue~2Fdatafeeds-high/job/d2915084-8a93-4cf7-8745-d69c75fc1409
+
+Once the job starts, it should write a record to Elasticsearch which you can find in Kibana:
+
+  - get Kibana credentials from LastPass
+  - go to Kibana: https://6e4cab9dd2954f47a4a69440dc0247c0.us-east-1.aws.found.io:9243/app/kibana
+  - type your meter oid into the the Filters box
+
 
 ## More details on `run.sh`
 
