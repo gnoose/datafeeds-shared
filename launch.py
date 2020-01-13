@@ -40,6 +40,7 @@ scraper_functions = {
     "nve-myaccount": datasources.nvenergy_myaccount.datafeed,
     "pacific-power-interval": datasources.pacific_power_interval.datafeed,
     "pleasanton-urjanet": datasources.pleasanton.datafeed,
+    "sandiego-water-urjanet": datasources.sandiego.datafeed,
     "sce-green-button": datasources.sce_greenbutton.datafeed,
     "smud-energyprofiler-interval": datasources.smud_energyprofiler_interval.datafeed,
     "solaredge": datasources.solaredge.datafeed,
