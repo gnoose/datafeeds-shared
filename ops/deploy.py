@@ -14,15 +14,17 @@
 #    to use this option, run "python retag.py --branch <BRANCH_NAME>"
 ############################
 
-from git import Repo
 import argparse
-import boto3
-import config
-from datafeeds.config import DATAFEEDS_ROOT
 import logging
-import slack
-import slack.chat
 import sys
+
+import boto3
+from git import Repo
+
+import config
+from datafeeds.common.alert import post_slack_message
+from datafeeds.config import DATAFEEDS_ROOT
+
 
 DEPLOY_TAG = "deployed"
 
@@ -31,21 +33,6 @@ slack_channel = config.SLACK_CHANNEL
 log = logging.getLogger(__name__)
 
 ecr_client = boto3.client("ecr", region_name=config.AWS_REGION_NAME)
-
-
-def post_message(message, channel, icon=":mega:"):
-    if not config.SLACK_TOKEN:
-        return
-
-    try:
-        slack.api_token = config.SLACK_TOKEN
-        slack.chat.post_message(channel, message, username="datafeeds", icon_emoji=icon)
-    except Exception:
-        log.exception(
-            "Failed to post error message to slack. Channel: %s, Message: %s",
-            channel,
-            message,
-        )
 
 
 def get_commit_id(branch: str) -> str:
@@ -120,7 +107,7 @@ def main():
         log.info("Attempting to deploy the image for branch %s.", args.branch)
         commit_id = get_commit_id(args.branch)
 
-    post_message("A datafeeds deploy has started. (%s)" % how, slack_channel)
+    post_slack_message("A datafeeds deploy has started. (%s)" % how, slack_channel)
     image_tag_exists = find_image_tag(commit_id)
 
     if image_tag_exists:
@@ -128,13 +115,13 @@ def main():
             remove_image_tag(DEPLOY_TAG)
             retag_image(commit_id, DEPLOY_TAG)
             log.info("Retagging image completed successfully for %s.", commit_id)
-            post_message(
+            post_slack_message(
                 "Retagging image completed successfully for %s." % commit_id,
                 slack_channel,
             )
         except Exception:  # noqa E722
             log.exception("Retagging image failed for %s", commit_id)
-            post_message(
+            post_slack_message(
                 "Retagging image failed for %s" % commit_id, slack_channel, icon=":x:"
             )
             sys.exit(1)

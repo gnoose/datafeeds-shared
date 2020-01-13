@@ -14,7 +14,7 @@ from datafeeds.models import (
 log = logging.getLogger("datafeeds")
 
 
-def post_slack_message(message, channel, icon_emoji, username=None):
+def post_slack_message(message, channel, icon_emoji=None, username=None):
     """Send a message to a Slack channel."""
     if username is None:
         username = "Datafeeds"
