@@ -9,12 +9,22 @@ from dateutil.relativedelta import relativedelta
 from selenium.webdriver.common.keys import Keys
 from retrying import retry
 
+from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import DateRange
 from datafeeds.common.support import Results
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration
-from datafeeds.common.util.selenium import IFrameSwitch, clear_downloads
+from datafeeds.common.typing import Status
+from datafeeds.common.util.selenium import (
+    IFrameSwitch,
+    clear_downloads,
+)
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 
 logger = None
 log = logging.getLogger(__name__)
@@ -500,3 +510,23 @@ class HECOScraper(BaseWebScraper):
         transformed_readings = HECOScraper._finalize_readings(readings)
 
         return Results(readings=transformed_readings)
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+) -> Status:
+    configuration = HECOGridConfiguration(meter_id=meter.service_id)
+
+    return run_datafeed(
+        HECOScraper,
+        account,
+        meter,
+        datasource,
+        params,
+        configuration=configuration,
+        task_id=task_id,
+    )

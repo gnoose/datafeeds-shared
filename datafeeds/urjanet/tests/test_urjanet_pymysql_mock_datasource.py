@@ -2,7 +2,7 @@ import unittest
 from datetime import date
 from decimal import Decimal
 
-from datafeeds.urjanet.datasource import UrjanetPyMySqlDataSource
+from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import UrjanetData, Account, Meter, Usage, Charge
 
 

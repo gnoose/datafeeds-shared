@@ -9,7 +9,7 @@ import requests
 from datafeeds import config
 from datafeeds.common.util.s3 import s3_key_exists, upload_file_to_s3
 from datafeeds.urjanet.model import Charge, GridiumBillingPeriod, order_json
-from datafeeds.urjanet.datasource import UrjanetDataSource
+from datafeeds.urjanet.datasource.base import UrjanetDataSource
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 from datafeeds.common.base import BaseScraper
 from datafeeds.common.support import Results, Configuration

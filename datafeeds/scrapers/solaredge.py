@@ -1,4 +1,6 @@
 from datetime import datetime, timedelta
+from typing import Optional
+
 from dateutil.relativedelta import relativedelta
 import logging
 from math import isnan
@@ -7,10 +9,17 @@ import requests
 from requests import codes
 
 #  from datafeeds import config
+from datafeeds.common.batch import run_datafeed
 from datafeeds.common.exceptions import ApiError
 from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.support import Configuration
 from datafeeds.common.support import Results
+from datafeeds.common.typing import Status
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 from datafeeds.parsers import solaredge as parser
 from datafeeds.parsers.solaredge import Interval
 from datafeeds.scrapers.support.time import date_to_datetime
@@ -214,3 +223,26 @@ class SolarEdgeScraper(BaseApiScraper):
     def _execute(self) -> Results:
         final_timeline = self._compute_meter_readings()
         return Results(readings=final_timeline.serialize())
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+) -> Status:
+
+    acct_ds = datasource.account_data_source
+    configuration = SolarEdgeConfiguration(
+        meter_id=meter.service_id, site_id=acct_ds.username
+    )
+    return run_datafeed(
+        SolarEdgeScraper,
+        account,
+        meter,
+        datasource,
+        params,
+        configuration=configuration,
+        task_id=task_id,
+    )

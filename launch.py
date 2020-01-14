@@ -13,9 +13,36 @@ import zipfile
 
 import boto3
 
+from datafeeds.datasources.austin_energy_interval import (
+    datafeed as austin_energy_interval,
+)
+from datafeeds.datasources.pacific_power_interval import (
+    datafeed as pacific_power_interval,
+)
+from datafeeds.datasources.smud_energyprofiler_interval import (
+    datafeed as smud_energyprofiler_interval,
+)
+
+from datafeeds.scrapers.bloom_interval import datafeed as bloom_interval
+from datafeeds.scrapers.heco_interval import datafeed as heco_interval
+from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
+from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
+from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
+from datafeeds.scrapers.solaredge import datafeed as solaredge
+from datafeeds.scrapers.solren import datafeed as solren
+from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
+
+from datafeeds.urjanet.datasource.american import datafeed as american
+from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
+from datafeeds.urjanet.datasource.heco import datafeed as heco_urjanet
+from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
+from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
+from datafeeds.urjanet.datasource.sandiego import datafeed as sandiego
+from datafeeds.urjanet.datasource.southlake import datafeed as southlake
+from datafeeds.urjanet.datasource.watauga import datafeed as watauga
+
 from datafeeds.common.typing import Status
 from datafeeds import db, config
-from datafeeds import datasources
 from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
     SnapmeterAccount,
@@ -30,24 +57,25 @@ log = logging.getLogger("datafeeds")
 
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
-    "american-urjanet": datasources.american.datafeed,
-    "austin-energy-interval": datasources.austin_energy_interval.datafeed,
-    "austin-urjanet": datasources.austin_tx.datafeed,
-    "bloom": datasources.bloom.datafeed,
-    "heco-interval": datasources.heco_interval.datafeed,
-    "heco-urjanet": datasources.heco.datafeed,
-    "mountainview-urjanet": datasources.mountainview.datafeed,
-    "nve-myaccount": datasources.nvenergy_myaccount.datafeed,
-    "pacific-power-interval": datasources.pacific_power_interval.datafeed,
-    "pleasanton-urjanet": datasources.pleasanton.datafeed,
-    "sandiego-water-urjanet": datasources.sandiego.datafeed,
-    "sce-green-button": datasources.sce_greenbutton.datafeed,
-    "smart-meter-texas": datasources.smart_meter_texas.datafeed,
-    "smud-energyprofiler-interval": datasources.smud_energyprofiler_interval.datafeed,
-    "solaredge": datasources.solaredge.datafeed,
-    "solren": datasources.solren.datafeed,
-    "southlake-urjanet": datasources.southlake.datafeed,
-    "watauga-urjanet": datasources.watauga.datafeed,
+    "american-urjanet": american,
+    "austin-energy-interval": austin_energy_interval,
+    "austin-urjanet": austin,
+    "bloom": bloom_interval,
+    "heco-interval": heco_interval,
+    "heco-urjanet": heco_urjanet,
+    "mountainview-urjanet": mountainview,
+    "nve-myaccount": nvenergy_myaccount,
+    "pacific-power-interval": pacific_power_interval,
+    "pleasanton-urjanet": pleasanton,
+    "sandiego-water-urjanet": sandiego,
+    "sdge-myaccount": sdge_myaccount,
+    "sce-green-button": sce_greenbutton,
+    "smart-meter-texas": smart_meter_texas,
+    "smud-energyprofiler-interval": smud_energyprofiler_interval,
+    "solaredge": solaredge,
+    "solren": solren,
+    "southlake-urjanet": southlake,
+    "watauga-urjanet": watauga,
 }
 
 

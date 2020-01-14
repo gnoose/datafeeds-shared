@@ -1,8 +1,17 @@
 import re
-from typing import List
+from typing import List, Optional
 
-from . import UrjanetPyMySqlDataSource, CommodityType
-from ..model import Account, Meter
+from datafeeds.common.batch import run_urjanet_datafeed
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
+
+from datafeeds.urjanet.datasource.base import CommodityType
+from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
+from datafeeds.urjanet.model import Account, Meter as UrjaMeter
+from datafeeds.urjanet.transformer import AustinTXTransformer
 
 
 class AustinTXDatasource(UrjanetPyMySqlDataSource):
@@ -39,7 +48,7 @@ class AustinTXDatasource(UrjanetPyMySqlDataSource):
         result_set = self.fetch_all(query, self.account_number)
         return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
-    def load_meters(self, account_pk: str) -> List[Meter]:
+    def load_meters(self, account_pk: str) -> List[UrjaMeter]:
         """Load meters matching a Gridium meter SAID.
 
         A bill can contain usage and charges for multiple meters. Select meters where the
@@ -52,3 +61,25 @@ class AustinTXDatasource(UrjanetPyMySqlDataSource):
             query, self.commodity_type.value, account_pk, self.said.split(",")
         )
         return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+):
+    return run_urjanet_datafeed(
+        account,
+        meter,
+        datasource,
+        params,
+        AustinTXDatasource(
+            meter.utility_account_id,
+            CommodityType[meter.commodity],
+            meter.utility_service.service_id,
+        ),
+        AustinTXTransformer(),
+        task_id,
+    )

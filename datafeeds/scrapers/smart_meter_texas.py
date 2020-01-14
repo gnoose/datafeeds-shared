@@ -11,18 +11,20 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 
+from datafeeds.common.batch import run_datafeed
 from datafeeds.common.timeline import Timeline
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.support import Configuration
 from datafeeds.common.support import Results
-
+from datafeeds.common.typing import Status
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 
 logger = None
 log = logging.getLogger(__name__)
-
-
-def _log(msg):
-    logger.debug(msg)
 
 
 class SmartMeterTexasConfiguration(Configuration):
@@ -110,7 +112,9 @@ class ViewEnergyDataPage:
                 demand = 4.0 * float(kwh_str)
                 data.append((when, demand))
             except (TypeError, AttributeError):
-                _log("Failed to parse interval datum: %s, %s" % (when_str, kwh_str))
+                log.error(
+                    "Failed to parse interval datum: %s, %s" % (when_str, kwh_str)
+                )
 
         return data
 
@@ -341,3 +345,33 @@ class SmartMeterTexasScraper(BaseWebScraper):
             current += timedelta(days=1)
 
         return Results(readings=timeline.serialize())
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+) -> Status:
+    """Run the SMT Selenium scraper to gather interval data (<30 days) or request a report asynchronously."""
+    esiid = (datasource.meta or {}).get("esiid")
+
+    if esiid is None:
+        log.info(
+            "Missing ESIID for datasource {}, meter {}.".format(
+                datasource.oid, meter.oid
+            )
+        )
+
+    configuration = SmartMeterTexasConfiguration(esiid)
+
+    return run_datafeed(
+        SmartMeterTexasScraper,
+        account,
+        meter,
+        datasource,
+        params,
+        configuration=configuration,
+        task_id=task_id,
+    )

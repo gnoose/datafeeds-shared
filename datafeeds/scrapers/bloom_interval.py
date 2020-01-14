@@ -1,4 +1,6 @@
 import logging
+from typing import Optional
+
 import xlrd
 
 from datetime import datetime, timedelta, date
@@ -7,11 +9,18 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
+from datafeeds.common.batch import run_datafeed
 
 from datafeeds.common.exceptions import ApiError, LoginError
 from datafeeds.common.support import Configuration, DateRange, Results
 from datafeeds.common.timeline import Timeline
+from datafeeds.common.typing import Status
 from datafeeds.common.util.selenium import clear_downloads
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 
 log = logging.getLogger(__name__)
 DATE_FORMAT = "%m-%d-%Y"
@@ -244,3 +253,24 @@ class BloomScraper(BaseWebScraper):
         if self.timeline:
             readings = self.timeline.serialize()
         return Results(readings=readings)
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+) -> Status:
+
+    configuration = BloomGridConfiguration(site_name=datasource.meta.get("site_name"))
+
+    return run_datafeed(
+        BloomScraper,
+        account,
+        meter,
+        datasource,
+        params,
+        configuration=configuration,
+        task_id=task_id,
+    )

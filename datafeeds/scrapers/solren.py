@@ -1,7 +1,7 @@
 import os
 import csv
 import logging
-from typing import List, Dict
+from typing import List, Dict, Optional
 from math import ceil
 
 from datetime import datetime, timedelta
@@ -11,15 +11,21 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from datafeeds.common.base import BaseWebScraper
+from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import DateRange
 from datafeeds.common.support import Results
 from datafeeds.common.support import Configuration
+from datafeeds.common.typing import Status
 from datafeeds.common.util.selenium import (
     IFrameSwitch,
     file_exists_in_dir,
     clear_downloads,
 )
-
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 
 log = logging.getLogger(__name__)
 DATE_FORMAT = "%Y-%m-%d"
@@ -463,3 +469,26 @@ class SolrenScraper(BaseWebScraper):
             self._driver.sleep(5)
 
         return Results(readings=self.readings)
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+) -> Status:
+
+    configuration = SolrenGridConfiguration(
+        inverter_id=meter.service_id, site_id=datasource.meta.get("site_id")
+    )
+
+    return run_datafeed(
+        SolrenScraper,
+        account,
+        meter,
+        datasource,
+        params,
+        configuration=configuration,
+        task_id=task_id,
+    )

@@ -3,6 +3,7 @@ import logging
 from typing import Optional, List
 
 from dateutil.relativedelta import relativedelta
+from dateutil.tz import gettz as get_timezone, tzutc
 import requests
 
 # pylint: disable=no-name-in-module
@@ -15,7 +16,6 @@ from jsonobject import (
 )
 
 # pylint: enable=no-name-in-module
-from dateutil.tz import gettz as get_timezone, tzutc
 
 from datafeeds import config
 from datafeeds.common import (
@@ -26,6 +26,14 @@ from datafeeds.common import (
     BaseApiScraper,
     adjust_bill_dates,
 )
+from datafeeds.common.batch import run_datafeed
+from datafeeds.common.typing import Status
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
+
 
 log = logging.getLogger(__name__)
 
@@ -254,3 +262,37 @@ class Scraper(BaseApiScraper):
             # readings=timeline.serialize(),  # SCE GB: Enable interval data.
             bills=final_bills
         )
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+):
+
+    if not ("subscription" in datasource.meta and "usage_point" in datasource.meta):
+        msg = (
+            "No subscription/usage point pair associated with data source. Skipping. (Data Source OID: %s)"
+            % datasource.oid
+        )
+        log.info(msg)
+
+        # Eventually this will be a genuine failure condition, but until we can completely convert to
+        # ingest-based SCE green button, we need to just skip when the data isn't available.
+        # raise DataSourceConfigurationError(msg)
+        return Status.SKIPPED
+
+    return run_datafeed(
+        Scraper,
+        account,
+        meter,
+        datasource,
+        params,
+        configuration=Configuration(
+            subscription=datasource.meta["subscription"],
+            usage_point=datasource.meta["usage_point"],
+        ),
+        task_id=task_id,
+    )

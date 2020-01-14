@@ -28,10 +28,12 @@ Below is my process for moving a scraper.
 1. Look in `gridium_tasks/data_sources/scrapers` for a module named after your utility.
 There should be a file called `task.py` or similar, containing a celery task definition.
 
-2. Inside `datafeeds/datasources`, create a file named after your utility that defines a function called `datafeed`.
-This function plays a role similar to the celery task definition; namely, it creates whatever configuration object
-is needed to launch the API/Web Scraper code. The body of the `datafeed` function should be almost the same as the
-celery task you are replacing. Use `run_datafeed` instead of `launch`.
+2. You now need to add a function `datafeed` that allows your scraper to be launched. For scrapers, this function
+should be in the module `datafeeds.scrapers.<your scraper module>`. For urjanet feeds, this function should be in
+the module `datafeeds.urjanet.datasource.<your scraper module>`. This function plays a role similar to the celery
+ task definition; namely, it creates whatever configuration object is needed to launch the API/Web Scraper code.
+ The body of the `datafeed` function should be almost the same as the celery task you are replacing. Use
+  `run_datafeed` instead of `launch`.
 
 3. At this point, the IDE is likely flagging several errors, because the scraper and configuration objects are not
 defined in the repo yet. This is good; all that remains to do now is fix each undefined value/object/function error.

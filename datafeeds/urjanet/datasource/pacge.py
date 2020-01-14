@@ -9,8 +9,8 @@ Urjanet database, as identified by:
 """
 from typing import List
 
-from . import UrjanetPyMySqlDataSource
-from ..model import Account, Meter
+from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
+from datafeeds.urjanet.model import Account, Meter
 
 
 class PacificGasElectricDataSource(UrjanetPyMySqlDataSource):

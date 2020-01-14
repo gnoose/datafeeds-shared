@@ -16,8 +16,8 @@ from typing import List, Dict, Callable, Any, Type
 
 from pymysql.cursors import DictCursor
 
-from . import UrjanetDataSource
-from ..model import UrjanetData, Account, Meter, Usage, Charge
+from datafeeds.urjanet.datasource.base import UrjanetDataSource
+from datafeeds.urjanet.model import UrjanetData, Account, Meter, Usage, Charge
 
 SqlRowDict = Dict[str, Any]
 SqlQueryResult = List[SqlRowDict]

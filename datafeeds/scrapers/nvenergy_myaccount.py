@@ -1,14 +1,16 @@
 from typing import Optional
 
+from datafeeds.common.batch import run_datafeed
 from datafeeds.common.typing import Status
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.urjanet.datasource import SouthlakeDatasource
-from datafeeds.urjanet.transformer import SouthlakeTransformer
-from datafeeds.common.batch import run_urjanet_datafeed
+from datafeeds.scrapers.nvenergy_myaccount import (
+    NvEnergyMyAccountConfiguration,
+    NvEnergyMyAccountScraper,
+)
 
 
 def datafeed(
@@ -18,12 +20,16 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    return run_urjanet_datafeed(
+
+    configuration = NvEnergyMyAccountConfiguration(
+        account_id=meter.utility_account_id, meter_id=meter.service_id
+    )
+    return run_datafeed(
+        NvEnergyMyAccountScraper,
         account,
         meter,
         datasource,
         params,
-        SouthlakeDatasource(meter.utility_account_id),
-        SouthlakeTransformer(),
-        task_id,
+        configuration=configuration,
+        task_id=task_id,
     )

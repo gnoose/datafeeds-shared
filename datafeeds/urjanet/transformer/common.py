@@ -1,5 +1,5 @@
 from typing import Dict
-from ..model import UrjanetData
+from datafeeds.urjanet.model import UrjanetData
 
 
 # These functions are currently a little silly, and only serve to stop

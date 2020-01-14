@@ -28,13 +28,16 @@ jobs:
           command: pipenv run black --check .
       - run:
           name: Running lint
-          command: pipenv run flake8 datafeeds ops
+          command: pipenv run flake8 datafeeds ops launch.py
       #- run:
       #    name: Running static analysis
       #    command: pipenv run mypy --ignore-missing-imports analytica
       - run:
           name: Running tests
           command: pipenv run python -m unittest -v
+      - run:
+          name: Running smoke test on launch.py
+          command: pipenv run python launch.py --help
 
 workflows:
   build-and-deploy:

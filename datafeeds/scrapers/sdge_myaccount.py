@@ -12,6 +12,7 @@ import logging
 import os
 import re
 from datetime import datetime
+from typing import Optional
 from zipfile import ZipFile
 
 from selenium.common.exceptions import NoSuchElementException
@@ -27,15 +28,25 @@ from dateutil import parser as dateparser
 from dateutil.rrule import rrule, SU, YEARLY
 from retrying import retry
 
+from datafeeds import db
+from datafeeds.common.batch import run_datafeed
+
 from datafeeds.common.support import DateRange
 from datafeeds.common.support import Results
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration
+from datafeeds.common.typing import Status
 from datafeeds.common.util.selenium import (
     file_exists_in_dir,
     IFrameSwitch,
     clear_downloads,
+)
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+    SnapmeterAccountMeter,
 )
 
 
@@ -778,3 +789,35 @@ class SdgeMyAccountScraper(BaseWebScraper):
                 error_msg = error_msg.format(iso_str, len(sorted_readings))
                 raise InvalidIntervalDataException(error_msg)
         return Results(readings=result)
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+) -> Status:
+    """Run scraper for SDGE MyAccount if enabled.
+
+    Retrying a bad login will lock the account. If a login fails, mark all data sources
+    for this account as disabled.
+    """
+    acct_meter = (
+        db.session.query(SnapmeterAccountMeter)
+        .filter_by(meter=meter.oid, account=account.oid)
+        .first()
+    )
+    configuration = SdgeMyAccountConfiguration(
+        acct_meter.utility_account_id, meter.service_id
+    )
+    return run_datafeed(
+        SdgeMyAccountScraper,
+        account,
+        meter,
+        datasource,
+        params,
+        configuration=configuration,
+        task_id=task_id,
+        disable_login_on_error=True,
+    )

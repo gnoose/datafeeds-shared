@@ -7,7 +7,7 @@ a documentation purpose
 """
 from abc import ABC, abstractmethod
 from enum import Enum
-from ..model import UrjanetData
+from datafeeds.urjanet.model import UrjanetData
 
 
 class CommodityType(Enum):

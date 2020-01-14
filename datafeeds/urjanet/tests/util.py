@@ -11,7 +11,7 @@ from datafeeds.urjanet.model import (
     GridiumBillingPeriodCollection,
 )
 from datafeeds.urjanet.model import filter_by_date_range
-from datafeeds.urjanet.datasource import UrjanetDataSource
+from datafeeds.urjanet.datasource.base import UrjanetDataSource
 from datafeeds.urjanet.transformer import json_to_urja
 
 

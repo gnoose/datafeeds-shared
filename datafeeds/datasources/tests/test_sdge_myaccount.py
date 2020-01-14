@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import patch, ANY
 
+import datafeeds.scrapers.sdge_myaccount
 from datafeeds import db
 from datafeeds.common import test_utils
 from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
-from datafeeds.datasources import sdge_myaccount as sdge_ds
 from datafeeds.models.account import SnapmeterAccount
 from datafeeds.models.datasource import SnapmeterMeterDataSource
 from datafeeds.models.meter import Meter
@@ -43,7 +43,12 @@ class SDGEMyAccountTests(unittest.TestCase):
         db.session.add(account_ds)
         db.session.flush()
         self.assertRaises(
-            DataSourceConfigurationError, sdge_ds.datafeed, account, meter, mds, params
+            DataSourceConfigurationError,
+            datafeeds.scrapers.sdge_myaccount.datafeed,
+            account,
+            meter,
+            mds,
+            params,
         )
         slack.assert_not_called()
 
@@ -65,7 +70,7 @@ class SDGEMyAccountTests(unittest.TestCase):
         params = {}
 
         # meter data source not disabled: call run_datafeed
-        sdge_ds.datafeed(account, meter, mds, params)
+        datafeeds.scrapers.sdge_myaccount.datafeed(account, meter, mds, params)
         self.assertEqual(1, scrape.call_count, "called scrape")
         slack.assert_not_called()
         for mid in self.meter_ids:
@@ -79,7 +84,7 @@ class SDGEMyAccountTests(unittest.TestCase):
         db.session.add(account_ds)
         db.session.flush()
         scrape.side_effect = LoginError()
-        sdge_ds.datafeed(account, meter, mds, params)
+        datafeeds.scrapers.sdge_myaccount.datafeed(account, meter, mds, params)
         msg = slack.call_args_list[0][0][0]
         self.assertTrue(account.name in msg)
         for meter_id in self.meter_ids:

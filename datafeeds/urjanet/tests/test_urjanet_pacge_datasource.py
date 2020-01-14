@@ -1,7 +1,7 @@
 import unittest
 
 import datafeeds.urjanet.tests.util as test_util
-from datafeeds.urjanet.datasource import PacificGasElectricDataSource
+from datafeeds.urjanet.datasource.pacge import PacificGasElectricDataSource
 
 
 class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
