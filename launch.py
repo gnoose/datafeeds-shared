@@ -42,6 +42,7 @@ scraper_functions = {
     "pleasanton-urjanet": datasources.pleasanton.datafeed,
     "sandiego-water-urjanet": datasources.sandiego.datafeed,
     "sce-green-button": datasources.sce_greenbutton.datafeed,
+    "smart-meter-texas": datasources.smart_meter_texas.datafeed,
     "smud-energyprofiler-interval": datasources.smud_energyprofiler_interval.datafeed,
     "solaredge": datasources.solaredge.datafeed,
     "solren": datasources.solren.datafeed,

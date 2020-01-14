@@ -95,7 +95,7 @@ class TestSCEGreenButtonSync(TestCase):
                         total=1000.0,
                         use=2_000_000.0,
                         unit="Wh",
-                    ),
+                    )
                 ],
             ).to_json()
             return MockResponse(200, body)

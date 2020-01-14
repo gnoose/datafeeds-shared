@@ -14,10 +14,7 @@ from datafeeds.common.support import Results
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration
-from datafeeds.common.util.selenium import (
-    IFrameSwitch,
-    clear_downloads,
-)
+from datafeeds.common.util.selenium import IFrameSwitch, clear_downloads
 
 logger = None
 log = logging.getLogger(__name__)

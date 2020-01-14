@@ -209,7 +209,7 @@ class Meter(ModelMixin, Base):
 
         query = db.session.execute(
             self._readings_query(),
-            {"meters": (self.oid,), "from_date": start_d, "to_date": end_d,},
+            {"meters": (self.oid,), "from_date": start_d, "to_date": end_d},
         )
         # can return multiple rows per date for totalized meter
         by_date: Dict[date, list] = {}

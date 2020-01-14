@@ -117,9 +117,7 @@ SELENIUM_BROWSER = "Chrome"
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,
-    "formatters": {
-        "standard": {"format": "%(asctime)s : %(levelname)s : %(message)s",}
-    },
+    "formatters": {"standard": {"format": "%(asctime)s : %(levelname)s : %(message)s"}},
     "handlers": {
         "console": {"class": "logging.StreamHandler", "formatter": "standard"},
         "file": {
@@ -140,7 +138,7 @@ LOGGING = {
             if DATAFEEDS_ENVIRONMENT == "local"
             else ["console", "file"],
             "propagate": False,
-        },
+        }
     },
 }
 

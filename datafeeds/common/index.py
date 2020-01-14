@@ -117,13 +117,9 @@ def update_dates(
     """set date ranges retrieved by this run"""
     doc = {}
     if billing:
-        doc.update(
-            {"billingFrom": billing.start, "billingTo": billing.end,}
-        )
+        doc.update({"billingFrom": billing.start, "billingTo": billing.end})
     if interval:
-        doc.update(
-            {"intervalFrom": interval.start, "intervalTo": interval.end,}
-        )
+        doc.update({"intervalFrom": interval.start, "intervalTo": interval.end})
     if doc:
         index_etl_run(task_id, doc, update=True)
 
