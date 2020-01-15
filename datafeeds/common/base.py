@@ -230,12 +230,17 @@ class BaseWebScraper(BaseScraper):
             raise
 
     def screenshot(self, filename, whole=True):
-        self._shot_number += 1
-        path = os.path.join(
-            config.WORKING_DIRECTORY,
-            "screenshot{:02} - {}.png".format(self._shot_number, filename),
-        )
-        self._driver.screenshot(path, whole=whole)
+        pass
+        """
+        Temporarily disabling screenshot method to see if this resolves
+        "Chrome not reachable" errors.
+        """
+        # self._shot_number += 1
+        # path = os.path.join(
+        #     config.WORKING_DIRECTORY,
+        #     "screenshot{:02} - {}.png".format(self._shot_number, filename),
+        # )
+        # self._driver.screenshot(path, whole=whole)
 
     def download_file(self, extension: str, timeout: Optional[int] = 60):
         # Wait for csv to download
