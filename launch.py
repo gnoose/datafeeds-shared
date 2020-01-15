@@ -9,9 +9,9 @@ import subprocess
 import sys
 from typing import Optional
 import uuid
-import zipfile
+import tarfile
 
-import boto3
+import boto
 
 from datafeeds.datasources.austin_energy_interval import (
     datafeed as austin_energy_interval,
@@ -104,36 +104,26 @@ def archive_run(task_id: str):
         dest = os.path.join(config.WORKING_DIRECTORY, config.DATAFEEDS_LOG_NAME)
         shutil.copy(logpath, dest)
 
-    zip_filename = "{}.zip".format(task_id)
-    archive_path = os.path.join(config.WORKING_DIRECTORY, zip_filename)
+    tarball = "{0}.tar.gz".format(config.WORKING_DIRECTORY)
+    with tarfile.open(tarball, "w:gz") as f:
+        f.add(config.WORKING_DIRECTORY)
 
     try:
-        zipf = zipfile.ZipFile(archive_path, "w", zipfile.ZIP_DEFLATED)
-        for root, dirs, files in os.walk(config.WORKING_DIRECTORY):
-            for filename in files:
-                if filename != zip_filename:
-                    archive_name = os.path.join(root, filename).replace(
-                        config.WORKING_DIRECTORY, task_id
-                    )
-                    zipf.write(os.path.join(root, filename), arcname=archive_name)
-        zipf.close()
-    except:  # noqa E722
-        log.exception("Failed to compress artifacts in archive %s.", zip_filename)
-        raise
+        s3conn = boto.connect_s3()
+        bucket = s3conn.get_bucket(config.ARTIFACT_S3_BUCKET, validate=True)
 
-    try:
-        boto3.resource("s3").meta.client.upload_file(
-            archive_path, config.ARTIFACT_S3_BUCKET, zip_filename
-        )
+        s3key = bucket.new_key(task_id)
+        s3key.set_contents_from_filename(tarball)
+
         log.info(
             "Successfully uploaded archive %s to S3 bucket %s.",
-            archive_path,
+            task_id,
             config.ARTIFACT_S3_BUCKET,
         )
     except:  # noqa E722
         log.exception(
             "Failed to upload archive %s to S3 bucket %s.",
-            zip_filename,
+            task_id,
             config.ARTIFACT_S3_BUCKET,
         )
         raise

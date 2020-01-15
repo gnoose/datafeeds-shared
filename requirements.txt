@@ -1,4 +1,5 @@
 addict==2.1.2
+boto==2.32.1
 boto3==1.10.4
 deprecation==2.0.7
 elasticsearch==6.3.1
