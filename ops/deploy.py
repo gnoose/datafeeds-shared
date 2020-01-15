@@ -48,13 +48,22 @@ def get_commit_id(branch: str) -> str:
 
 
 def find_image_tag(docker_tag: str, repo: str = "datafeeds") -> bool:
+    image_records = []
+
     # assume we're getting region and creds from environment
     try:
         response = ecr_client.list_images(repositoryName=repo)
+        while True:
+            image_records = image_records + response.get("imageIds", [])
+            next_token = response.get("nextToken")
+            if next_token is None:
+                break
+            response = ecr_client.list_images(repositoryName=repo, nextToken=next_token)
     except Exception:
         log.exception("Exception raised: failed to get list of images")
         raise
-    for image in response["imageIds"]:
+
+    for image in image_records:
         if "imageTag" in image:
             if docker_tag == image["imageTag"]:
                 log.info("Found image tag: %s", docker_tag)
