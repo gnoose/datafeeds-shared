@@ -1,12 +1,18 @@
+import os
+
 from selenium import webdriver
 
+from datafeeds import config
 from datafeeds.common.webdriver.drivers.base import BaseDriver
 
 
 class ChromeDriver(BaseDriver):
     def __init__(self, outputpath):
         super().__init__(outputpath)
-        self._driver = webdriver.Chrome(chrome_options=self._options())
+        self._driver = webdriver.Chrome(
+            chrome_options=self._options(),
+            service_log_path=os.path.join(config.WORKING_DIRECTORY, "driver.log"),
+        )
 
     def _options(self):
         options = webdriver.ChromeOptions()
