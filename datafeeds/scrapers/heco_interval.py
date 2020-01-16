@@ -16,10 +16,7 @@ from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration
 from datafeeds.common.typing import Status
-from datafeeds.common.util.selenium import (
-    IFrameSwitch,
-    clear_downloads,
-)
+from datafeeds.common.util.selenium import IFrameSwitch, clear_downloads
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,

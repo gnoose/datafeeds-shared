@@ -117,7 +117,7 @@ class PacgeCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            PacificGasElectricDataSource(args.account_number, args.service_id), conn,
+            PacificGasElectricDataSource(args.account_number, args.service_id), conn
         )
 
     def make_transformer(self):
@@ -133,7 +133,7 @@ class LadwpWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            LadwpWaterDatasource(args.account_number, args.service_id), conn,
+            LadwpWaterDatasource(args.account_number, args.service_id), conn
         )
 
     def make_transformer(self):
@@ -332,7 +332,7 @@ class AustinTXCli(DatasourceCli):
     def make_datasource(self, conn, args):
         commodity_type = CommodityType[args.commodity_type]
         return self.setup_datasource(
-            AustinTXDatasource(args.account_number, commodity_type, args.said), conn,
+            AustinTXDatasource(args.account_number, commodity_type, args.said), conn
         )
 
     def make_transformer(self):

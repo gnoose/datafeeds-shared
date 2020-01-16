@@ -5,11 +5,12 @@ import time
 from typing import List
 import logging
 
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+from retrying import retry
 from typing import Optional
 from datafeeds import config
 from datafeeds.common.typing import BillingDatum
@@ -183,6 +184,15 @@ class BaseApiScraper(BaseScraper):
         pass
 
 
+def error_is_chrome_not_reachable(exc) -> bool:
+    """
+    Returns True for "chrome not reachable" WebDriver exceptions.
+
+    Used as a retry condition for BaseWebScraper.scrape
+    """
+    return isinstance(exc, WebDriverException) and exc.msg == "chrome not reachable"
+
+
 class BaseWebScraper(BaseScraper):
     """
     Base scraper to handle common initialization, setup, and teardown
@@ -222,6 +232,11 @@ class BaseWebScraper(BaseScraper):
         if config.USE_VIRTUAL_DISPLAY:
             self._display.stop()
 
+    @retry(
+        retry_on_exception=error_is_chrome_not_reachable,
+        stop_max_attempt_number=3,
+        wait_fixed=10000,
+    )
     def scrape(self, readings_handler, bills_handler):
         try:
             super().scrape(readings_handler, bills_handler)
