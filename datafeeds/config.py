@@ -11,6 +11,9 @@ DATAFEEDS_ROOT = path.normpath(path.join(path.dirname(path.abspath(__file__)), "
 # What shall the datafeeds log be called?
 DATAFEEDS_LOG_NAME = os.environ.get("DATAFEEDS_LOG_NAME", "datafeeds.log")
 
+# Where does the logging module write logs on disk?
+LOGPATH = os.path.join(DATAFEEDS_ROOT, DATAFEEDS_LOG_NAME)
+
 # What is the name of the environment in which datafeeds is running? Ex. local, development, production
 DATAFEEDS_ENVIRONMENT = os.environ.get("DATAFEEDS_ENVIRONMENT", "local").lower()
 
@@ -70,6 +73,7 @@ PLATFORM_PORT: str = os.environ.get("PLATFORM_PORT", "9229")
 # Where can we find the Ingest REST API?
 INGEST_ENDPOINT: str = os.environ.get("INGEST_ENDPOINT")
 
+
 #
 # What features are enabled?
 # S3_ARTIFACT_UPLOAD: After each scraper run, datafeeds should upload a compressed archive of log data,
@@ -78,12 +82,14 @@ INGEST_ENDPOINT: str = os.environ.get("INGEST_ENDPOINT")
 #                 via the energy-analytics UI.
 # PLATFORM_UPLOAD: After a scraper run, scrapers will upload their interval/bill data to platform.
 # ES_INDEX_JOBS: As part of the scraping process, we will upload current task to elasticsearch for use in dashboards.
+# ES_INDEX_LOGS: As part of the scraping process, we will upload the final log to an index for easier browsing.
 #
 VALID_FEATURE_FLAGS: Set[str] = {
     "S3_ARTIFACT_UPLOAD",
     "S3_BILL_UPLOAD",
     "PLATFORM_UPLOAD",
     "ES_INDEX_JOBS",
+    "ES_INDEX_LOGS",
 }
 FEATURE_FLAGS: Set[str] = set(
     u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")

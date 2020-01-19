@@ -14,6 +14,13 @@ from datafeeds.common.typing import (
     BillingRange,
     IntervalRange,
     IntervalIssue,
+    Status,
+)
+
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
 )
 
 
@@ -225,3 +232,43 @@ def index_etl_interval_issues(
             task_id, account_hex, account_name, meter_id, meter_name, scraper, issues
         ),
     )
+
+
+def index_logs(
+    task_id: str,
+    acct: SnapmeterAccount,
+    meter: Meter,
+    ds: MeterDataSource,
+    status: Status,
+):
+    """Upload the logs for this task to elasticsearch for later analysis."""
+    es = _get_es_connection()
+
+    try:
+        # Try to acquire a copy of the existing document created for this run.
+        # pylint: disable=unexpected-keyword-arg
+        task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
+        # pylint: enable=unexpected-keyword-arg
+        doc = task["_source"]
+    except NotFoundError:
+        # Make a document with fundamental information about the run.
+        doc = dict(
+            accountId=acct.hex_id,
+            accountName=acct.name,
+            meterId=meter.oid,
+            meterName=meter.name,
+            uploaded=datetime.now(),
+            scraper=ds.name,
+            status=str(status.name),
+        )
+
+    try:
+        with open(config.LOGPATH, "r") as f:
+            log_contents = f.read()
+        doc["log"] = log_contents
+        es.index(INDEX, doc_type="_doc", id=task_id, body=doc)
+    except:  # noqa E722
+        log.exception("Failed to upload run logs to elasticsearch.")
+        return
+
+    log.info("Successfully uploaded run logs to elasticsearch.")

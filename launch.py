@@ -13,6 +13,7 @@ import tarfile
 
 import boto
 
+from datafeeds.common.index import index_logs
 from datafeeds.datasources.austin_energy_interval import (
     datafeed as austin_energy_interval,
 )
@@ -53,7 +54,6 @@ from datafeeds.models import (
 )
 
 log = logging.getLogger("datafeeds")
-
 
 # Look up scraper function according to the Meter Data Source name recorded in the database.
 scraper_functions = {
@@ -99,10 +99,9 @@ def archive_run(task_id: str):
     """Write the files acquired during the scraper run to S3."""
 
     # Copy the scraper process log into the archive bundle if available."""
-    logpath = os.path.join(config.DATAFEEDS_ROOT, config.DATAFEEDS_LOG_NAME)
-    if os.path.isfile(logpath):
+    if os.path.isfile(config.LOGPATH):
         dest = os.path.join(config.WORKING_DIRECTORY, config.DATAFEEDS_LOG_NAME)
-        shutil.copy(logpath, dest)
+        shutil.copy(config.LOGPATH, dest)
 
     tarball = "{0}.tar.gz".format(config.WORKING_DIRECTORY)
     with tarfile.open(tarball, "w:gz") as f:
@@ -179,6 +178,9 @@ def _launch_meter_datasource(mds: MeterDataSource, start: date, end: date):
     cleanup_workdir()
     try:
         status = scraper_fn(account, meter, mds, parameters, task_id=task_id)
+
+        if config.enabled("ES_INDEX_LOGS"):
+            index_logs(task_id, account, meter, mds, status)
         if config.enabled("S3_ARTIFACT_UPLOAD"):
             archive_run(task_id)
     except:  # noqa=E722
