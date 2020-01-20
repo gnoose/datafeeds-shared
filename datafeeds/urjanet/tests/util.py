@@ -1,4 +1,5 @@
 import json
+import re
 import unittest
 from datetime import date
 from decimal import Decimal
@@ -38,6 +39,7 @@ class UrjaFixtureText(unittest.TestCase):
         self, transformer, input_path, expected_path, start_date=None, end_date=None
     ):
         input_urja_data = FixtureDataSource(input_path).load()
+        fixture = re.sub(".*?/tests/data", "data", input_path)
         if start_date or end_date:
             input_urja_data = filter_by_date_range(
                 input_urja_data, after=start_date, before=end_date
@@ -45,15 +47,21 @@ class UrjaFixtureText(unittest.TestCase):
         expected_result = self.load_expected_results(expected_path)
         actual_result = transformer.urja_to_gridium(input_urja_data)
 
-        self.assertEqual(len(expected_result.periods), len(actual_result.periods))
+        self.assertEqual(
+            len(expected_result.periods),
+            len(actual_result.periods),
+            "%s periods" % fixture,
+        )
         expected_sorted = sorted(expected_result.periods, key=lambda p: p.start)
         result_sorted = sorted(actual_result.periods, key=lambda p: p.start)
         for (e, r) in zip(expected_sorted, result_sorted):
-            self.assertEqual(e.start, r.start)
-            self.assertEqual(e.end, r.end)
-            self.assertEqual(e.total_charge, r.total_charge)
-            self.assertEqual(e.total_usage, r.total_usage)
-            self.assertEqual(e.peak_demand, r.peak_demand)
+            self.assertEqual(e.start, r.start, "%s start" % fixture)
+            self.assertEqual(e.end, r.end, "%s end" % fixture)
+            self.assertEqual(
+                e.total_charge, r.total_charge, "%s total charge" % fixture
+            )
+            self.assertEqual(e.total_usage, r.total_usage, "%s total usage" % fixture)
+            self.assertEqual(e.peak_demand, r.peak_demand, "%s peak demand" % fixture)
 
 
 def default_usage(

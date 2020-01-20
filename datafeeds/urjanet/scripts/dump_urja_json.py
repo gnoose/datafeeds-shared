@@ -1,8 +1,10 @@
 """A simple script for dumping urjanet data into a json format"""
 
-import sys
-import json
 import argparse
+import json
+import random
+import re
+import sys
 
 import pymysql
 
@@ -12,17 +14,22 @@ from datafeeds.urjanet.transformer import urja_to_json
 from datafeeds.urjanet.model import order_json
 
 
+def _anonymize_number(num):
+    for i in range(10):
+        num = re.sub(str(i), str(random.randrange(10)), num)
+    return num
+
+
 def fetch_data(datasource, anon=False):
     data = datasource.load()
-    if anon:
-        for account in data.accounts:
-            account.UtilityProvider = "AnonProvider"
-            account.AccountNumber = "AnonAccountNumber"
-            account.RawAccountNumber = "AnonRawAccountNumber"
+    # anonymize numbers but keep structure (spaces, dashes, etc)
+    for account in data.accounts:
+        account.AccountNumber = _anonymize_number(account.AccountNumber)
+        account.RawAccountNumber = _anonymize_number(account.RawAccountNumber)
 
-            for meter in account.meters:
-                meter.PODid = "AnonPODid"
-                meter.MeterNumber = "AnonMeterNumber"
+        for meter in account.meters:
+            meter.PODid = _anonymize_number(meter.PODid)
+            meter.MeterNumber = _anonymize_number(meter.MeterNumber)
 
     return urja_to_json(data)
 
@@ -35,9 +42,6 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--outfile", help="The file to write to (else stdout is used)")
-    parser.add_argument(
-        "--anon", action="store_true", help="Anonymize sensitive fields"
-    )
 
     subparsers = parser.add_subparsers()
     for _, hook_cls in get_cli_hooks().items():
