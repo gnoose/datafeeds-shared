@@ -2,18 +2,15 @@
 Simple wrapper class for pyvirtualdisplay to standardize init options
 """
 import logging
-import pyvirtualdisplay
 
-from datafeeds import config
+from xvfbwrapper import Xvfb
 
 log = logging.getLogger("datafeeds")
 
 
 class VirtualDisplay:
     def __init__(self):
-        self._display = pyvirtualdisplay.Display(
-            visible=config.DEBUG_SELENIUM_SCRAPERS, size=(1900, 1200)
-        )
+        self._display = Xvfb(width=1900, height=1200)
 
     def __enter__(self):
         self.start()
