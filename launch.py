@@ -39,10 +39,15 @@ from datafeeds.scrapers.stem import datafeed as stem
 
 from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
+from datafeeds.urjanet.datasource.calwater import datafeed as calwater
+from datafeeds.urjanet.datasource.colleyville import datafeed as colleyville
+from datafeeds.urjanet.datasource.fortworth import datafeed as fortworth
 from datafeeds.urjanet.datasource.heco import datafeed as heco_urjanet
+from datafeeds.urjanet.datasource.irvineranch import datafeed as irvineranch
 from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
 from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
 from datafeeds.urjanet.datasource.sandiego import datafeed as sandiego
+from datafeeds.urjanet.datasource.sjwater import datafeed as sjwater
 from datafeeds.urjanet.datasource.southlake import datafeed as southlake
 from datafeeds.urjanet.datasource.watauga import datafeed as watauga
 
@@ -65,10 +70,14 @@ scraper_functions = {
     "austin-energy-interval": austin_energy_interval,
     "austin-urjanet": austin,
     "bloom": bloom_interval,
+    "cal-water-urjanet": calwater,
+    "colleyville-water-urjanet": colleyville,
     "engie": engie,
+    "fortworth-water-urjanet": fortworth,
     "grovestreams": grovestreams,
     "heco-interval": heco_interval,
     "heco-urjanet": heco_urjanet,
+    "irvineranch-water-urjanet": irvineranch,
     "mountainview-urjanet": mountainview,
     "nve-myaccount": nvenergy_myaccount,
     "pacific-power-interval": pacific_power_interval,
@@ -76,6 +85,7 @@ scraper_functions = {
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
     "sce-green-button": sce_greenbutton,
+    "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
     "smud-energyprofiler-interval": smud_energyprofiler_interval,
     "stem": stem,
