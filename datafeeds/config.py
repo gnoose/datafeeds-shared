@@ -73,6 +73,9 @@ PLATFORM_PORT: str = os.environ.get("PLATFORM_PORT", "9229")
 # Where can we find the Ingest REST API?
 INGEST_ENDPOINT: str = os.environ.get("INGEST_ENDPOINT")
 
+# What host/key pair should be used to access the STEM REST API for interval data?
+STEM_API_BASE: str = os.environ.get("STEM_API_BASE")
+STEM_API_KEY: str = os.environ.get("STEM_API_KEY")
 
 #
 # What features are enabled?

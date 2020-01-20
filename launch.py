@@ -32,6 +32,8 @@ from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.solaredge import datafeed as solaredge
 from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
+from datafeeds.scrapers.stem import datafeed as stem
+
 
 from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
@@ -72,6 +74,7 @@ scraper_functions = {
     "sce-green-button": sce_greenbutton,
     "smart-meter-texas": smart_meter_texas,
     "smud-energyprofiler-interval": smud_energyprofiler_interval,
+    "stem": stem,
     "solaredge": solaredge,
     "solren": solren,
     "southlake-urjanet": southlake,
