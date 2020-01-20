@@ -25,6 +25,7 @@ from datafeeds.datasources.smud_energyprofiler_interval import (
 )
 
 from datafeeds.scrapers.bloom_interval import datafeed as bloom_interval
+from datafeeds.scrapers.engie import datafeed as engie
 from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
@@ -64,6 +65,7 @@ scraper_functions = {
     "austin-energy-interval": austin_energy_interval,
     "austin-urjanet": austin,
     "bloom": bloom_interval,
+    "engie": engie,
     "grovestreams": grovestreams,
     "heco-interval": heco_interval,
     "heco-urjanet": heco_urjanet,

@@ -77,6 +77,10 @@ INGEST_ENDPOINT: str = os.environ.get("INGEST_ENDPOINT")
 STEM_API_BASE: str = os.environ.get("STEM_API_BASE", "https://app.stem.com")
 STEM_API_KEY: str = os.environ.get("STEM_API_KEY")
 
+# What host/key pair should be used to access engie's REST API for interval data?
+ENGIE_API_BASE: str = os.environ.get("ENGIE_API_BASE", "https://api.greencharge.net")
+ENGIE_API_KEY: str = os.environ.get("ENGIE_API_KEY")
+
 # What host should be used to access the Grovestreams REST API for interval data?
 GROVESTREAMS_API_BASE: str = os.environ.get(
     "GROVESTREAMS_API_BASE", "https://grovestreams.com/api"
