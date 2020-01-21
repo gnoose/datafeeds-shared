@@ -29,6 +29,7 @@ from datafeeds.scrapers.engie import datafeed as engie
 from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
+from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
 from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.solaredge import datafeed as solaredge
@@ -85,6 +86,7 @@ scraper_functions = {
     "nve-myaccount": nvenergy_myaccount,
     "pacific-power-interval": pacific_power_interval,
     "pleasanton-urjanet": pleasanton,
+    "portland-bizportal": portland_bizportal,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
     "sce-green-button": sce_greenbutton,

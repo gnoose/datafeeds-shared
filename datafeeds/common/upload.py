@@ -188,14 +188,8 @@ def hash_bill(service_id, start_date, end_date, cost, demand, use):
     """Determine a key for the input bill_datum tuple that is unique (with high probability)."""
     fmt_string = "{0}_{1}_{2}_{3}_{4}_{5}"
     descriptor = fmt_string.format(
-        service_id,  # {0}
-        start_date.isoformat(),  # {1}
-        end_date.isoformat(),  # {2}
-        cost,  # {3}
-        demand,  # {4}
-        use,
-    )  # {5}
-
+        service_id, start_date.isoformat(), end_date.isoformat(), cost, demand, use,
+    )
     return hashlib.sha224(descriptor.encode("utf-8")).hexdigest()
 
 
@@ -208,11 +202,13 @@ def upload_bill_to_s3(
 ) -> Optional[AttachmentEntry]:
     entry = AttachmentEntry(key=key, kind="bill", format="PDF")
     if s3_key_exists(config.BILL_PDF_S3_BUCKET, key):
+        log.info("Bill %s already exists in S3. Skipping upload..." % key)
         return entry
 
     try:
         upload_pdf_to_s3(file_handle, config.BILL_PDF_S3_BUCKET, key)
     except:  # noqa E722
+        log.exception("Failed to upload bill %s to S3.", key)
         return None
 
     return entry
