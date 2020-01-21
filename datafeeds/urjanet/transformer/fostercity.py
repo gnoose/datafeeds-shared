@@ -10,9 +10,11 @@ class FosterCityBillingPeriod(GenericBillingPeriod):
         if self.account.NewCharges > Decimal(0.0):
             return self.account.NewCharges
 
-        if self.account.NewCharges == Decimal(0.0) \
-                and self.account.OutstandingBalance == Decimal(0.0) \
-                and self.account.TotalBillAmount > Decimal(0.0):
+        if (
+            self.account.NewCharges == Decimal(0.0)
+            and self.account.OutstandingBalance == Decimal(0.0)
+            and self.account.TotalBillAmount > Decimal(0.0)
+        ):
             return self.account.TotalBillAmount
 
 
