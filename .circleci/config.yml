@@ -75,9 +75,3 @@ workflows:
           region: AWS_PROD_DEFAULT_REGION
           repo: $CIRCLE_PROJECT_REPONAME
           tag: $CIRCLE_SHA1
-
-experimental:
-  notify:
-    branches:
-      only:
-        - master
