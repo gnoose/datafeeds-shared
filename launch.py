@@ -34,8 +34,9 @@ from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.solaredge import datafeed as solaredge
 from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
+from datafeeds.scrapers.duke.billing import datafeed as duke_billing
+from datafeeds.scrapers.duke.intervals import datafeed as duke_interval
 from datafeeds.scrapers.stem import datafeed as stem
-
 
 from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
@@ -72,6 +73,8 @@ scraper_functions = {
     "bloom": bloom_interval,
     "cal-water-urjanet": calwater,
     "colleyville-water-urjanet": colleyville,
+    "duke-billing": duke_billing,
+    "duke-interval": duke_interval,
     "engie": engie,
     "fortworth-water-urjanet": fortworth,
     "grovestreams": grovestreams,
