@@ -1,5 +1,3 @@
-# pylint: disable=R0904
-
 import unittest
 from datetime import date
 from decimal import Decimal

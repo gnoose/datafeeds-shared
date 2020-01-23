@@ -1,4 +1,6 @@
+black==19.10b0
 flake8==3.7.9
 gitpython==3.0.4
+mypy==0.761
 pyslack==0.5.0
-black==19.10b0
+

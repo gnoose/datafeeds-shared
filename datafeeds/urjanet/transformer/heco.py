@@ -31,9 +31,8 @@ class HecoBillingPeriod(GenericBillingPeriod):
 
 
 class HecoTransformer(UrjanetGridiumTransformer):
-    def filtered_accounts(
-        self, urja_data: UrjanetData
-    ) -> List[Account]:  # pylint: disable=no-self-use
+    @staticmethod
+    def filtered_accounts(urja_data: UrjanetData,) -> List[Account]:
         """StatementDate is not set for some Heco"""
         return [
             account

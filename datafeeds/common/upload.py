@@ -3,12 +3,25 @@ import logging
 import csv
 from deprecation import deprecated
 import os
+from typing import Optional, Union, BinaryIO
+from io import BytesIO
+import hashlib
 
 
 from datafeeds import config
 from datafeeds.common import webapps, index, platform
-from datafeeds.common.typing import BillingData, show_bill_summary
+from datafeeds.common.typing import (
+    BillingData,
+    show_bill_summary,
+    BillingDatum,
+    AttachmentEntry,
+)
 from datafeeds.common import interval_transform
+from datafeeds.common.util.s3 import upload_pdf_to_s3
+from datafeeds.common.util.s3 import s3_key_exists
+
+
+BytesLikeObject = Union[BinaryIO, BytesIO]
 
 log = logging.getLogger(__name__)
 
@@ -169,3 +182,33 @@ def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
 
     webapps.post("/transactions/commit", {"oid": transaction_oid})
     log.debug("Committed stasis transaction.")
+
+
+def hash_bill(service_id, start_date, end_date, cost, demand, use):
+    """Determine a key for the input bill_datum tuple that is unique (with high probability)."""
+    fmt_string = "{0}_{1}_{2}_{3}_{4}_{5}"
+    descriptor = fmt_string.format(
+        service_id, start_date.isoformat(), end_date.isoformat(), cost, demand, use,
+    )
+    return hashlib.sha224(descriptor.encode("utf-8")).hexdigest()
+
+
+def hash_bill_datum(service_id: str, b: BillingDatum):
+    return hash_bill(service_id, b.start, b.end, b.cost, b.peak, b.used)
+
+
+def upload_bill_to_s3(
+    file_handle: BytesLikeObject, key: str
+) -> Optional[AttachmentEntry]:
+    entry = AttachmentEntry(key=key, kind="bill", format="PDF")
+    if s3_key_exists(config.BILL_PDF_S3_BUCKET, key):
+        log.info("Bill %s already exists in S3. Skipping upload..." % key)
+        return entry
+
+    try:
+        upload_pdf_to_s3(file_handle, config.BILL_PDF_S3_BUCKET, key)
+    except:  # noqa E722
+        log.exception("Failed to upload bill %s to S3.", key)
+        return None
+
+    return entry

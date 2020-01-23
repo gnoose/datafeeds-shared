@@ -67,7 +67,7 @@ class Scraper(BaseApiScraper):
             API_BASE + "/ep15/v2.0.0?", params=params, headers=headers
         )
 
-        if response.status_code != requests.codes.ok:  # pylint: disable=no-member
+        if response.status_code != requests.codes.ok:
             raise ApiError(
                 "Failed to acquire data from the API. Status Code: %s."
                 % response.status_code

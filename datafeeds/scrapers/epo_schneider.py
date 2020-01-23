@@ -27,7 +27,7 @@ log = logging.getLogger(__name__)
 
 
 def _log(msg):
-    log.debug(msg)
+    log.info(msg)
 
 
 class InvalidMeterException(Exception):

@@ -2,8 +2,8 @@ import csv
 import time
 import logging
 
-from typing import Optional, Tuple, List, Dict
-from datetime import timedelta, datetime, date
+from typing import Optional, Tuple, List, Dict, Callable
+from datetime import timedelta, datetime, date, time as time_t
 from dateutil import parser as dateparser
 from dateutil.relativedelta import relativedelta
 from selenium.webdriver.common.keys import Keys
@@ -40,28 +40,28 @@ class MeterNotFoundException(Exception):
     pass
 
 
+def iframe_decorator(func: Callable):
+    """
+    Decorator for wrapping IFrame functions so selenium can find
+    the necessary elements.
+    """
+
+    # Disabling these rules here because of weirdness around including
+    # this decorator (that depends on the IFrameBasePageObject) inside
+    # the class, while still making it available to subclasses
+
+    def func_wrapper(self, *args, **kwargs):
+        with IFrameSwitch(self._driver, self.get_iframe_selector()):
+            return func(self, *args, **kwargs)
+
+    return func_wrapper
+
+
 class IFrameBasePageObject(CSSSelectorBasePageObject):
     IFrameSelector = "div.powertrax > iframe"
 
     def get_iframe_selector(self):
         return self.find_element(self.IFrameSelector)
-
-    def iframe_decorator(func):
-        """
-        Decorator for wrapping IFrame functions so selenium can find
-        the necessary elements.
-        """
-        # Disabling these rules here because of weirdness around including
-        # this decorator (that depends on the IFrameBasePageObject) inside
-        # the class, while still making it available to subclasses
-
-        # pylint: disable=no-self-argument
-        # pylint: disable=not-callable
-        def func_wrapper(self, *args, **kwargs):
-            with IFrameSwitch(self._driver, self.get_iframe_selector()):
-                return func(self, *args, **kwargs)
-
-        return func_wrapper
 
     @iframe_decorator
     def wait_until_ready(
@@ -154,7 +154,7 @@ class DownloadPage(IFrameBasePageObject):
     def get_download_page_link(self):
         return self.find_element(self.DownloadLinkSelector)
 
-    @IFrameBasePageObject.iframe_decorator
+    @iframe_decorator
     def navigate_to_download_page(self):
         """Navigate to download page
 
@@ -170,7 +170,7 @@ class MeterPage(IFrameBasePageObject):
     def get_meter_searchbox(self):
         return self.find_element(self.MeterSearchInput)
 
-    @IFrameBasePageObject.iframe_decorator
+    @iframe_decorator
     def search_by_meter_id(self, meter_id: str):
         """Search by meter id - there are many pages of meters, so rather
         than paginate through them, use the search bar.
@@ -188,7 +188,7 @@ class MeterSearchResult(IFrameBasePageObject):
     def get_search_result(self):
         return self.find_element(self.SearchResult)
 
-    @IFrameBasePageObject.iframe_decorator
+    @iframe_decorator
     def click_on_meter_result(self):
         log.info("Clicking on meter id.")
         self.get_search_result().click()
@@ -217,10 +217,8 @@ class AvailableDateComponent(IFrameBasePageObject):
         end_date = datetime.strptime(available_date_arr[1], DATE_FORMAT).date()
         return start_date, end_date
 
-    @IFrameBasePageObject.iframe_decorator
-    def adjust_start_and_end_dates(
-        self, start: datetime, end: datetime
-    ) -> Tuple[date, date]:
+    @iframe_decorator
+    def adjust_start_and_end_dates(self, start: date, end: date) -> Tuple[date, date]:
         min_start, max_end = self._extract_available_dates()
 
         if start < min_start:
@@ -268,7 +266,7 @@ class IntervalForm(IFrameBasePageObject):
         time.sleep(3)
         calendar_input.send_keys(IntervalForm._format_date(date_input))
 
-    @IFrameBasePageObject.iframe_decorator
+    @iframe_decorator
     def fill_out_interval_form_and_download(
         self, start: datetime, end: datetime, timeout: Optional[int] = 60
     ):
@@ -352,7 +350,7 @@ class HECOScraper(BaseWebScraper):
         return
 
     @staticmethod
-    def _format_time(time_to_format: datetime) -> str:
+    def _format_time(time_to_format: time_t) -> str:
         return time_to_format.strftime("%H:%M")
 
     @staticmethod

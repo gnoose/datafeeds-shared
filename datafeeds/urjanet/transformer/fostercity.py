@@ -25,8 +25,7 @@ class FosterCityWaterTransformer(GenericWaterTransformer):
     def billing_period(account: Account) -> FosterCityWaterBillingPeriod:
         return FosterCityWaterBillingPeriod(account)
 
-    # pylint: disable=no-self-use
-    def filtered_accounts(self, urja_data: UrjanetData) -> List[Account]:
+    def filtered_accounts(urja_data: UrjanetData) -> List[Account]:
         # Foster city has some "degenerate" statements with no charges and with
         # start date == end date
         # So we override this function to capture those cases

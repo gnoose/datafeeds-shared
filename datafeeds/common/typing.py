@@ -109,7 +109,7 @@ def is_without_overlaps(bd: BillingData) -> bool:
     return reduce(comparator, chronologically, True) is not False
 
 
-def _log_invalid_date_range(bd: BillingData, log) -> None:
+def _log_invalid_date_range(bd: BillingData) -> None:
     def overlaps_for(b):
         for c in chronologically:
             if c is b or b.end < c.start or c.end < b.start:
@@ -117,7 +117,7 @@ def _log_invalid_date_range(bd: BillingData, log) -> None:
 
             yield c
 
-    def gap_or_acc(acc, elem: BillingDatum):
+    def gap_or_acc(acc, elem: BillingDatum) -> dict:
         new_gap = lambda e: "%s - %s" % (fmt(acc["prev"].end), fmt(e.start))
 
         return (
@@ -162,27 +162,27 @@ def _log_invalid_date_range(bd: BillingData, log) -> None:
         (fmt_range(b), list(overlaps_for(b))) for b in chronologically
     )
 
-    gaps = reduce(gap_or_acc, chronologically, {"prev": None, "gaps": []})["gaps"]
+    gaps: list = reduce(gap_or_acc, chronologically, {"prev": None, "gaps": []})["gaps"]
 
-    log(full_log_msg())
+    log.info(full_log_msg())
 
 
-def assert_is_contiguous(bd: BillingData, log=None) -> None:
+def assert_is_contiguous(bd: BillingData, explain: bool = True) -> None:
     if is_contiguous(bd):
         return
 
-    if log:
-        _log_invalid_date_range(bd, log)
+    if explain:
+        _log_invalid_date_range(bd)
 
     raise NonContiguousBillingDataDateRangeError()
 
 
-def assert_is_without_overlaps(bd: BillingData, log=None) -> None:
+def assert_is_without_overlaps(bd: BillingData, explain: bool = True) -> None:
     if is_without_overlaps(bd):
         return
 
-    if log:
-        _log_invalid_date_range(bd, log)
+    if explain:
+        _log_invalid_date_range(bd)
 
     raise OverlappedBillingDataDateRangeError()
 
@@ -197,7 +197,7 @@ def adjust_bill_dates(bills: BillingData) -> BillingData:
     """Ensure that the input list of bills is sorted by date and no two bills have overlapping dates."""
     bills.sort(key=lambda x: x.start)
 
-    final_bills = []
+    final_bills: List[BillingDatum] = []
     for b in bills:
         for other in final_bills:
             if _overlap(b, other) > timedelta() or b.start == other.end:
@@ -221,6 +221,6 @@ def show_bill_summary(
     fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s"
     log.info(fmt % fields)
     for b in bills:
-        entries = [str(x) for x in b[:5]] + [b.attachments is not None]
+        entries = [str(x) for x in b[:5]] + [str(b.attachments is not None)]
         log.info(fmt % tuple(entries))
     log.info("=" * 80)

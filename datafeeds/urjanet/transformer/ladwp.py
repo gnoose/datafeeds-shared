@@ -1,7 +1,9 @@
 import logging
 from decimal import Decimal
 from collections import defaultdict
-from typing import List
+from typing import List, Dict
+
+from intervaltree import Interval
 
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 from datafeeds.urjanet.model import (
@@ -46,7 +48,7 @@ class LadwpWaterBillingPeriod:
         def filter_for_total(usage):
             return usage.RateComponent == "[total]"
 
-        return sum([u.UsageAmount for u in self.usages if filter_for_total(u)])
+        return Decimal(sum([u.UsageAmount for u in self.usages if filter_for_total(u)]))
 
     def get_total_charge(self) -> Decimal:
         """Return the sum of all charges is this billing period"""
@@ -182,7 +184,9 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
     def merge_statement_data(
         self, bill_history: DateIntervalTree, urja_account: Account
     ) -> None:
-        statement_data = defaultdict(LadwpWaterBillingPeriod)
+        statement_data: Dict[Interval, LadwpWaterBillingPeriod] = defaultdict(
+            LadwpWaterBillingPeriod
+        )
 
         for meter in urja_account.meters:
             for charge in meter.charges:

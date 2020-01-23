@@ -29,13 +29,15 @@ from datafeeds.scrapers.engie import datafeed as engie
 from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
+from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
 from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.solaredge import datafeed as solaredge
 from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
+from datafeeds.scrapers.duke.billing import datafeed as duke_billing
+from datafeeds.scrapers.duke.intervals import datafeed as duke_interval
 from datafeeds.scrapers.stem import datafeed as stem
-
 
 from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
@@ -72,6 +74,8 @@ scraper_functions = {
     "bloom": bloom_interval,
     "cal-water-urjanet": calwater,
     "colleyville-water-urjanet": colleyville,
+    "duke-energy-billing": duke_billing,
+    "duke-energy-interval": duke_interval,
     "engie": engie,
     "fortworth-water-urjanet": fortworth,
     "grovestreams": grovestreams,
@@ -82,6 +86,7 @@ scraper_functions = {
     "nve-myaccount": nvenergy_myaccount,
     "pacific-power-interval": pacific_power_interval,
     "pleasanton-urjanet": pleasanton,
+    "portland-bizportal": portland_bizportal,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
     "sce-green-button": sce_greenbutton,

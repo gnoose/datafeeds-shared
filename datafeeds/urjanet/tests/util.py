@@ -137,7 +137,6 @@ def default_meter(
     )
 
 
-# pylint: disable=R0913
 def default_account(
     PK=1,
     UtilityProvider="test_provider",

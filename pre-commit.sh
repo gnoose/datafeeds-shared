@@ -8,10 +8,9 @@ printf "Running lint ... "
 flake8 datafeeds launch.py
 printf " ok\n"
 
-# FIXME: Get incremental typechecking working.
-#printf "Running mypy ..."
-#mypy --ignore-missing-imports datafeeds
-#printf " ok\n"
+printf "Running mypy ..."
+mypy --no-strict-optional --ignore-missing-imports datafeeds launch.py
+printf " ok\n"
 
 printf "Running tests ...\n"
 python -m unittest -v

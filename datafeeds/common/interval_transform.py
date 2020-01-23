@@ -120,7 +120,7 @@ def transform(
         return readings
     # run transforms and collect issues
     transformed = copy.deepcopy(readings)
-    all_issues = []
+    all_issues: List[IntervalIssue] = []
     for action in transforms:
         try:
             log.info("running transform %s on meter %s", action.name, meter_id)

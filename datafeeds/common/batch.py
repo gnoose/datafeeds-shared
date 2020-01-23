@@ -64,12 +64,7 @@ def run_datafeed(
 
     bill_handler = ft.partial(upload_bills, meter.utility_service.service_id, task_id)
     readings_handler = ft.partial(
-        upload_readings,
-        transforms,
-        task_id,
-        meter.oid,
-        acct_hex_id,
-        scraper_class.__name__,
+        upload_readings, transforms, task_id, meter.oid, acct_hex_id, datasource.name
     )
     date_range = DateRange(
         *iso_to_dates(params.get("data_start"), params.get("data_end"))
@@ -98,7 +93,7 @@ def run_datafeed(
                 "accountName": acct_name,
                 "meterId": meter.oid,
                 "meterName": meter.name,
-                "scraper": scraper_class.__name__,
+                "scraper": datasource.name,
                 "origin": "datafeeds",
             },
         )

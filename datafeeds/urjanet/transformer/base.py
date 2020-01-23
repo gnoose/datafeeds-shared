@@ -82,7 +82,7 @@ class GenericBillingPeriod:
         Get the max ChargeUnitsUsed for charges with UsageUnit kW, or None if there are no kW
         charges.
         """
-        peak = -1  # want to be able to tell if it was set; won't be for water
+        peak = Decimal(-1)  # want to be able to tell if it was set; won't be for water
         for meter in self.account.meters:
             for charges in meter.charges:
                 if charges.UsageUnit == "kW":
@@ -135,9 +135,7 @@ def log_generic_billing_periods(bill_history: DateIntervalTree) -> None:
 
 class UrjanetGridiumTransformer:
     @staticmethod
-    def filtered_accounts(
-        urja_data: UrjanetData,
-    ) -> List[Account]:  # pylint: disable=no-self-use
+    def filtered_accounts(urja_data: UrjanetData,) -> List[Account]:
         return [
             account
             for account in urja_data.accounts

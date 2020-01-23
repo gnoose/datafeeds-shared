@@ -32,7 +32,7 @@ from collections import OrderedDict
 from typing import Any, Callable
 from datetime import date
 
-# pylint: disable=E0611
+
 from jsonobject import (
     JsonObject,
     DecimalProperty,
@@ -358,6 +358,8 @@ def order_json(json_elem: Any) -> Any:
       - dict-fields appear next
       - list fields appear last
     """
+    result: Any = json_elem
+
     if isinstance(json_elem, dict):
         result = OrderedDict()
         lists = []
@@ -381,7 +383,5 @@ def order_json(json_elem: Any) -> Any:
             result[list_field] = [order_json(e) for e in json_elem[list_field]]
     elif isinstance(json_elem, list):
         result = [order_json(e) for e in json_elem]
-    else:
-        result = json_elem
 
     return result
