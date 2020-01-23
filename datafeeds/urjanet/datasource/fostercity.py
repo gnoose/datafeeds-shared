@@ -64,6 +64,6 @@ def datafeed(
         datasource,
         params,
         FosterCityWaterDatasource(meter.utility_account_id),
-        FosterCityWaterTransformer,
+        FosterCityWaterTransformer(),
         task_id=task_id,
     )

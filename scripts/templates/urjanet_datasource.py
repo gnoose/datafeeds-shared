@@ -40,6 +40,6 @@ def datafeed(
         datasource,
         params,
         _UtilityName_Datasource(meter.utility_account_id),
-        _UtilityName_Transformer,
+        _UtilityName_Transformer(),
         task_id=task_id,
     )
