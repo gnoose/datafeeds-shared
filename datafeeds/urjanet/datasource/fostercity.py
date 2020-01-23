@@ -1,7 +1,15 @@
-from typing import List
+from typing import Optional, List
 
+from datafeeds.common.batch import run_urjanet_datafeed
+from datafeeds.common.typing import Status
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
-from datafeeds.urjanet.model import Account, Meter
+from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.transformer import FosterCityWaterTransformer
 
 
 class FosterCityWaterDatasource(UrjanetPyMySqlDataSource):
@@ -41,3 +49,21 @@ class FosterCityWaterDatasource(UrjanetPyMySqlDataSource):
         query = "SELECT * FROM Meter WHERE ServiceType in ('water', 'sewer', 'irrigation') AND AccountFK=%s"
         result_set = self.fetch_all(query, account_pk)
         return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+) -> Status:
+    return run_urjanet_datafeed(
+        account,
+        meter,
+        datasource,
+        params,
+        FosterCityWaterDatasource(meter.utility_account_id),
+        FosterCityWaterTransformer,
+        task_id=task_id,
+    )

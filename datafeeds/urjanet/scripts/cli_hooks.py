@@ -55,7 +55,7 @@ from datafeeds.urjanet.transformer import (
     PacGeGridiumTransfomer,
     LadwpWaterTransformer,
     SfpucWaterTransformer,
-    FosterCityTransformer,
+    FosterCityWaterTransformer,
     GenericWaterTransformer,
     SouthlakeTransformer,
     WataugaTransformer,
@@ -154,7 +154,7 @@ class SfpucWaterCli(DatasourceCli):
 
 
 class FosterCityWaterCli(DatasourceCli):
-    __cli_key__ = "foster_water"
+    __cli_key__ = "fostercity_water"
 
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
@@ -165,7 +165,7 @@ class FosterCityWaterCli(DatasourceCli):
         )
 
     def make_transformer(self):
-        return FosterCityTransformer()
+        return FosterCityWaterTransformer()
 
 
 class ColleyvilleWaterCli(DatasourceCli):

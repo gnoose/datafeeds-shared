@@ -132,6 +132,10 @@ Important: This command requires a database connection. In order to run it local
 must have access to an Urjanet database. See [urjanet_setup.md](urjanet_setup.md) to set up
 a local database.
 
+Run it with the CLI hook (likely utility name) and an account number (from Urjanet sheet):
+
+    python dump_urja_json.py watauga 07202700 > ../tests/data/watauga/input_07202700.json
+
 ### [transform_urja_json.py](../datafeeds/urjanet/scripts/transform_urja_json.py)
 This command transforms Urjanet data in a json format (e.g. produced by `dump_urja_json.py`)
 into Gridium billing periods. The billing periods are written out in a separate json file.

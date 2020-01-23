@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@6.5.0
+  slack: circleci/slack@3.4.2
 jobs:
   build:
     # The "circle" directory contains the specs for this container
@@ -38,6 +39,9 @@ jobs:
       - run:
           name: Running smoke test on launch.py
           command: pipenv run python launch.py --help
+      - run: exit 0
+      - slack/status:
+          fail_only: false
 
 workflows:
   build-and-deploy:
@@ -71,9 +75,3 @@ workflows:
           region: AWS_PROD_DEFAULT_REGION
           repo: $CIRCLE_PROJECT_REPONAME
           tag: $CIRCLE_SHA1
-
-experimental:
-  notify:
-    branches:
-      only:
-        - master

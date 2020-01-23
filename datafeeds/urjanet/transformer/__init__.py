@@ -6,7 +6,7 @@ from .pacge import PacGeGridiumTransfomer
 from .ladwp import LadwpWaterTransformer
 from .southlake import SouthlakeTransformer
 from .watauga import WataugaTransformer
-from .fostercity import FosterCityTransformer
+from .fostercity import FosterCityWaterTransformer
 from .american import AmericanTransformer
 from .heco import HecoTransformer
 from .austin_tx import AustinTXTransformer
@@ -18,13 +18,14 @@ __all__ = [
     "json_to_urja",
     "GenericBillingPeriod",
     "GenericWaterTransformer",
-    "SfpucWaterTransformer",
-    "PacGeGridiumTransfomer",
-    "LadwpWaterTransformer",
-    "SouthlakeTransformer",
-    "WataugaTransformer",
-    "FosterCityTransformer",
-    "HecoTransformer",
+    # alphabetical from here
     "AmericanTransformer",
     "AustinTXTransformer",
+    "FosterCityWaterTransformer",
+    "HecoTransformer",
+    "LadwpWaterTransformer",
+    "PacGeGridiumTransfomer",
+    "SfpucWaterTransformer",
+    "SouthlakeTransformer",
+    "WataugaTransformer",
 ]
