@@ -3,7 +3,7 @@ import logging
 from decimal import Decimal
 from collections import defaultdict
 from datetime import date, timedelta
-from typing import List
+from typing import List, Dict
 
 from intervaltree import Interval
 
@@ -121,7 +121,7 @@ class PacGeBillingPeriodData:
                 "therms",
             ]
 
-        return sum([u.UsageAmount for u in self.usages if filter_for_total(u)])
+        return Decimal(sum([u.UsageAmount for u in self.usages if filter_for_total(u)]))
 
     def get_source_urls(self) -> List[str]:
         """Return a list of URLs to source statements for this period (e.g. PDFs)"""
@@ -277,7 +277,9 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
         # The statement_data dict maps billing periods (specifically, the elements of the bill_history datastructure)
         # to PacGeBillingPeriodData objects, which hold the billing data available in the current statement for that
         # period.
-        statement_data = defaultdict(PacGeBillingPeriodData)
+        statement_data: Dict[Interval, PacGeBillingPeriodData] = defaultdict(
+            PacGeBillingPeriodData
+        )
 
         # In a first pass, we iterate over all charges/usages associated with a meter, and try to insert them into the
         # right statement_data bucket. This involves looking at the date range on the charge/usage and determining

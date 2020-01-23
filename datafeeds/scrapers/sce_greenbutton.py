@@ -6,7 +6,6 @@ from dateutil.relativedelta import relativedelta
 from dateutil.tz import gettz as get_timezone, tzutc
 import requests
 
-# pylint: disable=no-name-in-module
 from jsonobject import (
     JsonObject,
     StringProperty,
@@ -14,8 +13,6 @@ from jsonobject import (
     FloatProperty,
     ListProperty,
 )
-
-# pylint: enable=no-name-in-module
 
 from datafeeds import config
 from datafeeds.common import (

@@ -1,5 +1,5 @@
 import logging
-from typing import Callable, Any, List
+from typing import Callable, Any, List, Dict, Optional
 
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
@@ -112,9 +112,9 @@ class PageStateMachine:
 
     def __init__(self, driver: BaseDriver):
         self.driver = driver
-        self.state_machine = dict()
-        self.initial_state = None
-        self.on_enter_state_fn = None
+        self.state_machine: Dict[str, StateNode] = dict()
+        self.initial_state: Optional[str] = None
+        self.on_enter_state_fn: Optional[Callable] = None
 
     def set_initial_state(self, name: str):
         if name not in self.state_machine:
@@ -159,7 +159,7 @@ class PageStateMachine:
         while not done:
             cur_state = self.state_machine.get(cur_state_name)
             if not cur_state:
-                raise MissingStateException(cur_state)
+                raise MissingStateException(cur_state_name)
 
             log.info("Entering state: {}".format(cur_state_name))
             if self.on_enter_state_fn:

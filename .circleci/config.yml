@@ -29,9 +29,9 @@ jobs:
       - run:
           name: Running lint
           command: pipenv run flake8 datafeeds ops launch.py
-      #- run:
-      #    name: Running static analysis
-      #    command: pipenv run mypy --ignore-missing-imports analytica
+      - run:
+          name: Running static analysis
+          command: pipenv run mypy --no-strict-optional --ignore-missing-imports datafeeds launch.py
       - run:
           name: Running tests
           command: pipenv run python -m unittest -v

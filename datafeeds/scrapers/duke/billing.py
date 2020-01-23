@@ -1,4 +1,3 @@
-# pylint: disable=too-few-public-methods
 """ Duke Billing scraper module """
 import logging
 from typing import Optional

@@ -369,7 +369,6 @@ class DukeAccountsPage(PageState):
         try:
             bill_date = datetime.strptime(date_str, "%m/%d/%Y").date()
             # billing start could be None
-            # pylint: disable=simplifiable-if-statement
             if billing_start and bill_date < billing_start:
                 return False
             # billing_end should not be None

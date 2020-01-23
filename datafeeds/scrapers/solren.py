@@ -243,7 +243,7 @@ class CSVParser:
     def __init__(self, inverter_id: str, filepath: str):
         self.inverter_id = inverter_id
         self.filepath = filepath
-        self.intermediate_readings = {}
+        self.intermediate_readings: Dict[str, Dict[str, float]] = {}
 
     @staticmethod
     def _get_header_position(header_row: List[str], column_title: str) -> int:

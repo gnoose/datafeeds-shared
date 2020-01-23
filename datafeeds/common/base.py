@@ -44,7 +44,6 @@ class BaseScraper(Abstract):
     the scraper results are handled.
     """
 
-    # pylint: disable=too-many-instance-attributes
     # Vast majority of this state is immutable, and storing account id, etc
     # prevents need of having to manage them as parameters which can be quite
     # likely to change depending on the scraper

@@ -19,9 +19,6 @@ NVE = NV Energy
 JWT = JSON Web Token
 """
 
-# Disable warnings on requests.
-# pylint: disable=maybe-no-member
-
 from collections import namedtuple
 from datetime import datetime, timedelta
 import json

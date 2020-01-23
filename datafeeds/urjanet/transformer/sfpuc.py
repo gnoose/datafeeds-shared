@@ -33,7 +33,9 @@ class SfpucWaterBillingPeriod(GenericBillingPeriod):
         def filter_for_total(usage):
             return usage.RateComponent == "[total]"
 
-        return sum([u.UsageAmount for u in self.iter_usages() if filter_for_total(u)])
+        return Decimal(
+            sum([u.UsageAmount for u in self.iter_usages() if filter_for_total(u)])
+        )
 
 
 class SfpucWaterTransformer(GenericWaterTransformer):

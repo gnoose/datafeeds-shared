@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Optional
+from typing import Optional, List
 
 from dateutil.relativedelta import relativedelta
 import logging
@@ -84,7 +84,7 @@ class Session:
     def get_intervals(self, api_base: str, start, end, installation_date):
         """Construct intervals by dividing the date range into 1 month ranges
         if necessary. Assumes these times are in the site's timezone"""
-        accum = []
+        accum: List[Interval] = []
         url = api_base + "/meters"
         delta = relativedelta(months=1)
         install_date = datetime.strptime(installation_date, DATE_FORMAT)
