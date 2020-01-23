@@ -5,7 +5,7 @@ from datafeeds.urjanet.model import Account, UrjanetData
 from datafeeds.urjanet.transformer import GenericWaterTransformer, GenericBillingPeriod
 
 
-class FosterCityBillingPeriod(GenericBillingPeriod):
+class FosterCityWaterBillingPeriod(GenericBillingPeriod):
     def get_total_charge(self):
         if self.account.NewCharges > Decimal(0.0):
             return self.account.NewCharges
@@ -18,12 +18,12 @@ class FosterCityBillingPeriod(GenericBillingPeriod):
             return self.account.TotalBillAmount
 
 
-class FosterCityTransformer(GenericWaterTransformer):
+class FosterCityWaterTransformer(GenericWaterTransformer):
     """A water transformer with some minor adaptations for the Foster City municipal utility"""
 
     @staticmethod
-    def billing_period(account: Account) -> FosterCityBillingPeriod:
-        return FosterCityBillingPeriod(account)
+    def billing_period(account: Account) -> FosterCityWaterBillingPeriod:
+        return FosterCityWaterBillingPeriod(account)
 
     # pylint: disable=no-self-use
     def filtered_accounts(self, urja_data: UrjanetData) -> List[Account]:

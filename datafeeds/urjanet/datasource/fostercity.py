@@ -9,17 +9,17 @@ from datafeeds.models import (
 )
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import Account
-from datafeeds.urjanet.transformer import FosterCityTransformer
+from datafeeds.urjanet.transformer import FosterCityWaterTransformer
 
 
-class FosterCityDatasource(UrjanetPyMySqlDataSource):
+class FosterCityWaterDatasource(UrjanetPyMySqlDataSource):
     """Load Foster City water data from an Urjanet database
 
     This class accepts an account number. All meters are currently loaded from each bill.
     """
 
     def __init__(self, account_number: str):
-        super().__init__()
+        super().__init__(account_number)
         self.account_number = self.normalize_account_number(account_number)
 
     @staticmethod
@@ -63,7 +63,7 @@ def datafeed(
         meter,
         datasource,
         params,
-        FosterCityDatasource(meter.utility_account_id),
-        FosterCityTransformer,
+        FosterCityWaterDatasource(meter.utility_account_id),
+        FosterCityWaterTransformer,
         task_id=task_id,
     )

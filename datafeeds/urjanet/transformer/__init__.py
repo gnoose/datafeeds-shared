@@ -6,7 +6,7 @@ from .pacge import PacGeGridiumTransfomer
 from .ladwp import LadwpWaterTransformer
 from .southlake import SouthlakeTransformer
 from .watauga import WataugaTransformer
-from .fostercity import FosterCityTransformer
+from .fostercity import FosterCityWaterTransformer
 from .american import AmericanTransformer
 from .heco import HecoTransformer
 from .austin_tx import AustinTXTransformer
@@ -21,7 +21,7 @@ __all__ = [
     # alphabetical from here
     "AmericanTransformer",
     "AustinTXTransformer",
-    "FosterCityTransformer",
+    "FosterCityWaterTransformer",
     "HecoTransformer",
     "LadwpWaterTransformer",
     "PacGeGridiumTransfomer",

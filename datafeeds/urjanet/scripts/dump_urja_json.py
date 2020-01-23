@@ -14,18 +14,23 @@ from datafeeds.urjanet.transformer import urja_to_json
 from datafeeds.urjanet.model import order_json
 
 
-def _anonymize_number(num):
+def _anonymize_number(num, replacements=None):
+    if replacements is None:
+        replacements = {}
     for i in range(10):
-        num = re.sub(str(i), str(random.randrange(10)), num)
+        if not i in replacements:
+            replacements[i] = str(random.randrange(10))
+        num = re.sub(str(i), replacements[i], num)
     return num
 
 
-def fetch_data(datasource, anon=False):
+def fetch_data(datasource):
     data = datasource.load()
     # anonymize numbers but keep structure (spaces, dashes, etc)
     for account in data.accounts:
-        account.AccountNumber = _anonymize_number(account.AccountNumber)
-        account.RawAccountNumber = _anonymize_number(account.RawAccountNumber)
+        replacements = {}
+        account.AccountNumber = _anonymize_number(account.AccountNumber, replacements)
+        account.RawAccountNumber = _anonymize_number(account.RawAccountNumber, replacements)
 
         for meter in account.meters:
             meter.PODid = _anonymize_number(meter.PODid)
@@ -61,7 +66,7 @@ def main():
     writer = None
     try:
         datasource = args.datasource_cli.make_datasource(conn, args)
-        urja_data = fetch_data(datasource, anon=args.anon)
+        urja_data = fetch_data(datasource)
 
         writer = sys.stdout
         if args.outfile:
