@@ -30,7 +30,9 @@ def fetch_data(datasource):
     for account in data.accounts:
         replacements = {}
         account.AccountNumber = _anonymize_number(account.AccountNumber, replacements)
-        account.RawAccountNumber = _anonymize_number(account.RawAccountNumber, replacements)
+        account.RawAccountNumber = _anonymize_number(
+            account.RawAccountNumber, replacements
+        )
 
         for meter in account.meters:
             meter.PODid = _anonymize_number(meter.PODid)
