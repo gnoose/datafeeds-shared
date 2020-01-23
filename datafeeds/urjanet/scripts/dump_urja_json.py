@@ -18,7 +18,7 @@ def _anonymize_number(num, replacements=None):
     if replacements is None:
         replacements = {}
     for i in range(10):
-        if not i in replacements:
+        if i not in replacements:
             replacements[i] = str(random.randrange(10))
         num = re.sub(str(i), replacements[i], num)
     return num

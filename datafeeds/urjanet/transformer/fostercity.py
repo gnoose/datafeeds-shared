@@ -25,6 +25,7 @@ class FosterCityWaterTransformer(GenericWaterTransformer):
     def billing_period(account: Account) -> FosterCityWaterBillingPeriod:
         return FosterCityWaterBillingPeriod(account)
 
+    @staticmethod
     def filtered_accounts(urja_data: UrjanetData) -> List[Account]:
         # Foster city has some "degenerate" statements with no charges and with
         # start date == end date

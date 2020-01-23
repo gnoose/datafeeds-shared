@@ -17,8 +17,7 @@ Install dependencies:
 
 ```
 pip install -r requirements.txt
-pip install flake8
-pip install black
+pip install -r dev-requirements.txt
 ```
 
 Get the name of the utility you're porting: this is `utilityId` in the steps that follow.
