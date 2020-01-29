@@ -1,1804 +1,1804 @@
 {
-    "accounts": [
+  "accounts": [
+    {
+      "IntervalEnd": "2019-07-11",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d393a-7bfa-da71-bb9b-0ea0627b53f2",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-07-26",
+      "NewCharges": "1143.9200",
+      "AmountDue": "1143.9200",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
         {
-            "AccountNumber": "4097",
-            "AmountDue": "1143.9200",
-            "IntervalEnd": "2019-07-11",
-            "IntervalStart": "2019-05-10",
-            "NewCharges": "1143.9200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5657894,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d393a-7bfa-da71-bb9b-0ea0627b53f2",
-            "StatementDate": "2019-07-26",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1143.9200",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-07-11",
-                    "IntervalStart": "2019-05-10",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237437764,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-07-11",
-                    "IntervalStart": "2019-05-10",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237437765,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-07-11",
-                    "IntervalStart": "2019-05-10",
-                    "MeterNumber": "",
-                    "PK": 20297411,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "115.8200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-07-11",
-                            "IntervalStart": "2019-05-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237437766,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                },
-                {
-                    "IntervalEnd": "2019-07-11",
-                    "IntervalStart": "2019-05-10",
-                    "MeterNumber": "68596956",
-                    "PK": 20297412,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "25.3000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "253.0000",
-                            "IntervalEnd": "2019-07-11",
-                            "IntervalStart": "2019-05-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237437767,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "155.2500",
-                            "ChargeRatePerUnit": "0.6136",
-                            "ChargeUnitsUsed": "253.0000",
-                            "IntervalEnd": "2019-07-11",
-                            "IntervalStart": "2019-05-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237437768,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "847.5500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-07-11",
-                            "IntervalStart": "2019-05-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237437769,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2019-07-11",
-                            "IntervalStart": "2019-05-10",
-                            "PK": 73086129,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "253.0000"
-                        }
-                    ]
-                }
-            ]
+          "IntervalEnd": "2019-07-11",
+          "PK": 237437764,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-05-10",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
         },
         {
-            "AccountNumber": "4097",
-            "AmountDue": "604.6500",
-            "IntervalEnd": "2019-05-10",
-            "IntervalStart": "2019-03-11",
-            "NewCharges": "604.6500",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660033,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ad-d56a-d57e-9151-0e434d9c1a0e",
-            "StatementDate": "2019-05-30",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "604.6500",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-05-10",
-                    "IntervalStart": "2019-03-11",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237486652,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-05-10",
-                    "IntervalStart": "2019-03-11",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237486653,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-05-10",
-                    "IntervalStart": "2019-03-11",
-                    "MeterNumber": "68596956",
-                    "PK": 20303582,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "11.5000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "115.0000",
-                            "IntervalEnd": "2019-05-10",
-                            "IntervalStart": "2019-03-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486654,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "155.2500",
-                            "ChargeRatePerUnit": "1.3500",
-                            "ChargeUnitsUsed": "115.0000",
-                            "IntervalEnd": "2019-05-10",
-                            "IntervalStart": "2019-03-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486655,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "385.2500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-05-10",
-                            "IntervalStart": "2019-03-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486656,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2019-05-10",
-                            "IntervalStart": "2019-03-11",
-                            "PK": 73098797,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "115.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2019-05-10",
-                    "IntervalStart": "2019-03-11",
-                    "MeterNumber": "",
-                    "PK": 20303583,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "52.6500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-05-10",
-                            "IntervalStart": "2019-03-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486657,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "206.0500",
-            "IntervalEnd": "2019-03-11",
-            "IntervalStart": "2019-01-07",
-            "NewCharges": "206.0500",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660046,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ad-f2d3-d9e3-9151-0e434d9c1a0e",
-            "StatementDate": "2019-03-26",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "206.0500",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-03-11",
-                    "IntervalStart": "2019-01-07",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237486740,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-03-11",
-                    "IntervalStart": "2019-01-07",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237486741,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-03-11",
-                    "IntervalStart": "2019-01-07",
-                    "MeterNumber": "68596956",
-                    "PK": 20303608,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "1.3000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "13.0000",
-                            "IntervalEnd": "2019-03-11",
-                            "IntervalStart": "2019-01-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486742,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "155.2500",
-                            "ChargeRatePerUnit": "11.9423",
-                            "ChargeUnitsUsed": "13.0000",
-                            "IntervalEnd": "2019-03-11",
-                            "IntervalStart": "2019-01-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486743,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "43.5500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-03-11",
-                            "IntervalStart": "2019-01-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486744,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2019-03-11",
-                            "IntervalStart": "2019-01-07",
-                            "PK": 73098815,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "13.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2019-03-11",
-                    "IntervalStart": "2019-01-07",
-                    "MeterNumber": "",
-                    "PK": 20303609,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "5.9500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-03-11",
-                            "IntervalStart": "2019-01-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486745,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "488.2500",
-            "IntervalEnd": "2019-01-07",
-            "IntervalStart": "2018-11-05",
-            "NewCharges": "488.2500",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660059,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-1018-d4a8-9151-0e434d9c1a0e",
-            "StatementDate": "2019-01-18",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "488.2500",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-01-07",
-                    "IntervalStart": "2018-11-05",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237486828,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-01-07",
-                    "IntervalStart": "2018-11-05",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237486829,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-01-07",
-                    "IntervalStart": "2018-11-05",
-                    "MeterNumber": "68596956",
-                    "PK": 20303634,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "9.1000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "91.0000",
-                            "IntervalEnd": "2019-01-07",
-                            "IntervalStart": "2018-11-05",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486830,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "149.5900",
-                            "ChargeRatePerUnit": "1.6439",
-                            "ChargeUnitsUsed": "91.0000",
-                            "IntervalEnd": "2019-01-07",
-                            "IntervalStart": "2018-11-05",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486831,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "289.4500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-01-07",
-                            "IntervalStart": "2018-11-05",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486832,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2019-01-07",
-                            "IntervalStart": "2018-11-05",
-                            "PK": 73098833,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "91.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2019-01-07",
-                    "IntervalStart": "2018-11-05",
-                    "MeterNumber": "",
-                    "PK": 20303635,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "40.1100",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-01-07",
-                            "IntervalStart": "2018-11-05",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486833,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "1147.5500",
-            "IntervalEnd": "2018-11-05",
-            "IntervalStart": "2018-09-10",
-            "NewCharges": "1147.5500",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660072,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-2d8d-dcfd-9151-0e434d9c1a0e",
-            "StatementDate": "2018-11-19",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1147.5500",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-11-05",
-                    "IntervalStart": "2018-09-10",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237486918,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-11-05",
-                    "IntervalStart": "2018-09-10",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237486919,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-11-05",
-                    "IntervalStart": "2018-09-10",
-                    "MeterNumber": "68596956",
-                    "PK": 20303660,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "27.0000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "270.0000",
-                            "IntervalEnd": "2018-11-05",
-                            "IntervalStart": "2018-09-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486920,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "148.9000",
-                            "ChargeRatePerUnit": "0.5515",
-                            "ChargeUnitsUsed": "270.0000",
-                            "IntervalEnd": "2018-11-05",
-                            "IntervalStart": "2018-09-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486921,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "853.2000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-11-05",
-                            "IntervalStart": "2018-09-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486922,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-11-05",
-                            "IntervalStart": "2018-09-10",
-                            "PK": 73098852,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "270.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2018-11-05",
-                    "IntervalStart": "2018-09-10",
-                    "MeterNumber": "",
-                    "PK": 20303661,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "118.4500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-11-05",
-                            "IntervalStart": "2018-09-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237486923,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "1380.5700",
-            "IntervalEnd": "2018-09-10",
-            "IntervalStart": "2018-07-09",
-            "NewCharges": "1380.5700",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660085,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-4a8b-da92-9151-0e434d9c1a0e",
-            "StatementDate": "2018-09-21",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1380.5700",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-09-10",
-                    "IntervalStart": "2018-07-09",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487008,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-09-10",
-                    "IntervalStart": "2018-07-09",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487009,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-09-10",
-                    "IntervalStart": "2018-07-09",
-                    "MeterNumber": "68596956",
-                    "PK": 20303686,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "33.3000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "333.0000",
-                            "IntervalEnd": "2018-09-10",
-                            "IntervalStart": "2018-07-09",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487010,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "148.9000",
-                            "ChargeRatePerUnit": "0.4472",
-                            "ChargeUnitsUsed": "333.0000",
-                            "IntervalEnd": "2018-09-10",
-                            "IntervalStart": "2018-07-09",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487011,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "1052.2800",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-09-10",
-                            "IntervalStart": "2018-07-09",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487012,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-09-10",
-                            "IntervalStart": "2018-07-09",
-                            "PK": 73098871,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "333.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2018-09-10",
-                    "IntervalStart": "2018-07-09",
-                    "MeterNumber": "",
-                    "PK": 20303687,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "146.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-09-10",
-                            "IntervalStart": "2018-07-09",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487013,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "304.2500",
-            "IntervalEnd": "2018-05-07",
-            "IntervalStart": "2018-03-12",
-            "NewCharges": "304.2500",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660098,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-7cda-d175-9151-0e434d9c1a0e",
-            "StatementDate": "2018-05-18",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "304.2500",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-05-07",
-                    "IntervalStart": "2018-03-12",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487098,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-05-07",
-                    "IntervalStart": "2018-03-12",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487099,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-05-07",
-                    "IntervalStart": "2018-03-12",
-                    "MeterNumber": "68596956",
-                    "PK": 20303712,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "4.2000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "42.0000",
-                            "IntervalEnd": "2018-05-07",
-                            "IntervalStart": "2018-03-12",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487100,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "148.9000",
-                            "ChargeRatePerUnit": "3.5452",
-                            "ChargeUnitsUsed": "42.0000",
-                            "IntervalEnd": "2018-05-07",
-                            "IntervalStart": "2018-03-12",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487101,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "132.7200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-05-07",
-                            "IntervalStart": "2018-03-12",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487102,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-05-07",
-                            "IntervalStart": "2018-03-12",
-                            "PK": 73098890,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "42.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2018-05-07",
-                    "IntervalStart": "2018-03-12",
-                    "MeterNumber": "",
-                    "PK": 20303713,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "18.4300",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-05-07",
-                            "IntervalStart": "2018-03-12",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487103,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "330.1400",
-            "IntervalEnd": "2018-03-12",
-            "IntervalStart": "2018-01-08",
-            "NewCharges": "330.1400",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660110,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-9856-d3d4-9151-0e434d9c1a0e",
-            "StatementDate": "2018-03-21",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "330.1400",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-03-12",
-                    "IntervalStart": "2018-01-08",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487180,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-03-12",
-                    "IntervalStart": "2018-01-08",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487181,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-03-12",
-                    "IntervalStart": "2018-01-08",
-                    "MeterNumber": "68596956",
-                    "PK": 20303736,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "4.9000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "49.0000",
-                            "IntervalEnd": "2018-03-12",
-                            "IntervalStart": "2018-01-08",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487182,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "148.9000",
-                            "ChargeRatePerUnit": "3.0388",
-                            "ChargeUnitsUsed": "49.0000",
-                            "IntervalEnd": "2018-03-12",
-                            "IntervalStart": "2018-01-08",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487183,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "154.8400",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-03-12",
-                            "IntervalStart": "2018-01-08",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487184,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-03-12",
-                            "IntervalStart": "2018-01-08",
-                            "PK": 73098907,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "49.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2018-03-12",
-                    "IntervalStart": "2018-01-08",
-                    "MeterNumber": "",
-                    "PK": 20303737,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "21.5000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-03-12",
-                            "IntervalStart": "2018-01-08",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487185,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "342.2300",
-            "IntervalEnd": "2018-01-08",
-            "IntervalStart": "2017-11-07",
-            "NewCharges": "342.2300",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660122,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-b779-d673-9151-0e434d9c1a0e",
-            "StatementDate": "2018-01-18",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "342.2300",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-01-08",
-                    "IntervalStart": "2017-11-07",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487262,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-01-08",
-                    "IntervalStart": "2017-11-07",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487263,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-01-08",
-                    "IntervalStart": "2017-11-07",
-                    "MeterNumber": "68596956",
-                    "PK": 20303760,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "4.7000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "47.0000",
-                            "IntervalEnd": "2018-01-08",
-                            "IntervalStart": "2017-11-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487264,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "145.1100",
-                            "ChargeRatePerUnit": "3.0875",
-                            "ChargeUnitsUsed": "47.0000",
-                            "IntervalEnd": "2018-01-08",
-                            "IntervalStart": "2017-11-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487265,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "172.3200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-01-08",
-                            "IntervalStart": "2017-11-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487266,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-01-08",
-                            "IntervalStart": "2017-11-07",
-                            "PK": 73098924,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "47.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2018-01-08",
-                    "IntervalStart": "2017-11-07",
-                    "MeterNumber": "",
-                    "PK": 20303761,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "20.1000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-01-08",
-                            "IntervalStart": "2017-11-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487267,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "613.8200",
-            "IntervalEnd": "2017-11-07",
-            "IntervalStart": "2017-09-11",
-            "NewCharges": "613.8200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660135,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-d348-d892-9151-0e434d9c1a0e",
-            "StatementDate": "2017-11-16",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "613.8200",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-11-07",
-                    "IntervalStart": "2017-09-11",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487350,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-11-07",
-                    "IntervalStart": "2017-09-11",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487351,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-11-07",
-                    "IntervalStart": "2017-09-11",
-                    "MeterNumber": "68596956",
-                    "PK": 20303786,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "11.0000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "110.0000",
-                            "IntervalEnd": "2017-11-07",
-                            "IntervalStart": "2017-09-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487352,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "144.5600",
-                            "ChargeRatePerUnit": "1.3142",
-                            "ChargeUnitsUsed": "110.0000",
-                            "IntervalEnd": "2017-11-07",
-                            "IntervalStart": "2017-09-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487353,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "411.4000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-11-07",
-                            "IntervalStart": "2017-09-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487354,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-11-07",
-                            "IntervalStart": "2017-09-11",
-                            "PK": 73098942,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "110.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2017-11-07",
-                    "IntervalStart": "2017-09-11",
-                    "MeterNumber": "",
-                    "PK": 20303787,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "46.8600",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-11-07",
-                            "IntervalStart": "2017-09-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487355,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "1334.7700",
-            "IntervalEnd": "2017-09-11",
-            "IntervalStart": "2017-07-10",
-            "NewCharges": "1334.7700",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660148,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-f190-d031-9151-0e434d9c1a0e",
-            "StatementDate": "2017-09-20",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1334.7700",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-09-11",
-                    "IntervalStart": "2017-07-10",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487440,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-09-11",
-                    "IntervalStart": "2017-07-10",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487441,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-09-11",
-                    "IntervalStart": "2017-07-10",
-                    "MeterNumber": "68596956",
-                    "PK": 20303812,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "27.9000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "279.0000",
-                            "IntervalEnd": "2017-09-11",
-                            "IntervalStart": "2017-07-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487442,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "144.5600",
-                            "ChargeRatePerUnit": "0.5181",
-                            "ChargeUnitsUsed": "279.0000",
-                            "IntervalEnd": "2017-09-11",
-                            "IntervalStart": "2017-07-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487443,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "1043.4600",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-09-11",
-                            "IntervalStart": "2017-07-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487444,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-09-11",
-                            "IntervalStart": "2017-07-10",
-                            "PK": 73098961,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "279.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2017-09-11",
-                    "IntervalStart": "2017-07-10",
-                    "MeterNumber": "",
-                    "PK": 20303813,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "118.8500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-09-11",
-                            "IntervalStart": "2017-07-10",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487445,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "2473.8000",
-            "IntervalEnd": "2017-07-10",
-            "IntervalStart": "2017-05-08",
-            "NewCharges": "2473.8000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5660161,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85af-0ddb-db20-9151-0e434d9c1a0e",
-            "StatementDate": "2017-07-17",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "2473.8000",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-07-10",
-                    "IntervalStart": "2017-05-08",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487530,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-07-10",
-                    "IntervalStart": "2017-05-08",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237487531,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-07-10",
-                    "IntervalStart": "2017-05-08",
-                    "MeterNumber": "68596956",
-                    "PK": 20303838,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "54.6000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "546.0000",
-                            "IntervalEnd": "2017-07-10",
-                            "IntervalStart": "2017-05-08",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487532,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "144.5600",
-                            "ChargeRatePerUnit": "0.2648",
-                            "ChargeUnitsUsed": "546.0000",
-                            "IntervalEnd": "2017-07-10",
-                            "IntervalStart": "2017-05-08",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487533,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "2042.0400",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-07-10",
-                            "IntervalStart": "2017-05-08",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487534,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-07-10",
-                            "IntervalStart": "2017-05-08",
-                            "PK": 73098980,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "546.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2017-07-10",
-                    "IntervalStart": "2017-05-08",
-                    "MeterNumber": "",
-                    "PK": 20303839,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "232.6000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-07-10",
-                            "IntervalStart": "2017-05-08",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237487535,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "-95.2300",
-            "IntervalEnd": "2018-07-09",
-            "IntervalStart": "2018-05-07",
-            "NewCharges": "-95.2300",
-            "OutstandingBalance": "0.0000",
-            "PK": 5661070,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddd3f-9c20-d2a9-b4f7-0eb2d8c6d996",
-            "StatementDate": "2018-07-19",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "-95.2300",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Adjustments",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-07-09",
-                    "IntervalStart": "2018-05-07",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237505323,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-07-09",
-                    "IntervalStart": "2018-05-07",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237505324,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-07-09",
-                    "IntervalStart": "2018-05-07",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237505325,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-07-09",
-                    "IntervalStart": "2018-05-07",
-                    "MeterNumber": "",
-                    "PK": 20305217,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "110.9900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-07-09",
-                            "IntervalStart": "2018-05-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505326,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                },
-                {
-                    "IntervalEnd": "2018-07-09",
-                    "IntervalStart": "2018-05-07",
-                    "MeterNumber": "68596956",
-                    "PK": 20305218,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "25.3000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "253.0000",
-                            "IntervalEnd": "2018-07-09",
-                            "IntervalStart": "2018-05-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505327,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "WATER EFFICIENT LANDSCAPE REBATE",
-                            "ChargeAmount": "-1179.9000",
-                            "ChargeRatePerUnit": "-4.6636",
-                            "ChargeUnitsUsed": "253.0000",
-                            "IntervalEnd": "2018-07-09",
-                            "IntervalStart": "2018-05-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505328,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "148.9000",
-                            "ChargeRatePerUnit": "0.5885",
-                            "ChargeUnitsUsed": "253.0000",
-                            "IntervalEnd": "2018-07-09",
-                            "IntervalStart": "2018-05-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505329,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "799.4800",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-07-09",
-                            "IntervalStart": "2018-05-07",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505330,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-07-09",
-                            "IntervalStart": "2018-05-07",
-                            "PK": 73104468,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "253.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "4097",
-            "AmountDue": "1323.6800",
-            "IntervalEnd": "2019-09-10",
-            "IntervalStart": "2019-07-11",
-            "NewCharges": "1323.6800",
-            "OutstandingBalance": "0.0000",
-            "PK": 5661077,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "4097",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9dcbc8-d62b-d721-96a5-0eba5b2e52f4",
-            "StatementDate": "2019-09-20",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1323.6800",
-            "UtilityProvider": "CityOfPleasantonCA",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Deposits Applied",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-09-10",
-                    "IntervalStart": "2019-07-11",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237505381,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Adjustments",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-09-10",
-                    "IntervalStart": "2019-07-11",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237505382,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Penalty",
-                    "ChargeAmount": "0.0000",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-09-10",
-                    "IntervalStart": "2019-07-11",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237505383,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-09-10",
-                    "IntervalStart": "2019-07-11",
-                    "MeterNumber": "68596956",
-                    "PK": 20305231,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "RECYCLED WATER",
-                            "ChargeAmount": "29.9000",
-                            "ChargeRatePerUnit": "0.1000",
-                            "ChargeUnitsUsed": "299.0000",
-                            "IntervalEnd": "2019-09-10",
-                            "IntervalStart": "2019-07-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505384,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
-                            "ChargeAmount": "155.2500",
-                            "ChargeRatePerUnit": "0.5192",
-                            "ChargeUnitsUsed": "299.0000",
-                            "IntervalEnd": "2019-09-10",
-                            "IntervalStart": "2019-07-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505385,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "ZONE 7 COST",
-                            "ChargeAmount": "1001.6500",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-09-10",
-                            "IntervalStart": "2019-07-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505386,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2019-09-10",
-                            "IntervalStart": "2019-07-11",
-                            "PK": 73104479,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "299.0000"
-                        }
-                    ]
-                },
-                {
-                    "IntervalEnd": "2019-09-10",
-                    "IntervalStart": "2019-07-11",
-                    "MeterNumber": "",
-                    "PK": 20305232,
-                    "PODid": "",
-                    "ServiceType": "irrigation",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
-                            "ChargeAmount": "136.8800",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-09-10",
-                            "IntervalStart": "2019-07-11",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237505387,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": []
-                }
-            ]
+          "IntervalEnd": "2019-07-11",
+          "PK": 237437765,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-05-10",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
         }
-    ]
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2019-07-11",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2019-05-10",
+          "charges": [
+            {
+              "IntervalEnd": "2019-07-11",
+              "PK": 237437766,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-10",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "115.8200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20297411,
+          "usages": []
+        },
+        {
+          "IntervalEnd": "2019-07-11",
+          "ServiceType": "water",
+          "IntervalStart": "2019-05-10",
+          "charges": [
+            {
+              "IntervalEnd": "2019-07-11",
+              "PK": 237437767,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-10",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "25.3000",
+              "ChargeUnitsUsed": "253.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-07-11",
+              "PK": 237437768,
+              "ChargeRatePerUnit": "0.6136",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-10",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "155.2500",
+              "ChargeUnitsUsed": "253.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-07-11",
+              "PK": 237437769,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-10",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "847.5500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20297412,
+          "usages": [
+            {
+              "IntervalEnd": "2019-07-11",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-05-10",
+              "UsageAmount": "253.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73086129,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-05-10",
+      "TotalBillAmount": "1143.9200",
+      "AccountNumber": "1197",
+      "PK": 5657894,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2019-05-10",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ad-d56a-d57e-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-05-30",
+      "NewCharges": "604.6500",
+      "AmountDue": "604.6500",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2019-05-10",
+          "PK": 237486652,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-03-11",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2019-05-10",
+          "PK": 237486653,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-03-11",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2019-05-10",
+          "ServiceType": "water",
+          "IntervalStart": "2019-03-11",
+          "charges": [
+            {
+              "IntervalEnd": "2019-05-10",
+              "PK": 237486654,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-11",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "11.5000",
+              "ChargeUnitsUsed": "115.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-05-10",
+              "PK": 237486655,
+              "ChargeRatePerUnit": "1.3500",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-11",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "155.2500",
+              "ChargeUnitsUsed": "115.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-05-10",
+              "PK": 237486656,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-11",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "385.2500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303582,
+          "usages": [
+            {
+              "IntervalEnd": "2019-05-10",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-03-11",
+              "UsageAmount": "115.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098797,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2019-05-10",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2019-03-11",
+          "charges": [
+            {
+              "IntervalEnd": "2019-05-10",
+              "PK": 237486657,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-11",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "52.6500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303583,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2019-03-11",
+      "TotalBillAmount": "604.6500",
+      "AccountNumber": "1197",
+      "PK": 5660033,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2019-03-11",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ad-f2d3-d9e3-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-03-26",
+      "NewCharges": "206.0500",
+      "AmountDue": "206.0500",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2019-03-11",
+          "PK": 237486740,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-01-07",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2019-03-11",
+          "PK": 237486741,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-01-07",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2019-03-11",
+          "ServiceType": "water",
+          "IntervalStart": "2019-01-07",
+          "charges": [
+            {
+              "IntervalEnd": "2019-03-11",
+              "PK": 237486742,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-07",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "1.3000",
+              "ChargeUnitsUsed": "13.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-03-11",
+              "PK": 237486743,
+              "ChargeRatePerUnit": "11.9423",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-07",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "155.2500",
+              "ChargeUnitsUsed": "13.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-03-11",
+              "PK": 237486744,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-07",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "43.5500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303608,
+          "usages": [
+            {
+              "IntervalEnd": "2019-03-11",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-01-07",
+              "UsageAmount": "13.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098815,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2019-03-11",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2019-01-07",
+          "charges": [
+            {
+              "IntervalEnd": "2019-03-11",
+              "PK": 237486745,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-07",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "5.9500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303609,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2019-01-07",
+      "TotalBillAmount": "206.0500",
+      "AccountNumber": "1197",
+      "PK": 5660046,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2019-01-07",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-1018-d4a8-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-01-18",
+      "NewCharges": "488.2500",
+      "AmountDue": "488.2500",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2019-01-07",
+          "PK": 237486828,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-11-05",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2019-01-07",
+          "PK": 237486829,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-11-05",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2019-01-07",
+          "ServiceType": "water",
+          "IntervalStart": "2018-11-05",
+          "charges": [
+            {
+              "IntervalEnd": "2019-01-07",
+              "PK": 237486830,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-05",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "9.1000",
+              "ChargeUnitsUsed": "91.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-01-07",
+              "PK": 237486831,
+              "ChargeRatePerUnit": "1.6439",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-05",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "149.5900",
+              "ChargeUnitsUsed": "91.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-01-07",
+              "PK": 237486832,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-05",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "289.4500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303634,
+          "usages": [
+            {
+              "IntervalEnd": "2019-01-07",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-11-05",
+              "UsageAmount": "91.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098833,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2019-01-07",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2018-11-05",
+          "charges": [
+            {
+              "IntervalEnd": "2019-01-07",
+              "PK": 237486833,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-05",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "40.1100",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303635,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2018-11-05",
+      "TotalBillAmount": "488.2500",
+      "AccountNumber": "1197",
+      "PK": 5660059,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2018-11-05",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-2d8d-dcfd-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-11-19",
+      "NewCharges": "1147.5500",
+      "AmountDue": "1147.5500",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-11-05",
+          "PK": 237486918,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-09-10",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2018-11-05",
+          "PK": 237486919,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-09-10",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-11-05",
+          "ServiceType": "water",
+          "IntervalStart": "2018-09-10",
+          "charges": [
+            {
+              "IntervalEnd": "2018-11-05",
+              "PK": 237486920,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-10",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "27.0000",
+              "ChargeUnitsUsed": "270.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-11-05",
+              "PK": 237486921,
+              "ChargeRatePerUnit": "0.5515",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-10",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "148.9000",
+              "ChargeUnitsUsed": "270.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-11-05",
+              "PK": 237486922,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-10",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "853.2000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303660,
+          "usages": [
+            {
+              "IntervalEnd": "2018-11-05",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-09-10",
+              "UsageAmount": "270.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098852,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2018-11-05",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2018-09-10",
+          "charges": [
+            {
+              "IntervalEnd": "2018-11-05",
+              "PK": 237486923,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-10",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "118.4500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303661,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2018-09-10",
+      "TotalBillAmount": "1147.5500",
+      "AccountNumber": "1197",
+      "PK": 5660072,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2018-09-10",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-4a8b-da92-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-09-21",
+      "NewCharges": "1380.5700",
+      "AmountDue": "1380.5700",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-09-10",
+          "PK": 237487008,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-07-09",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2018-09-10",
+          "PK": 237487009,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-07-09",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-09-10",
+          "ServiceType": "water",
+          "IntervalStart": "2018-07-09",
+          "charges": [
+            {
+              "IntervalEnd": "2018-09-10",
+              "PK": 237487010,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-09",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "33.3000",
+              "ChargeUnitsUsed": "333.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-09-10",
+              "PK": 237487011,
+              "ChargeRatePerUnit": "0.4472",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-09",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "148.9000",
+              "ChargeUnitsUsed": "333.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-09-10",
+              "PK": 237487012,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-09",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "1052.2800",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303686,
+          "usages": [
+            {
+              "IntervalEnd": "2018-09-10",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-07-09",
+              "UsageAmount": "333.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098871,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2018-09-10",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2018-07-09",
+          "charges": [
+            {
+              "IntervalEnd": "2018-09-10",
+              "PK": 237487013,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-09",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "146.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303687,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2018-07-09",
+      "TotalBillAmount": "1380.5700",
+      "AccountNumber": "1197",
+      "PK": 5660085,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2018-05-07",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-7cda-d175-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-05-18",
+      "NewCharges": "304.2500",
+      "AmountDue": "304.2500",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-05-07",
+          "PK": 237487098,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-03-12",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2018-05-07",
+          "PK": 237487099,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-03-12",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-05-07",
+          "ServiceType": "water",
+          "IntervalStart": "2018-03-12",
+          "charges": [
+            {
+              "IntervalEnd": "2018-05-07",
+              "PK": 237487100,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-12",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "4.2000",
+              "ChargeUnitsUsed": "42.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-05-07",
+              "PK": 237487101,
+              "ChargeRatePerUnit": "3.5452",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-12",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "148.9000",
+              "ChargeUnitsUsed": "42.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-05-07",
+              "PK": 237487102,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-12",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "132.7200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303712,
+          "usages": [
+            {
+              "IntervalEnd": "2018-05-07",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-03-12",
+              "UsageAmount": "42.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098890,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2018-05-07",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2018-03-12",
+          "charges": [
+            {
+              "IntervalEnd": "2018-05-07",
+              "PK": 237487103,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-12",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "18.4300",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303713,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2018-03-12",
+      "TotalBillAmount": "304.2500",
+      "AccountNumber": "1197",
+      "PK": 5660098,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2018-03-12",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-9856-d3d4-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-03-21",
+      "NewCharges": "330.1400",
+      "AmountDue": "330.1400",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-03-12",
+          "PK": 237487180,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-01-08",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2018-03-12",
+          "PK": 237487181,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-01-08",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-03-12",
+          "ServiceType": "water",
+          "IntervalStart": "2018-01-08",
+          "charges": [
+            {
+              "IntervalEnd": "2018-03-12",
+              "PK": 237487182,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-08",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "4.9000",
+              "ChargeUnitsUsed": "49.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-03-12",
+              "PK": 237487183,
+              "ChargeRatePerUnit": "3.0388",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-08",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "148.9000",
+              "ChargeUnitsUsed": "49.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-03-12",
+              "PK": 237487184,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-08",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "154.8400",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303736,
+          "usages": [
+            {
+              "IntervalEnd": "2018-03-12",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-01-08",
+              "UsageAmount": "49.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098907,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2018-03-12",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2018-01-08",
+          "charges": [
+            {
+              "IntervalEnd": "2018-03-12",
+              "PK": 237487185,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-08",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "21.5000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303737,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2018-01-08",
+      "TotalBillAmount": "330.1400",
+      "AccountNumber": "1197",
+      "PK": 5660110,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2018-01-08",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-b779-d673-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-01-18",
+      "NewCharges": "342.2300",
+      "AmountDue": "342.2300",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-01-08",
+          "PK": 237487262,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-11-07",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2018-01-08",
+          "PK": 237487263,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-11-07",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-01-08",
+          "ServiceType": "water",
+          "IntervalStart": "2017-11-07",
+          "charges": [
+            {
+              "IntervalEnd": "2018-01-08",
+              "PK": 237487264,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-11-07",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "4.7000",
+              "ChargeUnitsUsed": "47.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-01-08",
+              "PK": 237487265,
+              "ChargeRatePerUnit": "3.0875",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-11-07",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "145.1100",
+              "ChargeUnitsUsed": "47.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-01-08",
+              "PK": 237487266,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-11-07",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "172.3200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303760,
+          "usages": [
+            {
+              "IntervalEnd": "2018-01-08",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-11-07",
+              "UsageAmount": "47.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098924,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2018-01-08",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2017-11-07",
+          "charges": [
+            {
+              "IntervalEnd": "2018-01-08",
+              "PK": 237487267,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-11-07",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "20.1000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303761,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2017-11-07",
+      "TotalBillAmount": "342.2300",
+      "AccountNumber": "1197",
+      "PK": 5660122,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2017-11-07",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-d348-d892-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-11-16",
+      "NewCharges": "613.8200",
+      "AmountDue": "613.8200",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-11-07",
+          "PK": 237487350,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-09-11",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2017-11-07",
+          "PK": 237487351,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-09-11",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-11-07",
+          "ServiceType": "water",
+          "IntervalStart": "2017-09-11",
+          "charges": [
+            {
+              "IntervalEnd": "2017-11-07",
+              "PK": 237487352,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-09-11",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "11.0000",
+              "ChargeUnitsUsed": "110.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-11-07",
+              "PK": 237487353,
+              "ChargeRatePerUnit": "1.3142",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-09-11",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "144.5600",
+              "ChargeUnitsUsed": "110.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-11-07",
+              "PK": 237487354,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-09-11",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "411.4000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303786,
+          "usages": [
+            {
+              "IntervalEnd": "2017-11-07",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-09-11",
+              "UsageAmount": "110.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098942,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2017-11-07",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2017-09-11",
+          "charges": [
+            {
+              "IntervalEnd": "2017-11-07",
+              "PK": 237487355,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-09-11",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "46.8600",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303787,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2017-09-11",
+      "TotalBillAmount": "613.8200",
+      "AccountNumber": "1197",
+      "PK": 5660135,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2017-09-11",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85ae-f190-d031-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-09-20",
+      "NewCharges": "1334.7700",
+      "AmountDue": "1334.7700",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-09-11",
+          "PK": 237487440,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-07-10",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2017-09-11",
+          "PK": 237487441,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-07-10",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-09-11",
+          "ServiceType": "water",
+          "IntervalStart": "2017-07-10",
+          "charges": [
+            {
+              "IntervalEnd": "2017-09-11",
+              "PK": 237487442,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-07-10",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "27.9000",
+              "ChargeUnitsUsed": "279.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-09-11",
+              "PK": 237487443,
+              "ChargeRatePerUnit": "0.5181",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-07-10",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "144.5600",
+              "ChargeUnitsUsed": "279.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-09-11",
+              "PK": 237487444,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-07-10",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "1043.4600",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303812,
+          "usages": [
+            {
+              "IntervalEnd": "2017-09-11",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-07-10",
+              "UsageAmount": "279.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098961,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2017-09-11",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2017-07-10",
+          "charges": [
+            {
+              "IntervalEnd": "2017-09-11",
+              "PK": 237487445,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-07-10",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "118.8500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303813,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2017-07-10",
+      "TotalBillAmount": "1334.7700",
+      "AccountNumber": "1197",
+      "PK": 5660148,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2017-07-10",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d85af-0ddb-db20-9151-0e434d9c1a0e",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-07-17",
+      "NewCharges": "2473.8000",
+      "AmountDue": "2473.8000",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-07-10",
+          "PK": 237487530,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-05-08",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2017-07-10",
+          "PK": 237487531,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-05-08",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-07-10",
+          "ServiceType": "water",
+          "IntervalStart": "2017-05-08",
+          "charges": [
+            {
+              "IntervalEnd": "2017-07-10",
+              "PK": 237487532,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-05-08",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "54.6000",
+              "ChargeUnitsUsed": "546.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-07-10",
+              "PK": 237487533,
+              "ChargeRatePerUnit": "0.2648",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-05-08",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "144.5600",
+              "ChargeUnitsUsed": "546.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-07-10",
+              "PK": 237487534,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-05-08",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "2042.0400",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20303838,
+          "usages": [
+            {
+              "IntervalEnd": "2017-07-10",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-05-08",
+              "UsageAmount": "546.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73098980,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2017-07-10",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2017-05-08",
+          "charges": [
+            {
+              "IntervalEnd": "2017-07-10",
+              "PK": 237487535,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-05-08",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "232.6000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20303839,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2017-05-08",
+      "TotalBillAmount": "2473.8000",
+      "AccountNumber": "1197",
+      "PK": 5660161,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2018-07-09",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ddd3f-9c20-d2a9-b4f7-0eb2d8c6d996",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-07-19",
+      "NewCharges": "-95.2300",
+      "AmountDue": "-95.2300",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-07-09",
+          "PK": 237505323,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-05-07",
+          "ChargeActualName": "Adjustments",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2018-07-09",
+          "PK": 237505324,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-05-07",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2018-07-09",
+          "PK": 237505325,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-05-07",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-07-09",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2018-05-07",
+          "charges": [
+            {
+              "IntervalEnd": "2018-07-09",
+              "PK": 237505326,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-07",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "110.9900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20305217,
+          "usages": []
+        },
+        {
+          "IntervalEnd": "2018-07-09",
+          "ServiceType": "water",
+          "IntervalStart": "2018-05-07",
+          "charges": [
+            {
+              "IntervalEnd": "2018-07-09",
+              "PK": 237505327,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-07",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "25.3000",
+              "ChargeUnitsUsed": "253.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-07-09",
+              "PK": 237505328,
+              "ChargeRatePerUnit": "-4.6636",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-07",
+              "ChargeActualName": "WATER EFFICIENT LANDSCAPE REBATE",
+              "ChargeAmount": "-1179.9000",
+              "ChargeUnitsUsed": "253.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-07-09",
+              "PK": 237505329,
+              "ChargeRatePerUnit": "0.5885",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-07",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "148.9000",
+              "ChargeUnitsUsed": "253.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-07-09",
+              "PK": 237505330,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-07",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "799.4800",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20305218,
+          "usages": [
+            {
+              "IntervalEnd": "2018-07-09",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-05-07",
+              "UsageAmount": "253.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73104468,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-05-07",
+      "TotalBillAmount": "-95.2300",
+      "AccountNumber": "1197",
+      "PK": 5661070,
+      "RawAccountNumber": "1197"
+    },
+    {
+      "IntervalEnd": "2019-09-10",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9dcbc8-d62b-d721-96a5-0eba5b2e52f4",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-09-20",
+      "NewCharges": "1323.6800",
+      "AmountDue": "1323.6800",
+      "UtilityProvider": "CityOfPleasantonCA",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2019-09-10",
+          "PK": 237505381,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-07-11",
+          "ChargeActualName": "Deposits Applied",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2019-09-10",
+          "PK": 237505382,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-07-11",
+          "ChargeActualName": "Adjustments",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2019-09-10",
+          "PK": 237505383,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-07-11",
+          "ChargeActualName": "Penalty",
+          "ChargeAmount": "0.0000",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2019-09-10",
+          "ServiceType": "water",
+          "IntervalStart": "2019-07-11",
+          "charges": [
+            {
+              "IntervalEnd": "2019-09-10",
+              "PK": 237505384,
+              "ChargeRatePerUnit": "0.1000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-11",
+              "ChargeActualName": "RECYCLED WATER",
+              "ChargeAmount": "29.9000",
+              "ChargeUnitsUsed": "299.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-09-10",
+              "PK": 237505385,
+              "ChargeRatePerUnit": "0.5192",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-11",
+              "ChargeActualName": "PLEASANTON WATER FIXED CHARGE",
+              "ChargeAmount": "155.2500",
+              "ChargeUnitsUsed": "299.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2019-09-10",
+              "PK": 237505386,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-11",
+              "ChargeActualName": "ZONE 7 COST",
+              "ChargeAmount": "1001.6500",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "61596956",
+          "PK": 20305231,
+          "usages": [
+            {
+              "IntervalEnd": "2019-09-10",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-07-11",
+              "UsageAmount": "299.0000",
+              "EnergyUnit": "ccf",
+              "PK": 73104479,
+              "UsageActualName": ""
+            }
+          ]
+        },
+        {
+          "IntervalEnd": "2019-09-10",
+          "ServiceType": "irrigation",
+          "IntervalStart": "2019-07-11",
+          "charges": [
+            {
+              "IntervalEnd": "2019-09-10",
+              "PK": 237505387,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-11",
+              "ChargeActualName": "PLEASANTON WATER VAR CHARGE IRRIGATION",
+              "ChargeAmount": "136.8800",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20305232,
+          "usages": []
+        }
+      ],
+      "IntervalStart": "2019-07-11",
+      "TotalBillAmount": "1323.6800",
+      "AccountNumber": "1197",
+      "PK": 5661077,
+      "RawAccountNumber": "1197"
+    }
+  ]
 }
