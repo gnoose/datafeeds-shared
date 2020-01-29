@@ -1,69 +1,69 @@
 {
-    "accounts": [
+  "accounts": [
+    {
+      "IntervalEnd": "2018-02-01",
+      "PreviousBalance": "0.0000",
+      "SourceLink": "test_url",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-01-01",
+      "NewCharges": "100.00",
+      "AmountDue": "100.0000",
+      "UtilityProvider": "test_provider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
         {
-            "AccountNumber": "1",
-            "AmountDue": "100.0000",
-            "IntervalEnd": "2018-02-01",
-            "IntervalStart": "2018-01-01",
-            "NewCharges": "100.00",
-            "OutstandingBalance": "0.0000",
-            "PK": 1,
-            "PreviousBalance": "0.0000",
-            "RawAccountNumber": "1",
-            "SourceLink": "test_url",
-            "StatementDate": "2018-01-01",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "100.00",
-            "UtilityProvider": "test_provider",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-02-01",
-                    "IntervalStart": "2018-01-01",
-                    "MeterNumber": "2",
-                    "PK": 2,
-                    "PODid": "test_podid",
-                    "ServiceType": "electric",
-                    "Tariff": "test_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "test_charge1",
-                            "ChargeAmount": "80.0000",
-                            "ChargeRatePerUnit": "5.0000",
-                            "ChargeUnitsUsed": "16.0000",
-                            "IntervalEnd": "2018-02-01",
-                            "IntervalStart": "2018-01-01",
-                            "IsAdjustmentCharge": false,
-                            "PK": 3,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "kWh"
-                        },
-                        {
-                            "ChargeActualName": "test_charge2",
-                            "ChargeAmount": "20.0000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-02-01",
-                            "IntervalStart": "2018-01-01",
-                            "IsAdjustmentCharge": false,
-                            "PK": 4,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "kWh",
-                            "IntervalEnd": "2018-02-01",
-                            "IntervalStart": "2018-01-01",
-                            "PK": 5,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "16.0000"
-                        }
-                    ]
-                }
-            ]
+          "IntervalEnd": "2018-02-01",
+          "ServiceType": "electric",
+          "IntervalStart": "2018-01-01",
+          "charges": [
+            {
+              "IntervalEnd": "2018-02-01",
+              "PK": 3,
+              "ChargeRatePerUnit": "5.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": false,
+              "IntervalStart": "2018-01-01",
+              "ChargeActualName": "test_charge1",
+              "ChargeAmount": "80.0000",
+              "ChargeUnitsUsed": "16.0000",
+              "UsageUnit": "kWh"
+            },
+            {
+              "IntervalEnd": "2018-02-01",
+              "PK": 4,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": false,
+              "IntervalStart": "2018-01-01",
+              "ChargeActualName": "test_charge2",
+              "ChargeAmount": "20.0000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "test_podid",
+          "Tariff": "test_tariff",
+          "MeterNumber": "2",
+          "PK": 2,
+          "usages": [
+            {
+              "IntervalEnd": "2018-02-01",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-01-01",
+              "UsageAmount": "16.0000",
+              "EnergyUnit": "kWh",
+              "PK": 5,
+              "UsageActualName": ""
+            }
+          ]
         }
-    ]
+      ],
+      "IntervalStart": "2018-01-01",
+      "TotalBillAmount": "100.00",
+      "AccountNumber": "1",
+      "PK": 1,
+      "RawAccountNumber": "1"
+    }
+  ]
 }

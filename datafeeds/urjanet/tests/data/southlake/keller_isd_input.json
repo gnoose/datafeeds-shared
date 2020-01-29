@@ -1,958 +1,958 @@
 {
-    "accounts": [
+  "accounts": [
+    {
+      "IntervalEnd": "2018-11-15",
+      "PreviousBalance": "141.6000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-531e-da19-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "147.8000",
+      "AmountDue": "147.8000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
         {
-            "AccountNumber": "151009074",
-            "AmountDue": "147.8000",
-            "IntervalEnd": "2018-11-15",
-            "IntervalStart": "2018-10-15",
-            "NewCharges": "147.8000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655748,
-            "PreviousBalance": "141.6000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-531e-da19-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "147.8000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-11-15",
-                    "IntervalStart": "2018-10-15",
-                    "MeterNumber": "",
-                    "PK": 20292400,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "147.8000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-11-15",
-                            "IntervalStart": "2018-10-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394155,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-11-15",
-                            "IntervalStart": "2018-10-15",
-                            "PK": 73073554,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "0.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "269.2800",
-            "IntervalEnd": "2019-04-15",
-            "IntervalStart": "2019-03-15",
-            "NewCharges": "269.2800",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655749,
-            "PreviousBalance": "147.8000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54e4-dbaf-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "269.2800",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-04-15",
-                    "IntervalStart": "2019-03-15",
-                    "MeterNumber": "",
-                    "PK": 20292401,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "269.2800",
-                            "ChargeRatePerUnit": "0.0093",
-                            "ChargeUnitsUsed": "29110.0000",
-                            "IntervalEnd": "2019-04-15",
-                            "IntervalStart": "2019-03-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394156,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2019-04-15",
-                            "IntervalStart": "2019-03-15",
-                            "PK": 73073555,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "29110.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "147.8000",
-            "IntervalEnd": "2018-12-15",
-            "IntervalStart": "2018-11-15",
-            "NewCharges": "147.8000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655750,
-            "PreviousBalance": "147.8000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-53e1-de46-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "147.8000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-12-15",
-                    "IntervalStart": "2018-11-15",
-                    "MeterNumber": "",
-                    "PK": 20292402,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "147.8000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-12-15",
-                            "IntervalStart": "2018-11-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394157,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-12-15",
-                            "IntervalStart": "2018-11-15",
-                            "PK": 73073556,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "0.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "1333.9500",
-            "IntervalEnd": "2018-06-15",
-            "IntervalStart": "2018-05-15",
-            "NewCharges": "1333.9500",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655751,
-            "PreviousBalance": "419.4900",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54f8-d35d-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1333.9500",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-06-15",
-                    "IntervalStart": "2018-05-15",
-                    "MeterNumber": "",
-                    "PK": 20292403,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "1333.9500",
-                            "ChargeRatePerUnit": "0.0071",
-                            "ChargeUnitsUsed": "186700.0000",
-                            "IntervalEnd": "2018-06-15",
-                            "IntervalStart": "2018-05-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394158,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-06-15",
-                            "IntervalStart": "2018-05-15",
-                            "PK": 73073557,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "186700.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "147.8000",
-            "IntervalEnd": "2019-03-15",
-            "IntervalStart": "2019-02-15",
-            "NewCharges": "147.8000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655752,
-            "PreviousBalance": "147.8000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-540b-d683-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "147.8000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-03-15",
-                    "IntervalStart": "2019-02-15",
-                    "MeterNumber": "",
-                    "PK": 20292404,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "147.8000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-03-15",
-                            "IntervalStart": "2019-02-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394159,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2019-03-15",
-                            "IntervalStart": "2019-02-15",
-                            "PK": 73073558,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "0.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "419.4900",
-            "IntervalEnd": "2018-05-15",
-            "IntervalStart": "2018-04-15",
-            "NewCharges": "419.4900",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655753,
-            "PreviousBalance": "141.6000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-550b-dc0b-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "419.4900",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-05-15",
-                    "IntervalStart": "2018-04-15",
-                    "MeterNumber": "",
-                    "PK": 20292405,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "419.4900",
-                            "ChargeRatePerUnit": "0.0078",
-                            "ChargeUnitsUsed": "53977.0000",
-                            "IntervalEnd": "2018-05-15",
-                            "IntervalStart": "2018-04-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394160,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-05-15",
-                            "IntervalStart": "2018-04-15",
-                            "PK": 73073559,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "53977.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "969.5000",
-            "IntervalEnd": "2019-07-15",
-            "IntervalStart": "2019-06-15",
-            "NewCharges": "969.5000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655754,
-            "PreviousBalance": "351.9600",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-5426-d460-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "969.5000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-07-15",
-                    "IntervalStart": "2019-06-15",
-                    "MeterNumber": "",
-                    "PK": 20292406,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "969.5000",
-                            "ChargeRatePerUnit": "0.0076",
-                            "ChargeUnitsUsed": "127922.0000",
-                            "IntervalEnd": "2019-07-15",
-                            "IntervalStart": "2019-06-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394161,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2019-07-15",
-                            "IntervalStart": "2019-06-15",
-                            "PK": 73073560,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "127922.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "147.8000",
-            "IntervalEnd": "2019-01-15",
-            "IntervalStart": "2018-12-15",
-            "NewCharges": "147.8000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655755,
-            "PreviousBalance": "147.8000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-551c-dda9-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "147.8000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-01-15",
-                    "IntervalStart": "2018-12-15",
-                    "MeterNumber": "",
-                    "PK": 20292407,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "147.8000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-01-15",
-                            "IntervalStart": "2018-12-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394162,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2019-01-15",
-                            "IntervalStart": "2018-12-15",
-                            "PK": 73073561,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "0.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "147.8000",
-            "IntervalEnd": "2019-02-15",
-            "IntervalStart": "2019-01-15",
-            "NewCharges": "147.8000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655756,
-            "PreviousBalance": "147.8000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-5441-d23e-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "147.8000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-02-15",
-                    "IntervalStart": "2019-01-15",
-                    "MeterNumber": "",
-                    "PK": 20292408,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "147.8000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2019-02-15",
-                            "IntervalStart": "2019-01-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394163,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2019-02-15",
-                            "IntervalStart": "2019-01-15",
-                            "PK": 73073562,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "0.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "141.6000",
-            "IntervalEnd": "2018-04-15",
-            "IntervalStart": "2018-03-15",
-            "NewCharges": "141.6000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655757,
-            "PreviousBalance": "141.6000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce383-94c4-d181-87d0-0e1b86a711de",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "141.6000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-04-15",
-                    "IntervalStart": "2018-03-15",
-                    "MeterNumber": "",
-                    "PK": 20292409,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "141.6000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-04-15",
-                            "IntervalStart": "2018-03-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394164,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-04-15",
-                            "IntervalStart": "2018-03-15",
-                            "PK": 73073563,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "0.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "141.6000",
-            "IntervalEnd": "2018-10-15",
-            "IntervalStart": "2018-09-15",
-            "NewCharges": "141.6000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655758,
-            "PreviousBalance": "1203.1400",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-5459-d90b-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "141.6000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-10-15",
-                    "IntervalStart": "2018-09-15",
-                    "MeterNumber": "",
-                    "PK": 20292410,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "141.6000",
-                            "ChargeRatePerUnit": "141.6000",
-                            "ChargeUnitsUsed": "1.0000",
-                            "IntervalEnd": "2018-10-15",
-                            "IntervalStart": "2018-09-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394165,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-10-15",
-                            "IntervalStart": "2018-09-15",
-                            "PK": 73073564,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "1.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "141.6000",
-            "IntervalEnd": "2018-03-15",
-            "IntervalStart": "2018-02-15",
-            "NewCharges": "141.6000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655759,
-            "PreviousBalance": "141.6000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce383-95e4-d30e-87d0-0e1b86a711de",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "141.6000",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-03-15",
-                    "IntervalStart": "2018-02-15",
-                    "MeterNumber": "",
-                    "PK": 20292411,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "141.6000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-03-15",
-                            "IntervalStart": "2018-02-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394166,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-03-15",
-                            "IntervalStart": "2018-02-15",
-                            "PK": 73073565,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "0.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "1203.1400",
-            "IntervalEnd": "2018-09-15",
-            "IntervalStart": "2018-08-15",
-            "NewCharges": "1203.1400",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655760,
-            "PreviousBalance": "1448.1300",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-546f-d8c9-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1203.1400",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-09-15",
-                    "IntervalStart": "2018-08-15",
-                    "MeterNumber": "",
-                    "PK": 20292412,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "1203.1400",
-                            "ChargeRatePerUnit": "0.0072",
-                            "ChargeUnitsUsed": "167714.0000",
-                            "IntervalEnd": "2018-09-15",
-                            "IntervalStart": "2018-08-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394167,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-09-15",
-                            "IntervalStart": "2018-08-15",
-                            "PK": 73073566,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "167714.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "1801.2900",
-            "IntervalEnd": "2019-08-15",
-            "IntervalStart": "2019-07-15",
-            "NewCharges": "1801.2900",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655761,
-            "PreviousBalance": "969.5000",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce38f-68d8-d22d-beaa-0e35ca355c46",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1801.2900",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-08-15",
-                    "IntervalStart": "2019-07-15",
-                    "MeterNumber": "",
-                    "PK": 20292413,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "1801.2900",
-                            "ChargeRatePerUnit": "0.0074",
-                            "ChargeUnitsUsed": "243609.0000",
-                            "IntervalEnd": "2019-08-15",
-                            "IntervalStart": "2019-07-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394168,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2019-08-15",
-                            "IntervalStart": "2019-07-15",
-                            "PK": 73073567,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "243609.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "1448.1300",
-            "IntervalEnd": "2018-08-15",
-            "IntervalStart": "2018-07-15",
-            "NewCharges": "1448.1300",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655762,
-            "PreviousBalance": "2443.9700",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-548a-d5a7-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "1448.1300",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-08-15",
-                    "IntervalStart": "2018-07-15",
-                    "MeterNumber": "",
-                    "PK": 20292414,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "1448.1300",
-                            "ChargeRatePerUnit": "0.0071",
-                            "ChargeUnitsUsed": "203271.0000",
-                            "IntervalEnd": "2018-08-15",
-                            "IntervalStart": "2018-07-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394169,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-08-15",
-                            "IntervalStart": "2018-07-15",
-                            "PK": 73073568,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "203271.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "2443.9700",
-            "IntervalEnd": "2018-07-15",
-            "IntervalStart": "2018-06-15",
-            "NewCharges": "2443.9700",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655763,
-            "PreviousBalance": "1333.9500",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54a2-dc75-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "2443.9700",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-07-15",
-                    "IntervalStart": "2018-06-15",
-                    "MeterNumber": "",
-                    "PK": 20292415,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "2443.9700",
-                            "ChargeRatePerUnit": "0.0070",
-                            "ChargeUnitsUsed": "347806.0000",
-                            "IntervalEnd": "2018-07-15",
-                            "IntervalStart": "2018-06-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394170,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2018-07-15",
-                            "IntervalStart": "2018-06-15",
-                            "PK": 73073569,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "347806.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "351.9600",
-            "IntervalEnd": "2019-06-15",
-            "IntervalStart": "2019-05-15",
-            "NewCharges": "351.9600",
-            "OutstandingBalance": "0.0000",
-            "PK": 5655764,
-            "PreviousBalance": "482.5200",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54b8-dc33-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "351.9600",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-06-15",
-                    "IntervalStart": "2019-05-15",
-                    "MeterNumber": "",
-                    "PK": 20292416,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "351.9600",
-                            "ChargeRatePerUnit": "0.0084",
-                            "ChargeUnitsUsed": "42034.0000",
-                            "IntervalEnd": "2019-06-15",
-                            "IntervalStart": "2019-05-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394171,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2019-06-15",
-                            "IntervalStart": "2019-05-15",
-                            "PK": 73073570,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "42034.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "151009074",
-            "AmountDue": "482.5200",
-            "IntervalEnd": "2019-05-15",
-            "IntervalStart": "2019-04-15",
-            "NewCharges": "455.5900",
-            "OutstandingBalance": "26.9300",
-            "PK": 5655765,
-            "PreviousBalance": "269.2800",
-            "RawAccountNumber": "151009074",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54ce-dbf1-b94a-0eaa9f9e9880",
-            "StatementDate": null,
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "482.5200",
-            "UtilityProvider": "CityOfSouthlakeTX",
-            "floating_charges": [],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-05-15",
-                    "IntervalStart": "2019-04-15",
-                    "MeterNumber": "",
-                    "PK": 20292417,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [
-                        {
-                            "ChargeActualName": "WATER SERVICE",
-                            "ChargeAmount": "455.5900",
-                            "ChargeRatePerUnit": "0.0081",
-                            "ChargeUnitsUsed": "56447.0000",
-                            "IntervalEnd": "2019-05-15",
-                            "IntervalStart": "2019-04-15",
-                            "IsAdjustmentCharge": true,
-                            "PK": 237394172,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "gallons"
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "gallons",
-                            "IntervalEnd": "2019-05-15",
-                            "IntervalStart": "2019-04-15",
-                            "PK": 73073571,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "56447.0000"
-                        }
-                    ]
-                }
-            ]
+          "IntervalEnd": "2018-11-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-10-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-11-15",
+              "PK": 237394155,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-10-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "147.8000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292400,
+          "usages": [
+            {
+              "IntervalEnd": "2018-11-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-10-15",
+              "UsageAmount": "0.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073554,
+              "UsageActualName": ""
+            }
+          ]
         }
-    ]
+      ],
+      "IntervalStart": "2018-10-15",
+      "TotalBillAmount": "147.8000",
+      "AccountNumber": "151119171",
+      "PK": 5655748,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2019-04-15",
+      "PreviousBalance": "147.8000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54e4-dbaf-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "269.2800",
+      "AmountDue": "269.2800",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2019-04-15",
+          "ServiceType": "water",
+          "IntervalStart": "2019-03-15",
+          "charges": [
+            {
+              "IntervalEnd": "2019-04-15",
+              "PK": 237394156,
+              "ChargeRatePerUnit": "0.0093",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "269.2800",
+              "ChargeUnitsUsed": "29110.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292401,
+          "usages": [
+            {
+              "IntervalEnd": "2019-04-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-03-15",
+              "UsageAmount": "29110.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073555,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-03-15",
+      "TotalBillAmount": "269.2800",
+      "AccountNumber": "151119171",
+      "PK": 5655749,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-12-15",
+      "PreviousBalance": "147.8000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-53e1-de46-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "147.8000",
+      "AmountDue": "147.8000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-12-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-11-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-12-15",
+              "PK": 237394157,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "147.8000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292402,
+          "usages": [
+            {
+              "IntervalEnd": "2018-12-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-11-15",
+              "UsageAmount": "0.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073556,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-11-15",
+      "TotalBillAmount": "147.8000",
+      "AccountNumber": "151119171",
+      "PK": 5655750,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-06-15",
+      "PreviousBalance": "419.4900",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54f8-d35d-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "1333.9500",
+      "AmountDue": "1333.9500",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-06-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-05-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-06-15",
+              "PK": 237394158,
+              "ChargeRatePerUnit": "0.0071",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "1333.9500",
+              "ChargeUnitsUsed": "186700.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292403,
+          "usages": [
+            {
+              "IntervalEnd": "2018-06-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-05-15",
+              "UsageAmount": "186700.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073557,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-05-15",
+      "TotalBillAmount": "1333.9500",
+      "AccountNumber": "151119171",
+      "PK": 5655751,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2019-03-15",
+      "PreviousBalance": "147.8000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-540b-d683-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "147.8000",
+      "AmountDue": "147.8000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2019-03-15",
+          "ServiceType": "water",
+          "IntervalStart": "2019-02-15",
+          "charges": [
+            {
+              "IntervalEnd": "2019-03-15",
+              "PK": 237394159,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-02-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "147.8000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292404,
+          "usages": [
+            {
+              "IntervalEnd": "2019-03-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-02-15",
+              "UsageAmount": "0.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073558,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-02-15",
+      "TotalBillAmount": "147.8000",
+      "AccountNumber": "151119171",
+      "PK": 5655752,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-05-15",
+      "PreviousBalance": "141.6000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-550b-dc0b-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "419.4900",
+      "AmountDue": "419.4900",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-05-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-04-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-05-15",
+              "PK": 237394160,
+              "ChargeRatePerUnit": "0.0078",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-04-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "419.4900",
+              "ChargeUnitsUsed": "53977.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292405,
+          "usages": [
+            {
+              "IntervalEnd": "2018-05-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-04-15",
+              "UsageAmount": "53977.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073559,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-04-15",
+      "TotalBillAmount": "419.4900",
+      "AccountNumber": "151119171",
+      "PK": 5655753,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2019-07-15",
+      "PreviousBalance": "351.9600",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-5426-d460-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "969.5000",
+      "AmountDue": "969.5000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2019-07-15",
+          "ServiceType": "water",
+          "IntervalStart": "2019-06-15",
+          "charges": [
+            {
+              "IntervalEnd": "2019-07-15",
+              "PK": 237394161,
+              "ChargeRatePerUnit": "0.0076",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-06-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "969.5000",
+              "ChargeUnitsUsed": "127922.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292406,
+          "usages": [
+            {
+              "IntervalEnd": "2019-07-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-06-15",
+              "UsageAmount": "127922.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073560,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-06-15",
+      "TotalBillAmount": "969.5000",
+      "AccountNumber": "151119171",
+      "PK": 5655754,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2019-01-15",
+      "PreviousBalance": "147.8000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-551c-dda9-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "147.8000",
+      "AmountDue": "147.8000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2019-01-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-12-15",
+          "charges": [
+            {
+              "IntervalEnd": "2019-01-15",
+              "PK": 237394162,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-12-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "147.8000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292407,
+          "usages": [
+            {
+              "IntervalEnd": "2019-01-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-12-15",
+              "UsageAmount": "0.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073561,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-12-15",
+      "TotalBillAmount": "147.8000",
+      "AccountNumber": "151119171",
+      "PK": 5655755,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2019-02-15",
+      "PreviousBalance": "147.8000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-5441-d23e-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "147.8000",
+      "AmountDue": "147.8000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2019-02-15",
+          "ServiceType": "water",
+          "IntervalStart": "2019-01-15",
+          "charges": [
+            {
+              "IntervalEnd": "2019-02-15",
+              "PK": 237394163,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "147.8000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292408,
+          "usages": [
+            {
+              "IntervalEnd": "2019-02-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-01-15",
+              "UsageAmount": "0.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073562,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-01-15",
+      "TotalBillAmount": "147.8000",
+      "AccountNumber": "151119171",
+      "PK": 5655756,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-04-15",
+      "PreviousBalance": "141.6000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce383-94c4-d181-87d0-0e1b86a711de",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "141.6000",
+      "AmountDue": "141.6000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-04-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-03-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-04-15",
+              "PK": 237394164,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "141.6000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292409,
+          "usages": [
+            {
+              "IntervalEnd": "2018-04-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-03-15",
+              "UsageAmount": "0.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073563,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-03-15",
+      "TotalBillAmount": "141.6000",
+      "AccountNumber": "151119171",
+      "PK": 5655757,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-10-15",
+      "PreviousBalance": "1203.1400",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-5459-d90b-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "141.6000",
+      "AmountDue": "141.6000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-10-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-09-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-10-15",
+              "PK": 237394165,
+              "ChargeRatePerUnit": "141.6000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "141.6000",
+              "ChargeUnitsUsed": "1.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292410,
+          "usages": [
+            {
+              "IntervalEnd": "2018-10-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-09-15",
+              "UsageAmount": "1.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073564,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-09-15",
+      "TotalBillAmount": "141.6000",
+      "AccountNumber": "151119171",
+      "PK": 5655758,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-03-15",
+      "PreviousBalance": "141.6000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce383-95e4-d30e-87d0-0e1b86a711de",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "141.6000",
+      "AmountDue": "141.6000",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-03-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-02-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-03-15",
+              "PK": 237394166,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-02-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "141.6000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292411,
+          "usages": [
+            {
+              "IntervalEnd": "2018-03-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-02-15",
+              "UsageAmount": "0.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073565,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-02-15",
+      "TotalBillAmount": "141.6000",
+      "AccountNumber": "151119171",
+      "PK": 5655759,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-09-15",
+      "PreviousBalance": "1448.1300",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-546f-d8c9-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "1203.1400",
+      "AmountDue": "1203.1400",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-09-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-08-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-09-15",
+              "PK": 237394167,
+              "ChargeRatePerUnit": "0.0072",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-08-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "1203.1400",
+              "ChargeUnitsUsed": "167714.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292412,
+          "usages": [
+            {
+              "IntervalEnd": "2018-09-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-08-15",
+              "UsageAmount": "167714.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073566,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-08-15",
+      "TotalBillAmount": "1203.1400",
+      "AccountNumber": "151119171",
+      "PK": 5655760,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2019-08-15",
+      "PreviousBalance": "969.5000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce38f-68d8-d22d-beaa-0e35ca355c46",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "1801.2900",
+      "AmountDue": "1801.2900",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2019-08-15",
+          "ServiceType": "water",
+          "IntervalStart": "2019-07-15",
+          "charges": [
+            {
+              "IntervalEnd": "2019-08-15",
+              "PK": 237394168,
+              "ChargeRatePerUnit": "0.0074",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "1801.2900",
+              "ChargeUnitsUsed": "243609.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292413,
+          "usages": [
+            {
+              "IntervalEnd": "2019-08-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-07-15",
+              "UsageAmount": "243609.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073567,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-07-15",
+      "TotalBillAmount": "1801.2900",
+      "AccountNumber": "151119171",
+      "PK": 5655761,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-08-15",
+      "PreviousBalance": "2443.9700",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-548a-d5a7-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "1448.1300",
+      "AmountDue": "1448.1300",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-08-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-07-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-08-15",
+              "PK": 237394169,
+              "ChargeRatePerUnit": "0.0071",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "1448.1300",
+              "ChargeUnitsUsed": "203271.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292414,
+          "usages": [
+            {
+              "IntervalEnd": "2018-08-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-07-15",
+              "UsageAmount": "203271.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073568,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-07-15",
+      "TotalBillAmount": "1448.1300",
+      "AccountNumber": "151119171",
+      "PK": 5655762,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2018-07-15",
+      "PreviousBalance": "1333.9500",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54a2-dc75-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "2443.9700",
+      "AmountDue": "2443.9700",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2018-07-15",
+          "ServiceType": "water",
+          "IntervalStart": "2018-06-15",
+          "charges": [
+            {
+              "IntervalEnd": "2018-07-15",
+              "PK": 237394170,
+              "ChargeRatePerUnit": "0.0070",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "2443.9700",
+              "ChargeUnitsUsed": "347806.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292415,
+          "usages": [
+            {
+              "IntervalEnd": "2018-07-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-06-15",
+              "UsageAmount": "347806.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073569,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-06-15",
+      "TotalBillAmount": "2443.9700",
+      "AccountNumber": "151119171",
+      "PK": 5655763,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2019-06-15",
+      "PreviousBalance": "482.5200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54b8-dc33-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "351.9600",
+      "AmountDue": "351.9600",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2019-06-15",
+          "ServiceType": "water",
+          "IntervalStart": "2019-05-15",
+          "charges": [
+            {
+              "IntervalEnd": "2019-06-15",
+              "PK": 237394171,
+              "ChargeRatePerUnit": "0.0084",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "351.9600",
+              "ChargeUnitsUsed": "42034.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292416,
+          "usages": [
+            {
+              "IntervalEnd": "2019-06-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-05-15",
+              "UsageAmount": "42034.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073570,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-05-15",
+      "TotalBillAmount": "351.9600",
+      "AccountNumber": "151119171",
+      "PK": 5655764,
+      "RawAccountNumber": "151119171"
+    },
+    {
+      "IntervalEnd": "2019-05-15",
+      "PreviousBalance": "269.2800",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ce34d-54ce-dbf1-b94a-0eaa9f9e9880",
+      "StatementType": "statement_type_bill",
+      "StatementDate": null,
+      "NewCharges": "455.5900",
+      "AmountDue": "482.5200",
+      "UtilityProvider": "CityOfSouthlakeTX",
+      "OutstandingBalance": "26.9300",
+      "floating_charges": [],
+      "meters": [
+        {
+          "IntervalEnd": "2019-05-15",
+          "ServiceType": "water",
+          "IntervalStart": "2019-04-15",
+          "charges": [
+            {
+              "IntervalEnd": "2019-05-15",
+              "PK": 237394172,
+              "ChargeRatePerUnit": "0.0081",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-04-15",
+              "ChargeActualName": "WATER SERVICE",
+              "ChargeAmount": "455.5900",
+              "ChargeUnitsUsed": "56447.0000",
+              "UsageUnit": "gallons"
+            }
+          ],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "",
+          "PK": 20292417,
+          "usages": [
+            {
+              "IntervalEnd": "2019-05-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-04-15",
+              "UsageAmount": "56447.0000",
+              "EnergyUnit": "gallons",
+              "PK": 73073571,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-04-15",
+      "TotalBillAmount": "482.5200",
+      "AccountNumber": "151119171",
+      "PK": 5655765,
+      "RawAccountNumber": "151119171"
+    }
+  ]
 }

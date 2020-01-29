@@ -1,1912 +1,1912 @@
 {
-    "accounts": [
+  "accounts": [
+    {
+      "IntervalEnd": "2018-09-25",
+      "PreviousBalance": "155.2200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7608-db23-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-09-26",
+      "NewCharges": "104.5200",
+      "AmountDue": "104.5200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
         {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "104.5200",
-            "IntervalEnd": "2018-09-25",
-            "IntervalStart": "2018-08-29",
-            "NewCharges": "104.5200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626902,
-            "PreviousBalance": "155.2200",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7608-db23-acfb-22000a947383",
-            "StatementDate": "2018-09-26",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "104.5200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "6.6800",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-09-25",
-                    "IntervalStart": "2018-08-29",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269530,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-09-25",
-                    "IntervalStart": "2018-08-28",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182609,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 1.00 units @ $8.43",
-                            "ChargeAmount": "8.4300",
-                            "ChargeRatePerUnit": "8.4300",
-                            "ChargeUnitsUsed": "1.0000",
-                            "IntervalEnd": "2018-09-25",
-                            "IntervalStart": "2018-08-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269531,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "80.5900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-09-25",
-                            "IntervalStart": "2018-08-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269532,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-09-25",
-                            "IntervalStart": "2018-08-29",
-                            "PK": 72730653,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "1.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "170.7100",
-            "IntervalEnd": "2017-05-26",
-            "IntervalStart": "2017-04-27",
-            "NewCharges": "170.7100",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626903,
-            "PreviousBalance": "170.7100",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6e54-d08f-acfb-22000a947383",
-            "StatementDate": "2017-05-26",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "170.7100",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "11.9100",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-05-26",
-                    "IntervalStart": "2017-04-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269535,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-05-26",
-                    "IntervalStart": "2017-04-26",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182611,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
-                            "ChargeAmount": "14.2800",
-                            "ChargeRatePerUnit": "7.1400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2017-05-26",
-                            "IntervalStart": "2017-04-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269536,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "144.5200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-05-26",
-                            "IntervalStart": "2017-04-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269537,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-05-26",
-                            "IntervalStart": "2017-04-27",
-                            "PK": 72730655,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "184.2200",
-            "IntervalEnd": "2018-05-29",
-            "IntervalStart": "2018-04-27",
-            "NewCharges": "184.2200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626906,
-            "PreviousBalance": "184.2200",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-73ef-d949-acfb-22000a947383",
-            "StatementDate": "2018-05-29",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "184.2200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-05-29",
-                    "IntervalStart": "2018-04-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269546,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-05-29",
-                    "IntervalStart": "2018-04-26",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182616,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
-                            "ChargeAmount": "15.2800",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2018-05-29",
-                            "IntervalStart": "2018-04-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269547,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-05-29",
-                            "IntervalStart": "2018-04-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269548,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-05-29",
-                            "IntervalStart": "2018-04-27",
-                            "PK": 72730662,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "170.7100",
-            "IntervalEnd": "2017-04-26",
-            "IntervalStart": "2017-03-29",
-            "NewCharges": "170.7100",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626908,
-            "PreviousBalance": "216.7600",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6f96-d424-acfb-22000a947383",
-            "StatementDate": "2017-04-26",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "170.7100",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "11.9100",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-04-26",
-                    "IntervalStart": "2017-03-29",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269553,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-04-26",
-                    "IntervalStart": "2017-03-28",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182619,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
-                            "ChargeAmount": "14.2800",
-                            "ChargeRatePerUnit": "7.1400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2017-04-26",
-                            "IntervalStart": "2017-03-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269554,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "144.5200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-04-26",
-                            "IntervalStart": "2017-03-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269555,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-04-26",
-                            "IntervalStart": "2017-03-29",
-                            "PK": 72730666,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "170.7100",
-            "IntervalEnd": "2016-11-29",
-            "IntervalStart": "2016-10-28",
-            "NewCharges": "170.7100",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626911,
-            "PreviousBalance": "178.3900",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7420-d6dd-acfb-22000a947383",
-            "StatementDate": "2016-11-29",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "170.7100",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "11.9100",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2016-11-29",
-                    "IntervalStart": "2016-10-28",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269565,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2016-11-29",
-                    "IntervalStart": "2016-10-27",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182624,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
-                            "ChargeAmount": "14.2800",
-                            "ChargeRatePerUnit": "7.1400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2016-11-29",
-                            "IntervalStart": "2016-10-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269566,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "144.5200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2016-11-29",
-                            "IntervalStart": "2016-10-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269567,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2016-11-29",
-                            "IntervalStart": "2016-10-28",
-                            "PK": 72730673,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "183.3000",
-            "IntervalEnd": "2017-07-27",
-            "IntervalStart": "2017-06-29",
-            "NewCharges": "182.4500",
-            "OutstandingBalance": "0.8500",
-            "PK": 5626913,
-            "PreviousBalance": "342.2700",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6fd3-d509-acfb-22000a947383",
-            "StatementDate": "2017-07-27",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "183.3000",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "06/28/17 Late Charge",
-                    "ChargeAmount": "-0.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-07-27",
-                    "IntervalStart": "2017-06-29",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269573,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.7900",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-07-27",
-                    "IntervalStart": "2017-06-29",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269574,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-07-27",
-                    "IntervalStart": "2017-06-28",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182627,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 1.86 units @ $7.64 (for 27 of 29 days)",
-                            "ChargeAmount": "14.2100",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "1.8600",
-                            "IntervalEnd": "2017-07-27",
-                            "IntervalStart": "2017-06-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269575,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Consumption Charge 0.14 units @ $7.14 (for 2 of 29 days)",
-                            "ChargeAmount": "1.0000",
-                            "ChargeRatePerUnit": "7.1400",
-                            "ChargeUnitsUsed": "0.1400",
-                            "IntervalEnd": "2017-07-27",
-                            "IntervalStart": "2017-06-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269576,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "155.3000",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-07-27",
-                            "IntervalStart": "2017-06-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269577,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-07-27",
-                            "IntervalStart": "2017-06-29",
-                            "PK": 72730677,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "155.3600",
-            "IntervalEnd": "2017-02-24",
-            "IntervalStart": "2017-01-28",
-            "NewCharges": "155.3600",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626914,
-            "PreviousBalance": "170.7100",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7850-d332-acfb-22000a947383",
-            "StatementDate": "2017-02-27",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "155.3600",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "10.8400",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-02-24",
-                    "IntervalStart": "2017-01-28",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269578,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-02-24",
-                    "IntervalStart": "2017-01-27",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182628,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "144.5200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-02-24",
-                            "IntervalStart": "2017-01-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269579,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-02-24",
-                            "IntervalStart": "2017-01-28",
-                            "PK": 72730678,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "0.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "184.2200",
-            "IntervalEnd": "2018-06-27",
-            "IntervalStart": "2018-05-30",
-            "NewCharges": "184.2200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626916,
-            "PreviousBalance": "184.2200",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7453-da82-acfb-22000a947383",
-            "StatementDate": "2018-06-28",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "184.2200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-06-27",
-                    "IntervalStart": "2018-05-30",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269586,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-06-27",
-                    "IntervalStart": "2018-05-29",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182631,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
-                            "ChargeAmount": "15.2800",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2018-06-27",
-                            "IntervalStart": "2018-05-30",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269587,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-06-27",
-                            "IntervalStart": "2018-05-30",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269588,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-06-27",
-                            "IntervalStart": "2018-05-30",
-                            "PK": 72730682,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "121.4200",
-            "IntervalEnd": "2018-10-29",
-            "IntervalStart": "2018-09-26",
-            "NewCharges": "121.4200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626917,
-            "PreviousBalance": "104.5200",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-768c-d7f3-acfb-22000a947383",
-            "StatementDate": "2018-10-29",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "121.4200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "7.3100",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-10-29",
-                    "IntervalStart": "2018-09-26",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269589,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-10-29",
-                    "IntervalStart": "2018-09-25",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182632,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $8.43",
-                            "ChargeAmount": "16.8600",
-                            "ChargeRatePerUnit": "8.4300",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2018-10-29",
-                            "IntervalStart": "2018-09-26",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269590,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "80.5900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-10-29",
-                            "IntervalStart": "2018-09-26",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269591,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-10-29",
-                            "IntervalStart": "2018-09-26",
-                            "PK": 72730683,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "342.2700",
-            "IntervalEnd": "2017-06-28",
-            "IntervalStart": "2017-05-27",
-            "NewCharges": "171.5600",
-            "OutstandingBalance": "170.7100",
-            "PK": 5626918,
-            "PreviousBalance": "170.7100",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-700b-d7e0-acfb-22000a947383",
-            "StatementDate": "2017-06-28",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "342.2700",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "06/28/17 Late Charge",
-                    "ChargeAmount": "0.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-06-28",
-                    "IntervalStart": "2017-05-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269594,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "11.9100",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-06-28",
-                    "IntervalStart": "2017-05-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269595,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-06-28",
-                    "IntervalStart": "2017-05-26",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182634,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
-                            "ChargeAmount": "14.2800",
-                            "ChargeRatePerUnit": "7.1400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2017-06-28",
-                            "IntervalStart": "2017-05-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269596,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "144.5200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-06-28",
-                            "IntervalStart": "2017-05-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269597,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-06-28",
-                            "IntervalStart": "2017-05-27",
-                            "PK": 72730685,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "170.7100",
-            "IntervalEnd": "2017-01-27",
-            "IntervalStart": "2016-12-29",
-            "NewCharges": "170.7100",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626919,
-            "PreviousBalance": "178.3900",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-786b-d02d-acfb-22000a947383",
-            "StatementDate": "2017-01-27",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "170.7100",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "11.9100",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-01-27",
-                    "IntervalStart": "2016-12-29",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269598,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-01-27",
-                    "IntervalStart": "2016-12-28",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182635,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
-                            "ChargeAmount": "14.2800",
-                            "ChargeRatePerUnit": "7.1400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2017-01-27",
-                            "IntervalStart": "2016-12-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269599,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "144.5200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-01-27",
-                            "IntervalStart": "2016-12-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269600,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-01-27",
-                            "IntervalStart": "2016-12-29",
-                            "PK": 72730686,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "216.7600",
-            "IntervalEnd": "2017-03-28",
-            "IntervalStart": "2017-02-25",
-            "NewCharges": "216.7600",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626920,
-            "PreviousBalance": "155.3600",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-724b-da49-acfb-22000a947383",
-            "StatementDate": "2017-03-29",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "216.7600",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "15.1200",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-03-28",
-                    "IntervalStart": "2017-02-25",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269601,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-03-28",
-                    "IntervalStart": "2017-02-24",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182636,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 8.00 units @ $7.14",
-                            "ChargeAmount": "57.1200",
-                            "ChargeRatePerUnit": "7.1400",
-                            "ChargeUnitsUsed": "8.0000",
-                            "IntervalEnd": "2017-03-28",
-                            "IntervalStart": "2017-02-25",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269602,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "144.5200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-03-28",
-                            "IntervalStart": "2017-02-25",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269603,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-03-28",
-                            "IntervalStart": "2017-02-25",
-                            "PK": 72730687,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "8.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "178.3900",
-            "IntervalEnd": "2016-12-28",
-            "IntervalStart": "2016-11-30",
-            "NewCharges": "178.3900",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626921,
-            "PreviousBalance": "170.7100",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7473-d6a6-acfb-22000a947383",
-            "StatementDate": "2016-12-28",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "178.3900",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.4500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2016-12-28",
-                    "IntervalStart": "2016-11-30",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269604,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2016-12-28",
-                    "IntervalStart": "2016-11-29",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182637,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.14",
-                            "ChargeAmount": "21.4200",
-                            "ChargeRatePerUnit": "7.1400",
-                            "ChargeUnitsUsed": "3.0000",
-                            "IntervalEnd": "2016-12-28",
-                            "IntervalStart": "2016-11-30",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269605,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "144.5200",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2016-12-28",
-                            "IntervalStart": "2016-11-30",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269606,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2016-12-28",
-                            "IntervalStart": "2016-11-30",
-                            "PK": 72730688,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "3.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "192.4400",
-            "IntervalEnd": "2017-09-26",
-            "IntervalStart": "2017-08-26",
-            "NewCharges": "192.4400",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626923,
-            "PreviousBalance": "185.0700",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7039-dd6d-acfb-22000a947383",
-            "StatementDate": "2017-09-27",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "192.4400",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "13.4300",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-09-26",
-                    "IntervalStart": "2017-08-26",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269611,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-09-26",
-                    "IntervalStart": "2017-08-25",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182640,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
-                            "ChargeAmount": "22.9200",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "3.0000",
-                            "IntervalEnd": "2017-09-26",
-                            "IntervalStart": "2017-08-26",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269612,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-09-26",
-                            "IntervalStart": "2017-08-26",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269613,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-09-26",
-                            "IntervalStart": "2017-08-26",
-                            "PK": 72730692,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "3.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "121.6800",
-            "IntervalEnd": "2018-07-27",
-            "IntervalStart": "2018-06-28",
-            "NewCharges": "121.6800",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626926,
-            "PreviousBalance": "184.2200",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-76e6-dd31-acfb-22000a947383",
-            "StatementDate": "2018-07-27",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "121.6800",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "8.4900",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-07-27",
-                    "IntervalStart": "2018-06-28",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269624,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-07-27",
-                    "IntervalStart": "2018-06-27",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182645,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.70 units @ $8.43 (for 27 of 30 days)",
-                            "ChargeAmount": "22.7600",
-                            "ChargeRatePerUnit": "8.4300",
-                            "ChargeUnitsUsed": "2.7000",
-                            "IntervalEnd": "2018-07-27",
-                            "IntervalStart": "2018-06-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269625,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Consumption Charge 0.30 units @ $7.64 (for 3 of 30 days)",
-                            "ChargeAmount": "2.2900",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "0.3000",
-                            "IntervalEnd": "2018-07-27",
-                            "IntervalStart": "2018-06-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269626,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "88.1400",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-07-27",
-                            "IntervalStart": "2018-06-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269627,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-07-27",
-                            "IntervalStart": "2018-06-28",
-                            "PK": 72730699,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "3.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "185.0700",
-            "IntervalEnd": "2017-08-25",
-            "IntervalStart": "2017-07-28",
-            "NewCharges": "184.2200",
-            "OutstandingBalance": "0.8500",
-            "PK": 5626927,
-            "PreviousBalance": "183.3000",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7072-d032-acfb-22000a947383",
-            "StatementDate": "2017-08-28",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "185.0700",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-08-25",
-                    "IntervalStart": "2017-07-28",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269628,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-08-25",
-                    "IntervalStart": "2017-07-27",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182646,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
-                            "ChargeAmount": "15.2800",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2017-08-25",
-                            "IntervalStart": "2017-07-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269629,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-08-25",
-                            "IntervalStart": "2017-07-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269630,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-08-25",
-                            "IntervalStart": "2017-07-28",
-                            "PK": 72730700,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "192.4400",
-            "IntervalEnd": "2018-03-27",
-            "IntervalStart": "2018-02-27",
-            "NewCharges": "192.4400",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626929,
-            "PreviousBalance": "184.2200",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-74d2-d9ee-acfb-22000a947383",
-            "StatementDate": "2018-03-28",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "192.4400",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "13.4300",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-03-27",
-                    "IntervalStart": "2018-02-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269635,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-03-27",
-                    "IntervalStart": "2018-02-26",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182649,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
-                            "ChargeAmount": "22.9200",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "3.0000",
-                            "IntervalEnd": "2018-03-27",
-                            "IntervalStart": "2018-02-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269636,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-03-27",
-                            "IntervalStart": "2018-02-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269637,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-03-27",
-                            "IntervalStart": "2018-02-27",
-                            "PK": 72730704,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "3.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "192.4400",
-            "IntervalEnd": "2017-11-29",
-            "IntervalStart": "2017-10-28",
-            "NewCharges": "192.4400",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626931,
-            "PreviousBalance": "184.2200",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-70a0-d6b7-acfb-22000a947383",
-            "StatementDate": "2017-11-29",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "192.4400",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "13.4300",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-11-29",
-                    "IntervalStart": "2017-10-28",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269645,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-11-29",
-                    "IntervalStart": "2017-10-27",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182652,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
-                            "ChargeAmount": "22.9200",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "3.0000",
-                            "IntervalEnd": "2017-11-29",
-                            "IntervalStart": "2017-10-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269646,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-11-29",
-                            "IntervalStart": "2017-10-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269647,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-11-29",
-                            "IntervalStart": "2017-10-28",
-                            "PK": 72730708,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "3.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "184.2200",
-            "IntervalEnd": "2017-10-27",
-            "IntervalStart": "2017-09-27",
-            "NewCharges": "184.2200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626935,
-            "PreviousBalance": "192.4400",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-70ce-dc3c-acfb-22000a947383",
-            "StatementDate": "2017-10-27",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "184.2200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-10-27",
-                    "IntervalStart": "2017-09-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269661,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-10-27",
-                    "IntervalStart": "2017-09-26",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182659,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
-                            "ChargeAmount": "15.2800",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2017-10-27",
-                            "IntervalStart": "2017-09-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269662,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-10-27",
-                            "IntervalStart": "2017-09-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269663,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-10-27",
-                            "IntervalStart": "2017-09-27",
-                            "PK": 72730718,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "184.2200",
-            "IntervalEnd": "2018-04-26",
-            "IntervalStart": "2018-03-28",
-            "NewCharges": "184.2200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626937,
-            "PreviousBalance": "192.4400",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-754c-dae6-acfb-22000a947383",
-            "StatementDate": "2018-04-26",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "184.2200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-04-26",
-                    "IntervalStart": "2018-03-28",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269668,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-04-26",
-                    "IntervalStart": "2018-03-27",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182662,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
-                            "ChargeAmount": "15.2800",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2018-04-26",
-                            "IntervalStart": "2018-03-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269669,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-04-26",
-                            "IntervalStart": "2018-03-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269670,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-04-26",
-                            "IntervalStart": "2018-03-28",
-                            "PK": 72730722,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "155.2200",
-            "IntervalEnd": "2018-08-28",
-            "IntervalStart": "2018-07-28",
-            "NewCharges": "155.2200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626938,
-            "PreviousBalance": "121.6800",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7763-d5ca-acfb-22000a947383",
-            "StatementDate": "2018-08-28",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "155.2200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "8.5700",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-08-28",
-                    "IntervalStart": "2018-07-28",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269671,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-08-28",
-                    "IntervalStart": "2018-07-27",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182663,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 4.00 units @ $8.43",
-                            "ChargeAmount": "33.7200",
-                            "ChargeRatePerUnit": "8.4300",
-                            "ChargeUnitsUsed": "4.0000",
-                            "IntervalEnd": "2018-08-28",
-                            "IntervalStart": "2018-07-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269672,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "80.5900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-08-28",
-                            "IntervalStart": "2018-07-28",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269673,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-08-28",
-                            "IntervalStart": "2018-07-28",
-                            "PK": 72730723,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "4.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "176.0100",
-            "IntervalEnd": "2017-12-28",
-            "IntervalStart": "2017-11-30",
-            "NewCharges": "176.0100",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626940,
-            "PreviousBalance": "192.4400",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7377-df3a-acfb-22000a947383",
-            "StatementDate": "2017-12-28",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "176.0100",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.2800",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2017-12-28",
-                    "IntervalStart": "2017-11-30",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269681,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2017-12-28",
-                    "IntervalStart": "2017-11-29",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182667,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 1.00 units @ $7.64",
-                            "ChargeAmount": "7.6400",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "1.0000",
-                            "IntervalEnd": "2017-12-28",
-                            "IntervalStart": "2017-11-30",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269682,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2017-12-28",
-                            "IntervalStart": "2017-11-30",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269683,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2017-12-28",
-                            "IntervalStart": "2017-11-30",
-                            "PK": 72730728,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "1.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "184.2200",
-            "IntervalEnd": "2018-01-26",
-            "IntervalStart": "2017-12-29",
-            "NewCharges": "184.2200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626944,
-            "PreviousBalance": "176.0100",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-739c-d97f-acfb-22000a947383",
-            "StatementDate": "2018-01-29",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "184.2200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-01-26",
-                    "IntervalStart": "2017-12-29",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269696,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-01-26",
-                    "IntervalStart": "2017-12-28",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182674,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
-                            "ChargeAmount": "15.2800",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2018-01-26",
-                            "IntervalStart": "2017-12-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269697,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-01-26",
-                            "IntervalStart": "2017-12-29",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269698,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-01-26",
-                            "IntervalStart": "2017-12-29",
-                            "PK": 72730738,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "AccountNumber": "AnonAccountNumber",
-            "AmountDue": "184.2200",
-            "IntervalEnd": "2018-02-26",
-            "IntervalStart": "2018-01-27",
-            "NewCharges": "184.2200",
-            "OutstandingBalance": "0.0000",
-            "PK": 5626948,
-            "PreviousBalance": "184.2200",
-            "RawAccountNumber": "AnonRawAccountNumber",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-73be-dbb4-acfb-22000a947383",
-            "StatementDate": "2018-02-26",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "184.2200",
-            "UtilityProvider": "AnonProvider",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Utility Tax",
-                    "ChargeAmount": "12.8500",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-02-26",
-                    "IntervalStart": "2018-01-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 236269714,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2018-02-26",
-                    "IntervalStart": "2018-01-26",
-                    "MeterNumber": "AnonMeterNumber",
-                    "PK": 20182681,
-                    "PODid": "AnonPODid",
-                    "ServiceType": "water",
-                    "Tariff": "Non Residential",
-                    "charges": [
-                        {
-                            "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
-                            "ChargeAmount": "15.2800",
-                            "ChargeRatePerUnit": "7.6400",
-                            "ChargeUnitsUsed": "2.0000",
-                            "IntervalEnd": "2018-02-26",
-                            "IntervalStart": "2018-01-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269715,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": "ccf"
-                        },
-                        {
-                            "ChargeActualName": "Water Service Charge",
-                            "ChargeAmount": "156.0900",
-                            "ChargeRatePerUnit": "0.0000",
-                            "ChargeUnitsUsed": "0.0000",
-                            "IntervalEnd": "2018-02-26",
-                            "IntervalStart": "2018-01-27",
-                            "IsAdjustmentCharge": true,
-                            "PK": 236269716,
-                            "ThirdPartyProvider": "",
-                            "UsageUnit": ""
-                        }
-                    ],
-                    "usages": [
-                        {
-                            "EnergyUnit": "ccf",
-                            "IntervalEnd": "2018-02-26",
-                            "IntervalStart": "2018-01-27",
-                            "PK": 72730748,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "2.0000"
-                        }
-                    ]
-                }
-            ]
+          "IntervalEnd": "2018-09-25",
+          "PK": 236269530,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-08-29",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "6.6800",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
         }
-    ]
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-09-25",
+          "ServiceType": "water",
+          "IntervalStart": "2018-08-28",
+          "charges": [
+            {
+              "IntervalEnd": "2018-09-25",
+              "PK": 236269531,
+              "ChargeRatePerUnit": "8.4300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-08-29",
+              "ChargeActualName": "Water Consumption Charge 1.00 units @ $8.43",
+              "ChargeAmount": "8.4300",
+              "ChargeUnitsUsed": "1.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-09-25",
+              "PK": 236269532,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-08-29",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "80.5900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182609,
+          "usages": [
+            {
+              "IntervalEnd": "2018-09-25",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-08-29",
+              "UsageAmount": "1.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730653,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-08-29",
+      "TotalBillAmount": "104.5200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626902,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-05-26",
+      "PreviousBalance": "170.7100",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6e54-d08f-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-05-26",
+      "NewCharges": "170.7100",
+      "AmountDue": "170.7100",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-05-26",
+          "PK": 236269535,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-04-27",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "11.9100",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-05-26",
+          "ServiceType": "water",
+          "IntervalStart": "2017-04-26",
+          "charges": [
+            {
+              "IntervalEnd": "2017-05-26",
+              "PK": 236269536,
+              "ChargeRatePerUnit": "7.1400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-04-27",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+              "ChargeAmount": "14.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-05-26",
+              "PK": 236269537,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-04-27",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "144.5200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182611,
+          "usages": [
+            {
+              "IntervalEnd": "2017-05-26",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-04-27",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730655,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-04-27",
+      "TotalBillAmount": "170.7100",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626903,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-05-29",
+      "PreviousBalance": "184.2200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-73ef-d949-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-05-29",
+      "NewCharges": "184.2200",
+      "AmountDue": "184.2200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-05-29",
+          "PK": 236269546,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-04-27",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-05-29",
+          "ServiceType": "water",
+          "IntervalStart": "2018-04-26",
+          "charges": [
+            {
+              "IntervalEnd": "2018-05-29",
+              "PK": 236269547,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-04-27",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+              "ChargeAmount": "15.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-05-29",
+              "PK": 236269548,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-04-27",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182616,
+          "usages": [
+            {
+              "IntervalEnd": "2018-05-29",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-04-27",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730662,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-04-27",
+      "TotalBillAmount": "184.2200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626906,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-04-26",
+      "PreviousBalance": "216.7600",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6f96-d424-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-04-26",
+      "NewCharges": "170.7100",
+      "AmountDue": "170.7100",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-04-26",
+          "PK": 236269553,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-03-29",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "11.9100",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-04-26",
+          "ServiceType": "water",
+          "IntervalStart": "2017-03-28",
+          "charges": [
+            {
+              "IntervalEnd": "2017-04-26",
+              "PK": 236269554,
+              "ChargeRatePerUnit": "7.1400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-03-29",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+              "ChargeAmount": "14.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-04-26",
+              "PK": 236269555,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-03-29",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "144.5200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182619,
+          "usages": [
+            {
+              "IntervalEnd": "2017-04-26",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-03-29",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730666,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-03-29",
+      "TotalBillAmount": "170.7100",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626908,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2016-11-29",
+      "PreviousBalance": "178.3900",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7420-d6dd-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2016-11-29",
+      "NewCharges": "170.7100",
+      "AmountDue": "170.7100",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2016-11-29",
+          "PK": 236269565,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2016-10-28",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "11.9100",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2016-11-29",
+          "ServiceType": "water",
+          "IntervalStart": "2016-10-27",
+          "charges": [
+            {
+              "IntervalEnd": "2016-11-29",
+              "PK": 236269566,
+              "ChargeRatePerUnit": "7.1400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2016-10-28",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+              "ChargeAmount": "14.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2016-11-29",
+              "PK": 236269567,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2016-10-28",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "144.5200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182624,
+          "usages": [
+            {
+              "IntervalEnd": "2016-11-29",
+              "RateComponent": "[total]",
+              "IntervalStart": "2016-10-28",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730673,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2016-10-28",
+      "TotalBillAmount": "170.7100",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626911,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-07-27",
+      "PreviousBalance": "342.2700",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-6fd3-d509-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-07-27",
+      "NewCharges": "182.4500",
+      "AmountDue": "183.3000",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.8500",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-07-27",
+          "PK": 236269573,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-06-29",
+          "ChargeActualName": "06/28/17 Late Charge",
+          "ChargeAmount": "-0.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2017-07-27",
+          "PK": 236269574,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-06-29",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.7900",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-07-27",
+          "ServiceType": "water",
+          "IntervalStart": "2017-06-28",
+          "charges": [
+            {
+              "IntervalEnd": "2017-07-27",
+              "PK": 236269575,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-06-29",
+              "ChargeActualName": "Water Consumption Charge 1.86 units @ $7.64 (for 27 of 29 days)",
+              "ChargeAmount": "14.2100",
+              "ChargeUnitsUsed": "1.8600",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-07-27",
+              "PK": 236269576,
+              "ChargeRatePerUnit": "7.1400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-06-29",
+              "ChargeActualName": "Water Consumption Charge 0.14 units @ $7.14 (for 2 of 29 days)",
+              "ChargeAmount": "1.0000",
+              "ChargeUnitsUsed": "0.1400",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-07-27",
+              "PK": 236269577,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-06-29",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "155.3000",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182627,
+          "usages": [
+            {
+              "IntervalEnd": "2017-07-27",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-06-29",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730677,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-06-29",
+      "TotalBillAmount": "183.3000",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626913,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-02-24",
+      "PreviousBalance": "170.7100",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7850-d332-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-02-27",
+      "NewCharges": "155.3600",
+      "AmountDue": "155.3600",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-02-24",
+          "PK": 236269578,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-01-28",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "10.8400",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-02-24",
+          "ServiceType": "water",
+          "IntervalStart": "2017-01-27",
+          "charges": [
+            {
+              "IntervalEnd": "2017-02-24",
+              "PK": 236269579,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-01-28",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "144.5200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182628,
+          "usages": [
+            {
+              "IntervalEnd": "2017-02-24",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-01-28",
+              "UsageAmount": "0.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730678,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-01-28",
+      "TotalBillAmount": "155.3600",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626914,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-06-27",
+      "PreviousBalance": "184.2200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7453-da82-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-06-28",
+      "NewCharges": "184.2200",
+      "AmountDue": "184.2200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-06-27",
+          "PK": 236269586,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-05-30",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-06-27",
+          "ServiceType": "water",
+          "IntervalStart": "2018-05-29",
+          "charges": [
+            {
+              "IntervalEnd": "2018-06-27",
+              "PK": 236269587,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-30",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+              "ChargeAmount": "15.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-06-27",
+              "PK": 236269588,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-30",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182631,
+          "usages": [
+            {
+              "IntervalEnd": "2018-06-27",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-05-30",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730682,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-05-30",
+      "TotalBillAmount": "184.2200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626916,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-10-29",
+      "PreviousBalance": "104.5200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-768c-d7f3-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-10-29",
+      "NewCharges": "121.4200",
+      "AmountDue": "121.4200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-10-29",
+          "PK": 236269589,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-09-26",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "7.3100",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-10-29",
+          "ServiceType": "water",
+          "IntervalStart": "2018-09-25",
+          "charges": [
+            {
+              "IntervalEnd": "2018-10-29",
+              "PK": 236269590,
+              "ChargeRatePerUnit": "8.4300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-26",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $8.43",
+              "ChargeAmount": "16.8600",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-10-29",
+              "PK": 236269591,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-26",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "80.5900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182632,
+          "usages": [
+            {
+              "IntervalEnd": "2018-10-29",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-09-26",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730683,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-09-26",
+      "TotalBillAmount": "121.4200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626917,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-06-28",
+      "PreviousBalance": "170.7100",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-700b-d7e0-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-06-28",
+      "NewCharges": "171.5600",
+      "AmountDue": "342.2700",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "170.7100",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-06-28",
+          "PK": 236269594,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-05-27",
+          "ChargeActualName": "06/28/17 Late Charge",
+          "ChargeAmount": "0.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        },
+        {
+          "IntervalEnd": "2017-06-28",
+          "PK": 236269595,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-05-27",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "11.9100",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-06-28",
+          "ServiceType": "water",
+          "IntervalStart": "2017-05-26",
+          "charges": [
+            {
+              "IntervalEnd": "2017-06-28",
+              "PK": 236269596,
+              "ChargeRatePerUnit": "7.1400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-05-27",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+              "ChargeAmount": "14.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-06-28",
+              "PK": 236269597,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-05-27",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "144.5200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182634,
+          "usages": [
+            {
+              "IntervalEnd": "2017-06-28",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-05-27",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730685,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-05-27",
+      "TotalBillAmount": "342.2700",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626918,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-01-27",
+      "PreviousBalance": "178.3900",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-786b-d02d-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-01-27",
+      "NewCharges": "170.7100",
+      "AmountDue": "170.7100",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-01-27",
+          "PK": 236269598,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2016-12-29",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "11.9100",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-01-27",
+          "ServiceType": "water",
+          "IntervalStart": "2016-12-28",
+          "charges": [
+            {
+              "IntervalEnd": "2017-01-27",
+              "PK": 236269599,
+              "ChargeRatePerUnit": "7.1400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2016-12-29",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.14",
+              "ChargeAmount": "14.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-01-27",
+              "PK": 236269600,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2016-12-29",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "144.5200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182635,
+          "usages": [
+            {
+              "IntervalEnd": "2017-01-27",
+              "RateComponent": "[total]",
+              "IntervalStart": "2016-12-29",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730686,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2016-12-29",
+      "TotalBillAmount": "170.7100",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626919,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-03-28",
+      "PreviousBalance": "155.3600",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-724b-da49-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-03-29",
+      "NewCharges": "216.7600",
+      "AmountDue": "216.7600",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-03-28",
+          "PK": 236269601,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-02-25",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "15.1200",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-03-28",
+          "ServiceType": "water",
+          "IntervalStart": "2017-02-24",
+          "charges": [
+            {
+              "IntervalEnd": "2017-03-28",
+              "PK": 236269602,
+              "ChargeRatePerUnit": "7.1400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-02-25",
+              "ChargeActualName": "Water Consumption Charge 8.00 units @ $7.14",
+              "ChargeAmount": "57.1200",
+              "ChargeUnitsUsed": "8.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-03-28",
+              "PK": 236269603,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-02-25",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "144.5200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182636,
+          "usages": [
+            {
+              "IntervalEnd": "2017-03-28",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-02-25",
+              "UsageAmount": "8.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730687,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-02-25",
+      "TotalBillAmount": "216.7600",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626920,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2016-12-28",
+      "PreviousBalance": "170.7100",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7473-d6a6-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2016-12-28",
+      "NewCharges": "178.3900",
+      "AmountDue": "178.3900",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2016-12-28",
+          "PK": 236269604,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2016-11-30",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.4500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2016-12-28",
+          "ServiceType": "water",
+          "IntervalStart": "2016-11-29",
+          "charges": [
+            {
+              "IntervalEnd": "2016-12-28",
+              "PK": 236269605,
+              "ChargeRatePerUnit": "7.1400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2016-11-30",
+              "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.14",
+              "ChargeAmount": "21.4200",
+              "ChargeUnitsUsed": "3.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2016-12-28",
+              "PK": 236269606,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2016-11-30",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "144.5200",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182637,
+          "usages": [
+            {
+              "IntervalEnd": "2016-12-28",
+              "RateComponent": "[total]",
+              "IntervalStart": "2016-11-30",
+              "UsageAmount": "3.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730688,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2016-11-30",
+      "TotalBillAmount": "178.3900",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626921,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-09-26",
+      "PreviousBalance": "185.0700",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7039-dd6d-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-09-27",
+      "NewCharges": "192.4400",
+      "AmountDue": "192.4400",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-09-26",
+          "PK": 236269611,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-08-26",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "13.4300",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-09-26",
+          "ServiceType": "water",
+          "IntervalStart": "2017-08-25",
+          "charges": [
+            {
+              "IntervalEnd": "2017-09-26",
+              "PK": 236269612,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-08-26",
+              "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
+              "ChargeAmount": "22.9200",
+              "ChargeUnitsUsed": "3.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-09-26",
+              "PK": 236269613,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-08-26",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182640,
+          "usages": [
+            {
+              "IntervalEnd": "2017-09-26",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-08-26",
+              "UsageAmount": "3.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730692,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-08-26",
+      "TotalBillAmount": "192.4400",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626923,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-07-27",
+      "PreviousBalance": "184.2200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-76e6-dd31-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-07-27",
+      "NewCharges": "121.6800",
+      "AmountDue": "121.6800",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-07-27",
+          "PK": 236269624,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-06-28",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "8.4900",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-07-27",
+          "ServiceType": "water",
+          "IntervalStart": "2018-06-27",
+          "charges": [
+            {
+              "IntervalEnd": "2018-07-27",
+              "PK": 236269625,
+              "ChargeRatePerUnit": "8.4300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-28",
+              "ChargeActualName": "Water Consumption Charge 2.70 units @ $8.43 (for 27 of 30 days)",
+              "ChargeAmount": "22.7600",
+              "ChargeUnitsUsed": "2.7000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-07-27",
+              "PK": 236269626,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-28",
+              "ChargeActualName": "Water Consumption Charge 0.30 units @ $7.64 (for 3 of 30 days)",
+              "ChargeAmount": "2.2900",
+              "ChargeUnitsUsed": "0.3000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-07-27",
+              "PK": 236269627,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-28",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "88.1400",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182645,
+          "usages": [
+            {
+              "IntervalEnd": "2018-07-27",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-06-28",
+              "UsageAmount": "3.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730699,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-06-28",
+      "TotalBillAmount": "121.6800",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626926,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-08-25",
+      "PreviousBalance": "183.3000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7072-d032-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-08-28",
+      "NewCharges": "184.2200",
+      "AmountDue": "185.0700",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.8500",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-08-25",
+          "PK": 236269628,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-07-28",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-08-25",
+          "ServiceType": "water",
+          "IntervalStart": "2017-07-27",
+          "charges": [
+            {
+              "IntervalEnd": "2017-08-25",
+              "PK": 236269629,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-07-28",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+              "ChargeAmount": "15.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-08-25",
+              "PK": 236269630,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-07-28",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182646,
+          "usages": [
+            {
+              "IntervalEnd": "2017-08-25",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-07-28",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730700,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-07-28",
+      "TotalBillAmount": "185.0700",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626927,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-03-27",
+      "PreviousBalance": "184.2200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-74d2-d9ee-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-03-28",
+      "NewCharges": "192.4400",
+      "AmountDue": "192.4400",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-03-27",
+          "PK": 236269635,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-02-27",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "13.4300",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-03-27",
+          "ServiceType": "water",
+          "IntervalStart": "2018-02-26",
+          "charges": [
+            {
+              "IntervalEnd": "2018-03-27",
+              "PK": 236269636,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-02-27",
+              "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
+              "ChargeAmount": "22.9200",
+              "ChargeUnitsUsed": "3.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-03-27",
+              "PK": 236269637,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-02-27",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182649,
+          "usages": [
+            {
+              "IntervalEnd": "2018-03-27",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-02-27",
+              "UsageAmount": "3.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730704,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-02-27",
+      "TotalBillAmount": "192.4400",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626929,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-11-29",
+      "PreviousBalance": "184.2200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-70a0-d6b7-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-11-29",
+      "NewCharges": "192.4400",
+      "AmountDue": "192.4400",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-11-29",
+          "PK": 236269645,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-10-28",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "13.4300",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-11-29",
+          "ServiceType": "water",
+          "IntervalStart": "2017-10-27",
+          "charges": [
+            {
+              "IntervalEnd": "2017-11-29",
+              "PK": 236269646,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-10-28",
+              "ChargeActualName": "Water Consumption Charge 3.00 units @ $7.64",
+              "ChargeAmount": "22.9200",
+              "ChargeUnitsUsed": "3.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-11-29",
+              "PK": 236269647,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-10-28",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182652,
+          "usages": [
+            {
+              "IntervalEnd": "2017-11-29",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-10-28",
+              "UsageAmount": "3.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730708,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-10-28",
+      "TotalBillAmount": "192.4400",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626931,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-10-27",
+      "PreviousBalance": "192.4400",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-70ce-dc3c-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-10-27",
+      "NewCharges": "184.2200",
+      "AmountDue": "184.2200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-10-27",
+          "PK": 236269661,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-09-27",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-10-27",
+          "ServiceType": "water",
+          "IntervalStart": "2017-09-26",
+          "charges": [
+            {
+              "IntervalEnd": "2017-10-27",
+              "PK": 236269662,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-09-27",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+              "ChargeAmount": "15.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-10-27",
+              "PK": 236269663,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-09-27",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182659,
+          "usages": [
+            {
+              "IntervalEnd": "2017-10-27",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-09-27",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730718,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-09-27",
+      "TotalBillAmount": "184.2200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626935,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-04-26",
+      "PreviousBalance": "192.4400",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-754c-dae6-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-04-26",
+      "NewCharges": "184.2200",
+      "AmountDue": "184.2200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-04-26",
+          "PK": 236269668,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-03-28",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-04-26",
+          "ServiceType": "water",
+          "IntervalStart": "2018-03-27",
+          "charges": [
+            {
+              "IntervalEnd": "2018-04-26",
+              "PK": 236269669,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-28",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+              "ChargeAmount": "15.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-04-26",
+              "PK": 236269670,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-28",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182662,
+          "usages": [
+            {
+              "IntervalEnd": "2018-04-26",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-03-28",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730722,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-03-28",
+      "TotalBillAmount": "184.2200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626937,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-08-28",
+      "PreviousBalance": "121.6800",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7763-d5ca-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-08-28",
+      "NewCharges": "155.2200",
+      "AmountDue": "155.2200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-08-28",
+          "PK": 236269671,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-07-28",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "8.5700",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-08-28",
+          "ServiceType": "water",
+          "IntervalStart": "2018-07-27",
+          "charges": [
+            {
+              "IntervalEnd": "2018-08-28",
+              "PK": 236269672,
+              "ChargeRatePerUnit": "8.4300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-28",
+              "ChargeActualName": "Water Consumption Charge 4.00 units @ $8.43",
+              "ChargeAmount": "33.7200",
+              "ChargeUnitsUsed": "4.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-08-28",
+              "PK": 236269673,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-28",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "80.5900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182663,
+          "usages": [
+            {
+              "IntervalEnd": "2018-08-28",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-07-28",
+              "UsageAmount": "4.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730723,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-07-28",
+      "TotalBillAmount": "155.2200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626938,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2017-12-28",
+      "PreviousBalance": "192.4400",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-7377-df3a-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2017-12-28",
+      "NewCharges": "176.0100",
+      "AmountDue": "176.0100",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2017-12-28",
+          "PK": 236269681,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-11-30",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.2800",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2017-12-28",
+          "ServiceType": "water",
+          "IntervalStart": "2017-11-29",
+          "charges": [
+            {
+              "IntervalEnd": "2017-12-28",
+              "PK": 236269682,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-11-30",
+              "ChargeActualName": "Water Consumption Charge 1.00 units @ $7.64",
+              "ChargeAmount": "7.6400",
+              "ChargeUnitsUsed": "1.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2017-12-28",
+              "PK": 236269683,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-11-30",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182667,
+          "usages": [
+            {
+              "IntervalEnd": "2017-12-28",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-11-30",
+              "UsageAmount": "1.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730728,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-11-30",
+      "TotalBillAmount": "176.0100",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626940,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-01-26",
+      "PreviousBalance": "176.0100",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-739c-d97f-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-01-29",
+      "NewCharges": "184.2200",
+      "AmountDue": "184.2200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-01-26",
+          "PK": 236269696,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2017-12-29",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-01-26",
+          "ServiceType": "water",
+          "IntervalStart": "2017-12-28",
+          "charges": [
+            {
+              "IntervalEnd": "2018-01-26",
+              "PK": 236269697,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-12-29",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+              "ChargeAmount": "15.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-01-26",
+              "PK": 236269698,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2017-12-29",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182674,
+          "usages": [
+            {
+              "IntervalEnd": "2018-01-26",
+              "RateComponent": "[total]",
+              "IntervalStart": "2017-12-29",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730738,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2017-12-29",
+      "TotalBillAmount": "184.2200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626944,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    },
+    {
+      "IntervalEnd": "2018-02-26",
+      "PreviousBalance": "184.2200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e3ecc-73be-dbb4-acfb-22000a947383",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-02-26",
+      "NewCharges": "184.2200",
+      "AmountDue": "184.2200",
+      "UtilityProvider": "AnonProvider",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
+        {
+          "IntervalEnd": "2018-02-26",
+          "PK": 236269714,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-01-27",
+          "ChargeActualName": "Utility Tax",
+          "ChargeAmount": "12.8500",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
+        }
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2018-02-26",
+          "ServiceType": "water",
+          "IntervalStart": "2018-01-26",
+          "charges": [
+            {
+              "IntervalEnd": "2018-02-26",
+              "PK": 236269715,
+              "ChargeRatePerUnit": "7.6400",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-27",
+              "ChargeActualName": "Water Consumption Charge 2.00 units @ $7.64",
+              "ChargeAmount": "15.2800",
+              "ChargeUnitsUsed": "2.0000",
+              "UsageUnit": "ccf"
+            },
+            {
+              "IntervalEnd": "2018-02-26",
+              "PK": 236269716,
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-27",
+              "ChargeActualName": "Water Service Charge",
+              "ChargeAmount": "156.0900",
+              "ChargeUnitsUsed": "0.0000",
+              "UsageUnit": ""
+            }
+          ],
+          "PODid": "AnonPODid",
+          "Tariff": "Non Residential",
+          "MeterNumber": "AnonMeterNumber",
+          "PK": 20182681,
+          "usages": [
+            {
+              "IntervalEnd": "2018-02-26",
+              "RateComponent": "[total]",
+              "IntervalStart": "2018-01-27",
+              "UsageAmount": "2.0000",
+              "EnergyUnit": "ccf",
+              "PK": 72730748,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2018-01-27",
+      "TotalBillAmount": "184.2200",
+      "AccountNumber": "AnonAccountNumber",
+      "PK": 5626948,
+      "RawAccountNumber": "AnonRawAccountNumber"
+    }
+  ]
 }

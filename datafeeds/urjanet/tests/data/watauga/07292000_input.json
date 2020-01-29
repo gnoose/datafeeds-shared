@@ -1,57 +1,57 @@
 {
-    "accounts": [
+  "accounts": [
+    {
+      "IntervalEnd": "2019-08-15",
+      "PreviousBalance": "34.5400",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9c5b22-08e2-dde3-9cb3-0e6fcd4edc32",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-08-15",
+      "NewCharges": "0.0000",
+      "AmountDue": "100.2700",
+      "UtilityProvider": "CityOfWataugaTX",
+      "OutstandingBalance": "0.0000",
+      "floating_charges": [
         {
-            "AccountNumber": "07292000",
-            "AmountDue": "100.2700",
-            "IntervalEnd": "2019-08-15",
-            "IntervalStart": "2019-07-11",
-            "NewCharges": "0.0000",
-            "OutstandingBalance": "0.0000",
-            "PK": 5658145,
-            "PreviousBalance": "34.5400",
-            "RawAccountNumber": "07-2920-00",
-            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9c5b22-08e2-dde3-9cb3-0e6fcd4edc32",
-            "StatementDate": "2019-08-15",
-            "StatementType": "statement_type_bill",
-            "TotalBillAmount": "100.2700",
-            "UtilityProvider": "CityOfWataugaTX",
-            "floating_charges": [
-                {
-                    "ChargeActualName": "Bill",
-                    "ChargeAmount": "100.2700",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-08-15",
-                    "IntervalStart": "2019-07-11",
-                    "IsAdjustmentCharge": true,
-                    "PK": 237439780,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "meters": [
-                {
-                    "IntervalEnd": "2019-08-15",
-                    "IntervalStart": "2019-07-11",
-                    "MeterNumber": "19688630",
-                    "PK": 20297657,
-                    "PODid": "",
-                    "ServiceType": "water",
-                    "Tariff": "unknown_tariff",
-                    "charges": [],
-                    "usages": [
-                        {
-                            "EnergyUnit": "HCF",
-                            "IntervalEnd": "2019-08-15",
-                            "IntervalStart": "2019-07-11",
-                            "PK": 73086635,
-                            "RateComponent": "[total]",
-                            "UsageActualName": "",
-                            "UsageAmount": "1922.0000"
-                        }
-                    ]
-                }
-            ]
+          "IntervalEnd": "2019-08-15",
+          "PK": 237439780,
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-07-11",
+          "ChargeActualName": "Bill",
+          "ChargeAmount": "100.2700",
+          "ChargeUnitsUsed": "0.0000",
+          "UsageUnit": ""
         }
-    ]
+      ],
+      "meters": [
+        {
+          "IntervalEnd": "2019-08-15",
+          "ServiceType": "water",
+          "IntervalStart": "2019-07-11",
+          "charges": [],
+          "PODid": "",
+          "Tariff": "unknown_tariff",
+          "MeterNumber": "19611631",
+          "PK": 20297657,
+          "usages": [
+            {
+              "IntervalEnd": "2019-08-15",
+              "RateComponent": "[total]",
+              "IntervalStart": "2019-07-11",
+              "UsageAmount": "1922.0000",
+              "EnergyUnit": "HCF",
+              "PK": 73086635,
+              "UsageActualName": ""
+            }
+          ]
+        }
+      ],
+      "IntervalStart": "2019-07-11",
+      "TotalBillAmount": "100.2700",
+      "AccountNumber": "17292111",
+      "PK": 5658145,
+      "RawAccountNumber": "17-2921-11"
+    }
+  ]
 }
