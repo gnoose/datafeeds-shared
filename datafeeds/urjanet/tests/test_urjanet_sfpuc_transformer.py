@@ -10,9 +10,7 @@ DATA_DIR = os.path.join(TEST_DIR, "data/sfpuc")
 
 
 class TestUrjanetSanFranciscoWaterTransformer(test_util.UrjaFixtureText):
-    def sfpuc_test(
-        self, input_name, expected_name, start_date=None, end_date=None
-    ):
+    def sfpuc_test(self, input_name, expected_name, start_date=None, end_date=None):
         self.fixture_test(
             transformer=SanFranciscoWaterTransformer(),
             input_path=os.path.join(DATA_DIR, input_name),
@@ -21,9 +19,9 @@ class TestUrjanetSanFranciscoWaterTransformer(test_util.UrjaFixtureText):
             end_date=end_date,
         )
 
-    def test__utilityIid_(self):
+    def test_sfpuc(self):
         self.sfpuc_test("50_input.json", "50_expected.json")
-        self.sfpuc_test("50_alt_input.json", "50_alt_expected.json")()
+        self.sfpuc_test("50_alt_input.json", "50_alt_expected.json")
 
 
 if __name__ == "__main__":
