@@ -50,6 +50,7 @@ from datafeeds.urjanet.datasource.irvineranch import datafeed as irvineranch
 from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
 from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
 from datafeeds.urjanet.datasource.sandiego import datafeed as sandiego
+from datafeeds.urjanet.datasource.sfpuc import datafeed as sfpuc
 from datafeeds.urjanet.datasource.sjwater import datafeed as sjwater
 from datafeeds.urjanet.datasource.southlake import datafeed as southlake
 from datafeeds.urjanet.datasource.watauga import datafeed as watauga
@@ -91,6 +92,7 @@ scraper_functions = {
     "portland-bizportal": portland_bizportal,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
+    "sfpuc-urjanet": sfpuc,
     "sce-green-button": sce_greenbutton,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
