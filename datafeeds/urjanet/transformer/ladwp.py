@@ -5,7 +5,11 @@ from typing import List, Dict
 
 from intervaltree import Interval
 
-from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
+from datafeeds.urjanet.transformer import (
+    UrjanetGridiumTransformer,
+    GenericBillingPeriod,
+)
+
 from datafeeds.urjanet.model import (
     GridiumBillingPeriod,
     GridiumBillingPeriodCollection,
@@ -21,7 +25,7 @@ from datafeeds.urjanet.model import (
 log = logging.getLogger(__name__)
 
 
-class LadwpWaterBillingPeriod:
+class LosAngelesWaterBillingPeriod(GenericBillingPeriod):
     """A simple model of an LADWP water billing period"""
 
     def __init__(self):
@@ -60,7 +64,7 @@ class LadwpWaterBillingPeriod:
         """Return a list of URLs to source statements for this period (e.g. PDFs)"""
         return [stmt.SourceLink for stmt in self.source_statements]
 
-    def merge(self, other: "LadwpWaterBillingPeriod") -> bool:
+    def merge(self, other: "LosAngelesWaterBillingPeriod") -> bool:
         modified = False
         if other.has_utility_charges():
             if not self.has_utility_charges():
@@ -75,47 +79,12 @@ class LadwpWaterBillingPeriod:
         return modified
 
 
-def log_ladwp_water_billing_periods(bill_history: DateIntervalTree) -> None:
-    """Helper function for logging data in an interval tree holding LADWP water bill data"""
-    log.debug("Billing periods")
-    for ival in sorted(bill_history.intervals()):
-        period_data = ival.data
-        log.debug(
-            "\t{} to {} ({} days)".format(
-                ival.begin, ival.end, (ival.end - ival.begin).days
-            )
-        )
-        log.debug("\t\tUtility Charges:")
-        for chg in period_data.utility_charges:
-            log.debug(
-                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}\t{3}\t{4}".format(
-                    chg.ChargeAmount,
-                    chg.ChargeActualName,
-                    chg.PK,
-                    chg.IntervalStart,
-                    chg.IntervalEnd,
-                )
-            )
-        log.debug("\t\tTotal Charge: ${}".format(period_data.get_total_charge()))
-        log.debug("\t\tUsages:")
-        for usg in period_data.usages:
-            log.debug(
-                "\t\t\tAmt={0}{1}\tComponent={2}\tPK={3}\t{4}\t{5}".format(
-                    usg.UsageAmount,
-                    usg.EnergyUnit,
-                    usg.RateComponent,
-                    usg.PK,
-                    usg.IntervalStart,
-                    usg.IntervalEnd,
-                )
-            )
-        log.debug("\t\tStatements:")
-        for stmt in period_data.source_statements:
-            log.debug("\t\t\t{0}\tPK={1}".format(stmt.SourceLink, stmt.PK))
+class LosAngelesWaterTransformer(UrjanetGridiumTransformer):
+    """This class supports transforming LADWP water Urjanet data into Gridium billing periods."""
 
-
-class LadwpWaterTransformer(UrjanetGridiumTransformer):
-    """This class supports transforming Urjanet data into Gridium billing periods."""
+    @staticmethod
+    def billing_period(account: Account,) -> LosAngelesWaterBillingPeriod:
+        return LosAngelesWaterBillingPeriod()
 
     def urja_to_gridium(self, urja_data: UrjanetData) -> GridiumBillingPeriodCollection:
         """Transform urjanet data into Gridium billing periods"""
@@ -144,7 +113,9 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
                             account.PK, ival.begin, ival.end
                         )
                     )
-                    bill_history.add(ival.begin, ival.end, LadwpWaterBillingPeriod())
+                    bill_history.add(
+                        ival.begin, ival.end, LosAngelesWaterBillingPeriod()
+                    )
 
         # Next, we go through the accounts again and insert relevant charge/usage information into the computed
         # billing periods
@@ -152,9 +123,6 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
             self.merge_statement_data(bill_history, account)
 
         adjusted_history = DateIntervalTree.shift_endpoints(bill_history)
-
-        # Log the billing periods we determined
-        log_ladwp_water_billing_periods(bill_history)
 
         gridium_periods = []
         for ival in sorted(adjusted_history.intervals()):
@@ -184,8 +152,8 @@ class LadwpWaterTransformer(UrjanetGridiumTransformer):
     def merge_statement_data(
         self, bill_history: DateIntervalTree, urja_account: Account
     ) -> None:
-        statement_data: Dict[Interval, LadwpWaterBillingPeriod] = defaultdict(
-            LadwpWaterBillingPeriod
+        statement_data: Dict[Interval, LosAngelesWaterBillingPeriod] = defaultdict(
+            LosAngelesWaterBillingPeriod
         )
 
         for meter in urja_account.meters:

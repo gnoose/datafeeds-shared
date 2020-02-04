@@ -3,7 +3,7 @@ from .common import urja_to_json, json_to_urja
 from .generic_water_transformer import GenericWaterTransformer
 from .sfpuc import SanFranciscoWaterTransformer
 from .pacge import PacGeGridiumTransfomer
-from .ladwp import LadwpWaterTransformer
+from .ladwp import LosAngelesWaterTransformer
 from .southlake import SouthlakeTransformer
 from .watauga import WataugaTransformer
 from .fostercity import FosterCityWaterTransformer
@@ -23,7 +23,7 @@ __all__ = [
     "AustinTXTransformer",
     "FosterCityWaterTransformer",
     "HecoTransformer",
-    "LadwpWaterTransformer",
+    "LosAngelesWaterTransformer",
     "PacGeGridiumTransfomer",
     "SanFranciscoWaterTransformer",
     "SouthlakeTransformer",

@@ -1,10 +1,20 @@
-from typing import List
+from typing import Optional, List
 
+from datafeeds.common.batch import run_urjanet_datafeed
+from datafeeds.common.typing import Status
+from datafeeds.models import (
+    SnapmeterAccount,
+    Meter,
+    SnapmeterMeterDataSource as MeterDataSource,
+)
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
-from datafeeds.urjanet.model import Account, Meter
+from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.transformer import LosAngelesWaterTransformer
 
 
-class LadwpWaterDatasource(UrjanetPyMySqlDataSource):
+class LosAngelesWaterDatasource(UrjanetPyMySqlDataSource):
+    """Load data from an Urjanet database"""
+
     def __init__(self, account_number: str, service_id: str):
         super().__init__(account_number)
         self.account_number = account_number
@@ -33,3 +43,23 @@ class LadwpWaterDatasource(UrjanetPyMySqlDataSource):
         """
         result_set = self.fetch_all(query, account_pk, self.service_id)
         return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
+
+
+def datafeed(
+    account: SnapmeterAccount,
+    meter: Meter,
+    datasource: MeterDataSource,
+    params: dict,
+    task_id: Optional[str] = None,
+) -> Status:
+    return run_urjanet_datafeed(
+        account,
+        meter,
+        datasource,
+        params,
+        LosAngelesWaterDatasource(
+            meter.utility_account_id, meter.utility_service.service_id
+        ),
+        LosAngelesWaterTransformer(),
+        task_id=task_id,
+    )
