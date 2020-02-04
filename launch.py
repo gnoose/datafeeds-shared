@@ -92,7 +92,7 @@ scraper_functions = {
     "portland-bizportal": portland_bizportal,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
-    "sfpuc-urjanet": sfpuc,
+    "sfpuc-water-urjanet": sfpuc,
     "sce-green-button": sce_greenbutton,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,

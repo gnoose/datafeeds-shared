@@ -17,7 +17,7 @@ class SanFranciscoWaterDatasource(UrjanetPyMySqlDataSource):
 
     def __init__(self, account_number: str):
         super().__init__(account_number)
-        self.account_number = self.normalize_account_number(account_number)
+        self.account_number = account_number
 
     def load_accounts(self) -> List[Account]:
         """Load accounts based on the account id"""
@@ -36,11 +36,7 @@ class SanFranciscoWaterDatasource(UrjanetPyMySqlDataSource):
         """
 
         query = "SELECT * FROM Meter WHERE ServiceType in ('water', 'sewer') AND AccountFK=%s"
-        if self.meter_number:
-            query = query + " AND MeterNumber='%s'"
-            result_set = self.fetch_all(query, account_pk, self.meter_number)
-        else:
-            result_set = self.fetch_all(query, account_pk)
+        result_set = self.fetch_all(query, account_pk)
 
         return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
