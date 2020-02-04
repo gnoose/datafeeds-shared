@@ -1,7 +1,7 @@
 from .base import UrjanetGridiumTransformer, GenericBillingPeriod
 from .common import urja_to_json, json_to_urja
 from .generic_water_transformer import GenericWaterTransformer
-from .sfpuc import SfpucWaterTransformer
+from .sfpuc import SanFranciscoWaterTransformer
 from .pacge import PacGeGridiumTransfomer
 from .ladwp import LadwpWaterTransformer
 from .southlake import SouthlakeTransformer
@@ -25,7 +25,7 @@ __all__ = [
     "HecoTransformer",
     "LadwpWaterTransformer",
     "PacGeGridiumTransfomer",
-    "SfpucWaterTransformer",
+    "SanFranciscoWaterTransformer",
     "SouthlakeTransformer",
     "WataugaTransformer",
 ]

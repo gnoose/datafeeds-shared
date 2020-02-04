@@ -1,16 +1,12 @@
-"""San Francisco Public Utility Commission (SFPUC) Urjanet water transformer"""
-
-import logging
 from decimal import Decimal
-
-from datafeeds.urjanet.transformer import GenericBillingPeriod, GenericWaterTransformer
+from datafeeds.urjanet.transformer import (
+    GenericBillingPeriod,
+    UrjanetGridiumTransformer,
+)
 from datafeeds.urjanet.model import Account
 
 
-log = logging.getLogger(__name__)
-
-
-class SfpucWaterBillingPeriod(GenericBillingPeriod):
+class SanFranciscoWaterBillingPeriod(GenericBillingPeriod):
     """Simple model of a SFPUC water billing period.
 
     This is an exceptionally simple model. Each billing period is represented by an Urjanet
@@ -38,7 +34,7 @@ class SfpucWaterBillingPeriod(GenericBillingPeriod):
         )
 
 
-class SfpucWaterTransformer(GenericWaterTransformer):
+class SanFranciscoWaterTransformer(UrjanetGridiumTransformer):
     @staticmethod
-    def billing_period(account: Account) -> SfpucWaterBillingPeriod:
-        return SfpucWaterBillingPeriod(account)
+    def billing_period(account: Account,) -> SanFranciscoWaterBillingPeriod:
+        return SanFranciscoWaterBillingPeriod(account)

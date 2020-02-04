@@ -47,7 +47,7 @@ from datafeeds.urjanet.datasource.mountainview import MountainViewDatasource
 from datafeeds.urjanet.datasource.pacge import PacificGasElectricDataSource
 from datafeeds.urjanet.datasource.pleasanton import PleasantonDatasource
 from datafeeds.urjanet.datasource.sandiego import SanDiegoWaterDatasource
-from datafeeds.urjanet.datasource.sfpuc import SfpucWaterDatasource
+from datafeeds.urjanet.datasource.sfpuc import SanFranciscoWaterDatasource
 from datafeeds.urjanet.datasource.sjwater import SjWaterDatasource
 from datafeeds.urjanet.datasource.southlake import SouthlakeDatasource
 from datafeeds.urjanet.datasource.watauga import WataugaDatasource
@@ -140,14 +140,17 @@ class LadwpWaterCli(DatasourceCli):
         return LadwpWaterTransformer()
 
 
-class SfpucWaterCli(DatasourceCli):
+class SanFranciscoWaterCli(DatasourceCli):
     __cli_key__ = "sfpuc_water"
 
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(SfpucWaterDatasource(args.account_number), conn)
+
+        return self.setup_datasource(
+            SanFranciscoWaterDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return SfpucWaterTransformer()
