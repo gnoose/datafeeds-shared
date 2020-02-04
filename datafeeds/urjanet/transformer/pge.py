@@ -7,7 +7,10 @@ from typing import List, Dict
 
 from intervaltree import Interval
 
-from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
+from datafeeds.urjanet.transformer import (
+    GenericBillingPeriod,
+    UrjanetGridiumTransformer,
+)
 from datafeeds.urjanet.model import (
     GridiumBillingPeriod,
     GridiumBillingPeriodCollection,
@@ -20,7 +23,6 @@ from datafeeds.urjanet.model import (
     log_charge,
 )
 
-
 log = logging.getLogger(__name__)
 
 # A correction charge occurs when a previous bill is nullified and replaced with a new set of charges
@@ -30,41 +32,7 @@ log = logging.getLogger(__name__)
 CORRECTION_REGEX = re.compile(r"(\d*/\d*/\d*) - (\d*/\d*/\d*).*")
 
 
-def log_pacge_billing_periods(bill_history: DateIntervalTree) -> None:
-    """Helper function for logging data in an interval tree holding bill data"""
-    log.debug("Billing periods")
-
-    for ival in sorted(bill_history.intervals()):
-        period_data = ival.data
-        log.debug("\t{} to {}".format(ival.begin, ival.end))
-        log.debug("\t\tUtility Charges:")
-        for chg in period_data.utility_charges:
-            log.debug(
-                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}".format(
-                    chg.ChargeAmount, chg.ChargeActualName, chg.PK
-                )
-            )
-        log.debug("\t\tThird Party Charges:")
-        for chg in period_data.third_party_charges:
-            log.debug(
-                "\t\t\tAmt=${0}\tName='{1}'\tPK={2}".format(
-                    chg.ChargeAmount, chg.ChargeActualName, chg.PK
-                )
-            )
-        log.debug("\t\tTotal Charge: ${}".format(period_data.get_total_charge()))
-        log.debug("\t\tUsages:")
-        for usg in period_data.usages:
-            log.debug(
-                "\t\t\tAmt={0}{1}\tComponent={2}\tPK={3}".format(
-                    usg.UsageAmount, usg.EnergyUnit, usg.RateComponent, usg.PK
-                )
-            )
-        log.debug("\t\tStatements:")
-        for stmt in period_data.source_statements:
-            log.debug("\t\t\t{0}\tPK={1}".format(stmt.SourceLink, stmt.PK))
-
-
-class PacGeBillingPeriodData:
+class PacificGasElectricBillingPeriod(GenericBillingPeriod):
     """A data structure that stores various metadata for a PG&E billing period
 
     A billing period can contain:
@@ -141,11 +109,11 @@ class PacGeBillingPeriodData:
             default=Decimal(0),
         )
 
-    def merge(self, other: "PacGeBillingPeriodData") -> bool:
+    def merge(self, other: "PacificGasElectricBillingPeriod") -> bool:
         """Merge another set of billing period data into this billing period data
 
         Arguments:
-            other: The PacGeBillingPeriodData to merge into "self"
+            other: The PacificGasElectricBillingPeriod to merge into "self"
 
         Return:
             True if the merge added any data to this billing period, False otherwise.
@@ -179,7 +147,7 @@ class PacGeBillingPeriodData:
         return modified
 
 
-class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
+class PacificGasElectricTransformer(UrjanetGridiumTransformer):
     """This class supports transforming Urjanet data into Gridium billing periods."""
 
     def urja_to_gridium(self, urja_data: UrjanetData) -> GridiumBillingPeriodCollection:
@@ -204,15 +172,14 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
                         )
                     )
                 else:
-                    bill_history.add(ival.begin, ival.end, PacGeBillingPeriodData())
+                    bill_history.add(
+                        ival.begin, ival.end, PacificGasElectricBillingPeriod()
+                    )
 
         # Next, we go through the accounts again and insert relevant charge/usage information into the computed
         # billing periods
         for account in ordered_accounts:
             self.merge_statement_data(bill_history, account)
-
-        # Log the billing periods we determined
-        log_pacge_billing_periods(bill_history)
 
         # Convert the billing periods into the expected "gridium" format
         gridium_periods = []
@@ -275,10 +242,10 @@ class PacGeGridiumTransfomer(UrjanetGridiumTransformer):
         """
 
         # The statement_data dict maps billing periods (specifically, the elements of the bill_history datastructure)
-        # to PacGeBillingPeriodData objects, which hold the billing data available in the current statement for that
+        # to PacificGasElectricBillingPeriod objects, which hold the billing data available in the current statement for that
         # period.
-        statement_data: Dict[Interval, PacGeBillingPeriodData] = defaultdict(
-            PacGeBillingPeriodData
+        statement_data: Dict[Interval, PacificGasElectricBillingPeriod] = defaultdict(
+            PacificGasElectricBillingPeriod
         )
 
         # In a first pass, we iterate over all charges/usages associated with a meter, and try to insert them into the

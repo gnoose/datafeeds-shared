@@ -44,7 +44,7 @@ from datafeeds.urjanet.datasource.irvineranch import IrvineRanchWaterDatasource
 
 from datafeeds.urjanet.datasource.ladwp import LosAngelesWaterDatasource
 from datafeeds.urjanet.datasource.mountainview import MountainViewDatasource
-from datafeeds.urjanet.datasource.pacge import PacificGasElectricDataSource
+from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
 from datafeeds.urjanet.datasource.pleasanton import PleasantonDatasource
 from datafeeds.urjanet.datasource.sandiego import SanDiegoWaterDatasource
 from datafeeds.urjanet.datasource.sfpuc import SanFranciscoWaterDatasource
@@ -52,8 +52,8 @@ from datafeeds.urjanet.datasource.sjwater import SjWaterDatasource
 from datafeeds.urjanet.datasource.southlake import SouthlakeDatasource
 from datafeeds.urjanet.datasource.watauga import WataugaDatasource
 from datafeeds.urjanet.transformer import (
-    PacGeGridiumTransfomer,
     LosAngelesWaterTransformer,
+    PacificGasElectricTransformer,
     SfpucWaterTransformer,
     FosterCityWaterTransformer,
     GenericWaterTransformer,
@@ -108,8 +108,8 @@ class DatasourceCli(metaclass=RegisteredCliHook):
         return None
 
 
-class PacgeCli(DatasourceCli):
-    __cli_key__ = "pacge"
+class PgeCli(DatasourceCli):
+    __cli_key__ = "pge"
 
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
@@ -117,11 +117,11 @@ class PacgeCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            PacificGasElectricDataSource(args.account_number, args.service_id), conn
+            PacificGasElectricDatasource(args.account_number, args.service_id), conn
         )
 
     def make_transformer(self):
-        return PacGeGridiumTransfomer()
+        return PacificGasElectricTransformer()
 
 
 class LadwpWaterCli(DatasourceCli):

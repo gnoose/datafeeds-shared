@@ -1,0 +1,2334 @@
+{
+    "periods": [
+        {
+            "end": "2017-10-25",
+            "peak_demand": "0",
+            "start": "2017-09-28",
+            "tariff": null,
+            "total_charge": "18.4000",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 28 days @ $0.65708",
+                    "ChargeAmount": "18.4000",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-25",
+                    "IntervalStart": "2017-09-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235785663,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0792",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-26",
+                    "IntervalStart": "2017-09-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787708,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-ON PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1017",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-26",
+                    "IntervalStart": "2017-09-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787709,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0532",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-26",
+                    "IntervalStart": "2017-09-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787710,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12ec-01aa-d878-b52c-22000aefd275",
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12eb-b1fe-dfbd-b52c-22000aefd275"
+            ]
+        },
+        {
+            "end": "2017-11-26",
+            "peak_demand": "0",
+            "start": "2017-10-26",
+            "tariff": null,
+            "total_charge": "21.0200",
+            "total_usage": "0.0260",
+            "line_items": [
+                {
+                    "ChargeActualName": "Part Peak 0.026000 kWh @ $0.22047",
+                    "ChargeAmount": "0.0100",
+                    "ChargeRatePerUnit": "0.2205",
+                    "ChargeUnitsUsed": "0.0260",
+                    "IntervalEnd": "2017-11-26",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235785659,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-0.0100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-26",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235785660,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 26 days @ $0.65708",
+                    "ChargeAmount": "17.0800",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-26",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235785661,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 6 days @ $0.65708",
+                    "ChargeAmount": "3.9400",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235785662,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0792",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-01",
+                    "IntervalStart": "2017-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787711,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-ON PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1017",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-01",
+                    "IntervalStart": "2017-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787712,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0532",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-01",
+                    "IntervalStart": "2017-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787713,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0790",
+                    "ChargeUnitsUsed": "0.0260",
+                    "IntervalEnd": "2017-11-27",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787714,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0592",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-27",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787715,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-27",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787716,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12ec-01aa-d878-b52c-22000aefd275",
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12eb-b1fe-dfbd-b52c-22000aefd275"
+            ]
+        },
+        {
+            "end": "2017-12-25",
+            "peak_demand": "0",
+            "start": "2017-11-27",
+            "tariff": null,
+            "total_charge": "19.0600",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $0.65708",
+                    "ChargeAmount": "19.0600",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-25",
+                    "IntervalStart": "2017-11-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235785658,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0790",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-26",
+                    "IntervalStart": "2017-11-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787717,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0592",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-26",
+                    "IntervalStart": "2017-11-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787718,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12ec-01aa-d878-b52c-22000aefd275",
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12eb-b1fe-dfbd-b52c-22000aefd275"
+            ]
+        },
+        {
+            "end": "2018-01-24",
+            "peak_demand": "0",
+            "start": "2017-12-26",
+            "tariff": null,
+            "total_charge": "19.7100",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 24 days @ $0.65708",
+                    "ChargeAmount": "15.7700",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-24",
+                    "IntervalStart": "2018-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787706,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 6 days @ $0.65708",
+                    "ChargeAmount": "3.9400",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-12-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787707,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0790",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-25",
+                    "IntervalStart": "2017-12-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787719,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0592",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-25",
+                    "IntervalStart": "2017-12-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235787720,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12ec-01aa-d878-b52c-22000aefd275"
+            ]
+        },
+        {
+            "end": "2018-02-25",
+            "peak_demand": "0",
+            "start": "2018-01-25",
+            "tariff": null,
+            "total_charge": "21.0300",
+            "total_usage": "0.0010",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 32 days @ $0.65708",
+                    "ChargeAmount": "21.0300",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-25",
+                    "IntervalStart": "2018-01-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235798226,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0790",
+                    "ChargeUnitsUsed": "0.0010",
+                    "IntervalEnd": "2018-02-26",
+                    "IntervalStart": "2018-01-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235798227,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0592",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-26",
+                    "IntervalStart": "2018-01-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235798228,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-26",
+                    "IntervalStart": "2018-01-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235798229,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12eb-eb32-d8b4-b52c-22000aefd275"
+            ]
+        },
+        {
+            "end": "2018-03-26",
+            "peak_demand": "0",
+            "start": "2018-02-26",
+            "tariff": null,
+            "total_charge": "19.0500",
+            "total_usage": "0.0070",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 26 days @ $0.65708",
+                    "ChargeAmount": "17.0800",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-26",
+                    "IntervalStart": "2018-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235794287,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 3 days @ $0.65708",
+                    "ChargeAmount": "1.9700",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-02-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235794288,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-26",
+                    "IntervalStart": "2018-02-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235794289,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0790",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-26",
+                    "IntervalStart": "2018-02-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235794290,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "0.0030",
+                    "IntervalEnd": "2018-03-26",
+                    "IntervalStart": "2018-02-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235794291,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0592",
+                    "ChargeUnitsUsed": "0.0040",
+                    "IntervalEnd": "2018-03-26",
+                    "IntervalStart": "2018-02-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235794292,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-26",
+                    "IntervalStart": "2018-02-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235794293,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a12ec-1e6b-d5d7-b52c-22000aefd275"
+            ]
+        },
+        {
+            "end": "2018-04-25",
+            "peak_demand": "0",
+            "start": "2018-03-27",
+            "tariff": null,
+            "total_charge": "19.7100",
+            "total_usage": "0.0030",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $0.65708",
+                    "ChargeAmount": "19.7100",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-25",
+                    "IntervalStart": "2018-03-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235797137,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "0.0030",
+                    "IntervalEnd": "2018-04-25",
+                    "IntervalStart": "2018-03-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235797138,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-25",
+                    "IntervalStart": "2018-03-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235797139,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-25",
+                    "IntervalStart": "2018-03-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235797140,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e850bee-dc2b-d9b0-a22e-22000ab8b40f"
+            ]
+        },
+        {
+            "end": "2018-05-24",
+            "peak_demand": "0",
+            "start": "2018-04-26",
+            "tariff": null,
+            "total_charge": "19.0600",
+            "total_usage": "0.0030",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 24 days @ $0.65708",
+                    "ChargeAmount": "15.7700",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-24",
+                    "IntervalStart": "2018-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235799263,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 5 days @ $0.65708",
+                    "ChargeAmount": "3.2900",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235799264,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-24",
+                    "IntervalStart": "2018-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235799265,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- WINTER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-24",
+                    "IntervalStart": "2018-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235799266,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0851",
+                    "ChargeUnitsUsed": "0.0030",
+                    "IntervalEnd": "2018-05-24",
+                    "IntervalStart": "2018-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235799267,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-ON PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1076",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-24",
+                    "IntervalStart": "2018-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235799268,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- SUMMER",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0591",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-24",
+                    "IntervalStart": "2018-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235799269,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-24",
+                    "IntervalStart": "2018-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235799270,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e86c4f0-44d9-d6c4-9c79-22000a43dcad"
+            ]
+        },
+        {
+            "end": "2018-06-25",
+            "peak_demand": "0",
+            "start": "2018-05-25",
+            "tariff": null,
+            "total_charge": "40.7300",
+            "total_usage": "86.2510",
+            "line_items": [
+                {
+                    "ChargeActualName": "Off Peak 49.252000 kWh @ $0.21700",
+                    "ChargeAmount": "10.6900",
+                    "ChargeRatePerUnit": "0.2170",
+                    "ChargeUnitsUsed": "49.2520",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795394,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 19.920000 kWh @ $0.24435",
+                    "ChargeAmount": "4.8700",
+                    "ChargeRatePerUnit": "0.2444",
+                    "ChargeUnitsUsed": "19.9200",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795395,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 17.079000 kWh @ $0.26800",
+                    "ChargeAmount": "4.5800",
+                    "ChargeRatePerUnit": "0.2680",
+                    "ChargeUnitsUsed": "17.0790",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795396,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "0.0500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795397,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "2.1300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795398,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-9.1000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795399,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 32 days @ $0.65708",
+                    "ChargeAmount": "21.0300",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795400,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-PART PEAK- SUMMER",
+                    "ChargeAmount": "1.7000",
+                    "ChargeRatePerUnit": "0.0851",
+                    "ChargeUnitsUsed": "19.9200",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795401,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-ON PEAK- SUMMER",
+                    "ChargeAmount": "1.8400",
+                    "ChargeRatePerUnit": "0.1076",
+                    "ChargeUnitsUsed": "17.0790",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795402,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-OFF PEAK- SUMMER",
+                    "ChargeAmount": "2.9100",
+                    "ChargeRatePerUnit": "0.0591",
+                    "ChargeUnitsUsed": "49.2520",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795403,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-06-25",
+                    "IntervalStart": "2018-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235795404,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e880606-21a8-d135-8b44-22000a924885"
+            ]
+        },
+        {
+            "end": "2018-07-25",
+            "peak_demand": "0",
+            "start": "2018-06-26",
+            "tariff": null,
+            "total_charge": "19.7100",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $0.65708",
+                    "ChargeAmount": "19.7100",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-25",
+                    "IntervalStart": "2018-06-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235723243,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.08510",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0851",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-25",
+                    "IntervalStart": "2018-06-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235723244,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.000000 kWh @ $0.10757",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1076",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-25",
+                    "IntervalStart": "2018-06-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235723245,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.000000 kWh @ $0.05912",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0591",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-25",
+                    "IntervalStart": "2018-06-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235723246,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e898146-3e0b-da22-a293-22000aa5a067"
+            ]
+        },
+        {
+            "end": "2018-08-26",
+            "peak_demand": "0",
+            "start": "2018-07-26",
+            "tariff": null,
+            "total_charge": "21.0300",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 32 days @ $0.65708",
+                    "ChargeAmount": "21.0300",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-26",
+                    "IntervalStart": "2018-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235906421,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.08510",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0851",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-26",
+                    "IntervalStart": "2018-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235906422,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.000000 kWh @ $0.10757",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1076",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-26",
+                    "IntervalStart": "2018-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235906423,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.000000 kWh @ $0.05912",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0591",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-26",
+                    "IntervalStart": "2018-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235906424,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8b217b-96f9-d6b6-9133-22000aed2ae9"
+            ]
+        },
+        {
+            "end": "2018-09-25",
+            "peak_demand": "0",
+            "start": "2018-08-27",
+            "tariff": null,
+            "total_charge": "19.7200",
+            "total_usage": "0.0070",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 25 days @ $0.65708",
+                    "ChargeAmount": "16.4300",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236122240,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 5 days @ $0.65708",
+                    "ChargeAmount": "3.2900",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236122241,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.08510",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0851",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-08-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236122242,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.000000 kWh @ $0.10757",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1076",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-08-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236122243,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.007000 kWh @ $0.05912",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0591",
+                    "ChargeUnitsUsed": "0.0070",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-08-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236122244,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 0.007000 kWh @ $0.01000",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "0.0070",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-08-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236122245,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-09-25",
+                    "IntervalStart": "2018-08-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236122246,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8cbca8-4bfe-d154-a7fc-22000a51aa5f"
+            ]
+        },
+        {
+            "end": "2018-10-25",
+            "peak_demand": "0",
+            "start": "2018-09-26",
+            "tariff": null,
+            "total_charge": "19.7600",
+            "total_usage": "0.2370",
+            "line_items": [
+                {
+                    "ChargeActualName": "Part Peak 0.163000 kWh @ $0.24849",
+                    "ChargeAmount": "0.0400",
+                    "ChargeRatePerUnit": "0.2485",
+                    "ChargeUnitsUsed": "0.1630",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278096,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 0.074000 kWh @ $0.27214",
+                    "ChargeAmount": "0.0200",
+                    "ChargeRatePerUnit": "0.2721",
+                    "ChargeUnitsUsed": "0.0740",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278097,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "0.0100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278098,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-0.0400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278099,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $0.65708",
+                    "ChargeAmount": "19.7100",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278100,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.163000 kWh @ $0.08510",
+                    "ChargeAmount": "0.0100",
+                    "ChargeRatePerUnit": "0.0851",
+                    "ChargeUnitsUsed": "0.1630",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278101,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.074000 kWh @ $0.10757",
+                    "ChargeAmount": "0.0100",
+                    "ChargeRatePerUnit": "0.1076",
+                    "ChargeUnitsUsed": "0.0740",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278102,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.000000 kWh @ $0.05912",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0591",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278103,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 0.237000 kWh @ $0.01000",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "0.2370",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278104,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-25",
+                    "IntervalStart": "2018-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236278105,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e5006-ac38-d87e-b700-22000a96cb58"
+            ]
+        },
+        {
+            "end": "2018-11-27",
+            "peak_demand": "0",
+            "start": "2018-10-26",
+            "tariff": null,
+            "total_charge": "51.3200",
+            "total_usage": "135.0520",
+            "line_items": [
+                {
+                    "ChargeActualName": "Off Peak 98.546000 kWh @ $0.20848",
+                    "ChargeAmount": "20.5400",
+                    "ChargeRatePerUnit": "0.2085",
+                    "ChargeUnitsUsed": "98.5460",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403060,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 36.503000 kWh @ $0.22940",
+                    "ChargeAmount": "8.3700",
+                    "ChargeRatePerUnit": "0.2294",
+                    "ChargeUnitsUsed": "36.5030",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403061,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "0.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403062,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "3.3300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403063,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-13.5800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403064,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 27 days @ $0.65708",
+                    "ChargeAmount": "17.7400",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403065,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 6 days @ $0.65708",
+                    "ChargeAmount": "3.9400",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403066,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 36.503000 kWh @ $0.08492",
+                    "ChargeAmount": "3.1000",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "36.5030",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403067,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 98.546000 kWh @ $0.06505",
+                    "ChargeAmount": "6.4100",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "98.5460",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403068,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.08510",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0851",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403069,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.003000 kWh @ $0.10757",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1076",
+                    "ChargeUnitsUsed": "0.0030",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403070,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.000000 kWh @ $0.05912",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0591",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403071,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 135.052000 kWh @ $0.01000",
+                    "ChargeAmount": "1.3500",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "135.0520",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403072,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-27",
+                    "IntervalStart": "2018-10-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236403073,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8f9d6b-d27f-d523-898d-0e3cd8c3c1b2"
+            ]
+        },
+        {
+            "end": "2018-12-26",
+            "peak_demand": "0",
+            "start": "2018-11-28",
+            "tariff": null,
+            "total_charge": "26.3100",
+            "total_usage": "33.0780",
+            "line_items": [
+                {
+                    "ChargeActualName": "Off Peak 23.996000 kWh @ $0.20848",
+                    "ChargeAmount": "5.0000",
+                    "ChargeRatePerUnit": "0.2085",
+                    "ChargeUnitsUsed": "23.9960",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484538,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 9.082000 kWh @ $0.22940",
+                    "ChargeAmount": "2.0800",
+                    "ChargeRatePerUnit": "0.2294",
+                    "ChargeUnitsUsed": "9.0820",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484539,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "0.0200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484540,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "0.8200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484541,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-3.3400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484542,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $0.65708",
+                    "ChargeAmount": "19.0600",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484543,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 9.082000 kWh @ $0.08492",
+                    "ChargeAmount": "0.7700",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "9.0820",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484544,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 23.996000 kWh @ $0.06505",
+                    "ChargeAmount": "1.5600",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "23.9960",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484545,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 33.078000 kWh @ $0.01000",
+                    "ChargeAmount": "0.3300",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "33.0780",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484546,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-26",
+                    "IntervalStart": "2018-11-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236484547,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e911b98-bba3-d8fb-85e0-0e71f94c6a0c"
+            ]
+        },
+        {
+            "end": "2019-01-27",
+            "peak_demand": "0",
+            "start": "2018-12-27",
+            "tariff": null,
+            "total_charge": "77.9700",
+            "total_usage": "260.2600",
+            "line_items": [
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "0.1400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594277,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "0.0200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594278,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "5.5300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594279,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "0.8800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594280,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-23.0500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594281,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-3.6700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594282,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 27 days @ $0.65708",
+                    "ChargeAmount": "17.7400",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594283,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 5 days @ $0.65708",
+                    "ChargeAmount": "3.2900",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594284,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Off Peak 142.765000 kWh @ $0.20585",
+                    "ChargeAmount": "29.3900",
+                    "ChargeRatePerUnit": "0.2059",
+                    "ChargeUnitsUsed": "142.7650",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594285,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 81.663000 kWh @ $0.22677",
+                    "ChargeAmount": "18.5200",
+                    "ChargeRatePerUnit": "0.2268",
+                    "ChargeUnitsUsed": "81.6630",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594286,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 24.210000 kWh @ $0.20848",
+                    "ChargeAmount": "5.0500",
+                    "ChargeRatePerUnit": "0.2085",
+                    "ChargeUnitsUsed": "24.2100",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594287,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 11.622000 kWh @ $0.22940",
+                    "ChargeAmount": "2.6700",
+                    "ChargeRatePerUnit": "0.2294",
+                    "ChargeUnitsUsed": "11.6220",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594288,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 93.285000 kWh @ $0.08492",
+                    "ChargeAmount": "7.9200",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "93.2850",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594289,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 166.975000 kWh @ $0.06505",
+                    "ChargeAmount": "10.8600",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "166.9750",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594290,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 260.260000 kWh @ $0.01000",
+                    "ChargeAmount": "2.6000",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "260.2600",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594291,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-27",
+                    "IntervalStart": "2018-12-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236594292,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92877a-42af-da34-beeb-0eb3070c82b8"
+            ]
+        },
+        {
+            "end": "2019-02-26",
+            "peak_demand": "0",
+            "start": "2019-01-28",
+            "tariff": null,
+            "total_charge": "48.0000",
+            "total_usage": "129.4340",
+            "line_items": [
+                {
+                    "ChargeActualName": "Off Peak 82.468500 kWh @ $0.20585",
+                    "ChargeAmount": "16.9800",
+                    "ChargeRatePerUnit": "0.2059",
+                    "ChargeUnitsUsed": "82.4680",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700368,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 46.966000 kWh @ $0.22677",
+                    "ChargeAmount": "10.6500",
+                    "ChargeRatePerUnit": "0.2268",
+                    "ChargeUnitsUsed": "46.9660",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700369,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "0.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700370,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "3.1900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700371,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-13.2900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700372,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $0.65708",
+                    "ChargeAmount": "19.7100",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700373,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 46.966000 kWh @ $0.08492",
+                    "ChargeAmount": "3.9900",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "46.9660",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700374,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 82.468500 kWh @ $0.06505",
+                    "ChargeAmount": "5.3600",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "82.4680",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700375,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 129.434500 kWh @ $0.01000",
+                    "ChargeAmount": "1.2900",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "129.4340",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700376,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-26",
+                    "IntervalStart": "2019-01-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236700377,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e940e55-3ae2-d1d9-bf0d-0ece8474a9f2"
+            ]
+        },
+        {
+            "end": "2019-03-27",
+            "peak_demand": "0",
+            "start": "2019-02-27",
+            "tariff": null,
+            "total_charge": "19.0700",
+            "total_usage": "0.0830",
+            "line_items": [
+                {
+                    "ChargeActualName": "Part Peak 0.083000 kWh @ $0.23335",
+                    "ChargeAmount": "0.0200",
+                    "ChargeRatePerUnit": "0.2334",
+                    "ChargeUnitsUsed": "0.0830",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236767251,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-0.0100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236767252,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 27 days @ $0.65708",
+                    "ChargeAmount": "17.7400",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236767253,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $0.65708",
+                    "ChargeAmount": "1.3100",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236767254,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 0.083000 kWh @ $0.08492",
+                    "ChargeAmount": "0.0100",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "0.0830",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236767255,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 0.000000 kWh @ $0.06505",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236767256,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 0.083000 kWh @ $0.01000",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "0.0830",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236767257,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236767258,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e95801a-1bb7-d811-9c7a-0e0de7c094ce"
+            ]
+        },
+        {
+            "end": "2019-04-28",
+            "peak_demand": "0",
+            "start": "2019-03-28",
+            "tariff": null,
+            "total_charge": "21.0300",
+            "total_usage": "0.0050",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 32 days @ $0.65708",
+                    "ChargeAmount": "21.0300",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-28",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236870967,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 0.005000 kWh @ $0.08492",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "0.0050",
+                    "IntervalEnd": "2019-04-28",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236870968,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 0.000000 kWh @ $0.06505",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-28",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236870969,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 0.005000 kWh @ $0.01000",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "0.0050",
+                    "IntervalEnd": "2019-04-28",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236870970,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-28",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236870971,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e970e50-0aad-dd26-b676-0e6bfbb52a2c"
+            ]
+        },
+        {
+            "end": "2019-05-28",
+            "peak_demand": "0",
+            "start": "2019-04-29",
+            "tariff": null,
+            "total_charge": "19.7100",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 28 days @ $0.65708",
+                    "ChargeAmount": "18.4000",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237056807,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $0.65708",
+                    "ChargeAmount": "1.3100",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237056808,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 0.000000 kWh @ $0.08492",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0849",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-04-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237056809,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 0.000000 kWh @ $0.06505",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0651",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-04-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237056810,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.08771",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0877",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-04-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237056811,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.000000 kWh @ $0.11018",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1102",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-04-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237056812,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.000000 kWh @ $0.06172",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0617",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-04-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237056813,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e989d09-c362-de6d-8d96-0e0342d063c4"
+            ]
+        },
+        {
+            "end": "2019-06-26",
+            "peak_demand": "0",
+            "start": "2019-05-29",
+            "tariff": null,
+            "total_charge": "19.0600",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $0.65708",
+                    "ChargeAmount": "19.0600",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237164482,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.08771",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0877",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237164483,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.000000 kWh @ $0.11018",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1102",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237164484,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.000000 kWh @ $0.06172",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0617",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237164485,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9a124d-42d6-d526-bd7f-0e888074e09e"
+            ]
+        },
+        {
+            "end": "2019-07-28",
+            "peak_demand": "0",
+            "start": "2019-06-27",
+            "tariff": null,
+            "total_charge": "21.0300",
+            "total_usage": "0.0020",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 28 days @ $0.65708",
+                    "ChargeAmount": "18.4000",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315170,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 4 days @ $0.65708",
+                    "ChargeAmount": "2.6300",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315171,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.08771",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0877",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315172,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.000000 kWh @ $0.11281",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1128",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315173,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.000000 kWh @ $0.11018",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1102",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315174,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.001800 kWh @ $0.06435",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0644",
+                    "ChargeUnitsUsed": "0.0020",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315175,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.000300 kWh @ $0.06172",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0617",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315176,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "ECO100 0.002000 kWh @ $0.01000",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "0.0020",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315177,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Contract Discount (7.00%) 0.000000 days @ $0.00000",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315178,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315179,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.09034",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0903",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-28",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237315180,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9bacbc-016a-de8a-95c8-0e6c32e4ce7a"
+            ]
+        },
+        {
+            "end": "2019-08-27",
+            "peak_demand": "0",
+            "start": "2019-07-29",
+            "tariff": null,
+            "total_charge": "19.7100",
+            "total_usage": "0.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $0.65708",
+                    "ChargeAmount": "19.7100",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-27",
+                    "IntervalStart": "2019-07-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237428951,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 0.000000 kWh @ $0.09034",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0903",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-27",
+                    "IntervalStart": "2019-07-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237428952,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 0.000000 kWh @ $0.11281",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.1128",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-27",
+                    "IntervalStart": "2019-07-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237428953,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 0.000000 kWh @ $0.06435",
+                    "ChargeAmount": "0.0000",
+                    "ChargeRatePerUnit": "0.0644",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-27",
+                    "IntervalStart": "2019-07-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237428954,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d2ae5-3b1e-d292-8295-0eeab4ae02fe"
+            ]
+        }
+    ]
+}

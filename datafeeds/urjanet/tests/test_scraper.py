@@ -11,13 +11,13 @@ from datafeeds.urjanet.scraper import (
     get_charge_kind,
     get_charge_units,
 )
-from datafeeds.urjanet.transformer import PacGeGridiumTransfomer
+from datafeeds.urjanet.transformer import PacificGasElectricTransformer
 
 from datafeeds.common.typing import BillingDatum, BillingDatumItemsEntry
 
 
 TEST_DIR = os.path.split(__file__)[0]
-DATA_DIR = os.path.join(TEST_DIR, "data/pacge")
+DATA_DIR = os.path.join(TEST_DIR, "data/pge")
 
 
 class TestUrjanetScraper(unittest.TestCase):
@@ -58,7 +58,7 @@ class TestUrjanetScraper(unittest.TestCase):
         datasource = test_util.FixtureDataSource(
             os.path.join(DATA_DIR, "simple_fixture_input.json")
         )
-        transformer = PacGeGridiumTransfomer()
+        transformer = PacificGasElectricTransformer()
         config = BaseUrjanetConfiguration(datasource, transformer, "pge", False)
         scraper = BaseUrjanetScraper(None, None, config)
 
@@ -105,7 +105,7 @@ class TestUrjanetScraper(unittest.TestCase):
         datasource = test_util.FixtureDataSource(
             os.path.join(DATA_DIR, "simple_fixture_input.json")
         )
-        transformer = PacGeGridiumTransfomer()
+        transformer = PacificGasElectricTransformer()
 
         config = BaseUrjanetConfiguration(datasource, transformer, "pge", True)
         scraper = BaseUrjanetScraper(None, None, config)
@@ -132,7 +132,7 @@ class TestUrjanetScraper(unittest.TestCase):
         datasource = test_util.FixtureDataSource(
             os.path.join(DATA_DIR, "multi_source_link_input.json")
         )
-        transformer = PacGeGridiumTransfomer()
+        transformer = PacificGasElectricTransformer()
 
         config = BaseUrjanetConfiguration(datasource, transformer, "pge", True)
         scraper = BaseUrjanetScraper(None, None, config)

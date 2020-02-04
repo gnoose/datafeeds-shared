@@ -1,0 +1,3828 @@
+{
+    "periods": [
+        {
+            "end": "2017-04-02",
+            "peak_demand": "40.9600",
+            "start": "2017-03-03",
+            "tariff": null,
+            "total_charge": "3029.3900",
+            "total_usage": "18803.3200",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 40.960000 kW @ $10.93000",
+                    "ChargeAmount": "447.6900",
+                    "ChargeRatePerUnit": "10.9300",
+                    "ChargeUnitsUsed": "40.9600",
+                    "IntervalEnd": "2017-04-02",
+                    "IntervalStart": "2017-03-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808079,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 11,292.880000 kWh @ $0.11729",
+                    "ChargeAmount": "1324.5400",
+                    "ChargeRatePerUnit": "0.1173",
+                    "ChargeUnitsUsed": "11292.8800",
+                    "IntervalEnd": "2017-04-02",
+                    "IntervalStart": "2017-03-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808080,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,510.440000 kWh @ $0.13435",
+                    "ChargeAmount": "1009.0300",
+                    "ChargeRatePerUnit": "0.1344",
+                    "ChargeUnitsUsed": "7510.4400",
+                    "IntervalEnd": "2017-04-02",
+                    "IntervalStart": "2017-03-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808081,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "171.1700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-02",
+                    "IntervalStart": "2017-03-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808082,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.4500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-02",
+                    "IntervalStart": "2017-03-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808083,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "California Climate Credit",
+                    "ChargeAmount": "-71.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-02",
+                    "IntervalStart": "2017-03-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808084,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 31 days @ $4.59959",
+                    "ChargeAmount": "142.5900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-02",
+                    "IntervalStart": "2017-03-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808085,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d46-f45d-df35-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2017-05-02",
+            "peak_demand": "67.5200",
+            "start": "2017-04-03",
+            "tariff": null,
+            "total_charge": "3213.4300",
+            "total_usage": "18739.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "24.0200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-02",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804722,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "157.5700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804723,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.5300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-02",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804724,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "4.9000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804725,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "California Climate Credit",
+                    "ChargeAmount": "-6.9400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-02",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804726,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "California Climate Credit",
+                    "ChargeAmount": "-63.9000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804727,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $4.59959",
+                    "ChargeAmount": "9.2000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-02",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804728,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 28 days @ $4.59959",
+                    "ChargeAmount": "128.7900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804729,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 67.520000 kW @ $18.26000",
+                    "ChargeAmount": "82.1900",
+                    "ChargeRatePerUnit": "18.2600",
+                    "ChargeUnitsUsed": "67.5200",
+                    "IntervalEnd": "2017-05-02",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804730,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 44.480000 kW @ $10.93000",
+                    "ChargeAmount": "453.7600",
+                    "ChargeRatePerUnit": "10.9300",
+                    "ChargeUnitsUsed": "44.4800",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804731,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 616.880000 kWh @ $0.13446",
+                    "ChargeAmount": "82.9500",
+                    "ChargeRatePerUnit": "0.1345",
+                    "ChargeUnitsUsed": "616.8800",
+                    "IntervalEnd": "2017-05-02",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804732,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 584.960000 kWh @ $0.16253",
+                    "ChargeAmount": "95.0700",
+                    "ChargeRatePerUnit": "0.1625",
+                    "ChargeUnitsUsed": "584.9600",
+                    "IntervalEnd": "2017-05-02",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804733,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 633.200000 kWh @ $0.21766",
+                    "ChargeAmount": "137.8200",
+                    "ChargeRatePerUnit": "0.2177",
+                    "ChargeUnitsUsed": "633.2000",
+                    "IntervalEnd": "2017-05-02",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804734,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,587.960000 kWh @ $0.11729",
+                    "ChargeAmount": "1124.5700",
+                    "ChargeRatePerUnit": "0.1173",
+                    "ChargeUnitsUsed": "9587.9600",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804735,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,316.000000 kWh @ $0.13435",
+                    "ChargeAmount": "982.9000",
+                    "ChargeRatePerUnit": "0.1344",
+                    "ChargeUnitsUsed": "7316.0000",
+                    "IntervalEnd": "2017-04-30",
+                    "IntervalStart": "2017-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804736,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d46-faa4-d6f9-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2017-06-01",
+            "peak_demand": "83.8400",
+            "start": "2017-05-03",
+            "tariff": null,
+            "total_charge": "5783.7500",
+            "total_usage": "24066.6000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 83.840000 kW @ $18.26000",
+                    "ChargeAmount": "1530.9200",
+                    "ChargeRatePerUnit": "18.2600",
+                    "ChargeUnitsUsed": "83.8400",
+                    "IntervalEnd": "2017-06-01",
+                    "IntervalStart": "2017-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804752,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 12,854.640000 kWh @ $0.13446",
+                    "ChargeAmount": "1728.4300",
+                    "ChargeRatePerUnit": "0.1345",
+                    "ChargeUnitsUsed": "12854.6400",
+                    "IntervalEnd": "2017-06-01",
+                    "IntervalStart": "2017-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804753,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 5,387.000000 kWh @ $0.16253",
+                    "ChargeAmount": "875.5500",
+                    "ChargeRatePerUnit": "0.1625",
+                    "ChargeUnitsUsed": "5387.0000",
+                    "IntervalEnd": "2017-06-01",
+                    "IntervalStart": "2017-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804754,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 5,824.960000 kWh @ $0.21766",
+                    "ChargeAmount": "1267.8600",
+                    "ChargeRatePerUnit": "0.2177",
+                    "ChargeUnitsUsed": "5824.9600",
+                    "IntervalEnd": "2017-06-01",
+                    "IntervalStart": "2017-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804755,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "326.9900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-01",
+                    "IntervalStart": "2017-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804756,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "6.9800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-01",
+                    "IntervalStart": "2017-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804757,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "California Climate Credit",
+                    "ChargeAmount": "-90.9700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-01",
+                    "IntervalStart": "2017-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804758,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-01",
+                    "IntervalStart": "2017-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804759,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-1717-d237-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2017-07-02",
+            "peak_demand": "86.7200",
+            "start": "2017-06-02",
+            "tariff": null,
+            "total_charge": "7115.3300",
+            "total_usage": "31194.9600",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "21.2600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-02",
+                    "IntervalStart": "2017-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806250,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "380.9800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-06-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806251,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.5600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-02",
+                    "IntervalStart": "2017-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806252,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "8.4900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-06-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806253,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $4.59959",
+                    "ChargeAmount": "9.2000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-02",
+                    "IntervalStart": "2017-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806254,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-06-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806255,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 72.640000 kW @ $18.26000",
+                    "ChargeAmount": "85.5700",
+                    "ChargeRatePerUnit": "18.2600",
+                    "ChargeUnitsUsed": "72.6400",
+                    "IntervalEnd": "2017-07-02",
+                    "IntervalStart": "2017-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806256,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 86.720000 kW @ $18.26000",
+                    "ChargeAmount": "1481.3500",
+                    "ChargeRatePerUnit": "18.2600",
+                    "ChargeUnitsUsed": "86.7200",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-06-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806257,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 1,930.480000 kWh @ $0.13446",
+                    "ChargeAmount": "259.5700",
+                    "ChargeRatePerUnit": "0.1345",
+                    "ChargeUnitsUsed": "1930.4800",
+                    "IntervalEnd": "2017-07-02",
+                    "IntervalStart": "2017-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806258,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 15,149.120000 kWh @ $0.13446",
+                    "ChargeAmount": "2036.9500",
+                    "ChargeRatePerUnit": "0.1345",
+                    "ChargeUnitsUsed": "15149.1200",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-06-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806259,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 6,790.080000 kWh @ $0.16253",
+                    "ChargeAmount": "1103.5900",
+                    "ChargeRatePerUnit": "0.1625",
+                    "ChargeUnitsUsed": "6790.0800",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-06-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806260,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 7,325.280000 kWh @ $0.21766",
+                    "ChargeAmount": "1594.4200",
+                    "ChargeRatePerUnit": "0.2177",
+                    "ChargeUnitsUsed": "7325.2800",
+                    "IntervalEnd": "2017-06-30",
+                    "IntervalStart": "2017-06-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806261,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-12b6-d8dc-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2017-08-01",
+            "peak_demand": "83.2000",
+            "start": "2017-07-03",
+            "tariff": null,
+            "total_charge": "7681.9000",
+            "total_usage": "34654.4800",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 83.200000 kW @ $18.26000",
+                    "ChargeAmount": "1519.2300",
+                    "ChargeRatePerUnit": "18.2600",
+                    "ChargeUnitsUsed": "83.2000",
+                    "IntervalEnd": "2017-08-01",
+                    "IntervalStart": "2017-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808623,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 18,389.280000 kWh @ $0.13446",
+                    "ChargeAmount": "2472.6200",
+                    "ChargeRatePerUnit": "0.1345",
+                    "ChargeUnitsUsed": "18389.2800",
+                    "IntervalEnd": "2017-08-01",
+                    "IntervalStart": "2017-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808624,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,845.680000 kWh @ $0.16253",
+                    "ChargeAmount": "1275.1600",
+                    "ChargeRatePerUnit": "0.1625",
+                    "ChargeUnitsUsed": "7845.6800",
+                    "IntervalEnd": "2017-08-01",
+                    "IntervalStart": "2017-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808625,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 8,419.520000 kWh @ $0.21766",
+                    "ChargeAmount": "1832.5900",
+                    "ChargeRatePerUnit": "0.2177",
+                    "ChargeUnitsUsed": "8419.5200",
+                    "IntervalEnd": "2017-08-01",
+                    "IntervalStart": "2017-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808626,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "434.2600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-01",
+                    "IntervalStart": "2017-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808627,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "10.0500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-01",
+                    "IntervalStart": "2017-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808628,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-01",
+                    "IntervalStart": "2017-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235808629,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-1c0f-d1c4-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2017-08-31",
+            "peak_demand": "80.9600",
+            "start": "2017-08-02",
+            "tariff": null,
+            "total_charge": "7348.0700",
+            "total_usage": "32676.4400",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 80.960000 kW @ $18.26000",
+                    "ChargeAmount": "1478.3300",
+                    "ChargeRatePerUnit": "18.2600",
+                    "ChargeUnitsUsed": "80.9600",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809343,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 16,558.480000 kWh @ $0.13446",
+                    "ChargeAmount": "2226.4500",
+                    "ChargeRatePerUnit": "0.1345",
+                    "ChargeUnitsUsed": "16558.4800",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809344,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,760.080000 kWh @ $0.16253",
+                    "ChargeAmount": "1261.2500",
+                    "ChargeRatePerUnit": "0.1625",
+                    "ChargeUnitsUsed": "7760.0800",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809345,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 8,357.880000 kWh @ $0.21766",
+                    "ChargeAmount": "1819.1800",
+                    "ChargeRatePerUnit": "0.2177",
+                    "ChargeUnitsUsed": "8357.8800",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809346,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "415.3900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809347,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "9.4800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809348,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-31",
+                    "IntervalStart": "2017-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809349,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-1d71-d1e1-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2017-10-02",
+            "peak_demand": "79.6800",
+            "start": "2017-09-01",
+            "tariff": null,
+            "total_charge": "6823.6100",
+            "total_usage": "30426.3200",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 79.680000 kW @ $18.26000",
+                    "ChargeAmount": "1454.9600",
+                    "ChargeRatePerUnit": "18.2600",
+                    "ChargeUnitsUsed": "79.6800",
+                    "IntervalEnd": "2017-10-02",
+                    "IntervalStart": "2017-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806051,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 17,404.720000 kWh @ $0.13446",
+                    "ChargeAmount": "2340.2400",
+                    "ChargeRatePerUnit": "0.1345",
+                    "ChargeUnitsUsed": "17404.7200",
+                    "IntervalEnd": "2017-10-02",
+                    "IntervalStart": "2017-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806052,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 6,305.640000 kWh @ $0.16253",
+                    "ChargeAmount": "1024.8600",
+                    "ChargeRatePerUnit": "0.1625",
+                    "ChargeUnitsUsed": "6305.6400",
+                    "IntervalEnd": "2017-10-02",
+                    "IntervalStart": "2017-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806053,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 6,715.960000 kWh @ $0.21766",
+                    "ChargeAmount": "1461.8000",
+                    "ChargeRatePerUnit": "0.2177",
+                    "ChargeUnitsUsed": "6715.9600",
+                    "IntervalEnd": "2017-10-02",
+                    "IntervalStart": "2017-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806054,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "385.7400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-02",
+                    "IntervalStart": "2017-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806055,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "8.8200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-02",
+                    "IntervalStart": "2017-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806056,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 32 days @ $4.59959",
+                    "ChargeAmount": "147.1900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-02",
+                    "IntervalStart": "2017-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806057,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-11df-db2f-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2017-10-31",
+            "peak_demand": "56.3200",
+            "start": "2017-10-03",
+            "tariff": null,
+            "total_charge": "4537.4700",
+            "total_usage": "19424.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 56.320000 kW @ $18.26000",
+                    "ChargeAmount": "1028.4000",
+                    "ChargeRatePerUnit": "18.2600",
+                    "ChargeUnitsUsed": "56.3200",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804937,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 10,466.560000 kWh @ $0.13446",
+                    "ChargeAmount": "1407.3300",
+                    "ChargeRatePerUnit": "0.1345",
+                    "ChargeUnitsUsed": "10466.5600",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804938,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 4,416.480000 kWh @ $0.16253",
+                    "ChargeAmount": "717.8100",
+                    "ChargeRatePerUnit": "0.1625",
+                    "ChargeUnitsUsed": "4416.4800",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804939,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 4,540.960000 kWh @ $0.21766",
+                    "ChargeAmount": "988.3900",
+                    "ChargeRatePerUnit": "0.2177",
+                    "ChargeUnitsUsed": "4540.9600",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804940,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "256.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804941,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.6300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804942,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-31",
+                    "IntervalStart": "2017-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804943,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-0ec8-da47-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2017-11-30",
+            "peak_demand": "39.3600",
+            "start": "2017-11-01",
+            "tariff": null,
+            "total_charge": "2877.6900",
+            "total_usage": "17191.9600",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 39.360000 kW @ $10.93000",
+                    "ChargeAmount": "430.2000",
+                    "ChargeRatePerUnit": "10.9300",
+                    "ChargeUnitsUsed": "39.3600",
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805342,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,838.000000 kWh @ $0.11729",
+                    "ChargeAmount": "1153.9000",
+                    "ChargeRatePerUnit": "0.1173",
+                    "ChargeUnitsUsed": "9838.0000",
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805343,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,353.960000 kWh @ $0.13435",
+                    "ChargeAmount": "988.0000",
+                    "ChargeRatePerUnit": "0.1344",
+                    "ChargeUnitsUsed": "7353.9600",
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805344,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "162.6100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805345,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "4.9900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805346,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-30",
+                    "IntervalStart": "2017-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805347,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-0fa1-df03-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2018-01-01",
+            "peak_demand": "40.6400",
+            "start": "2017-12-01",
+            "tariff": null,
+            "total_charge": "3143.0400",
+            "total_usage": "19156.0800",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "5.1600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-01",
+                    "IntervalStart": "2018-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805730,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "172.4400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-12-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805731,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.1700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-01",
+                    "IntervalStart": "2018-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805732,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.3800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-12-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805733,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.59959",
+                    "ChargeAmount": "4.6000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-01",
+                    "IntervalStart": "2018-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805734,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 31 days @ $4.59959",
+                    "ChargeAmount": "142.5900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-12-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805735,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 34.560000 kW @ $10.95000",
+                    "ChargeAmount": "11.8300",
+                    "ChargeRatePerUnit": "10.9500",
+                    "ChargeUnitsUsed": "34.5600",
+                    "IntervalEnd": "2018-01-01",
+                    "IntervalStart": "2018-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805736,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 40.640000 kW @ $10.93000",
+                    "ChargeAmount": "430.3100",
+                    "ChargeRatePerUnit": "10.9300",
+                    "ChargeUnitsUsed": "40.6400",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-12-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805737,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 589.280000 kWh @ $0.11796",
+                    "ChargeAmount": "69.5100",
+                    "ChargeRatePerUnit": "0.1180",
+                    "ChargeUnitsUsed": "589.2800",
+                    "IntervalEnd": "2018-01-01",
+                    "IntervalStart": "2018-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805738,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 11,336.320000 kWh @ $0.11729",
+                    "ChargeAmount": "1329.6400",
+                    "ChargeRatePerUnit": "0.1173",
+                    "ChargeUnitsUsed": "11336.3200",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-12-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805739,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,230.480000 kWh @ $0.13435",
+                    "ChargeAmount": "971.4100",
+                    "ChargeRatePerUnit": "0.1344",
+                    "ChargeUnitsUsed": "7230.4800",
+                    "IntervalEnd": "2017-12-31",
+                    "IntervalStart": "2017-12-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805740,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-1073-de7d-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2018-01-30",
+            "peak_demand": "40.9600",
+            "start": "2018-01-02",
+            "tariff": null,
+            "total_charge": "2946.9700",
+            "total_usage": "17482.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 40.960000 kW @ $10.95000",
+                    "ChargeAmount": "448.5100",
+                    "ChargeRatePerUnit": "10.9500",
+                    "ChargeUnitsUsed": "40.9600",
+                    "IntervalEnd": "2018-01-30",
+                    "IntervalStart": "2018-01-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809297,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,785.200000 kWh @ $0.11796",
+                    "ChargeAmount": "1154.2600",
+                    "ChargeRatePerUnit": "0.1180",
+                    "ChargeUnitsUsed": "9785.2000",
+                    "IntervalEnd": "2018-01-30",
+                    "IntervalStart": "2018-01-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809298,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,696.800000 kWh @ $0.13502",
+                    "ChargeAmount": "1039.2200",
+                    "ChargeRatePerUnit": "0.1350",
+                    "ChargeUnitsUsed": "7696.8000",
+                    "IntervalEnd": "2018-01-30",
+                    "IntervalStart": "2018-01-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809299,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "166.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-30",
+                    "IntervalStart": "2018-01-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809300,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.0700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-30",
+                    "IntervalStart": "2018-01-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809301,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-30",
+                    "IntervalStart": "2018-01-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235809302,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-15e8-d60e-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2018-03-01",
+            "peak_demand": "39.3600",
+            "start": "2018-01-31",
+            "tariff": null,
+            "total_charge": "2943.6500",
+            "total_usage": "17573.2000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "6.0300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-01",
+                    "IntervalStart": "2018-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804800,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "160.3000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804801,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.1800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-01",
+                    "IntervalStart": "2018-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804802,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "4.9200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804803,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.59959",
+                    "ChargeAmount": "4.6000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-03-01",
+                    "IntervalStart": "2018-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804804,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804805,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 36.160000 kW @ $11.76000",
+                    "ChargeAmount": "14.1700",
+                    "ChargeRatePerUnit": "11.7600",
+                    "ChargeUnitsUsed": "36.1600",
+                    "IntervalEnd": "2018-03-01",
+                    "IntervalStart": "2018-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804806,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 39.360000 kW @ $10.95000",
+                    "ChargeAmount": "416.6300",
+                    "ChargeRatePerUnit": "10.9500",
+                    "ChargeUnitsUsed": "39.3600",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804807,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 244.480000 kWh @ $0.12347",
+                    "ChargeAmount": "30.1900",
+                    "ChargeRatePerUnit": "0.1235",
+                    "ChargeUnitsUsed": "244.4800",
+                    "IntervalEnd": "2018-03-01",
+                    "IntervalStart": "2018-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804808,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 367.120000 kWh @ $0.14054",
+                    "ChargeAmount": "51.6000",
+                    "ChargeRatePerUnit": "0.1405",
+                    "ChargeUnitsUsed": "367.1200",
+                    "IntervalEnd": "2018-03-01",
+                    "IntervalStart": "2018-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804809,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,877.520000 kWh @ $0.11796",
+                    "ChargeAmount": "1165.1500",
+                    "ChargeRatePerUnit": "0.1180",
+                    "ChargeUnitsUsed": "9877.5200",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804810,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,084.080000 kWh @ $0.13502",
+                    "ChargeAmount": "956.4900",
+                    "ChargeRatePerUnit": "0.1350",
+                    "ChargeUnitsUsed": "7084.0800",
+                    "IntervalEnd": "2018-02-28",
+                    "IntervalStart": "2018-01-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235804811,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-1ef2-ddfa-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2018-04-01",
+            "peak_demand": "43.2000",
+            "start": "2018-03-02",
+            "tariff": null,
+            "total_charge": "3198.6600",
+            "total_usage": "18110.7200",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 43.200000 kW @ $11.76000",
+                    "ChargeAmount": "508.0300",
+                    "ChargeRatePerUnit": "11.7600",
+                    "ChargeUnitsUsed": "43.2000",
+                    "IntervalEnd": "2018-04-01",
+                    "IntervalStart": "2018-03-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806293,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 10,735.280000 kWh @ $0.12347",
+                    "ChargeAmount": "1325.4900",
+                    "ChargeRatePerUnit": "0.1235",
+                    "ChargeUnitsUsed": "10735.2800",
+                    "IntervalEnd": "2018-04-01",
+                    "IntervalStart": "2018-03-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806294,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,375.440000 kWh @ $0.14054",
+                    "ChargeAmount": "1036.5400",
+                    "ChargeRatePerUnit": "0.1405",
+                    "ChargeUnitsUsed": "7375.4400",
+                    "IntervalEnd": "2018-04-01",
+                    "IntervalStart": "2018-03-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806295,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "180.7600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-01",
+                    "IntervalStart": "2018-03-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806296,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.2500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-01",
+                    "IntervalStart": "2018-03-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806297,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 31 days @ $4.59959",
+                    "ChargeAmount": "142.5900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-01",
+                    "IntervalStart": "2018-03-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235806298,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-1a99-d935-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2018-05-01",
+            "peak_demand": "53.4400",
+            "start": "2018-04-02",
+            "tariff": null,
+            "total_charge": "3360.6400",
+            "total_usage": "18020.8800",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "8.3100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-01",
+                    "IntervalStart": "2018-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805899,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "181.6200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-04-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805900,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.1800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-01",
+                    "IntervalStart": "2018-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805901,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.0500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-04-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805902,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.59959",
+                    "ChargeAmount": "4.6000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-01",
+                    "IntervalStart": "2018-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805903,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-04-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805904,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 42.240000 kW @ $19.52000",
+                    "ChargeAmount": "27.4800",
+                    "ChargeRatePerUnit": "19.5200",
+                    "ChargeUnitsUsed": "42.2400",
+                    "IntervalEnd": "2018-05-01",
+                    "IntervalStart": "2018-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805905,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 53.440000 kW @ $11.76000",
+                    "ChargeAmount": "607.5100",
+                    "ChargeRatePerUnit": "11.7600",
+                    "ChargeUnitsUsed": "53.4400",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-04-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805906,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 221.440000 kWh @ $0.14017",
+                    "ChargeAmount": "31.0400",
+                    "ChargeRatePerUnit": "0.1402",
+                    "ChargeUnitsUsed": "221.4400",
+                    "IntervalEnd": "2018-05-01",
+                    "IntervalStart": "2018-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805907,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 193.040000 kWh @ $0.16824",
+                    "ChargeAmount": "32.4800",
+                    "ChargeRatePerUnit": "0.1682",
+                    "ChargeUnitsUsed": "193.0400",
+                    "IntervalEnd": "2018-05-01",
+                    "IntervalStart": "2018-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805908,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 192.320000 kWh @ $0.22337",
+                    "ChargeAmount": "42.9600",
+                    "ChargeRatePerUnit": "0.2234",
+                    "ChargeUnitsUsed": "192.3200",
+                    "IntervalEnd": "2018-05-01",
+                    "IntervalStart": "2018-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805909,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,452.720000 kWh @ $0.12347",
+                    "ChargeAmount": "1167.1300",
+                    "ChargeRatePerUnit": "0.1235",
+                    "ChargeUnitsUsed": "9452.7200",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-04-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805910,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,961.360000 kWh @ $0.14054",
+                    "ChargeAmount": "1118.8900",
+                    "ChargeRatePerUnit": "0.1405",
+                    "ChargeUnitsUsed": "7961.3600",
+                    "IntervalEnd": "2018-04-30",
+                    "IntervalStart": "2018-04-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805911,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-2148-dfd5-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2018-05-31",
+            "peak_demand": "73.6000",
+            "start": "2018-05-02",
+            "tariff": null,
+            "total_charge": "5483.2000",
+            "total_usage": "21677.3600",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 73.600000 kW @ $19.52000",
+                    "ChargeAmount": "1436.6700",
+                    "ChargeRatePerUnit": "19.5200",
+                    "ChargeUnitsUsed": "73.6000",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-05-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805257,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 11,836.480000 kWh @ $0.14017",
+                    "ChargeAmount": "1659.1200",
+                    "ChargeRatePerUnit": "0.1402",
+                    "ChargeUnitsUsed": "11836.4800",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-05-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805258,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 4,807.440000 kWh @ $0.16824",
+                    "ChargeAmount": "808.8000",
+                    "ChargeRatePerUnit": "0.1682",
+                    "ChargeUnitsUsed": "4807.4400",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-05-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805259,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 5,033.440000 kWh @ $0.22337",
+                    "ChargeAmount": "1124.3200",
+                    "ChargeRatePerUnit": "0.2234",
+                    "ChargeUnitsUsed": "5033.4400",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-05-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805260,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "310.0100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-05-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805261,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "6.2900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-05-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805262,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-05-31",
+                    "IntervalStart": "2018-05-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805263,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d47-2010-d7f9-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2018-07-01",
+            "peak_demand": "80.0000",
+            "start": "2018-06-01",
+            "tariff": null,
+            "total_charge": "7094.3700",
+            "total_usage": "29945.0800",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 80.000000 kW @ $19.52000",
+                    "ChargeAmount": "1561.6000",
+                    "ChargeRatePerUnit": "19.5200",
+                    "ChargeUnitsUsed": "80.0000",
+                    "IntervalEnd": "2018-07-01",
+                    "IntervalStart": "2018-06-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235832928,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 16,205.120000 kWh @ $0.14017",
+                    "ChargeAmount": "2271.4700",
+                    "ChargeRatePerUnit": "0.1402",
+                    "ChargeUnitsUsed": "16205.1200",
+                    "IntervalEnd": "2018-07-01",
+                    "IntervalStart": "2018-06-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235832929,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 6,532.640000 kWh @ $0.16824",
+                    "ChargeAmount": "1099.0500",
+                    "ChargeRatePerUnit": "0.1682",
+                    "ChargeUnitsUsed": "6532.6400",
+                    "IntervalEnd": "2018-07-01",
+                    "IntervalStart": "2018-06-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235832930,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 7,207.320000 kWh @ $0.22337",
+                    "ChargeAmount": "1609.9000",
+                    "ChargeRatePerUnit": "0.2234",
+                    "ChargeUnitsUsed": "7207.3200",
+                    "IntervalEnd": "2018-07-01",
+                    "IntervalStart": "2018-06-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235832931,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "401.0800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-01",
+                    "IntervalStart": "2018-06-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235832932,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "8.6800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-01",
+                    "IntervalStart": "2018-06-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235832933,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 31 days @ $4.59959",
+                    "ChargeAmount": "142.5900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-01",
+                    "IntervalStart": "2018-06-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235832934,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8ab7c7-f5ce-da0c-bedb-22000a96d1f7"
+            ]
+        },
+        {
+            "end": "2018-07-31",
+            "peak_demand": "84.1600",
+            "start": "2018-07-02",
+            "tariff": null,
+            "total_charge": "8017.3200",
+            "total_usage": "34571.8000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 84.160000 kW @ $19.52000",
+                    "ChargeAmount": "1642.8000",
+                    "ChargeRatePerUnit": "19.5200",
+                    "ChargeUnitsUsed": "84.1600",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-07-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805002,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 18,127.360000 kWh @ $0.14017",
+                    "ChargeAmount": "2540.9100",
+                    "ChargeRatePerUnit": "0.1402",
+                    "ChargeUnitsUsed": "18127.3600",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-07-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805003,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,996.440000 kWh @ $0.16824",
+                    "ChargeAmount": "1345.3200",
+                    "ChargeRatePerUnit": "0.1682",
+                    "ChargeUnitsUsed": "7996.4400",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-07-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805004,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 8,448.000000 kWh @ $0.22337",
+                    "ChargeAmount": "1887.0300",
+                    "ChargeRatePerUnit": "0.2234",
+                    "ChargeUnitsUsed": "8448.0000",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-07-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805005,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "453.2400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-07-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805006,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "10.0300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-07-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805007,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-07-31",
+                    "IntervalStart": "2018-07-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235805008,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8a5d46-fc06-d6a0-bd38-22000a25b487"
+            ]
+        },
+        {
+            "end": "2018-08-30",
+            "peak_demand": "84.1600",
+            "start": "2018-08-01",
+            "tariff": null,
+            "total_charge": "7544.5700",
+            "total_usage": "31785.3200",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 84.160000 kW @ $19.52000",
+                    "ChargeAmount": "1642.8000",
+                    "ChargeRatePerUnit": "19.5200",
+                    "ChargeUnitsUsed": "84.1600",
+                    "IntervalEnd": "2018-08-30",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235883949,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 16,383.160000 kWh @ $0.14017",
+                    "ChargeAmount": "2296.4300",
+                    "ChargeRatePerUnit": "0.1402",
+                    "ChargeUnitsUsed": "16383.1600",
+                    "IntervalEnd": "2018-08-30",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235883950,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,414.880000 kWh @ $0.16824",
+                    "ChargeAmount": "1247.4800",
+                    "ChargeRatePerUnit": "0.1682",
+                    "ChargeUnitsUsed": "7414.8800",
+                    "IntervalEnd": "2018-08-30",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235883951,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 7,987.280000 kWh @ $0.22337",
+                    "ChargeAmount": "1784.1200",
+                    "ChargeRatePerUnit": "0.2234",
+                    "ChargeUnitsUsed": "7987.2800",
+                    "IntervalEnd": "2018-08-30",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235883952,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "426.5300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-30",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235883953,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "9.2200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-30",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235883954,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-30",
+                    "IntervalStart": "2018-08-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235883955,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8b07ce-d3b2-d691-a1ad-22000a2d48b5"
+            ]
+        },
+        {
+            "end": "2018-10-01",
+            "peak_demand": "75.8400",
+            "start": "2018-08-31",
+            "tariff": null,
+            "total_charge": "6969.4600",
+            "total_usage": "29588.0400",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "380.9600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-01",
+                    "IntervalStart": "2018-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103852,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "13.0500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103853,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "8.3100",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-01",
+                    "IntervalStart": "2018-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103854,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.2700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103855,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 31 days @ $4.59959",
+                    "ChargeAmount": "142.5900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-01",
+                    "IntervalStart": "2018-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103856,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.59959",
+                    "ChargeAmount": "4.6000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103857,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 75.840000 kW @ $19.85000",
+                    "ChargeAmount": "1458.3800",
+                    "ChargeRatePerUnit": "19.8500",
+                    "ChargeUnitsUsed": "75.8400",
+                    "IntervalEnd": "2018-10-01",
+                    "IntervalStart": "2018-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103858,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 71.040000 kW @ $19.52000",
+                    "ChargeAmount": "43.3300",
+                    "ChargeRatePerUnit": "19.5200",
+                    "ChargeUnitsUsed": "71.0400",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103859,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 16,540.320000 kWh @ $0.14181",
+                    "ChargeAmount": "2345.5800",
+                    "ChargeRatePerUnit": "0.1418",
+                    "ChargeUnitsUsed": "16540.3200",
+                    "IntervalEnd": "2018-10-01",
+                    "IntervalStart": "2018-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103860,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 5,831.760000 kWh @ $0.16988",
+                    "ChargeAmount": "990.7000",
+                    "ChargeRatePerUnit": "0.1699",
+                    "ChargeUnitsUsed": "5831.7600",
+                    "IntervalEnd": "2018-10-01",
+                    "IntervalStart": "2018-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103861,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 6,275.800000 kWh @ $0.22501",
+                    "ChargeAmount": "1412.1200",
+                    "ChargeRatePerUnit": "0.2250",
+                    "ChargeUnitsUsed": "6275.8000",
+                    "IntervalEnd": "2018-10-01",
+                    "IntervalStart": "2018-09-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103862,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 283.440000 kWh @ $0.14017",
+                    "ChargeAmount": "39.7300",
+                    "ChargeRatePerUnit": "0.1402",
+                    "ChargeUnitsUsed": "283.4400",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103863,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 305.680000 kWh @ $0.16824",
+                    "ChargeAmount": "51.4300",
+                    "ChargeRatePerUnit": "0.1682",
+                    "ChargeUnitsUsed": "305.6800",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103864,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 351.040000 kWh @ $0.22337",
+                    "ChargeAmount": "78.4100",
+                    "ChargeRatePerUnit": "0.2234",
+                    "ChargeUnitsUsed": "351.0400",
+                    "IntervalEnd": "2018-08-31",
+                    "IntervalStart": "2018-08-31",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236103865,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8c88fb-cdbc-dd7a-a586-22000a7bc8c7"
+            ]
+        },
+        {
+            "end": "2018-10-31",
+            "peak_demand": "57.6000",
+            "start": "2018-10-02",
+            "tariff": null,
+            "total_charge": "5263.5000",
+            "total_usage": "21920.1200",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 57.600000 kW @ $19.85000",
+                    "ChargeAmount": "1143.3600",
+                    "ChargeRatePerUnit": "19.8500",
+                    "ChargeUnitsUsed": "57.6000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-10-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236242273,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 11,705.600000 kWh @ $0.14181",
+                    "ChargeAmount": "1659.9700",
+                    "ChargeRatePerUnit": "0.1418",
+                    "ChargeUnitsUsed": "11705.6000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-10-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236242274,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 5,081.160000 kWh @ $0.16988",
+                    "ChargeAmount": "863.1900",
+                    "ChargeRatePerUnit": "0.1699",
+                    "ChargeUnitsUsed": "5081.1600",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-10-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236242275,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 5,133.360000 kWh @ $0.22501",
+                    "ChargeAmount": "1155.0600",
+                    "ChargeRatePerUnit": "0.2250",
+                    "ChargeUnitsUsed": "5133.3600",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-10-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236242276,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "297.5700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-10-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236242277,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "6.3600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-10-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236242278,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-10-31",
+                    "IntervalStart": "2018-10-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236242279,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8dff12-d8a7-d157-a51a-22000a9ecd62"
+            ]
+        },
+        {
+            "end": "2018-12-02",
+            "peak_demand": "57.6000",
+            "start": "2018-11-01",
+            "tariff": null,
+            "total_charge": "3549.0500",
+            "total_usage": "19120.8000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 57.600000 kW @ $11.96000",
+                    "ChargeAmount": "688.9000",
+                    "ChargeRatePerUnit": "11.9600",
+                    "ChargeUnitsUsed": "57.6000",
+                    "IntervalEnd": "2018-12-02",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236405650,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 11,677.720000 kWh @ $0.12446",
+                    "ChargeAmount": "1453.4100",
+                    "ChargeRatePerUnit": "0.1245",
+                    "ChargeUnitsUsed": "11677.7200",
+                    "IntervalEnd": "2018-12-02",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236405651,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,443.080000 kWh @ $0.14153",
+                    "ChargeAmount": "1053.4200",
+                    "ChargeRatePerUnit": "0.1415",
+                    "ChargeUnitsUsed": "7443.0800",
+                    "IntervalEnd": "2018-12-02",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236405652,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "200.5800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-02",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236405653,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.5500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-02",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236405654,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 32 days @ $4.59959",
+                    "ChargeAmount": "147.1900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-02",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236405655,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8f9da8-1018-dffb-898d-0e3cd8c3c1b2"
+            ]
+        },
+        {
+            "end": "2019-01-02",
+            "peak_demand": "42.2400",
+            "start": "2018-12-03",
+            "tariff": null,
+            "total_charge": "3185.4400",
+            "total_usage": "17929.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "11.1800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-02",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491230,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "168.8300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491231,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.3500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-02",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491232,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "4.8600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491233,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $4.59959",
+                    "ChargeAmount": "9.2000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-02",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491234,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491235,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 35.840000 kW @ $11.24000",
+                    "ChargeAmount": "25.9900",
+                    "ChargeRatePerUnit": "11.2400",
+                    "ChargeUnitsUsed": "35.8400",
+                    "IntervalEnd": "2019-01-02",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491236,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 42.240000 kW @ $11.96000",
+                    "ChargeAmount": "472.6000",
+                    "ChargeRatePerUnit": "11.9600",
+                    "ChargeUnitsUsed": "42.2400",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491237,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 807.680000 kWh @ $0.12400",
+                    "ChargeAmount": "100.1500",
+                    "ChargeRatePerUnit": "0.1240",
+                    "ChargeUnitsUsed": "807.6800",
+                    "IntervalEnd": "2019-01-02",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491238,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 362.000000 kWh @ $0.14107",
+                    "ChargeAmount": "51.0700",
+                    "ChargeRatePerUnit": "0.1411",
+                    "ChargeUnitsUsed": "362.0000",
+                    "IntervalEnd": "2019-01-02",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491239,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,615.200000 kWh @ $0.12446",
+                    "ChargeAmount": "1196.7100",
+                    "ChargeRatePerUnit": "0.1245",
+                    "ChargeUnitsUsed": "9615.2000",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491240,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,144.120000 kWh @ $0.14153",
+                    "ChargeAmount": "1011.1100",
+                    "ChargeRatePerUnit": "0.1415",
+                    "ChargeUnitsUsed": "7144.1200",
+                    "IntervalEnd": "2018-12-31",
+                    "IntervalStart": "2018-12-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236491241,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e912b7b-6800-d918-b507-0e8ad1f5afa2"
+            ]
+        },
+        {
+            "end": "2019-01-31",
+            "peak_demand": "42.8800",
+            "start": "2019-01-03",
+            "tariff": null,
+            "total_charge": "3050.4000",
+            "total_usage": "17154.4800",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 42.880000 kW @ $11.24000",
+                    "ChargeAmount": "481.9700",
+                    "ChargeRatePerUnit": "11.2400",
+                    "ChargeUnitsUsed": "42.8800",
+                    "IntervalEnd": "2019-01-31",
+                    "IntervalStart": "2019-01-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236605743,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,516.960000 kWh @ $0.12400",
+                    "ChargeAmount": "1180.1000",
+                    "ChargeRatePerUnit": "0.1240",
+                    "ChargeUnitsUsed": "9516.9600",
+                    "IntervalEnd": "2019-01-31",
+                    "IntervalStart": "2019-01-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236605744,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,637.520000 kWh @ $0.14107",
+                    "ChargeAmount": "1077.4200",
+                    "ChargeRatePerUnit": "0.1411",
+                    "ChargeUnitsUsed": "7637.5200",
+                    "IntervalEnd": "2019-01-31",
+                    "IntervalStart": "2019-01-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236605745,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "172.3700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-31",
+                    "IntervalStart": "2019-01-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236605746,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.1500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-31",
+                    "IntervalStart": "2019-01-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236605747,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-31",
+                    "IntervalStart": "2019-01-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236605748,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e929750-3e4a-d865-834d-0ee3736015b4"
+            ]
+        },
+        {
+            "end": "2019-03-04",
+            "peak_demand": "42.5600",
+            "start": "2019-02-01",
+            "tariff": null,
+            "total_charge": "3315.6000",
+            "total_usage": "19048.2400",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "22.7300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-04",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703873,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "164.6200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703874,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.6900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-04",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703875,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.0200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703876,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 4 days @ $4.59959",
+                    "ChargeAmount": "18.4000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-04",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703877,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 28 days @ $4.59959",
+                    "ChargeAmount": "128.7900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703878,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 39.040000 kW @ $10.63000",
+                    "ChargeAmount": "51.8700",
+                    "ChargeRatePerUnit": "10.6300",
+                    "ChargeUnitsUsed": "39.0400",
+                    "IntervalEnd": "2019-03-04",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703879,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 42.560000 kW @ $11.24000",
+                    "ChargeAmount": "418.5800",
+                    "ChargeRatePerUnit": "11.2400",
+                    "ChargeUnitsUsed": "42.5600",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703880,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 1,585.280000 kWh @ $0.12822",
+                    "ChargeAmount": "203.2600",
+                    "ChargeRatePerUnit": "0.1282",
+                    "ChargeUnitsUsed": "1585.2800",
+                    "IntervalEnd": "2019-03-04",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703881,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 724.960000 kWh @ $0.14528",
+                    "ChargeAmount": "105.3200",
+                    "ChargeRatePerUnit": "0.1453",
+                    "ChargeUnitsUsed": "724.9600",
+                    "IntervalEnd": "2019-03-04",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703882,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,661.040000 kWh @ $0.12400",
+                    "ChargeAmount": "1197.9700",
+                    "ChargeRatePerUnit": "0.1240",
+                    "ChargeUnitsUsed": "9661.0400",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703883,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,076.960000 kWh @ $0.14107",
+                    "ChargeAmount": "998.3500",
+                    "ChargeRatePerUnit": "0.1411",
+                    "ChargeUnitsUsed": "7076.9600",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236703884,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e941e40-93b7-d061-bc4c-0e54bfafe93a"
+            ]
+        },
+        {
+            "end": "2019-04-02",
+            "peak_demand": "40.9600",
+            "start": "2019-03-05",
+            "tariff": null,
+            "total_charge": "3134.9100",
+            "total_usage": "17564.8800",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 40.960000 kW @ $10.63000",
+                    "ChargeAmount": "435.4000",
+                    "ChargeRatePerUnit": "10.6300",
+                    "ChargeUnitsUsed": "40.9600",
+                    "IntervalEnd": "2019-04-02",
+                    "IntervalStart": "2019-03-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236764174,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 9,854.640000 kWh @ $0.12822",
+                    "ChargeAmount": "1263.5600",
+                    "ChargeRatePerUnit": "0.1282",
+                    "ChargeUnitsUsed": "9854.6400",
+                    "IntervalEnd": "2019-04-02",
+                    "IntervalStart": "2019-03-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236764175,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,710.240000 kWh @ $0.14528",
+                    "ChargeAmount": "1120.1400",
+                    "ChargeRatePerUnit": "0.1453",
+                    "ChargeUnitsUsed": "7710.2400",
+                    "IntervalEnd": "2019-04-02",
+                    "IntervalStart": "2019-03-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236764176,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "177.1500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-02",
+                    "IntervalStart": "2019-03-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236764177,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.2700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-02",
+                    "IntervalStart": "2019-03-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236764178,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-02",
+                    "IntervalStart": "2019-03-05",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236764179,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e959236-7440-d896-b72b-0e1f1151e0ea"
+            ]
+        },
+        {
+            "end": "2019-05-02",
+            "peak_demand": "65.6000",
+            "start": "2019-04-03",
+            "tariff": null,
+            "total_charge": "4150.4600",
+            "total_usage": "21957.8400",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "21.3000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874071,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "213.2600",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874072,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.4700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874073,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "6.1200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874074,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $4.59959",
+                    "ChargeAmount": "9.2000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874075,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 28 days @ $4.59959",
+                    "ChargeAmount": "128.7900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874076,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 47.360000 kW @ $20.05000",
+                    "ChargeAmount": "63.3000",
+                    "ChargeRatePerUnit": "20.0500",
+                    "ChargeUnitsUsed": "47.3600",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874077,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 65.600000 kW @ $10.63000",
+                    "ChargeAmount": "650.8400",
+                    "ChargeRatePerUnit": "10.6300",
+                    "ChargeUnitsUsed": "65.6000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874078,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 573.440000 kWh @ $0.14619",
+                    "ChargeAmount": "83.8300",
+                    "ChargeRatePerUnit": "0.1462",
+                    "ChargeUnitsUsed": "573.4400",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874079,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 503.040000 kWh @ $0.17425",
+                    "ChargeAmount": "87.6500",
+                    "ChargeRatePerUnit": "0.1743",
+                    "ChargeUnitsUsed": "503.0400",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874080,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 484.080000 kWh @ $0.22938",
+                    "ChargeAmount": "111.0400",
+                    "ChargeRatePerUnit": "0.2294",
+                    "ChargeUnitsUsed": "484.0800",
+                    "IntervalEnd": "2019-05-02",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874081,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 11,058.560000 kWh @ $0.12822",
+                    "ChargeAmount": "1417.9300",
+                    "ChargeRatePerUnit": "0.1282",
+                    "ChargeUnitsUsed": "11058.5600",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874082,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 9,338.720000 kWh @ $0.14528",
+                    "ChargeAmount": "1356.7300",
+                    "ChargeRatePerUnit": "0.1453",
+                    "ChargeUnitsUsed": "9338.7200",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236874083,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9710f2-8c7e-de58-b676-0e6bfbb52a2c"
+            ]
+        },
+        {
+            "end": "2019-06-03",
+            "peak_demand": "78.0800",
+            "start": "2019-05-03",
+            "tariff": null,
+            "total_charge": "6640.5800",
+            "total_usage": "26801.2000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 78.080000 kW @ $20.05000",
+                    "ChargeAmount": "1565.5000",
+                    "ChargeRatePerUnit": "20.0500",
+                    "ChargeUnitsUsed": "78.0800",
+                    "IntervalEnd": "2019-06-03",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237051726,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 15,500.160000 kWh @ $0.14619",
+                    "ChargeAmount": "2265.9700",
+                    "ChargeRatePerUnit": "0.1462",
+                    "ChargeUnitsUsed": "15500.1600",
+                    "IntervalEnd": "2019-06-03",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237051727,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 5,691.600000 kWh @ $0.17425",
+                    "ChargeAmount": "991.7600",
+                    "ChargeRatePerUnit": "0.1743",
+                    "ChargeUnitsUsed": "5691.6000",
+                    "IntervalEnd": "2019-06-03",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237051728,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 5,609.440000 kWh @ $0.22938",
+                    "ChargeAmount": "1286.6900",
+                    "ChargeRatePerUnit": "0.2294",
+                    "ChargeUnitsUsed": "5609.4400",
+                    "IntervalEnd": "2019-06-03",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237051729,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "375.4300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-03",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237051730,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "8.0400",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-03",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237051731,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 32 days @ $4.59959",
+                    "ChargeAmount": "147.1900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-03",
+                    "IntervalStart": "2019-05-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237051732,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e989bde-8c26-d994-8d96-0e0342d063c4"
+            ]
+        },
+        {
+            "end": "2019-07-02",
+            "peak_demand": "81.6000",
+            "start": "2019-06-04",
+            "tariff": null,
+            "total_charge": "7667.9900",
+            "total_usage": "31531.4000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "29.5200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-02",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162891,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "403.9800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162892,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.6300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-02",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162893,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "8.8300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162894,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $4.59959",
+                    "ChargeAmount": "9.2000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-02",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162895,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 27 days @ $4.59959",
+                    "ChargeAmount": "124.1900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162896,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 65.600000 kW @ $19.99000",
+                    "ChargeAmount": "90.4400",
+                    "ChargeRatePerUnit": "19.9900",
+                    "ChargeUnitsUsed": "65.6000",
+                    "IntervalEnd": "2019-07-02",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162897,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 81.600000 kW @ $20.05000",
+                    "ChargeAmount": "1523.2500",
+                    "ChargeRatePerUnit": "20.0500",
+                    "ChargeUnitsUsed": "81.6000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162898,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 731.120000 kWh @ $0.14903",
+                    "ChargeAmount": "108.9600",
+                    "ChargeRatePerUnit": "0.1490",
+                    "ChargeUnitsUsed": "731.1200",
+                    "IntervalEnd": "2019-07-02",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162899,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 679.520000 kWh @ $0.17710",
+                    "ChargeAmount": "120.3400",
+                    "ChargeRatePerUnit": "0.1771",
+                    "ChargeUnitsUsed": "679.5200",
+                    "IntervalEnd": "2019-07-02",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162900,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 701.920000 kWh @ $0.23223",
+                    "ChargeAmount": "163.0100",
+                    "ChargeRatePerUnit": "0.2322",
+                    "ChargeUnitsUsed": "701.9200",
+                    "IntervalEnd": "2019-07-02",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162901,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 15,407.020000 kWh @ $0.14619",
+                    "ChargeAmount": "2252.3500",
+                    "ChargeRatePerUnit": "0.1462",
+                    "ChargeUnitsUsed": "15407.0200",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162902,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 6,906.340000 kWh @ $0.17425",
+                    "ChargeAmount": "1203.4300",
+                    "ChargeRatePerUnit": "0.1743",
+                    "ChargeUnitsUsed": "6906.3400",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162903,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 7,105.480000 kWh @ $0.22938",
+                    "ChargeAmount": "1629.8600",
+                    "ChargeRatePerUnit": "0.2294",
+                    "ChargeUnitsUsed": "7105.4800",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237162904,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9a0844-f089-d31b-adb3-0ec261d401ec"
+            ]
+        },
+        {
+            "end": "2019-08-01",
+            "peak_demand": "80.3200",
+            "start": "2019-07-03",
+            "tariff": null,
+            "total_charge": "8343.5500",
+            "total_usage": "34941.1600",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 80.320000 kW @ $19.99000",
+                    "ChargeAmount": "1605.6000",
+                    "ChargeRatePerUnit": "19.9900",
+                    "ChargeUnitsUsed": "80.3200",
+                    "IntervalEnd": "2019-08-01",
+                    "IntervalStart": "2019-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237307851,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 18,785.320000 kWh @ $0.14903",
+                    "ChargeAmount": "2799.5800",
+                    "ChargeRatePerUnit": "0.1490",
+                    "ChargeUnitsUsed": "18785.3200",
+                    "IntervalEnd": "2019-08-01",
+                    "IntervalStart": "2019-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237307852,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 7,865.920000 kWh @ $0.17710",
+                    "ChargeAmount": "1393.0500",
+                    "ChargeRatePerUnit": "0.1771",
+                    "ChargeUnitsUsed": "7865.9200",
+                    "IntervalEnd": "2019-08-01",
+                    "IntervalStart": "2019-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237307853,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 8,289.920000 kWh @ $0.23223",
+                    "ChargeAmount": "1925.1700",
+                    "ChargeRatePerUnit": "0.2322",
+                    "ChargeUnitsUsed": "8289.9200",
+                    "IntervalEnd": "2019-08-01",
+                    "IntervalStart": "2019-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237307854,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "471.6800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-01",
+                    "IntervalStart": "2019-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237307855,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "10.4800",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-01",
+                    "IntervalStart": "2019-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237307856,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $4.59959",
+                    "ChargeAmount": "137.9900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-01",
+                    "IntervalStart": "2019-07-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237307857,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9b9e0d-e4f1-dc12-ac40-0e0e57a6f12a"
+            ]
+        },
+        {
+            "end": "2019-09-03",
+            "peak_demand": "81.9200",
+            "start": "2019-08-02",
+            "tariff": null,
+            "total_charge": "8840.1900",
+            "total_usage": "37618.1600",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 81.920000 kW @ $19.99000",
+                    "ChargeAmount": "1637.5800",
+                    "ChargeRatePerUnit": "19.9900",
+                    "ChargeUnitsUsed": "81.9200",
+                    "IntervalEnd": "2019-09-03",
+                    "IntervalStart": "2019-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237483665,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 20,927.520000 kWh @ $0.14903",
+                    "ChargeAmount": "3118.8300",
+                    "ChargeRatePerUnit": "0.1490",
+                    "ChargeUnitsUsed": "20927.5200",
+                    "IntervalEnd": "2019-09-03",
+                    "IntervalStart": "2019-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237483666,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 8,255.360000 kWh @ $0.17710",
+                    "ChargeAmount": "1462.0200",
+                    "ChargeRatePerUnit": "0.1771",
+                    "ChargeUnitsUsed": "8255.3600",
+                    "IntervalEnd": "2019-09-03",
+                    "IntervalStart": "2019-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237483667,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 8,435.280000 kWh @ $0.23223",
+                    "ChargeAmount": "1958.9300",
+                    "ChargeRatePerUnit": "0.2322",
+                    "ChargeUnitsUsed": "8435.2800",
+                    "IntervalEnd": "2019-09-03",
+                    "IntervalStart": "2019-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237483668,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "499.7500",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-03",
+                    "IntervalStart": "2019-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237483669,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "11.2900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-03",
+                    "IntervalStart": "2019-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237483670,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 33 days @ $4.59959",
+                    "ChargeAmount": "151.7900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-03",
+                    "IntervalStart": "2019-08-02",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237483671,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d6161-cfeb-d618-a00b-0e035e82cb78"
+            ]
+        },
+        {
+            "end": "2019-10-02",
+            "peak_demand": "77.1200",
+            "start": "2019-09-04",
+            "tariff": null,
+            "total_charge": "6854.0200",
+            "total_usage": "27398.1600",
+            "line_items": [
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "19.5700",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-02",
+                    "IntervalStart": "2019-10-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646334,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "367.9300",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-30",
+                    "IntervalStart": "2019-09-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646335,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.4000",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-02",
+                    "IntervalStart": "2019-10-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646336,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "7.8200",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-30",
+                    "IntervalStart": "2019-09-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646337,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $4.59959",
+                    "ChargeAmount": "9.2000",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-02",
+                    "IntervalStart": "2019-10-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646338,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 27 days @ $4.59959",
+                    "ChargeAmount": "124.1900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-30",
+                    "IntervalStart": "2019-09-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646339,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 45.760000 kW @ $20.46000",
+                    "ChargeAmount": "64.5700",
+                    "ChargeRatePerUnit": "20.4600",
+                    "ChargeUnitsUsed": "45.7600",
+                    "IntervalEnd": "2019-10-02",
+                    "IntervalStart": "2019-10-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646340,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand Charge 1 77.120000 kW @ $19.99000",
+                    "ChargeAmount": "1435.3100",
+                    "ChargeRatePerUnit": "19.9900",
+                    "ChargeUnitsUsed": "77.1200",
+                    "IntervalEnd": "2019-09-30",
+                    "IntervalStart": "2019-09-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646341,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 475.280000 kWh @ $0.15107",
+                    "ChargeAmount": "71.8000",
+                    "ChargeRatePerUnit": "0.1511",
+                    "ChargeUnitsUsed": "475.2800",
+                    "IntervalEnd": "2019-10-02",
+                    "IntervalStart": "2019-10-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646342,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 430.560000 kWh @ $0.17914",
+                    "ChargeAmount": "77.1300",
+                    "ChargeRatePerUnit": "0.1791",
+                    "ChargeUnitsUsed": "430.5600",
+                    "IntervalEnd": "2019-10-02",
+                    "IntervalStart": "2019-10-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646343,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 441.360000 kWh @ $0.23427",
+                    "ChargeAmount": "103.4000",
+                    "ChargeRatePerUnit": "0.2343",
+                    "ChargeUnitsUsed": "441.3600",
+                    "IntervalEnd": "2019-10-02",
+                    "IntervalStart": "2019-10-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646344,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Off Peak 13,798.040000 kWh @ $0.14903",
+                    "ChargeAmount": "2056.3200",
+                    "ChargeRatePerUnit": "0.1490",
+                    "ChargeUnitsUsed": "13798.0400",
+                    "IntervalEnd": "2019-09-30",
+                    "IntervalStart": "2019-09-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646345,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 5,969.800000 kWh @ $0.17710",
+                    "ChargeAmount": "1057.2500",
+                    "ChargeRatePerUnit": "0.1771",
+                    "ChargeUnitsUsed": "5969.8000",
+                    "IntervalEnd": "2019-09-30",
+                    "IntervalStart": "2019-09-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646346,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 6,283.120000 kWh @ $0.23223",
+                    "ChargeAmount": "1459.1300",
+                    "ChargeRatePerUnit": "0.2322",
+                    "ChargeUnitsUsed": "6283.1200",
+                    "IntervalEnd": "2019-09-30",
+                    "IntervalStart": "2019-09-04",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237646347,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ed18e-0eed-dfe1-ba8a-0e84c2d48402"
+            ]
+        },
+        {
+            "end": "2019-10-31",
+            "peak_demand": "68.4800",
+            "start": "2019-10-03",
+            "tariff": null,
+            "total_charge": "5385.3500",
+            "total_usage": "19953.0400",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand Charge 68.480000 kW @ $20.46000",
+                    "ChargeAmount": "1401.1000",
+                    "ChargeRatePerUnit": "20.4600",
+                    "ChargeUnitsUsed": "68.4800",
+                    "IntervalEnd": "2019-10-31",
+                    "IntervalStart": "2019-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237777481,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 10,576.480000 kWh @ $0.15107",
+                    "ChargeAmount": "1597.7900",
+                    "ChargeRatePerUnit": "0.1511",
+                    "ChargeUnitsUsed": "10576.4800",
+                    "IntervalEnd": "2019-10-31",
+                    "IntervalStart": "2019-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237777482,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 4,608.320000 kWh @ $0.17914",
+                    "ChargeAmount": "825.5300",
+                    "ChargeRatePerUnit": "0.1791",
+                    "ChargeUnitsUsed": "4608.3200",
+                    "IntervalEnd": "2019-10-31",
+                    "IntervalStart": "2019-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237777483,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 4,768.240000 kWh @ $0.23427",
+                    "ChargeAmount": "1117.0600",
+                    "ChargeRatePerUnit": "0.2343",
+                    "ChargeUnitsUsed": "4768.2400",
+                    "IntervalEnd": "2019-10-31",
+                    "IntervalStart": "2019-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237777484,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Stockton Utility Users' Tax (6.000%)",
+                    "ChargeAmount": "304.4900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-31",
+                    "IntervalStart": "2019-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237777485,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "5.9900",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-31",
+                    "IntervalStart": "2019-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237777486,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $4.59959",
+                    "ChargeAmount": "133.3900",
+                    "ChargeRatePerUnit": "4.5996",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-31",
+                    "IntervalStart": "2019-10-03",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237777487,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea053ef-9a76-d602-9599-0e0f7ff650bb"
+            ]
+        }
+    ]
+}

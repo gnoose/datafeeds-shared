@@ -1,7 +1,7 @@
 import unittest
 
 import datafeeds.urjanet.tests.util as test_util
-from datafeeds.urjanet.datasource.pacge import PacificGasElectricDataSource
+from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
 
 
 class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
@@ -10,7 +10,7 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
         short_account_number = "012345"
         meter_number = "01234567890"
         with self.assertRaises(ValueError):
-            PacificGasElectricDataSource(short_account_number, meter_number)
+            PacificGasElectricDatasource(short_account_number, meter_number)
 
 
 if __name__ == "__main__":
