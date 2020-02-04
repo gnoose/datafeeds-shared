@@ -32,6 +32,7 @@ from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
 from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
+from datafeeds.scrapers.sdge_greenbutton import datafeed as sdge_greenbutton_sync
 from datafeeds.scrapers.solaredge import datafeed as solaredge
 from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
@@ -96,6 +97,7 @@ scraper_functions = {
     "portland-bizportal": portland_bizportal,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
+    "sdge-green-button-sync": sdge_greenbutton_sync,
     "sfpuc-water-urjanet": sfpuc,
     "sce-green-button": sce_greenbutton,
     "sj-water-urjanet": sjwater,
