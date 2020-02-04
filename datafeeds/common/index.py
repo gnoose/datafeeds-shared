@@ -1,5 +1,5 @@
 from datetime import datetime, date, timedelta
-from typing import List
+from typing import List, Optional
 import logging
 
 from dateutil import parser as date_parser
@@ -71,12 +71,8 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
 
     Doc fields: started, status, error, accountId, accountName, meterId, meterName, scraper
     Required for new record: started, status, meterId, scraper
-    Don't index green-button scraper runs since they don't fetch data in tasks
     Retry up to 5 times if there's an error reaching the index.
     """
-    if "green-button" in run.get("scraper", ""):
-        return
-
     if not update:
         for field in ["started", "status", "meterId", "scraper"]:
             if field not in run:
@@ -234,7 +230,7 @@ def index_etl_interval_issues(
 
 def index_logs(
     task_id: str,
-    acct: SnapmeterAccount,
+    acct: Optional[SnapmeterAccount],
     meter: Meter,
     ds: MeterDataSource,
     status: Status,
@@ -249,14 +245,16 @@ def index_logs(
     except NotFoundError:
         # Make a document with fundamental information about the run.
         doc = dict(
-            accountId=acct.hex_id,
-            accountName=acct.name,
             meterId=meter.oid,
             meterName=meter.name,
             uploaded=datetime.now(),
             scraper=ds.name,
             status=str(status.name),
         )
+
+        if acct is not None:
+            doc["accountId"] = acct.hex_id
+            doc["accountName"] = acct.name
 
     try:
         with open(config.LOGPATH, "r") as f:
