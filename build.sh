@@ -1,3 +1,5 @@
 #!/bin/bash
 
-docker build -t gridium/datafeeds:deployed .
+# Build a container from local source code.
+
+docker build -t gridium/datafeeds:dev .
