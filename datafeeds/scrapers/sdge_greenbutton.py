@@ -18,7 +18,7 @@ from datafeeds.common import BillingDatum, Configuration, DateRange, Results
 from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.timeline import Timeline
-from datafeeds.common.typing import Status
+from datafeeds.common.typing import Status, adjust_bill_dates
 from datafeeds.models import Meter, SnapmeterAccount, SnapmeterMeterDataSource
 
 log = logging.getLogger(__name__)
@@ -86,10 +86,13 @@ def determine_interval(curves: List[LoadCurve]) -> int:
     )
 
     if not deltas:
+        log.info("Using default interval size of 15 minutes.")
         return 15  # Since curves is empty, the interval we choose is irrelevant, so just pick the default.
 
     if len(deltas) == 1:
-        return deltas.pop()
+        ivl = deltas.pop()
+        log.info("Using interval size: %s minutes.", ivl)
+        return ivl
 
     raise InvalidIntervalException("Detected multiple interval sizes for this meter.")
 
@@ -102,26 +105,6 @@ def _adjust_timezone(dt):
     """Convert a datetime-naive UTC timestamp to California time. (Local time for all SDGE meters.)"""
     dt_utc = dt.replace(tzinfo=UTC)
     return dt_utc.astimezone(CA_TZ)
-
-
-def _overlap(a: BillingDatum, b: BillingDatum):
-    c_start = max(a.start, b.start)
-    c_end = min(a.end, b.end)
-    return max(c_end - c_start, timedelta())
-
-
-def _adjust_bill_dates(bills: List[BillingDatum]) -> List[BillingDatum]:
-    """Ensure that the input list of bills is sorted by date and no two bills have overlapping dates."""
-    bills.sort(key=lambda x: x.start)
-
-    final_bills: List[BillingDatum] = []
-    for b in bills:
-        for other in final_bills:
-            if _overlap(b, other) > timedelta() or b.start == other.end:
-                b = b._replace(start=max(b.start, other.end + timedelta(days=1)))
-        final_bills.append(b)
-
-    return final_bills
 
 
 def determine_demand_multiplier(unit: str, interval: int):
@@ -160,16 +143,21 @@ class SdgeGreenButtonScraper(BaseApiScraper):
                 interval.start_date.month,
                 interval.start_date.day,
             )
+
             end_dt = datetime(
                 interval.end_date.year, interval.end_date.month, interval.end_date.day
             )
             payload = SearchSpecification(
-                usage_point=self.usage_point, start=start_dt, end=end_dt
+                usage_point=self.usage_point,
+                start=start_dt - timedelta(days=2),
+                end=end_dt + timedelta(days=2),
             )
             headers = {"Content-Type": "application/json"}
+            log.debug("Request JSON: %s", payload.to_json())
             response = requests.post(
                 root + "/sdge/search", json=payload.to_json(), headers=headers
             )
+            log.debug("Response JSON: %s" % response.json())
             service_updates.append(ServiceUpdate(response.json()))
 
         load_curves = [lc for su in service_updates for lc in su.load_curves]
@@ -180,11 +168,17 @@ class SdgeGreenButtonScraper(BaseApiScraper):
             for curve in su.load_curves:
                 multiplier = determine_demand_multiplier(curve.unit, interval)
                 for v in curve.values:
+                    log.debug(
+                        "Inserting interval data: %s - %s",
+                        _adjust_timezone(v.start),
+                        multiplier * v.value,
+                    )
                     timeline.insert(_adjust_timezone(v.start), multiplier * v.value)
 
             for b in su.bills:
                 if b.total is None:
                     log.info("Skipping bill with null total: %s" % b)
+                    continue
 
                 if b.use is None:
                     log.info("Skipping bill with null use: %s" % b)
@@ -203,7 +197,7 @@ class SdgeGreenButtonScraper(BaseApiScraper):
                     )
                 )
 
-        final_bills = _adjust_bill_dates(list(bills))
+        final_bills = adjust_bill_dates(list(bills))
         return Results(readings=timeline.serialize(), bills=final_bills)
 
 

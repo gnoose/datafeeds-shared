@@ -353,6 +353,5 @@ class SessionTests(unittest.TestCase):
             datetime(2019, 6, 2, 11, 4, 16),
             "2019-01-01",
         )
-        print(ivls)
         # Example will produce 4 readings for each month
         self.assertEqual(len(ivls), 24)
