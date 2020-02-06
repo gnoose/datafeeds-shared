@@ -30,7 +30,6 @@ class PacificGasElectricDatasource(UrjanetPyMySqlDataSource):
         super().__init__(account_number)
         self.meter_id = said
         self.account_number = self.normalize_account_number(account_number)
-        self.validate()
 
     def normalize_account_number(self, account_number):
         """Converts PacG&E account numbers into a normalized format
@@ -56,6 +55,7 @@ class PacificGasElectricDatasource(UrjanetPyMySqlDataSource):
         # This query finds all Urjanet accounts which either:
         # (1) Have a RawAccountNumber prefixed by this.account_number
         # (2) Have a RawAccountNumber == this.account_number, after removing dashes from the former
+        self.validate()
         query = """
             SELECT *
             FROM Account
