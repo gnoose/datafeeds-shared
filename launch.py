@@ -30,6 +30,7 @@ from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
+from datafeeds.scrapers.powertrack import datafeed as powertrack
 from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.sdge_greenbutton import datafeed as sdge_greenbutton_sync
@@ -95,6 +96,7 @@ scraper_functions = {
     "pge-urjanet-v2": pge,
     "pleasanton-urjanet": pleasanton,
     "portland-bizportal": portland_bizportal,
+    "powertrack": powertrack,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
     "sdge-green-button-sync": sdge_greenbutton_sync,
