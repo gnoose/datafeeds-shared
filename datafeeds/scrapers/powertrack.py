@@ -167,7 +167,7 @@ class PortfolioPage:
         except TimeoutException:
             return False
 
-    def go_to_status_page(self, site_name: str = None) -> SiteStatusPage:
+    def go_to_status_page(self, site_name: Optional[str] = None) -> SiteStatusPage:
         if site_name is None:
             log.warning("Warning: site name not set. Choosing first site found")
             site_name_xpath = """//*[@id="Name0"]/div/div/div/div/div[1]/img[2]"""
@@ -176,8 +176,8 @@ class PortfolioPage:
                 '//*[contains(@class, "fixedDataTableRowLayout_rowWrapper")'
                 ' and .//*[text()="{0}"]]'.format(site_name)
             )
-        site_name = self.driver.find_element_by_xpath(site_name_xpath)
-        site_name.click()
+        site_name_link = self.driver.find_element_by_xpath(site_name_xpath)
+        site_name_link.click()
 
         if not self._status_page_load_successful():
             raise PowerTrackException("Site status page failed to load")
