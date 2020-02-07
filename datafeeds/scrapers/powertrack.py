@@ -256,11 +256,7 @@ class PowerTrackScraper(BaseWebScraper):
         log.info("Logging in to Powertrack.")
         login_page = LoginPage(self._driver)
 
-        # for testing only
-        username = os.environ.get("POWERTRACK_USR")
-        password = os.environ.get("POWERTRACK_PSW")
-        # portfolio_page = login_page.login(self.username, self.password)
-        portfolio_page = login_page.login(username, password)
+        portfolio_page = login_page.login(self.username, self.password)
 
         self.screenshot("site selection")
         log.info("Selecting site")
