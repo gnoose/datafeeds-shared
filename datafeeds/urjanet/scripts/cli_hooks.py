@@ -54,7 +54,7 @@ from datafeeds.urjanet.datasource.watauga import WataugaDatasource
 from datafeeds.urjanet.transformer import (
     LosAngelesWaterTransformer,
     PacificGasElectricTransformer,
-    SfpucWaterTransformer,
+    SanFranciscoWaterTransformer,
     FosterCityWaterTransformer,
     GenericWaterTransformer,
     SouthlakeTransformer,
@@ -153,7 +153,7 @@ class SanFranciscoWaterCli(DatasourceCli):
         )
 
     def make_transformer(self):
-        return SfpucWaterTransformer()
+        return SanFranciscoWaterTransformer()
 
 
 class FosterCityWaterCli(DatasourceCli):
