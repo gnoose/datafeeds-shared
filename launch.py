@@ -53,6 +53,7 @@ from datafeeds.urjanet.datasource.ladwp import datafeed as ladwp_water
 from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
 from datafeeds.urjanet.datasource.pge import datafeed as pge
 from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
+from datafeeds.urjanet.datasource.pse import datafeed as pse
 from datafeeds.urjanet.datasource.sandiego import datafeed as sandiego
 from datafeeds.urjanet.datasource.sfpuc import datafeed as sfpuc
 from datafeeds.urjanet.datasource.sjwater import datafeed as sjwater
@@ -97,6 +98,7 @@ scraper_functions = {
     "pleasanton-urjanet": pleasanton,
     "portland-bizportal": portland_bizportal,
     "powertrack": powertrack,
+    "pse-urjanet": pse,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
     "sdge-green-button-sync": sdge_greenbutton_sync,

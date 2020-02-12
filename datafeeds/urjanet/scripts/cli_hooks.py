@@ -45,6 +45,7 @@ from datafeeds.urjanet.datasource.irvineranch import IrvineRanchWaterDatasource
 from datafeeds.urjanet.datasource.ladwp import LosAngelesWaterDatasource
 from datafeeds.urjanet.datasource.mountainview import MountainViewDatasource
 from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
+from datafeeds.urjanet.datasource.pse import PseDatasource
 from datafeeds.urjanet.datasource.pleasanton import PleasantonDatasource
 from datafeeds.urjanet.datasource.sandiego import SanDiegoWaterDatasource
 from datafeeds.urjanet.datasource.sfpuc import SanFranciscoWaterDatasource
@@ -52,9 +53,10 @@ from datafeeds.urjanet.datasource.sjwater import SjWaterDatasource
 from datafeeds.urjanet.datasource.southlake import SouthlakeDatasource
 from datafeeds.urjanet.datasource.watauga import WataugaDatasource
 from datafeeds.urjanet.transformer import (
+    UrjanetGridiumTransformer,
     LosAngelesWaterTransformer,
     PacificGasElectricTransformer,
-    SfpucWaterTransformer,
+    SanFranciscoWaterTransformer,
     FosterCityWaterTransformer,
     GenericWaterTransformer,
     SouthlakeTransformer,
@@ -124,6 +126,22 @@ class PgeCli(DatasourceCli):
         return PacificGasElectricTransformer()
 
 
+class PseCli(DatasourceCli):
+    __cli_key__ = "pse"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("said", help="utility_service.service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            PseDatasource(args.account_number, args.said), conn
+        )
+
+    def make_transformer(self):
+        return UrjanetGridiumTransformer()
+
+
 class LadwpWaterCli(DatasourceCli):
     __cli_key__ = "ladwp_water"
 
@@ -153,7 +171,7 @@ class SanFranciscoWaterCli(DatasourceCli):
         )
 
     def make_transformer(self):
-        return SfpucWaterTransformer()
+        return SanFranciscoWaterTransformer()
 
 
 class FosterCityWaterCli(DatasourceCli):
