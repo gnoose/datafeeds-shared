@@ -48,6 +48,7 @@ from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
 from datafeeds.urjanet.datasource.pse import PseDatasource
 from datafeeds.urjanet.datasource.pleasanton import PleasantonDatasource
 from datafeeds.urjanet.datasource.sandiego import SanDiegoWaterDatasource
+from datafeeds.urjanet.datasource.sdge import SDGEDatasource
 from datafeeds.urjanet.datasource.sfpuc import SanFranciscoWaterDatasource
 from datafeeds.urjanet.datasource.sjwater import SjWaterDatasource
 from datafeeds.urjanet.datasource.southlake import SouthlakeDatasource
@@ -59,6 +60,7 @@ from datafeeds.urjanet.transformer import (
     SanFranciscoWaterTransformer,
     FosterCityWaterTransformer,
     GenericWaterTransformer,
+    SDGETransformer,
     SouthlakeTransformer,
     WataugaTransformer,
     AmericanTransformer,
@@ -243,6 +245,22 @@ class SanDiegoWaterCli(DatasourceCli):
 
     def make_transformer(self):
         return GenericWaterTransformer()
+
+
+class SDGECli(DatasourceCli):
+    __cli_key__ = "sdge"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("said", help="utility_service.service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            SDGEDatasource(args.account_number, args.said), conn
+        )
+
+    def make_transformer(self):
+        return SDGETransformer()
 
 
 class SouthlakeCli(DatasourceCli):

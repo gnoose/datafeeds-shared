@@ -21,7 +21,7 @@ class TestUrjanet_UtilityName_Transformer(test_util.UrjaFixtureText):
             end_date=end_date,
         )
 
-    def test__utilityIid_(self):
+    def test__utilityId_(self):
         self._utilityId__test()
 
 
