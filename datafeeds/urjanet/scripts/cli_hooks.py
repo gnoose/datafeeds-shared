@@ -44,6 +44,7 @@ from datafeeds.urjanet.datasource.irvineranch import IrvineRanchWaterDatasource
 
 from datafeeds.urjanet.datasource.ladwp import LosAngelesWaterDatasource
 from datafeeds.urjanet.datasource.mountainview import MountainViewDatasource
+from datafeeds.urjanet.datasource.nationalgrid import NationalGridDatasource
 from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
 from datafeeds.urjanet.datasource.pse import PseDatasource
 from datafeeds.urjanet.datasource.pleasanton import PleasantonDatasource
@@ -56,6 +57,7 @@ from datafeeds.urjanet.datasource.watauga import WataugaDatasource
 from datafeeds.urjanet.transformer import (
     UrjanetGridiumTransformer,
     LosAngelesWaterTransformer,
+    NationalGridTransformer,
     PacificGasElectricTransformer,
     SanFranciscoWaterTransformer,
     FosterCityWaterTransformer,
@@ -110,6 +112,22 @@ class DatasourceCli(metaclass=RegisteredCliHook):
 
     def make_transformer(self):
         return None
+
+
+class NationalGridCli(DatasourceCli):
+    __cli_key__ = "nationalgrid"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("said", help="utility_service.service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            NationalGridDatasource(args.account_number, args.said), conn
+        )
+
+    def make_transformer(self):
+        return NationalGridTransformer()
 
 
 class PgeCli(DatasourceCli):
