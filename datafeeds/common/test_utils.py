@@ -1,18 +1,25 @@
 from datetime import datetime
 import os
+from functools import lru_cache
+import logging
 from typing import Tuple, List
 import uuid
 
+import boto3
+import botocore
 from sqlalchemy_utils.functions import database_exists, create_database
 
 from datafeeds.config import DATAFEEDS_ROOT
-from datafeeds import db
+from datafeeds import db, config
 from datafeeds.models import (
     SnapmeterAccount,
     SnapmeterAccountDataSource,
     SnapmeterMeterDataSource,
 )
 from datafeeds.models import Meter, UtilityService
+
+
+log = logging.getLogger(__name__)
 
 
 CONNSTR = "postgresql+psycopg2://postgres@pg/gridium_test"
@@ -113,3 +120,29 @@ def add_datasources(account: SnapmeterAccount, meters: List[Meter], name: str) -
             )
         )
     db.session.flush()
+
+
+s3 = boto3.resource("s3")
+
+
+class FixtureNotFoundError(Exception):
+    pass
+
+
+@lru_cache(maxsize=32)
+def private_fixture(s3_key: str) -> bytes:
+    path = os.path.join(config.PRIVATE_FIXTURES_PATH, s3_key)
+
+    if not os.path.exists(path):
+        try:
+            log.debug("Downloading test fixture %s from S3.", s3_key)
+            s3.Bucket(config.PRIVATE_FIXTURES_S3_BUCKET).download_file(s3_key, path)
+        except botocore.exceptions.ClientError as e:
+            if e.response["Error"]["Code"] == "404":
+                raise FixtureNotFoundError("Could not locate test fixture %s." % s3_key)
+            else:
+                raise
+
+    with open(path, "rb") as fixture:
+        log.debug("Reading test fixture %s from disk cache.", s3_key)
+        return fixture.read()
