@@ -28,6 +28,7 @@ from datafeeds.scrapers.bloom_interval import datafeed as bloom_interval
 from datafeeds.scrapers.engie import datafeed as engie
 from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
+from datafeeds.scrapers.nautilus import datafeed as nautilus
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
 from datafeeds.scrapers.powertrack import datafeed as powertrack
@@ -95,6 +96,7 @@ scraper_functions = {
     "ladwp-water-urjanet": ladwp_water,
     "mountainview-urjanet": mountainview,
     "nationalgrid-urjanet": nationalgrid,
+    "nautilus": nautilus,
     "nve-myaccount": nvenergy_myaccount,
     "pacific-power-interval": pacific_power_interval,
     "pge-urjanet-v2": pge,
