@@ -76,6 +76,11 @@ from datafeeds.urjanet.datasource.utilityId import datafeed as utilityId
 2. Fix imports and other errors.
 3. Add type annotations for function parameters.
 
+### Update tests
+
+1. Run `python transform_urja_json.py ../tests/data/utilityId/utilityId01_input.json utilityId > ../tests/data/utilityId/utilityId01_expected`
+2. Update the test: [datafeeds/urjanet/tests/test_urjanet_utilityId_transformer.py] to uncomment the test and fix the input and expected filenames.
+
 ### Run tests and push
 
 1. Run [precommit.sh](../precommit.sh) to verify that linting and tests pass.

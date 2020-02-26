@@ -21,6 +21,24 @@ DATAFEEDS_ENVIRONMENT = os.environ.get("DATAFEEDS_ENVIRONMENT", "local").lower()
 # (Used to simplify DB transaction management and rollback commits.)
 UNDER_TEST: bool = (os.environ.get("DATAFEEDS_UNDER_TEST", "True").lower() == "true")
 
+# Should datafeeds use private fixtures downloaded from S3 to test? If so, where should they be downloaded to?
+#
+# Note: If running on circle CI, we assume the AWS environment variables
+# - AWS_ACCESS_KEY_ID
+# - AWS_SECRET_ACCESS_KEY
+#
+# are set to enable downloading test fixtures. By default these should just use your local development AWS creds.
+TEST_WITH_PRIVATE_FIXTURES: bool = (
+    os.environ.get("TEST_WITH_PRIVATE_FIXTURES", "False").lower() == "true"
+)
+PRIVATE_FIXTURES_S3_BUCKET: str = os.environ.get(
+    "PRIVATE_FIXTURES_S3_BUCKET", "gridium-datafeeds-test-fixtures"
+)
+PRIVATE_FIXTURES_PATH: str = os.environ.get(
+    "PRIVATE_FIXTURES_PATH", os.path.join(DATAFEEDS_ROOT, "private_fixtures")
+)
+
+
 # What directory should be used for storing scraper artifacts like screenshots and downloads?
 WORKING_DIRECTORY: str = os.environ.get(
     "WORKING_DIRECTORY", path.join(DATAFEEDS_ROOT, "workdir")
