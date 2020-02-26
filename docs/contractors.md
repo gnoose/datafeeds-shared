@@ -32,7 +32,7 @@ When the PR is ready to merge, sync `datafeeds-shared` changes to `datafeeds`:
 
     git checkout contractor-branch
     git pull --rebase # get latest work
-    git pull upstream  # get latest datafeeds
+    git pull --rebase upstream master # get latest datafeeds
     git merge upstream/master # merge datafeeds-shared work into datafeeds master
     git push upstream master # push to datafeeds master
 
