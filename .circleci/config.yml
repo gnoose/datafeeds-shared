@@ -1,6 +1,5 @@
 version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@6.5.0
   slack: circleci/slack@3.4.2
 jobs:
   build:
@@ -8,7 +7,7 @@ jobs:
     docker:
       - image: circleci/python:3.6.4
         environment:
-          ANALYTICA_UNDER_TEST: True
+          DATAFEEDS_UNDER_TEST: True
       - image: mdillon/postgis@sha256:f006ac612da048c54e49d7b2abd2862295070edcdd7d28efb24bccf859a87466
     steps:
       - checkout
@@ -47,31 +46,3 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - aws-ecr/build-and-push-image:
-          requires:
-            - build
-          extra-build-args: "--build-arg REPO_HOST=${AWS_DEV_ECR_ACCOUNT_URL}"
-          attach-workspace: true
-          account-url: AWS_DEV_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_DEV_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_DEV_SECRET_ACCESS_KEY
-          #  context: myContext
-          #  path: pathToMyDockerfile
-          #  profile-name: myProfileName
-          region: AWS_DEV_DEFAULT_REGION
-          repo: $CIRCLE_PROJECT_REPONAME
-          tag: $CIRCLE_SHA1
-      - aws-ecr/build-and-push-image:
-          requires:
-            - build
-          extra-build-args: "--build-arg REPO_HOST=${AWS_PROD_ECR_ACCOUNT_URL}"
-          #attach-workspace: true
-          account-url: AWS_PROD_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_PROD_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_PROD_SECRET_ACCESS_KEY
-          #  context: myContext
-          #  path: pathToMyDockerfile
-          #  profile-name: myProfileName
-          region: AWS_PROD_DEFAULT_REGION
-          repo: $CIRCLE_PROJECT_REPONAME
-          tag: $CIRCLE_SHA1

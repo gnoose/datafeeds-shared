@@ -10,3 +10,4 @@ urjanet.sql
 workdir/*
 run.env
 .DS_Store
+private_fixtures/*

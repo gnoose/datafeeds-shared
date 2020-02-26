@@ -70,9 +70,10 @@ class DataExtractPage(CSSSelectorBasePageObject):
     MetricList = 'angular2-multiselect[name="metrics"] .c-list'
     IntervalRadio = 'label[for="timeInterval-15min"]'
     CustomRadio = 'label[for="timescale-custom"]'
-    FromDate = 'input[name="fromDate"]'
-    ToDate = 'input[name="toDate"]'
-    SubmitButton = "app-loading-button .btn-success"
+    FromDate = 'input[name="dpFromDate"]'
+    ToDate = 'input[name="dpToDate"]'
+    SubmitButton = 'app-loading-button button[type="submit"]'
+    CardHeader = ".card-header"
 
     def find_text_for_checkbox(self, text: str):
         label = self._driver.find("//*[contains(text(), '{}')]".format(text), True)
@@ -90,6 +91,7 @@ class DataExtractPage(CSSSelectorBasePageObject):
         return int(from_year.find_elements_by_tag_name("option")[0].text)
 
     def handle_multiselect(self, select: str, select_list: str, text: str):
+        self.find_element(self.CardHeader).click()
         self.find_element(select).click()
         self.find_text_for_checkbox(text)
         # Hide popover
@@ -103,6 +105,8 @@ class DataExtractPage(CSSSelectorBasePageObject):
         self._driver.fill(self.FromDate, start_date)
         self._driver.clear(self.ToDate)
         self._driver.fill(self.ToDate, end_date)
+
+        self.find_element(self.CardHeader).click()
         self.find_element(self.SubmitButton).click()
 
 
@@ -222,7 +226,7 @@ class BloomScraper(BaseWebScraper):
         date_range = DateRange(self.start_date, self.end_date)
         interval_size = relativedelta(days=MAX_DOWNLOAD_DAYS)
 
-        extract_page.wait_until_ready(extract_page.SiteSelect)
+        extract_page.wait_until_ready(extract_page.CustomRadio)
         extract_page.handle_multiselect(
             extract_page.SiteSelect, extract_page.SiteList, self.site_name
         )
