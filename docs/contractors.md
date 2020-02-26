@@ -28,11 +28,11 @@ copy the contents of [porting_urjanet.md](porting_urjanet.md) into the PR descri
 
 Assign the job to a contractor. They should push their changes to a branch in the `datafeeds-shared` repo.
 
-When the PR is ready to merge, sync `datafeeds-shared` changes to `datafeeds`:
+When the PR is ready, merge it on GitHub as usual. Then sync `datafeeds-shared` changes to `datafeeds`. From `datafeeds-shared`:
 
-    git checkout contractor-branch
-    git pull --rebase # get latest work
-    git pull --rebase upstream master # get latest datafeeds
+    git checkout master
+    git pull --rebase
+    git fetch upstream  # get latest datafeeds
     git merge upstream/master # merge datafeeds-shared work into datafeeds master
     git push upstream master # push to datafeeds master
 
