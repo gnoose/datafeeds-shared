@@ -74,7 +74,6 @@ class DirectEnergyDatasource(UrjanetPyMySqlDataSource):
             for row in [max(group, key=get_date) for group in groups.values()]
         ]
 
-
     def load_meters(self, account_pk: int) -> List[Meter]:
         """Load all meters for an account."""
         query = """
@@ -86,16 +85,17 @@ class DirectEnergyDatasource(UrjanetPyMySqlDataSource):
         # Check our requirement that each statement has data about a single POD id
         pod_ids = [mtr["PODid"] for mtr in result_set]
         if len(set(pod_ids)) > 1:
-            msg = ("This scraper requires each statement to "
-                   "contain information for a single meter/PODid. "
-                   "Violated by: Statement PK=={1}")
+            msg = (
+                "This scraper requires each statement to "
+                "contain information for a single meter/PODid. "
+                "Violated by: Statement PK=={1}"
+            )
             msg = msg.format(account_pk)
-            #raise ScraperPreconditionError(msg)
-            raise Exception(msg) # TODO: is there a better class to use here?
+            # raise ScraperPreconditionError(msg)
+            raise Exception(msg)  # TODO: is there a better class to use here?
 
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
+
 
 def datafeed(
     account: SnapmeterAccount,

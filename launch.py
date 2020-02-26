@@ -28,8 +28,10 @@ from datafeeds.scrapers.bloom_interval import datafeed as bloom_interval
 from datafeeds.scrapers.engie import datafeed as engie
 from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
+from datafeeds.scrapers.nautilus import datafeed as nautilus
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
+from datafeeds.scrapers.powertrack import datafeed as powertrack
 from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.sdge_greenbutton import datafeed as sdge_greenbutton_sync
@@ -51,9 +53,12 @@ from datafeeds.urjanet.datasource.heco import datafeed as heco_urjanet
 from datafeeds.urjanet.datasource.irvineranch import datafeed as irvineranch
 from datafeeds.urjanet.datasource.ladwp import datafeed as ladwp_water
 from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
+from datafeeds.urjanet.datasource.nationalgrid import datafeed as nationalgrid
 from datafeeds.urjanet.datasource.pge import datafeed as pge
 from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
+from datafeeds.urjanet.datasource.pse import datafeed as pse
 from datafeeds.urjanet.datasource.sandiego import datafeed as sandiego
+from datafeeds.urjanet.datasource.sdge import datafeed as sdge
 from datafeeds.urjanet.datasource.sfpuc import datafeed as sfpuc
 from datafeeds.urjanet.datasource.sjwater import datafeed as sjwater
 from datafeeds.urjanet.datasource.southlake import datafeed as southlake
@@ -92,13 +97,18 @@ scraper_functions = {
     "irvineranch-water-urjanet": irvineranch,
     "ladwp-water-urjanet": ladwp_water,
     "mountainview-urjanet": mountainview,
+    "nationalgrid-urjanet": nationalgrid,
+    "nautilus": nautilus,
     "nve-myaccount": nvenergy_myaccount,
     "pacific-power-interval": pacific_power_interval,
     "pge-urjanet-v2": pge,
     "pleasanton-urjanet": pleasanton,
     "portland-bizportal": portland_bizportal,
+    "powertrack": powertrack,
+    "pse-urjanet": pse,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
+    "sdge-urjanet": sdge,
     "sdge-green-button-sync": sdge_greenbutton_sync,
     "sfpuc-water-urjanet": sfpuc,
     "sce-green-button": sce_greenbutton,
