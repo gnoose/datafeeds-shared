@@ -7,7 +7,7 @@ jobs:
     docker:
       - image: circleci/python:3.6.4
         environment:
-          ANALYTICA_UNDER_TEST: True
+          DATAFEEDS_UNDER_TEST: True
       - image: mdillon/postgis@sha256:f006ac612da048c54e49d7b2abd2862295070edcdd7d28efb24bccf859a87466
     steps:
       - checkout
