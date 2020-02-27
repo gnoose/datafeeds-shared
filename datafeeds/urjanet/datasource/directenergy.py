@@ -109,7 +109,9 @@ def datafeed(
         meter,
         datasource,
         params,
-        DirectEnergyDatasource(meter.utility_account_id),
+        DirectEnergyDatasource(
+            meter.utility_account_id, meter.utility_service.service_id
+        ),
         UrjanetGridiumTransformer(),
         task_id=task_id,
     )

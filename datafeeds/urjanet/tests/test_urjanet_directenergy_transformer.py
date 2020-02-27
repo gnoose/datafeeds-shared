@@ -22,8 +22,9 @@ class TestUrjanetDirectEnergyTransformer(test_util.UrjaFixtureText):
         )
 
     def test_directenergy(self):
-        pass
-        # self.directenergy_test("10152200_input.json", "10152200_expected.json")
+        self.directenergy_test(
+            "directenergy01_input.json", "directenergy01_expected.json"
+        )
 
 
 if __name__ == "__main__":

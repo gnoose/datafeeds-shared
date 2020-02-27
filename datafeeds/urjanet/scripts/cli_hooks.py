@@ -149,7 +149,7 @@ class PgeCli(DatasourceCli):
 
 
 class DirectEnergy(DatasourceCli):
-    __cli_key__ = "de"
+    __cli_key__ = "directenergy"
 
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
