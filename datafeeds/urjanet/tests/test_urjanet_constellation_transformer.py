@@ -22,8 +22,10 @@ class TestUrjanetConstellationTransformer(test_util.UrjaFixtureText):
         )
 
     def test_constellation(self):
-        pass
-        # self.constellation_test("10152200_input.json", "10152200_expected.json")
+        self.constellation_test(
+            "constellation01_input.json", "constellation01_expected.json"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

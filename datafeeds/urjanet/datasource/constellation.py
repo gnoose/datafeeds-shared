@@ -9,15 +9,18 @@ from datafeeds.models import (
 )
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.transformer import ConstellationTransformer
 
 
-CONSTELLATION_ACCOUNT_ID = '1VEN3173'
+CONSTELLATION_ACCOUNT_ID = "1VEN3173"
 
 
 class ConstellationDatasource(UrjanetPyMySqlDataSource):
     """Load data from an Urjanet database"""
 
-    def __init__(self, account_number: str = CONSTELLATION_ACCOUNT_ID, said: str = None):
+    def __init__(
+        self, account_number: str = CONSTELLATION_ACCOUNT_ID, said: str = None
+    ):
         super().__init__(account_number)
         self.account_number = account_number
         self.said = said
@@ -40,10 +43,7 @@ class ConstellationDatasource(UrjanetPyMySqlDataSource):
         """
         result_set = self.fetch_all(query, self.account_number)
 
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: int) -> List[Meter]:
         """Load all meters for an account.
@@ -60,9 +60,7 @@ class ConstellationDatasource(UrjanetPyMySqlDataSource):
         """
         result_set = self.fetch_all(query, account_pk, "%{}%".format(self.said[-6:]))
 
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
 
 def datafeed(
