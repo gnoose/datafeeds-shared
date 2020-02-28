@@ -53,6 +53,7 @@ from datafeeds.urjanet.datasource.irvineranch import datafeed as irvineranch
 from datafeeds.urjanet.datasource.ladwp import datafeed as ladwp_water
 from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
 from datafeeds.urjanet.datasource.nationalgrid import datafeed as nationalgrid
+from datafeeds.urjanet.datasource.nve import datafeed as nve
 from datafeeds.urjanet.datasource.pge import datafeed as pge
 from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
 from datafeeds.urjanet.datasource.pse import datafeed as pse
@@ -96,6 +97,7 @@ scraper_functions = {
     "ladwp-water-urjanet": ladwp_water,
     "mountainview-urjanet": mountainview,
     "nationalgrid-urjanet": nationalgrid,
+    "nve-urjanet": nve,
     "nautilus": nautilus,
     "nve-myaccount": nvenergy_myaccount,
     "pacific-power-interval": pacific_power_interval,

@@ -10,9 +10,7 @@ DATA_DIR = os.path.join(TEST_DIR, "data/nve")
 
 
 class TestUrjanetNVEnergyTransformer(test_util.UrjaFixtureText):
-    def nve_test(
-        self, input_name, expected_name, start_date=None, end_date=None
-    ):
+    def nve_test(self, input_name, expected_name, start_date=None, end_date=None):
         self.fixture_test(
             transformer=NVEnergyTransformer(),
             input_path=os.path.join(DATA_DIR, input_name),
@@ -22,8 +20,7 @@ class TestUrjanetNVEnergyTransformer(test_util.UrjaFixtureText):
         )
 
     def test_nve(self):
-        pass
-        #self.nve_test("10152200_input.json", "10152200_expected.json")
+        self.nve_test("nve01_input.json", "nve01_expected.json")
 
 
 if __name__ == "__main__":

@@ -1,11 +1,15 @@
+from decimal import Decimal
+from typing import Optional
+
 from datafeeds.urjanet.transformer import (
     GenericBillingPeriod,
     UrjanetGridiumTransformer,
 )
+
 from datafeeds.urjanet.model import Account
 
 
-class NVEnergyTransformer(UrjanetGridiumTransformer):
+class NVEnergyBillingPeriod(GenericBillingPeriod):
     def get_peak_demand(self) -> Optional[Decimal]:
         """Attempt to determine peak demand from the set of usage entities associated with a billing period.
 
@@ -22,8 +26,11 @@ class NVEnergyTransformer(UrjanetGridiumTransformer):
         # Collect demand measurements from the set of usages, attempting to filter out facility charges
         # In recent history, Urjanet has been labelling facility charges with "FAC" in the UsageActualName field.
         candidate_demand_usages = [
-            u for u in usages
-            if u.MeasurementType == 'demand' and u.EnergyUnit == 'kW' and not 'fac' in usage.UsageActualName.lower()
+            u
+            for u in self.iter_unique_usages()
+            if u.MeasurementType == "demand"
+            and u.EnergyUnit == "kW"
+            and "fac" not in u.UsageActualName.lower()
         ]
 
         if candidate_demand_usages:
@@ -32,4 +39,10 @@ class NVEnergyTransformer(UrjanetGridiumTransformer):
         # Note: this function returns 0 when no demand peak is found, opposed to 'None'.
         # This is a post-condition on the parent method. Otherwise, we fail in production
         # when posting to webapps.
-        return 0
+        return Decimal(0)  # <--- ?
+
+
+class NVEnergyTransformer(UrjanetGridiumTransformer):
+    @staticmethod
+    def billing_period(account: Account) -> NVEnergyBillingPeriod:
+        return NVEnergyBillingPeriod(account)

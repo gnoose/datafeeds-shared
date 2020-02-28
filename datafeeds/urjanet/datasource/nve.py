@@ -1,3 +1,5 @@
+import itertools
+
 from typing import Optional, List
 
 from datafeeds.common.batch import run_urjanet_datafeed
@@ -9,6 +11,7 @@ from datafeeds.models import (
 )
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.transformer import NVEnergyTransformer
 
 
 class NVEnergyDatasource(UrjanetPyMySqlDataSource):
@@ -37,14 +40,12 @@ class NVEnergyDatasource(UrjanetPyMySqlDataSource):
         # Group the statements by interval, and take the latest statement for a given interval
         result_set = [
             max(group, key=lambda stmt: stmt["StatementDate"])
-            for _, group in itertools.groupby(result_set, lambda stmt: (stmt["IntervalStart"], stmt["IntervalEnd"]))
+            for _, group in itertools.groupby(
+                result_set, lambda stmt: (stmt["IntervalStart"], stmt["IntervalEnd"])
+            )
         ]
 
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
-
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: int) -> List[Meter]:
         """Load all meters for an account."""
@@ -55,14 +56,16 @@ class NVEnergyDatasource(UrjanetPyMySqlDataSource):
         """
         if self.meter_number:
             query += " AND (Meter.MeterNumber LIKE %s OR Meter.MeterNumber LIKE %s)"
-            result_set = self.fetch_all(query, account_pk, "%{}%".format(self.said),
-                                        "%{}".format(self.meter_number))
+            result_set = self.fetch_all(
+                query,
+                account_pk,
+                "%{}%".format(self.said),
+                "%{}".format(self.meter_number),
+            )
         else:
             query += " AND Meter.MeterNumber LIKE %s"
             result_set = self.fetch_all(query, account_pk, "%{}%".format(self.said))
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
 
 def datafeed(
@@ -77,7 +80,11 @@ def datafeed(
         meter,
         datasource,
         params,
-        NVEnergyDatasource(meter.utility_account_id),
+        NVEnergyDatasource(
+            meter.utility_account_id,
+            meter.utility_service.service_id,
+            datasource.meta["nveMeterNumber"],  # <--- ?
+        ),
         NVEnergyTransformer(),
         task_id=task_id,
     )
