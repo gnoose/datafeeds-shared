@@ -122,7 +122,9 @@ class NVEnergyCli(DatasourceCli):
     def add_datasource_args(self, parser):
         parser.add_argument("account_number")
         parser.add_argument("said", help="utility_service.service_id")
-        parser.add_argument("meter_number")
+        parser.add_argument(
+            "meter_number", help="snapmeter_meter_data_source.meta.nveMeterNumber"
+        )
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
