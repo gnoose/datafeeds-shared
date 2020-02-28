@@ -188,7 +188,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
             gridium_periods.append(
                 GridiumBillingPeriod(
                     start=ival.begin,
-                    end=ival.end - timedelta(days=1),
+                    end=ival.end,
                     total_charge=period_data.get_total_charge(),
                     peak_demand=period_data.get_peak_demand(),
                     total_usage=period_data.get_total_usage(),
@@ -323,7 +323,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
             for usage in meter.usages:
                 if usage.RateComponent == "[total]":
                     usage_start = usage.IntervalStart
-                    usage_end = usage.IntervalEnd + timedelta(days=1)
+                    usage_end = usage.IntervalEnd
                     duration = (usage_end - usage_start).days
                     if max_duration and duration > max_duration:
                         log.debug(

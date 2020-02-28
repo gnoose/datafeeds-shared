@@ -38,13 +38,13 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
     def test_301_industrial_fixture(self):
         """301 is a real meter that exhibits edge cases of CCA and corrections billing"""
         self.pge_fixture_test(
-            "301_input.json", "301_expected.json", start_date=date(2018, 1, 1),
+            "301_input.json", "301_expected.json", start_date=date(2017, 1, 1),
         )
 
     def test_3140_kearney_fixture(self):
         """3140 is a real meter that exhibits edge cases of CCA billing"""
         self.pge_fixture_test(
-            "3140_input.json", "3140_expected.json", start_date=date(2018, 1, 1),
+            "3140_input.json", "3140_expected.json", start_date=date(2015, 1, 1),
         )
 
     def test_lamesa_fixture(self):
@@ -56,7 +56,7 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
     def test_90digital_fixture(self):
         """The 90 fixture is a real meter that exhibits edge cases of CCA billing"""
         self.pge_fixture_test(
-            "90_input.json", "90_expected.json", start_date=date(2018, 1, 1),
+            "90_input.json", "90_expected.json", start_date=date(2017, 1, 1),
         )
 
     def test_nem_charges(self):
@@ -81,6 +81,11 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
         for hit in hits:
             charge = test_util.default_charge(ChargeActualName=hit)
             self.assertTrue(transformer.is_correction_charge(charge))
+
+    def test_end_date_adjustment(self):
+        """Verify that end date does not need to be adjusted."""
+        for oid in [1761981218832, 1762510856194, 1762511273986]:
+            self.pge_fixture_test("%s_input.json" % oid, "%s_expected.json" % oid)
 
 
 if __name__ == "__main__":
