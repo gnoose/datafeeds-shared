@@ -83,7 +83,7 @@ def datafeed(
         NVEnergyDatasource(
             meter.utility_account_id,
             meter.utility_service.service_id,
-            datasource.meta["nveMeterNumber"],  # <--- ?
+            datasource.meta["nveMeterNumber"],
         ),
         NVEnergyTransformer(),
         task_id=task_id,

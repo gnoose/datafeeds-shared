@@ -39,7 +39,7 @@ class NVEnergyBillingPeriod(GenericBillingPeriod):
         # Note: this function returns 0 when no demand peak is found, opposed to 'None'.
         # This is a post-condition on the parent method. Otherwise, we fail in production
         # when posting to webapps.
-        return Decimal(0)  # <--- ?
+        return Decimal(0)
 
 
 class NVEnergyTransformer(UrjanetGridiumTransformer):
