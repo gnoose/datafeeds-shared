@@ -1,4 +1,3 @@
-from datetime import timedelta
 from typing import List
 
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
@@ -11,12 +10,11 @@ class SDGETransformer(UrjanetGridiumTransformer):
         """Process the account objects in reverse order by statement date.
 
         SDGE bills are end date inclusive, meaning that the previous bill period ends on
-        the same day the next period begins. Adjust for it.
+        the same day the next period begins.
         """
         accounts = []
         for account in sorted(
             filtered_accounts, key=lambda x: x.StatementDate, reverse=True
         ):
-            account.IntervalEnd -= timedelta(days=1)
             accounts.append(account)
         return accounts

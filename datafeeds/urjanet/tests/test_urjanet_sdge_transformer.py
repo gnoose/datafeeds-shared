@@ -19,8 +19,11 @@ class TestUrjanetSDGETransformer(test_util.UrjaFixtureText):
             end_date=end_date,
         )
 
-    def test_sdge(self):
+    def test_sdge_1711649865730(self):
         self.sdge_test("1711649865730_input.json", "1711649865730_expected.json")
+
+    def test_sdge_12224763160(self):
+        self.sdge_test("12224763160_input.json", "12224763160_expected.json")
 
 
 if __name__ == "__main__":
