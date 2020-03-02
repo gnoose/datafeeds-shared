@@ -42,7 +42,8 @@ from datafeeds.urjanet.datasource.fostercity import FosterCityWaterDatasource
 from datafeeds.urjanet.datasource.heco import HecoDatasource
 from datafeeds.urjanet.datasource.irvineranch import IrvineRanchWaterDatasource
 
-from datafeeds.urjanet.datasource.ladwp import LosAngelesWaterDatasource
+from datafeeds.urjanet.datasource.ladwp import LADWPDatasource
+from datafeeds.urjanet.datasource.ladwp_water import LosAngelesWaterDatasource
 from datafeeds.urjanet.datasource.mountainview import MountainViewDatasource
 from datafeeds.urjanet.datasource.nationalgrid import NationalGridDatasource
 from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
@@ -56,6 +57,7 @@ from datafeeds.urjanet.datasource.southlake import SouthlakeDatasource
 from datafeeds.urjanet.datasource.watauga import WataugaDatasource
 from datafeeds.urjanet.transformer import (
     UrjanetGridiumTransformer,
+    LADWPTransformer,
     LosAngelesWaterTransformer,
     NationalGridTransformer,
     PacificGasElectricTransformer,
@@ -176,6 +178,22 @@ class LadwpWaterCli(DatasourceCli):
 
     def make_transformer(self):
         return LosAngelesWaterTransformer()
+
+
+class LadwpCli(DatasourceCli):
+    __cli_key__ = "ladwp"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            LADWPDatasource(args.account_number, args.service_id), conn
+        )
+
+    def make_transformer(self):
+        return LADWPTransformer()
 
 
 class SanFranciscoWaterCli(DatasourceCli):
