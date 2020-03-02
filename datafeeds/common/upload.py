@@ -188,7 +188,7 @@ def hash_bill(service_id, start_date, end_date, cost, demand, use):
     """Determine a key for the input bill_datum tuple that is unique (with high probability)."""
     fmt_string = "{0}_{1}_{2}_{3}_{4}_{5}"
     descriptor = fmt_string.format(
-        service_id, start_date.isoformat(), end_date.isoformat(), cost, demand, use,
+        service_id, start_date.isoformat(), end_date.isoformat(), cost, demand, use
     )
     return hashlib.sha224(descriptor.encode("utf-8")).hexdigest()
 

@@ -265,6 +265,8 @@ class Meter(ModelMixin, Base):
 
     @property
     def utility_account_id(self) -> str:
+        # Once writes confirmed stable, start reading this off of the
+        # UtilityService table instead.
         return self.snapmeter_account_meter[0].utility_account_id
 
     @property
