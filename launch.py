@@ -319,7 +319,7 @@ def launch_by_name(
     log.info("Metadata: %s", meta)
 
     # Set up the necessary objects to make a local run look like one in production.
-    service = UtilityService(service_id)
+    service = UtilityService(service_id, account_id)
     db.session.add(service)
     db.session.flush()
 

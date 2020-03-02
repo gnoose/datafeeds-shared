@@ -135,6 +135,12 @@ CREATE TYPE public.generation_provider_enum AS ENUM (
 );
 
 
+CREATE TYPE public.provider_type_enum AS ENUM (
+    'utility-bundled',
+    'tnd-only'
+);
+
+
 ALTER TYPE public.generation_provider_enum OWNER TO gridium;
 
 --
@@ -2378,7 +2384,14 @@ CREATE TABLE public.utility_service (
     options json,
     service_id character varying(128),
     tariff character varying(128),
-    utility character varying(128)
+    utility character varying(128),
+    utility_account_id character varying,
+    provider_type public.provider_type_enum DEFAULT 'utility-bundled'::public.provider_type_enum NOT NULL,
+    gen_service_id character varying(128),
+    gen_tariff character varying(128),
+    gen_utility character varying(128),
+    gen_utility_account_id character varying,
+    gen_options json
 );
 
 

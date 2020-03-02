@@ -1,7 +1,4 @@
-from .base import (
-    UrjanetGridiumTransformer,
-    GenericBillingPeriod,
-)
+from .base import UrjanetGridiumTransformer, GenericBillingPeriod
 from .common import urja_to_json, json_to_urja
 from .constellation import ConstellationTransformer
 from .directenergy import DirectEnergyTransformer
