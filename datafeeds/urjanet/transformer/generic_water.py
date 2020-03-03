@@ -1,15 +1,29 @@
+import logging
+
+from decimal import Decimal
+from typing import List, Tuple
+from datetime import date
+
+from datafeeds.urjanet.transformer.base import log_generic_billing_periods
 from datafeeds.urjanet.transformer import (
     GenericBillingPeriod,
     UrjanetGridiumTransformer,
 )
-from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.model import (
+    GridiumBillingPeriod,
+    GridiumBillingPeriodCollection,
+    DateIntervalTree,
+    Account,
+    UrjanetData,
+)
 
+log = logging.getLogger(__name__)
 
 # Water conversions to CCF
 CONVERSIONS = {
     "ccf": Decimal("1.0"),
     "gallons": Decimal("0.0013368"),
-    "tgal": Decimal("1.3368")  # 1000 / 748.052
+    "tgal": Decimal("1.3368"),  # 1000 / 748.052
 }
 
 
@@ -23,9 +37,11 @@ class GenericWaterBillingPeriod(GenericBillingPeriod):
         if self.account.NewCharges > Decimal(0.0):
             return self.account.NewCharges
 
-        if self.account.NewCharges == Decimal(0.0) \
-                and self.account.OutstandingBalance == Decimal(0.0) \
-                and self.account.TotalBillAmount > Decimal(0.0):
+        if (
+            self.account.NewCharges == Decimal(0.0)
+            and self.account.OutstandingBalance == Decimal(0.0)
+            and self.account.TotalBillAmount > Decimal(0.0)
+        ):
             return self.account.TotalBillAmount
 
         return Decimal(0.0)
@@ -44,7 +60,12 @@ class GenericWaterBillingPeriod(GenericBillingPeriod):
         seen = set()
         for meter in self.account.meters:
             for usage in meter.usages:
-                key = (usage.UsageAmount, usage.EnergyUnit, usage.IntervalStart, usage.IntervalEnd)
+                key = (
+                    usage.UsageAmount,
+                    usage.EnergyUnit,
+                    usage.IntervalStart,
+                    usage.IntervalEnd,
+                )
                 if key not in seen:
                     seen.add(key)
                     yield usage
@@ -73,18 +94,24 @@ class GenericWaterBillingPeriod(GenericBillingPeriod):
         return [self.account.SourceLink]
 
 
-
-
 class GenericWaterTransformer(UrjanetGridiumTransformer):
-    def filtered_accounts(self, urja_data: UrjanetData) -> List[Account]:  # pylint: disable=no-self-use
-        return [account for account in urja_data.accounts if account.StatementDate is not None]
+    @staticmethod
+    def filtered_accounts(
+        urja_data: UrjanetData,
+    ) -> List[Account]:  # pylint: disable=no-self-use
+        return [
+            account
+            for account in urja_data.accounts
+            if account.StatementDate is not None
+        ]
 
-    def ordered_accounts(self, filtered_accounts: List[Account]) -> List[Account]:
+    @staticmethod
+    def ordered_accounts(filtered_accounts: List[Account]) -> List[Account]:
         # Process the account objects in reverse order by statement date, in case there are corrections
-        return sorted(
-            filtered_accounts, key=lambda x: x.StatementDate, reverse=True)
+        return sorted(filtered_accounts, key=lambda x: x.StatementDate, reverse=True)
 
-    def billing_period(self, account: Account) -> GenericWaterBillingPeriod:
+    @staticmethod
+    def billing_period(account: Account) -> GenericWaterBillingPeriod:
         return GenericWaterBillingPeriod(account)
 
     def get_account_period(self, account: Account) -> Tuple[date, date]:
@@ -102,18 +129,24 @@ class GenericWaterTransformer(UrjanetGridiumTransformer):
         for account in ordered_accounts:
             period_start, period_end = self.get_account_period(account)
             if bill_history.overlaps(period_start, period_end):
-                logger().debug("Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
-                    account.PK, period_start, period_end))
+                log.debug(
+                    "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
+                        account.PK, period_start, period_end
+                    )
+                )
             else:
-                logger().debug("Adding billing period: account_pk={}, start={}, end={}".format(
-                    account.PK, period_start, period_end))
+                log.debug(
+                    "Adding billing period: account_pk={}, start={}, end={}".format(
+                        account.PK, period_start, period_end
+                    )
+                )
                 bill_history.add(period_start, period_end, self.billing_period(account))
 
         # Adjust date endpoints to avoid 1-day overlaps
         bill_history = DateIntervalTree.shift_endpoints(bill_history)
 
         # Log the billing periods we determined
-        log_generic_water_billing_periods(bill_history)
+        log_generic_billing_periods(bill_history)
 
         # Compute the final set of gridium billing periods
         gridium_periods = []
@@ -128,6 +161,7 @@ class GenericWaterTransformer(UrjanetGridiumTransformer):
                     total_usage=period_data.get_total_usage(),
                     source_urls=period_data.get_source_urls(),
                     line_items=list(period_data.iter_charges()),
-                    tariff=None))
+                    tariff=None,
+                )
+            )
         return GridiumBillingPeriodCollection(periods=gridium_periods)
-

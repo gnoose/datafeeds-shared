@@ -22,7 +22,9 @@ class TestUrjanetGenericWaterTransformer(test_util.UrjaFixtureText):
         )
 
     def test_generic_water(self):
-        self.generic_water_test("1805622124548_input.json", "1805622124548_expected.json")
+        self.generic_water_test(
+            "1805622124548_input.json", "1805622124548_expected.json"
+        )
 
 
 if __name__ == "__main__":

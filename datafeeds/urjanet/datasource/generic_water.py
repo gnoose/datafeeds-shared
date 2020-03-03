@@ -1,4 +1,5 @@
 from typing import Optional, List
+from decimal import Decimal, InvalidOperation
 
 from datafeeds.common.batch import run_urjanet_datafeed
 from datafeeds.common.typing import Status
@@ -8,13 +9,16 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
-from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.model import Account, Usage
+from datafeeds.urjanet.transformer import GenericWaterTransformer
 
 
 class GenericWaterDatasource(UrjanetPyMySqlDataSource):
     """This class accepts an account number. All meters are currently loaded from each bill."""
 
-    def __init__(self, utility_provider: str, account_number: str, conversion_factor: float = 1.0):
+    def __init__(
+        self, utility_provider: str, account_number: str, conversion_factor: float = 1.0
+    ):
         super().__init__(account_number)
         self.utility_provider = utility_provider
         self.account_number = self.account_number
@@ -31,10 +35,7 @@ class GenericWaterDatasource(UrjanetPyMySqlDataSource):
             WHERE RawAccountNumber=%s AND UtilityProvider = %s
         """
         result_set = self.fetch_all(query, self.account_number, self.utility_provider)
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: int) -> List[Meter]:
         """Load all meters for an account
@@ -44,9 +45,7 @@ class GenericWaterDatasource(UrjanetPyMySqlDataSource):
 
         query = "SELECT * FROM Meter WHERE ServiceType in ('water', 'sewer', 'irrigation') AND AccountFK=%s"
         result_set = self.fetch_all(query, account_pk)
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
     def load_meter_usages(self, account_pk: int, meter_pk: int) -> List[Usage]:
         """Fetch all usage info for a given meter"""
@@ -56,9 +55,7 @@ class GenericWaterDatasource(UrjanetPyMySqlDataSource):
                WHERE AccountFK=%s AND MeterFK=%s
            """
         result_set = self.fetch_all(query, account_pk, meter_pk)
-        results = [
-            UrjanetPyMySqlDataSource.parse_usage_row(row) for row in result_set
-        ]
+        results = [UrjanetPyMySqlDataSource.parse_usage_row(row) for row in result_set]
 
         for result in results:
             result.UsageAmount = self.conversion_factor * result.UsageAmount
@@ -79,8 +76,10 @@ def datafeed(
         datasource,
         params,
         GenericWaterDatasource(
-            datasource["meta"]["utility_provider"], meter.utility_account_id,
-            datasource["meta"]["conversion_factor"]),
+            datasource.meta["utility_provider"],
+            meter.utility_account_id,
+            datasource.meta["conversion_factor"],
+        ),
         GenericWaterTransformer(),
         task_id=task_id,
     )
