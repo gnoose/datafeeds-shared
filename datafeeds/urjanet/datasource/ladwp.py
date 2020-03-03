@@ -28,10 +28,7 @@ class LADWPDatasource(UrjanetPyMySqlDataSource):
             WHERE AccountNumber=%s AND UtilityProvider = 'LADeptOfWAndP'
         """
         result_set = self.fetch_all(query, self.account_number)
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: int) -> List[Meter]:
         """LADWP formats these bills so that the 'meter number' is often on two lines.

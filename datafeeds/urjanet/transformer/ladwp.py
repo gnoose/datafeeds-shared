@@ -5,7 +5,7 @@ from datafeeds.urjanet.transformer import (
     GenericBillingPeriod,
     UrjanetGridiumTransformer,
 )
-from datafeeds.urjanet.model import Account, UrjanetData, DateIntervalTree
+from datafeeds.urjanet.model import Account, DateIntervalTree
 
 log = logging.getLogger(__name__)
 
@@ -14,7 +14,8 @@ class LADWPBillingPeriod(GenericBillingPeriod):
     def __init__(self, account: Account):
         self.account = account
 
-'''
+
+"""
     old import_bills
     - get statements (Account records)
     - sort by StatementDate reverse
@@ -33,7 +34,9 @@ class LADWPBillingPeriod(GenericBillingPeriod):
     - adjust_end_dates (override)
       - set end date back 1
     - commit_bills
-'''
+"""
+
+
 class LADWPTransformer(UrjanetGridiumTransformer):
     @staticmethod
     def billing_period(account: Account) -> LADWPBillingPeriod:
@@ -74,16 +77,22 @@ class LADWPTransformer(UrjanetGridiumTransformer):
             if len(charge_range.intervals()) > 1:
                 min_charge_dt = min([r.begin for r in charge_range.intervals()])
                 max_charge_dt = max([r.end for r in charge_range.intervals()])
-                log.debug("Updating meter date range from charges to %s - %s (was %s - %s)",
-                          min(meter.IntervalStart, min_charge_dt),
-                          max(account.IntervalEnd, max_charge_dt),
-                          meter.IntervalStart, meter.IntervalEnd)
+                log.debug(
+                    "Updating meter date range from charges to %s - %s (was %s - %s)",
+                    min(meter.IntervalStart, min_charge_dt),
+                    max(account.IntervalEnd, max_charge_dt),
+                    meter.IntervalStart,
+                    meter.IntervalEnd,
+                )
                 meter.IntervalStart = min(meter.IntervalStart, min_charge_dt)
                 meter.IntervalEnd = max(meter.IntervalEnd, max_charge_dt)
-                log.debug("Updating account date range from charges to %s - %s (was %s - %s)",
-                          min(account.IntervalStart, min_charge_dt),
-                          max(account.IntervalEnd, max_charge_dt),
-                          account.IntervalStart, account.IntervalEnd)
+                log.debug(
+                    "Updating account date range from charges to %s - %s (was %s - %s)",
+                    min(account.IntervalStart, min_charge_dt),
+                    max(account.IntervalEnd, max_charge_dt),
+                    account.IntervalStart,
+                    account.IntervalEnd,
+                )
                 account.IntervalStart = min(account.IntervalStart, min_charge_dt)
                 account.IntervalEnd = max(account.IntervalEnd, max_charge_dt)
         return account
@@ -108,16 +117,22 @@ class LADWPTransformer(UrjanetGridiumTransformer):
         two bills into one. This should fix the issue (hopefully).
         """
         rval = []
-        for idx, account in enumerate(sorted(accounts, key=lambda x: x.StatementDate, reverse=True)):
+        for idx, account in enumerate(
+            sorted(accounts, key=lambda x: x.StatementDate, reverse=True)
+        ):
             current_bill = LADWPTransformer.update_date_range_from_charges(account)
-            current_duration = (current_bill.IntervalEnd - current_bill.IntervalStart).days
+            current_duration = (
+                current_bill.IntervalEnd - current_bill.IntervalStart
+            ).days
             if current_duration >= 27:
                 rval.append(current_bill)
                 continue
 
             prev_bill = None
             prev_duration = None
-            if idx < len(accounts) - 1:  # we are reverse sorted, so previous bill comes  AFTER
+            if (
+                idx < len(accounts) - 1
+            ):  # we are reverse sorted, so previous bill comes  AFTER
                 prev_bill = accounts[idx + 1]
                 prev_duration = (prev_bill.IntervalEnd - prev_bill.IntervalStart).days
 
@@ -137,7 +152,9 @@ class LADWPTransformer(UrjanetGridiumTransformer):
             else:
                 combine_bill = next_bill
 
-            combine_duration = (combine_bill.IntervalEnd - combine_bill.IntervalStart).days
+            combine_duration = (
+                combine_bill.IntervalEnd - combine_bill.IntervalStart
+            ).days
 
             # we probably don't want to combine these over some amount of days
             if combine_duration + current_duration < 35:
@@ -146,15 +163,18 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                     current_bill.IntervalStart,
                     current_bill.IntervalEnd,
                     combine_bill.IntervalStart,
-                    combine_bill.IntervalEnd
+                    combine_bill.IntervalEnd,
                 )
 
-                combine_bill.IntervalEnd = max(current_bill.IntervalEnd, combine_bill.IntervalEnd)
-                combine_bill.IntervalStart = min(current_bill.IntervalStart, combine_bill.IntervalStart)
+                combine_bill.IntervalEnd = max(
+                    current_bill.IntervalEnd, combine_bill.IntervalEnd
+                )
+                combine_bill.IntervalStart = min(
+                    current_bill.IntervalStart, combine_bill.IntervalStart
+                )
                 combine_bill.meters += current_bill.meters
                 rval.append(combine_bill)
             else:
                 rval.append(current_bill)  # this one turned out to be ok
 
         return rval
-

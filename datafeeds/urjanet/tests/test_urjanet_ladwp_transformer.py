@@ -34,10 +34,12 @@ class TestUrjanetLADWPTransformer(test_util.UrjaFixtureText):
         )
 
     def test_ladwp_water(self):
-        self.ladwp_water_test("1737669238819_input.json", "1737669238819_expected.json")()
+        self.ladwp_water_test("1737669238819_input.json", "1737669238819_expected.json")
 
     def test_ladwp_electricity(self):
-        self.ladwp_electricity_test("1707479190338_input.json", "1707479190338_expected.json")()
+        self.ladwp_electricity_test(
+            "1707479190338_input.json", "1707479190338_expected.json"
+        )
 
 
 if __name__ == "__main__":
