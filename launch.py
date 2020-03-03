@@ -48,6 +48,7 @@ from datafeeds.urjanet.datasource.calwater import datafeed as calwater
 from datafeeds.urjanet.datasource.colleyville import datafeed as colleyville
 from datafeeds.urjanet.datasource.fortworth import datafeed as fortworth
 from datafeeds.urjanet.datasource.fostercity import datafeed as fostercity
+from datafeeds.urjanet.datasource.fpl import datafeed as fpl
 from datafeeds.urjanet.datasource.heco import datafeed as heco_urjanet
 from datafeeds.urjanet.datasource.irvineranch import datafeed as irvineranch
 from datafeeds.urjanet.datasource.ladwp import datafeed as ladwp_water
@@ -90,6 +91,7 @@ scraper_functions = {
     "fortworth-water-urjanet": fortworth,
     "grovestreams": grovestreams,
     "fostercity-water-urjanet": fostercity,
+    "fpl-urjanet": fpl,
     "heco-interval": heco_interval,
     "heco-urjanet": heco_urjanet,
     "irvineranch-water-urjanet": irvineranch,

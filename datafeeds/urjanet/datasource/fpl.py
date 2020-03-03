@@ -8,7 +8,8 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
-from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.model import Account, Usage, Charge
+from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 
 
 class FPLDatasource(UrjanetPyMySqlDataSource):
@@ -28,11 +29,7 @@ class FPLDatasource(UrjanetPyMySqlDataSource):
         """
         result_set = self.fetch_all(query, self.account_number)
 
-        return [
-            UrjanetPyMySqlDataSource.parse_account_row(row)
-            for row in result_set
-        ]
-
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: int) -> List[Meter]:
         """Load all meters for an account.
@@ -51,9 +48,7 @@ class FPLDatasource(UrjanetPyMySqlDataSource):
         result_set = self.fetch_all(query, account_pk)
         assert len(result_set) <= 1
 
-        return [
-            UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set
-        ]
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
     def load_meter_charges(self, account_pk: int, meter_pk: int) -> List[Charge]:
         """Fetch all charge info for a given meter
@@ -99,7 +94,7 @@ def datafeed(
         meter,
         datasource,
         params,
-        FPLDatasource(meter.utility_account_id),
+        FPLDatasource(meter.utility_account_id, meter.utility_service.service_id),
         UrjanetGridiumTransformer(),
         task_id=task_id,
     )
