@@ -1,3 +1,8 @@
+"""A Basic Urjanet water transformer for converting Water, Irrigation, and Sewer charges.
+
+This transformer is applicable to many simple municipal utilities.
+"""
+
 import logging
 
 from decimal import Decimal
@@ -45,53 +50,6 @@ class GenericWaterBillingPeriod(GenericBillingPeriod):
             return self.account.TotalBillAmount
 
         return Decimal(0.0)
-
-    def iter_usages(self):
-        for meter in self.account.meters:
-            for usage in meter.usages:
-                yield usage
-
-    def iter_unique_usages(self):
-        """Yield a set of unique usage readings for this billing period
-
-        If a bill has multiple service types on it (e.g. water and sewer), usage readings show up multiple times in
-        the database. This function attempts to filter out those duplicates.
-        """
-        seen = set()
-        for meter in self.account.meters:
-            for usage in meter.usages:
-                key = (
-                    usage.UsageAmount,
-                    usage.EnergyUnit,
-                    usage.IntervalStart,
-                    usage.IntervalEnd,
-                )
-                if key not in seen:
-                    seen.add(key)
-                    yield usage
-
-    def iter_charges(self):
-        for meter in self.account.meters:
-            for charge in meter.charges:
-                yield charge
-        for charge in self.account.floating_charges:
-            yield charge
-
-    def get_total_usage(self) -> Decimal:
-        usages = [u for u in self.iter_unique_usages() if u.RateComponent == "[total]"]
-
-        units = set(u.EnergyUnit for u in usages)
-        if len(units) != 1:
-            conversion = Decimal("1.0")
-        else:
-            unit = units.pop().lower().strip()
-            conversion = CONVERSIONS.get(unit, Decimal("1.0"))
-
-        return sum([u.UsageAmount for u in usages]) * conversion
-
-    def get_source_urls(self) -> List[str]:
-        """Return a list of URLs to source statements for this period (e.g. PDFs)"""
-        return [self.account.SourceLink]
 
 
 class GenericWaterTransformer(UrjanetGridiumTransformer):
