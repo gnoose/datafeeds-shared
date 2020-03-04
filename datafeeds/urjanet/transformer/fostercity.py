@@ -2,10 +2,13 @@ from decimal import Decimal
 from typing import List
 
 from datafeeds.urjanet.model import Account, UrjanetData
-from datafeeds.urjanet.transformer import GenericWaterTransformer, GenericBillingPeriod
+from datafeeds.urjanet.transformer import (
+    GenericWaterTransformer,
+    GenericWaterBillingPeriod,
+)
 
 
-class FosterCityWaterBillingPeriod(GenericBillingPeriod):
+class FosterCityWaterBillingPeriod(GenericWaterBillingPeriod):
     def get_total_charge(self):
         if self.account.NewCharges > Decimal(0.0):
             return self.account.NewCharges

@@ -46,13 +46,19 @@ from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
 from datafeeds.urjanet.datasource.calwater import datafeed as calwater
 from datafeeds.urjanet.datasource.colleyville import datafeed as colleyville
+from datafeeds.urjanet.datasource.constellation import datafeed as constellation
+from datafeeds.urjanet.datasource.directenergy import datafeed as directenergy
 from datafeeds.urjanet.datasource.fortworth import datafeed as fortworth
 from datafeeds.urjanet.datasource.fostercity import datafeed as fostercity
+from datafeeds.urjanet.datasource.fpl import datafeed as fpl
+from datafeeds.urjanet.datasource.generic_water import datafeed as generic_water
 from datafeeds.urjanet.datasource.heco import datafeed as heco_urjanet
 from datafeeds.urjanet.datasource.irvineranch import datafeed as irvineranch
-from datafeeds.urjanet.datasource.ladwp import datafeed as ladwp_water
+from datafeeds.urjanet.datasource.ladwp_water import datafeed as ladwp_water
+from datafeeds.urjanet.datasource.ladwp import datafeed as ladwp
 from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
 from datafeeds.urjanet.datasource.nationalgrid import datafeed as nationalgrid
+from datafeeds.urjanet.datasource.nve import datafeed as nve
 from datafeeds.urjanet.datasource.pge import datafeed as pge
 from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
 from datafeeds.urjanet.datasource.pse import datafeed as pse
@@ -85,18 +91,24 @@ scraper_functions = {
     "bloom": bloom_interval,
     "cal-water-urjanet": calwater,
     "colleyville-water-urjanet": colleyville,
+    "constellation": constellation,
+    "directenergy-urjanet": directenergy,
     "duke-energy-billing": duke_billing,
     "duke-energy-interval": duke_interval,
     "engie": engie,
     "fortworth-water-urjanet": fortworth,
     "grovestreams": grovestreams,
     "fostercity-water-urjanet": fostercity,
+    "fpl-urjanet": fpl,
+    "generic-urjanet-water": generic_water,
     "heco-interval": heco_interval,
     "heco-urjanet": heco_urjanet,
     "irvineranch-water-urjanet": irvineranch,
     "ladwp-water-urjanet": ladwp_water,
+    "ladwp-urjanet": ladwp,
     "mountainview-urjanet": mountainview,
     "nationalgrid-urjanet": nationalgrid,
+    "nve-urjanet": nve,
     "nautilus": nautilus,
     "nve-myaccount": nvenergy_myaccount,
     "pacific-power-interval": pacific_power_interval,

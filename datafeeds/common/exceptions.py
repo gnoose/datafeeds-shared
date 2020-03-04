@@ -15,3 +15,7 @@ class InvalidDateRangeError(Exception):
 
 class DataSourceConfigurationError(Exception):
     pass
+
+
+class ScraperPreconditionError(Exception):
+    pass
