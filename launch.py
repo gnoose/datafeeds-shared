@@ -61,6 +61,7 @@ from datafeeds.urjanet.datasource.sdge import datafeed as sdge
 from datafeeds.urjanet.datasource.sfpuc import datafeed as sfpuc
 from datafeeds.urjanet.datasource.sjwater import datafeed as sjwater
 from datafeeds.urjanet.datasource.southlake import datafeed as southlake
+from datafeeds.urjanet.datasource.tricounty import datafeed as tricounty
 from datafeeds.urjanet.datasource.watauga import datafeed as watauga
 
 from datafeeds.common.typing import Status
@@ -117,6 +118,7 @@ scraper_functions = {
     "solaredge": solaredge,
     "solren": solren,
     "southlake-urjanet": southlake,
+    "tricounty-urjanet": tricounty,
     "watauga-urjanet": watauga,
 }
 

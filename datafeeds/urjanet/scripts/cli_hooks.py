@@ -53,6 +53,7 @@ from datafeeds.urjanet.datasource.sdge import SDGEDatasource
 from datafeeds.urjanet.datasource.sfpuc import SanFranciscoWaterDatasource
 from datafeeds.urjanet.datasource.sjwater import SjWaterDatasource
 from datafeeds.urjanet.datasource.southlake import SouthlakeDatasource
+from datafeeds.urjanet.datasource.tricounty import TriCountyDatasource
 from datafeeds.urjanet.datasource.watauga import WataugaDatasource
 from datafeeds.urjanet.transformer import (
     UrjanetGridiumTransformer,
@@ -64,6 +65,7 @@ from datafeeds.urjanet.transformer import (
     GenericWaterTransformer,
     SDGETransformer,
     SouthlakeTransformer,
+    TriCountyTransformer,
     WataugaTransformer,
     AmericanTransformer,
     AustinTXTransformer,
@@ -112,6 +114,22 @@ class DatasourceCli(metaclass=RegisteredCliHook):
 
     def make_transformer(self):
         return None
+
+
+class TriCountyCli(DatasourceCli):
+    __cli_key__ = "tricounty"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("said", help="utility_service.service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            TriCountyDatasource(args.account_number, args.said), conn
+        )
+
+    def make_transformer(self):
+        return TriCountyTransformer()
 
 
 class NationalGridCli(DatasourceCli):

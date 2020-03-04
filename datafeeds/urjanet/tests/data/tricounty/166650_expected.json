@@ -1,0 +1,56 @@
+{
+    "periods": [
+        {
+            "end": "2020-01-20",
+            "peak_demand": null,
+            "start": "2019-12-17",
+            "tariff": null,
+            "total_charge": "0.0000",
+            "total_usage": "2993.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge - 01/24/20",
+                    "ChargeAmount": "278.5100",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0931",
+                    "ChargeUnitsUsed": "2993.0000",
+                    "IntervalEnd": "2020-01-21",
+                    "IntervalStart": "2019-12-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186723,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea52e98-f5d1-d16a-90a1-0ecae245170f"
+            ]
+        },
+        {
+            "end": "2020-02-20",
+            "peak_demand": null,
+            "start": "2020-01-21",
+            "tariff": null,
+            "total_charge": "0.0000",
+            "total_usage": "2451.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge - 02/25/20",
+                    "ChargeAmount": "232.6000",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0949",
+                    "ChargeUnitsUsed": "2451.0000",
+                    "IntervalEnd": "2020-02-20",
+                    "IntervalStart": "2020-01-21",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186980,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea58a6f-6373-d564-a17f-0efca34afa71"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,114 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "233034332",
+            "AmountDue": "278.5100",
+            "IntervalEnd": "2020-01-21",
+            "IntervalStart": "2019-12-17",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5687890,
+            "PreviousBalance": "312.4400",
+            "RawAccountNumber": "233034332",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea52e98-f5d1-d16a-90a1-0ecae245170f",
+            "StatementDate": "2020-01-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "278.5100",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-01-21",
+                    "IntervalStart": "2019-12-17",
+                    "MeterNumber": "122214",
+                    "PK": 20367220,
+                    "PODid": "501555550555",
+                    "ServiceType": "electric",
+                    "Tariff": "COM",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge - 01/24/20",
+                            "ChargeAmount": "278.5100",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0931",
+                            "ChargeUnitsUsed": "2993.0000",
+                            "IntervalEnd": "2020-01-21",
+                            "IntervalStart": "2019-12-17",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186723,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-01-21",
+                            "IntervalStart": "2019-12-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313396,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "2993.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "111162611",
+            "AmountDue": "232.6000",
+            "IntervalEnd": "2020-02-20",
+            "IntervalStart": "2020-01-21",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5688128,
+            "PreviousBalance": "278.5100",
+            "RawAccountNumber": "111162611",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea58a6f-6373-d564-a17f-0efca34afa71",
+            "StatementDate": "2020-02-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "232.6000",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-02-20",
+                    "IntervalStart": "2020-01-21",
+                    "MeterNumber": "155550",
+                    "PK": 20367461,
+                    "PODid": "077000007000",
+                    "ServiceType": "electric",
+                    "Tariff": "COM",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge - 02/25/20",
+                            "ChargeAmount": "232.6000",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0949",
+                            "ChargeUnitsUsed": "2451.0000",
+                            "IntervalEnd": "2020-02-20",
+                            "IntervalStart": "2020-01-21",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186980,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-02-20",
+                            "IntervalStart": "2020-01-21",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313637,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "2451.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

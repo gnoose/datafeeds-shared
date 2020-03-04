@@ -9,23 +9,36 @@ from datafeeds.models import (
 )
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.transformer import TriCountyTransformer
 
 
 class TriCountyDatasource(UrjanetPyMySqlDataSource):
     """Load data from an Urjanet database"""
 
-    def __init__(self, account_number: str):
+    def __init__(self, account_number: str, said: str):
         super().__init__(account_number)
-        self.account_number = self.normalize_account_number(account_number)
+        # self.account_number = self.normalize_account_number(account_number)
+        self.account_number = account_number
+        self.said = said
 
     def load_accounts(self) -> List[Account]:
-        """The query for fetching accounts must be provided by implementers"""
-        # TODO: UtilityProvider = 'TriCountyECoopTX'
-        pass  # TODO: update this
+        """Load accounts based on the account id"""
+        query = """
+            SELECT *
+            FROM Account
+            WHERE AccountNumber=%s AND UtilityProvider = 'TriCountyECoopTX'
+        """
+        result_set = self.fetch_all(query, self.account_number)
+        return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: int) -> List[Meter]:
-        """The query for fetching meters must be provided by implementers"""
-        pass  # TODO: update this
+        """Load meters based on the service id"""
+
+        query = """SELECT * FROM Meter WHERE ServiceType = 'electric' AND AccountFK=%s
+                and MeterNumber LIKE %s
+                """
+        result_set = self.fetch_all(query, account_pk, self.said)
+        return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
 
 def datafeed(
@@ -40,7 +53,7 @@ def datafeed(
         meter,
         datasource,
         params,
-        TriCountyDatasource(meter.utility_account_id),
+        TriCountyDatasource(meter.utility_account_id, meter.utility_service.service_id),
         TriCountyTransformer(),
         task_id=task_id,
     )
