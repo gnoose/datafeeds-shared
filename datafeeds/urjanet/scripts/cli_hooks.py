@@ -74,7 +74,6 @@ from datafeeds.urjanet.transformer import (
     GenericWaterTransformer,
     SDGETransformer,
     SouthlakeTransformer,
-    TriCountyTransformer,
     WataugaTransformer,
     AmericanTransformer,
     AustinTXTransformer,
@@ -183,7 +182,7 @@ class TriCountyCli(DatasourceCli):
         )
 
     def make_transformer(self):
-        return TriCountyTransformer()
+        return UrjanetGridiumTransformer()
 
 
 class FPLCli(DatasourceCli):
