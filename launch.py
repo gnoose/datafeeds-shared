@@ -46,8 +46,11 @@ from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
 from datafeeds.urjanet.datasource.calwater import datafeed as calwater
 from datafeeds.urjanet.datasource.colleyville import datafeed as colleyville
+from datafeeds.urjanet.datasource.constellation import datafeed as constellation
+from datafeeds.urjanet.datasource.directenergy import datafeed as directenergy
 from datafeeds.urjanet.datasource.fortworth import datafeed as fortworth
 from datafeeds.urjanet.datasource.fostercity import datafeed as fostercity
+from datafeeds.urjanet.datasource.fpl import datafeed as fpl
 from datafeeds.urjanet.datasource.generic_water import datafeed as generic_water
 from datafeeds.urjanet.datasource.heco import datafeed as heco_urjanet
 from datafeeds.urjanet.datasource.irvineranch import datafeed as irvineranch
@@ -85,12 +88,15 @@ scraper_functions = {
     "bloom": bloom_interval,
     "cal-water-urjanet": calwater,
     "colleyville-water-urjanet": colleyville,
+    "constellation": constellation,
+    "directenergy-urjanet": directenergy,
     "duke-energy-billing": duke_billing,
     "duke-energy-interval": duke_interval,
     "engie": engie,
     "fortworth-water-urjanet": fortworth,
     "grovestreams": grovestreams,
     "fostercity-water-urjanet": fostercity,
+    "fpl-urjanet": fpl,
     "generic-urjanet-water": generic_water,
     "heco-interval": heco_interval,
     "heco-urjanet": heco_urjanet,
