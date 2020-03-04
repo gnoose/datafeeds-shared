@@ -15,28 +15,6 @@ class LADWPBillingPeriod(GenericBillingPeriod):
         self.account = account
 
 
-"""
-    old import_bills
-    - get statements (Account records)
-    - sort by StatementDate reverse
-    - assemble_raw_bills (override)
-      - get_urjanet_bills (from Meter, ServiceType in electric, natural_gas) and Meter.POIDid like SAID
-      - get_urjanet_charges (from Charge where MeterFK)
-      - get_urjanet_usages (from Usage where MeterFK)
-      - add start, end, charges, usages
-      - copy SourceLink
-    - munge_bills (override)
-      - combine_duplicate_bills - add charges and usages to array if dates match
-      - collapse_bill_periods - combine bills if < 27 days
-      - dedupe_charges - sort by ChargeAmount, drop if all fields equal
-      - dedupe_usages - sort by UsageAmount, drop if all fields equal
-    - keep if not _bill_conflicts (check start, end)
-    - adjust_end_dates (override)
-      - set end date back 1
-    - commit_bills
-"""
-
-
 class LADWPTransformer(UrjanetGridiumTransformer):
     @staticmethod
     def billing_period(account: Account) -> LADWPBillingPeriod:
