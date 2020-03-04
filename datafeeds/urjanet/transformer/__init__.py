@@ -5,6 +5,7 @@ from .base import (
 from .common import urja_to_json, json_to_urja
 from .constellation import ConstellationTransformer
 from .generic_water_transformer import GenericWaterTransformer
+from .directenergy import DirectEnergyTransformer
 from .ladwp import LosAngelesWaterTransformer
 from .nationalgrid import NationalGridTransformer
 from .pge import PacificGasElectricTransformer
@@ -27,6 +28,7 @@ __all__ = [
     "AmericanTransformer",
     "AustinTXTransformer",
     "ConstellationTransformer",
+    "DirectEnergyTransformer",
     "FosterCityWaterTransformer",
     "HecoTransformer",
     "LosAngelesWaterTransformer",

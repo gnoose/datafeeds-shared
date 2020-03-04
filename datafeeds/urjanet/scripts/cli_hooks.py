@@ -38,6 +38,7 @@ from datafeeds.urjanet.datasource.base import CommodityType
 from datafeeds.urjanet.datasource.calwater import CalWaterDatasource
 from datafeeds.urjanet.datasource.colleyville import ColleyvilleWaterDatasource
 from datafeeds.urjanet.datasource.constellation import ConstellationDatasource
+from datafeeds.urjanet.datasource.directenergy import DirectEnergyDatasource
 from datafeeds.urjanet.datasource.fortworth import FortWorthWaterDatasource
 from datafeeds.urjanet.datasource.fostercity import FosterCityWaterDatasource
 from datafeeds.urjanet.datasource.heco import HecoDatasource
@@ -71,6 +72,7 @@ from datafeeds.urjanet.transformer import (
     AustinTXTransformer,
     HecoTransformer,
 )
+from datafeeds.urjanet.transformer.directenergy import DirectEnergyTransformer
 
 _cli_hook_registry = {}
 
@@ -146,6 +148,22 @@ class PgeCli(DatasourceCli):
 
     def make_transformer(self):
         return PacificGasElectricTransformer()
+
+
+class DirectEnergy(DatasourceCli):
+    __cli_key__ = "directenergy"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            DirectEnergyDatasource(args.account_number, args.service_id), conn
+        )
+
+    def make_transformer(self):
+        return DirectEnergyTransformer()
 
 
 class PseCli(DatasourceCli):
