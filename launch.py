@@ -54,7 +54,8 @@ from datafeeds.urjanet.datasource.fpl import datafeed as fpl
 from datafeeds.urjanet.datasource.generic_water import datafeed as generic_water
 from datafeeds.urjanet.datasource.heco import datafeed as heco_urjanet
 from datafeeds.urjanet.datasource.irvineranch import datafeed as irvineranch
-from datafeeds.urjanet.datasource.ladwp import datafeed as ladwp_water
+from datafeeds.urjanet.datasource.ladwp_water import datafeed as ladwp_water
+from datafeeds.urjanet.datasource.ladwp import datafeed as ladwp
 from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
 from datafeeds.urjanet.datasource.nationalgrid import datafeed as nationalgrid
 from datafeeds.urjanet.datasource.pge import datafeed as pge
@@ -102,6 +103,7 @@ scraper_functions = {
     "heco-urjanet": heco_urjanet,
     "irvineranch-water-urjanet": irvineranch,
     "ladwp-water-urjanet": ladwp_water,
+    "ladwp-urjanet": ladwp,
     "mountainview-urjanet": mountainview,
     "nationalgrid-urjanet": nationalgrid,
     "nautilus": nautilus,
