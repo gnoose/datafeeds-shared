@@ -4,6 +4,7 @@ from typing import Optional, List
 
 
 from datafeeds.common.batch import run_urjanet_datafeed
+from datafeeds.common.exceptions import ScraperPreconditionError
 from datafeeds.common.typing import Status
 from datafeeds.models import (
     SnapmeterAccount,
@@ -91,8 +92,7 @@ class DirectEnergyDatasource(UrjanetPyMySqlDataSource):
                 "Violated by: Statement PK=={1}"
             )
             msg = msg.format(account_pk)
-            # raise ScraperPreconditionError(msg)
-            raise Exception(msg)  # TODO: is there a better class to use here?
+            raise ScraperPreconditionError(msg)
 
         return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
