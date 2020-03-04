@@ -213,7 +213,7 @@
             "peak_demand": null,
             "start": "2019-10-15",
             "tariff": null,
-            "total_charge": "55446.8500",
+            "total_charge": "5446.8500",
             "total_usage": "68800.00000",
             "line_items": [
                 {
@@ -228,84 +228,6 @@
                     "PK": 238186792,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
-                },
-                {
-                    "ChargeActualName": "Balance Transfer To Account 800674414 - 11/05/",
-                    "ChargeAmount": "381.4000",
-                    "ChargeId": "ch.transfer_of_balance",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-11-14",
-                    "IntervalStart": "2019-10-15",
-                    "IsAdjustmentCharge": true,
-                    "PK": 238186786,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Balance Transfer To Account 800674411 - 11/05/",
-                    "ChargeAmount": "15197.1600",
-                    "ChargeId": "ch.transfer_of_balance",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-11-14",
-                    "IntervalStart": "2019-10-15",
-                    "IsAdjustmentCharge": true,
-                    "PK": 238186787,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Balance Transfer To Account 800674413 - 11/05/",
-                    "ChargeAmount": "18795.4000",
-                    "ChargeId": "ch.transfer_of_balance",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-11-14",
-                    "IntervalStart": "2019-10-15",
-                    "IsAdjustmentCharge": true,
-                    "PK": 238186788,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Balance Transfer To Account 800674415 - 11/05/",
-                    "ChargeAmount": "4935.4000",
-                    "ChargeId": "ch.transfer_of_balance",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-11-14",
-                    "IntervalStart": "2019-10-15",
-                    "IsAdjustmentCharge": true,
-                    "PK": 238186789,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Balance Transfer To Account 800801377 - 11/05/",
-                    "ChargeAmount": "3212.8000",
-                    "ChargeId": "ch.transfer_of_balance",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-11-14",
-                    "IntervalStart": "2019-10-15",
-                    "IsAdjustmentCharge": true,
-                    "PK": 238186790,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Balance Transfer To Account 800706087 - 11/05/",
-                    "ChargeAmount": "7477.8400",
-                    "ChargeId": "ch.transfer_of_balance",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2019-11-14",
-                    "IntervalStart": "2019-10-15",
-                    "IsAdjustmentCharge": true,
-                    "PK": 238186791,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
                 }
             ],
             "source_urls": [

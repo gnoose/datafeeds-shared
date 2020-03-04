@@ -16,7 +16,7 @@ from .fostercity import FosterCityWaterTransformer
 from .american import AmericanTransformer
 from .heco import HecoTransformer
 from .austin_tx import AustinTXTransformer
-from .tricounty import TricountyTransformer
+from .tricounty import TriCountyTransformer
 
 
 __all__ = [
@@ -42,6 +42,6 @@ __all__ = [
     "SanFranciscoWaterTransformer",
     "SDGETransformer",
     "SouthlakeTransformer",
-    "TricountyTransformer",
+    "TriCountyTransformer",
     "WataugaTransformer",
 ]

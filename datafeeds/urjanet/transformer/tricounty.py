@@ -5,13 +5,19 @@ from datafeeds.urjanet.transformer import (
 )
 
 
-class TricountyBillingPeriod(GenericBillingPeriod):
+class TriCountyBillingPeriod(GenericBillingPeriod):
     def get_total_charge(self):
-        # Account.NewCharges is not set; collect from charges instead
+        """Account.NewCharges is not set; collect from charges instead."""
         return sum([charge.ChargeAmount for charge in self.iter_charges()])
 
+    def iter_charges(self):
+        """Get only meter charges, not floating charges."""
+        for meter in self.account.meters:
+            for charge in meter.charges:
+                yield charge
 
-class TricountyTransformer(UrjanetGridiumTransformer):
+
+class TriCountyTransformer(UrjanetGridiumTransformer):
     @staticmethod
-    def billing_period(account: Account) -> TricountyBillingPeriod:
-        return TricountyBillingPeriod(account)
+    def billing_period(account: Account) -> TriCountyBillingPeriod:
+        return TriCountyBillingPeriod(account)
