@@ -1,0 +1,316 @@
+{
+    "periods": [
+        {
+            "end": "2019-09-23",
+            "peak_demand": null,
+            "start": "2019-09-11",
+            "tariff": null,
+            "total_charge": "0",
+            "total_usage": "0.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-24",
+                    "IntervalStart": "2019-09-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237614337,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Txbl",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-24",
+                    "IntervalStart": "2019-09-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237614338,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Deposit",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-24",
+                    "IntervalStart": "2019-09-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237614334,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Tax",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-24",
+                    "IntervalStart": "2019-09-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237614335,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Misc",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-09-24",
+                    "IntervalStart": "2019-09-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237614336,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e98eb-ff2f-d879-bacc-0ee3c7c11ece"
+            ]
+        },
+        {
+            "end": "2019-10-08",
+            "peak_demand": null,
+            "start": "2019-09-24",
+            "tariff": null,
+            "total_charge": "248.6600",
+            "total_usage": "0.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-09",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237638702,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Txbl",
+                    "ChargeAmount": "241.4200",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-09",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237638703,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Deposit",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-09",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237638699,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Tax",
+                    "ChargeAmount": "7.2400",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-09",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237638700,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Misc",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-10-09",
+                    "IntervalStart": "2019-09-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237638701,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9eb38d-402f-d451-b106-0edb3d2bb18e"
+            ]
+        },
+        {
+            "end": "2019-12-10",
+            "peak_demand": null,
+            "start": "2019-10-09",
+            "tariff": null,
+            "total_charge": "207.6600",
+            "total_usage": "0.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-12-11",
+                    "IntervalStart": "2019-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237873532,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Txbl",
+                    "ChargeAmount": "200.4200",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-12-11",
+                    "IntervalStart": "2019-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237873533,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Deposit",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-12-11",
+                    "IntervalStart": "2019-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237873529,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Tax",
+                    "ChargeAmount": "7.2400",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-12-11",
+                    "IntervalStart": "2019-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237873530,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Misc",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-12-11",
+                    "IntervalStart": "2019-10-09",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237873531,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea1c14e-0f09-dc70-ace4-0e93130e4b27"
+            ]
+        },
+        {
+            "end": "2020-02-11",
+            "peak_demand": null,
+            "start": "2019-12-11",
+            "tariff": null,
+            "total_charge": "207.6600",
+            "total_usage": "0.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Water",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-02-11",
+                    "IntervalStart": "2019-12-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238088952,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "ccf"
+                },
+                {
+                    "ChargeActualName": "Water Txbl",
+                    "ChargeAmount": "200.4200",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-02-11",
+                    "IntervalStart": "2019-12-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238088953,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Deposit",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-02-11",
+                    "IntervalStart": "2019-12-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238088949,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Tax",
+                    "ChargeAmount": "7.2400",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-02-11",
+                    "IntervalStart": "2019-12-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238088950,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Misc",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-02-11",
+                    "IntervalStart": "2019-12-11",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238088951,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea4ac37-6447-df6a-aa3e-0e9757be24e1"
+            ]
+        }
+    ]
+}

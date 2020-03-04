@@ -37,12 +37,17 @@ from datafeeds.urjanet.datasource.austin_tx import AustinTXDatasource
 from datafeeds.urjanet.datasource.base import CommodityType
 from datafeeds.urjanet.datasource.calwater import CalWaterDatasource
 from datafeeds.urjanet.datasource.colleyville import ColleyvilleWaterDatasource
+from datafeeds.urjanet.datasource.constellation import ConstellationDatasource
+from datafeeds.urjanet.datasource.directenergy import DirectEnergyDatasource
 from datafeeds.urjanet.datasource.fortworth import FortWorthWaterDatasource
 from datafeeds.urjanet.datasource.fostercity import FosterCityWaterDatasource
+from datafeeds.urjanet.datasource.fpl import FPLDatasource
 from datafeeds.urjanet.datasource.heco import HecoDatasource
+from datafeeds.urjanet.datasource.generic_water import GenericWaterDatasource
 from datafeeds.urjanet.datasource.irvineranch import IrvineRanchWaterDatasource
 
-from datafeeds.urjanet.datasource.ladwp import LosAngelesWaterDatasource
+from datafeeds.urjanet.datasource.ladwp import LADWPDatasource
+from datafeeds.urjanet.datasource.ladwp_water import LosAngelesWaterDatasource
 from datafeeds.urjanet.datasource.mountainview import MountainViewDatasource
 from datafeeds.urjanet.datasource.nationalgrid import NationalGridDatasource
 from datafeeds.urjanet.datasource.nve import NVEnergyDatasource
@@ -57,6 +62,8 @@ from datafeeds.urjanet.datasource.southlake import SouthlakeDatasource
 from datafeeds.urjanet.datasource.watauga import WataugaDatasource
 from datafeeds.urjanet.transformer import (
     UrjanetGridiumTransformer,
+    ConstellationTransformer,
+    LADWPTransformer,
     LosAngelesWaterTransformer,
     NationalGridTransformer,
     NVEnergyTransformer,
@@ -71,6 +78,7 @@ from datafeeds.urjanet.transformer import (
     AustinTXTransformer,
     HecoTransformer,
 )
+from datafeeds.urjanet.transformer.directenergy import DirectEnergyTransformer
 
 _cli_hook_registry = {}
 
@@ -135,6 +143,47 @@ class NVEnergyCli(DatasourceCli):
         return NVEnergyTransformer()
 
 
+class GenericWaterCli(DatasourceCli):
+    __cli_key__ = "generic_water"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument(
+            "utility_provider", help="snapmeter_meter_data_source.meta.utility_provider"
+        )
+        parser.add_argument(
+            "conversion_factor",
+            help="snapmeter_meter_data_source.meta.conversion_factor",
+        )
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            GenericWaterDatasource(
+                args.utility_provider, args.account_number, args.conversion_factor
+            ),
+            conn,
+        )
+
+    def make_transformer(self):
+        return GenericWaterTransformer()
+
+
+class FPLCli(DatasourceCli):
+    __cli_key__ = "fpl"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("said", help="utility_service.service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            FPLDatasource(args.account_number, args.said), conn
+        )
+
+    def make_transformer(self):
+        return UrjanetGridiumTransformer()
+
+
 class NationalGridCli(DatasourceCli):
     __cli_key__ = "nationalgrid"
 
@@ -167,6 +216,22 @@ class PgeCli(DatasourceCli):
         return PacificGasElectricTransformer()
 
 
+class DirectEnergy(DatasourceCli):
+    __cli_key__ = "directenergy"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            DirectEnergyDatasource(args.account_number, args.service_id), conn
+        )
+
+    def make_transformer(self):
+        return DirectEnergyTransformer()
+
+
 class PseCli(DatasourceCli):
     __cli_key__ = "pse"
 
@@ -197,6 +262,22 @@ class LadwpWaterCli(DatasourceCli):
 
     def make_transformer(self):
         return LosAngelesWaterTransformer()
+
+
+class LadwpCli(DatasourceCli):
+    __cli_key__ = "ladwp"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            LADWPDatasource(args.account_number, args.service_id), conn
+        )
+
+    def make_transformer(self):
+        return LADWPTransformer()
 
 
 class SanFranciscoWaterCli(DatasourceCli):
@@ -243,6 +324,19 @@ class ColleyvilleWaterCli(DatasourceCli):
 
     def make_transformer(self):
         return GenericWaterTransformer()
+
+
+class Constellation(DatasourceCli):
+    __cli_key__ = "constellation"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(ConstellationDatasource(args.account_number), conn)
+
+    def make_transformer(self):
+        return ConstellationTransformer()
 
 
 class FortWorthWaterCli(DatasourceCli):
