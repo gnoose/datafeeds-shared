@@ -40,6 +40,9 @@ from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
 from datafeeds.scrapers.duke.billing import datafeed as duke_billing
 from datafeeds.scrapers.duke.intervals import datafeed as duke_interval
+from datafeeds.scrapers.saltriver.intervals import datafeed as saltriver_interval
+from datafeeds.scrapers.saltriver.billing import datafeed as saltriver_billing
+
 from datafeeds.scrapers.stem import datafeed as stem
 
 from datafeeds.urjanet.datasource.american import datafeed as american
@@ -104,6 +107,8 @@ scraper_functions = {
     "portland-bizportal": portland_bizportal,
     "powertrack": powertrack,
     "pse-urjanet": pse,
+    "saltriver.billing": saltriver_billing,
+    "saltriver.interval": saltriver_interval,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
     "sdge-urjanet": sdge,
