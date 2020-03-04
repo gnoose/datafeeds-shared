@@ -43,6 +43,7 @@ from datafeeds.urjanet.datasource.fortworth import FortWorthWaterDatasource
 from datafeeds.urjanet.datasource.fostercity import FosterCityWaterDatasource
 from datafeeds.urjanet.datasource.fpl import FPLDatasource
 from datafeeds.urjanet.datasource.heco import HecoDatasource
+from datafeeds.urjanet.datasource.generic_water import GenericWaterDatasource
 from datafeeds.urjanet.datasource.irvineranch import IrvineRanchWaterDatasource
 
 from datafeeds.urjanet.datasource.ladwp import LosAngelesWaterDatasource
@@ -117,6 +118,31 @@ class DatasourceCli(metaclass=RegisteredCliHook):
 
     def make_transformer(self):
         return None
+
+
+class GenericWaterCli(DatasourceCli):
+    __cli_key__ = "generic_water"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument(
+            "utility_provider", help="snapmeter_meter_data_source.meta.utility_provider"
+        )
+        parser.add_argument(
+            "conversion_factor",
+            help="snapmeter_meter_data_source.meta.conversion_factor",
+        )
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            GenericWaterDatasource(
+                args.utility_provider, args.account_number, args.conversion_factor
+            ),
+            conn,
+        )
+
+    def make_transformer(self):
+        return GenericWaterTransformer()
 
 
 class FPLCli(DatasourceCli):
