@@ -41,6 +41,7 @@ from datafeeds.urjanet.datasource.constellation import ConstellationDatasource
 from datafeeds.urjanet.datasource.directenergy import DirectEnergyDatasource
 from datafeeds.urjanet.datasource.fortworth import FortWorthWaterDatasource
 from datafeeds.urjanet.datasource.fostercity import FosterCityWaterDatasource
+from datafeeds.urjanet.datasource.fpl import FPLDatasource
 from datafeeds.urjanet.datasource.heco import HecoDatasource
 from datafeeds.urjanet.datasource.irvineranch import IrvineRanchWaterDatasource
 
@@ -116,6 +117,22 @@ class DatasourceCli(metaclass=RegisteredCliHook):
 
     def make_transformer(self):
         return None
+
+
+class FPLCli(DatasourceCli):
+    __cli_key__ = "fpl"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("said", help="utility_service.service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            FPLDatasource(args.account_number, args.said), conn
+        )
+
+    def make_transformer(self):
+        return UrjanetGridiumTransformer()
 
 
 class NationalGridCli(DatasourceCli):
