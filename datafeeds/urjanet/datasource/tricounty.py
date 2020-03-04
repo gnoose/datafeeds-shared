@@ -9,7 +9,7 @@ from datafeeds.models import (
 )
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import Account
-from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
+from datafeeds.urjanet.transformer import TricountyTransformer
 
 
 class TriCountyDatasource(UrjanetPyMySqlDataSource):
@@ -54,6 +54,6 @@ def datafeed(
         datasource,
         params,
         TriCountyDatasource(meter.utility_account_id, meter.utility_service.service_id),
-        UrjanetGridiumTransformer(),
+        TricountyTransformer(),
         task_id=task_id,
     )

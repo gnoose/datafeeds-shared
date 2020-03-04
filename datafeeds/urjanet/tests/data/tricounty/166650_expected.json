@@ -5,7 +5,7 @@
             "peak_demand": null,
             "start": "2019-12-17",
             "tariff": null,
-            "total_charge": "0.0000",
+            "total_charge": "278.5100",
             "total_usage": "2993.00000",
             "line_items": [
                 {
@@ -31,7 +31,7 @@
             "peak_demand": null,
             "start": "2020-01-21",
             "tariff": null,
-            "total_charge": "0.0000",
+            "total_charge": "232.6000",
             "total_usage": "2451.00000",
             "line_items": [
                 {

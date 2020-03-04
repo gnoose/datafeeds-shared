@@ -78,6 +78,7 @@ from datafeeds.urjanet.transformer import (
     AmericanTransformer,
     AustinTXTransformer,
     HecoTransformer,
+    TricountyTransformer,
 )
 from datafeeds.urjanet.transformer.directenergy import DirectEnergyTransformer
 
@@ -182,7 +183,7 @@ class TriCountyCli(DatasourceCli):
         )
 
     def make_transformer(self):
-        return UrjanetGridiumTransformer()
+        return TricountyTransformer()
 
 
 class FPLCli(DatasourceCli):

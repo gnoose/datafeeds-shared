@@ -2,7 +2,7 @@ import os
 import unittest
 
 import datafeeds.urjanet.tests.util as test_util
-from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
+from datafeeds.urjanet.transformer import TricountyTransformer
 
 
 TEST_DIR = os.path.split(__file__)[0]
@@ -12,7 +12,7 @@ DATA_DIR = os.path.join(TEST_DIR, "data/tricounty")
 class TestUrjanetTriCountyTransformer(test_util.UrjaFixtureText):
     def tricounty_test(self, input_name, expected_name, start_date=None, end_date=None):
         self.fixture_test(
-            transformer=UrjanetGridiumTransformer(),
+            transformer=TricountyTransformer(),
             input_path=os.path.join(DATA_DIR, input_name),
             expected_path=os.path.join(DATA_DIR, expected_name),
             start_date=start_date,
