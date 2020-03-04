@@ -37,6 +37,7 @@ from datafeeds.urjanet.datasource.austin_tx import AustinTXDatasource
 from datafeeds.urjanet.datasource.base import CommodityType
 from datafeeds.urjanet.datasource.calwater import CalWaterDatasource
 from datafeeds.urjanet.datasource.colleyville import ColleyvilleWaterDatasource
+from datafeeds.urjanet.datasource.constellation import ConstellationDatasource
 from datafeeds.urjanet.datasource.fortworth import FortWorthWaterDatasource
 from datafeeds.urjanet.datasource.fostercity import FosterCityWaterDatasource
 from datafeeds.urjanet.datasource.heco import HecoDatasource
@@ -56,6 +57,7 @@ from datafeeds.urjanet.datasource.southlake import SouthlakeDatasource
 from datafeeds.urjanet.datasource.watauga import WataugaDatasource
 from datafeeds.urjanet.transformer import (
     UrjanetGridiumTransformer,
+    ConstellationTransformer,
     LosAngelesWaterTransformer,
     NationalGridTransformer,
     PacificGasElectricTransformer,
@@ -222,6 +224,19 @@ class ColleyvilleWaterCli(DatasourceCli):
 
     def make_transformer(self):
         return GenericWaterTransformer()
+
+
+class Constellation(DatasourceCli):
+    __cli_key__ = "constellation"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(ConstellationDatasource(args.account_number), conn)
+
+    def make_transformer(self):
+        return ConstellationTransformer()
 
 
 class FortWorthWaterCli(DatasourceCli):
