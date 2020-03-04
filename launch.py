@@ -50,6 +50,8 @@ from datafeeds.scrapers.sce_react.energymanager_billing import (
 from datafeeds.scrapers.sce_react.energymanager_interval import (
     datafeed as sce_react_energymanager_interval,
 )
+from datafeeds.scrapers.saltriver.intervals import datafeed as saltriver_interval
+from datafeeds.scrapers.saltriver.billing import datafeed as saltriver_billing
 from datafeeds.scrapers.stem import datafeed as stem
 
 from datafeeds.urjanet.datasource.american import datafeed as american
@@ -127,6 +129,8 @@ scraper_functions = {
     "portland-bizportal": portland_bizportal,
     "powertrack": powertrack,
     "pse-urjanet": pse,
+    "saltriver.billing": saltriver_billing,
+    "saltriver.interval": saltriver_interval,
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
     "sdge-urjanet": sdge,
