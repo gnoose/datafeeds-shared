@@ -269,6 +269,7 @@ class NautilusScraper(BaseWebScraper):
 
         site_page.five_days_select()
         sleep(10)
+        earliest_shown = site_page.get_earliest_shown()
 
         # fine-grained: go back by 5-day increments
         while self.end_date < (earliest_shown - five_days):

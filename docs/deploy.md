@@ -23,3 +23,5 @@ python ops/deploy.py --branch my-scraper-branch
 Note: If you want to be able deploy by branch, it's best to limit your branch's name to alphanumeric characters, underscores, and dashes (avoid special characters like slashes and colons, which docker uses as delimeters).
 
 The script exits if it doesn't find the commit ID/tag in the ECR. If it does find the tag, it moves the "deployed" tag to the new image.
+
+Note that in AWS there is a lifecycle policy limiting the total number of images to 250. 

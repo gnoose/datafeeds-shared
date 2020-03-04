@@ -124,9 +124,15 @@ Make sure you have:
 2. For most Urja scrapers you will need to update the field `utility_account_id` on the `SnapmeterAccountMeter` record
     associated with your meter, so that the scraper will associate Urjanet bills with that meter. 
     Once you have selected a target bill in the Urjanet DB, look up the "raw account number" associated with that bill. 
-    Then in the `psql` shell, update the meter to use that raw account number as the utility account ID:
+    Then in the `psql` shell, update the meter to use that raw account number as the utility account ID. New: we're in 
+    the process of moving utility_account_id to the UtilityService table, so write this information to both places.
     ```
     update snapmeter_account_meter set utility_account_id = '151009074' where meter = '4505019811696256';
+   
+    update utility_service 
+    set utility_account_id = '151009074' 
+    from meter where meter.oid = 4505019811696256 
+    and meter.service = utility_service.oid;
     ``` 
 
 3. Run your scraper via the launch script: `python launch.py by-oid 29 2019-01-01 2019-12-31`. The oid is the meter data source oid; the dates are required but not used for Urjanet scrapers. This runs your scraper exactly the same way AWS batch will. If everything
