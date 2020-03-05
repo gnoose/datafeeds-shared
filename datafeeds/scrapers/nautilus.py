@@ -5,7 +5,6 @@ from typing import List, Optional, Tuple
 import csv
 import logging
 
-from datafeeds import db
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.typing import Status
@@ -14,7 +13,6 @@ from datafeeds.common.support import Configuration, Results
 from datafeeds.common.util.selenium import file_exists_in_dir, clear_downloads
 from datafeeds.models import (
     SnapmeterAccount,
-    SnapmeterAccountMeter,
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
@@ -309,14 +307,8 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
 
-    acct_meter = (
-        db.session.query(SnapmeterAccountMeter)
-        .filter_by(meter=meter.oid, account=account.oid)
-        .first()
-    )
-
     configuration = NautilusConfiguration(
-        meter_id=meter.service_id, account_id=acct_meter.utility_account_id
+        meter_id=meter.service_id, account_id=meter.utility_account_id
     )
 
     return run_datafeed(

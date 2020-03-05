@@ -124,24 +124,12 @@ CREATE TYPE public.flow_direction_enum AS ENUM (
 
 ALTER TYPE public.flow_direction_enum OWNER TO gridium;
 
---
--- Name: generation_provider_enum; Type: TYPE; Schema: public; Owner: gridium
---
-
-CREATE TYPE public.generation_provider_enum AS ENUM (
-    'utility-bundled',
-    'tnd-only',
-    'cca'
-);
-
 
 CREATE TYPE public.provider_type_enum AS ENUM (
     'utility-bundled',
     'tnd-only'
 );
 
-
-ALTER TYPE public.generation_provider_enum OWNER TO gridium;
 
 --
 -- Name: provider_enum; Type: TYPE; Schema: public; Owner: gridium
@@ -3819,11 +3807,9 @@ ALTER SEQUENCE public.snapmeter_account_data_source_oid_seq OWNED BY public.snap
 CREATE TABLE public.snapmeter_account_meter (
     account bigint NOT NULL,
     meter bigint NOT NULL,
-    utility_account_id character varying,
     estimated_changes jsonb,
     created timestamp without time zone,
     oid bigint NOT NULL,
-    generation_provider public.generation_provider_enum DEFAULT 'utility-bundled'::public.generation_provider_enum NOT NULL,
     snapmeter_delivery boolean DEFAULT true NOT NULL
 );
 

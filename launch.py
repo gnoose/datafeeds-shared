@@ -324,9 +324,7 @@ def launch_by_name(
     db.session.add(account)
     db.session.flush()
 
-    sam = SnapmeterAccountMeter(
-        account=account.oid, meter=meter.oid, utility_account_id=account_id
-    )
+    sam = SnapmeterAccountMeter(account=account.oid, meter=meter.oid)
     db.session.add(sam)
     db.session.flush()
 

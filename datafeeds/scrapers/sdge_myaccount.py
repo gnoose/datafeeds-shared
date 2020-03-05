@@ -28,7 +28,6 @@ from dateutil import parser as dateparser
 from dateutil.rrule import rrule, SU, YEARLY
 from retrying import retry
 
-from datafeeds import db
 from datafeeds.common.batch import run_datafeed
 
 from datafeeds.common.support import DateRange
@@ -46,7 +45,6 @@ from datafeeds.models import (
     SnapmeterAccount,
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
-    SnapmeterAccountMeter,
 )
 
 
@@ -803,13 +801,9 @@ def datafeed(
     Retrying a bad login will lock the account. If a login fails, mark all data sources
     for this account as disabled.
     """
-    acct_meter = (
-        db.session.query(SnapmeterAccountMeter)
-        .filter_by(meter=meter.oid, account=account.oid)
-        .first()
-    )
+
     configuration = SdgeMyAccountConfiguration(
-        acct_meter.utility_account_id, meter.service_id
+        meter.utility_account_id, meter.service_id
     )
     return run_datafeed(
         SdgeMyAccountScraper,

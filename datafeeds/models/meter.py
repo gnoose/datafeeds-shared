@@ -16,6 +16,7 @@ from sqlalchemy.orm import relationship
 
 from datafeeds import db
 from datafeeds.orm import ModelMixin, Base
+from datafeeds.models.utility_service import UtilityService
 
 
 class MeterReading(ModelMixin, Base):
@@ -265,9 +266,11 @@ class Meter(ModelMixin, Base):
 
     @property
     def utility_account_id(self) -> str:
-        # Once writes confirmed stable, start reading this off of the
-        # UtilityService table instead.
-        return self.snapmeter_account_meter[0].utility_account_id
+        query = db.session.query(UtilityService).filter_by(oid=self.service)
+        service = query.first()
+        if service:
+            return service.utility_account_id
+        return None
 
     @property
     def service_id(self) -> str:

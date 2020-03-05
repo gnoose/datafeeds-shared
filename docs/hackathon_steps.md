@@ -121,14 +121,11 @@ Make sure you have:
 
     Make a note of the OID for the Snapmeter Meter Data Source created in this step.
 
-2. For most Urja scrapers you will need to update the field `utility_account_id` on the `SnapmeterAccountMeter` record
+2. For most Urja scrapers you will need to update the field `utility_account_id` on the `UtilityService` record
     associated with your meter, so that the scraper will associate Urjanet bills with that meter. 
     Once you have selected a target bill in the Urjanet DB, look up the "raw account number" associated with that bill. 
-    Then in the `psql` shell, update the meter to use that raw account number as the utility account ID. New: we're in 
-    the process of moving utility_account_id to the UtilityService table, so write this information to both places.
+    Then in the `psql` shell, update the meter to use that raw account number as the utility account ID. 
     ```
-    update snapmeter_account_meter set utility_account_id = '151009074' where meter = '4505019811696256';
-   
     update utility_service 
     set utility_account_id = '151009074' 
     from meter where meter.oid = 4505019811696256 
