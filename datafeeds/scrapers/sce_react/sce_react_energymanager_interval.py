@@ -1,22 +1,28 @@
-import csv
+import os
 import time
 import logging
 
-from typing import Optional, Tuple, List, Dict, Callable
-from datetime import timedelta, datetime, date, time as time_t
-from dateutil import parser as dateparser
-from dateutil.relativedelta import relativedelta
-from selenium.webdriver.common.keys import Keys
-from retrying import retry
+import datafeeds.scrapers.sce_react.pages as sce_pages
+import datafeeds.scrapers.sce_react.errors as sce_errors
+from datafeeds.scrapers.sce_react.parser import parse_sce_csv_file
 
+from typing import Optional, List, Dict
+from dateutil.relativedelta import relativedelta
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+
+from datafeeds.common.util.pagestate.pagestate import PageStateMachine
+from datafeeds.common.util.selenium import file_exists_in_dir
+
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import DateRange
 from datafeeds.common.support import Results
-from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
-from datafeeds.common.exceptions import LoginError
+from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.support import Configuration
 from datafeeds.common.typing import Status
-from datafeeds.common.util.selenium import IFrameSwitch, clear_downloads
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
@@ -44,8 +50,8 @@ class SceReactEnergyManagerIntervalConfiguration(Configuration):
 class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.browser_name = 'Chrome'
-        self.name = 'SCE React Energy Manager Interval'
+        self.browser_name = "Chrome"
+        self.name = "SCE React Energy Manager Interval"
         self.interval_data_timeline = None
 
     @property
@@ -65,9 +71,8 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
 
         # We start in the init state, which navigates to the login page
         state_machine.add_state(
-            name="init",
-            action=self.init_action,
-            transitions=["login"])
+            name="init", action=self.init_action, transitions=["login"]
+        )
 
         # Next, we login. On success, we get transferred to the SCE landing page. Else, we go to an error page.
         state_machine.add_state(
@@ -75,35 +80,40 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
             page=sce_pages.SceLoginPage(self._driver),
             action=self.login_action,
             transitions=["landing_page", "login_failed"],
-            wait_time=30)
+            wait_time=30,
+        )
 
         # We arrive at this state when a login fails
         state_machine.add_state(
             name="login_failed",
             page=sce_pages.SceLoginFailedPage(self._driver),
             action=self.login_failed_action,
-            transitions=[])
+            transitions=[],
+        )
 
         # This is the landing page, reached upon successful login. From here we load the energy manager application.
         state_machine.add_state(
             name="landing_page",
             page=sce_pages.SceLandingPage(self._driver),
             action=self.landing_page_action,
-            transitions=["energy_manager_landing"])
+            transitions=["energy_manager_landing"],
+        )
 
         # After navigating to Energy Manager, we need to specify the "Basic Usage" report type
         state_machine.add_state(
             name="energy_manager_landing",
             page=sce_pages.SceEnergyManagerLandingPage(self._driver),
             action=self.energy_manager_landing_action,
-            transitions=["energy_manager_basic_usage"])
+            transitions=["energy_manager_basic_usage"],
+        )
 
         # Finally, we interact with the "Basic Usage" report to dump out some interval data.
         state_machine.add_state(
             name="energy_manager_basic_usage",
             page=sce_pages.SceEnergyManagerBasicUsagePage(self._driver),
             action=self.energy_manager_basic_usage_action,
-            transitions=["done"])
+            transitions=["done"],
+        )
 
         # And that's the end
         state_machine.add_state("done")
@@ -125,7 +135,9 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
                 self.log_readings(serialized)
                 return Results(readings=serialized)
             return Results(readings={})
-        raise Exception("The scraper did not reach a finished state, this will require developer attention.")
+        raise Exception(
+            "The scraper did not reach a finished state, this will require developer attention."
+        )
 
     def init_action(self, _):
         self._driver.get("https://www.sce.com/mysce/login")
@@ -140,13 +152,17 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
     def landing_page_action(self, page: sce_pages.SceLandingPage):
         self._driver.get("https://www.sce.com/mysce/energymanager")
 
-    def energy_manager_landing_action(self, page: sce_pages.SceEnergyManagerLandingPage):
+    def energy_manager_landing_action(
+        self, page: sce_pages.SceEnergyManagerLandingPage
+    ):
         # A popup can show up here that ruins our day, so close it
         sce_pages.detect_and_close_survey(self._driver)
         time.sleep(5)
         page.select_basic_usage_report()
 
-    def energy_manager_basic_usage_action(self, page: sce_pages.SceEnergyManagerBasicUsagePage):
+    def energy_manager_basic_usage_action(
+        self, page: sce_pages.SceEnergyManagerBasicUsagePage
+    ):
         sce_pages.detect_and_close_survey(self._driver)
         page.select_service_id(self.service_id)
         page.configure_report()
@@ -166,10 +182,14 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
                 page.generate_report()
                 time.sleep(5)
                 WebDriverWait(self._driver, 180).until(
-                    EC.invisibility_of_element_located(sce_pages.GenericBusyIndicatorLocator)
+                    EC.invisibility_of_element_located(
+                        sce_pages.GenericBusyIndicatorLocator
+                    )
                 )
             except Exception as e:
-                raise sce_errors.EnergyManagerReportException("Failed to load data from Energy Manager") from e
+                raise sce_errors.EnergyManagerReportException(
+                    "Failed to load data from Energy Manager"
+                ) from e
 
             try:
                 page.raise_on_report_error()
@@ -184,18 +204,24 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
             try:
                 page.download_report()
             except Exception as e:
-                raise sce_errors.EnergyManagerReportException("Failed to load data from Energy Manager") from e
+                raise sce_errors.EnergyManagerReportException(
+                    "Failed to load data from Energy Manager"
+                ) from e
 
             try:
                 # Wait two minutes for the download to finish
                 wait = WebDriverWait(self._driver, 120)
-                csv_file_name = wait.until(file_exists_in_dir(self._driver.download_dir, r".*\.csv"))
+                csv_file_name = wait.until(
+                    file_exists_in_dir(self._driver.download_dir, r".*\.csv")
+                )
                 csv_file_path = os.path.join(self._driver.download_dir, csv_file_name)
                 for reading in parse_sce_csv_file(csv_file_path, self.service_id):
                     when, value = reading
                     timeline.insert(when, value)
             except TimeoutException:
-                raise TimeoutException("Downloading interval data from Energy Manager failed.")
+                raise TimeoutException(
+                    "Downloading interval data from Energy Manager failed."
+                )
 
         self.interval_data_timeline = timeline
 
@@ -210,7 +236,6 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
             os.remove(path)
 
 
-
 def datafeed(
     account: SnapmeterAccount,
     meter: Meter,
@@ -218,7 +243,9 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = SceReactEnergyManagerIntervalConfiguration(meter_id=meter.service_id)
+    configuration = SceReactEnergyManagerIntervalConfiguration(
+        meter_id=meter.service_id
+    )
 
     return run_datafeed(
         SceReactEnergyManagerIntervalScraper,

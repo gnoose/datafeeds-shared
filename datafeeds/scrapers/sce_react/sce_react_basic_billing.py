@@ -1,11 +1,22 @@
 import logging
+import collections
+import time
 
-from typing import Optional, Tuple, List, Dict, Callable
+from typing import Optional
 
+import datafeeds.scrapers.sce_react.pages as sce_pages
+import datafeeds.scrapers.sce_react.errors as sce_errors
+
+from datetime import timedelta
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+from datafeeds.common.util.pagestate.pagestate import PageStateMachine
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
-from datafeeds.common.support import Configuration
-from datafeeds.common.typing import Status
+from datafeeds.common.support import Configuration, Results
+from datafeeds.common.typing import Status, BillingDatum
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
@@ -16,21 +27,14 @@ logger = None
 log = logging.getLogger(__name__)
 
 
-
 # Simple object for holding combined usage and demand information scraped from the SCE site
 MergedBillData = collections.namedtuple(
-    "MergedBillData",
-    [
-        "start_date",
-        "end_date",
-        "usage_info",
-        "demand_info"
-    ])
+    "MergedBillData", ["start_date", "end_date", "usage_info", "demand_info"]
+)
 
 
 class SceReactBasicBillingConfiguration(Configuration):
-    def __init__(self,
-                 service_id: str):
+    def __init__(self, service_id: str):
         super().__init__(scrape_bills=True, scrape_readings=False)
         self.service_id = service_id
 
@@ -38,8 +42,8 @@ class SceReactBasicBillingConfiguration(Configuration):
 class SceReactBasicBillingScraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.browser_name = 'Chrome'
-        self.name = 'SCE React Basic Billing'
+        self.browser_name = "Chrome"
+        self.name = "SCE React Basic Billing"
         self.billing_history = []
 
     @property
@@ -58,9 +62,8 @@ class SceReactBasicBillingScraper(BaseWebScraper):
 
         # We start in the init state, which navigates to the login page
         state_machine.add_state(
-            name="init",
-            action=self.init_action,
-            transitions=["login"])
+            name="init", action=self.init_action, transitions=["login"]
+        )
 
         # Next, we login. On success, we get transferred to the SCE landing page. Note that there are several possible
         # landing pages, depending on the nature of the login (see the subsequent states for more details).
@@ -69,15 +72,21 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             name="login",
             page=sce_pages.SceLoginPage(self._driver),
             action=self.login_action,
-            transitions=["single_account_landing", "multi_account_landing", "login_failed"],
-            wait_time=30)
+            transitions=[
+                "single_account_landing",
+                "multi_account_landing",
+                "login_failed",
+            ],
+            wait_time=30,
+        )
 
         # We arrive at this state when a login fails. The scraper fails.
         state_machine.add_state(
             name="login_failed",
             page=sce_pages.SceLoginFailedPage(self._driver),
             action=self.login_failed_action,
-            transitions=[])
+            transitions=[],
+        )
 
         # There are two possible landing pages; one shows a single service account, the other shows multiple accounts
         # with a search bar. This first state handles the case where only a single service account is visible. We
@@ -86,7 +95,8 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             name="single_account_landing",
             page=sce_pages.SceSingleAccountLandingPage(self._driver),
             action=self.single_account_landing_page_action,
-            transitions=["view_usage_dialog"])
+            transitions=["view_usage_dialog"],
+        )
 
         # This state captures the other possibility, where multiple service accounts are present. In this case, we
         # perform a search for the desired SAID.
@@ -94,28 +104,32 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             name="multi_account_landing",
             page=sce_pages.SceMultiAccountLandingPage(self._driver),
             action=self.multi_account_landing_page_action,
-            transitions=["search_success", "search_failure"])
+            transitions=["search_success", "search_failure"],
+        )
 
         # If the search fails, we end up here, and the scraper fails.
         state_machine.add_state(
             name="search_failure",
             page=sce_pages.SceAccountSearchFailure(self._driver),
             action=self.search_failure_action,
-            transitions=[])
+            transitions=[],
+        )
 
         # If the search succeeds, we open the billing information for the found service id.
         state_machine.add_state(
             name="search_success",
             page=sce_pages.SceAccountSearchSuccess(self._driver),
             action=self.search_success_action,
-            transitions=["view_usage_dialog"])
+            transitions=["view_usage_dialog"],
+        )
 
         # This state is responsible for gathering billing data for the desired SAID.
         state_machine.add_state(
             name="view_usage_dialog",
             page=sce_pages.SceServiceAccountDetailModal(self._driver),
             action=self.view_usage_action,
-            transitions=["done"])
+            transitions=["done"],
+        )
 
         # And that's the end
         state_machine.add_state("done")
@@ -132,7 +146,9 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         final_state = state_machine.run()
         if final_state == "done":
             return Results(bills=self.billing_history)
-        raise Exception("The scraper did not reach a finished state, this will require developer attention.")
+        raise Exception(
+            "The scraper did not reach a finished state, this will require developer attention."
+        )
 
     def init_action(self, _):
         self._driver.get("https://www.sce.com/mysce/login")
@@ -144,21 +160,33 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         # Throw an exception on failure to login
         page.raise_on_error()
 
-    def single_account_landing_page_action(self, page: sce_pages.SceSingleAccountLandingPage):
+    def single_account_landing_page_action(
+        self, page: sce_pages.SceSingleAccountLandingPage
+    ):
         sce_pages.detect_and_close_survey(self._driver)
         service_id = page.get_service_account()
         if service_id != self.service_id:
-            raise sce_errors.ServiceIdException("No service ID matching '{}' was found.".format(self.service_id))
+            raise sce_errors.ServiceIdException(
+                "No service ID matching '{}' was found.".format(self.service_id)
+            )
         page.open_usage_info()
 
-    def multi_account_landing_page_action(self, page: sce_pages.SceMultiAccountLandingPage):
+    def multi_account_landing_page_action(
+        self, page: sce_pages.SceMultiAccountLandingPage
+    ):
         sce_pages.detect_and_close_survey(self._driver)
         page.search_by_service_id(self.service_id)
         time.sleep(5)
-        WebDriverWait(self._driver, 10, EC.invisibility_of_element_located(sce_pages.GenericBusyIndicatorLocator))
+        WebDriverWait(
+            self._driver,
+            10,
+            EC.invisibility_of_element_located(sce_pages.GenericBusyIndicatorLocator),
+        )
 
     def search_failure_action(self, page: sce_pages.SceAccountSearchFailure):
-        raise sce_errors.ServiceIdException("No service ID matching '{}' was found.".format(self.service_id))
+        raise sce_errors.ServiceIdException(
+            "No service ID matching '{}' was found.".format(self.service_id)
+        )
 
     def search_success_action(self, page: sce_pages.SceAccountSearchSuccess):
         page.view_usage_for_search_result()
@@ -178,22 +206,28 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         for date_range in sorted(usage_dates.union(demand_dates)):
             start, end = date_range
 
-            merged.append(MergedBillData(
-                start_date=start,
-                end_date=end,
-                usage_info=usage_dict.get(date_range),
-                demand_info=demand_dict.get(date_range)))
+            merged.append(
+                MergedBillData(
+                    start_date=start,
+                    end_date=end,
+                    usage_info=usage_dict.get(date_range),
+                    demand_info=demand_dict.get(date_range),
+                )
+            )
 
         billing_objects = []
         for item in merged:
-            billing_objects.append(BillingDatum(
-                start=item.start_date,
-                end=item.end_date - timedelta(days=1),
-                cost=item.usage_info.cost,
-                used=item.usage_info.usage,
-                peak=item.demand_info.demand,
-                items=None,
-                attachments=None))
+            billing_objects.append(
+                BillingDatum(
+                    start=item.start_date,
+                    end=item.end_date - timedelta(days=1),
+                    cost=item.usage_info.cost,
+                    used=item.usage_info.usage,
+                    peak=item.demand_info.demand,
+                    items=None,
+                    attachments=None,
+                )
+            )
 
         self.billing_history = billing_objects
 
@@ -205,7 +239,7 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = SceReactBasicBillingConfiguration(service_id=meter['service_id'])
+    configuration = SceReactBasicBillingConfiguration(service_id=meter["service_id"])
 
     return run_datafeed(
         SceReactBasicBillingScraper,

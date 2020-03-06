@@ -12,36 +12,26 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 from dateutil.parser import parse as parse_date
 
-from gridium_tasks.lib.scrapers.utils.selenium import (
+from datafeeds.common.util.selenium import (
     ec_and,
     ec_or,
-    element_text_doesnt_contain
+    element_text_doesnt_contain,
 )
-from gridium_tasks.lib.scrapers.utils.pagestate import PageState
+from datafeeds.common.util.pagestate.pagestate import PageState
 
-import gridium_tasks.lib.scrapers.sce.react.errors as sce_errors
+import datafeeds.scrapers.sce_react.errors as sce_errors
 
 # A model of the basic usage info exposed for service accounts from the landing page
 # of SCE's website
 SimpleUsageInfo = collections.namedtuple(
-    "UsageInfo",
-    [
-        "start_date",
-        "end_date",
-        "usage",
-        "cost"
-    ])
+    "UsageInfo", ["start_date", "end_date", "usage", "cost"]
+)
 
 # A model of the basic demand info exposed for service accounts from the landing page
 # of SCE's website
 SimpleDemandInfo = collections.namedtuple(
-    "DemandInfo",
-    [
-        "start_date",
-        "end_date",
-        "demand",
-        "cost"
-    ])
+    "DemandInfo", ["start_date", "end_date", "demand", "cost"]
+)
 
 # A simple model of a service descriptor in the SCE Energy Manager UI. This corresponds to a row in a table of
 # available services for a given login.
@@ -57,8 +47,9 @@ ServiceListingRow = collections.namedtuple(
         "rate",  # Tariff
         "address",
         "bill_start",
-        "bill_end"
-    ])
+        "bill_end",
+    ],
+)
 
 BillingDataRow = collections.namedtuple(
     "BillingDataRow",
@@ -72,17 +63,23 @@ BillingDataRow = collections.namedtuple(
         "statement_date",  # Tariff
         "bill_amount",
         "kw",
-        "kwh"
-    ])
+        "kwh",
+    ],
+)
 
-GenericBusyIndicatorLocator = (By.XPATH, "//span[contains(@class, 'appSpinner__spinnerMessage')]")
+GenericBusyIndicatorLocator = (
+    By.XPATH,
+    "//span[contains(@class, 'appSpinner__spinnerMessage')]",
+)
 
 
 def detect_and_close_survey(driver, timeout=5):
     try:
         locator = (By.CLASS_NAME, "acsDeclineButton")
-        WebDriverWait(driver, timeout).until(EC.presence_of_element_located(locator)).click()
-    except:
+        WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located(locator)
+        ).click()
+    except Exception:
         pass
 
 
@@ -91,6 +88,7 @@ class SceLoginPage(PageState):
 
     This is a very straightforward login process, featuring a username field, password field, and submit button.
     """
+
     UsernameInputLocator = (By.XPATH, "//react-login-main//input[@id='userName']")
     PasswordInputLocator = (By.XPATH, "//react-login-main//input[@id='password']")
     SubmitButtonLocator = (By.XPATH, "//react-login-main//button")
@@ -100,7 +98,7 @@ class SceLoginPage(PageState):
             EC.title_contains("Log In"),
             EC.presence_of_element_located(self.UsernameInputLocator),
             EC.presence_of_element_located(self.PasswordInputLocator),
-            EC.presence_of_element_located(self.SubmitButtonLocator)
+            EC.presence_of_element_located(self.SubmitButtonLocator),
         )
 
     def login(self, username: str, password: str):
@@ -125,7 +123,7 @@ class SceLoginFailedPage(PageState):
     def get_ready_condition(self):
         return ec_and(
             EC.title_contains("Log In"),
-            EC.presence_of_element_located(self.LoginErrorLocator)
+            EC.presence_of_element_located(self.LoginErrorLocator),
         )
 
     def raise_on_error(self):
@@ -149,10 +147,19 @@ class SceLandingPage(PageState):
     recognized as a valid landing page state. This field has a default value of True.
     """
 
-    BillingDataLocator = (By.XPATH, "//react-myaccount-container//div[contains(@class, 'billingOverviewComponent')]")
-    AccountDataLocator = (By.XPATH, "//react-myaccount-container//div[contains(@class, 'accountsOverviewComponent')]")
+    BillingDataLocator = (
+        By.XPATH,
+        "//react-myaccount-container//div[contains(@class, 'billingOverviewComponent')]",
+    )
+    AccountDataLocator = (
+        By.XPATH,
+        "//react-myaccount-container//div[contains(@class, 'accountsOverviewComponent')]",
+    )
     VerificationPendingLocator = (By.XPATH, "//react-verification-pending")
-    ErrorLocator = (By.XPATH, "//react-myaccount-container//mark[contains(@class, 'globalErrorBlock')]")
+    ErrorLocator = (
+        By.XPATH,
+        "//react-myaccount-container//mark[contains(@class, 'globalErrorBlock')]",
+    )
 
     def __init__(self, driver, tolerate_error=True):
         super().__init__(driver)
@@ -162,7 +169,7 @@ class SceLandingPage(PageState):
         locator_set = [
             EC.presence_of_element_located(self.BillingDataLocator),
             EC.presence_of_element_located(self.AccountDataLocator),
-            EC.presence_of_element_located(self.VerificationPendingLocator)
+            EC.presence_of_element_located(self.VerificationPendingLocator),
         ]
         if self.tolerate_error:
             locator_set.append(EC.presence_of_element_located(self.ErrorLocator))
@@ -175,29 +182,41 @@ class SceSingleAccountLandingPage(PageState):
     Some logins only display information for a single SAID on the landing page. This class models that flavor of
     landing page.
     """
-    ViewUsageLocator = (By.XPATH, "//react-myaccount-container//button[@id='ThisPeriod']")
-    BillingDataLocator = (By.XPATH, "//react-myaccount-container//div[contains(@class, 'billingOverviewComponent')]")
-    ServiceAccountsLocator = (By.XPATH, "//div[contains(@class, 'serviceAccountComponent__sceServiceAccInfoSection')]")
+
+    ViewUsageLocator = (
+        By.XPATH,
+        "//react-myaccount-container//button[@id='ThisPeriod']",
+    )
+    BillingDataLocator = (
+        By.XPATH,
+        "//react-myaccount-container//div[contains(@class, 'billingOverviewComponent')]",
+    )
+    ServiceAccountsLocator = (
+        By.XPATH,
+        "//div[contains(@class, 'serviceAccountComponent__sceServiceAccInfoSection')]",
+    )
 
     def get_ready_condition(self):
         return ec_or(
             EC.presence_of_element_located(self.BillingDataLocator),
-            EC.presence_of_element_located(self.ViewUsageLocator)
+            EC.presence_of_element_located(self.ViewUsageLocator),
         )
 
     def get_service_account(self) -> str:
         """Extract the service account number listed on this landing page"""
         try:
             elements = self.driver.find_elements(*self.ServiceAccountsLocator)
-        except:
+        except NoSuchElementException:
             elements = None
 
         if not elements:
             raise sce_errors.ServiceIdException(
-                "Failed to located any Service ID information on the SCE landing page.")
+                "Failed to located any Service ID information on the SCE landing page."
+            )
         elif len(elements) > 1:
             raise sce_errors.ServiceIdException(
-                "Expected only one service account on the SCE landing page, but found multiple.")
+                "Expected only one service account on the SCE landing page, but found multiple."
+            )
 
         return elements[0].text.strip()
 
@@ -207,9 +226,13 @@ class SceSingleAccountLandingPage(PageState):
         This can be used to view billing data for the service account.
         """
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.ViewUsageLocator)).click()
-        except:
-            raise sce_errors.BillingDataNotFoundException("No billing data was found for this login.")
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(self.ViewUsageLocator)
+            ).click()
+        except Exception:
+            raise sce_errors.BillingDataNotFoundException(
+                "No billing data was found for this login."
+            )
 
 
 class SceMultiAccountLandingPage(PageState):
@@ -218,13 +241,20 @@ class SceMultiAccountLandingPage(PageState):
     Some logins display information for multiple SAIDS on the landing page. This class models that flavor of landing
     page. This page has a search bar that can be used to locate a specific service agreement.
     """
-    AccountDataLocator = (By.XPATH, "//react-myaccount-container//div[contains(@class, 'accountsOverviewComponent')]")
-    AccountFilterLocator = (By.XPATH, "//react-myaccount-container//input[@id='searchMyAccounts']")
+
+    AccountDataLocator = (
+        By.XPATH,
+        "//react-myaccount-container//div[contains(@class, 'accountsOverviewComponent')]",
+    )
+    AccountFilterLocator = (
+        By.XPATH,
+        "//react-myaccount-container//input[@id='searchMyAccounts']",
+    )
 
     def get_ready_condition(self):
         return ec_or(
             EC.presence_of_element_located(self.AccountDataLocator),
-            EC.presence_of_element_located(self.AccountFilterLocator)
+            EC.presence_of_element_located(self.AccountFilterLocator),
         )
 
     def search_by_service_id(self, service_id):
@@ -239,7 +269,11 @@ class SceMultiAccountLandingPage(PageState):
 
 class SceAccountSearchFailure(PageState):
     """Models the case where a SAID search fails"""
-    ErrorLocator = (By.XPATH, "//react-myaccount-container//div[contains(@class, 'sceErrorBox')]")
+
+    ErrorLocator = (
+        By.XPATH,
+        "//react-myaccount-container//div[contains(@class, 'sceErrorBox')]",
+    )
 
     def get_ready_condition(self):
         return EC.presence_of_element_located(self.ErrorLocator)
@@ -250,18 +284,18 @@ class SceAccountSearchSuccess(PageState):
 
     AccountDataLocator = (
         By.XPATH,
-        "//react-myaccount-container//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccSection')]"
+        "//react-myaccount-container//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccSection')]",
     )
 
     ViewUsageLinkLocator = (
         By.XPATH,
-        "//a[contains(@class, 'serviceAccOverviewComponent__sceViewUsageBtn')]"
+        "//a[contains(@class, 'serviceAccOverviewComponent__sceViewUsageBtn')]",
     )
 
     def get_ready_condition(self):
         return ec_and(
             EC.presence_of_element_located(self.AccountDataLocator),
-            EC.presence_of_element_located(self.ViewUsageLinkLocator)
+            EC.presence_of_element_located(self.ViewUsageLinkLocator),
         )
 
     def view_usage_for_search_result(self):
@@ -284,14 +318,20 @@ class SceServiceAccountDetailModal(PageState):
     ReportWindow = (By.ID, "graphModal")
     ReportDropdownLocator = (By.ID, "OpenDropDown")
     OpenDateRangeLocator = (By.ID, "showDateRanges")
-    DatePopupLocator = (By.XPATH, "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]")
-    DatePopupYearLocator = (By.XPATH, "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]//p")
+    DatePopupLocator = (
+        By.XPATH,
+        "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]",
+    )
+    DatePopupYearLocator = (
+        By.XPATH,
+        "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]//p",
+    )
 
     def get_ready_condition(self):
         return ec_and(
             EC.presence_of_element_located(self.ReportWindow),
             EC.presence_of_element_located(self.ReportDropdownLocator),
-            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator),
         )
 
     def _select_report(self, name: str, locator):
@@ -308,7 +348,9 @@ class SceServiceAccountDetailModal(PageState):
         report_dropdown.click()
         self.driver.find_element(*locator).click()
         time.sleep(5)
-        WebDriverWait(self.driver, 20).until(EC.invisibility_of_element_located(GenericBusyIndicatorLocator))
+        WebDriverWait(self.driver, 20).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
 
     def select_usage_report(self):
         self._select_report("View Usage", (By.ID, "ViewUsage"))
@@ -322,7 +364,9 @@ class SceServiceAccountDetailModal(PageState):
             parts = text.split("-")
             return parse_date(parts[0]).date(), parse_date(parts[1]).date()
         except Exception as e:
-            raise ValueError("Failed to parse date range string: {}".format(text)) from e
+            raise ValueError(
+                "Failed to parse date range string: {}".format(text)
+            ) from e
 
     def _parse_usage(self, text) -> float:
         """Attempt to convert a string usage value from the UI to a float"""
@@ -350,9 +394,13 @@ class SceServiceAccountDetailModal(PageState):
 
         # This is a little fragile; the selector is complex, and the exclusion of a specific string is a little
         # questionable. This might need to be replaced by something more robust if it proves troublesome.
-        date_divs_locator = (By.XPATH, "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]/div/div//div")
+        date_divs_locator = (
+            By.XPATH,
+            "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]/div/div//div",
+        )
         return [
-            element for element in self.driver.find_elements(*date_divs_locator)
+            element
+            for element in self.driver.find_elements(*date_divs_locator)
             if "View Another Billed Month" not in element.text
         ]
 
@@ -372,34 +420,45 @@ class SceServiceAccountDetailModal(PageState):
 
         results = []
         self.driver.find_element(*self.OpenDateRangeLocator).click()
-        date_popup = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.DatePopupLocator))
+        date_popup = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.DatePopupLocator)
+        )
 
         while True:
             current_year = self.driver.find_element(*self.DatePopupYearLocator).text
             for start, end in self._get_visible_date_ranges():
                 results.append((start, end))
 
-            prev_button = date_popup.find_element_by_xpath(".//span[contains(@class, GraphDialogs__prevIcon)]")
+            prev_button = date_popup.find_element_by_xpath(
+                ".//span[contains(@class, GraphDialogs__prevIcon)]"
+            )
             prev_button.click()
 
             try:
                 WebDriverWait(self.driver, 5).until(
-                    element_text_doesnt_contain(self.DatePopupYearLocator, current_year))
+                    element_text_doesnt_contain(self.DatePopupYearLocator, current_year)
+                )
             except TimeoutException:
                 break
 
         self.driver.find_element_by_xpath("//button[@id='showDateRanges']").click()
-        WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located(self.DatePopupLocator))
+        WebDriverWait(self.driver, 5).until(
+            EC.invisibility_of_element_located(self.DatePopupLocator)
+        )
         return results
 
     def _get_visible_usage_info(self):
         """Internal helper function to retrieve currently visible usage info from the modal dialog"""
-        data_xpath = ("//div[contains(@class, 'GraphContentStyle__netUsageValues')]"
-                      "//span[contains(@class, 'GraphContentStyle__netSuperOffPeakKwh')]")
+        data_xpath = (
+            "//div[contains(@class, 'GraphContentStyle__netUsageValues')]"
+            "//span[contains(@class, 'GraphContentStyle__netSuperOffPeakKwh')]"
+        )
 
         values = self.driver.find_elements_by_xpath(data_xpath)
         if len(values) != 3:
-            raise ValueError("Did not find expected usage information on the SCE website")
+            raise ValueError(
+                "Did not find expected usage information on the SCE website"
+            )
 
         # Skip the first data element (values[0]), which is average daily usage
         usage = self._parse_usage(values[1].text)
@@ -408,12 +467,16 @@ class SceServiceAccountDetailModal(PageState):
 
     def get_visible_demand_info(self):
         """Internal helper function to retrieve currently visible demand info from the modal dialog"""
-        data_xpath = ("//div[contains(@class, 'GraphContentStyle__netUsageValues')]"
-                      "//span[contains(@class, 'GraphContentStyle__netSuperOffPeakKwh')]")
+        data_xpath = (
+            "//div[contains(@class, 'GraphContentStyle__netUsageValues')]"
+            "//span[contains(@class, 'GraphContentStyle__netSuperOffPeakKwh')]"
+        )
 
         values = self.driver.find_elements_by_xpath(data_xpath)
         if len(values) != 2:
-            raise ValueError("Did not find expected demand information on the SCE website")
+            raise ValueError(
+                "Did not find expected demand information on the SCE website"
+            )
 
         demand = self._parse_demand(values[0].text)
         cost = self._parse_cost(values[1].text)
@@ -422,7 +485,9 @@ class SceServiceAccountDetailModal(PageState):
     def select_date_range(self, target_start: date, target_end: date):
         """Attempt to select a specific billing period from the modal dialog calendar view"""
         self.driver.find_element(*self.OpenDateRangeLocator).click()
-        date_popup = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.DatePopupLocator))
+        date_popup = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.DatePopupLocator)
+        )
 
         found_date = False
         while True:
@@ -441,23 +506,33 @@ class SceServiceAccountDetailModal(PageState):
             if found_date:
                 break
 
-            prev_button = date_popup.find_element_by_xpath(".//span[contains(@class, GraphDialogs__prevIcon)]")
+            prev_button = date_popup.find_element_by_xpath(
+                ".//span[contains(@class, GraphDialogs__prevIcon)]"
+            )
             prev_button.click()
 
             try:
                 WebDriverWait(self.driver, 5).until(
-                    element_text_doesnt_contain(self.DatePopupYearLocator, current_year))
+                    element_text_doesnt_contain(self.DatePopupYearLocator, current_year)
+                )
             except TimeoutException:
                 break
 
         if not found_date:
-            raise ValueError("Failed to find bill with date range: {} - {}".format(target_start, target_end))
+            raise ValueError(
+                "Failed to find bill with date range: {} - {}".format(
+                    target_start, target_end
+                )
+            )
 
         # Wait for the selection to finish
         time.sleep(5)
         WebDriverWait(self.driver, 20).until(
-            ec_and(EC.invisibility_of_element_located(self.DatePopupLocator),
-                   EC.invisibility_of_element_located(GenericBusyIndicatorLocator)))
+            ec_and(
+                EC.invisibility_of_element_located(self.DatePopupLocator),
+                EC.invisibility_of_element_located(GenericBusyIndicatorLocator),
+            )
+        )
 
     def get_usage_info(self, start_date: date, end_date: date) -> List[SimpleUsageInfo]:
         """Scrape basic usage data for all billing periods that start in the range specified by the arguments
@@ -469,9 +544,13 @@ class SceServiceAccountDetailModal(PageState):
         self.select_usage_report()
 
         # We need to open the "Billed Months" view, in order to view historical data
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "BilledMonths"))).click()
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.ID, "BilledMonths"))
+        ).click()
         time.sleep(5)
-        WebDriverWait(self.driver, 20).until(EC.invisibility_of_element_located(GenericBusyIndicatorLocator))
+        WebDriverWait(self.driver, 20).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
 
         # Get the available billing dates
         date_ranges = self.get_available_billing_periods()
@@ -482,7 +561,11 @@ class SceServiceAccountDetailModal(PageState):
             if start_date <= start <= end_date:
                 self.select_date_range(start, end)
                 usage, cost = self._get_visible_usage_info()
-                results.append(SimpleUsageInfo(start_date=start, end_date=end, usage=usage, cost=cost))
+                results.append(
+                    SimpleUsageInfo(
+                        start_date=start, end_date=end, usage=usage, cost=cost
+                    )
+                )
         return results
 
     def get_demand_info(self, start_date, end_date) -> List[SimpleDemandInfo]:
@@ -495,9 +578,13 @@ class SceServiceAccountDetailModal(PageState):
         self.select_demand_report()
 
         # We need to open the "Billed Months" view, in order to view historical data
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "demandBilledMonths"))).click()
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.ID, "demandBilledMonths"))
+        ).click()
         time.sleep(5)
-        WebDriverWait(self.driver, 20).until(EC.invisibility_of_element_located(GenericBusyIndicatorLocator))
+        WebDriverWait(self.driver, 20).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
 
         # Get the available billing dates
         date_ranges = self.get_available_billing_periods()
@@ -508,7 +595,11 @@ class SceServiceAccountDetailModal(PageState):
             if start_date < start < end_date:
                 self.select_date_range(start, end)
                 demand, cost = self.get_visible_demand_info()
-                results.append(SimpleDemandInfo(start_date=start, end_date=end, demand=demand, cost=cost))
+                results.append(
+                    SimpleDemandInfo(
+                        start_date=start, end_date=end, demand=demand, cost=cost
+                    )
+                )
         return results
 
 
@@ -535,7 +626,7 @@ class SceEnergyManagerLandingPage(PageState):
         try:
             report_selector = "//ul[@id='emReportTypeUl']//li[text()='{}']".format(name)
             self.driver.find_element_by_xpath(report_selector).click()
-        except:
+        except NoSuchElementException:
             raise ValueError("Could not find a report type named: {}".format(name))
 
     def select_basic_usage_report(self):
@@ -555,9 +646,18 @@ class EnergyManagerServiceListingHelper:
     """
 
     ViewSmartConnectLocator = (By.PARTIAL_LINK_TEXT, "View Edison SmartConnect")
-    ServiceTableLocator = (By.XPATH, "//react-energy-manager//table[contains(@class, 'emUserData')]")
-    ServiceDivLocator = (By.XPATH, "//react-energy-manager//div[contains(@class, 'emUserData__divscroll')]")
-    EnergyManagerErrorLocator = (By.XPATH, "//react-energy-manager//div[contains(@class, 'errorpage__applyborder')]")
+    ServiceTableLocator = (
+        By.XPATH,
+        "//react-energy-manager//table[contains(@class, 'emUserData')]",
+    )
+    ServiceDivLocator = (
+        By.XPATH,
+        "//react-energy-manager//div[contains(@class, 'emUserData__divscroll')]",
+    )
+    EnergyManagerErrorLocator = (
+        By.XPATH,
+        "//react-energy-manager//div[contains(@class, 'errorpage__applyborder')]",
+    )
     TableColumnCount = 9
 
     def __init__(self, driver):
@@ -570,7 +670,9 @@ class EnergyManagerServiceListingHelper:
             return None
 
         return ServiceListingRow(
-            checkbox=data[0].find_element_by_xpath(".//div[contains(@class, 'sce-registration-checkbox')]"),
+            checkbox=data[0].find_element_by_xpath(
+                ".//div[contains(@class, 'sce-registration-checkbox')]"
+            ),
             row_id=data[0].find_element_by_tag_name("input").get_attribute("id"),
             customer_number=data[1].text,
             customer_name=data[2].text,
@@ -579,9 +681,12 @@ class EnergyManagerServiceListingHelper:
             rate=data[5].text,
             address=data[6].text,
             bill_start=data[7].text,
-            bill_end=data[8].text)
+            bill_end=data[8].text,
+        )
 
-    def select_service_id_in_div(self, service_id: str, service_div: WebElement) -> bool:
+    def select_service_id_in_div(
+        self, service_id: str, service_div: WebElement
+    ) -> bool:
         """Helper function for service ID selection.
 
         There are two separate tables from which one can select services; one for Edison Smart connect meters,
@@ -643,7 +748,9 @@ class EnergyManagerServiceListingHelper:
         if self.try_expand_smart_meters():
             # A new div will appear with the smart meters, so requery the DOM
             service_divs = self.driver.find_elements(*self.ServiceDivLocator)
-            return len(service_divs) > 1 and self.select_service_id_in_div(service_id, service_divs[1])
+            return len(service_divs) > 1 and self.select_service_id_in_div(
+                service_id, service_divs[1]
+            )
 
         return False
 
@@ -664,7 +771,7 @@ class EnergyManagerServiceListingHelper:
                     parsed_row = self.parse_service_row(row)
                     if parsed_row:
                         return True
-            except:
+            except Exception:
                 pass
             return False
 
@@ -701,7 +808,10 @@ class SceEnergyManagerBasicUsagePage(PageState):
     FromDateLocator = (By.XPATH, "//input[@id='EMStartDate']")
     ToDateLocator = (By.XPATH, "//input[@id='EMEndToDate']")
 
-    ReportUnitsLocator = (By.XPATH, "//div[contains(@class, 'reportType__checkboxReport')]//input")
+    ReportUnitsLocator = (
+        By.XPATH,
+        "//div[contains(@class, 'reportType__checkboxReport')]//input",
+    )
     ReportDataKindLocator = (By.XPATH, "//div[@id='includeShow']")
     DataKindMeteredLocator = (By.XPATH, "//li[@id='includeShowME']")
 
@@ -717,7 +827,7 @@ class SceEnergyManagerBasicUsagePage(PageState):
                 report_type_element = driver.find_element(*self.ReportTypeLocator)
                 current_report_type = report_type_element.text.strip()
                 return current_report_type == "Basic Usage"
-            except:
+            except NoSuchElementException:
                 pass
             return False
 
@@ -727,7 +837,9 @@ class SceEnergyManagerBasicUsagePage(PageState):
         """Choose a specific service ID to gather data for"""
         service_listing = EnergyManagerServiceListingHelper(self.driver)
         if not service_listing.select_service_id(service_id):
-            message = "No service ID matching '{}' was found in Energy Manager".format(service_id)
+            message = "No service ID matching '{}' was found in Energy Manager".format(
+                service_id
+            )
             raise sce_errors.ServiceIdException(message)
 
     def configure_report(self):
@@ -738,9 +850,9 @@ class SceEnergyManagerBasicUsagePage(PageState):
 
         # Specify a custom date range, so that we can select the dates we need
         self.driver.find_element(*self.TimePeriodLocator).click()
-        WebDriverWait(self.driver, 10) \
-            .until(EC.visibility_of_element_located(self.CustomTimeLocator)) \
-            .click()
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(self.CustomTimeLocator)
+        ).click()
 
         # Specify units of KW
         unit_options = self.driver.find_elements(*self.ReportUnitsLocator)
@@ -756,9 +868,9 @@ class SceEnergyManagerBasicUsagePage(PageState):
         data_kind = self.driver.find_element(*self.ReportDataKindLocator)
         if data_kind.text != "Metered":
             data_kind.click()
-            WebDriverWait(self.driver, 10) \
-                .until(EC.visibility_of_element_located(self.DataKindMeteredLocator)) \
-                .click()
+            WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located(self.DataKindMeteredLocator)
+            ).click()
 
     def set_time_range(self, start_date: date, end_date: date):
         date_fmt = "%m/%d/%Y"
@@ -814,7 +926,9 @@ class SceEnergyManagerBasicUsagePage(PageState):
     def get_report_error_element(self) -> Optional[WebElement]:
         """Return the WebElement containing report errors, if it exists (None otherwise)"""
         try:
-            return WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.ErrorLocator))
+            return WebDriverWait(self.driver, 5).until(
+                EC.presence_of_element_located(self.ErrorLocator)
+            )
         except TimeoutException:
             return None
 
@@ -839,10 +953,10 @@ class SceEnergyManagerBasicUsagePage(PageState):
         retries = 1
         while True:
             try:
-                WebDriverWait(self.driver, 5) \
-                    .until(EC.visibility_of_element_located(self.DownloadExcelLocator)) \
-                    .click()
-            except:
+                WebDriverWait(self.driver, 5).until(
+                    EC.visibility_of_element_located(self.DownloadExcelLocator)
+                ).click()
+            except Exception:
                 detect_and_close_survey(self.driver)
                 if retries == 0:
                     raise
@@ -865,7 +979,10 @@ class SceEnergyManagerBillingPage(PageState):
     ToMonthLocator = (By.XPATH, "//div[@id='monthTwoDropdown']")
     ToYearLocator = (By.XPATH, "//div[@id='yearTwoDropdown']")
     GenerateReportLocator = (By.XPATH, "//button[@id='emGenerateReport']")
-    BillingTableLocator = (By.XPATH, "//div[contains(@class,'ServiceAcctBillList__module')]//table")
+    BillingTableLocator = (
+        By.XPATH,
+        "//div[contains(@class,'ServiceAcctBillList__module')]//table",
+    )
     ErrorLocator = (By.XPATH, "//div[contains(@class, 'reportType__error')]//mark")
 
     def get_ready_condition(self):
@@ -876,54 +993,65 @@ class SceEnergyManagerBillingPage(PageState):
                 report_type_element = driver.find_element(*self.ReportTypeLocator)
                 current_report_type = report_type_element.text.strip()
                 return current_report_type == "Service Acct Bill List"
-            except:
+            except NoSuchElementException:
                 pass
             return False
 
         return ec_and(
             billing_report_selected,
-            EC.presence_of_element_located(self.TimePeriodLocator))
+            EC.presence_of_element_located(self.TimePeriodLocator),
+        )
 
     def configure_report(self):
         """Apply a simple configuration to the report"""
 
         # Specify a custom date range, so that we can select the dates we need
         self.driver.find_element(*self.TimePeriodLocator).click()
-        WebDriverWait(self.driver, 10) \
-            .until(EC.visibility_of_element_located(self.CustomTimeLocator)) \
-            .click()
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(self.CustomTimeLocator)
+        ).click()
 
     def select_service_id(self, service_id: str):
         """Choose a specific service ID to gather data for"""
         service_listing = EnergyManagerServiceListingHelper(self.driver)
         if not service_listing.select_service_id(service_id):
-            message = "No service ID matching '{}' was found in Energy Manager".format(service_id)
+            message = "No service ID matching '{}' was found in Energy Manager".format(
+                service_id
+            )
             raise sce_errors.ServiceIdException(message)
 
     def set_time_range(self, start_date: date, end_date: date):
         # Set the "From" month
         self.driver.find_element(*self.FromMonthLocator).click()
-        WebDriverWait(self.driver, 10) \
-            .until(EC.visibility_of_element_located((By.ID, "monthOneDropdown{}".format(start_date.month)))) \
-            .click()
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(
+                (By.ID, "monthOneDropdown{}".format(start_date.month))
+            )
+        ).click()
 
         # Set the "From" year
         self.driver.find_element(*self.FromYearLocator).click()
-        WebDriverWait(self.driver, 10) \
-            .until(EC.visibility_of_element_located((By.ID, "yearOneDropdown{}".format(start_date.year)))) \
-            .click()
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(
+                (By.ID, "yearOneDropdown{}".format(start_date.year))
+            )
+        ).click()
 
         # Set the "To" month
         self.driver.find_element(*self.ToMonthLocator).click()
-        WebDriverWait(self.driver, 10) \
-            .until(EC.visibility_of_element_located((By.ID, "monthTwoDropdown{}".format(end_date.month)))) \
-            .click()
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(
+                (By.ID, "monthTwoDropdown{}".format(end_date.month))
+            )
+        ).click()
 
         # Set the "To" year
         self.driver.find_element(*self.ToYearLocator).click()
-        WebDriverWait(self.driver, 10) \
-            .until(EC.visibility_of_element_located((By.ID, "yearTwoDropdown{}".format(end_date.year)))) \
-            .click()
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(
+                (By.ID, "yearTwoDropdown{}".format(end_date.year))
+            )
+        ).click()
 
     def generate_report(self):
         """Start a report generation task"""
@@ -932,7 +1060,9 @@ class SceEnergyManagerBillingPage(PageState):
     def get_report_error_element(self) -> Optional[WebElement]:
         """Return the WebElement containing report errors, if it exists (None otherwise)"""
         try:
-            return WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.ErrorLocator))
+            return WebDriverWait(self.driver, 5).until(
+                EC.presence_of_element_located(self.ErrorLocator)
+            )
         except TimeoutException:
             return None
 
@@ -970,7 +1100,9 @@ class SceEnergyManagerBillingPage(PageState):
         expected_columns = 10
         data_elements = row.find_elements_by_tag_name("td")
         if len(data_elements) != expected_columns:
-            msg = "Unexpected row found in the billing data table. The raw row text is: {}".format(row.text)
+            msg = "Unexpected row found in the billing data table. The raw row text is: {}".format(
+                row.text
+            )
             raise sce_errors.BillingDataParseException(msg)
         try:
             return BillingDataRow(
@@ -983,9 +1115,12 @@ class SceEnergyManagerBillingPage(PageState):
                 statement_date=parse_date(data_elements[6].text),
                 bill_amount=self._parse_amount(data_elements[7].text),
                 kw=self._parse_demand(data_elements[8].text),
-                kwh=self._parse_usage(data_elements[9].text))
+                kwh=self._parse_usage(data_elements[9].text),
+            )
         except Exception as e:
-            msg = "Failed to parse a row of billing data from the SCE website. The raw row text is: {}".format(row.text)
+            msg = "Failed to parse a row of billing data from the SCE website. The raw row text is: {}".format(
+                row.text
+            )
             raise sce_errors.BillingDataParseException(msg) from e
 
     def get_visible_billing_data(self) -> List[BillingDataRow]:

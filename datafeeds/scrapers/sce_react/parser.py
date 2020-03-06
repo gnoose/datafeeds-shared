@@ -4,7 +4,7 @@ from typing import NewType, Tuple, List, Optional
 
 from dateutil.parser import parse as parse_date
 
-from gridium_tasks.lib.scrapers.sce.react.errors import IntervalDataParseException
+from datafeeds.scrapers.sce_react.errors import IntervalDataParseException
 
 # Note:the reading can be either a usage or a demand value, depending on context
 IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
@@ -71,7 +71,9 @@ def parse_sce_csv_file(path: str, service_id: str) -> List[IntervalReading]:
                 if th == service_id:
                     data_column = idx
             if not data_column:
-                raise IntervalDataParseException("Could not find data for SAID={}".format(service_id))
+                raise IntervalDataParseException(
+                    "Could not find data for SAID={}".format(service_id)
+                )
         else:
             try:
                 reading_date = parse_date(row[0].strip()).date()

@@ -35,11 +35,7 @@ def main():
         data = re.sub("_UtilityName_", args.utility_camel, data)
         data = re.sub("_UtilityId_", args.utility_id, data)
         outf.write(data)
-        print(
-            "copy ../%s_directions.md to pull request"
-            % (args.utility_id)
-        )
-
+        print("copy ../%s_directions.md to pull request" % (args.utility_id))
 
 
 if __name__ == "__main__":

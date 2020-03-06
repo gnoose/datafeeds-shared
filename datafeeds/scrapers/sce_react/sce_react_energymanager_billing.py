@@ -1,20 +1,38 @@
 import logging
+import time
+import os
 
-from typing import Optional, Tuple, List, Dict, Callable
+import datafeeds.scrapers.sce_react.pages as sce_pages
+import datafeeds.scrapers.sce_react.errors as sce_errors
+
+from typing import Optional
+
+from datetime import date
+from datetime import timedelta
+from dateutil import relativedelta
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+import datafeeds.common.upload as bill_upload
+
+from datafeeds.common.util.pagestate.pagestate import PageStateMachine
+from datafeeds.common.util.selenium import ec_or, file_exists_in_dir
 
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
-from datafeeds.common.support import Configuration
-from datafeeds.common.typing import Status
+from datafeeds.common.support import Configuration, Results, DateRange
+from datafeeds.common.typing import Status, BillingDatum
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
 
+
 logger = None
 log = logging.getLogger(__name__)
-
 
 
 class SceReactEnergyManagerBillingConfiguration(Configuration):
@@ -25,12 +43,12 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
     """
 
     def __init__(
-            self,
-            service_id: str,
-            billing_start: date,
-            billing_end: date,
-            download_pdfs: bool = False,
-            scrape_bills: bool = True
+        self,
+        service_id: str,
+        billing_start: date,
+        billing_end: date,
+        download_pdfs: bool = False,
+        scrape_bills: bool = True,
     ):
         super().__init__(scrape_bills=scrape_bills, scrape_readings=False)
         self.service_id = service_id
@@ -42,8 +60,8 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
 class SceReactEnergyManagerBillingScraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.browser_name = 'Chrome'
-        self.name = 'SCE React Energy Manager Billing'
+        self.browser_name = "Chrome"
+        self.name = "SCE React Energy Manager Billing"
         self.billing_history = []
 
     @property
@@ -71,9 +89,8 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
 
         # We start in the init state, which navigates to the login page
         state_machine.add_state(
-            name="init",
-            action=self.init_action,
-            transitions=["login"])
+            name="init", action=self.init_action, transitions=["login"]
+        )
 
         # Next, we login. On success, we get transferred to the SCE landing page. Else, we go to an error page.
         state_machine.add_state(
@@ -81,14 +98,16 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
             page=sce_pages.SceLoginPage(self._driver),
             action=self.login_action,
             transitions=["landing_page", "login_failed"],
-            wait_time=45)
+            wait_time=45,
+        )
 
         # We arrive at this state when a login fails
         state_machine.add_state(
             name="login_failed",
             page=sce_pages.SceLoginFailedPage(self._driver),
             action=self.login_failed_action,
-            transitions=[])
+            transitions=[],
+        )
 
         # This is the landing page, reached upon successful login. From here we load the energy manager application.
         state_machine.add_state(
@@ -96,21 +115,24 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
             page=sce_pages.SceLandingPage(self._driver),
             action=self.landing_page_action,
             transitions=["energy_manager_landing"],
-            wait_time=30)
+            wait_time=30,
+        )
 
         # After navigating to Energy Manager, we need to specify the "Service Acct Bills" report type.
         state_machine.add_state(
             name="energy_manager_landing",
             page=sce_pages.SceEnergyManagerLandingPage(self._driver),
             action=self.energy_manager_landing_action,
-            transitions=["energy_manager_billing"])
+            transitions=["energy_manager_billing"],
+        )
 
         # Finally, we interact with the "Service Acct Bills" report to dump out some billing data.
         state_machine.add_state(
             name="energy_manager_billing",
             page=sce_pages.SceEnergyManagerBillingPage(self._driver),
             action=self.energy_manager_billing_action,
-            transitions=["done"])
+            transitions=["done"],
+        )
 
         # And that's the end
         state_machine.add_state("done")
@@ -132,7 +154,9 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         if final_state == "done":
             self.log_bills(self.billing_history)
             return Results(bills=self.billing_history)
-        raise Exception("The scraper did not reach a finished state, this will require developer attention.")
+        raise Exception(
+            "The scraper did not reach a finished state, this will require developer attention."
+        )
 
     def init_action(self, _):
         self._driver.get("https://www.sce.com/mysce/login")
@@ -147,40 +171,60 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
     def landing_page_action(self, page: sce_pages.SceLandingPage):
         self._driver.get("https://www.sce.com/mysce/energymanager")
 
-    def energy_manager_landing_action(self, page: sce_pages.SceEnergyManagerLandingPage):
+    def energy_manager_landing_action(
+        self, page: sce_pages.SceEnergyManagerLandingPage
+    ):
         sce_pages.detect_and_close_survey(self._driver)
         time.sleep(5)
         page.select_billing_report()
 
-    def energy_manager_billing_action(self, page: sce_pages.SceEnergyManagerBillingPage):
-        sce_pages.detect_and_close_survey(self._driver)
-        page.configure_report()
-        page.select_service_id(self.service_id)
+    def energy_manager_date_range(self, min_start_date):
 
-        min_start_date = page.get_minimum_selectable_start_date()
         if self.billing_start:
-            start_date = date(year=self.billing_start.year, month=self.billing_start.month, day=1)
+            start_date = date(
+                year=self.billing_start.year, month=self.billing_start.month, day=1
+            )
         else:
             start_date = min_start_date
 
         if self.billing_end:
-            end_date = date(year=self.billing_end.year, month=self.billing_end.month, day=1)
+            end_date = date(
+                year=self.billing_end.year, month=self.billing_end.month, day=1
+            )
         else:
             today = date.today()
             end_date = date(year=today.year, month=today.month, day=1)
 
         if start_date > end_date:
-            msg = "The scraper start date must be before the end date (start={}, end={})".format(start_date, end_date)
+            msg = "The scraper start date must be before the end date (start={}, end={})".format(
+                start_date, end_date
+            )
             sce_errors.BillingDataDateRangeException(msg)
         if end_date < min_start_date:
-            msg = "No billing data is available for the range {} to {}.".format(start_date, end_date)
+            msg = "No billing data is available for the range {} to {}.".format(
+                start_date, end_date
+            )
             raise sce_errors.BillingDataDateRangeException(msg)
 
         if start_date < min_start_date:
-            self.log("Adjusting start date to minimum start date: {}".format(start_date))
+            self.log(
+                "Adjusting start date to minimum start date: {}".format(start_date)
+            )
             start_date = min_start_date
 
         date_range = DateRange(start_date, end_date)
+        return date_range
+
+    def energy_manager_billing_action(
+        self, page: sce_pages.SceEnergyManagerBillingPage
+    ):
+        sce_pages.detect_and_close_survey(self._driver)
+        page.configure_report()
+        page.select_service_id(self.service_id)
+
+        min_start_date = page.get_minimum_selectable_start_date()
+        date_range = self.energy_manager_date_range(min_start_date)
+
         interval_size = relativedelta(months=6)
         raw_billing_data = {}
         for subrange in date_range.split_iter(delta=interval_size):
@@ -196,10 +240,14 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
                 page.generate_report()
                 time.sleep(5)
                 WebDriverWait(self._driver, 180).until(
-                    EC.invisibility_of_element_located(sce_pages.GenericBusyIndicatorLocator)
+                    EC.invisibility_of_element_located(
+                        sce_pages.GenericBusyIndicatorLocator
+                    )
                 )
             except Exception as e:
-                raise sce_errors.EnergyManagerReportException("Failed to load data from Energy Manager") from e
+                raise sce_errors.EnergyManagerReportException(
+                    "Failed to load data from Energy Manager"
+                ) from e
 
             sce_pages.detect_and_close_survey(self._driver)
             try:
@@ -223,10 +271,12 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
                         used=current_bill_row.kwh,
                         peak=current_bill_row.kw,
                         items=None,
-                        attachments=None
+                        attachments=None,
                     )
                     if self._configuration.download_pdfs:
-                        bill_data = self.download_and_attach_pdf(bill_data, current_bill_row)
+                        bill_data = self.download_and_attach_pdf(
+                            bill_data, current_bill_row
+                        )
                     raw_billing_data[key] = bill_data
 
                 bill_index += 1
@@ -236,15 +286,23 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         for date_range in sorted_ranges:
             self.billing_history.append(raw_billing_data[date_range])
 
-    def download_and_attach_pdf(self, bill_data: BillingDatum, billing_row: sce_pages.BillingDataRow):
+    def download_and_attach_pdf(
+        self, bill_data: BillingDatum, billing_row: sce_pages.BillingDataRow
+    ):
         self.clear_pdf_downloads()
         bill_path = self.download_pdf_for_billing_row(billing_row)
         if bill_path:
-            with open(bill_path, 'rb') as bill_file:
+            with open(bill_path, "rb") as bill_file:
                 key = bill_upload.hash_bill_datum(self.service_id, bill_data) + ".pdf"
-                return bill_data._replace(attachments=[bill_upload.upload_bill(bill_file, key)])
+                return bill_data._replace(
+                    attachments=[bill_upload.upload_bill(bill_file, key)]
+                )
         else:
-            self.log("No pdf bill was available for this period: {} to {}".format(bill_data.start, bill_data.end))
+            self.log(
+                "No pdf bill was available for this period: {} to {}".format(
+                    bill_data.start, bill_data.end
+                )
+            )
             return bill_data
 
     def download_pdf_for_billing_row(self, billing_row: sce_pages.BillingDataRow):
@@ -256,7 +314,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         def download_error_page_visible(driver):
             locator = (
                 By.XPATH,
-                "//react-energy-manager//div[contains(@class, 'ServiceAcctBillList__dialogboxError')]"
+                "//react-energy-manager//div[contains(@class, 'ServiceAcctBillList__dialogboxError')]",
             )
             query = driver.find_elements(*locator)
             if query:
@@ -274,7 +332,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         result = WebDriverWait(self._driver, 120).until(
             ec_or(
                 download_error_page_visible,
-                file_exists_in_dir(download_dir, r".*\.pdf$")
+                file_exists_in_dir(download_dir, r".*\.pdf$"),
             )
         )
 
@@ -282,7 +340,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
             # We need to make sure to close the modal that appears on error
             close_button_locator = (
                 By.XPATH,
-                "//react-energy-manager//button[contains(@class, 'sceDialogBox__crossButtonDialogBox')]"
+                "//react-energy-manager//button[contains(@class, 'sceDialogBox__crossButtonDialogBox')]",
             )
             self._driver.find_element(*close_button_locator).click()
             time.sleep(5)
@@ -302,7 +360,6 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
             os.remove(path)
 
 
-
 def datafeed(
     account: SnapmeterAccount,
     meter: Meter,
@@ -319,11 +376,13 @@ def datafeed(
         bill_start = params.get("bill_after")
     bill_end = date.today()
 
-    configuration = SceReactEnergyManagerBillingConfiguration(service_id=meter['service_id'],
+    configuration = SceReactEnergyManagerBillingConfiguration(
+        service_id=meter["service_id"],
         scrape_bills=update_bills,
         billing_start=bill_start,
         billing_end=bill_end,
-        download_pdfs=True)
+        download_pdfs=True,
+    )
 
     return run_datafeed(
         SceReactEnergyManagerBillingScraper,
