@@ -5,6 +5,9 @@ from typing import List, Optional, Tuple
 import csv
 import logging
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.typing import Status
@@ -93,7 +96,7 @@ class CSVParser:
             log.info(msg)
             units_in_kw = check_units(header_3)
             if units_in_kw:
-                msg = "Units are in %s" % units_in_kw
+                msg = "Units are in kW"
                 log.info(msg)
             meter_number_int = int(self.meter_number)
             msg = "Meter number: %s" % meter_number_int
@@ -152,7 +155,10 @@ class SitePage:
             "//*[name() = 'div' and starts-with(@id, 'highcharts-')]"
             "/*[name() = 'div'][3]/*[name() = 'div']/*[name() = 'div'][2]"
         )
-        download_csv = self.driver.find_element_by_xpath(download_csv_xpath)
+        # download_csv = self.driver.find_element_by_xpath(download_csv_xpath)
+        download_csv = self.driver.wait().until(
+            EC.element_to_be_clickable((By.XPATH, download_csv_xpath))
+        )
         download_csv.click()
         download_dir = self.driver.download_dir
         filename = self.driver.wait(60).until(
@@ -178,7 +184,7 @@ class SitePage:
 
         # if cycling by months, date range string is like 'January, 2020
         date_format = "%B %d  %Y"
-        if "–" not in date_range_str:
+        if "–" not in date_range_str:  # this is a dash, not a hyphen?
             earliest_shown_datestr = date_range_str.split(",")
             earliest_shown_datestr = (
                 earliest_shown_datestr[0] + " 1 " + earliest_shown_datestr[1]
@@ -186,9 +192,8 @@ class SitePage:
             earliest_shown = self.string_to_date(earliest_shown_datestr, date_format)
             return earliest_shown
 
-        earliest_shown_datestr = date_range_str.split("–")[
-            0
-        ]  # this is a dash, not a hyphen?
+        else:
+            earliest_shown_datestr = date_range_str.split("–")[0]
 
         # Catch a corner case eg, 'December 28, 2019 – January 1, 2020'
         if len(date_range_str.split(",")) == 2:
