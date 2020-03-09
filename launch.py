@@ -14,6 +14,7 @@ import tarfile
 import boto
 
 from datafeeds.common.index import index_logs
+
 from datafeeds.datasources.austin_energy_interval import (
     datafeed as austin_energy_interval,
 )
@@ -40,6 +41,15 @@ from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
 from datafeeds.scrapers.duke.billing import datafeed as duke_billing
 from datafeeds.scrapers.duke.intervals import datafeed as duke_interval
+from datafeeds.scrapers.sce_react.basic_billing import (
+    datafeed as sce_react_basic_billing,
+)
+from datafeeds.scrapers.sce_react.energymanager_billing import (
+    datafeed as sce_react_energymanager_billing,
+)
+from datafeeds.scrapers.sce_react.energymanager_interval import (
+    datafeed as sce_react_energymanager_interval,
+)
 from datafeeds.scrapers.stem import datafeed as stem
 
 from datafeeds.urjanet.datasource.american import datafeed as american
@@ -123,6 +133,9 @@ scraper_functions = {
     "sdge-green-button-sync": sdge_greenbutton_sync,
     "sfpuc-water-urjanet": sfpuc,
     "sce-green-button": sce_greenbutton,
+    "sce.react_basic_billing": sce_react_basic_billing,
+    "sce.react_energymanager_interval": sce_react_energymanager_interval,
+    "sce.react_energymanager_billing": sce_react_energymanager_billing,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
     "smud-energyprofiler-interval": smud_energyprofiler_interval,
