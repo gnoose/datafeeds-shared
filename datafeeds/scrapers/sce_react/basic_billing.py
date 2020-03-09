@@ -238,7 +238,7 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = SceReactBasicBillingConfiguration(service_id=meter["service_id"])
+    configuration = SceReactBasicBillingConfiguration(service_id=meter.service_id)
 
     return run_datafeed(
         SceReactBasicBillingScraper,
