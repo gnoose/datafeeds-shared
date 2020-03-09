@@ -169,7 +169,11 @@ class SitePage:
 
     def get_install_date(self) -> date:
         install_date_xpath = "//span[contains(text(), '/')]"
-        install_date_str = self.driver.find_element_by_xpath(install_date_xpath).text
+        install_date_str = (
+            self.driver.wait()
+            .until(EC.presence_of_element_located((By.XPATH, install_date_xpath)))
+            .text
+        )
         msg = "Install date: %s" % install_date_str
         log.info(msg)
         date_format = "%m/%d/%Y"
