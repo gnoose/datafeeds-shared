@@ -42,8 +42,7 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
     """
 
     def __init__(
-        self,
-        service_id: str,
+        self, service_id: str,
     ):
         super().__init__(scrape_bills=scrape_bills, scrape_readings=False)
         self.service_id = service_id
@@ -172,9 +171,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
             start_date = min_start_date
 
         if self.end_date:
-            end_date = date(
-                year=self.end_date.year, month=self.end_date.month, day=1
-            )
+            end_date = date(year=self.end_date.year, month=self.end_date.month, day=1)
         else:
             today = date.today()
             end_date = date(year=today.year, month=today.month, day=1)
