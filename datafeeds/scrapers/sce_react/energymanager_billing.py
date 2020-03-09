@@ -44,7 +44,7 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
     def __init__(
         self, service_id: str,
     ):
-        super().__init__(scrape_bills=scrape_bills, scrape_readings=False)
+        super().__init__(scrape_bills=True, scrape_readings=False)
         self.service_id = service_id
 
 
