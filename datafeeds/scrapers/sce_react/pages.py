@@ -1,6 +1,7 @@
 import time
 import collections
 from datetime import date
+import logging
 from typing import Optional, List, Tuple
 
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
@@ -20,6 +21,8 @@ from datafeeds.common.util.selenium import (
 from datafeeds.common.util.pagestate.pagestate import PageState
 
 import datafeeds.scrapers.sce_react.errors as sce_errors
+
+log = logging.getLogger(__name__)
 
 # A model of the basic usage info exposed for service accounts from the landing page
 # of SCE's website
@@ -668,6 +671,7 @@ class EnergyManagerServiceListingHelper:
         data = row.find_elements_by_tag_name("td")
         if len(data) != self.TableColumnCount:
             return None
+        log.info("found service id %s", data[3].text)
 
         return ServiceListingRow(
             checkbox=data[0].find_element_by_xpath(
@@ -880,8 +884,6 @@ class SceEnergyManagerBasicUsagePage(PageState):
         from_str = start_date.strftime(date_fmt)
         to_str = end_date.strftime(date_fmt)
 
-        body_elem = self.driver.find_element(By.XPATH, "//body")
-
         # The code for updating the date text fields is a little funny looking right now. It seemed like the normal
         # selenium methods for clearing a textbox weren't working at the time of writing (e.g. the clear() function),
         # so we manually issue backspace keys to clear out these text fields.
@@ -892,10 +894,10 @@ class SceEnergyManagerBasicUsagePage(PageState):
         for _ in range(20):
             actions.send_keys_to_element(to_input, Keys.BACK_SPACE)
         actions.pause(2)
-        actions.send_keys_to_element(to_input, to_str)
-        actions.click(body_elem)
-        actions.pause(2)
         actions.perform()
+        log.debug("cleared to_input")
+        to_input.send_keys(to_str)
+        log.debug("sent %s to to_input", to_str)
 
         actions = ActionChains(self.driver)
         actions.click(from_input)
@@ -903,10 +905,10 @@ class SceEnergyManagerBasicUsagePage(PageState):
         for _ in range(20):
             actions.send_keys_to_element(from_input, Keys.BACK_SPACE)
         actions.pause(2)
-        actions.send_keys_to_element(from_input, from_str)
-        actions.click(body_elem)
-        actions.pause(2)
         actions.perform()
+        log.debug("cleared from_input")
+        from_input.send_keys(from_str)
+        log.debug("sent %s to from_input", from_str)
 
     def generate_report(self):
         """Start a report generation task"""

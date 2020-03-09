@@ -29,7 +29,6 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 
-logger = None
 log = logging.getLogger(__name__)
 
 IntermediateReading = Dict[str, Dict[str, List[str]]]
@@ -65,7 +64,7 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
         def enter_state_callback(state_name):
             self.screenshot("enter_state_{}".format(state_name))
 
-        state_machine = PageStateMachine(self._driver, self._logger)
+        state_machine = PageStateMachine(self._driver)
 
         state_machine.on_enter_state(enter_state_callback)
 
@@ -91,7 +90,8 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
             transitions=[],
         )
 
-        # This is the landing page, reached upon successful login. From here we load the energy manager application.
+        # This is the landing page, reached upon successful login. From here we load the energy
+        # manager application.
         state_machine.add_state(
             name="landing_page",
             page=sce_pages.SceLandingPage(self._driver),
@@ -164,7 +164,9 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
         self, page: sce_pages.SceEnergyManagerBasicUsagePage
     ):
         sce_pages.detect_and_close_survey(self._driver)
-        page.select_service_id(self.service_id)
+        rval = page.select_service_id(self.service_id)
+        log.info("Result of select service id %s: %s", self.service_id, rval)
+        self.screenshot("select_service_id")
         page.configure_report()
 
         date_range = DateRange(self.start_date, self.end_date)
@@ -172,11 +174,12 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
         timeline = Timeline(self.start_date, self.end_date)
 
         for subrange in date_range.split_iter(delta=interval_size):
-            self.log("Requesting interval data for dates: {0}".format(subrange))
+            log.info("Requesting interval data for dates: %s", subrange)
             start = subrange.start_date
             end = subrange.end_date
 
             page.set_time_range(start, end)
+            self.screenshot("set_time_range")
 
             try:
                 page.generate_report()
@@ -194,11 +197,11 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
             try:
                 page.raise_on_report_error()
             except sce_errors.EnergyManagerDataNotFoundException:
-                self.log("No data found for this time range, continuing...")
+                log.info("No data found for this time range, continuing...")
                 # If a given date range has no interval data, just move on to the next one
                 continue
 
-            self.log("Downloading the interval data report.")
+            log.info("Downloading the interval data report.")
             self.clear_csv_downloads()
 
             try:
@@ -244,7 +247,7 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = SceReactEnergyManagerIntervalConfiguration(
-        meter_id=meter.service_id
+        service_id=meter.service_id
     )
 
     return run_datafeed(

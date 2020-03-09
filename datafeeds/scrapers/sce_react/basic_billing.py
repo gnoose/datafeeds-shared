@@ -23,7 +23,6 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 
-logger = None
 log = logging.getLogger(__name__)
 
 
@@ -57,7 +56,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         def enter_state_callback(state_name):
             self.screenshot("enter_state_{}".format(state_name))
 
-        state_machine = PageStateMachine(self._driver, self._logger)
+        state_machine = PageStateMachine(self._driver)
         state_machine.on_enter_state(enter_state_callback)
 
         # We start in the init state, which navigates to the login page

@@ -9,7 +9,7 @@ from typing import Optional
 
 from datetime import date
 from datetime import timedelta
-from dateutil import relativedelta
+from dateutil.relativedelta import relativedelta
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -31,7 +31,6 @@ from datafeeds.models import (
 )
 
 
-logger = None
 log = logging.getLogger(__name__)
 
 
@@ -45,16 +44,9 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
     def __init__(
         self,
         service_id: str,
-        billing_start: date,
-        billing_end: date,
-        download_pdfs: bool = False,
-        scrape_bills: bool = True,
     ):
         super().__init__(scrape_bills=scrape_bills, scrape_readings=False)
         self.service_id = service_id
-        self.billing_start = billing_start
-        self.billing_end = billing_end
-        self.download_pdfs = download_pdfs
 
 
 class SceReactEnergyManagerBillingScraper(BaseWebScraper):
@@ -68,14 +60,6 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
     def service_id(self) -> str:
         return self._configuration.service_id
 
-    @property
-    def billing_start(self) -> date:
-        return self._configuration.billing_start
-
-    @property
-    def billing_end(self) -> date:
-        return self._configuration.billing_end
-
     def define_state_machine(self):
         """Define the flow of this scraper as a state machine"""
 
@@ -83,7 +67,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         def enter_state_callback(state_name):
             self.screenshot("enter_state_{}".format(state_name))
 
-        state_machine = PageStateMachine(self._driver, self._logger)
+        state_machine = PageStateMachine(self._driver)
 
         state_machine.on_enter_state(enter_state_callback)
 
@@ -144,7 +128,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
     def _execute(self):
         if self.scrape_bills:
             return self.scrape_billing_data()
-        self.log("No bill scraping was requested, so nothing to do!")
+        log.info("No bill scraping was requested, so nothing to do!")
         return Results(bills=[])
 
     def scrape_billing_data(self):
@@ -180,16 +164,16 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
 
     def energy_manager_date_range(self, min_start_date):
 
-        if self.billing_start:
+        if self.start_date:
             start_date = date(
-                year=self.billing_start.year, month=self.billing_start.month, day=1
+                year=self.start_date.year, month=self.start_date.month, day=1
             )
         else:
             start_date = min_start_date
 
-        if self.billing_end:
+        if self.end_date:
             end_date = date(
-                year=self.billing_end.year, month=self.billing_end.month, day=1
+                year=self.end_date.year, month=self.end_date.month, day=1
             )
         else:
             today = date.today()
@@ -207,9 +191,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
             raise sce_errors.BillingDataDateRangeException(msg)
 
         if start_date < min_start_date:
-            self.log(
-                "Adjusting start date to minimum start date: {}".format(start_date)
-            )
+            log.info("Adjusting start date to minimum start date: %s", start_date)
             start_date = min_start_date
 
         date_range = DateRange(start_date, end_date)
@@ -228,7 +210,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         interval_size = relativedelta(months=6)
         raw_billing_data = {}
         for subrange in date_range.split_iter(delta=interval_size):
-            self.log("Requesting billing data for dates: {0}".format(subrange))
+            log.info("Requesting billing data for dates: %s", subrange)
             start = subrange.start_date
             end = subrange.end_date
             page.set_time_range(start, end)
@@ -273,10 +255,10 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
                         items=None,
                         attachments=None,
                     )
-                    if self._configuration.download_pdfs:
-                        bill_data = self.download_and_attach_pdf(
-                            bill_data, current_bill_row
-                        )
+
+                    bill_data = self.download_and_attach_pdf(
+                        bill_data, current_bill_row
+                    )
                     raw_billing_data[key] = bill_data
 
                 bill_index += 1
@@ -295,13 +277,13 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
             with open(bill_path, "rb") as bill_file:
                 key = bill_upload.hash_bill_datum(self.service_id, bill_data) + ".pdf"
                 return bill_data._replace(
-                    attachments=[bill_upload.upload_bill(bill_file, key)]
+                    attachments=[bill_upload.upload_bill_to_s3(bill_file, key)]
                 )
         else:
-            self.log(
-                "No pdf bill was available for this period: {} to {}".format(
-                    bill_data.start, bill_data.end
-                )
+            log.info(
+                "No pdf bill was available for this period: %s to %s",
+                bill_data.start,
+                bill_data.end,
             )
             return bill_data
 
@@ -367,21 +349,8 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    update_bills = True
-    if "update_bills" in params:
-        update_bills = params.get("update_bills")
-
-    bill_start = None
-    if "bill_after" in params:
-        bill_start = params.get("bill_after")
-    bill_end = date.today()
-
     configuration = SceReactEnergyManagerBillingConfiguration(
-        service_id=meter["service_id"],
-        scrape_bills=update_bills,
-        billing_start=bill_start,
-        billing_end=bill_end,
-        download_pdfs=True,
+        service_id=meter.service_id
     )
 
     return run_datafeed(
