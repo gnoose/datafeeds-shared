@@ -1,7 +1,7 @@
 {
     "periods": [
         {
-            "end": "2019-05-14",
+            "end": "2019-05-15",
             "peak_demand": null,
             "start": "2019-04-22",
             "tariff": null,
@@ -196,7 +196,7 @@
             ]
         },
         {
-            "end": "2019-06-15",
+            "end": "2019-06-16",
             "peak_demand": null,
             "start": "2019-05-15",
             "tariff": null,
@@ -417,7 +417,7 @@
             ]
         },
         {
-            "end": "2019-07-15",
+            "end": "2019-07-16",
             "peak_demand": null,
             "start": "2019-06-16",
             "tariff": null,
@@ -573,7 +573,7 @@
             ]
         },
         {
-            "end": "2019-08-13",
+            "end": "2019-08-14",
             "peak_demand": null,
             "start": "2019-07-16",
             "tariff": null,
@@ -742,7 +742,7 @@
             ]
         },
         {
-            "end": "2019-09-14",
+            "end": "2019-09-15",
             "peak_demand": null,
             "start": "2019-08-14",
             "tariff": null,
@@ -898,7 +898,7 @@
             ]
         },
         {
-            "end": "2019-10-13",
+            "end": "2019-10-14",
             "peak_demand": null,
             "start": "2019-09-15",
             "tariff": null,
@@ -1054,7 +1054,7 @@
             ]
         },
         {
-            "end": "2019-11-12",
+            "end": "2019-11-13",
             "peak_demand": null,
             "start": "2019-10-14",
             "tariff": null,
@@ -1093,7 +1093,7 @@
             ]
         },
         {
-            "end": "2019-12-14",
+            "end": "2019-12-15",
             "peak_demand": null,
             "start": "2019-11-13",
             "tariff": null,

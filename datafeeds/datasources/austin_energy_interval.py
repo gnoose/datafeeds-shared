@@ -1,8 +1,7 @@
 from typing import Optional
 
-from datafeeds import db
 from datafeeds.common.typing import Status
-from datafeeds.models import SnapmeterAccount, SnapmeterAccountMeter, Meter
+from datafeeds.models import SnapmeterAccount, Meter
 from datafeeds.models import SnapmeterMeterDataSource as MeterDataSource
 from datafeeds.common.batch import run_datafeed
 from datafeeds.scrapers import epo_schneider
@@ -20,14 +19,10 @@ def datafeed(
     Retrying a bad login will lock the account. If a login fails, mark all data sources
     for this account as disabled.
     """
-    acct_meter = (
-        db.session.query(SnapmeterAccountMeter)
-        .filter_by(meter=meter.oid, account=account.oid)
-        .first()
-    )
+
     configuration = epo_schneider.EnergyProfilerConfiguration(
         base_url="https://austin.epo.schneider-electric.com/austin/cgi/eponline.exe",
-        account_id=acct_meter.utility_account_id,
+        account_id=meter.utility_account_id,
         epo_meter_id=meter.utility_service.service_id,
         channel_id=(datasource.meta or {}).get("channelId", None),
     )

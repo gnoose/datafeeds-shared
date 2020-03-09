@@ -25,6 +25,9 @@ class TestUrjanetSDGETransformer(test_util.UrjaFixtureText):
     def test_sdge_12224763160(self):
         self.sdge_test("12224763160_input.json", "12224763160_expected.json")
 
+    def test_sdge_1222476316(self):
+        self.sdge_test("1222476316_input.json", "1222476316_expected.json")
+
 
 if __name__ == "__main__":
     unittest.main()

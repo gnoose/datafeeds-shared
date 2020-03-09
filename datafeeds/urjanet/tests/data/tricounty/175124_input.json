@@ -1,0 +1,633 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "13061771",
+            "AmountDue": "4625.9400",
+            "IntervalEnd": "2019-04-12",
+            "IntervalStart": "2019-03-13",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5687903,
+            "PreviousBalance": "4248.8500",
+            "RawAccountNumber": "13061771",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea5c2d7-51d9-dcd9-8d37-0edf59bf338d",
+            "StatementDate": "2019-04-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "4625.9400",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-04-12",
+                    "IntervalStart": "2019-03-13",
+                    "MeterNumber": "444404",
+                    "PK": 20367233,
+                    "PODid": "37707313330",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge 04/22/19",
+                            "ChargeAmount": "4625.9400",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0844",
+                            "ChargeUnitsUsed": "54800.0000",
+                            "IntervalEnd": "2019-04-12",
+                            "IntervalStart": "2019-03-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186736,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-04-12",
+                            "IntervalStart": "2019-03-13",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313409,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "54800.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "22232222",
+            "AmountDue": "10271.2200",
+            "IntervalEnd": "2019-12-16",
+            "IntervalStart": "2019-11-14",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "5446.8500",
+            "PK": 5687921,
+            "PreviousBalance": "5446.8500",
+            "RawAccountNumber": "22232222",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-ce6e-d0cd-9244-0ef734dc608f",
+            "StatementDate": "2019-12-20",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "10271.2200",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-12-16",
+                    "IntervalStart": "2019-11-14",
+                    "MeterNumber": "015021",
+                    "PK": 20367252,
+                    "PODid": "32212111111",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge - 12/20/19",
+                            "ChargeAmount": "4824.3700",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0792",
+                            "ChargeUnitsUsed": "60900.0000",
+                            "IntervalEnd": "2019-12-16",
+                            "IntervalStart": "2019-11-14",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186755,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-12-16",
+                            "IntervalStart": "2019-11-14",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313428,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "60900.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "46640444",
+            "AmountDue": "5446.8500",
+            "IntervalEnd": "2019-11-14",
+            "IntervalStart": "2019-10-15",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5687951,
+            "PreviousBalance": "7979.4100",
+            "RawAccountNumber": "46640444",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d0ab-dc15-9244-0ef734dc608f",
+            "StatementDate": "2019-11-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "5446.8500",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [
+                {
+                    "ChargeActualName": "Balance Transfer To Account 800674414 - 11/05/",
+                    "ChargeAmount": "381.4000",
+                    "ChargeId": "ch.transfer_of_balance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186786,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Balance Transfer To Account 800674411 - 11/05/",
+                    "ChargeAmount": "15197.1600",
+                    "ChargeId": "ch.transfer_of_balance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186787,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Balance Transfer To Account 800674413 - 11/05/",
+                    "ChargeAmount": "18795.4000",
+                    "ChargeId": "ch.transfer_of_balance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186788,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Balance Transfer To Account 800674415 - 11/05/",
+                    "ChargeAmount": "4935.4000",
+                    "ChargeId": "ch.transfer_of_balance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186789,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Balance Transfer To Account 800801377 - 11/05/",
+                    "ChargeAmount": "3212.8000",
+                    "ChargeId": "ch.transfer_of_balance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186790,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Balance Transfer To Account 800706087 - 11/05/",
+                    "ChargeAmount": "7477.8400",
+                    "ChargeId": "ch.transfer_of_balance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186791,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-15",
+                    "MeterNumber": "353341",
+                    "PK": 20367282,
+                    "PODid": "02222212222",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge - 11/22/19",
+                            "ChargeAmount": "5446.8500",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0792",
+                            "ChargeUnitsUsed": "68800.0000",
+                            "IntervalEnd": "2019-11-14",
+                            "IntervalStart": "2019-10-15",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186792,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-11-14",
+                            "IntervalStart": "2019-10-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313458,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "68800.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "41033664",
+            "AmountDue": "5680.4500",
+            "IntervalEnd": "2019-07-16",
+            "IntervalStart": "2019-06-13",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5687981,
+            "PreviousBalance": "6009.0200",
+            "RawAccountNumber": "41033664",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d2e2-d327-9244-0ef734dc608f",
+            "StatementDate": "2019-07-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "5680.4500",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-07-16",
+                    "IntervalStart": "2019-06-13",
+                    "MeterNumber": "031011",
+                    "PK": 20367312,
+                    "PODid": "26606202220",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge - 07/22/19",
+                            "ChargeAmount": "5680.4500",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0931",
+                            "ChargeUnitsUsed": "61000.0000",
+                            "IntervalEnd": "2019-07-16",
+                            "IntervalStart": "2019-06-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186827,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-07-16",
+                            "IntervalStart": "2019-06-13",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313488,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "61000.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33303663",
+            "AmountDue": "8829.1600",
+            "IntervalEnd": "2019-09-13",
+            "IntervalStart": "2019-08-14",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5688011,
+            "PreviousBalance": "7091.0400",
+            "RawAccountNumber": "33303663",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d47c-d4e5-9244-0ef734dc608f",
+            "StatementDate": "2019-09-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "8829.1600",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-09-13",
+                    "IntervalStart": "2019-08-14",
+                    "MeterNumber": "711701",
+                    "PK": 20367342,
+                    "PODid": "04414010001",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge - 09/23/19",
+                            "ChargeAmount": "8829.1600",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0852",
+                            "ChargeUnitsUsed": "103600.0000",
+                            "IntervalEnd": "2019-09-13",
+                            "IntervalStart": "2019-08-14",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186858,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-09-13",
+                            "IntervalStart": "2019-08-14",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313518,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "103600.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "13223221",
+            "AmountDue": "4225.5200",
+            "IntervalEnd": "2019-02-12",
+            "IntervalStart": "2019-01-14",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5688068,
+            "PreviousBalance": "3098.7600",
+            "RawAccountNumber": "13223221",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d62a-d05d-9244-0ef734dc608f",
+            "StatementDate": "2019-02-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "4225.5200",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-02-12",
+                    "IntervalStart": "2019-01-14",
+                    "MeterNumber": "447434",
+                    "PK": 20367400,
+                    "PODid": "54444414444",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge 02/21/19",
+                            "ChargeAmount": "4225.5200",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0793",
+                            "ChargeUnitsUsed": "53300.0000",
+                            "IntervalEnd": "2019-02-12",
+                            "IntervalStart": "2019-01-14",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186918,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-02-12",
+                            "IntervalStart": "2019-01-14",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313576,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "53300.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "44404664",
+            "AmountDue": "4688.2500",
+            "IntervalEnd": "2018-12-12",
+            "IntervalStart": "2018-11-07",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5688097,
+            "PreviousBalance": "3914.2100",
+            "RawAccountNumber": "44404664",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d6ea-de91-9244-0ef734dc608f",
+            "StatementDate": "2018-12-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "4688.2500",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-12-12",
+                    "IntervalStart": "2018-11-07",
+                    "MeterNumber": "777739",
+                    "PK": 20367429,
+                    "PODid": "66606060000",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge 12/21/18",
+                            "ChargeAmount": "4688.2500",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0818",
+                            "ChargeUnitsUsed": "57300.0000",
+                            "IntervalEnd": "2018-12-12",
+                            "IntervalStart": "2018-11-07",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186948,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-12-12",
+                            "IntervalStart": "2018-11-07",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313605,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "57300.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "25515222",
+            "AmountDue": "7979.4100",
+            "IntervalEnd": "2019-10-15",
+            "IntervalStart": "2019-09-13",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5688099,
+            "PreviousBalance": "8829.1600",
+            "RawAccountNumber": "25515222",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d7a9-d52d-9244-0ef734dc608f",
+            "StatementDate": "2019-10-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "7979.4100",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-10-15",
+                    "IntervalStart": "2019-09-13",
+                    "MeterNumber": "410411",
+                    "PK": 20367431,
+                    "PODid": "21151060005",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge - 10/22/19",
+                            "ChargeAmount": "7979.4100",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0853",
+                            "ChargeUnitsUsed": "93600.0000",
+                            "IntervalEnd": "2019-10-15",
+                            "IntervalStart": "2019-09-13",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186950,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-10-15",
+                            "IntervalStart": "2019-09-13",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313607,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "93600.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "05356550",
+            "AmountDue": "7091.0400",
+            "IntervalEnd": "2019-08-14",
+            "IntervalStart": "2019-07-16",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5688130,
+            "PreviousBalance": "5680.4500",
+            "RawAccountNumber": "05356550",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea5c2d7-4a49-dbec-8d37-0edf59bf338d",
+            "StatementDate": "2019-08-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "7091.0400",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-08-14",
+                    "IntervalStart": "2019-07-16",
+                    "MeterNumber": "464400",
+                    "PK": 20367463,
+                    "PODid": "30000030000",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge - 08/21/19",
+                            "ChargeAmount": "7091.0400",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0879",
+                            "ChargeUnitsUsed": "80700.0000",
+                            "IntervalEnd": "2019-08-14",
+                            "IntervalStart": "2019-07-16",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238186982,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-08-14",
+                            "IntervalStart": "2019-07-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313639,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "80700.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "25252552",
+            "AmountDue": "6009.0200",
+            "IntervalEnd": "2019-06-13",
+            "IntervalStart": "2019-05-14",
+            "NewCharges": "0.0000",
+            "OutstandingBalance": "0.0000",
+            "PK": 5688173,
+            "PreviousBalance": "6066.1900",
+            "RawAccountNumber": "25252552",
+            "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea5c2d7-503f-dab3-8d37-0edf59bf338d",
+            "StatementDate": "2019-06-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": "6009.0200",
+            "UtilityProvider": "TriCountyECoopTX",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-06-13",
+                    "IntervalStart": "2019-05-14",
+                    "MeterNumber": "332332",
+                    "PK": 20367507,
+                    "PODid": "87707020000",
+                    "ServiceType": "electric",
+                    "Tariff": "PUB",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Electric Charge 06/21/19",
+                            "ChargeAmount": "6009.0200",
+                            "ChargeId": "ch.usage_charge",
+                            "ChargeRatePerUnit": "0.0957",
+                            "ChargeUnitsUsed": "62800.0000",
+                            "IntervalEnd": "2019-06-13",
+                            "IntervalStart": "2019-05-14",
+                            "IsAdjustmentCharge": true,
+                            "PK": 238187026,
+                            "ThirdPartyProvider": "",
+                            "UsageUnit": "kWh"
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-06-13",
+                            "IntervalStart": "2019-05-14",
+                            "MeasurementType": "general_consumption",
+                            "PK": 73313683,
+                            "RateComponent": "[total]",
+                            "UsageActualName": "",
+                            "UsageAmount": "62800.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

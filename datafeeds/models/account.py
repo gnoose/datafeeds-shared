@@ -13,7 +13,6 @@ from sqlalchemy import (
     Boolean,
     Column,
     DateTime,
-    Enum,
     ForeignKey,
     Integer,
     Unicode,
@@ -24,9 +23,6 @@ from sqlalchemy.sql import func
 from sqlalchemy.ext.mutable import MutableDict
 
 from datafeeds.orm import ModelMixin, Base
-
-
-GENERATION_PROVIDERS = ["utility-bundled", "tnd-only", "cca"]
 
 
 class SnapmeterAccount(ModelMixin, Base):
@@ -54,12 +50,9 @@ class SnapmeterAccountMeter(ModelMixin, Base):
     oid = Column(Integer, primary_key=True)
     account = Column(BigInteger, ForeignKey("snapmeter_account.oid"))
     meter = Column(BigInteger, ForeignKey("meter.oid"))
-    utility_account_id = Column(Unicode)
     estimated_changes = Column(MutableDict.as_mutable(JSONB))
     created = Column(DateTime, default=func.now())
-    generation_provider = Column(
-        Enum(*GENERATION_PROVIDERS), default=GENERATION_PROVIDERS[0]
-    )
+
     snapmeter_delivery = Column(Boolean, nullable=False, default=True)
 
     account_obj = relationship(

@@ -1,0 +1,264 @@
+{
+    "periods": [
+        {
+            "end": "2018-12-12",
+            "peak_demand": null,
+            "start": "2018-11-07",
+            "tariff": null,
+            "total_charge": "4688.2500",
+            "total_usage": "57300.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge 12/21/18",
+                    "ChargeAmount": "4688.2500",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0818",
+                    "ChargeUnitsUsed": "57300.0000",
+                    "IntervalEnd": "2018-12-12",
+                    "IntervalStart": "2018-11-07",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186948,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d6ea-de91-9244-0ef734dc608f"
+            ]
+        },
+        {
+            "end": "2019-02-12",
+            "peak_demand": null,
+            "start": "2019-01-14",
+            "tariff": null,
+            "total_charge": "4225.5200",
+            "total_usage": "53300.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge 02/21/19",
+                    "ChargeAmount": "4225.5200",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0793",
+                    "ChargeUnitsUsed": "53300.0000",
+                    "IntervalEnd": "2019-02-12",
+                    "IntervalStart": "2019-01-14",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186918,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d62a-d05d-9244-0ef734dc608f"
+            ]
+        },
+        {
+            "end": "2019-04-12",
+            "peak_demand": null,
+            "start": "2019-03-13",
+            "tariff": null,
+            "total_charge": "4625.9400",
+            "total_usage": "54800.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge 04/22/19",
+                    "ChargeAmount": "4625.9400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0844",
+                    "ChargeUnitsUsed": "54800.0000",
+                    "IntervalEnd": "2019-04-12",
+                    "IntervalStart": "2019-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186736,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea5c2d7-51d9-dcd9-8d37-0edf59bf338d"
+            ]
+        },
+        {
+            "end": "2019-06-12",
+            "peak_demand": null,
+            "start": "2019-05-14",
+            "tariff": null,
+            "total_charge": "6009.0200",
+            "total_usage": "62800.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge 06/21/19",
+                    "ChargeAmount": "6009.0200",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0957",
+                    "ChargeUnitsUsed": "62800.0000",
+                    "IntervalEnd": "2019-06-13",
+                    "IntervalStart": "2019-05-14",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238187026,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea5c2d7-503f-dab3-8d37-0edf59bf338d"
+            ]
+        },
+        {
+            "end": "2019-07-15",
+            "peak_demand": null,
+            "start": "2019-06-13",
+            "tariff": null,
+            "total_charge": "5680.4500",
+            "total_usage": "61000.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge - 07/22/19",
+                    "ChargeAmount": "5680.4500",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0931",
+                    "ChargeUnitsUsed": "61000.0000",
+                    "IntervalEnd": "2019-07-16",
+                    "IntervalStart": "2019-06-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186827,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d2e2-d327-9244-0ef734dc608f"
+            ]
+        },
+        {
+            "end": "2019-08-13",
+            "peak_demand": null,
+            "start": "2019-07-16",
+            "tariff": null,
+            "total_charge": "7091.0400",
+            "total_usage": "80700.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge - 08/21/19",
+                    "ChargeAmount": "7091.0400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0879",
+                    "ChargeUnitsUsed": "80700.0000",
+                    "IntervalEnd": "2019-08-14",
+                    "IntervalStart": "2019-07-16",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186982,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea5c2d7-4a49-dbec-8d37-0edf59bf338d"
+            ]
+        },
+        {
+            "end": "2019-09-12",
+            "peak_demand": null,
+            "start": "2019-08-14",
+            "tariff": null,
+            "total_charge": "8829.1600",
+            "total_usage": "103600.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge - 09/23/19",
+                    "ChargeAmount": "8829.1600",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0852",
+                    "ChargeUnitsUsed": "103600.0000",
+                    "IntervalEnd": "2019-09-13",
+                    "IntervalStart": "2019-08-14",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186858,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d47c-d4e5-9244-0ef734dc608f"
+            ]
+        },
+        {
+            "end": "2019-10-14",
+            "peak_demand": null,
+            "start": "2019-09-13",
+            "tariff": null,
+            "total_charge": "7979.4100",
+            "total_usage": "93600.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge - 10/22/19",
+                    "ChargeAmount": "7979.4100",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0853",
+                    "ChargeUnitsUsed": "93600.0000",
+                    "IntervalEnd": "2019-10-15",
+                    "IntervalStart": "2019-09-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186950,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d7a9-d52d-9244-0ef734dc608f"
+            ]
+        },
+        {
+            "end": "2019-11-13",
+            "peak_demand": null,
+            "start": "2019-10-15",
+            "tariff": null,
+            "total_charge": "5446.8500",
+            "total_usage": "68800.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge - 11/22/19",
+                    "ChargeAmount": "5446.8500",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0792",
+                    "ChargeUnitsUsed": "68800.0000",
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-15",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186792,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-d0ab-dc15-9244-0ef734dc608f"
+            ]
+        },
+        {
+            "end": "2019-12-16",
+            "peak_demand": null,
+            "start": "2019-11-14",
+            "tariff": null,
+            "total_charge": "4824.3700",
+            "total_usage": "60900.00000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Electric Charge - 12/20/19",
+                    "ChargeAmount": "4824.3700",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0792",
+                    "ChargeUnitsUsed": "60900.0000",
+                    "IntervalEnd": "2019-12-16",
+                    "IntervalStart": "2019-11-14",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238186755,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57a68-ce6e-d0cd-9244-0ef734dc608f"
+            ]
+        }
+    ]
+}
