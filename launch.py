@@ -96,6 +96,7 @@ from datafeeds.models import (
 log = logging.getLogger("datafeeds")
 
 # Look up scraper function according to the Meter Data Source name recorded in the database.
+# Names should not contain . because they are used as AWS Batch job names.
 scraper_functions = {
     "american-urjanet": american,
     "austin-energy-interval": austin_energy_interval,

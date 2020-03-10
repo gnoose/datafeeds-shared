@@ -47,16 +47,12 @@ These are the areas that need to be updated:
 from datafeeds.scrapers._UtilityId_ import datafeed as _UtilityId_
 ```
 
-2. Add a line to `scraper_functions` for the utility, maintaining alphabetical order:
+
+2. Add a line to `scraper_functions` for the utility, maintaining alphabetical order. Replace `.` in scraper keys with `-`, and make sure note that data source records need to be updated.
 
 ```
 "_UtilityId_": _UtilityId_,
 ```
-
-### Add CLI hook
-
-1. Open [cli_hooks.py](../datafeeds/urjanet/scripts/cli_hooks.py)
-2. Add a new class for your utility by copying and modifying an existing class in the file.
 
 ### Update scraper
 
