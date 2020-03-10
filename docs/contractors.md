@@ -42,3 +42,37 @@ When the PR is ready, merge it on GitHub as usual. Then sync `datafeeds-shared` 
 Contractors should work in the `datafeeds-shared` repo.
 
 See directions in [porting_urjanet.md](porting_urjanet.md).
+
+## Testing
+
+- create a datasource in the `gridium_test` database with [webapps/scripts](https://github.com/Gridium/webapps/tree/master/scripts/create_test_data_source.py):
+
+    python create_test_data_source.py 123 datasource_name username password
+
+- get values of `AES_KEY` from webapps/localconfig.py (used to encrypt username and password) and set it in environment
+
+    export AES_KEY="webapps key here"
+
+- get local config setup from datafeeds:
+
+    cd ../datafeeds
+    source local.env
+
+- run scraper with test meter datasource created above:
+
+    python launch.py by-oid 2027 2019-03-01 2020-03-01
+
+- get production bills from ops
+
+    cd ~/projects/webapps
+    source venv/bin/activate
+    cd scripts
+    python export_bills.py meterOID 2019-03-01 2020-03-01
+
+- copy ops:/tmp/meterOID.csv to local:
+
+    scp ops:/tmp/1817245075326.csv workdir
+
+- compare:
+
+    diff workdir/1817245075326.csv workdir/bills.csv
