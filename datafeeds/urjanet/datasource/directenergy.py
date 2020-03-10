@@ -1,6 +1,6 @@
 from collections import defaultdict
 from operator import itemgetter
-from typing import Optional, List
+from typing import DefaultDict, Optional, List, Tuple
 
 
 from datafeeds.common.batch import run_urjanet_datafeed
@@ -11,7 +11,10 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
+from datafeeds.urjanet.datasource.pymysql_adapter import (
+    UrjanetPyMySqlDataSource,
+    SqlQueryResult,
+)
 from datafeeds.urjanet.model import Account
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 
@@ -64,7 +67,7 @@ class DirectEnergyDatasource(UrjanetPyMySqlDataSource):
 
         # For each billing period, we extract the most recent statement,
         # to account for billing corrections.
-        groups = defaultdict(list)
+        groups: DefaultDict[Tuple, SqlQueryResult] = defaultdict(list)
         for stmt in result_set:
             date_range = (stmt["IntervalStart"], stmt["IntervalEnd"])
             groups[date_range].append(stmt)

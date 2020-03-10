@@ -28,7 +28,7 @@ class CalWaterDatasource(UrjanetPyMySqlDataSource):
         result_set = self.fetch_all(query, self.account_number)
         return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
-    def load_meters(self, account_pk: str) -> List[UrjaMeter]:
+    def load_meters(self, account_pk: int) -> List[UrjaMeter]:
         """Load all meters for an account
 
         Currently only has water meters.

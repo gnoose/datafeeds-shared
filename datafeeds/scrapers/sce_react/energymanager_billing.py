@@ -5,7 +5,7 @@ import os
 import datafeeds.scrapers.sce_react.pages as sce_pages
 import datafeeds.scrapers.sce_react.errors as sce_errors
 
-from typing import Optional
+from typing import Dict, Optional, Tuple
 
 from datetime import date
 from datetime import timedelta
@@ -205,7 +205,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         date_range = self.energy_manager_date_range(min_start_date)
 
         interval_size = relativedelta(months=6)
-        raw_billing_data = {}
+        raw_billing_data: Dict[Tuple, BillingDatum] = {}
         for subrange in date_range.split_iter(delta=interval_size):
             log.info("Requesting billing data for dates: %s", subrange)
             start = subrange.start_date
@@ -267,7 +267,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
 
     def download_and_attach_pdf(
         self, bill_data: BillingDatum, billing_row: sce_pages.BillingDataRow
-    ):
+    ) -> BillingDatum:
         self.clear_pdf_downloads()
         bill_path = self.download_pdf_for_billing_row(billing_row)
         if bill_path:

@@ -34,7 +34,6 @@ The task is complete when running `./precommit.sh` finishes without errors.
 These are the areas that need to be updated:
 
   - [launch.py](../launch.py) - add new utility import and key
-  - [cli_hooks.py](../datafeeds/urjanet/scripts/cli_hooks.py) - add hook for creating test fixtures
   - [scraper](../datafeeds/scrapers) - fix imports and other errors; add type annotations
 
 ## Steps
@@ -48,7 +47,7 @@ from datafeeds.scrapers._UtilityId_ import datafeed as _UtilityId_
 ```
 
 
-2. Add a line to `scraper_functions` for the utility, maintaining alphabetical order. Replace `.` in scraper keys with `-`, and make sure note that data source records need to be updated.
+2. Add a line to `scraper_functions` for the utility, maintaining alphabetical order. Replace `.` in scraper keys with `-`, and make sure to note the data source records for this scraper need to be updated.
 
 ```
 "_UtilityId_": _UtilityId_,
@@ -59,6 +58,15 @@ from datafeeds.scrapers._UtilityId_ import datafeed as _UtilityId_
 1. Open the scraper class: [datafeeds/scrapers/_UtilityId_](../datafeeds/scrapers)
 2. Fix imports and other errors
 3. Add type annotations for function parameters.
+
+If mypy produces an error like this:
+
+    datafeeds/urjanet/tests/test_urjanet_pymysql_adapter.py:5:
+        error: Cannot find implementation or library stub for module named 'datafeeds.urjanet.datasource.pymysql_adapter'
+
+The module (`datafeeds/urjanet/datasource`) needs an (empty) `__init__.py` file:
+
+    touch datafeeds/urjanet/datasource/__init__.py
 
 ### Run tests and push
 

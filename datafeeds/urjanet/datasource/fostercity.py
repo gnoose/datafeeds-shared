@@ -40,7 +40,7 @@ class FosterCityWaterDatasource(UrjanetPyMySqlDataSource):
         result_set = self.fetch_all(query, self.account_number)
         return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
-    def load_meters(self, account_pk: str) -> List[Meter]:
+    def load_meters(self, account_pk: int) -> List[Meter]:
         """Load all meters for an account
 
         Currently, water, sewer meters are loaded.

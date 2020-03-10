@@ -19,7 +19,7 @@ class NVEnergyDatasource(UrjanetPyMySqlDataSource):
 
     def __init__(self, account_number: str, said: str, meter_number: str):
         super().__init__(account_number)
-        self.account_number = self.normalize_account_number(account_number)
+        self.account_number = account_number
         self.said = said
         # from snapmeter_meter_data_source.meta->>'nveMeterNumber'
         self.meter_number = meter_number

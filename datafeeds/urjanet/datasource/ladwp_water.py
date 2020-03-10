@@ -31,7 +31,7 @@ class LosAngelesWaterDatasource(UrjanetPyMySqlDataSource):
         result_set = self.fetch_all(query, acct_no)
         return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
-    def load_meters(self, account_pk: str) -> List[Meter]:
+    def load_meters(self, account_pk: int) -> List[Meter]:
         """Load meters based on the service id"""
         query = """
             SELECT *

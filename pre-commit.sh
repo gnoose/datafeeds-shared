@@ -9,7 +9,7 @@ flake8 datafeeds launch.py
 printf " ok\n"
 
 printf "Running mypy ..."
-mypy --no-strict-optional --ignore-missing-imports datafeeds launch.py
+mypy --no-strict-optional datafeeds launch.py
 printf " ok\n"
 
 printf "Running tests ...\n"
