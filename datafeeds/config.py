@@ -99,6 +99,15 @@ STEM_API_KEY: str = os.environ.get("STEM_API_KEY")
 ENGIE_API_BASE: str = os.environ.get("ENGIE_API_BASE", "https://api.greencharge.net")
 ENGIE_API_KEY: str = os.environ.get("ENGIE_API_KEY")
 
+# What username/password should be used to access Smart Meter Texas' REST API?
+SMT_API_USERNAME: str = os.environ.get("SMT_API_USERNAME")
+SMT_API_PASSWORD: str = os.environ.get("SMT_API_PASSWORD")
+SMT_API_AUTHENTICATION_ID: str = os.environ.get("SMT_API_AUTHENTICATION_ID")
+
+# What client certificate and key should be used to access Smart Meter Texas' REST API?
+SMT_CLIENT_CERT: str = os.environ.get("SMT_CLIENT_CERT")
+SMT_CLIENT_CERT_KEY: str = os.environ.get("SMT_CLIENT_CERT_KEY")
+
 # What host should be used to access the Grovestreams REST API for interval data?
 GROVESTREAMS_API_BASE: str = os.environ.get(
     "GROVESTREAMS_API_BASE", "https://grovestreams.com/api"
