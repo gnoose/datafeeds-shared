@@ -14,6 +14,7 @@ from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.support import Configuration
 from datafeeds.common.support import Results
 from datafeeds.common.typing import Status
+from datafeeds.common.util.s3 import read_file_from_s3
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
@@ -134,11 +135,25 @@ class SmartMeterTexasScraper(BaseApiScraper):
         return self.parse(response_body)
 
     def _execute(self) -> Results:
-        with open("/tmp/smt_client.cert", "w") as cert_file:
-            cert_file.write(config.SMT_CLIENT_CERT)
+        smt_client_cert = read_file_from_s3(
+            config.PRIVATE_CONFIG_BUCKET, config.SMT_CERTIFICATE_S3_KEY
+        )
 
-        with open("/tmp/smt_client.key", "w") as key_file:
-            key_file.write(config.SMT_CLIENT_CERT_KEY)
+        smt_client_cert_key = read_file_from_s3(
+            config.PRIVATE_CONFIG_BUCKET, config.SMT_CERTIFICATE_KEY_S3_KEY
+        )
+
+        if not smt_client_cert or not smt_client_cert_key:
+            raise ApiException(
+                "Datafeeds was not properly configured with client certificates"
+                " for accessing the Smart Meter Texas API."
+            )
+
+        with open("/tmp/smt_client.cert", "wb") as cert_file:
+            cert_file.write(smt_client_cert)
+
+        with open("/tmp/smt_client.key", "wb") as key_file:
+            key_file.write(smt_client_cert_key)
 
         # No more than 24 months are available on this service.
         start = max(self.start_date, date.today() - relativedelta(months=23))

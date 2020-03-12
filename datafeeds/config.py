@@ -38,6 +38,11 @@ PRIVATE_FIXTURES_PATH: str = os.environ.get(
     "PRIVATE_FIXTURES_PATH", os.path.join(DATAFEEDS_ROOT, "private_fixtures")
 )
 
+# What S3 bucket should be used for storing configuration files / secrets
+# that are too big to fit into environment variables?
+PRIVATE_CONFIG_BUCKET: str = os.environ.get(
+    "PRIVATE_CONFIG_BUCKET", os.path.join(DATAFEEDS_ROOT)
+)
 
 # What directory should be used for storing scraper artifacts like screenshots and downloads?
 WORKING_DIRECTORY: str = os.environ.get(
@@ -104,9 +109,9 @@ SMT_API_USERNAME: str = os.environ.get("SMT_API_USERNAME")
 SMT_API_PASSWORD: str = os.environ.get("SMT_API_PASSWORD")
 SMT_API_AUTHENTICATION_ID: str = os.environ.get("SMT_API_AUTHENTICATION_ID")
 
-# What client certificate and key should be used to access Smart Meter Texas' REST API?
-SMT_CLIENT_CERT: str = os.environ.get("SMT_CLIENT_CERT")
-SMT_CLIENT_CERT_KEY: str = os.environ.get("SMT_CLIENT_CERT_KEY")
+# Where are the certificate and certificate key stored in the configuration S3 bucket for datafeeds?
+SMT_CERTIFICATE_S3_KEY: str = os.environ.get("SMT_CERTIFICATE_S3_KEY")
+SMT_CERTIFICATE_KEY_S3_KEY: str = os.environ.get("SMT_CERTIFICATE_KEY_S3_KEY")
 
 # What host should be used to access the Grovestreams REST API for interval data?
 GROVESTREAMS_API_BASE: str = os.environ.get(
