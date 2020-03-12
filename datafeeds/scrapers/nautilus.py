@@ -129,24 +129,33 @@ class SitePage:
 
     def five_days_select(self):
         five_days_xpath = '//*[@id="Chart_Query_Header"]/nav/ul/li[3]/a'
-        five_days = self.driver.find_element_by_xpath(five_days_xpath)
+        five_days = self.driver.wait().until(
+            EC.element_to_be_clickable((By.XPATH, five_days_xpath))
+        )
         five_days.click()
 
     def month_select(self):
         month_xpath = '//*[@id="Chart_Query_Header"]/nav/ul/li[5]/a'
-        month = self.driver.find_element_by_xpath(month_xpath)
+        month = self.driver.wait().until(
+            EC.element_to_be_clickable((By.XPATH, month_xpath))
+        )
         month.click()
 
     def double_back_arrow_select(self):
         double_arrow_xpath = '//*[@id="Chart_Query_Header"]/nav/ul/li[1]/div/a[1]/span'
-        double_arrow = self.driver.find_element_by_xpath(double_arrow_xpath)
+        double_arrow = self.driver.wait().until(
+            EC.element_to_be_clickable((By.XPATH, double_arrow_xpath))
+        )
         double_arrow.click()
 
     def hamburger_select(self):
         # this is in an svg
         # https://payitforward14.blogspot.com/2015/06/how-to-write-xpath-for-svg-elements.html
         hamburger_xpath = "//*[name() = 'svg']/*[name() = 'g'][1]/*[name() = 'path']"
-        hamburger = self.driver.find_element_by_xpath(hamburger_xpath)
+        # hamburger = self.driver.find_element_by_xpath(hamburger_xpath)
+        hamburger = self.driver.wait().until(
+            EC.element_to_be_clickable((By.XPATH, hamburger_xpath))
+        )
         hamburger.click()
 
     def download_csv(self) -> str:
@@ -184,7 +193,12 @@ class SitePage:
         # also in svg namespace
         earliest_shown_xpath = "//*[name() = 'tspan']"
         # eg, "February 14 - 19, 2020"
-        date_range_str = self.driver.find_element_by_xpath(earliest_shown_xpath).text
+        # date_range_str = self.driver.find_element_by_xpath(earliest_shown_xpath).text
+        date_range_str = (
+            self.driver.wait()
+            .until(EC.presence_of_element_located((By.XPATH, earliest_shown_xpath)))
+            .text
+        )
 
         # if cycling by months, date range string is like 'January, 2020
         date_format = "%B %d  %Y"
