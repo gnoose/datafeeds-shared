@@ -34,7 +34,7 @@ class HudsonScraperException(Exception):
 
 class HudsonConfiguration(Configuration):
     def __init__(self, account_number: str, meter_number: str):
-        super().__init__(scrape_bills=True)
+        super().__init__()
         self.account_number = account_number
         self.meter_number = meter_number
 
@@ -258,7 +258,9 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = HudsonConfiguration(meter_id=meter.service_id)
+    configuration = HudsonConfiguration(
+        meter.utility_service.utility_account_id, meter.service_id
+    )
 
     return run_datafeed(
         HudsonScraper,

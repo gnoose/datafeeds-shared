@@ -22,7 +22,7 @@ def datafeed(
 ) -> Status:
 
     configuration = NvEnergyMyAccountConfiguration(
-        account_id=meter.utility_account_id, meter_id=meter.service_id
+        meter.utility_service.tility_account_id, meter.service_id
     )
     return run_datafeed(
         NvEnergyMyAccountScraper,

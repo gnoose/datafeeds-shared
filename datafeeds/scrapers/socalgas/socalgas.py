@@ -73,9 +73,11 @@ class UsageViewBlockedException(Exception):
 
 class SocalGasConfiguration(Configuration):
     def __init__(self, account_id, meter_id, scrape_bills=True, scrape_readings=True):
-        super().__init__(scrape_bills, scrape_readings)
+        super().__init__()
         self.account_id = account_id
         self.meter_id = meter_id
+        self.scrape_bills = scrape_bills
+        self.scrape_readings = scrape_readings
 
 
 class SocalGasScraper(BaseWebScraper):
@@ -643,7 +645,12 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = SocalGasConfiguration(meter_id=meter.service_id)
+    configuration = SocalGasConfiguration(
+        meter.utility_service.utility_account_id,
+        meter.utility_service,
+        "billing" in datasource.source_types,
+        "interval" in datasource.source_types,
+    )
 
     return run_datafeed(
         SocalGasScraper,

@@ -44,7 +44,7 @@ KellerIdentifier = namedtuple(
 
 class KellerConfiguration(Configuration):
     def __init__(self, account_number: str):
-        super().__init__(scrape_bills=True)
+        super().__init__()
         self.account_number = account_number
 
 
@@ -212,7 +212,7 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = KellerConfiguration(meter_id=meter.service_id)
+    configuration = KellerConfiguration(meter.utility_service.utility_account_id)
 
     return run_datafeed(
         KellerScraper,

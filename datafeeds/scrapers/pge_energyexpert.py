@@ -35,7 +35,7 @@ class ApiError(Exception):
 
 class PGEEnergyExpertConfiguration(Configuration):
     def __init__(self, item_id):
-        super().__init__(scrape_readings=True)
+        super().__init__()
         self.item_id = item_id
 
 
@@ -162,7 +162,7 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = PGEEnergyExpertConfiguration(meter_id=meter.service_id)
+    configuration = PGEEnergyExpertConfiguration(datasource.meta.get("itemId"))
 
     return run_datafeed(
         PGEEnergyExpertScraper,

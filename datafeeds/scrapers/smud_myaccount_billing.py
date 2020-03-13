@@ -64,7 +64,7 @@ class SMUDMyAccountBillingConfiguration(Configuration):
     def __init__(
         self, account_id: str,
     ):
-        super().__init__(scrape_bills=True)
+        super().__init__()
         self.account_id = account_id
 
 

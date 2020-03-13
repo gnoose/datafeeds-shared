@@ -32,7 +32,7 @@ log = logging.getLogger(__name__)
 
 class PSEIntervalConfiguration(Configuration):
     def __init__(self, service_id, site_name):
-        super().__init__(scrape_readings=True)
+        super().__init__()
         self.service_id = service_id
         self.site_name = site_name
 
@@ -367,7 +367,9 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = PSEIntervalConfiguration(meter_id=meter.service_id)
+    configuration = PSEIntervalConfiguration(
+        meter.service_id, datasource.meta.get("siteName")
+    )
 
     return run_datafeed(
         PSEIntervalScraper,
