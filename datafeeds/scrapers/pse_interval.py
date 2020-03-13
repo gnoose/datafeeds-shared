@@ -15,6 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
+from datafeeds import config
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.support import Configuration, DateRange, Results
@@ -228,12 +229,11 @@ class PSEIntervalReportParser:
             to_dt.strftime("%Y-%m-%d"),
         )
 
-        # TODO: config.WORKING_DIRECTORY instead of logger.outputpath
-        f1 = os.path.join(logger.outputpath, "current", RAW_REPORT_NAME)
-        f2 = os.path.join(logger.outputpath, filename)
+        f1 = os.path.join(config.WORKING_DIRECTORY, "current", RAW_REPORT_NAME)
+        f2 = os.path.join(config.WORKING_DIRECTORY, filename)
 
         try:
-            sh.mv(f1, f2)  # pylint: disable=no-member
+            sh.mv(f1, f2)
         except Exception as e:
             log.info("error moving %s to %s: %s" % (f1, f2, e))
         # Now ingest the stored CSV's data.

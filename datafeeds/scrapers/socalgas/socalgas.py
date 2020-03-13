@@ -1,16 +1,16 @@
-import os
-import re
-import logging
-import dateparser as date_parser
-
-from itertools import groupby
 from datetime import timedelta, date
+from itertools import groupby
+import os
+import logging
+import re
 from typing import Optional, Tuple, List
-from zipfie import ZipFile
+from zipfile import ZipFile
 
+from dateutil import parser as date_parser
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+
 
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper

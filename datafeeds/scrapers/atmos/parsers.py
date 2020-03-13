@@ -145,7 +145,8 @@ def bill_data_from_pdf(
         if _empty_page_pattern.match(t):
             last_empty_page = ii
 
-    bill_pages = texts[last_empty_page + 1 :]
+    start = last_empty_page + 1
+    bill_pages = texts[start:]
     bills = group_pages(bill_pages)
 
     results = []

@@ -34,7 +34,9 @@ from datafeeds.scrapers.hudson import datafeed as hudson
 from datafeeds.scrapers.keller.keller import datafeed as keller
 from datafeeds.scrapers.nautilus import datafeed as nautilus
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
-from datafeeds.scrapers.pacific_power_billing import datafeed as pacific_power_billing
+from datafeeds.scrapers.pacific_power_billing.pacific_power_billing import (
+    datafeed as pacific_power_billing,
+)
 from datafeeds.scrapers.pge_energyexpert import datafeed as pge_energyexpert
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
 from datafeeds.scrapers.powertrack import datafeed as powertrack
