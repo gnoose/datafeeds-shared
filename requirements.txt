@@ -6,6 +6,7 @@ elasticsearch==6.3.1
 intervaltree==3.0.2
 jsonobject==0.9.8
 jsonschema==3.2.0
+pandas==0.22.0
 pdfminer.six==20181108
 Pillow==4.2.1
 psycopg2-binary==2.8.3
