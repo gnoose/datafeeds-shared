@@ -1,31 +1,41 @@
+import time
 import logging
+import requests
 
-from typing import Optional, Tuple, List, Dict, Callable
+from io import BytesIO
+from typing import Optional, NamedTuple, List
+from collections import namedtuple
+from datetime import date, datetime, timedelta
+from dateutil.parser import parse as parse_date
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.select import Select
+
+from datafeeds.common.support import Configuration, Results
+from datafeeds.common.typing import Status, BillingDatum
+
 
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
-from datafeeds.common.support import Configuration
-from datafeeds.common.typing import Status
+from datafeeds.common.exceptions import LoginError
+from datafeeds.common.util.pagestate.pagestate import PageStateMachine, PageState
+from datafeeds.common.util.selenium import ec_and
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+import datafeeds.common.upload as bill_upload
 
 log = logging.getLogger(__name__)
 
 
 # Represents metadata about a bill pdf download from a website table
-BillPdfInfo = namedtuple("BillPdfInfo",
-                         ["issue_date", "due_date", "link"])
+BillPdfInfo = namedtuple("BillPdfInfo", ["issue_date", "due_date", "link"])
 
 BillPeriodSelector = NamedTuple(
-    "BillPeriodSelector",
-    [
-        ("value", str),
-        ("start", date),
-        ("end", date)
-    ]
+    "BillPeriodSelector", [("value", str), ("start", date), ("end", date)]
 )
 
 BillPeriodDetails = NamedTuple(
@@ -37,8 +47,8 @@ BillPeriodDetails = NamedTuple(
         ("total_charges", float),
         ("total_kwh", float),
         ("max_kw", float),
-        ("download_link", str)
-    ]
+        ("download_link", str),
+    ],
 )
 
 
@@ -50,26 +60,20 @@ class UnexpectedBillDataException(Exception):
     pass
 
 
-class SmudMyAccountConfiguration(Configuration):
+class SMUDMyAccountBillingConfiguration(Configuration):
     def __init__(
-            self,
-            account_id: str,
-            billing_start: date,
-            billing_end: date,
-            download_pdfs: bool):
+        self, account_id: str,
+    ):
         super().__init__(scrape_bills=True)
         self.account_id = account_id
-        self.download_pdfs = download_pdfs
-        self.billing_start = billing_start
-        self.billing_end = billing_end
 
 
 class SmudMyAccountLoginPage(PageState):
     """Represents the lgin page in the web UI."""
 
-    UsernameFieldId = 'UserId'
-    PasswordFieldId = 'Password'
-    SignInCss = 'div.action-bar button'
+    UsernameFieldId = "UserId"
+    PasswordFieldId = "Password"
+    SignInCss = "div.action-bar button"
 
     def get_ready_condition(self):
         return EC.presence_of_element_located((By.ID, self.UsernameFieldId))
@@ -79,11 +83,9 @@ class SmudMyAccountLoginPage(PageState):
 
         Fill in the username, password, then click "continue"
         """
-        _log("Inserting credentials on login page.")
-        self.driver.find_element_by_id(
-            self.UsernameFieldId).send_keys(username)
-        self.driver.find_element_by_id(
-            self.PasswordFieldId).send_keys(password)
+        log.info("Inserting credentials on login page.")
+        self.driver.find_element_by_id(self.UsernameFieldId).send_keys(username)
+        self.driver.find_element_by_id(self.PasswordFieldId).send_keys(password)
         self.driver.find_element_by_css_selector(self.SignInCss).click()
 
 
@@ -93,14 +95,15 @@ class SmudMyAccountFailedLoginPage(PageState):
     LoginErrorsSelector = "div.validation-summary-errors"
 
     def get_ready_condition(self):
-        return EC.presence_of_element_located((By.CSS_SELECTOR, self.LoginErrorsSelector))
+        return EC.presence_of_element_located(
+            (By.CSS_SELECTOR, self.LoginErrorsSelector)
+        )
 
     def get_login_errors(self):
-        validation_errors = self.driver.find_element_by_css_selector(self.LoginErrorsSelector)
-        return [
-            item.text
-            for item in validation_errors.find_elements_by_tag_name("li")
-        ]
+        validation_errors = self.driver.find_element_by_css_selector(
+            self.LoginErrorsSelector
+        )
+        return [item.text for item in validation_errors.find_elements_by_tag_name("li")]
 
     def raise_on_error(self):
         """Raise an exception describing the login error."""
@@ -121,12 +124,16 @@ class SmudChooseAccountPage(PageState):
     ShowMoreLinkSelector = "div.show-more-link a"
 
     def get_ready_condition(self):
-        return EC.presence_of_element_located((By.CSS_SELECTOR, self.AccountDivSelector))
+        return EC.presence_of_element_located(
+            (By.CSS_SELECTOR, self.AccountDivSelector)
+        )
 
     def expand_accounts(self):
         done = False
         while not done:
-            result = self.driver.find_elements_by_css_selector(self.ShowMoreLinkSelector)
+            result = self.driver.find_elements_by_css_selector(
+                self.ShowMoreLinkSelector
+            )
             if result:
                 link = result[0]
                 if link.is_displayed():
@@ -138,7 +145,9 @@ class SmudChooseAccountPage(PageState):
                 done = True
 
     def select_account(self, target):
-        for available_account in self.driver.find_elements_by_css_selector(self.AccountRowsSelector):
+        for available_account in self.driver.find_elements_by_css_selector(
+            self.AccountRowsSelector
+        ):
             account_number = available_account.get_attribute("data-account-number")
             if account_number == target:
                 available_account.click()
@@ -165,7 +174,7 @@ class SmudBillComparePage(PageState):
         return ec_and(
             EC.presence_of_element_located(self.Bill1Locator),
             EC.presence_of_element_located(self.Bill2Locator),
-            EC.presence_of_element_located(self.UsageDetailExpanderLocator)
+            EC.presence_of_element_located(self.UsageDetailExpanderLocator),
         )
 
     def get_all_billing_periods(self) -> List[BillPeriodSelector]:
@@ -178,11 +187,11 @@ class SmudBillComparePage(PageState):
             start = parse_date(parts[0]).date()
             end = parse_date(parts[1]).date()
 
-            results.append(BillPeriodSelector(
-                value=option.get_attribute("value"),
-                start=start,
-                end=end
-            ))
+            results.append(
+                BillPeriodSelector(
+                    value=option.get_attribute("value"), start=start, end=end
+                )
+            )
         return results
 
     @staticmethod
@@ -201,18 +210,21 @@ class SmudBillComparePage(PageState):
         return BillPeriodDetails(
             start=parse_date(date_strings[0]).date(),
             end=parse_date(date_strings[1]).date(),
-            total_electric_charges=self._parse_cost_string(raw_data.get("Total Electrical Charges")),
-            total_charges=self._parse_cost_string(raw_data.get("Total Electric Service Charges/Credits")),
+            total_electric_charges=self._parse_cost_string(
+                raw_data.get("Total Electrical Charges")
+            ),
+            total_charges=self._parse_cost_string(
+                raw_data.get("Total Electric Service Charges/Credits")
+            ),
             total_kwh=self._parse_usage_string(raw_data.get("Total kWh Used")),
             max_kw=self._parse_usage_string(raw_data.get("Maximum kW")),
-            download_link=raw_data.get("Link")
+            download_link=raw_data.get("Link"),
         )
 
     def get_visible_bill_details(self) -> List[BillPeriodDetails]:
         """Retrieve billing details for the currently visible bills"""
         billing_row_divs = self.driver.find_elements(
-            By.XPATH,
-            "//div[@id='compare-container']//div[contains(@class, 'row')]"
+            By.XPATH, "//div[@id='compare-container']//div[contains(@class, 'row')]"
         )
 
         # This view shows bills in pairs, so we expect to parse out two bill detail objects
@@ -223,12 +235,20 @@ class SmudBillComparePage(PageState):
             billing_links = billing_row.find_elements(By.PARTIAL_LINK_TEXT, "View Bill")
             if billing_links:
                 try:
-                    bill_1_raw_values["Link"] = billing_columns[1].find_element_by_tag_name("a").get_attribute("href")
-                except:
+                    bill_1_raw_values["Link"] = (
+                        billing_columns[1]
+                        .find_element_by_tag_name("a")
+                        .get_attribute("href")
+                    )
+                except Exception:
                     pass
                 try:
-                    bill_2_raw_values["Link"] = billing_columns[2].find_element_by_tag_name("a").get_attribute("href")
-                except:
+                    bill_2_raw_values["Link"] = (
+                        billing_columns[2]
+                        .find_element_by_tag_name("a")
+                        .get_attribute("href")
+                    )
+                except Exception:
                     pass
             else:
                 column_texts = [col.text.strip() for col in billing_columns]
@@ -243,7 +263,9 @@ class SmudBillComparePage(PageState):
             try:
                 results.append(self._parse_raw_bill_data(raw_bill))
             except Exception as e:
-                msg = "Failed to parse billing data from site. Raw values: {}".format(raw_bill)
+                msg = "Failed to parse billing data from site. Raw values: {}".format(
+                    raw_bill
+                )
                 raise UnexpectedBillDataException(msg) from e
 
         return results
@@ -257,7 +279,7 @@ class SmudBillComparePage(PageState):
         time.sleep(5)
 
 
-class SmudMyAccountScraper(BaseWebScraper):
+class SMUDMyAccountBillingScraper(BaseWebScraper):
     """Downloads bill data from the SMUD MyAccount webpage
 
     Fetching the raw billing data is fairly straightforward; there is an Excel file downloadable from the
@@ -266,8 +288,8 @@ class SmudMyAccountScraper(BaseWebScraper):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.browser_name = 'Chrome'
-        self.name = 'SMUD MyAccount Billing Scraper'
+        self.browser_name = "Chrome"
+        self.name = "SMUD MyAccount Billing Scraper"
         self.bill_history = []
 
     @property
@@ -289,26 +311,24 @@ class SmudMyAccountScraper(BaseWebScraper):
 
     def _execute(self):
         if self.end_date - self.start_date < timedelta(days=90):
-            _log("Widening bill window to increase odds of finding bill data.")
+            log.info("Widening bill window to increase odds of finding bill data.")
             self.start_date = self.end_date - timedelta(days=90)
 
         today = datetime.now().date()
         if self.end_date > today:
-            _log("Truncating end date to %s." % today)
+            log.info("Truncating end date to %s." % today)
             self.end_date = today
 
         if self.end_date < self.start_date:
-            InvalidTimeRangeException(
-                "Final bill date must be after the start date.")
+            InvalidTimeRangeException("Final bill date must be after the start date.")
 
         # We define the scraper flow below using a simple state machine.
         state_machine = PageStateMachine(self._driver)
 
         # The scraper begins in an initial state, which transitions to the login page
         state_machine.add_state(
-            name="init",
-            action=self.init_action,
-            transitions=["login"])
+            name="init", action=self.init_action, transitions=["login"]
+        )
 
         # Next we login. This either transitions to
         #   1) A login failure page
@@ -318,7 +338,8 @@ class SmudMyAccountScraper(BaseWebScraper):
             name="login",
             page=SmudMyAccountLoginPage(self._driver),
             action=self.login_action,
-            transitions=["choose_account", "account_home", "login_failed"])
+            transitions=["choose_account", "account_home", "login_failed"],
+        )
 
         # This state is entered when login fails. It is a terminal state. Currently it serves to
         # capture any error messages and expose them through an exception.
@@ -326,7 +347,8 @@ class SmudMyAccountScraper(BaseWebScraper):
             name="login_failed",
             page=SmudMyAccountFailedLoginPage(self._driver),
             action=self.login_failed_action,
-            transitions=[])
+            transitions=[],
+        )
 
         # The choose_account state is entered when one logs in with credentials that represent multiple accounts.
         # In this state, we choose an account, then transition to the account_home state
@@ -334,7 +356,8 @@ class SmudMyAccountScraper(BaseWebScraper):
             name="choose_account",
             page=SmudChooseAccountPage(self._driver),
             action=self.choose_account_action,
-            transitions=["account_home"])
+            transitions=["account_home"],
+        )
 
         # The account_home state is entered either after logging in with an account that contains only one utility
         # account, or after choosing an account in the choose_account step. This is where we download billing history
@@ -343,13 +366,15 @@ class SmudMyAccountScraper(BaseWebScraper):
             name="account_home",
             page=SmudMyAccountOverviewPage(self._driver),
             action=self.account_home_action,
-            transitions=["bill_compare"])
+            transitions=["bill_compare"],
+        )
 
         state_machine.add_state(
             name="bill_compare",
             page=SmudBillComparePage(self._driver),
             action=self.bill_compare_action,
-            transitions=["done"])
+            transitions=["done"],
+        )
         state_machine.add_state("done")
 
         # Begin in the init state, and run the state machine
@@ -357,14 +382,16 @@ class SmudMyAccountScraper(BaseWebScraper):
         final_state = state_machine.run()
         if final_state == "done":
             return Results(bills=self.bill_history)
-        raise Exception("The scraper did not reach a finished state, this will require developer attention.")
+        raise Exception(
+            "The scraper did not reach a finished state, this will require developer attention."
+        )
 
     def init_action(self, _):
         self._driver.get("https://myaccount.smud.org/")
 
     def login_action(self, page: SmudMyAccountLoginPage):
         """Action for the 'login' state. Simply logs in with provided credentials."""
-        _log("Attempting to authenticate with the SMUD MyAccount page")
+        log.info("Attempting to authenticate with the SMUD MyAccount page")
         page.login(self.username, self.password)
 
     def login_failed_action(self, page: SmudMyAccountFailedLoginPage):
@@ -373,7 +400,7 @@ class SmudMyAccountScraper(BaseWebScraper):
 
     def choose_account_action(self, page: SmudChooseAccountPage):
         """Action for the 'choose_account' state. Selects an account based on the account id passed to the scraper."""
-        _log("Selecting an account with number: {}".format(self.account_id))
+        log.info("Selecting an account with number: {}".format(self.account_id))
         page.expand_accounts()
         time.sleep(5)
         page.select_account(self.account_id)
@@ -386,7 +413,7 @@ class SmudMyAccountScraper(BaseWebScraper):
         """Extracting billing info from the 'bill comparison' page"""
         page.toggle_usage_details()
         periods = page.get_all_billing_periods()
-        seen_bills = set()
+        seen_bills: set = set()
 
         # The comparison UI requires selecting two bill periods, after which it displays details for both.
         # (along with percentage differences and other statistics). Therefore we process bills in pairs
@@ -425,16 +452,15 @@ class SmudMyAccountScraper(BaseWebScraper):
             used=bill_detail.total_kwh,
             peak=bill_detail.max_kw,
             items=None,
-            attachments=None
+            attachments=None,
         )
 
-        if self.download_pdfs:
-            pdf_bytes = self.download_pdf(bill_detail)
-            if pdf_bytes:
-                key = bill_upload.hash_bill_datum(self.account_id, bill_datum)
-                attachment_entry = bill_upload.upload_bill(io.BytesIO(pdf_bytes), key)
-                if attachment_entry:
-                    bill_datum = bill_datum._replace(attachments=[attachment_entry])
+        pdf_bytes = self.download_pdf(bill_detail)
+        if pdf_bytes:
+            key = bill_upload.hash_bill_datum(self.account_id, bill_datum)
+            attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(pdf_bytes), key)
+            if attachment_entry:
+                bill_datum = bill_datum._replace(attachments=[attachment_entry])
 
         return bill_datum
 
@@ -457,7 +483,7 @@ class SmudMyAccountScraper(BaseWebScraper):
         try:
             response.raise_for_status()
             return response.content
-        except:
+        except Exception:
             return None
 
 
@@ -468,7 +494,9 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = SMUDMyAccountBillingConfiguration(meter_id=meter.service_id)
+    configuration = SMUDMyAccountBillingConfiguration(
+        account_id=meter.utility_service.utility_account_id
+    )
 
     return run_datafeed(
         SMUDMyAccountBillingScraper,

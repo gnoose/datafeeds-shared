@@ -1,16 +1,32 @@
+import os
+import time
 import logging
 
-from typing import Optional, Tuple, List, Dict, Callable
+from .parsers import bill_data_from_xls, bill_data_from_pdf
 
+
+from io import BytesIO
+from itertools import zip_longest
+from datetime import date
+from typing import Optional, Tuple, List
+from dateutil.relativedelta import relativedelta
+
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+
+import datafeeds.common.upload as bill_upload
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
-from datafeeds.common.support import Configuration
-from datafeeds.common.typing import Status
+from datafeeds.common.support import Configuration, Results
+from datafeeds.common.typing import Status, adjust_bill_dates
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+
 
 log = logging.getLogger(__name__)
 
@@ -38,17 +54,26 @@ class BillHistoryPage:
 
         start_month = start.strftime("%B")
         start_year = start.year
-        start_month_xpath = "//select[@name='startMonth']/option[@value='%s']" % start_month
-        start_year_xpath = "//select[@name='startYear']/option[@value='%s']" % start_year
+        start_month_xpath = (
+            "//select[@name='startMonth']/option[@value='%s']" % start_month
+        )
+        start_year_xpath = (
+            "//select[@name='startYear']/option[@value='%s']" % start_year
+        )
 
         end_month = end.strftime("%B")
         end_year = end.year
         end_month_xpath = "//select[@name='endMonth']/option[@value='%s']" % end_month
         end_year_xpath = "//select[@name='endYear']/option[@value='%s']" % end_year
 
-        _log("Final scraping time interval: %s, %s - %s, %s" % (start_month, start_year, end_month, end_year))
+        log.info(
+            "Final scraping time interval: %s, %s - %s, %s"
+            % (start_month, start_year, end_month, end_year)
+        )
 
-        search_button = WebDriverWait(self.driver, 5).until(ec.presence_of_element_located((By.ID, "search")))
+        search_button = WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located((By.ID, "search"))
+        )
 
         self.driver.find_element_by_xpath(start_month_xpath).click()
         self.driver.find_element_by_xpath(start_year_xpath).click()
@@ -58,7 +83,9 @@ class BillHistoryPage:
         search_button.click()
 
         view_all_link_xpath = "//div[@id='bilTab']//a[@id='viewAll']"
-        WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, view_all_link_xpath))).click()
+        WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, view_all_link_xpath))
+        ).click()
 
     def gather_data(self) -> List[Tuple[Optional[bytes], Optional[bytes]]]:
         pdf_links = self.driver.find_elements_by_xpath("//a[text()='View Bills']")
@@ -75,7 +102,7 @@ class BillHistoryPage:
                 pdf_link.click()
                 time.sleep(2)  # Wait for download to complete.
                 if os.path.exists(pdf_path):
-                    with open(pdf_path, 'rb') as f:
+                    with open(pdf_path, "rb") as f:
                         pdf_data = f.read()
                     os.remove(pdf_path)
 
@@ -89,7 +116,7 @@ class BillHistoryPage:
                 xls_link.click()
                 time.sleep(2)  # Wait for download to complete.
                 if os.path.exists(xls_path):
-                    with open(xls_path, 'rb') as f:
+                    with open(xls_path, "rb") as f:
                         xls_data = f.read()
                     os.remove(xls_path)
 
@@ -103,7 +130,9 @@ class HomePage:
         self.driver = driver
 
     def to_bill_history(self):
-        self.driver.get("https://www.atmosenergy.com/accountcenter/finance/FinancialTransaction.html?activeTab=2")
+        self.driver.get(
+            "https://www.atmosenergy.com/accountcenter/finance/FinancialTransaction.html?activeTab=2"
+        )
         return BillHistoryPage(self.driver)
 
 
@@ -114,15 +143,20 @@ class LoginPage:
     def login(self, username: str, password: str) -> HomePage:
         self.driver.get("https://www.atmosenergy.com/accountcenter/logon/login.html")
 
-        WebDriverWait(self.driver, 5).until(ec.presence_of_element_located((By.ID, "username")))
+        WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located((By.ID, "username"))
+        )
 
         self.driver.find_element_by_id("username").send_keys(username)
         self.driver.find_element_by_id("password").send_keys(password)
         self.driver.find_element_by_xpath("//input[@value='Login']").click()
 
         try:
-            WebDriverWait(self.driver, 5) \
-                .until(ec.presence_of_element_located((By.XPATH, "//ul[@class='errorMessage']")))
+            WebDriverWait(self.driver, 5).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, "//ul[@class='errorMessage']")
+                )
+            )
             raise AtmosScraperException("Invalid credentials.")
         except TimeoutException:
             pass
@@ -137,9 +171,9 @@ class LoginPage:
 class AtmosScraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.browser_name = 'Chrome'
-        self.name = 'Atmos'
-        self.login_url = ''
+        self.browser_name = "Chrome"
+        self.name = "Atmos"
+        self.login_url = ""
 
     @property
     def service_account(self):
@@ -163,7 +197,10 @@ class AtmosScraper(BaseWebScraper):
         xls_bytes = sum(len(t[1]) for t in history if t[1])
         pdfs = sum(1 for t in history if t[0])
         xls = sum(1 for t in history if t[1])
-        _log("Acquired %s pdfs (%s bytes) and %s excel files (%s bytes)." % (pdfs, pdf_bytes, xls, xls_bytes))
+        log.info(
+            "Acquired %s pdfs (%s bytes) and %s excel files (%s bytes)."
+            % (pdfs, pdf_bytes, xls, xls_bytes)
+        )
 
         bills = []
         for pdf, xls in history:
@@ -172,23 +209,25 @@ class AtmosScraper(BaseWebScraper):
             if xls is not None:
                 bill_data = bill_data_from_xls(xls, self.service_account)
             elif pdf is not None:
-                bill_data = bill_data_from_pdf(pdf, self.service_account, self.meter_serial)
+                bill_data = bill_data_from_pdf(
+                    pdf, self.service_account, self.meter_serial
+                )
 
             if pdf is not None and bill_data:
                 bill_data_prime = []
                 for bill_datum in bill_data:
                     key = bill_upload.hash_bill_datum(self.service_account, bill_datum)
-                    attachment_entry = bill_upload.upload_bill(BytesIO(pdf), key)
+                    attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(pdf), key)
                     if attachment_entry:
-                        bill_data_prime.append(bill_datum._replace(attachments=[attachment_entry]))
+                        bill_data_prime.append(
+                            bill_datum._replace(attachments=[attachment_entry])
+                        )
                     else:
                         bill_data_prime.append(bill_datum)
                 bill_data = bill_data_prime
 
             if bill_data:
                 bills += bill_data
-
-        _log_bill_summary(bills, title="Final Bill Summary")
 
         final_bills = adjust_bill_dates(bills)
         return Results(bills=final_bills)
@@ -201,7 +240,10 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = AtmosConfiguration(meter_id=meter.service_id)
+    configuration = AtmosConfiguration(
+        service_account=meter.service_id,
+        meter_serial=datasource.meta.get("meterSerial"),
+    )
 
     return run_datafeed(
         AtmosScraper,

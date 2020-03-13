@@ -152,7 +152,7 @@ def extract_pdf_text(pdf: BytesIO):
             p = reader.getPage(n)
             text += p.extractText()
         return text
-    except:
+    except Exception:
         return ""
 
 

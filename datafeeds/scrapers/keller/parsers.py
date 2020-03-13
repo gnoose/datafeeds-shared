@@ -189,7 +189,7 @@ def parse_bill_pdf(pdf: BytesIO) -> Optional[BillingDatum]:
             return None
         extraction1 += p.extractText()
         extraction2 = pdf_bytes_to_str(data)
-    except:
+    except Exception:
         return None
 
     amount = determine_bill_amount(extraction1)

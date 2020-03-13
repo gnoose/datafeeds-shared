@@ -1,11 +1,26 @@
+import os
+import sh
+import csv
+import json
+import time
 import logging
 
-from typing import Optional, Tuple, List, Dict, Callable
+from datetime import date
 
+from typing import Optional
+from dateutil.relativedelta import relativedelta
+from dateutil.parser import parse as parse_date
+
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
-from datafeeds.common.support import Configuration
+from datafeeds.common.support import Configuration, DateRange, Results
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status
+from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
@@ -14,7 +29,8 @@ from datafeeds.models import (
 
 log = logging.getLogger(__name__)
 
-class PSEConfiguration(Configuration):
+
+class PSEIntervalConfiguration(Configuration):
     def __init__(self, service_id, site_name):
         super().__init__(scrape_readings=True)
         self.service_id = service_id
@@ -22,7 +38,7 @@ class PSEConfiguration(Configuration):
 
 
 class LoginPage:
-    LoginUrl = 'https://mydatamanager.pse.com/#/'
+    LoginUrl = "https://mydatamanager.pse.com/#/"
 
     UsernameFieldSelector = 'input[ng-model="userName"]'
     PasswordFieldSelector = 'input[ng-model="password"]'
@@ -34,21 +50,22 @@ class LoginPage:
     def wait_until_ready(self):
         self._driver.get(self.LoginUrl)
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            self.UsernameFieldSelector)))
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, self.UsernameFieldSelector)
+            )
+        )
 
     def get_login_button(self):
-        return self._driver \
-                   .find_element_by_css_selector(self.LoginButtonSelector)
+        return self._driver.find_element_by_css_selector(self.LoginButtonSelector)
 
     def login(self, username, password):
-        _log("Entering username.")
+        log.info("Entering username.")
         self._driver.fill(self.UsernameFieldSelector, username)
-        _log("Entering password.")
+        log.info("Entering password.")
         self._driver.fill(self.PasswordFieldSelector, password)
-        _log("Clicking login button.")
+        log.info("Clicking login button.")
         self.get_login_button().click()
-        _log("Completed login steps.")
+        log.info("Completed login steps.")
 
 
 class MainMenuPage:
@@ -60,27 +77,21 @@ class MainMenuPage:
 
     def _click_report_dropdown(self):
         self._driver.wait().until(
-            EC.presence_of_element_located((By.XPATH,
-                                            self.ReportDropdownSelector))
+            EC.presence_of_element_located((By.XPATH, self.ReportDropdownSelector))
         )
         # Wait for angular JS to make this element interactive.
         time.sleep(5)
 
-        return self._driver \
-                   .find_element_by_xpath(self.ReportDropdownSelector) \
-                   .click()
+        return self._driver.find_element_by_xpath(self.ReportDropdownSelector).click()
 
     def _click_interval_report_link(self):
         self._driver.wait().until(
-            EC.presence_of_element_located((By.XPATH,
-                                            self.IntervalReportSelector))
+            EC.presence_of_element_located((By.XPATH, self.IntervalReportSelector))
         )
         # Wait for angular JS to make this element interactive.
         time.sleep(5)
 
-        return self._driver \
-                   .find_element_by_xpath(self.IntervalReportSelector) \
-                   .click()
+        return self._driver.find_element_by_xpath(self.IntervalReportSelector).click()
 
     def select_interval_report(self):
         self._click_report_dropdown()
@@ -95,7 +106,7 @@ class ReportGenerationError(Exception):
     pass
 
 
-RAW_REPORT_NAME = 'PSEIntervalConsumptionReport.csv'
+RAW_REPORT_NAME = "PSEIntervalConsumptionReport.csv"
 
 
 def wait_for_download(driver, timeout=60):
@@ -112,15 +123,14 @@ class IntervalReportPage:
     SiteSelectorPattern = '//select[@name="siteList"]//option[@label="%s"]'
     MeterSelectorPattern = '//select[@name="meterList"]//option[@label="%s"]'
 
-    DateStartSelector = 'input[id=serviceStart]'
-    DateEndSelector = 'input[id=serviceEnd]'
+    DateStartSelector = "input[id=serviceStart]"
+    DateEndSelector = "input[id=serviceEnd]"
 
     TableViewOption = '//a[text()="Table"]'
 
     HiddenProgressSpinner = '//loading-spinner[@class="ng-scope ng-hide"]'
     LoadButton = '//button[text()="Load"]'
     DownloadLink = '//a[@ng-click="csvDownloadData();"]'
-
 
     def __init__(self, driver, service_id, site_name):
         self._driver = driver
@@ -129,8 +139,7 @@ class IntervalReportPage:
 
     def wait_until_ready(self):
         self._driver.wait().until(
-            EC.presence_of_element_located((By.XPATH,
-                                            self.site_selector))
+            EC.presence_of_element_located((By.XPATH, self.site_selector))
         )
         # We need to wait for angular JS to make this element
         # interactive.
@@ -140,46 +149,33 @@ class IntervalReportPage:
         """Specify which meter and site the report will address."""
 
         self._driver.wait().until(
-            EC.presence_of_element_located((By.XPATH,
-                                            self.site_selector))
+            EC.presence_of_element_located((By.XPATH, self.site_selector))
         )
 
-        self._driver \
-            .find_element_by_xpath(self.site_selector) \
-            .click()
+        self._driver.find_element_by_xpath(self.site_selector).click()
 
-        _log('Selected site.')
+        log.info("Selected site.")
 
         # At this point, Angular re-populates the meter dropdown based
         # on the site name.
 
         self._driver.wait().until(
-            EC.presence_of_element_located((By.XPATH,
-                                            self.meter_selector))
+            EC.presence_of_element_located((By.XPATH, self.meter_selector))
         )
 
-        self._driver \
-            .find_element_by_xpath(self.meter_selector) \
-            .click()
-
+        self._driver.find_element_by_xpath(self.meter_selector).click()
 
     def select_report_window(self, from_dt, to_dt):
-        from_dt_str = from_dt.strftime('%m/%d/%y')
-        to_dt_str = to_dt.strftime('%m/%d/%y')
+        from_dt_str = from_dt.strftime("%m/%d/%y")
+        to_dt_str = to_dt.strftime("%m/%d/%y")
 
-        self._driver \
-            .find_element_by_css_selector(self.DateStartSelector) \
-            .clear()
+        self._driver.find_element_by_css_selector(self.DateStartSelector).clear()
         self._driver.fill(self.DateStartSelector, from_dt_str)
 
-        self._driver \
-            .find_element_by_css_selector(self.DateEndSelector) \
-            .clear()
+        self._driver.find_element_by_css_selector(self.DateEndSelector).clear()
         self._driver.fill(self.DateEndSelector, to_dt_str)
 
-        self._driver \
-            .find_element_by_xpath(self.TableViewOption) \
-            .click()
+        self._driver.find_element_by_xpath(self.TableViewOption).click()
 
     def download_report(self):
         self._driver.wait().until(
@@ -191,9 +187,7 @@ class IntervalReportPage:
         # "Load" button.
         time.sleep(5)
 
-        self._driver \
-            .find_element_by_xpath(self.LoadButton) \
-            .click()
+        self._driver.find_element_by_xpath(self.LoadButton).click()
 
         time.sleep(1)
 
@@ -209,19 +203,15 @@ class IntervalReportPage:
 
         # Sometimes the table displaces the link to trigger a
         # download. Scroll to the bottom of the page to expose it.
-        self._driver \
-            .execute_script("window.scrollTo(0, document.body.scrollHeight)")
+        self._driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
 
-        self._driver \
-            .find_element_by_xpath(self.DownloadLink) \
-            .click()
+        self._driver.find_element_by_xpath(self.DownloadLink).click()
 
         time.sleep(3)
         wait_for_download(self._driver)
 
         # Now scroll back so that we can configure another download.
-        self._driver \
-            .execute_script("window.scrollTo(0, 0)")
+        self._driver.execute_script("window.scrollTo(0, 0)")
 
 
 class PSEIntervalReportParser:
@@ -234,55 +224,64 @@ class PSEIntervalReportParser:
         # Save a copy of the raw report for inspection.
         # Tag the report by requested date range.
         filename = "pse_interval_raw_%s-%s.csv" % (
-            from_dt.strftime('%Y-%m-%d'),
-            to_dt.strftime('%Y-%m-%d')
+            from_dt.strftime("%Y-%m-%d"),
+            to_dt.strftime("%Y-%m-%d"),
         )
 
         # TODO: config.WORKING_DIRECTORY instead of logger.outputpath
-        f1 = os.path.join(logger.outputpath, 'current', RAW_REPORT_NAME)
+        f1 = os.path.join(logger.outputpath, "current", RAW_REPORT_NAME)
         f2 = os.path.join(logger.outputpath, filename)
 
         try:
-            sh.mv(f1, f2) # pylint: disable=no-member
+            sh.mv(f1, f2)  # pylint: disable=no-member
         except Exception as e:
-            _log("error moving %s to %s: %s" % (f1, f2, e))
+            log.info("error moving %s to %s: %s" % (f1, f2, e))
         # Now ingest the stored CSV's data.
         self.parse_csv(f2)
 
     def parse_csv(self, filepath):
         lines = [line for line in open(filepath)]
 
-        fields = ['compare_day_of_week', 'compare_dt', 'compare_kWh',
-                  'day_of_week', 'dt', 'kWh', 'delta']
+        fields = [
+            "compare_day_of_week",
+            "compare_dt",
+            "compare_kWh",
+            "day_of_week",
+            "dt",
+            "kWh",
+            "delta",
+        ]
         rows = [row for row in csv.DictReader(lines[3:], fieldnames=fields)]
 
         for row in rows:
             try:
-                kWhStr = row.get('kWh')
-                if kWhStr == 'null':
+                kWhStr = row.get("kWh")
+                if kWhStr == "null":
                     # This form of null data happens often enough that
                     # it's not worth alerting on.
                     continue
-                kWh = float(row.get('kWh'))
-                dt = parse_date(row.get('dt'))
-                self.timeline.insert(dt, kWh * 4) # Convert to demand.
+                kWh = float(row.get("kWh"))
+                dt = parse_date(row.get("dt"))
+                self.timeline.insert(dt, kWh * 4)  # Convert to demand.
             except ValueError:
-                _log('Failed to parse data point: (dt: %s, kWh: %s)' %
-                     (row.get('dt'), row.get('kWh')))
+                log.info(
+                    "Failed to parse data point: (dt: %s, kWh: %s)"
+                    % (row.get("dt"), row.get("kWh"))
+                )
 
     def serialize(self):
         return self.timeline.serialize()
 
 
-class Scraper(BaseWebScraper):
+class PSEIntervalScraper(BaseWebScraper):
     # PSE's site has a known failure on these meters in November, 2017, as of 2019-01-18.
     # We need to skip that window.
-    BadMeters = {'Z004214102', 'Z005535310', 'Z003444678'}
+    BadMeters = {"Z004214102", "Z005535310", "Z003444678"}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.browser_name = 'Chrome'
-        self.name = 'PSE Interval'
+        self.browser_name = "Chrome"
+        self.name = "PSE Interval"
 
         global logger
         logger = self._logger
@@ -311,8 +310,7 @@ class Scraper(BaseWebScraper):
 
         self.screenshot("interval report")
 
-        report_page = IntervalReportPage(self._driver, self.service_id,
-                                         self.site_name)
+        report_page = IntervalReportPage(self._driver, self.service_id, self.site_name)
         report_page.configure_meter_target()
 
         self.screenshot("meter target configured")
@@ -335,10 +333,11 @@ class Scraper(BaseWebScraper):
                 if window.start_date == window.end_date:
                     continue
 
-            _log("Downloading data for period %s - %s." % \
-                 (window.start_date, window.end_date))
-            report_page.select_report_window(window.start_date,
-                                             window.end_date)
+            log.info(
+                "Downloading data for period %s - %s."
+                % (window.start_date, window.end_date)
+            )
+            report_page.select_report_window(window.start_date, window.end_date)
             try:
                 report_page.download_report()
             except TimeoutException:
@@ -355,7 +354,7 @@ class Scraper(BaseWebScraper):
 
         # Write the raw interval JSON into the scraper log for easy
         # reference.
-        with open(os.path.join(logger.outputpath, 'interval_data.json'), 'w') as f:
+        with open(os.path.join(logger.outputpath, "interval_data.json"), "w") as f:
             f.write(json.dumps(results, sort_keys=True, indent=4))
 
         return Results(readings=results)

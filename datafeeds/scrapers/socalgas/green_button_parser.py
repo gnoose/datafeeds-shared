@@ -352,7 +352,7 @@ def parse_customer(filepath):  # noqa: C901
                 if link.attrib["rel"] == "self":
                     href = link.attrib["href"]
                     index = href.rfind("/")
-                    gb_account = href[index + 1:]
+                    gb_account = href[index + 1 :]
                     account_map[gb_account] = account
         customer_node = entry.find("gb:content/cust:Customer")
         if customer_node.node:

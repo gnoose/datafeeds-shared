@@ -23,10 +23,16 @@ def parse_float(value) -> Optional[float]:
 def bill_data_from_xls(xls: bytes, service_account: str) -> List[BillingDatum]:
     df = pd.read_excel(BytesIO(xls))
 
-    expected_columns = {"Service Account", "Current Charges", "From Billing Date", "To Billing Date", "Billed CCF"}
+    expected_columns = {
+        "Service Account",
+        "Current Charges",
+        "From Billing Date",
+        "To Billing Date",
+        "Billed CCF",
+    }
     actual_columns = set(df.columns)
     if not expected_columns < actual_columns:
-        missing = ', '.join(list(expected_columns - actual_columns))
+        missing = ", ".join(list(expected_columns - actual_columns))
         raise AtmosParseError("Missing columns %s from spreadsheet." % missing)
 
     results = []
@@ -41,15 +47,19 @@ def bill_data_from_xls(xls: bytes, service_account: str) -> List[BillingDatum]:
 
             used = used * 1.036  # Convert CCF to therms.
 
-            results.append(BillingDatum(
-                start=datetime.strptime(str(row["From Billing Date"]), "%Y%m%d").date(),
-                end=datetime.strptime(str(row["To Billing Date"]), "%Y%m%d").date(),
-                cost=cost,
-                used=used,
-                peak=None,
-                items=None,
-                attachments=None
-            ))
+            results.append(
+                BillingDatum(
+                    start=datetime.strptime(
+                        str(row["From Billing Date"]), "%Y%m%d"
+                    ).date(),
+                    end=datetime.strptime(str(row["To Billing Date"]), "%Y%m%d").date(),
+                    cost=cost,
+                    used=used,
+                    peak=None,
+                    items=None,
+                    attachments=None,
+                )
+            )
 
     return results
 
@@ -60,20 +70,26 @@ _use_pattern = re.compile(r"Usage in CCF:(\d+\.\d+)")
 _empty_page_pattern = re.compile(r"\s*Page \d+ of \d+\s*")
 
 
-def process_bill(text: str, service_account: str, meter_serial: str) -> Optional[BillingDatum]:
+def process_bill(
+    text: str, service_account: str, meter_serial: str
+) -> Optional[BillingDatum]:
     matches = _service_account_pattern.search(text)
 
     if not matches or matches.group(1) != service_account:
         return None
 
-    bill_dates_pattern = r"FromToPreviousPresent%s(\d+/\d+/\d\d)(\d+/\d+/\d\d)" % meter_serial
+    bill_dates_pattern = (
+        r"FromToPreviousPresent%s(\d+/\d+/\d\d)(\d+/\d+/\d\d)" % meter_serial
+    )
 
     try:
         total_due = float(_total_due_pattern.search(text).group(1))
         date_match = re.search(bill_dates_pattern, text)
         start = datetime.strptime(date_match.group(1), "%m/%d/%y").date()
         end = datetime.strptime(date_match.group(2), "%m/%d/%y").date()
-        use = float(_use_pattern.search(text).group(1)) * 1.036  # Convert CCF to therms.
+        use = (
+            float(_use_pattern.search(text).group(1)) * 1.036
+        )  # Convert CCF to therms.
     except (ValueError, AttributeError):
         return None
 
@@ -84,7 +100,7 @@ def process_bill(text: str, service_account: str, meter_serial: str) -> Optional
         used=use,
         peak=None,
         items=None,
-        attachments=None
+        attachments=None,
     )
 
 
@@ -107,7 +123,9 @@ def group_pages(pages: List[str]) -> List[str]:
     return results
 
 
-def bill_data_from_pdf(pdf: bytes, service_account: str, meter_serial: str) -> List[BillingDatum]:
+def bill_data_from_pdf(
+    pdf: bytes, service_account: str, meter_serial: str
+) -> List[BillingDatum]:
 
     # An Atmos PDF bill is one large PDF rollup for all of the per-meter bills in the account. The PDF has
     # three main sections:
@@ -127,7 +145,7 @@ def bill_data_from_pdf(pdf: bytes, service_account: str, meter_serial: str) -> L
         if _empty_page_pattern.match(t):
             last_empty_page = ii
 
-    bill_pages = texts[last_empty_page + 1:]
+    bill_pages = texts[last_empty_page + 1 :]
     bills = group_pages(bill_pages)
 
     results = []
