@@ -87,6 +87,11 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
         for oid in [1761981218832, 1762510856194, 1762511273986]:
             self.pge_fixture_test("%s_input.json" % oid, "%s_expected.json" % oid)
 
+    def test_single_day_usage(self):
+        self.pge_fixture_test(
+            "4504832674154194_input.json", "4504832674154194_expected.json"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
