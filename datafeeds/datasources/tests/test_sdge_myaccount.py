@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch, ANY
+import datetime
 
 import datafeeds.scrapers.sdge_myaccount
 from datafeeds import db
@@ -7,6 +8,7 @@ from datafeeds.common import test_utils
 from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
 from datafeeds.models.account import SnapmeterAccount
 from datafeeds.models.datasource import SnapmeterMeterDataSource
+from datafeeds.scrapers.sdge_myaccount import adjust_for_dst
 from datafeeds.models.meter import Meter
 
 
@@ -96,3 +98,125 @@ class SDGEMyAccountTests(unittest.TestCase):
         db.session.flush()
         db.session.refresh(account_ds)
         self.assertFalse(account_ds.enabled)
+
+    def test_adjust_for_dst(self):
+        """Test daylight savings time interval adjustments
+        First day of DST (in spring), zeroes are turned to None, 2AM - 3AM
+        Last day of DST (in fall), interval values are halved, 1AM - 2AM
+        Otherwise, readings returned unchanged.
+        """
+
+        readings = [
+            9.6,
+            10.24,
+            9.6,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+            10.24,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            10.24,
+            9.6,
+            10.24,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+            10.24,
+            9.6,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+            9.6,
+            9.6,
+            9.6,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            7.68,
+            8.32,
+            8.32,
+            8.32,
+            10.88,
+            8.32,
+            8.96,
+            7.68,
+            8.32,
+            8.32,
+            8.32,
+            8.96,
+            8.32,
+            7.68,
+            8.96,
+            7.68,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            8.32,
+            7.68,
+            8.96,
+            8.32,
+            8.32,
+            8.32,
+            7.68,
+            8.96,
+            8.32,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+            9.6,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+            12.8,
+            10.24,
+            9.6,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+            10.24,
+            9.6,
+            9.6,
+            10.24,
+            9.6,
+        ]
+
+        date_fmt = "%m/%d/%Y"
+
+        spring_dst = datetime.datetime.strptime("3/8/2020", date_fmt).date()
+        spring_dst_readings = adjust_for_dst(spring_dst, readings.copy())
+        self.assertEqual([None, None, None, None, 10.24], spring_dst_readings[8:13])
+
+        summer_day = datetime.datetime.strptime("7/20/2020", date_fmt).date()
+        summer_dst_readings = adjust_for_dst(summer_day, readings.copy())
+        self.assertEqual(readings[0:13], summer_dst_readings[0:13])
+
+        fall_dst = datetime.datetime.strptime("11/1/2020", date_fmt).date()
+        fall_dst_readings = adjust_for_dst(fall_dst, readings.copy())
+        self.assertEqual(
+            [4.8, 5.12, 4.8, 5.12, 0.0, 0.0, 0.0, 0.0, 10.24], fall_dst_readings[4:13]
+        )
