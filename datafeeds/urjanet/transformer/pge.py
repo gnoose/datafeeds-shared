@@ -325,13 +325,19 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                     usage_start = usage.IntervalStart
                     usage_end = usage.IntervalEnd
                     duration = (usage_end - usage_start).days
+                    # if the total is a single day, use the Meter date range instead
+                    if duration == 0:
+                        log.debug(
+                            "using meter data range for zero-length usage %s", usage.PK
+                        )
+                        usage_start = meter.IntervalStart
+                        usage_end = meter.IntervalEnd
                     if max_duration and duration > max_duration:
                         log.debug(
                             "Filtering long usage period: {} to {} ({} days)".format(
                                 usage_start, usage_end, duration
                             )
                         )
-                        continue
                     ival_tree.add(usage_start, usage_end)
         ival_tree.merge_overlaps()
         return ival_tree

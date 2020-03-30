@@ -5,6 +5,7 @@ Currently, the main operation supported is uploading bill
 pdfs to a bucket.
 """
 import logging
+from typing import Optional
 
 import boto3
 
@@ -90,3 +91,15 @@ def upload_pdf_to_s3(body, bucket, key, file_display_name=None):
         file_display_name=file_display_name,
         content_type="application/pdf",
     )
+
+
+def read_file_from_s3(bucket: str, key: str) -> Optional[bytes]:
+    """Return the data associated with a single file in S3."""
+    client = boto3.client("s3")
+    try:
+        response = client.get_object(Bucket=bucket, Key=key)
+    except:  # noqa: E722
+        log.exception("Request to download file from S3 failed.")
+        return None
+
+    return response.get("Body").read()

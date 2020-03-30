@@ -607,6 +607,16 @@ def to_raw_reading(csv_row):
 
 
 DST_STARTS = set(
+    # Daylight savings time starts on the second Sunday in March
+    dt.date()
+    for dt in rrule(
+        YEARLY, bymonth=3, byweekday=SU(2), dtstart=datetime(2000, 1, 1), count=100
+    )
+)
+
+
+DST_ENDS = set(
+    # Daylight savings time ends on the first Sunday in November
     dt.date()
     for dt in rrule(
         YEARLY, bymonth=11, byweekday=SU(1), dtstart=datetime(2000, 1, 1), count=100
@@ -615,11 +625,12 @@ DST_STARTS = set(
 
 
 def adjust_for_dst(day, readings):
-    if day not in DST_STARTS:
-        return readings
-
-    for i in range(4, 8):
-        readings[i] = readings[i] / 2
+    if day in DST_STARTS:
+        for i in range(8, 12):
+            readings[i] = None
+    elif day in DST_ENDS:
+        for i in range(4, 8):
+            readings[i] = readings[i] / 2
 
     return readings
 

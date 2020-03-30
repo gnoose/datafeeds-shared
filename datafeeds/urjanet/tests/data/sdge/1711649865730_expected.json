@@ -3,7 +3,7 @@
         {
             "end": "2019-05-15",
             "peak_demand": null,
-            "start": "2019-04-22",
+            "start": "2019-04-23",
             "tariff": null,
             "total_charge": "669.7800",
             "total_usage": "320.00000",
@@ -198,7 +198,7 @@
         {
             "end": "2019-06-16",
             "peak_demand": null,
-            "start": "2019-05-15",
+            "start": "2019-05-16",
             "tariff": null,
             "total_charge": "124.1900",
             "total_usage": "468.00000",
@@ -419,7 +419,7 @@
         {
             "end": "2019-07-16",
             "peak_demand": null,
-            "start": "2019-06-16",
+            "start": "2019-06-17",
             "tariff": null,
             "total_charge": "27.0500",
             "total_usage": "57.00000",
@@ -575,7 +575,7 @@
         {
             "end": "2019-08-14",
             "peak_demand": null,
-            "start": "2019-07-16",
+            "start": "2019-07-17",
             "tariff": null,
             "total_charge": "100.4000",
             "total_usage": "311.00000",
@@ -744,7 +744,7 @@
         {
             "end": "2019-09-15",
             "peak_demand": null,
-            "start": "2019-08-14",
+            "start": "2019-08-15",
             "tariff": null,
             "total_charge": "54.7200",
             "total_usage": "154.00000",
@@ -900,7 +900,7 @@
         {
             "end": "2019-10-14",
             "peak_demand": null,
-            "start": "2019-09-15",
+            "start": "2019-09-16",
             "tariff": null,
             "total_charge": "34.4400",
             "total_usage": "83.00000",
@@ -1056,7 +1056,7 @@
         {
             "end": "2019-11-13",
             "peak_demand": null,
-            "start": "2019-10-14",
+            "start": "2019-10-15",
             "tariff": null,
             "total_charge": "10.5800",
             "total_usage": "0.00000",
@@ -1095,7 +1095,7 @@
         {
             "end": "2019-12-15",
             "peak_demand": null,
-            "start": "2019-11-13",
+            "start": "2019-11-14",
             "tariff": null,
             "total_charge": "26.7000",
             "total_usage": "75.00000",
@@ -1251,7 +1251,7 @@
         {
             "end": "2020-01-15",
             "peak_demand": null,
-            "start": "2019-12-15",
+            "start": "2019-12-16",
             "tariff": null,
             "total_charge": "151.9100",
             "total_usage": "654.00000",

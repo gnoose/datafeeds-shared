@@ -1,3 +1,4 @@
+from datetime import timedelta
 from typing import List
 import logging
 
@@ -42,13 +43,26 @@ class SDGETransformer(UrjanetGridiumTransformer):
                         account.PK, account.IntervalStart, account.IntervalEnd
                     )
                 )
+                """
+                SDGE bills are issued with overlapping date ranges:
+                    Billing Period: 9/30/19 - 10/31/19 Total Days: 31
+                    Billing Period: 10/31/19 - 11/30/19 Total Days: 30
+
+                Comparing one meter with interval data:
+                    select sum(reading::text::decimal)/4
+                    from (
+                        select json_array_elements(mr.readings) reading
+                        from meter_reading mr
+                        where meter=1971049865238 and occurred > '2019-09-30' and occurred <= '2019-10-31'
+                    ) r;
+
+                The interval data for 2019-10-01 - 2019-10-31 closely matches the bill;
+                2019-09-30 - 2019-10-30 does not.
+                """
                 bill_history.add(
-                    account.IntervalStart,
+                    account.IntervalStart + timedelta(days=1),
                     account.IntervalEnd,
                     self.billing_period(account),
                 )
-
-        # Do not adjust date endpoints to avoid 1-day overlaps
-        # bill_history = DateIntervalTree.shift_endpoints(bill_history)
 
         return bill_history
