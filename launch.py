@@ -25,22 +25,36 @@ from datafeeds.datasources.smud_energyprofiler_interval import (
     datafeed as smud_energyprofiler_interval,
 )
 
+from datafeeds.scrapers.atmos.atmos import datafeed as atmos
 from datafeeds.scrapers.bloom_interval import datafeed as bloom_interval
 from datafeeds.scrapers.engie import datafeed as engie
 from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
+from datafeeds.scrapers.hudson import datafeed as hudson
+from datafeeds.scrapers.keller.keller import datafeed as keller
 from datafeeds.scrapers.nautilus import datafeed as nautilus
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
+from datafeeds.scrapers.pacific_power_billing.pacific_power_billing import (
+    datafeed as pacific_power_billing,
+)
+from datafeeds.scrapers.pge_energyexpert import datafeed as pge_energyexpert
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
 from datafeeds.scrapers.powertrack import datafeed as powertrack
+from datafeeds.scrapers.pse_interval import datafeed as pse_interval
 from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.sdge_greenbutton import datafeed as sdge_greenbutton_sync
 from datafeeds.scrapers.solaredge import datafeed as solaredge
 from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
+from datafeeds.scrapers.smud_myaccount_billing import datafeed as smud_myaccount_billing
+from datafeeds.scrapers.socalgas.socalgas import datafeed as socalgas
+from datafeeds.scrapers.stem import datafeed as stem
+
 from datafeeds.scrapers.duke.billing import datafeed as duke_billing
 from datafeeds.scrapers.duke.intervals import datafeed as duke_interval
+from datafeeds.scrapers.saltriver.intervals import datafeed as saltriver_interval
+from datafeeds.scrapers.saltriver.billing import datafeed as saltriver_billing
 from datafeeds.scrapers.sce_react.basic_billing import (
     datafeed as sce_react_basic_billing,
 )
@@ -50,9 +64,6 @@ from datafeeds.scrapers.sce_react.energymanager_billing import (
 from datafeeds.scrapers.sce_react.energymanager_interval import (
     datafeed as sce_react_energymanager_interval,
 )
-from datafeeds.scrapers.saltriver.intervals import datafeed as saltriver_interval
-from datafeeds.scrapers.saltriver.billing import datafeed as saltriver_billing
-from datafeeds.scrapers.stem import datafeed as stem
 
 from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
@@ -99,6 +110,7 @@ log = logging.getLogger("datafeeds")
 # Names should not contain . because they are used as AWS Batch job names.
 scraper_functions = {
     "american-urjanet": american,
+    "atmos": atmos,
     "austin-energy-interval": austin_energy_interval,
     "austin-urjanet": austin,
     "bloom": bloom_interval,
@@ -116,7 +128,9 @@ scraper_functions = {
     "generic-urjanet-water": generic_water,
     "heco-interval": heco_interval,
     "heco-urjanet": heco_urjanet,
+    "hudson": hudson,
     "irvineranch-water-urjanet": irvineranch,
+    "keller": keller,
     "ladwp-water-urjanet": ladwp_water,
     "ladwp-urjanet": ladwp,
     "mountainview-urjanet": mountainview,
@@ -124,11 +138,14 @@ scraper_functions = {
     "nve-urjanet": nve,
     "nautilus": nautilus,
     "nve-myaccount": nvenergy_myaccount,
+    "pacific-power-billing": pacific_power_billing,
     "pacific-power-interval": pacific_power_interval,
     "pge-urjanet-v2": pge,
+    "pge-energyexpert": pge_energyexpert,
     "pleasanton-urjanet": pleasanton,
     "portland-bizportal": portland_bizportal,
     "powertrack": powertrack,
+    "pse-interval": pse_interval,
     "pse-urjanet": pse,
     "saltriver-billing": saltriver_billing,
     "saltriver-interval": saltriver_interval,
@@ -144,7 +161,9 @@ scraper_functions = {
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
     "smud-energyprofiler-interval": smud_energyprofiler_interval,
+    "smud-myaccount-billing": smud_myaccount_billing,
     "stem": stem,
+    "socalgas": socalgas,
     "solaredge": solaredge,
     "solren": solren,
     "southlake-urjanet": southlake,

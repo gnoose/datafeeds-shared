@@ -12,7 +12,6 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 
-logger = None
 log = logging.getLogger(__name__)
 
 
