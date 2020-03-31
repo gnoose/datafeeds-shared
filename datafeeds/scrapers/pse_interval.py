@@ -36,6 +36,7 @@ class PSEIntervalConfiguration(Configuration):
         super().__init__()
         self.service_id = service_id
         self.site_name = site_name
+        self.scrape_readings = True
 
 
 class LoginPage:
@@ -235,7 +236,8 @@ class PSEIntervalReportParser:
         try:
             sh.mv(f1, f2)
         except Exception as e:
-            log.info("error moving %s to %s: %s" % (f1, f2, e))
+            log.error("error moving %s to %s: %s" % (f1, f2, e))
+
         # Now ingest the stored CSV's data.
         self.parse_csv(f2)
 
@@ -282,9 +284,6 @@ class PSEIntervalScraper(BaseWebScraper):
         super().__init__(*args, **kwargs)
         self.browser_name = "Chrome"
         self.name = "PSE Interval"
-
-        global logger
-        logger = self._logger
 
     @property
     def service_id(self):
@@ -354,9 +353,12 @@ class PSEIntervalScraper(BaseWebScraper):
 
         # Write the raw interval JSON into the scraper log for easy
         # reference.
-        with open(os.path.join(logger.outputpath, "interval_data.json"), "w") as f:
+        with open(
+            os.path.join(config.WORKING_DIRECTORY, "interval_data.json"), "w"
+        ) as f:
             f.write(json.dumps(results, sort_keys=True, indent=4))
 
+        log.info("results=%s", len(results))
         return Results(readings=results)
 
 
