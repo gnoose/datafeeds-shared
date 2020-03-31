@@ -49,6 +49,11 @@ MY_BILL_MENU_HEADER_SEL = (
 BILL_HISTORY_LINK_SEL = "#pt1\\:pt_dc2\\:i1\\:1\\:i2\\:11\\:navChild"
 BILL_HISTORY_TABLE_SEL = "#pt1\\:pgl5 > div > table"
 
+WAYS_TO_SAVE_MENU_HEADER_SEL = (
+    "#pt1\\\\:pt_dc2\\\\:desktopNav > ul:nth-child(1) > li:nth-child(4)"
+)
+ANALYZE_USAGE_LINK_SEL = "#pt1\\:pt_dc2\\:i1\\:3\\:i2\\:1\\:navChild"
+
 LOGIN_XPATH = '//*[@id="pt1:cb1"]'
 SUMMARY_OF_ACCTS_XPATH = '//*[@id="pt1:r5:0:pgl28"]'
 
@@ -160,27 +165,15 @@ class SocalGasScraper(BaseWebScraper):
         log.info("NAVIGATING TO USAGE")
         self.screenshot("before navigating to usage")
 
-        # Can't click on the subnav until hovering on parent nav,
-        # so just navigate to that page and go to usage from there.
-        # But there are lots of each link, so... fun.
-        ways_to_save = (
-            '//div[contains(@class, "desktopNav")]'
-            + '//a[contains(@href, "faces/waysToSave") and contains(@class, "navParent")]'
+        log.info('OPENING "Ways to Save" POP-OVER MENU')
+        self._driver.execute_script(
+            '$("%s").addClass("highlight-parent")' % WAYS_TO_SAVE_MENU_HEADER_SEL
         )
-        analyze_usage = (
-            '//div[contains(@class, "main-content")]'
-            + '//a[contains(@href, "waysToSave/analyzeUsage")]'
-        )
+        self.screenshot('after hovering "Ways to Save" pop-over menu')
 
-        log.info('\tClicking "Ways to Save"')
-        self._driver.click(ways_to_save, xpath=True)
-        self._driver.wait().until(
-            EC.visibility_of_element_located((By.XPATH, analyze_usage))
-        )
-        self.screenshot("ways to save")
-
-        log.info('\tClicking "Analyze Usage"')
-        self._driver.click(analyze_usage, xpath=True)
+        log.info("NAVIGATING TO WAYS TO SAVE")
+        self._driver.click(ANALYZE_USAGE_LINK_SEL)
+        self.screenshot("analyze usage")
 
         # There are two different things that can happen here - if the account user has
         # not used this page yet, it will ask them to authorize third-party charts..
@@ -259,7 +252,7 @@ class SocalGasScraper(BaseWebScraper):
         option.click()
         self._driver.find(go_btn_selector, xpath=True).click()
 
-        log.info("\tWaiting for account to load")
+        log.info("\tWaiting for account %s to load", self.account_id)
 
         try:
             self._driver.wait().until(shows_right_account)
@@ -310,8 +303,10 @@ class SocalGasScraper(BaseWebScraper):
             if not iframe or not src.startswith("http"):
                 return False
 
-            customer_id = IFRAME_ACCOUNT_RGX.search(src).group()
-            return customer_id in str(self.account_id)
+            match = IFRAME_ACCOUNT_RGX.search(src)
+            if not match:
+                return False
+            return match.group() in str(self.account_id)
 
         self.__select_account(
             ACCOUNT_GO_INTERVALS_XPATH, option_query, shows_right_account
@@ -420,7 +415,7 @@ class SocalGasScraper(BaseWebScraper):
         if history_start > self.start_date:
             log.info(
                 "\tHistory begins after start date, scraping from date {}".format(
-                    self._date_str(history_start)
+                    history_start
                 )
             )
             start_date = history_start
@@ -431,7 +426,7 @@ class SocalGasScraper(BaseWebScraper):
         if history_end < self.end_date:
             log.info(
                 "\tHistory ends before end date, scraping to date {}".format(
-                    self._date_str(history_end)
+                    history_end
                 )
             )
             end_date = history_end
@@ -446,16 +441,14 @@ class SocalGasScraper(BaseWebScraper):
         # rather than opening a calendar and cycling through buttons and pages
         def set_value(_id, dt):
             self._driver.execute_script(
-                'document.getElementById("{}").value = "{}"'.format(
-                    _id, self._date_str(dt)
-                )
+                'document.getElementById("{}").value = "{}"'.format(_id, dt)
             )
 
         set_value("txtStartDate", start_date)
         set_value("txtEndDate", end_date)
 
     def _prepare_export(self, start_date):
-        log.info("\tPreparing export starting {}".format(self._date_str(start_date)))
+        log.info("\tPreparing export starting {}".format(start_date))
         self._driver.click("a#la-gb-export")
         self._driver.wait(300).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "a#lnkDownload"))
@@ -647,7 +640,7 @@ def datafeed(
 ) -> Status:
     configuration = SocalGasConfiguration(
         meter.utility_service.utility_account_id,
-        meter.utility_service,
+        meter.utility_service.service_id,
         "billing" in datasource.source_types,
         "interval" in datasource.source_types,
     )
