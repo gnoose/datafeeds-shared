@@ -20,7 +20,7 @@ class TestUrjanetNVEnergyTransformer(test_util.UrjaFixtureText):
         )
 
     def test_nve(self):
-        self.nve_test("nve01_input.json", "nve01_expected.json")
+        self.nve_test("1763226460173_input.json", "1763226460173_expected.json")
 
 
 if __name__ == "__main__":

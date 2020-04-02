@@ -116,7 +116,7 @@ scraper_functions = {
     "bloom": bloom_interval,
     "cal-water-urjanet": calwater,
     "colleyville-water-urjanet": colleyville,
-    "constellation": constellation,
+    "constellation-urjanet": constellation,
     "directenergy-urjanet": directenergy,
     "duke-energy-billing": duke_billing,
     "duke-energy-interval": duke_interval,

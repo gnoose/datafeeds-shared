@@ -1,4 +1,6 @@
+from datetime import timedelta
 from decimal import Decimal
+import logging
 from typing import Optional
 
 from datafeeds.urjanet.transformer import (
@@ -6,10 +8,28 @@ from datafeeds.urjanet.transformer import (
     UrjanetGridiumTransformer,
 )
 
-from datafeeds.urjanet.model import Account
+from datafeeds.urjanet.model import Account, UrjanetData, DateIntervalTree
+
+
+log = logging.getLogger(__name__)
 
 
 class NVEnergyBillingPeriod(GenericBillingPeriod):
+    def get_total_charge(self):
+        """Get from account.NewCharges if available, else add up Charges."""
+        if self.account.NewCharges:
+            log.debug(
+                "\t%s has NewCharges\t%s",
+                self.account.IntervalStart,
+                self.account.NewCharges,
+            )
+            return self.account.NewCharges
+        charges = Decimal(0.0)
+        for charge in self.iter_charges():
+            charges += charge.ChargeAmount
+        log.debug("\t%s summed charges\t%s", self.account.IntervalStart, charges)
+        return charges
+
     def get_peak_demand(self) -> Optional[Decimal]:
         """Attempt to determine peak demand from the set of usage entities associated with a billing period.
 
@@ -46,3 +66,34 @@ class NVEnergyTransformer(UrjanetGridiumTransformer):
     @staticmethod
     def billing_period(account: Account) -> NVEnergyBillingPeriod:
         return NVEnergyBillingPeriod(account)
+
+    def bill_history(self, urja_data: UrjanetData) -> DateIntervalTree:
+        filtered_accounts = self.filtered_accounts(urja_data)
+        ordered_accounts = self.ordered_accounts(filtered_accounts)
+
+        # For each account, create a billing period, taking care to detect overlaps
+        # (e.g. in the case that a correction bill in issued)
+        bill_history = DateIntervalTree()
+        for account in ordered_accounts:
+            if bill_history.overlaps(account.IntervalStart, account.IntervalEnd):
+                log.debug(
+                    "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
+                        account.PK, account.IntervalStart, account.IntervalEnd
+                    )
+                )
+            else:
+                """
+                NVE bills are issued with overlapping date ranges:
+                    Nov 30, 2019 to Dec 31, 2019 31 days
+                    Dec 31, 2019 to Jan 31, 2020 31 days
+
+                Comparison with interval data shows that data matches the calendar month;
+                adjust the start date.
+                """
+                bill_history.add(
+                    account.IntervalStart + timedelta(days=1),
+                    account.IntervalEnd,
+                    self.billing_period(account),
+                )
+
+        return bill_history

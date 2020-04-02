@@ -75,15 +75,15 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
+
+    meter_number = datasource.meta.get("nveMeterNumber") if datasource.meta else None
     return run_urjanet_datafeed(
         account,
         meter,
         datasource,
         params,
         NVEnergyDatasource(
-            meter.utility_account_id,
-            meter.utility_service.service_id,
-            datasource.meta["nveMeterNumber"],
+            meter.utility_account_id, meter.utility_service.service_id, meter_number,
         ),
         NVEnergyTransformer(),
         task_id=task_id,
