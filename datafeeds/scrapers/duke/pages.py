@@ -40,7 +40,7 @@ class DukeLoginPage(PageState):
 
     def login(self, username: str, password: str):
         """Log into the Duke account """
-        time.sleep(2)
+        time.sleep(15)
         username_field = self.driver.find_element(*self.UsernameInputLocator)
         username_field.send_keys(username)
 
@@ -336,11 +336,17 @@ class DukeAccountsPage(PageState):
         self, bill_date, charges, date_line, service_id, usage, peak=None
     ):
         start_date, end_date = self._get_dates(bill_date, date_line)
+
+        try:
+            usage_f = float(usage)
+        except ValueError:
+            usage_f = None
+
         bill_data = BillingDatum(
             start=start_date,
             end=end_date,
             cost=float(charges),
-            used=float(usage),
+            used=usage_f,
             peak=peak,
             items=None,
             attachments=None,

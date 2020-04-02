@@ -10,6 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import (
     ElementNotVisibleException,
     NoSuchElementException,
+    ElementNotInteractableException,
 )
 from selenium.common.exceptions import TimeoutException
 from dateutil.relativedelta import relativedelta
@@ -256,7 +257,7 @@ class ConfigurationPage:
         _log("Selecting the custom date range option.")
         try:
             self._driver.find_element_by_css_selector(self.DateRangeRadioButton).click()
-        except ElementNotVisibleException:
+        except (ElementNotVisibleException, ElementNotInteractableException):
             # This seems to happen if you click the radio button
             # after it has been selected. So we eat this exception,
             # since the desired condition is likely satisfied.
