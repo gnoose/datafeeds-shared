@@ -33,13 +33,14 @@ class DukeLoginPage(PageState):
 
     def get_ready_condition(self):
         return ec_and(
-            EC.presence_of_element_located(self.UsernameInputLocator),
-            EC.presence_of_element_located(self.PasswordInputLocator),
+            EC.element_to_be_clickable(self.UsernameInputLocator),
+            EC.element_to_be_clickable(self.PasswordInputLocator),
             EC.presence_of_element_located(self.SubmitButtonLocator),
         )
 
     def login(self, username: str, password: str):
         """Log into the Duke account """
+        time.sleep(2)
         username_field = self.driver.find_element(*self.UsernameInputLocator)
         username_field.send_keys(username)
 
