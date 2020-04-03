@@ -15,6 +15,7 @@ from datafeeds.common.typing import (
     IntervalRange,
     IntervalIssue,
     Status,
+    BillPdf,
 )
 
 from datafeeds.models import (
@@ -131,6 +132,16 @@ def update_billing_range(task_id: str, bills: BillingData):
         return
     billing = BillingRange(
         start=min([bill.start for bill in bills]), end=max([bill.end for bill in bills])
+    )
+    update_dates(task_id, billing=billing)
+
+
+def update_bill_pdf_range(task_id: str, pdfs: List[BillPdf]):
+    """set billing range retrieved by this run"""
+    if not pdfs:
+        return
+    billing = BillingRange(
+        start=min([bill.start for bill in pdfs]), end=max([bill.end for bill in pdfs])
     )
     update_dates(task_id, billing=billing)
 

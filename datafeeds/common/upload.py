@@ -3,7 +3,7 @@ import logging
 import csv
 from deprecation import deprecated
 import os
-from typing import Optional, Union, BinaryIO
+from typing import Optional, Union, BinaryIO, List
 from io import BytesIO
 import hashlib
 
@@ -15,6 +15,7 @@ from datafeeds.common.typing import (
     show_bill_summary,
     BillingDatum,
     AttachmentEntry,
+    BillPdf,
 )
 from datafeeds.common import interval_transform
 from datafeeds.common.util.s3 import upload_pdf_to_s3
@@ -77,6 +78,19 @@ def upload_readings(
         for when, intervals in readings.items():
             writer.writerow([meter_oid, str(when)] + [str(x) for x in intervals])
     log.info("Wrote interval data to %s." % path)
+
+
+def attach_bill_pdfs(
+    task_id: str, pdfs: List[BillPdf],
+):
+    """POST a list of bill PDF files uploaded to S3 to webapps."""
+    if not pdfs:
+        return
+    log.info("posting %s bills pdfs to webapps", len(pdfs))
+    webapps.post("/api/v2/attach-bill-pdfs", {"pdfs": [pdf.to_json() for pdf in pdfs]})
+    if task_id and config.enabled("ES_INDEX_JOBS"):
+        log.info("Updating billing range in Elasticsearch.")
+        index.update_bill_pdf_range(task_id, pdfs)
 
 
 @deprecated(details="To be replaced by ORM module.")

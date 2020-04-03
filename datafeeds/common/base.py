@@ -90,6 +90,10 @@ class BaseScraper(Abstract):
     def scrape_bills(self):
         return self._configuration.scrape_bills
 
+    @property
+    def scrape_pdfs(self):
+        return self._configuration.scrape_pdfs
+
     def __enter__(self):
         self.start()
         return self
@@ -109,7 +113,7 @@ class BaseScraper(Abstract):
     # Passing in the handlers would make sense if this function was responsible for handling
     # whatever exceptions they might throw. But since it raises and the caller is obliged to
     # wrap this in a try-catch, there's no benefit to the current interface.
-    def scrape(self, readings_handler, bills_handler):
+    def scrape(self, readings_handler, bills_handler, pdfs_handler):
         log.info("Launching %s", self.name)
         if self.username:
             log.info("Username: %s", self.username)
@@ -136,6 +140,9 @@ class BaseScraper(Abstract):
                     readings_handler(results.readings)
                 else:
                     log.error("Expected to find interval data but none was returned.")
+
+            if self.scrape_pdfs and results.pdfs:
+                pdfs_handler(results.pdfs)
 
         except Exception:
             log.exception("Scraper run failed.")
@@ -236,9 +243,9 @@ class BaseWebScraper(BaseScraper):
         stop_max_attempt_number=3,
         wait_fixed=10000,
     )
-    def scrape(self, readings_handler, bills_handler):
+    def scrape(self, readings_handler, bills_handler, pdfs_handler):
         try:
-            super().scrape(readings_handler, bills_handler)
+            super().scrape(readings_handler, bills_handler, pdfs_handler)
         except Exception:
             self.screenshot("error")
             raise
