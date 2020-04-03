@@ -1,4 +1,4 @@
-import unittest
+from unittest import mock
 from datetime import date
 import functools as ft
 from typing import List
@@ -27,11 +27,12 @@ def test_scraper():
         credentials, DateRange(start_date, end_date), configuration
     )
     scraper.start()
-    scraper.scrape(
-        readings_handler=None,
-        bills_handler=None,
-        pdfs_handler=ft.partial(test_pdf_upload, None),
-    )
+    with mock.patch("datafeeds.scrapers.pge.bill_pdf.upload_bill_to_s3"):
+        scraper.scrape(
+            readings_handler=None,
+            bills_handler=None,
+            pdfs_handler=ft.partial(test_pdf_upload, None),
+        )
     scraper.stop()
 
 
