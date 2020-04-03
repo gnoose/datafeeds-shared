@@ -51,7 +51,7 @@ class DashboardPage(CSSSelectorBasePageObject):
 
 class LoginPage(CSSSelectorBasePageObject):
     UsernameFieldSelector = 'input[name="username"]'
-    PasswordFieldSelector = 'input[name="password]'
+    PasswordFieldSelector = 'input[name="password"]'
     SigninButtonSelector = 'button[id="home_login_submit"]'
 
     def login(self, username: str, password: str):
@@ -60,7 +60,10 @@ class LoginPage(CSSSelectorBasePageObject):
         https://www.pge.com/
         Fill in the username, password, then click "Sign in"
         """
-        pass
+        # TODO: click #onetrust-accept-btn-handler if present
+        self._driver.fill(self.UsernameFieldSelector, username)
+        self._driver.fill(self.PasswordFieldSelector, password)
+        self.find_element(self.SigninButtonSelector).click()
 
 
 # old Java implementation for reference
