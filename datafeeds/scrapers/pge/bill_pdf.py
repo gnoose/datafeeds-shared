@@ -7,8 +7,7 @@ from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import Results, Configuration
 from datafeeds.common.typing import Status, BillPdf
 
-# from datafeeds.common.upload import hash_bill
-from datafeeds.common.upload import upload_bill_to_s3
+# from datafeeds.common.upload import hash_bill, upload_bill_to_s3
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
