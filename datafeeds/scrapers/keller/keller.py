@@ -7,7 +7,7 @@ from .parsers import parse_bill_pdf
 from glob import glob
 from io import BytesIO
 from collections import namedtuple
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from typing import Optional, List
 
@@ -20,7 +20,12 @@ from selenium.common.exceptions import TimeoutException
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.support import Configuration, Results
-from datafeeds.common.typing import Status, adjust_bill_dates, show_bill_summary
+from datafeeds.common.typing import (
+    Status,
+    adjust_bill_dates,
+    show_bill_summary,
+    BillingDatum,
+)
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
@@ -83,13 +88,14 @@ class BillHistoryPage:
         for pdf_link in self.driver.find_elements_by_xpath(pdf_link_xpath):
             bill_date_text = pdf_link.find_element_by_xpath("../../td").text
             bill_date = self.parse_date(bill_date_text)
-
             if bill_date and start <= bill_date <= end:
                 pdf_link.click()
+                log.info("downloading %s", bill_date)
                 time.sleep(10)  # Wait for download to complete.
 
                 results += self.process_downloads(prefix)
 
+        log.info("downloaded %s bills", len(results))
         return results
 
 
@@ -194,13 +200,27 @@ class KellerScraper(BaseWebScraper):
                 continue
 
             key = bill_upload.hash_bill_datum(self.account_number, bill_datum)
-            attachment_entry = bill_upload.upload_bill(BytesIO(b), key)
+            attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(b), key)
             if attachment_entry:
                 bill_data.append(bill_datum._replace(attachments=[attachment_entry]))
             else:
                 bill_data.append(bill_datum)
 
-        final_bills = adjust_bill_dates(bill_data)
+        # bill periods overlap; adjust start dates
+        adjusted_bill_data = []
+        for bill in bill_data:
+            adjusted_bill_data.append(
+                BillingDatum(
+                    start=bill.start + timedelta(days=1),
+                    end=bill.end,
+                    cost=bill.cost,
+                    used=bill.used,
+                    peak=bill.peak,
+                    items=bill.items,
+                    attachments=bill.attachments,
+                )
+            )
+        final_bills = adjust_bill_dates(adjusted_bill_data)
         show_bill_summary(final_bills, "Final Bill Summary")
         return Results(bills=final_bills)
 
