@@ -49,7 +49,7 @@ KellerIdentifier = namedtuple(
 
 class KellerConfiguration(Configuration):
     def __init__(self, account_number: str):
-        super().__init__()
+        super().__init__(scrape_bills=True)
         self.account_number = account_number
 
 
