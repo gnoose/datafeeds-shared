@@ -1,8 +1,11 @@
 from datetime import date, timedelta
 from collections import deque
+import logging
 from typing import Any, List, Callable
 
 from intervaltree import Interval, IntervalTree
+
+log = logging.getLogger(__name__)
 
 
 class DateIntervalTree:
@@ -76,6 +79,7 @@ class DateIntervalTree:
     def shift_endpoints(date_tree: "DateIntervalTree") -> "DateIntervalTree":
         """Produce a new tree where adjacent intervals are guaranteed to not match at a boundary
 
+        by shifting the end dates of touching intervals
         E.g., the intervals
             (1/1/2000, 1/10/2000), (1/10/2000, 1/20/2000)
         become
@@ -91,6 +95,37 @@ class DateIntervalTree:
                 if cur_ival.end == next_ival.begin:
                     cur_ival = Interval(
                         cur_ival.begin, cur_ival.end - timedelta(days=1), cur_ival.data
+                    )
+
+            adjusted.add(cur_ival.begin, cur_ival.end, cur_ival.data)
+        return adjusted
+
+    @staticmethod
+    def shift_endpoints_start(date_tree: "DateIntervalTree") -> "DateIntervalTree":
+        """Produce a new tree where adjacent intervals are guaranteed to not match at a boundary
+
+        by shifting the start dates of touching intervals
+        E.g., the intervals
+            (1/1/2000, 1/10/2000), (1/10/2000, 1/20/2000)
+        become
+            (1/1/2000, 1/10/2000), (1/11/2000, 1/20/2000)
+                                      ^--A day was added here to avoid matching exactly with
+                                     the next interval
+        """
+        adjusted = DateIntervalTree()
+        work_list = deque(sorted(date_tree.intervals(), reverse=True))
+        while work_list:
+            cur_ival = work_list.popleft()
+            if work_list:
+                next_ival = work_list[0]
+                if cur_ival.begin == next_ival.end:
+                    log.debug(
+                        "adjusting start of billing period: %s-%s",
+                        cur_ival.begin,
+                        cur_ival.end,
+                    )
+                    cur_ival = Interval(
+                        cur_ival.begin + timedelta(days=1), cur_ival.end, cur_ival.data
                     )
             adjusted.add(cur_ival.begin, cur_ival.end, cur_ival.data)
         return adjusted

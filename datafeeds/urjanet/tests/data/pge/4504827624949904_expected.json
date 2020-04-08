@@ -1,7 +1,7 @@
 {
     "periods": [
         {
-            "end": "2017-02-23",
+            "end": "2017-02-24",
             "peak_demand": "0",
             "start": "2017-01-25",
             "tariff": null,
@@ -11,7 +11,7 @@
                 {
                     "ChargeActualName": "Energy Charges 16,440.000000 kWh @ $0.18915",
                     "ChargeAmount": "3109.6300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1892",
                     "ChargeUnitsUsed": "16440.0000",
                     "IntervalEnd": "2017-02-24",
@@ -24,7 +24,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "10.6900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-24",
@@ -37,7 +37,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "361.8400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-24",
@@ -50,7 +50,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1302.7000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-24",
@@ -63,7 +63,7 @@
                 {
                     "ChargeActualName": "Customer Charge 31 days @ $0.65708",
                     "ChargeAmount": "20.3700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-24",
@@ -76,7 +76,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 16,440.000000 kWh @ $0.06200",
                     "ChargeAmount": "1019.2800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0620",
                     "ChargeUnitsUsed": "16440.0000",
                     "IntervalEnd": "2017-02-25",
@@ -89,7 +89,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "4.7700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-25",
@@ -105,7 +105,7 @@
             ]
         },
         {
-            "end": "2017-03-26",
+            "end": "2017-03-27",
             "peak_demand": "0",
             "start": "2017-02-25",
             "tariff": null,
@@ -115,7 +115,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "11.2800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-03-27",
@@ -128,7 +128,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "1.6700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-28",
@@ -141,7 +141,7 @@
                 {
                     "ChargeActualName": "Energy Charges 17,349.677420 kWh @ $0.19270",
                     "ChargeAmount": "3343.2800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1927",
                     "ChargeUnitsUsed": "17349.6770",
                     "IntervalEnd": "2017-03-27",
@@ -154,7 +154,7 @@
                 {
                     "ChargeActualName": "Energy Charges 2,570.322580 kWh @ $0.18915",
                     "ChargeAmount": "486.1800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1892",
                     "ChargeUnitsUsed": "2570.3230",
                     "IntervalEnd": "2017-02-28",
@@ -167,7 +167,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "381.8700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-03-27",
@@ -180,7 +180,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "56.5700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-28",
@@ -193,7 +193,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1374.7900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-03-27",
@@ -206,7 +206,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-203.6900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-28",
@@ -219,7 +219,7 @@
                 {
                     "ChargeActualName": "Customer Charge 27 days @ $0.65708",
                     "ChargeAmount": "17.7400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-03-27",
@@ -232,7 +232,7 @@
                 {
                     "ChargeActualName": "Customer Charge 4 days @ $0.65708",
                     "ChargeAmount": "2.6300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-02-28",
@@ -245,7 +245,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 19,920.000000 kWh @ $0.06200",
                     "ChargeAmount": "626.6800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0620",
                     "ChargeUnitsUsed": "19920.0000",
                     "IntervalEnd": "2017-03-28",
@@ -258,7 +258,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "2.9300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-03-28",
@@ -271,7 +271,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 19,920.000000 kWh @ $0.06200",
                     "ChargeAmount": "608.3600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0620",
                     "ChargeUnitsUsed": "19920.0000",
                     "IntervalEnd": "2017-03-28",
@@ -284,7 +284,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "2.8500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-03-28",
@@ -300,7 +300,7 @@
             ]
         },
         {
-            "end": "2017-04-25",
+            "end": "2017-04-26",
             "peak_demand": "0",
             "start": "2017-03-28",
             "tariff": null,
@@ -310,7 +310,7 @@
                 {
                     "ChargeActualName": "Energy Charges 20,520.000000 kWh @ $0.19270",
                     "ChargeAmount": "3954.2000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1927",
                     "ChargeUnitsUsed": "20520.0000",
                     "IntervalEnd": "2017-04-26",
@@ -323,7 +323,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "13.3400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-26",
@@ -336,7 +336,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "451.6500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-26",
@@ -349,7 +349,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1626.0100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-26",
@@ -362,7 +362,7 @@
                 {
                     "ChargeActualName": "Customer Charge 30 days @ $0.65708",
                     "ChargeAmount": "19.7100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-26",
@@ -375,7 +375,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 2,736.000000 kWh @ $0.06200",
                     "ChargeAmount": "86.0700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0620",
                     "ChargeUnitsUsed": "2736.0000",
                     "IntervalEnd": "2017-04-27",
@@ -388,7 +388,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 17,784.000000 kWh @ $0.05700",
                     "ChargeAmount": "514.3600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "17784.0000",
                     "IntervalEnd": "2017-04-27",
@@ -401,7 +401,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "3.0200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-27",
@@ -414,7 +414,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 2,736.000000 kWh @ $0.06200",
                     "ChargeAmount": "83.5600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0620",
                     "ChargeUnitsUsed": "2736.0000",
                     "IntervalEnd": "2017-04-27",
@@ -427,7 +427,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 17,784.000000 kWh @ $0.05700",
                     "ChargeAmount": "499.3300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "17784.0000",
                     "IntervalEnd": "2017-04-27",
@@ -440,7 +440,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "2.9300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-27",
@@ -456,7 +456,7 @@
             ]
         },
         {
-            "end": "2017-05-24",
+            "end": "2017-05-25",
             "peak_demand": "0",
             "start": "2017-04-27",
             "tariff": null,
@@ -466,7 +466,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "15.9400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-05-25",
@@ -479,7 +479,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "2.5500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-30",
@@ -492,7 +492,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "539.6200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-05-25",
@@ -505,7 +505,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "86.3400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-30",
@@ -518,7 +518,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-2823.9000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-05-25",
@@ -531,7 +531,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-310.8600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-30",
@@ -544,7 +544,7 @@
                 {
                     "ChargeActualName": "Customer Charge 25 days @ $0.65708",
                     "ChargeAmount": "16.4300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-05-25",
@@ -557,7 +557,7 @@
                 {
                     "ChargeActualName": "Customer Charge 4 days @ $0.65708",
                     "ChargeAmount": "2.6300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-04-30",
@@ -570,7 +570,7 @@
                 {
                     "ChargeActualName": "Energy Charges 24,517.242360 kWh @ $0.24730",
                     "ChargeAmount": "6063.1100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2473",
                     "ChargeUnitsUsed": "24517.2420",
                     "IntervalEnd": "2017-05-25",
@@ -583,7 +583,7 @@
                 {
                     "ChargeActualName": "Energy Charges 3,922.757640 kWh @ $0.19270",
                     "ChargeAmount": "755.9200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1927",
                     "ChargeUnitsUsed": "3922.7580",
                     "IntervalEnd": "2017-04-30",
@@ -596,7 +596,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 3,922.758600 kWh @ $0.05700",
                     "ChargeAmount": "223.6000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "3922.7590",
                     "IntervalEnd": "2017-05-26",
@@ -609,7 +609,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 24,517.241400 kWh @ $0.09200",
                     "ChargeAmount": "2255.5900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "24517.2410",
                     "IntervalEnd": "2017-05-26",
@@ -622,7 +622,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "8.2500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-05-26",
@@ -638,7 +638,7 @@
             ]
         },
         {
-            "end": "2017-06-25",
+            "end": "2017-06-26",
             "peak_demand": "0",
             "start": "2017-05-26",
             "tariff": null,
@@ -648,7 +648,7 @@
                 {
                     "ChargeActualName": "Energy Charges 36,720.000000 kWh @ $0.24730",
                     "ChargeAmount": "9080.8600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2473",
                     "ChargeUnitsUsed": "36720.0000",
                     "IntervalEnd": "2017-06-26",
@@ -661,7 +661,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "23.8700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-26",
@@ -674,7 +674,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "808.2100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-26",
@@ -687,7 +687,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-4229.4200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-26",
@@ -700,7 +700,7 @@
                 {
                     "ChargeActualName": "Customer Charge 32 days @ $0.65708",
                     "ChargeAmount": "21.0300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-26",
@@ -713,7 +713,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 36,720.000000 kWh @ $0.09200",
                     "ChargeAmount": "3378.2400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "36720.0000",
                     "IntervalEnd": "2017-06-27",
@@ -726,7 +726,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "10.6500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-27",
@@ -742,7 +742,7 @@
             ]
         },
         {
-            "end": "2017-07-25",
+            "end": "2017-07-26",
             "peak_demand": "0",
             "start": "2017-06-27",
             "tariff": null,
@@ -752,7 +752,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "19.7400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-07-26",
@@ -765,7 +765,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "3.4600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-30",
@@ -778,7 +778,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "761.9000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-07-26",
@@ -791,7 +791,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "117.2700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-30",
@@ -804,7 +804,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-3988.9200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-07-26",
@@ -817,7 +817,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-613.6700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-30",
@@ -830,7 +830,7 @@
                 {
                     "ChargeActualName": "Customer Charge 26 days @ $0.65708",
                     "ChargeAmount": "17.0800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-07-26",
@@ -843,7 +843,7 @@
                 {
                     "ChargeActualName": "Customer Charge 4 days @ $0.65708",
                     "ChargeAmount": "2.6300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-06-30",
@@ -856,7 +856,7 @@
                 {
                     "ChargeActualName": "Energy Charges 34,632.000000 kWh @ $0.24730",
                     "ChargeAmount": "8564.4900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2473",
                     "ChargeUnitsUsed": "34632.0000",
                     "IntervalEnd": "2017-07-26",
@@ -869,7 +869,7 @@
                 {
                     "ChargeActualName": "Energy Charges 5,328.000000 kWh @ $0.24730",
                     "ChargeAmount": "1317.6100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2473",
                     "ChargeUnitsUsed": "5328.0000",
                     "IntervalEnd": "2017-06-30",
@@ -882,7 +882,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 39,960.000000 kWh @ $0.09200",
                     "ChargeAmount": "3676.3200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "39960.0000",
                     "IntervalEnd": "2017-07-27",
@@ -895,7 +895,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "11.5900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-07-27",
@@ -921,7 +921,7 @@
                 {
                     "ChargeActualName": "Energy Charges 38,760.000000 kWh @ $0.24730",
                     "ChargeAmount": "9585.3500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2473",
                     "ChargeUnitsUsed": "38760.0000",
                     "IntervalEnd": "2017-08-25",
@@ -934,7 +934,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "22.0900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-08-25",
@@ -947,7 +947,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "852.7200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-08-25",
@@ -960,7 +960,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-4464.3900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-08-25",
@@ -973,7 +973,7 @@
                 {
                     "ChargeActualName": "Customer Charge 30 days @ $0.65708",
                     "ChargeAmount": "19.7100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-08-25",
@@ -986,7 +986,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 38,760.000000 kWh @ $0.09200",
                     "ChargeAmount": "3565.9200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "38760.0000",
                     "IntervalEnd": "2017-08-26",
@@ -999,7 +999,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "11.2400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-08-26",
@@ -1015,7 +1015,7 @@
             ]
         },
         {
-            "end": "2017-10-24",
+            "end": "2017-10-25",
             "peak_demand": "0",
             "start": "2017-09-27",
             "tariff": null,
@@ -1025,7 +1025,7 @@
                 {
                     "ChargeActualName": "Energy Charges 35,400.000000 kWh @ $0.24730",
                     "ChargeAmount": "8754.4200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2473",
                     "ChargeUnitsUsed": "35400.0000",
                     "IntervalEnd": "2017-10-25",
@@ -1038,7 +1038,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "20.1800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-25",
@@ -1051,7 +1051,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "778.8000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-25",
@@ -1064,7 +1064,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-4077.3600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-25",
@@ -1077,7 +1077,7 @@
                 {
                     "ChargeActualName": "Customer Charge 29 days @ $0.65708",
                     "ChargeAmount": "19.0600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-25",
@@ -1090,7 +1090,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 35,400.000000 kWh @ $0.09200",
                     "ChargeAmount": "3256.8000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "35400.0000",
                     "IntervalEnd": "2017-10-26",
@@ -1103,7 +1103,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "10.2700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-26",
@@ -1119,7 +1119,7 @@
             ]
         },
         {
-            "end": "2017-11-21",
+            "end": "2017-11-22",
             "peak_demand": "0",
             "start": "2017-10-26",
             "tariff": null,
@@ -1129,7 +1129,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "10.8600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-11-22",
@@ -1142,7 +1142,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "2.9600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-31",
@@ -1155,7 +1155,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "419.0100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-11-22",
@@ -1168,7 +1168,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "114.2700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-31",
@@ -1181,7 +1181,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1509.1800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-11-22",
@@ -1194,7 +1194,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-598.2700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-31",
@@ -1207,7 +1207,7 @@
                 {
                     "ChargeActualName": "Customer Charge 22 days @ $0.65708",
                     "ChargeAmount": "14.4600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-11-22",
@@ -1220,7 +1220,7 @@
                 {
                     "ChargeActualName": "Customer Charge 6 days @ $0.65708",
                     "ChargeAmount": "3.9400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-10-31",
@@ -1233,7 +1233,7 @@
                 {
                     "ChargeActualName": "Energy Charges 19,045.707360 kWh @ $0.19270",
                     "ChargeAmount": "3670.1100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1927",
                     "ChargeUnitsUsed": "19045.7070",
                     "IntervalEnd": "2017-11-22",
@@ -1246,7 +1246,7 @@
                 {
                     "ChargeActualName": "Energy Charges 5,194.292640 kWh @ $0.24730",
                     "ChargeAmount": "1284.5500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2473",
                     "ChargeUnitsUsed": "5194.2930",
                     "IntervalEnd": "2017-10-31",
@@ -1259,7 +1259,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 19,045.714300 kWh @ $0.05700",
                     "ChargeAmount": "1085.6100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "19045.7140",
                     "IntervalEnd": "2017-11-23",
@@ -1272,7 +1272,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 5,194.285700 kWh @ $0.09200",
                     "ChargeAmount": "477.8700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "5194.2860",
                     "IntervalEnd": "2017-11-23",
@@ -1285,7 +1285,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "7.0300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-11-23",
@@ -1301,7 +1301,7 @@
             ]
         },
         {
-            "end": "2017-12-22",
+            "end": "2017-12-23",
             "peak_demand": "0",
             "start": "2017-11-23",
             "tariff": null,
@@ -1311,7 +1311,7 @@
                 {
                     "ChargeActualName": "Energy Charges 21,720.000000 kWh @ $0.19270",
                     "ChargeAmount": "4185.4400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1927",
                     "ChargeUnitsUsed": "21720.0000",
                     "IntervalEnd": "2017-12-23",
@@ -1324,7 +1324,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "12.3800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-23",
@@ -1337,7 +1337,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "477.8400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-23",
@@ -1350,7 +1350,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1721.0900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-23",
@@ -1363,7 +1363,7 @@
                 {
                     "ChargeActualName": "Customer Charge 31 days @ $0.65708",
                     "ChargeAmount": "20.3700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-23",
@@ -1376,7 +1376,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 21,720.000000 kWh @ $0.05700",
                     "ChargeAmount": "1238.0400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "21720.0000",
                     "IntervalEnd": "2017-12-24",
@@ -1389,7 +1389,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "6.3000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-24",
@@ -1405,17 +1405,17 @@
             ]
         },
         {
-            "end": "2018-01-23",
+            "end": "2018-01-24",
             "peak_demand": "0",
             "start": "2017-12-24",
             "tariff": null,
-            "total_charge": "10557.1600",
+            "total_charge": "3977.4800",
             "total_usage": "20400.0000",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "8.7200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-01-24",
@@ -1428,7 +1428,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "2.9100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-31",
@@ -1441,7 +1441,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "336.6000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-01-24",
@@ -1454,7 +1454,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "112.2000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-31",
@@ -1467,7 +1467,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1212.3600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-01-24",
@@ -1480,7 +1480,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-404.1200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-31",
@@ -1493,7 +1493,7 @@
                 {
                     "ChargeActualName": "Customer Charge 24 days @ $0.65708",
                     "ChargeAmount": "15.7700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-01-24",
@@ -1506,7 +1506,7 @@
                 {
                     "ChargeActualName": "Customer Charge 8 days @ $0.65708",
                     "ChargeAmount": "5.2600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2017-12-31",
@@ -1519,7 +1519,7 @@
                 {
                     "ChargeActualName": "Energy Charges 15,300.000000 kWh @ $0.19353",
                     "ChargeAmount": "2961.0100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1935",
                     "ChargeUnitsUsed": "15300.0000",
                     "IntervalEnd": "2018-01-24",
@@ -1532,7 +1532,7 @@
                 {
                     "ChargeActualName": "Energy Charges 5,100.000000 kWh @ $0.19270",
                     "ChargeAmount": "982.7700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1927",
                     "ChargeUnitsUsed": "5100.0000",
                     "IntervalEnd": "2017-12-31",
@@ -1545,7 +1545,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 20,400.000000 kWh @ $0.05700",
                     "ChargeAmount": "1162.8000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "20400.0000",
                     "IntervalEnd": "2018-01-25",
@@ -1558,52 +1558,13 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "5.9200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-01-25",
                     "IntervalStart": "2017-12-24",
                     "IsAdjustmentCharge": true,
                     "PK": 235245278,
-                    "ThirdPartyProvider": "MCE",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Generation - Part Peak - Winter 53,578.920000 kWh @ $0.05500",
-                    "ChargeAmount": "2946.8400",
-                    "ChargeId": null,
-                    "ChargeRatePerUnit": "0.0550",
-                    "ChargeUnitsUsed": "53578.9200",
-                    "IntervalEnd": "2018-01-25",
-                    "IntervalStart": "2017-12-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 235245279,
-                    "ThirdPartyProvider": "MCE",
-                    "UsageUnit": "kWh"
-                },
-                {
-                    "ChargeActualName": "Generation - Off Peak - Winter 87,607.200000 kWh @ $0.04100",
-                    "ChargeAmount": "3591.9000",
-                    "ChargeId": null,
-                    "ChargeRatePerUnit": "0.0410",
-                    "ChargeUnitsUsed": "87607.2000",
-                    "IntervalEnd": "2018-01-25",
-                    "IntervalStart": "2017-12-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 235245280,
-                    "ThirdPartyProvider": "MCE",
-                    "UsageUnit": "kWh"
-                },
-                {
-                    "ChargeActualName": "Energy Surcharge",
-                    "ChargeAmount": "40.9400",
-                    "ChargeId": null,
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2018-01-25",
-                    "IntervalStart": "2017-12-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 235245281,
                     "ThirdPartyProvider": "MCE",
                     "UsageUnit": ""
                 }
@@ -1613,7 +1574,7 @@
             ]
         },
         {
-            "end": "2018-02-22",
+            "end": "2018-02-23",
             "peak_demand": "0",
             "start": "2018-01-25",
             "tariff": null,
@@ -1623,7 +1584,7 @@
                 {
                     "ChargeActualName": "Energy Charges 27,600.000000 kWh @ $0.19353",
                     "ChargeAmount": "5341.4300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1935",
                     "ChargeUnitsUsed": "27600.0000",
                     "IntervalEnd": "2018-02-23",
@@ -1636,7 +1597,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "15.7300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-23",
@@ -1649,7 +1610,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "607.2000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-23",
@@ -1662,7 +1623,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-2187.0300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-23",
@@ -1675,7 +1636,7 @@
                 {
                     "ChargeActualName": "Customer Charge 30 days @ $0.65708",
                     "ChargeAmount": "19.7100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-23",
@@ -1688,7 +1649,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 27,600.000000 kWh @ $0.05700",
                     "ChargeAmount": "1573.2000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "27600.0000",
                     "IntervalEnd": "2018-02-24",
@@ -1701,7 +1662,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "8.0000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-24",
@@ -1717,7 +1678,7 @@
             ]
         },
         {
-            "end": "2018-03-25",
+            "end": "2018-03-26",
             "peak_demand": "0",
             "start": "2018-02-24",
             "tariff": null,
@@ -1727,7 +1688,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "12.1700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-03-26",
@@ -1740,7 +1701,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "2.1500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-28",
@@ -1753,7 +1714,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "475.5300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-03-26",
@@ -1766,7 +1727,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "83.0300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-28",
@@ -1779,7 +1740,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1697.2300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-03-26",
@@ -1792,7 +1753,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-299.0700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-28",
@@ -1805,7 +1766,7 @@
                 {
                     "ChargeActualName": "Customer Charge 26 days @ $0.65708",
                     "ChargeAmount": "17.0800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-03-26",
@@ -1818,7 +1779,7 @@
                 {
                     "ChargeActualName": "Customer Charge 5 days @ $0.65708",
                     "ChargeAmount": "3.2900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-02-28",
@@ -1831,7 +1792,7 @@
                 {
                     "ChargeActualName": "Energy Charges 19,625.806450 kWh @ $0.19670",
                     "ChargeAmount": "3860.4000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1967",
                     "ChargeUnitsUsed": "19625.8060",
                     "IntervalEnd": "2018-03-26",
@@ -1844,7 +1805,7 @@
                 {
                     "ChargeActualName": "Energy Charges 3,774.193550 kWh @ $0.19353",
                     "ChargeAmount": "730.4200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1935",
                     "ChargeUnitsUsed": "3774.1940",
                     "IntervalEnd": "2018-02-28",
@@ -1857,7 +1818,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 23,400.000000 kWh @ $0.05700",
                     "ChargeAmount": "1333.8000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "23400.0000",
                     "IntervalEnd": "2018-03-27",
@@ -1870,7 +1831,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "6.7900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-03-27",
@@ -1886,7 +1847,7 @@
             ]
         },
         {
-            "end": "2018-04-24",
+            "end": "2018-04-25",
             "peak_demand": "0",
             "start": "2018-03-27",
             "tariff": null,
@@ -1896,7 +1857,7 @@
                 {
                     "ChargeActualName": "Energy Charges 20,520.000000 kWh @ $0.19670",
                     "ChargeAmount": "4036.2800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1967",
                     "ChargeUnitsUsed": "20520.0000",
                     "IntervalEnd": "2018-04-25",
@@ -1909,7 +1870,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "12.7200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-25",
@@ -1922,7 +1883,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "497.2000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-25",
@@ -1935,7 +1896,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1774.5800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-25",
@@ -1948,7 +1909,7 @@
                 {
                     "ChargeActualName": "Customer Charge 30 days @ $0.65708",
                     "ChargeAmount": "19.7100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-25",
@@ -1961,7 +1922,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 20,520.000000 kWh @ $0.05700",
                     "ChargeAmount": "1169.6400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "20520.0000",
                     "IntervalEnd": "2018-04-25",
@@ -1974,7 +1935,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "5.9500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-25",
@@ -1990,7 +1951,7 @@
             ]
         },
         {
-            "end": "2018-05-23",
+            "end": "2018-05-24",
             "peak_demand": "0",
             "start": "2018-04-26",
             "tariff": null,
@@ -2000,7 +1961,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "9.6700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-05-24",
@@ -2013,7 +1974,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "2.0100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-30",
@@ -2026,7 +1987,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "377.7900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-05-24",
@@ -2039,7 +2000,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "78.7100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-30",
@@ -2052,7 +2013,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-1959.8800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-05-24",
@@ -2065,7 +2026,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-280.9200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-30",
@@ -2078,7 +2039,7 @@
                 {
                     "ChargeActualName": "Customer Charge 24 days @ $0.65708",
                     "ChargeAmount": "15.7700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-05-24",
@@ -2091,7 +2052,7 @@
                 {
                     "ChargeActualName": "Customer Charge 5 days @ $0.65708",
                     "ChargeAmount": "3.2900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-04-30",
@@ -2104,7 +2065,7 @@
                 {
                     "ChargeActualName": "Energy Charges 15,591.720240 kWh @ $0.25386",
                     "ChargeAmount": "3958.1100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2539",
                     "ChargeUnitsUsed": "15591.7200",
                     "IntervalEnd": "2018-05-24",
@@ -2117,7 +2078,7 @@
                 {
                     "ChargeActualName": "Energy Charges 3,248.279760 kWh @ $0.19670",
                     "ChargeAmount": "638.9400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1967",
                     "ChargeUnitsUsed": "3248.2800",
                     "IntervalEnd": "2018-04-30",
@@ -2130,7 +2091,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 3,248.275900 kWh @ $0.05700",
                     "ChargeAmount": "185.1500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "3248.2760",
                     "IntervalEnd": "2018-05-24",
@@ -2143,7 +2104,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 15,591.724100 kWh @ $0.09200",
                     "ChargeAmount": "1434.4400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "15591.7240",
                     "IntervalEnd": "2018-05-24",
@@ -2156,7 +2117,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "5.4600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-05-24",
@@ -2172,7 +2133,7 @@
             ]
         },
         {
-            "end": "2018-06-24",
+            "end": "2018-06-25",
             "peak_demand": "0",
             "start": "2018-05-25",
             "tariff": null,
@@ -2182,7 +2143,7 @@
                 {
                     "ChargeActualName": "Energy Charges 27,240.000000 kWh @ $0.25386",
                     "ChargeAmount": "6915.1500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2539",
                     "ChargeUnitsUsed": "27240.0000",
                     "IntervalEnd": "2018-06-25",
@@ -2195,7 +2156,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "16.8900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-06-25",
@@ -2208,7 +2169,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "660.0300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-06-25",
@@ -2221,7 +2182,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-3424.0700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-06-25",
@@ -2234,7 +2195,7 @@
                 {
                     "ChargeActualName": "Customer Charge 32 days @ $0.65708",
                     "ChargeAmount": "21.0300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-06-25",
@@ -2247,7 +2208,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 27,240.000000 kWh @ $0.09200",
                     "ChargeAmount": "2506.0800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "27240.0000",
                     "IntervalEnd": "2018-06-25",
@@ -2260,7 +2221,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "7.9000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-06-25",
@@ -2276,7 +2237,7 @@
             ]
         },
         {
-            "end": "2018-07-24",
+            "end": "2018-07-25",
             "peak_demand": "0",
             "start": "2018-06-26",
             "tariff": null,
@@ -2286,7 +2247,7 @@
                 {
                     "ChargeActualName": "Energy Charges 24,960.000000 kWh @ $0.25386",
                     "ChargeAmount": "6336.3500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2539",
                     "ChargeUnitsUsed": "24960.0000",
                     "IntervalEnd": "2018-07-25",
@@ -2299,7 +2260,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "15.4800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-07-25",
@@ -2312,7 +2273,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "604.7800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-07-25",
@@ -2325,7 +2286,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-3137.5000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-07-25",
@@ -2338,7 +2299,7 @@
                 {
                     "ChargeActualName": "Customer Charge 30 days @ $0.65708",
                     "ChargeAmount": "19.7100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-07-25",
@@ -2351,7 +2312,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 24,960.000000 kWh @ $0.09200",
                     "ChargeAmount": "2296.3200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "24960.0000",
                     "IntervalEnd": "2018-07-25",
@@ -2364,7 +2325,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "7.2400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-07-25",
@@ -2377,7 +2338,7 @@
                 {
                     "ChargeActualName": "Generation - Part Peak - Summer 34,890.000000 kWh @ $0.06000",
                     "ChargeAmount": "2093.4000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0600",
                     "ChargeUnitsUsed": "34890.0000",
                     "IntervalEnd": "2018-07-26",
@@ -2390,7 +2351,7 @@
                 {
                     "ChargeActualName": "Generation - On Peak - Summer 38,338.320000 kWh @ $0.09500",
                     "ChargeAmount": "3642.1400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0950",
                     "ChargeUnitsUsed": "38338.3200",
                     "IntervalEnd": "2018-07-26",
@@ -2403,7 +2364,7 @@
                 {
                     "ChargeActualName": "Generation - Off Peak - Summer 91,285.440000 kWh @ $0.03600",
                     "ChargeAmount": "3286.2800",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0360",
                     "ChargeUnitsUsed": "91285.4400",
                     "IntervalEnd": "2018-07-26",
@@ -2416,7 +2377,7 @@
                 {
                     "ChargeActualName": "Demand - On Peak - Summer 996.960000 kW @ $12.20000",
                     "ChargeAmount": "12162.9100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.demand_charge_on_peak",
                     "ChargeRatePerUnit": "12.2000",
                     "ChargeUnitsUsed": "996.9600",
                     "IntervalEnd": "2018-07-26",
@@ -2429,7 +2390,7 @@
                 {
                     "ChargeActualName": "Demand - Part Peak - Summer 904.800000 kW @ $3.00000",
                     "ChargeAmount": "2714.4000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.demand_charge_intermediate_peak",
                     "ChargeRatePerUnit": "3.0000",
                     "ChargeUnitsUsed": "904.8000",
                     "IntervalEnd": "2018-07-26",
@@ -2442,7 +2403,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "47.7100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-07-26",
@@ -2458,7 +2419,7 @@
             ]
         },
         {
-            "end": "2018-08-23",
+            "end": "2018-08-24",
             "peak_demand": "0",
             "start": "2018-07-26",
             "tariff": null,
@@ -2468,7 +2429,7 @@
                 {
                     "ChargeActualName": "Energy Charges 25,680.000000 kWh @ $0.25386",
                     "ChargeAmount": "6519.1200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2539",
                     "ChargeUnitsUsed": "25680.0000",
                     "IntervalEnd": "2018-08-24",
@@ -2481,7 +2442,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "15.9200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-24",
@@ -2494,7 +2455,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "622.2300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-24",
@@ -2507,7 +2468,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-3227.9600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-24",
@@ -2520,7 +2481,7 @@
                 {
                     "ChargeActualName": "Customer Charge 30 days @ $0.65708",
                     "ChargeAmount": "19.7100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-24",
@@ -2533,7 +2494,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 25,680.000000 kWh @ $0.09200",
                     "ChargeAmount": "2362.5600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "25680.0000",
                     "IntervalEnd": "2018-08-24",
@@ -2546,7 +2507,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "7.4500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-24",
@@ -2572,7 +2533,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "14.4200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-09-25",
@@ -2585,7 +2546,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "4.0400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-31",
@@ -2598,7 +2559,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "563.3500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-09-25",
@@ -2611,7 +2572,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "157.7400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-31",
@@ -2624,7 +2585,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-2922.5300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-09-25",
@@ -2637,7 +2598,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-818.3200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-31",
@@ -2650,7 +2611,7 @@
                 {
                     "ChargeActualName": "Customer Charge 25 days @ $0.65708",
                     "ChargeAmount": "16.4300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-09-25",
@@ -2663,7 +2624,7 @@
                 {
                     "ChargeActualName": "Customer Charge 7 days @ $0.65708",
                     "ChargeAmount": "4.6000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-08-31",
@@ -2676,7 +2637,7 @@
                 {
                     "ChargeActualName": "Energy Charges 23,250.000000 kWh @ $0.25800",
                     "ChargeAmount": "5998.5000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2580",
                     "ChargeUnitsUsed": "23250.0000",
                     "IntervalEnd": "2018-09-25",
@@ -2689,7 +2650,7 @@
                 {
                     "ChargeActualName": "Energy Charges 6,510.000000 kWh @ $0.25386",
                     "ChargeAmount": "1652.6300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2539",
                     "ChargeUnitsUsed": "6510.0000",
                     "IntervalEnd": "2018-08-31",
@@ -2702,7 +2663,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 29,760.000000 kWh @ $0.09200",
                     "ChargeAmount": "2737.9200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "29760.0000",
                     "IntervalEnd": "2018-09-25",
@@ -2715,7 +2676,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "8.6300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-09-25",
@@ -2731,7 +2692,7 @@
             ]
         },
         {
-            "end": "2018-11-26",
+            "end": "2018-11-27",
             "peak_demand": "0",
             "start": "2018-10-26",
             "tariff": null,
@@ -2741,7 +2702,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "4.8100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-11-27",
@@ -2754,7 +2715,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "1.0700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-10-31",
@@ -2767,7 +2728,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "187.9400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-11-27",
@@ -2780,7 +2741,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "41.7600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-10-31",
@@ -2793,7 +2754,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-670.7900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-11-27",
@@ -2806,7 +2767,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-216.6700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-10-31",
@@ -2819,7 +2780,7 @@
                 {
                     "ChargeActualName": "Customer Charge 27 days @ $0.65708",
                     "ChargeAmount": "17.7400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-11-27",
@@ -2832,7 +2793,7 @@
                 {
                     "ChargeActualName": "Customer Charge 6 days @ $0.65708",
                     "ChargeAmount": "3.9400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-10-31",
@@ -2845,7 +2806,7 @@
                 {
                     "ChargeActualName": "Energy Charges 7,756.365360 kWh @ $0.19988",
                     "ChargeAmount": "1550.3400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1999",
                     "ChargeUnitsUsed": "7756.3650",
                     "IntervalEnd": "2018-11-27",
@@ -2858,7 +2819,7 @@
                 {
                     "ChargeActualName": "Energy Charges 1,723.634640 kWh @ $0.25800",
                     "ChargeAmount": "444.7000",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.2580",
                     "ChargeUnitsUsed": "1723.6350",
                     "IntervalEnd": "2018-10-31",
@@ -2871,7 +2832,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 7,756.363600 kWh @ $0.05700",
                     "ChargeAmount": "442.1100",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "7756.3640",
                     "IntervalEnd": "2018-11-27",
@@ -2884,7 +2845,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Summer 1,723.636400 kWh @ $0.09200",
                     "ChargeAmount": "158.5700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0920",
                     "ChargeUnitsUsed": "1723.6360",
                     "IntervalEnd": "2018-11-27",
@@ -2897,7 +2858,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "2.7500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-11-27",
@@ -2923,7 +2884,7 @@
                 {
                     "ChargeActualName": "Energy Charges 7,080.000000 kWh @ $0.19988",
                     "ChargeAmount": "1415.1500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1999",
                     "ChargeUnitsUsed": "7080.0000",
                     "IntervalEnd": "2018-12-26",
@@ -2936,7 +2897,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "4.3900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-12-26",
@@ -2949,7 +2910,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "171.5500",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-12-26",
@@ -2962,7 +2923,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-612.2700",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-12-26",
@@ -2975,7 +2936,7 @@
                 {
                     "ChargeActualName": "Customer Charge 29 days @ $0.65708",
                     "ChargeAmount": "19.0600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-12-26",
@@ -2988,7 +2949,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 7,080.000000 kWh @ $0.05700",
                     "ChargeAmount": "403.5600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "7080.0000",
                     "IntervalEnd": "2018-12-26",
@@ -3001,7 +2962,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "2.1200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2018-12-26",
@@ -3027,7 +2988,7 @@
                 {
                     "ChargeActualName": "Energy Charges 6,960.000000 kWh @ $0.19725",
                     "ChargeAmount": "1372.8600",
-                    "ChargeId": null,
+                    "ChargeId": "ch.energy_charge",
                     "ChargeRatePerUnit": "0.1973",
                     "ChargeUnitsUsed": "6960.0000",
                     "IntervalEnd": "2019-02-26",
@@ -3040,7 +3001,7 @@
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "4.3200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.franchise_charge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2019-02-26",
@@ -3053,7 +3014,7 @@
                 {
                     "ChargeActualName": "Power Charge Indifference Adjustment",
                     "ChargeAmount": "168.6400",
-                    "ChargeId": null,
+                    "ChargeId": "ch.power_cost_adjustment",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2019-02-26",
@@ -3066,7 +3027,7 @@
                 {
                     "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-601.9200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_credit",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2019-02-26",
@@ -3079,7 +3040,7 @@
                 {
                     "ChargeActualName": "Customer Charge 32 days @ $0.65708",
                     "ChargeAmount": "21.0300",
-                    "ChargeId": null,
+                    "ChargeId": "ch.customer_charge",
                     "ChargeRatePerUnit": "0.6571",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2019-02-26",
@@ -3092,7 +3053,7 @@
                 {
                     "ChargeActualName": "Generation - Total - Winter 6,960.000000 kWh @ $0.05700",
                     "ChargeAmount": "396.7200",
-                    "ChargeId": null,
+                    "ChargeId": "ch.generation_services",
                     "ChargeRatePerUnit": "0.0570",
                     "ChargeUnitsUsed": "6960.0000",
                     "IntervalEnd": "2019-02-26",
@@ -3105,7 +3066,7 @@
                 {
                     "ChargeActualName": "Energy Surcharge",
                     "ChargeAmount": "2.0900",
-                    "ChargeId": null,
+                    "ChargeId": "ch.renewable_energy_surcharge",
                     "ChargeRatePerUnit": "0.0000",
                     "ChargeUnitsUsed": "0.0000",
                     "IntervalEnd": "2019-02-26",
@@ -3118,6 +3079,747 @@
             ],
             "source_urls": [
                 "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9431e8-91d9-dd56-889c-0e2cce7ae27c"
+            ]
+        },
+        {
+            "end": "2019-03-27",
+            "peak_demand": "0",
+            "start": "2019-02-27",
+            "tariff": null,
+            "total_charge": "1268.7000",
+            "total_usage": "6360.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "3.7900",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864316,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "0.2700",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864317,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "143.4800",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864318,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "10.6300",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864319,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-523.9900",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864320,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-37.9300",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864321,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 27 days @ $0.65708",
+                    "ChargeAmount": "17.7400",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864322,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 2 days @ $0.65708",
+                    "ChargeAmount": "1.3100",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864323,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Charges 5,921.379310 kWh @ $0.20307",
+                    "ChargeAmount": "1202.4500",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.2031",
+                    "ChargeUnitsUsed": "5921.3790",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864324,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Charges 438.620690 kWh @ $0.19725",
+                    "ChargeAmount": "86.5200",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.1973",
+                    "ChargeUnitsUsed": "438.6210",
+                    "IntervalEnd": "2019-02-28",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864325,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Total - Winter 6,360.000000 kWh @ $0.05700",
+                    "ChargeAmount": "362.5200",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0570",
+                    "ChargeUnitsUsed": "6360.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864326,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.9100",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-03-27",
+                    "IntervalStart": "2019-02-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236864327,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e96b515-c5d9-d2ef-9d53-0e324ee72044"
+            ]
+        },
+        {
+            "end": "2019-04-26",
+            "peak_demand": "0",
+            "start": "2019-03-28",
+            "tariff": null,
+            "total_charge": "1719.6300",
+            "total_usage": "8640.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Energy Charges 8,640.000000 kWh @ $0.20307",
+                    "ChargeAmount": "1754.5200",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.2031",
+                    "ChargeUnitsUsed": "8640.0000",
+                    "IntervalEnd": "2019-04-26",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236907960,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "5.5300",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-26",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236907961,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "209.3500",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-26",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236907962,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-764.5500",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-26",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236907963,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 30 days @ $0.65708",
+                    "ChargeAmount": "19.7100",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-26",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236907964,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Total - Winter 8,640.000000 kWh @ $0.05700",
+                    "ChargeAmount": "492.4800",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0570",
+                    "ChargeUnitsUsed": "8640.0000",
+                    "IntervalEnd": "2019-04-26",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236907965,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "2.5900",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-26",
+                    "IntervalStart": "2019-03-28",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236907966,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e97722d-d21e-d4a0-846f-0ecb51c6fc54"
+            ]
+        },
+        {
+            "end": "2019-05-28",
+            "peak_demand": "0",
+            "start": "2019-04-27",
+            "tariff": null,
+            "total_charge": "3045.8000",
+            "total_usage": "12240.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "6.9600",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079107,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "0.9800",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079108,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "259.5000",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079109,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "37.0700",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079110,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-1390.0600",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079111,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-135.4000",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079112,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 28 days @ $0.65708",
+                    "ChargeAmount": "18.4000",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079113,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 4 days @ $0.65708",
+                    "ChargeAmount": "2.6300",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079114,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Charges 10,710.000000 kWh @ $0.26693",
+                    "ChargeAmount": "2858.8200",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.2669",
+                    "ChargeUnitsUsed": "10710.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079115,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Charges 1,530.000000 kWh @ $0.20307",
+                    "ChargeAmount": "310.7000",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.2031",
+                    "ChargeUnitsUsed": "1530.0000",
+                    "IntervalEnd": "2019-04-30",
+                    "IntervalStart": "2019-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079116,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Total - Winter 1,530.000000 kWh @ $0.05700",
+                    "ChargeAmount": "87.2100",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0570",
+                    "ChargeUnitsUsed": "1530.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079117,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Total - Summer 10,710.000000 kWh @ $0.09200",
+                    "ChargeAmount": "985.3200",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0920",
+                    "ChargeUnitsUsed": "10710.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079118,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "3.6700",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-05-28",
+                    "IntervalStart": "2019-04-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237079119,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e98d3be-299d-d592-8236-0e9beee5a22e"
+            ]
+        },
+        {
+            "end": "2019-06-26",
+            "peak_demand": "0",
+            "start": "2019-05-29",
+            "tariff": null,
+            "total_charge": "5573.4100",
+            "total_usage": "21840.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Energy Charges 21,840.000000 kWh @ $0.26693",
+                    "ChargeAmount": "5829.7500",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.2669",
+                    "ChargeUnitsUsed": "21840.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237186901,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "14.2000",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237186902,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "529.1800",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237186903,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-2834.6100",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237186904,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 29 days @ $0.65708",
+                    "ChargeAmount": "19.0600",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237186905,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Total - Summer 21,840.000000 kWh @ $0.09200",
+                    "ChargeAmount": "2009.2800",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0920",
+                    "ChargeUnitsUsed": "21840.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237186906,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "6.5500",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-05-29",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237186907,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9a4487-6949-d412-8fc7-0e6a8fce33f4"
+            ]
+        },
+        {
+            "end": "2019-07-26",
+            "peak_demand": "0",
+            "start": "2019-06-27",
+            "tariff": null,
+            "total_charge": "4271.9600",
+            "total_usage": "16200.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "9.2700",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-26",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325507,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "1.4000",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325508,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "359.9900",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-26",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325509,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "52.3400",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325510,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-1869.5600",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-26",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325511,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-280.3500",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325512,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 26 days @ $0.65708",
+                    "ChargeAmount": "17.0800",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-26",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325513,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 4 days @ $0.65708",
+                    "ChargeAmount": "2.6300",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.6571",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325514,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Charges 14,040.000000 kWh @ $0.26730",
+                    "ChargeAmount": "3752.8900",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.2673",
+                    "ChargeUnitsUsed": "14040.0000",
+                    "IntervalEnd": "2019-07-26",
+                    "IntervalStart": "2019-07-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325515,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Charges 2,160.000000 kWh @ $0.26693",
+                    "ChargeAmount": "576.5700",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.2669",
+                    "ChargeUnitsUsed": "2160.0000",
+                    "IntervalEnd": "2019-06-30",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325516,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Total - Summer 14,040.000000 kWh @ $0.10300",
+                    "ChargeAmount": "1446.1200",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.1030",
+                    "ChargeUnitsUsed": "14040.0000",
+                    "IntervalEnd": "2019-07-26",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325517,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Total - Summer 2,160.000000 kWh @ $0.09200",
+                    "ChargeAmount": "198.7200",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0920",
+                    "ChargeUnitsUsed": "2160.0000",
+                    "IntervalEnd": "2019-07-26",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325518,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "4.8600",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-26",
+                    "IntervalStart": "2019-06-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237325519,
+                    "ThirdPartyProvider": "MCE",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9bf686-4fda-d8a7-b093-0e10f6fe06dc"
             ]
         }
     ]

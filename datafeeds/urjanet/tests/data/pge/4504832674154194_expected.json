@@ -1318,7 +1318,7 @@
             "peak_demand": "20.0230",
             "start": "2016-10-25",
             "tariff": null,
-            "total_charge": "812.1800",
+            "total_charge": "1271.3600",
             "total_usage": "6997.7970",
             "line_items": [
                 {
@@ -1528,6 +1528,71 @@
                     "PK": 234647292,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 5,308.673600 kWh @ $0.05619",
+                    "ChargeAmount": "298.2900",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0562",
+                    "ChargeUnitsUsed": "5308.6740",
+                    "IntervalEnd": "2016-11-23",
+                    "IntervalStart": "2016-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234647293,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 1,689.123400 kWh @ $0.07908",
+                    "ChargeAmount": "133.5800",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0791",
+                    "ChargeUnitsUsed": "1689.1230",
+                    "IntervalEnd": "2016-11-23",
+                    "IntervalStart": "2016-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234647294,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "DEMAND - TOTAL - SUMMER 4.521400 kW @ $4.59000",
+                    "ChargeAmount": "20.7500",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.5900",
+                    "ChargeUnitsUsed": "4.5210",
+                    "IntervalEnd": "2016-11-23",
+                    "IntervalStart": "2016-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234647295,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "2.0300",
+                    "ChargeId": "ch.energy_assistance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-11-23",
+                    "IntervalStart": "2016-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234647296,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "4.5300",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-11-23",
+                    "IntervalStart": "2016-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234647297,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -1539,7 +1604,7 @@
             "peak_demand": "19.5910",
             "start": "2016-11-23",
             "tariff": null,
-            "total_charge": "767.3800",
+            "total_charge": "1135.1100",
             "total_usage": "6446.7790",
             "line_items": [
                 {
@@ -1632,6 +1697,45 @@
                     "PK": 234651195,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 6,446.779200 kWh @ $0.05619",
+                    "ChargeAmount": "362.2400",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0562",
+                    "ChargeUnitsUsed": "6446.7790",
+                    "IntervalEnd": "2016-12-23",
+                    "IntervalStart": "2016-11-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234651196,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.8700",
+                    "ChargeId": "ch.energy_assistance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-12-23",
+                    "IntervalStart": "2016-11-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234651197,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "3.6200",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-12-23",
+                    "IntervalStart": "2016-11-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234651198,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -1643,7 +1747,7 @@
             "peak_demand": "20.1600",
             "start": "2016-12-23",
             "tariff": null,
-            "total_charge": "774.7100",
+            "total_charge": "1135.0000",
             "total_usage": "6316.3310",
             "line_items": [
                 {
@@ -1827,6 +1931,45 @@
                     "PK": 234663628,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 6,316.331400 kWh @ $0.05619",
+                    "ChargeAmount": "354.9100",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0562",
+                    "ChargeUnitsUsed": "6316.3310",
+                    "IntervalEnd": "2017-01-24",
+                    "IntervalStart": "2016-12-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234663629,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.8300",
+                    "ChargeId": "ch.energy_assistance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-01-24",
+                    "IntervalStart": "2016-12-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234663630,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "3.5500",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-01-24",
+                    "IntervalStart": "2016-12-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234663631,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -1838,7 +1981,7 @@
             "peak_demand": "20.4410",
             "start": "2017-01-24",
             "tariff": null,
-            "total_charge": "853.0000",
+            "total_charge": "1261.9200",
             "total_usage": "7168.6310",
             "line_items": [
                 {
@@ -1931,6 +2074,45 @@
                     "PK": 234673755,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 7,168.631400 kWh @ $0.05619",
+                    "ChargeAmount": "402.8100",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0562",
+                    "ChargeUnitsUsed": "7168.6310",
+                    "IntervalEnd": "2017-02-24",
+                    "IntervalStart": "2017-01-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234673756,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "2.0800",
+                    "ChargeId": "ch.energy_assistance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-02-24",
+                    "IntervalStart": "2017-01-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234673757,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "4.0300",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-02-24",
+                    "IntervalStart": "2017-01-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234673758,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -1942,7 +2124,7 @@
             "peak_demand": "19.6340",
             "start": "2017-02-24",
             "tariff": null,
-            "total_charge": "838.1000",
+            "total_charge": "1225.0300",
             "total_usage": "6919.9240",
             "line_items": [
                 {
@@ -2126,6 +2308,58 @@
                     "PK": 234680443,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 4,241.000000 kWh @ $0.05619",
+                    "ChargeAmount": "238.3000",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0562",
+                    "ChargeUnitsUsed": "4241.0000",
+                    "IntervalEnd": "2017-03-27",
+                    "IntervalStart": "2017-02-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234680444,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 2,678.923600 kWh @ $0.05331",
+                    "ChargeAmount": "142.8100",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0533",
+                    "ChargeUnitsUsed": "2678.9240",
+                    "IntervalEnd": "2017-03-27",
+                    "IntervalStart": "2017-02-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234680445,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "2.0100",
+                    "ChargeId": "ch.energy_assistance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-27",
+                    "IntervalStart": "2017-02-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234680446,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "3.8100",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-27",
+                    "IntervalStart": "2017-02-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234680447,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -2137,7 +2371,7 @@
             "peak_demand": "18.9940",
             "start": "2017-03-27",
             "tariff": null,
-            "total_charge": "820.0500",
+            "total_charge": "1186.3800",
             "total_usage": "6767.2420",
             "line_items": [
                 {
@@ -2230,6 +2464,45 @@
                     "PK": 234705922,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 6,767.242200 kWh @ $0.05331",
+                    "ChargeAmount": "360.7600",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0533",
+                    "ChargeUnitsUsed": "6767.2420",
+                    "IntervalEnd": "2017-04-26",
+                    "IntervalStart": "2017-03-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234705923,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.9600",
+                    "ChargeId": "ch.energy_assistance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-26",
+                    "IntervalStart": "2017-03-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234705924,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "3.6100",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-04-26",
+                    "IntervalStart": "2017-03-27",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234705925,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -2241,7 +2514,7 @@
             "peak_demand": "19.5700",
             "start": "2017-04-26",
             "tariff": null,
-            "total_charge": "901.2000",
+            "total_charge": "1442.2900",
             "total_usage": "6395.2430",
             "line_items": [
                 {
@@ -2425,6 +2698,71 @@
                     "PK": 234717292,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 1,102.628200 kWh @ $0.05331",
+                    "ChargeAmount": "58.7800",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0533",
+                    "ChargeUnitsUsed": "1102.6280",
+                    "IntervalEnd": "2017-05-25",
+                    "IntervalStart": "2017-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234717293,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION - TOTAL - 5,292.615200 kWh @ $0.07646",
+                    "ChargeAmount": "404.6700",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0765",
+                    "ChargeUnitsUsed": "5292.6150",
+                    "IntervalEnd": "2017-05-25",
+                    "IntervalStart": "2017-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234717294,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "DEMAND - TOTAL - SUMMER 15.150700 kW @ $4.65000",
+                    "ChargeAmount": "70.4500",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.6500",
+                    "ChargeUnitsUsed": "15.1510",
+                    "IntervalEnd": "2017-05-25",
+                    "IntervalStart": "2017-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234717295,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.8500",
+                    "ChargeId": "ch.energy_assistance",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-25",
+                    "IntervalStart": "2017-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234717296,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "5.3400",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-25",
+                    "IntervalStart": "2017-04-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234717297,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -2436,7 +2774,7 @@
             "peak_demand": "19.9940",
             "start": "2017-05-25",
             "tariff": null,
-            "total_charge": "970.9300",
+            "total_charge": "1612.7000",
             "total_usage": "7067.9610",
             "line_items": [
                 {
@@ -2542,6 +2880,58 @@
                     "PK": 234777318,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- SUMMER",
+                    "ChargeAmount": "540.4200",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0765",
+                    "ChargeUnitsUsed": "7067.9610",
+                    "IntervalEnd": "2017-06-26",
+                    "IntervalStart": "2017-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234777319,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "DEMAND - TOTAL - SUMMER 19.994400 kW @ $4.65000",
+                    "ChargeAmount": "92.9700",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.6500",
+                    "ChargeUnitsUsed": "19.9940",
+                    "IntervalEnd": "2017-06-26",
+                    "IntervalStart": "2017-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234777320,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "2.0500",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-26",
+                    "IntervalStart": "2017-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234777321,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "6.3300",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-06-26",
+                    "IntervalStart": "2017-05-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234777322,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -2553,7 +2943,7 @@
             "peak_demand": "17.9800",
             "start": "2017-06-26",
             "tariff": null,
-            "total_charge": "880.9000",
+            "total_charge": "1461.6600",
             "total_usage": "6402.7680",
             "line_items": [
                 {
@@ -2763,6 +3153,58 @@
                     "PK": 234878757,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- SUMMER",
+                    "ChargeAmount": "489.5600",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0765",
+                    "ChargeUnitsUsed": "6402.7680",
+                    "IntervalEnd": "2017-07-26",
+                    "IntervalStart": "2017-06-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234878758,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "DEMAND - TOTAL - SUMMER 17.980000 kW @ $4.65000",
+                    "ChargeAmount": "83.6100",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.6500",
+                    "ChargeUnitsUsed": "17.9800",
+                    "IntervalEnd": "2017-07-26",
+                    "IntervalStart": "2017-06-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234878759,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "1.8600",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-26",
+                    "IntervalStart": "2017-06-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234878760,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "5.7300",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-07-26",
+                    "IntervalStart": "2017-06-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234878761,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -2774,7 +3216,7 @@
             "peak_demand": "19.0080",
             "start": "2017-07-26",
             "tariff": null,
-            "total_charge": "951.7200",
+            "total_charge": "1592.9400",
             "total_usage": "7120.6200",
             "line_items": [
                 {
@@ -2880,6 +3322,58 @@
                     "PK": 234921342,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- SUMMER",
+                    "ChargeAmount": "544.4400",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0765",
+                    "ChargeUnitsUsed": "7120.6200",
+                    "IntervalEnd": "2017-08-25",
+                    "IntervalStart": "2017-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234921343,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "DEMAND - TOTAL - SUMMER 19.008000 kW @ $4.65000",
+                    "ChargeAmount": "88.3900",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.6500",
+                    "ChargeUnitsUsed": "19.0080",
+                    "IntervalEnd": "2017-08-25",
+                    "IntervalStart": "2017-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234921344,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "2.0600",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-25",
+                    "IntervalStart": "2017-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234921345,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "6.3300",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-08-25",
+                    "IntervalStart": "2017-07-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234921346,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -2891,7 +3385,7 @@
             "peak_demand": "19.8480",
             "start": "2017-08-25",
             "tariff": null,
-            "total_charge": "954.5200",
+            "total_charge": "1581.9600",
             "total_usage": "6892.0180",
             "line_items": [
                 {
@@ -2997,6 +3491,58 @@
                     "PK": 234986882,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- SUMMER",
+                    "ChargeAmount": "526.9600",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0765",
+                    "ChargeUnitsUsed": "6892.0180",
+                    "IntervalEnd": "2017-09-26",
+                    "IntervalStart": "2017-08-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234986883,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "DEMAND - TOTAL - SUMMER 19.848000 kW @ $4.65000",
+                    "ChargeAmount": "92.2900",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.6500",
+                    "ChargeUnitsUsed": "19.8480",
+                    "IntervalEnd": "2017-09-26",
+                    "IntervalStart": "2017-08-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234986884,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "2.0000",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-26",
+                    "IntervalStart": "2017-08-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234986885,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "6.1900",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-09-26",
+                    "IntervalStart": "2017-08-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234986886,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -3008,7 +3554,7 @@
             "peak_demand": "19.1880",
             "start": "2017-09-26",
             "tariff": null,
-            "total_charge": "876.9000",
+            "total_charge": "1446.8600",
             "total_usage": "6190.2920",
             "line_items": [
                 {
@@ -3114,6 +3660,58 @@
                     "PK": 235064339,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- SUMMER",
+                    "ChargeAmount": "473.3100",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0765",
+                    "ChargeUnitsUsed": "6190.2920",
+                    "IntervalEnd": "2017-10-25",
+                    "IntervalStart": "2017-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235064340,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "DEMAND - TOTAL - SUMMER 19.188000 kW @ $4.65000",
+                    "ChargeAmount": "89.2200",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.6500",
+                    "ChargeUnitsUsed": "19.1880",
+                    "IntervalEnd": "2017-10-25",
+                    "IntervalStart": "2017-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235064341,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "1.8000",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-25",
+                    "IntervalStart": "2017-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235064342,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "5.6300",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-10-25",
+                    "IntervalStart": "2017-09-26",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235064343,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -3125,7 +3723,7 @@
             "peak_demand": "19.8280",
             "start": "2017-10-25",
             "tariff": null,
-            "total_charge": "790.7000",
+            "total_charge": "1186.5300",
             "total_usage": "6248.9990",
             "line_items": [
                 {
@@ -3335,6 +3933,71 @@
                     "PK": 235125323,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- WINTER",
+                    "ChargeAmount": "249.8500",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0533",
+                    "ChargeUnitsUsed": "4686.7490",
+                    "IntervalEnd": "2017-11-22",
+                    "IntervalStart": "2017-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235125324,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- SUMMER",
+                    "ChargeAmount": "119.4500",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0765",
+                    "ChargeUnitsUsed": "1562.2500",
+                    "IntervalEnd": "2017-11-22",
+                    "IntervalStart": "2017-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235125325,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "DEMAND - TOTAL - SUMMER 4.477300 kW @ $4.65000",
+                    "ChargeAmount": "20.8200",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.6500",
+                    "ChargeUnitsUsed": "4.4770",
+                    "IntervalEnd": "2017-11-22",
+                    "IntervalStart": "2017-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235125326,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "1.8100",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-22",
+                    "IntervalStart": "2017-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235125327,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "3.9000",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-11-22",
+                    "IntervalStart": "2017-10-25",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235125328,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -3346,7 +4009,7 @@
             "peak_demand": "19.2680",
             "start": "2017-11-22",
             "tariff": null,
-            "total_charge": "789.8200",
+            "total_charge": "1146.7600",
             "total_usage": "6593.7720",
             "line_items": [
                 {
@@ -3452,6 +4115,45 @@
                     "PK": 235168948,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- WINTER",
+                    "ChargeAmount": "351.5100",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0533",
+                    "ChargeUnitsUsed": "6593.7720",
+                    "IntervalEnd": "2017-12-23",
+                    "IntervalStart": "2017-11-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235168949,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "1.9100",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-23",
+                    "IntervalStart": "2017-11-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235168950,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "3.5200",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-12-23",
+                    "IntervalStart": "2017-11-22",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235168951,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -3463,7 +4165,7 @@
             "peak_demand": "18.8760",
             "start": "2017-12-23",
             "tariff": null,
-            "total_charge": "760.4200",
+            "total_charge": "1109.4400",
             "total_usage": "6447.3120",
             "line_items": [
                 {
@@ -3673,6 +4375,45 @@
                     "PK": 235243493,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- WINTER",
+                    "ChargeAmount": "343.7100",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0533",
+                    "ChargeUnitsUsed": "6447.3120",
+                    "IntervalEnd": "2018-01-24",
+                    "IntervalStart": "2017-12-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235243494,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "1.8700",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-24",
+                    "IntervalStart": "2017-12-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235243495,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "3.4400",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-01-24",
+                    "IntervalStart": "2017-12-23",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235243496,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [
@@ -3684,7 +4425,7 @@
             "peak_demand": "20.1120",
             "start": "2018-01-24",
             "tariff": null,
-            "total_charge": "807.0800",
+            "total_charge": "1170.3200",
             "total_usage": "6710.0310",
             "line_items": [
                 {
@@ -3790,6 +4531,45 @@
                     "PK": 235295916,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "GENERATION-TOTAL- WINTER",
+                    "ChargeAmount": "357.7100",
+                    "ChargeId": "ch.generation_services",
+                    "ChargeRatePerUnit": "0.0533",
+                    "ChargeUnitsUsed": "6710.0310",
+                    "IntervalEnd": "2018-02-23",
+                    "IntervalStart": "2018-01-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235295917,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Commission Surcharge",
+                    "ChargeAmount": "1.9500",
+                    "ChargeId": "ch.renewable_energy_surcharge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-23",
+                    "IntervalStart": "2018-01-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235295918,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Local Utility Users Tax",
+                    "ChargeAmount": "3.5800",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-02-23",
+                    "IntervalStart": "2018-01-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235295919,
+                    "ThirdPartyProvider": "PeninsulaCleanEnergyCA",
+                    "UsageUnit": ""
                 }
             ],
             "source_urls": [

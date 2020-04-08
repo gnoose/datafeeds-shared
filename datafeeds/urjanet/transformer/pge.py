@@ -164,7 +164,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
         bill_history = DateIntervalTree()
         for account in ordered_accounts:
             usage_periods = self.get_account_billing_periods(account)
-            for ival in usage_periods.intervals():
+            for ival in sorted(usage_periods.intervals(), reverse=True):
                 if bill_history.overlaps(ival.begin, ival.end):
                     log.debug(
                         "Skipping overlapping usage period: account_pk={}, start={}, end={}".format(
@@ -172,9 +172,12 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                         )
                     )
                 else:
+                    log.debug("Adding usage period: %s - %s", ival.begin, ival.end)
                     bill_history.add(
                         ival.begin, ival.end, PacificGasElectricBillingPeriod()
                     )
+        # fix periods where start/end are the same
+        bill_history = DateIntervalTree.shift_endpoints_start(bill_history)
 
         # Next, we go through the accounts again and insert relevant charge/usage information into the computed
         # billing periods
@@ -270,15 +273,53 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                         else:
                             statement_data[period].add_utility_charge(charge)
                     else:
-                        log.debug("Charge end date exceeds billing period, skipping:")
-                        log_charge(log, charge, indent=1)
+                        # CleanPowerSF and Peninsula Clean Power have date ranges that are off by
+                        # 1; include these
+                        """
+                        mysql> SELECT IntervalStart, IntervalEnd, ThirdPartyProvider
+                        from `Charge` where MeterFK=20335900;
+                        +---------------+-------------+--------------------+
+                        | IntervalStart | IntervalEnd | ThirdPartyProvider |
+                        +---------------+-------------+--------------------+
+                        | 2019-10-01    | 2019-10-31  |                    |
+                        ...
+                        | 2019-10-01    | 2019-11-01  | CleanPowerSF       |
+
+                        https://snapmeter.com/api/v2/5a692e888df5cb756ed1ed0e/meters/4504960933350245/bills/13512160309428950/download
+                          PG&E 5/25/2017 - 6/25/2017 32 billing days
+                          Peninsula Clean Energy 5/25/2017 - 6/26/2017 33 billing days
+                        https://snapmeter.com/api/v2/5a692e888df5cb756ed1ed0e/meters/4504960933350245/bills/22519539173272649/download
+                          PG&E 6/26/2017 - 7/25/2017 30 billing days
+                          Peninsula Clean Energy 6/26/2017 - 7/26/2017 31 billing days
+                        """
+                        date_diff = (charge.IntervalEnd - period.end).days
+                        if charge.ThirdPartyProvider and date_diff == 1:
+                            log.info(
+                                "including 3rd party charge %s in %s",
+                                charge.PK,
+                                period.end,
+                            )
+                            log_charge(log, charge, indent=1)
+                            statement_data[period].add_third_party_charge(charge)
+                        else:
+                            log.debug(
+                                "Charge %s end date %s exceeds billing period %s, skipping:",
+                                charge.PK,
+                                charge.IntervalEnd,
+                                period.end,
+                            )
+                            log_charge(log, charge, indent=1)
                 elif not periods:
                     log.debug(
-                        "Charge doesn't belong to a known billing period, skipping:"
+                        "Charge %s doesn't belong to a known billing period, skipping:",
+                        charge.PK,
                     )
                     log_charge(log, charge, indent=1)
                 else:
-                    log.debug("Charge maps to multiple billing periods, skipping:")
+                    log.debug(
+                        "Charge %s maps to multiple billing periods, skipping:",
+                        charge.PK,
+                    )
                     log_charge(log, charge, indent=1)
 
             for usage in meter.usages:

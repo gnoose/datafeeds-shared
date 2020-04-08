@@ -1,7 +1,7 @@
 {
     "accounts": [
         {
-            "AccountNumber": "54532153522",
+            "AccountNumber": "31100110300",
             "AmountDue": "94165.5100",
             "IntervalEnd": "2013-04-26",
             "IntervalStart": "2013-03-27",
@@ -9,7 +9,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581879,
             "PreviousBalance": "41231.2900",
-            "RawAccountNumber": "5453215352-2",
+            "RawAccountNumber": "3110011030-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e484581-855e-dc21-a0f6-22000a8d9e56",
             "StatementDate": "2013-05-06",
             "StatementType": "statement_type_bill",
@@ -332,7 +332,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "34413045335",
+            "AccountNumber": "84862482821",
             "AmountDue": "58225.5200",
             "IntervalEnd": "2013-06-26",
             "IntervalStart": "2013-05-28",
@@ -340,7 +340,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581881,
             "PreviousBalance": "65007.4600",
-            "RawAccountNumber": "3441304533-5",
+            "RawAccountNumber": "8486248282-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e484581-9410-df39-a0f6-22000a8d9e56",
             "StatementDate": "2013-07-05",
             "StatementType": "statement_type_bill",
@@ -507,7 +507,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "10413141131",
+            "AccountNumber": "26126112260",
             "AmountDue": "38249.0300",
             "IntervalEnd": "2013-11-23",
             "IntervalStart": "2013-10-23",
@@ -515,7 +515,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581886,
             "PreviousBalance": "92446.7300",
-            "RawAccountNumber": "1041314113-1",
+            "RawAccountNumber": "2612611226-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e760cde-942f-d1a6-8029-22000a2f8437",
             "StatementDate": "2013-12-05",
             "StatementType": "statement_type_bill",
@@ -552,7 +552,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "51311135515",
+            "AccountNumber": "36563252333",
             "AmountDue": "65007.4600",
             "IntervalEnd": "2013-05-29",
             "IntervalStart": "2013-04-26",
@@ -560,7 +560,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581887,
             "PreviousBalance": "94165.5100",
-            "RawAccountNumber": "5131113551-5",
+            "RawAccountNumber": "3656325233-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e484581-b31b-dba0-a0f6-22000a8d9e56",
             "StatementDate": "2013-06-05",
             "StatementType": "statement_type_bill",
@@ -727,7 +727,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "18532151123",
+            "AccountNumber": "06230126001",
             "AmountDue": "46722.9600",
             "IntervalEnd": "2014-03-28",
             "IntervalStart": "2014-02-26",
@@ -735,7 +735,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581890,
             "PreviousBalance": "43235.6300",
-            "RawAccountNumber": "1853215112-3",
+            "RawAccountNumber": "0623012600-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e497d7b-2f6d-d0f9-9cb2-22000a8d9e28",
             "StatementDate": "2014-04-03",
             "StatementType": "statement_type_bill",
@@ -772,7 +772,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "80033303830",
+            "AccountNumber": "80181111810",
             "AmountDue": "67780.3700",
             "IntervalEnd": "2014-06-26",
             "IntervalStart": "2014-05-28",
@@ -780,7 +780,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581891,
             "PreviousBalance": "76826.9500",
-            "RawAccountNumber": "8003330383-0",
+            "RawAccountNumber": "8018111181-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e497d7b-44b6-d456-9cb2-22000a8d9e28",
             "StatementDate": "2014-07-03",
             "StatementType": "statement_type_bill",
@@ -817,7 +817,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "85233323835",
+            "AccountNumber": "08540454005",
             "AmountDue": "143584.7800",
             "IntervalEnd": "2014-07-28",
             "IntervalStart": "2014-06-26",
@@ -825,7 +825,7 @@
             "OutstandingBalance": "67780.3700",
             "PK": 5581892,
             "PreviousBalance": "67780.3700",
-            "RawAccountNumber": "8523332383-5",
+            "RawAccountNumber": "0854045400-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e497d7b-48ba-d21e-9cb2-22000a8d9e28",
             "StatementDate": "2014-08-05",
             "StatementType": "statement_type_bill",
@@ -862,7 +862,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "30463141336",
+            "AccountNumber": "95051101910",
             "AmountDue": "48116.0600",
             "IntervalEnd": "2014-04-28",
             "IntervalStart": "2013-10-24",
@@ -870,7 +870,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581893,
             "PreviousBalance": "46722.9600",
-            "RawAccountNumber": "3046314133-6",
+            "RawAccountNumber": "9505110191-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e75b67b-7bdd-d5b7-bb22-22000a951f61",
             "StatementDate": "2014-05-07",
             "StatementType": "statement_type_adjustment",
@@ -933,7 +933,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "12012000127",
+            "AccountNumber": "67006600666",
             "AmountDue": "76826.9500",
             "IntervalEnd": "2014-05-29",
             "IntervalStart": "2013-11-14",
@@ -941,7 +941,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581894,
             "PreviousBalance": "48116.0600",
-            "RawAccountNumber": "1201200012-7",
+            "RawAccountNumber": "6700660066-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e75b67c-e06a-d342-bb22-22000a951f61",
             "StatementDate": "2014-06-05",
             "StatementType": "statement_type_adjustment",
@@ -978,7 +978,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "60433346633",
+            "AccountNumber": "23346336266",
             "AmountDue": "72326.3100",
             "IntervalEnd": "2014-10-27",
             "IntervalStart": "2014-09-26",
@@ -986,7 +986,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581895,
             "PreviousBalance": "71924.7900",
-            "RawAccountNumber": "6043334663-3",
+            "RawAccountNumber": "2334633626-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e497d7a-25f8-d851-9cb2-22000a8d9e28",
             "StatementDate": "2014-11-04",
             "StatementType": "statement_type_bill",
@@ -1036,7 +1036,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "72254221744",
+            "AccountNumber": "80030008804",
             "AmountDue": "52083.2000",
             "IntervalEnd": "2014-11-25",
             "IntervalStart": "2014-10-25",
@@ -1044,7 +1044,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581896,
             "PreviousBalance": "72326.3100",
-            "RawAccountNumber": "7225422174-4",
+            "RawAccountNumber": "8003000880-4",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e490895-a91a-d13f-97c2-22000b8487b7",
             "StatementDate": "2014-12-04",
             "StatementType": "statement_type_bill",
@@ -1094,7 +1094,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "33442442320",
+            "AccountNumber": "31611161316",
             "AmountDue": "215692.9100",
             "IntervalEnd": "2014-08-27",
             "IntervalStart": "2014-07-26",
@@ -1102,7 +1102,7 @@
             "OutstandingBalance": "143584.7800",
             "PK": 5581897,
             "PreviousBalance": "143584.7800",
-            "RawAccountNumber": "3344244232-0",
+            "RawAccountNumber": "3161116131-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e497d7b-3ecc-d96f-9cb2-22000a8d9e28",
             "StatementDate": "2014-09-05",
             "StatementType": "statement_type_bill",
@@ -1152,7 +1152,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "57577557571",
+            "AccountNumber": "73343433733",
             "AmountDue": "71924.7900",
             "IntervalEnd": "2014-09-26",
             "IntervalStart": "2014-08-26",
@@ -1160,7 +1160,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5581898,
             "PreviousBalance": "215692.9100",
-            "RawAccountNumber": "5757755757-1",
+            "RawAccountNumber": "7334343373-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e497d7a-2d1d-d1b6-9cb2-22000a8d9e28",
             "StatementDate": "2014-10-06",
             "StatementType": "statement_type_bill",
@@ -1210,7 +1210,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "47577157477",
+            "AccountNumber": "28166110260",
             "AmountDue": "42989.2900",
             "IntervalEnd": "2014-12-26",
             "IntervalStart": "2014-11-25",
@@ -1218,7 +1218,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5582721,
             "PreviousBalance": "52083.2000",
-            "RawAccountNumber": "4757715747-7",
+            "RawAccountNumber": "2816611026-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e49873e-44ef-dca9-a002-22000a8e8f9f",
             "StatementDate": "2015-01-06",
             "StatementType": "statement_type_bill",
@@ -1268,7 +1268,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "12252121121",
+            "AccountNumber": "30110011301",
             "AmountDue": "44831.8300",
             "IntervalEnd": "2015-01-27",
             "IntervalStart": "2014-12-24",
@@ -1276,7 +1276,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5582798,
             "PreviousBalance": "42989.2900",
-            "RawAccountNumber": "1225212112-1",
+            "RawAccountNumber": "3011001130-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e4b26af-fffd-d00b-b9ba-22000a8d9e37",
             "StatementDate": "2015-02-04",
             "StatementType": "statement_type_bill",
@@ -1326,7 +1326,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "07273323033",
+            "AccountNumber": "35233523332",
             "AmountDue": "43456.3800",
             "IntervalEnd": "2015-02-26",
             "IntervalStart": "2015-01-24",
@@ -1334,7 +1334,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5582947,
             "PreviousBalance": "44831.8300",
-            "RawAccountNumber": "0727332303-3",
+            "RawAccountNumber": "3523352333-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e4cd3f2-66e1-d601-bc83-22000b198edc",
             "StatementDate": "2015-03-05",
             "StatementType": "statement_type_bill",
@@ -1384,7 +1384,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "95110115903",
+            "AccountNumber": "15353531136",
             "AmountDue": "43048.5700",
             "IntervalEnd": "2015-03-27",
             "IntervalStart": "2015-02-25",
@@ -1392,7 +1392,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5583044,
             "PreviousBalance": "43456.3800",
-            "RawAccountNumber": "9511011590-3",
+            "RawAccountNumber": "1535353113-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e4e27e9-4066-d12a-af7b-22000a49966a",
             "StatementDate": "2015-04-06",
             "StatementType": "statement_type_bill",
@@ -1442,7 +1442,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "86202828820",
+            "AccountNumber": "20003004234",
             "AmountDue": "45166.0000",
             "IntervalEnd": "2015-04-28",
             "IntervalStart": "2015-03-27",
@@ -1450,7 +1450,7 @@
             "OutstandingBalance": "-2419.6000",
             "PK": 5583905,
             "PreviousBalance": "43048.5700",
-            "RawAccountNumber": "8620282882-0",
+            "RawAccountNumber": "2000300423-4",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e4fd476-f1b8-df81-83e2-22000b178e6f",
             "StatementDate": "2015-05-06",
             "StatementType": "statement_type_bill",
@@ -1500,7 +1500,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "55050505505",
+            "AccountNumber": "68222628622",
             "AmountDue": "58407.9000",
             "IntervalEnd": "2015-05-28",
             "IntervalStart": "2015-04-25",
@@ -1508,7 +1508,7 @@
             "OutstandingBalance": "294.3000",
             "PK": 5583974,
             "PreviousBalance": "45460.3000",
-            "RawAccountNumber": "5505050550-5",
+            "RawAccountNumber": "6822262862-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e50f533-903a-d3be-b317-22000b1e83eb",
             "StatementDate": "2015-06-04",
             "StatementType": "statement_type_bill",
@@ -1558,7 +1558,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "31366131367",
+            "AccountNumber": "84851881816",
             "AmountDue": "63820.6600",
             "IntervalEnd": "2015-07-23",
             "IntervalStart": "2015-05-27",
@@ -1566,7 +1566,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5584228,
             "PreviousBalance": "58407.9000",
-            "RawAccountNumber": "3136613136-7",
+            "RawAccountNumber": "8485188181-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e544c8f-400f-d77a-97cd-22000b93c3fb",
             "StatementDate": "2015-07-28",
             "StatementType": "statement_type_bill",
@@ -1668,7 +1668,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "21033000235",
+            "AccountNumber": "12262620123",
             "AmountDue": "130326.7600",
             "IntervalEnd": "2015-07-27",
             "IntervalStart": "2015-06-25",
@@ -1676,7 +1676,7 @@
             "OutstandingBalance": "63820.6600",
             "PK": 5584229,
             "PreviousBalance": "63820.6600",
-            "RawAccountNumber": "2103300023-5",
+            "RawAccountNumber": "1226262012-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e546215-f51c-deaf-b522-22000b848c7d",
             "StatementDate": "2015-08-06",
             "StatementType": "statement_type_bill",
@@ -1726,7 +1726,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "96293129937",
+            "AccountNumber": "23033302233",
             "AmountDue": "201026.4000",
             "IntervalEnd": "2015-08-26",
             "IntervalStart": "2015-07-24",
@@ -1734,7 +1734,7 @@
             "OutstandingBalance": "130326.7600",
             "PK": 5584334,
             "PreviousBalance": "130326.7600",
-            "RawAccountNumber": "9629312993-7",
+            "RawAccountNumber": "2303330223-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e558f9e-9de9-dec0-9243-22000b8ecb4b",
             "StatementDate": "2015-09-04",
             "StatementType": "statement_type_bill",
@@ -1784,7 +1784,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "06712170027",
+            "AccountNumber": "51543153535",
             "AmountDue": "69540.6500",
             "IntervalEnd": "2015-09-25",
             "IntervalStart": "2015-08-25",
@@ -1792,7 +1792,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5584522,
             "PreviousBalance": "201026.4000",
-            "RawAccountNumber": "0671217002-7",
+            "RawAccountNumber": "5154315353-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e57605e-1db7-dcd7-bedf-22000b819b83",
             "StatementDate": "2015-10-05",
             "StatementType": "statement_type_bill",
@@ -1842,7 +1842,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "51101512515",
+            "AccountNumber": "56650561500",
             "AmountDue": "63226.5300",
             "IntervalEnd": "2015-10-26",
             "IntervalStart": "2015-09-24",
@@ -1850,7 +1850,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5584673,
             "PreviousBalance": "69540.6500",
-            "RawAccountNumber": "5110151251-5",
+            "RawAccountNumber": "5665056150-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e58d296-550d-d5bf-a252-22000bcc8b3d",
             "StatementDate": "2015-11-04",
             "StatementType": "statement_type_bill",
@@ -1900,7 +1900,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "02005002055",
+            "AccountNumber": "50555555555",
             "AmountDue": "45843.8700",
             "IntervalEnd": "2015-11-24",
             "IntervalStart": "2015-10-23",
@@ -1908,7 +1908,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5584987,
             "PreviousBalance": "63226.5300",
-            "RawAccountNumber": "0200500205-5",
+            "RawAccountNumber": "5055555555-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e5a558b-e0fc-de7c-bc4c-22000bcc8eb8",
             "StatementDate": "2015-12-07",
             "StatementType": "statement_type_bill",
@@ -1958,7 +1958,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "63450344601",
+            "AccountNumber": "88882880820",
             "AmountDue": "44464.8900",
             "IntervalEnd": "2015-12-24",
             "IntervalStart": "2015-11-21",
@@ -1966,7 +1966,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5585095,
             "PreviousBalance": "45843.8700",
-            "RawAccountNumber": "6345034460-1",
+            "RawAccountNumber": "8888288082-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e5ba89e-f6b4-da30-9fef-22000a2f856e",
             "StatementDate": "2016-01-06",
             "StatementType": "statement_type_bill",
@@ -2016,7 +2016,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "95150011903",
+            "AccountNumber": "56353032530",
             "AmountDue": "46382.0000",
             "IntervalEnd": "2016-01-26",
             "IntervalStart": "2015-12-23",
@@ -2024,7 +2024,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5585404,
             "PreviousBalance": "44464.8900",
-            "RawAccountNumber": "9515001190-3",
+            "RawAccountNumber": "5635303253-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e5d23e2-da4f-da88-862e-22000b954fa3",
             "StatementDate": "2016-02-04",
             "StatementType": "statement_type_bill",
@@ -2074,7 +2074,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "05525151050",
+            "AccountNumber": "80003000838",
             "AmountDue": "48077.7600",
             "IntervalEnd": "2016-02-25",
             "IntervalStart": "2015-12-04",
@@ -2082,7 +2082,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5585537,
             "PreviousBalance": "46382.0000",
-            "RawAccountNumber": "0552515105-0",
+            "RawAccountNumber": "8000300083-8",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e5e5eb5-1864-dfee-84f2-22000a9508a1",
             "StatementDate": "2016-03-03",
             "StatementType": "statement_type_bill",
@@ -2133,9 +2133,9 @@
                 {
                     "IntervalEnd": "2016-02-24",
                     "IntervalStart": "2016-01-26",
-                    "MeterNumber": "5338838388",
+                    "MeterNumber": "0444438144",
                     "PK": 20032867,
-                    "PODid": "4623362466",
+                    "PODid": "0430113040",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -2231,9 +2231,9 @@
                 {
                     "IntervalEnd": "2015-12-23",
                     "IntervalStart": "2015-12-04",
-                    "MeterNumber": "4005555555",
+                    "MeterNumber": "1110003101",
                     "PK": 20032869,
-                    "PODid": "5311101500",
+                    "PODid": "1771077112",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -2329,9 +2329,9 @@
                 {
                     "IntervalEnd": "2016-01-25",
                     "IntervalStart": "2015-12-24",
-                    "MeterNumber": "0116641166",
+                    "MeterNumber": "6111116613",
                     "PK": 20032870,
-                    "PODid": "7075777777",
+                    "PODid": "9925002909",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -2502,7 +2502,7 @@
             ]
         },
         {
-            "AccountNumber": "98333033931",
+            "AccountNumber": "73773273732",
             "AmountDue": "48168.4000",
             "IntervalEnd": "2016-03-25",
             "IntervalStart": "2016-02-23",
@@ -2510,7 +2510,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5585836,
             "PreviousBalance": "48077.7600",
-            "RawAccountNumber": "9833303393-1",
+            "RawAccountNumber": "7377327373-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e600a7b-3cbe-d0bb-ae6b-22000b8e822d",
             "StatementDate": "2016-04-04",
             "StatementType": "statement_type_bill",
@@ -2548,9 +2548,9 @@
                 {
                     "IntervalEnd": "2016-03-24",
                     "IntervalStart": "2016-02-25",
-                    "MeterNumber": "5555512252",
+                    "MeterNumber": "1009909990",
                     "PK": 20034795,
-                    "PODid": "7116011731",
+                    "PODid": "8186108801",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -2796,7 +2796,7 @@
             ]
         },
         {
-            "AccountNumber": "10403340131",
+            "AccountNumber": "71162111721",
             "AmountDue": "46965.9800",
             "IntervalEnd": "2016-04-26",
             "IntervalStart": "2016-03-24",
@@ -2804,7 +2804,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5585987,
             "PreviousBalance": "48168.4000",
-            "RawAccountNumber": "1040334013-1",
+            "RawAccountNumber": "7116211172-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e617496-d976-db5a-b9d1-22000a951f23",
             "StatementDate": "2016-05-04",
             "StatementType": "statement_type_bill",
@@ -2842,9 +2842,9 @@
                 {
                     "IntervalEnd": "2016-04-25",
                     "IntervalStart": "2016-03-25",
-                    "MeterNumber": "7776667266",
+                    "MeterNumber": "8008810886",
                     "PK": 20035328,
-                    "PODid": "3351335353",
+                    "PODid": "2222022242",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -2940,7 +2940,7 @@
             ]
         },
         {
-            "AccountNumber": "15322232124",
+            "AccountNumber": "00200020002",
             "AmountDue": "55430.3600",
             "IntervalEnd": "2016-05-25",
             "IntervalStart": "2016-04-23",
@@ -2948,7 +2948,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5586214,
             "PreviousBalance": "46965.9800",
-            "RawAccountNumber": "1532223212-4",
+            "RawAccountNumber": "0020002000-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e62d762-3cd3-d2bc-9d3e-22000b1a876c",
             "StatementDate": "2016-06-03",
             "StatementType": "statement_type_bill",
@@ -2986,9 +2986,9 @@
                 {
                     "IntervalEnd": "2016-05-24",
                     "IntervalStart": "2016-04-26",
-                    "MeterNumber": "0008827287",
+                    "MeterNumber": "4006641264",
                     "PK": 20035940,
-                    "PODid": "0505200005",
+                    "PODid": "8848004814",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -3159,7 +3159,7 @@
             ]
         },
         {
-            "AccountNumber": "62303130630",
+            "AccountNumber": "40041007417",
             "AmountDue": "63177.7600",
             "IntervalEnd": "2016-06-24",
             "IntervalStart": "2016-05-24",
@@ -3167,7 +3167,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5586518,
             "PreviousBalance": "55430.3600",
-            "RawAccountNumber": "6230313063-0",
+            "RawAccountNumber": "4004100741-7",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e64a3b9-1efb-d400-a042-22000a9517e1",
             "StatementDate": "2016-07-05",
             "StatementType": "statement_type_bill",
@@ -3205,9 +3205,9 @@
                 {
                     "IntervalEnd": "2016-06-23",
                     "IntervalStart": "2016-05-25",
-                    "MeterNumber": "0556618565",
+                    "MeterNumber": "1008805580",
                     "PK": 20036752,
-                    "PODid": "4644344424",
+                    "PODid": "7634443752",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -3378,7 +3378,7 @@
             ]
         },
         {
-            "AccountNumber": "85828882881",
+            "AccountNumber": "96351331911",
             "AmountDue": "67543.9600",
             "IntervalEnd": "2016-07-26",
             "IntervalStart": "2016-06-23",
@@ -3386,7 +3386,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5586817,
             "PreviousBalance": "63177.7600",
-            "RawAccountNumber": "8582888288-1",
+            "RawAccountNumber": "9635133191-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e66734a-c727-d02b-9db2-22000aec8e88",
             "StatementDate": "2016-08-03",
             "StatementType": "statement_type_bill",
@@ -3424,9 +3424,9 @@
                 {
                     "IntervalEnd": "2016-07-25",
                     "IntervalStart": "2016-06-24",
-                    "MeterNumber": "0224434140",
+                    "MeterNumber": "1225515255",
                     "PK": 20037724,
-                    "PODid": "2040204252",
+                    "PODid": "3886388333",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -3522,7 +3522,7 @@
             ]
         },
         {
-            "AccountNumber": "88558450884",
+            "AccountNumber": "88818588885",
             "AmountDue": "65861.1000",
             "IntervalEnd": "2016-08-25",
             "IntervalStart": "2016-07-23",
@@ -3530,7 +3530,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5587031,
             "PreviousBalance": "67543.9600",
-            "RawAccountNumber": "8855845088-4",
+            "RawAccountNumber": "8881858888-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e67c66e-3acc-ddd7-898a-22000bb0e70e",
             "StatementDate": "2016-09-01",
             "StatementType": "statement_type_bill",
@@ -3568,9 +3568,9 @@
                 {
                     "IntervalEnd": "2016-08-24",
                     "IntervalStart": "2016-07-26",
-                    "MeterNumber": "6005523556",
+                    "MeterNumber": "1666601160",
                     "PK": 20038356,
-                    "PODid": "5032533563",
+                    "PODid": "6616111602",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -3767,7 +3767,7 @@
             ]
         },
         {
-            "AccountNumber": "38540050302",
+            "AccountNumber": "66653563635",
             "AmountDue": "62821.2500",
             "IntervalEnd": "2016-09-26",
             "IntervalStart": "2016-08-24",
@@ -3775,7 +3775,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5587240,
             "PreviousBalance": "65861.1000",
-            "RawAccountNumber": "3854005030-2",
+            "RawAccountNumber": "6665356363-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e697663-32d3-de3d-a836-22000a8d9ee6",
             "StatementDate": "2016-10-14",
             "StatementType": "statement_type_bill",
@@ -3813,9 +3813,9 @@
                 {
                     "IntervalEnd": "2016-09-25",
                     "IntervalStart": "2016-08-25",
-                    "MeterNumber": "3110031204",
+                    "MeterNumber": "5550056105",
                     "PK": 20039099,
-                    "PODid": "9766116962",
+                    "PODid": "0636663044",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -3924,7 +3924,7 @@
             ]
         },
         {
-            "AccountNumber": "45543454436",
+            "AccountNumber": "76717772777",
             "AmountDue": "122583.4300",
             "IntervalEnd": "2016-10-25",
             "IntervalStart": "2016-09-23",
@@ -3932,7 +3932,7 @@
             "OutstandingBalance": "62821.2500",
             "PK": 5587389,
             "PreviousBalance": "62821.2500",
-            "RawAccountNumber": "4554345443-6",
+            "RawAccountNumber": "7671777277-7",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6ab1c5-5eeb-d573-8ee3-22000a8a1b36",
             "StatementDate": "2016-11-03",
             "StatementType": "statement_type_bill",
@@ -3970,9 +3970,9 @@
                 {
                     "IntervalEnd": "2016-10-24",
                     "IntervalStart": "2016-09-26",
-                    "MeterNumber": "1115551454",
+                    "MeterNumber": "0440011000",
                     "PK": 20039547,
-                    "PODid": "2125512251",
+                    "PODid": "7623222712",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -4169,7 +4169,7 @@
             ]
         },
         {
-            "AccountNumber": "22200220206",
+            "AccountNumber": "55562650523",
             "AmountDue": "46657.8200",
             "IntervalEnd": "2016-11-23",
             "IntervalStart": "2016-10-22",
@@ -4177,7 +4177,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5587623,
             "PreviousBalance": "122583.4300",
-            "RawAccountNumber": "2220022020-6",
+            "RawAccountNumber": "5556265052-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6c81bc-2be9-d21f-83ac-22000b942638",
             "StatementDate": "2016-12-05",
             "StatementType": "statement_type_bill",
@@ -4215,9 +4215,9 @@
                 {
                     "IntervalEnd": "2016-11-22",
                     "IntervalStart": "2016-10-25",
-                    "MeterNumber": "5555520054",
+                    "MeterNumber": "4444414141",
                     "PK": 20040212,
-                    "PODid": "2845224202",
+                    "PODid": "4414111414",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -4531,7 +4531,7 @@
             ]
         },
         {
-            "AccountNumber": "13153313135",
+            "AccountNumber": "04203024031",
             "AmountDue": "45835.8900",
             "IntervalEnd": "2016-12-23",
             "IntervalStart": "2016-11-22",
@@ -4539,7 +4539,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5587762,
             "PreviousBalance": "46657.8200",
-            "RawAccountNumber": "1315331313-5",
+            "RawAccountNumber": "0420302403-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6d8c94-14cd-d8c8-872f-22000b8e4bb5",
             "StatementDate": "2017-01-04",
             "StatementType": "statement_type_bill",
@@ -4564,9 +4564,9 @@
                 {
                     "IntervalEnd": "2016-12-22",
                     "IntervalStart": "2016-11-23",
-                    "MeterNumber": "1666636166",
+                    "MeterNumber": "2000025306",
                     "PK": 20040635,
-                    "PODid": "5335303531",
+                    "PODid": "8555555853",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -4727,7 +4727,7 @@
             ]
         },
         {
-            "AccountNumber": "98444444943",
+            "AccountNumber": "87447444874",
             "AmountDue": "54235.2900",
             "IntervalEnd": "2017-01-24",
             "IntervalStart": "2016-12-22",
@@ -4735,7 +4735,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5588113,
             "PreviousBalance": "45835.8900",
-            "RawAccountNumber": "9844444494-3",
+            "RawAccountNumber": "8744744487-4",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6f42a6-4014-df7a-9813-22000b10201d",
             "StatementDate": "2017-02-03",
             "StatementType": "statement_type_adjustment",
@@ -4786,9 +4786,9 @@
                 {
                     "IntervalEnd": "2017-01-23",
                     "IntervalStart": "2016-12-23",
-                    "MeterNumber": "1442212124",
+                    "MeterNumber": "3888839183",
                     "PK": 20041754,
-                    "PODid": "1624342164",
+                    "PODid": "6076717671",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -5050,7 +5050,7 @@
             ]
         },
         {
-            "AccountNumber": "68841888610",
+            "AccountNumber": "06666666066",
             "AmountDue": "49735.7200",
             "IntervalEnd": "2017-02-24",
             "IntervalStart": "2017-01-22",
@@ -5058,7 +5058,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5588471,
             "PreviousBalance": "54235.2900",
-            "RawAccountNumber": "6884188861-0",
+            "RawAccountNumber": "0666666606-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e70bc6f-a292-d507-81c0-22000bcc8152",
             "StatementDate": "2017-03-06",
             "StatementType": "statement_type_bill",
@@ -5083,9 +5083,9 @@
                 {
                     "IntervalEnd": "2017-02-23",
                     "IntervalStart": "2017-01-24",
-                    "MeterNumber": "3555533353",
+                    "MeterNumber": "3662236323",
                     "PK": 20042770,
-                    "PODid": "4412071477",
+                    "PODid": "2877277277",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -5246,7 +5246,7 @@
             ]
         },
         {
-            "AccountNumber": "98383833933",
+            "AccountNumber": "91513051939",
             "AmountDue": "47826.0900",
             "IntervalEnd": "2017-03-27",
             "IntervalStart": "2017-02-23",
@@ -5254,7 +5254,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5588663,
             "PreviousBalance": "49735.7200",
-            "RawAccountNumber": "9838383393-3",
+            "RawAccountNumber": "9151305193-9",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e71ebc9-d1b5-db66-9e35-22000a0dd006",
             "StatementDate": "2017-04-04",
             "StatementType": "statement_type_bill",
@@ -5279,9 +5279,9 @@
                 {
                     "IntervalEnd": "2017-03-26",
                     "IntervalStart": "2017-02-24",
-                    "MeterNumber": "1003332332",
+                    "MeterNumber": "4334403444",
                     "PK": 20043334,
-                    "PODid": "9124292922",
+                    "PODid": "1122212172",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -5556,7 +5556,7 @@
             ]
         },
         {
-            "AccountNumber": "45544554445",
+            "AccountNumber": "15021001115",
             "AmountDue": "46460.6200",
             "IntervalEnd": "2017-04-26",
             "IntervalStart": "2017-03-23",
@@ -5564,7 +5564,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5588940,
             "PreviousBalance": "47826.0900",
-            "RawAccountNumber": "4554455444-5",
+            "RawAccountNumber": "1502100111-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e734a69-df0f-d898-9446-22000bcc8564",
             "StatementDate": "2017-05-04",
             "StatementType": "statement_type_bill",
@@ -5589,9 +5589,9 @@
                 {
                     "IntervalEnd": "2017-04-25",
                     "IntervalStart": "2017-03-27",
-                    "MeterNumber": "3332233222",
+                    "MeterNumber": "1998829782",
                     "PK": 20045908,
-                    "PODid": "7111211754",
+                    "PODid": "5545544555",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -5752,7 +5752,7 @@
             ]
         },
         {
-            "AccountNumber": "08822383023",
+            "AccountNumber": "13565553157",
             "AmountDue": "58996.3300",
             "IntervalEnd": "2017-05-25",
             "IntervalStart": "2017-03-27",
@@ -5760,7 +5760,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5589217,
             "PreviousBalance": "46460.6200",
-            "RawAccountNumber": "0882238302-3",
+            "RawAccountNumber": "1356555315-7",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e74e234-3bd4-da1d-af11-22000a1da2d5",
             "StatementDate": "2017-06-02",
             "StatementType": "statement_type_adjustment",
@@ -5785,9 +5785,9 @@
                 {
                     "IntervalEnd": "2017-05-24",
                     "IntervalStart": "2017-04-26",
-                    "MeterNumber": "2226635662",
+                    "MeterNumber": "6003319336",
                     "PK": 20046764,
-                    "PODid": "9159715977",
+                    "PODid": "8644334844",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -6077,7 +6077,7 @@
                     "IntervalStart": "2017-03-27",
                     "MeterNumber": "",
                     "PK": 20046766,
-                    "PODid": "8880888881",
+                    "PODid": "6342204631",
                     "ServiceType": "electric",
                     "Tariff": "unknown_tariff",
                     "charges": [
@@ -6100,7 +6100,7 @@
             ]
         },
         {
-            "AccountNumber": "57421447514",
+            "AccountNumber": "34443441332",
             "AmountDue": "65543.7200",
             "IntervalEnd": "2017-06-26",
             "IntervalStart": "2017-05-24",
@@ -6108,7 +6108,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5589987,
             "PreviousBalance": "58996.3300",
-            "RawAccountNumber": "5742144751-4",
+            "RawAccountNumber": "3444344133-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e767f9f-51a2-db79-a3e3-22000a951e5a",
             "StatementDate": "2017-07-05",
             "StatementType": "statement_type_bill",
@@ -6133,9 +6133,9 @@
                 {
                     "IntervalEnd": "2017-06-25",
                     "IntervalStart": "2017-05-25",
-                    "MeterNumber": "2007714272",
+                    "MeterNumber": "7008875787",
                     "PK": 20054203,
-                    "PODid": "0150155051",
+                    "PODid": "5756355576",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -6322,7 +6322,7 @@
             ]
         },
         {
-            "AccountNumber": "58330433503",
+            "AccountNumber": "81138811880",
             "AmountDue": "63588.5300",
             "IntervalEnd": "2017-07-26",
             "IntervalStart": "2017-06-23",
@@ -6330,7 +6330,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5591155,
             "PreviousBalance": "65543.7200",
-            "RawAccountNumber": "5833043350-3",
+            "RawAccountNumber": "8113881188-0",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e77d424-621e-d7c1-b308-22000a950bcb",
             "StatementDate": "2017-08-03",
             "StatementType": "statement_type_bill",
@@ -6355,9 +6355,9 @@
                 {
                     "IntervalEnd": "2017-07-25",
                     "IntervalStart": "2017-06-26",
-                    "MeterNumber": "1551138111",
+                    "MeterNumber": "5335527053",
                     "PK": 20060266,
-                    "PODid": "8844104834",
+                    "PODid": "2266626224",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -6658,7 +6658,7 @@
             ]
         },
         {
-            "AccountNumber": "56625660556",
+            "AccountNumber": "51533353535",
             "AmountDue": "63706.8000",
             "IntervalEnd": "2017-08-25",
             "IntervalStart": "2017-07-25",
@@ -6666,7 +6666,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5592106,
             "PreviousBalance": "63588.5300",
-            "RawAccountNumber": "5662566055-6",
+            "RawAccountNumber": "5153335353-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7932a3-fbd2-d869-a61c-22000ab339ca",
             "StatementDate": "2017-08-31",
             "StatementType": "statement_type_bill",
@@ -6691,9 +6691,9 @@
                 {
                     "IntervalEnd": "2017-08-24",
                     "IntervalStart": "2017-07-26",
-                    "MeterNumber": "4334453441",
+                    "MeterNumber": "0008802880",
                     "PK": 20063051,
-                    "PODid": "0006660066",
+                    "PODid": "4444414444",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -6880,7 +6880,7 @@
             ]
         },
         {
-            "AccountNumber": "14111111114",
+            "AccountNumber": "05363332032",
             "AmountDue": "67156.9200",
             "IntervalEnd": "2017-09-26",
             "IntervalStart": "2017-08-23",
@@ -6888,7 +6888,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5594251,
             "PreviousBalance": "63706.8000",
-            "RawAccountNumber": "1411111111-4",
+            "RawAccountNumber": "0536333203-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7aadab-359f-d8ee-8633-22000b380008",
             "StatementDate": "2017-10-03",
             "StatementType": "statement_type_bill",
@@ -6913,9 +6913,9 @@
                 {
                     "IntervalEnd": "2017-09-25",
                     "IntervalStart": "2017-08-25",
-                    "MeterNumber": "3883338330",
+                    "MeterNumber": "1996619269",
                     "PK": 20067970,
-                    "PODid": "2665456264",
+                    "PODid": "3734333332",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -7102,7 +7102,7 @@
             ]
         },
         {
-            "AccountNumber": "00500550000",
+            "AccountNumber": "66630666603",
             "AmountDue": "63073.0600",
             "IntervalEnd": "2017-10-25",
             "IntervalStart": "2017-09-23",
@@ -7110,7 +7110,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5596654,
             "PreviousBalance": "67156.9200",
-            "RawAccountNumber": "0050055000-0",
+            "RawAccountNumber": "6663066660-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7c54ba-c52d-dcab-84a0-22000bb0e932",
             "StatementDate": "2017-11-03",
             "StatementType": "statement_type_bill",
@@ -7135,9 +7135,9 @@
                 {
                     "IntervalEnd": "2017-10-24",
                     "IntervalStart": "2017-09-26",
-                    "MeterNumber": "5222252225",
+                    "MeterNumber": "1220006106",
                     "PK": 20072882,
-                    "PODid": "9472227977",
+                    "PODid": "0005210002",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -7324,7 +7324,7 @@
             ]
         },
         {
-            "AccountNumber": "25401142212",
+            "AccountNumber": "58065008558",
             "AmountDue": "47069.6000",
             "IntervalEnd": "2017-11-22",
             "IntervalStart": "2017-10-24",
@@ -7332,7 +7332,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5597681,
             "PreviousBalance": "63073.0600",
-            "RawAccountNumber": "2540114221-2",
+            "RawAccountNumber": "5806500855-8",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7dc1e3-72d8-d936-98b1-22000b1407b3",
             "StatementDate": "2017-12-05",
             "StatementType": "statement_type_bill",
@@ -7357,9 +7357,9 @@
                 {
                     "IntervalEnd": "2017-11-21",
                     "IntervalStart": "2017-10-25",
-                    "MeterNumber": "3332227723",
+                    "MeterNumber": "1111113111",
                     "PK": 20076286,
-                    "PODid": "9633313933",
+                    "PODid": "6151155611",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -7673,7 +7673,7 @@
             ]
         },
         {
-            "AccountNumber": "92522252924",
+            "AccountNumber": "35150010301",
             "AmountDue": "47656.7100",
             "IntervalEnd": "2017-12-23",
             "IntervalStart": "2017-11-21",
@@ -7681,7 +7681,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5598574,
             "PreviousBalance": "47069.6000",
-            "RawAccountNumber": "9252225292-4",
+            "RawAccountNumber": "3515001030-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e7f53a0-f430-dc65-96bc-22000b94c333",
             "StatementDate": "2018-01-02",
             "StatementType": "statement_type_bill",
@@ -7706,9 +7706,9 @@
                 {
                     "IntervalEnd": "2017-12-22",
                     "IntervalStart": "2017-11-22",
-                    "MeterNumber": "8881188814",
+                    "MeterNumber": "1555535353",
                     "PK": 20079389,
-                    "PODid": "4246444446",
+                    "PODid": "2217201270",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -7882,7 +7882,7 @@
             ]
         },
         {
-            "AccountNumber": "26311030211",
+            "AccountNumber": "60550052605",
             "AmountDue": "45709.0300",
             "IntervalEnd": "2018-01-24",
             "IntervalStart": "2017-12-21",
@@ -7890,7 +7890,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5599766,
             "PreviousBalance": "47656.7100",
-            "RawAccountNumber": "2631103021-1",
+            "RawAccountNumber": "6055005260-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e80c2d3-4025-d5d4-999e-22000b72c95d",
             "StatementDate": "2018-01-31",
             "StatementType": "statement_type_bill",
@@ -7915,9 +7915,9 @@
                 {
                     "IntervalEnd": "2018-01-23",
                     "IntervalStart": "2017-12-23",
-                    "MeterNumber": "0666667663",
+                    "MeterNumber": "3337739275",
                     "PK": 20084708,
-                    "PODid": "3802230373",
+                    "PODid": "2511201214",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -8205,7 +8205,7 @@
             ]
         },
         {
-            "AccountNumber": "44044401444",
+            "AccountNumber": "44444440444",
             "AmountDue": "29402.8000",
             "IntervalEnd": "2018-02-23",
             "IntervalStart": "2018-01-23",
@@ -8213,7 +8213,7 @@
             "OutstandingBalance": "-11148.9100",
             "PK": 5601317,
             "PreviousBalance": "34560.1200",
-            "RawAccountNumber": "4404440144-4",
+            "RawAccountNumber": "4444444044-4",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e826bde-06f8-d7e2-9ca1-22000acb8136",
             "StatementDate": "2018-03-05",
             "StatementType": "statement_type_bill",
@@ -8238,9 +8238,9 @@
                 {
                     "IntervalEnd": "2018-02-22",
                     "IntervalStart": "2018-01-24",
-                    "MeterNumber": "0008877887",
+                    "MeterNumber": "1113313334",
                     "PK": 20088622,
-                    "PODid": "7474017744",
+                    "PODid": "7041314730",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -8414,7 +8414,7 @@
             ]
         },
         {
-            "AccountNumber": "67411747617",
+            "AccountNumber": "76250122705",
             "AmountDue": "27008.0400",
             "IntervalEnd": "2018-03-26",
             "IntervalStart": "2018-02-22",
@@ -8422,7 +8422,7 @@
             "OutstandingBalance": "-11148.9500",
             "PK": 5603015,
             "PreviousBalance": "29402.8000",
-            "RawAccountNumber": "6741174761-7",
+            "RawAccountNumber": "7625012270-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e83cb7e-4c5a-d545-a1ff-22000bb3f0c5",
             "StatementDate": "2018-04-04",
             "StatementType": "statement_type_bill",
@@ -8447,9 +8447,9 @@
                 {
                     "IntervalEnd": "2018-03-25",
                     "IntervalStart": "2018-02-23",
-                    "MeterNumber": "0000000000",
+                    "MeterNumber": "7770070000",
                     "PK": 20093539,
-                    "PODid": "1120112131",
+                    "PODid": "7243344744",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -8737,7 +8737,7 @@
             ]
         },
         {
-            "AccountNumber": "18118111188",
+            "AccountNumber": "62255621655",
             "AmountDue": "25255.7800",
             "IntervalEnd": "2018-04-25",
             "IntervalStart": "2018-03-23",
@@ -8745,7 +8745,7 @@
             "OutstandingBalance": "-11148.9500",
             "PK": 5605347,
             "PreviousBalance": "27008.0400",
-            "RawAccountNumber": "1811811118-8",
+            "RawAccountNumber": "6225562165-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8538f0-dd14-dfe8-ad67-22000a416017",
             "StatementDate": "2018-05-04",
             "StatementType": "statement_type_bill",
@@ -8770,9 +8770,9 @@
                 {
                     "IntervalEnd": "2018-04-24",
                     "IntervalStart": "2018-03-26",
-                    "MeterNumber": "5115513050",
+                    "MeterNumber": "3112203024",
                     "PK": 20099742,
-                    "PODid": "5235553525",
+                    "PODid": "4801210408",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -8933,7 +8933,7 @@
             ]
         },
         {
-            "AccountNumber": "88136618866",
+            "AccountNumber": "22432142222",
             "AmountDue": "43336.1200",
             "IntervalEnd": "2018-05-24",
             "IntervalStart": "2018-04-24",
@@ -8941,7 +8941,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5608621,
             "PreviousBalance": "25255.7800",
-            "RawAccountNumber": "8813661886-6",
+            "RawAccountNumber": "2243214222-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e86af5b-3691-d4a0-b5f8-22000a29c795",
             "StatementDate": "2018-06-05",
             "StatementType": "statement_type_bill",
@@ -8966,9 +8966,9 @@
                 {
                     "IntervalEnd": "2018-05-23",
                     "IntervalStart": "2018-04-25",
-                    "MeterNumber": "6777719073",
+                    "MeterNumber": "0440011001",
                     "PK": 20108136,
-                    "PODid": "9843284982",
+                    "PODid": "7544744731",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -9256,7 +9256,7 @@
             ]
         },
         {
-            "AccountNumber": "34373032337",
+            "AccountNumber": "00043302032",
             "AmountDue": "45805.9700",
             "IntervalEnd": "2018-06-25",
             "IntervalStart": "2018-05-23",
@@ -9264,7 +9264,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5610621,
             "PreviousBalance": "43336.1200",
-            "RawAccountNumber": "3437303233-7",
+            "RawAccountNumber": "0004330203-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8845cc-a123-db1b-8bba-22000a2fe15e",
             "StatementDate": "2018-07-05",
             "StatementType": "statement_type_bill",
@@ -9289,9 +9289,9 @@
                 {
                     "IntervalEnd": "2018-06-24",
                     "IntervalStart": "2018-05-24",
-                    "MeterNumber": "7111117116",
+                    "MeterNumber": "1002277722",
                     "PK": 20115738,
-                    "PODid": "5825222503",
+                    "PODid": "3335333333",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -9465,7 +9465,7 @@
             ]
         },
         {
-            "AccountNumber": "43050004403",
+            "AccountNumber": "66662262622",
             "AmountDue": "45965.8800",
             "IntervalEnd": "2018-07-25",
             "IntervalStart": "2018-06-22",
@@ -9473,7 +9473,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5612779,
             "PreviousBalance": "45805.9700",
-            "RawAccountNumber": "4305000440-3",
+            "RawAccountNumber": "6666226262-2",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e89b382-d151-d45b-bafe-22000a09fa8f",
             "StatementDate": "2018-08-03",
             "StatementType": "statement_type_bill",
@@ -9498,9 +9498,9 @@
                 {
                     "IntervalEnd": "2018-07-24",
                     "IntervalStart": "2018-06-25",
-                    "MeterNumber": "0000030300",
+                    "MeterNumber": "0221104212",
                     "PK": 20121882,
-                    "PODid": "5751325502",
+                    "PODid": "7532073713",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -9674,7 +9674,7 @@
             ]
         },
         {
-            "AccountNumber": "61333632636",
+            "AccountNumber": "75171417714",
             "AmountDue": "44108.8200",
             "IntervalEnd": "2018-08-24",
             "IntervalStart": "2018-06-21",
@@ -9682,7 +9682,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5620433,
             "PreviousBalance": "45965.8800",
-            "RawAccountNumber": "6133363263-6",
+            "RawAccountNumber": "7517141771-4",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8bcaf8-9049-de42-87ae-22000ab3ccca",
             "StatementDate": "2018-09-05",
             "StatementType": "statement_type_adjustment",
@@ -9707,9 +9707,9 @@
                 {
                     "IntervalEnd": "2018-08-23",
                     "IntervalStart": "2018-07-25",
-                    "MeterNumber": "0000020004",
+                    "MeterNumber": "3449939093",
                     "PK": 20159002,
-                    "PODid": "7845244761",
+                    "PODid": "0832173071",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -9883,7 +9883,7 @@
             ]
         },
         {
-            "AccountNumber": "52505555555",
+            "AccountNumber": "01363333031",
             "AmountDue": "47146.2000",
             "IntervalEnd": "2018-09-25",
             "IntervalStart": "2018-08-23",
@@ -9891,7 +9891,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5623212,
             "PreviousBalance": "44108.8200",
-            "RawAccountNumber": "5250555555-5",
+            "RawAccountNumber": "0136333303-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8cb080-bde3-d921-88bc-22000a8cdcdd",
             "StatementDate": "2018-10-04",
             "StatementType": "statement_type_bill",
@@ -9916,9 +9916,9 @@
                 {
                     "IntervalEnd": "2018-09-24",
                     "IntervalStart": "2018-08-24",
-                    "MeterNumber": "4007755074",
+                    "MeterNumber": "6661106010",
                     "PK": 20169897,
-                    "PODid": "1423442174",
+                    "PODid": "7771107734",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -10193,7 +10193,7 @@
             ]
         },
         {
-            "AccountNumber": "02531151015",
+            "AccountNumber": "70001401711",
             "AmountDue": "50229.2200",
             "IntervalEnd": "2018-10-25",
             "IntervalStart": "2018-08-22",
@@ -10201,7 +10201,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5626823,
             "PreviousBalance": "47646.5100",
-            "RawAccountNumber": "0253115101-5",
+            "RawAccountNumber": "7000140171-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8e35f5-52f6-ddc5-8b10-22000a417b7c",
             "StatementDate": "2018-11-05",
             "StatementType": "statement_type_adjustment",
@@ -10226,9 +10226,9 @@
                 {
                     "IntervalEnd": "2018-10-24",
                     "IntervalStart": "2018-09-25",
-                    "MeterNumber": "1440041004",
+                    "MeterNumber": "1338837787",
                     "PK": 20181864,
-                    "PODid": "9802000944",
+                    "PODid": "9773337971",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -10402,7 +10402,7 @@
             ]
         },
         {
-            "AccountNumber": "93423142933",
+            "AccountNumber": "42444444446",
             "AmountDue": "76647.5600",
             "IntervalEnd": "2018-11-27",
             "IntervalStart": "2018-10-24",
@@ -10410,7 +10410,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5629404,
             "PreviousBalance": "50229.2200",
-            "RawAccountNumber": "9342314293-3",
+            "RawAccountNumber": "4244444444-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8fd5e5-7704-da3a-88c5-0ec231ebcba8",
             "StatementDate": "2018-12-05",
             "StatementType": "statement_type_bill",
@@ -10435,9 +10435,9 @@
                 {
                     "IntervalEnd": "2018-11-26",
                     "IntervalStart": "2018-10-25",
-                    "MeterNumber": "1444413442",
+                    "MeterNumber": "3777713776",
                     "PK": 20195657,
-                    "PODid": "2814201233",
+                    "PODid": "2322112221",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -10725,7 +10725,7 @@
             ]
         },
         {
-            "AccountNumber": "91741971917",
+            "AccountNumber": "07157417074",
             "AmountDue": "40722.3000",
             "IntervalEnd": "2018-12-26",
             "IntervalStart": "2018-10-23",
@@ -10733,7 +10733,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5630742,
             "PreviousBalance": "76647.5600",
-            "RawAccountNumber": "9174197191-7",
+            "RawAccountNumber": "0715741707-4",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e911ad4-9dc4-def0-85e0-0e71f94c6a0c",
             "StatementDate": "2019-01-03",
             "StatementType": "statement_type_adjustment",
@@ -10744,9 +10744,9 @@
                 {
                     "IntervalEnd": "2018-12-25",
                     "IntervalStart": "2018-11-27",
-                    "MeterNumber": "4002233424",
+                    "MeterNumber": "7777777777",
                     "PK": 20201966,
-                    "PODid": "9221442944",
+                    "PODid": "6343334664",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -10907,7 +10907,7 @@
             ]
         },
         {
-            "AccountNumber": "88822881825",
+            "AccountNumber": "36036100363",
             "AmountDue": "36397.7800",
             "IntervalEnd": "2019-01-25",
             "IntervalStart": "2018-12-22",
@@ -10915,7 +10915,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5633439,
             "PreviousBalance": "40722.3000",
-            "RawAccountNumber": "8882288182-5",
+            "RawAccountNumber": "3603610036-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e92ab09-cfdf-d360-a120-0ecafd15f5aa",
             "StatementDate": "2019-02-05",
             "StatementType": "statement_type_bill",
@@ -10926,9 +10926,9 @@
                 {
                     "IntervalEnd": "2019-01-24",
                     "IntervalStart": "2018-12-26",
-                    "MeterNumber": "7117734175",
+                    "MeterNumber": "2220001102",
                     "PK": 20213964,
-                    "PODid": "1013211102",
+                    "PODid": "5155355555",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -11190,7 +11190,7 @@
             ]
         },
         {
-            "AccountNumber": "25153211235",
+            "AccountNumber": "00000000006",
             "AmountDue": "48562.7700",
             "IntervalEnd": "2019-02-26",
             "IntervalStart": "2018-12-21",
@@ -11198,7 +11198,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5639168,
             "PreviousBalance": "36397.7800",
-            "RawAccountNumber": "2515321123-5",
+            "RawAccountNumber": "0000000000-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e940e79-7ecc-d471-bf0d-0ece8474a9f2",
             "StatementDate": "2019-03-05",
             "StatementType": "statement_type_adjustment",
@@ -11209,9 +11209,9 @@
                 {
                     "IntervalEnd": "2019-02-25",
                     "IntervalStart": "2019-01-25",
-                    "MeterNumber": "0002207422",
+                    "MeterNumber": "3336655364",
                     "PK": 20230031,
-                    "PODid": "9834833988",
+                    "PODid": "0005010030",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -11372,7 +11372,7 @@
             ]
         },
         {
-            "AccountNumber": "72752172726",
+            "AccountNumber": "38166518365",
             "AmountDue": "38225.0200",
             "IntervalEnd": "2019-03-27",
             "IntervalStart": "2019-02-23",
@@ -11380,7 +11380,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5641048,
             "PreviousBalance": "48562.7700",
-            "RawAccountNumber": "7275217272-6",
+            "RawAccountNumber": "3816651836-5",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e95913c-df8d-dc11-b72b-0e1f1151e0ea",
             "StatementDate": "2019-04-05",
             "StatementType": "statement_type_bill",
@@ -11391,9 +11391,9 @@
                 {
                     "IntervalEnd": "2019-03-26",
                     "IntervalStart": "2019-02-26",
-                    "MeterNumber": "0000036303",
+                    "MeterNumber": "0883388138",
                     "PK": 20235707,
-                    "PODid": "4435033434",
+                    "PODid": "6666666664",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -11655,7 +11655,7 @@
             ]
         },
         {
-            "AccountNumber": "43444142443",
+            "AccountNumber": "60031600611",
             "AmountDue": "36181.0200",
             "IntervalEnd": "2019-04-26",
             "IntervalStart": "2019-02-23",
@@ -11663,7 +11663,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5643133,
             "PreviousBalance": "38225.0200",
-            "RawAccountNumber": "4344414244-3",
+            "RawAccountNumber": "6003160061-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e972a86-d9c9-d036-b277-0e73ca2d523e",
             "StatementDate": "2019-05-07",
             "StatementType": "statement_type_bill",
@@ -11674,9 +11674,9 @@
                 {
                     "IntervalEnd": "2019-04-25",
                     "IntervalStart": "2019-03-27",
-                    "MeterNumber": "0006600064",
+                    "MeterNumber": "1111129212",
                     "PK": 20247605,
-                    "PODid": "3503050353",
+                    "PODid": "4203430431",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -11837,7 +11837,7 @@
             ]
         },
         {
-            "AccountNumber": "94529959990",
+            "AccountNumber": "08321131013",
             "AmountDue": "41819.5600",
             "IntervalEnd": "2019-05-28",
             "IntervalStart": "2019-04-25",
@@ -11845,7 +11845,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5645283,
             "PreviousBalance": "36181.0200",
-            "RawAccountNumber": "9452995999-0",
+            "RawAccountNumber": "0832113101-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e988ad4-c86e-d80d-a273-0ed5e45a2bda",
             "StatementDate": "2019-06-04",
             "StatementType": "statement_type_bill",
@@ -11856,9 +11856,9 @@
                 {
                     "IntervalEnd": "2019-05-27",
                     "IntervalStart": "2019-04-26",
-                    "MeterNumber": "2113304231",
+                    "MeterNumber": "5227725270",
                     "PK": 20261017,
-                    "PODid": "0802110011",
+                    "PODid": "3433233352",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -12146,7 +12146,7 @@
             ]
         },
         {
-            "AccountNumber": "11111111112",
+            "AccountNumber": "47464647447",
             "AmountDue": "45008.5300",
             "IntervalEnd": "2019-06-26",
             "IntervalStart": "2019-05-24",
@@ -12154,7 +12154,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5650205,
             "PreviousBalance": "41819.5600",
-            "RawAccountNumber": "1111111111-2",
+            "RawAccountNumber": "4746464744-7",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9a2deb-677b-dabc-ada4-0e74d1e489c6",
             "StatementDate": "2019-07-08",
             "StatementType": "statement_type_bill",
@@ -12165,9 +12165,9 @@
                 {
                     "IntervalEnd": "2019-06-25",
                     "IntervalStart": "2019-05-28",
-                    "MeterNumber": "1336639463",
+                    "MeterNumber": "2888822182",
                     "PK": 20275565,
-                    "PODid": "6252155625",
+                    "PODid": "9225092921",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -12341,7 +12341,7 @@
             ]
         },
         {
-            "AccountNumber": "68000002608",
+            "AccountNumber": "64444040647",
             "AmountDue": "39766.9500",
             "IntervalEnd": "2019-07-26",
             "IntervalStart": "2019-06-25",
@@ -12349,7 +12349,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5652469,
             "PreviousBalance": "45008.5300",
-            "RawAccountNumber": "6800000260-8",
+            "RawAccountNumber": "6444404064-7",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9b9f50-d3bf-d5da-ac40-0e0e57a6f12a",
             "StatementDate": "2019-08-06",
             "StatementType": "statement_type_bill",
@@ -12360,9 +12360,9 @@
                 {
                     "IntervalEnd": "2019-07-25",
                     "IntervalStart": "2019-06-26",
-                    "MeterNumber": "1000026101",
+                    "MeterNumber": "9995509251",
                     "PK": 20284473,
-                    "PODid": "3222312303",
+                    "PODid": "9935993962",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -12663,7 +12663,7 @@
             ]
         },
         {
-            "AccountNumber": "63341633610",
+            "AccountNumber": "60516156666",
             "AmountDue": "46062.8500",
             "IntervalEnd": "2019-08-27",
             "IntervalStart": "2019-07-25",
@@ -12671,7 +12671,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5657787,
             "PreviousBalance": "39766.9500",
-            "RawAccountNumber": "6334163361-0",
+            "RawAccountNumber": "6051615666-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9d0a93-eef2-d094-9946-0e8639aecc2a",
             "StatementDate": "2019-09-04",
             "StatementType": "statement_type_bill",
@@ -12682,9 +12682,9 @@
                 {
                     "IntervalEnd": "2019-08-26",
                     "IntervalStart": "2019-07-26",
-                    "MeterNumber": "8008881881",
+                    "MeterNumber": "0114418144",
                     "PK": 20296895,
-                    "PODid": "2355505255",
+                    "PODid": "1831083138",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -12858,7 +12858,7 @@
             ]
         },
         {
-            "AccountNumber": "38543454333",
+            "AccountNumber": "05551550014",
             "AmountDue": "45519.0700",
             "IntervalEnd": "2019-09-26",
             "IntervalStart": "2019-08-24",
@@ -12866,7 +12866,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5668498,
             "PreviousBalance": "46062.8500",
-            "RawAccountNumber": "3854345433-3",
+            "RawAccountNumber": "0555155001-4",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9ea7e1-35a1-d3a0-8211-0e9698a1c784",
             "StatementDate": "2019-10-07",
             "StatementType": "statement_type_bill",
@@ -12877,9 +12877,9 @@
                 {
                     "IntervalEnd": "2019-09-25",
                     "IntervalStart": "2019-08-27",
-                    "MeterNumber": "8008827282",
+                    "MeterNumber": "0777709079",
                     "PK": 20320131,
-                    "PODid": "4204220412",
+                    "PODid": "5315511522",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -13053,7 +13053,7 @@
             ]
         },
         {
-            "AccountNumber": "62602262620",
+            "AccountNumber": "95301032913",
             "AmountDue": "44361.8600",
             "IntervalEnd": "2019-10-25",
             "IntervalStart": "2019-09-25",
@@ -13061,7 +13061,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5672755,
             "PreviousBalance": "45519.0700",
-            "RawAccountNumber": "6260226262-0",
+            "RawAccountNumber": "9530103291-3",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea01635-2a9c-d8ca-ac99-0eb306bb4eed",
             "StatementDate": "2019-11-05",
             "StatementType": "statement_type_bill",
@@ -13072,9 +13072,9 @@
                 {
                     "IntervalEnd": "2019-10-24",
                     "IntervalStart": "2019-09-26",
-                    "MeterNumber": "1555555551",
+                    "MeterNumber": "4774427245",
                     "PK": 20331101,
-                    "PODid": "6556055651",
+                    "PODid": "0133033022",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -13349,7 +13349,7 @@
             ]
         },
         {
-            "AccountNumber": "11001001113",
+            "AccountNumber": "58844188544",
             "AmountDue": "65399.9300",
             "IntervalEnd": "2019-11-25",
             "IntervalStart": "2019-10-24",
@@ -13357,7 +13357,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5676455,
             "PreviousBalance": "44361.8600",
-            "RawAccountNumber": "1100100111-3",
+            "RawAccountNumber": "5884418854-4",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea18420-d068-d305-929a-0e91dafdadbd",
             "StatementDate": "2019-12-04",
             "StatementType": "statement_type_bill",
@@ -13368,9 +13368,9 @@
                 {
                     "IntervalEnd": "2019-11-24",
                     "IntervalStart": "2019-10-25",
-                    "MeterNumber": "0005536250",
+                    "MeterNumber": "0440004002",
                     "PK": 20339718,
-                    "PODid": "0700000000",
+                    "PODid": "4116161441",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -13658,7 +13658,7 @@
             ]
         },
         {
-            "AccountNumber": "52055501550",
+            "AccountNumber": "26361332211",
             "AmountDue": "39927.4900",
             "IntervalEnd": "2019-12-26",
             "IntervalStart": "2019-11-22",
@@ -13666,7 +13666,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5679195,
             "PreviousBalance": "65399.9300",
-            "RawAccountNumber": "5205550155-0",
+            "RawAccountNumber": "2636133221-1",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea3216d-234d-db8b-8c2d-0e5b742d8edd",
             "StatementDate": "2020-01-06",
             "StatementType": "statement_type_bill",
@@ -13677,9 +13677,9 @@
                 {
                     "IntervalEnd": "2019-12-25",
                     "IntervalStart": "2019-11-25",
-                    "MeterNumber": "4550044505",
+                    "MeterNumber": "6667772576",
                     "PK": 20347199,
-                    "PODid": "0236003023",
+                    "PODid": "2334033234",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [
@@ -13840,7 +13840,7 @@
             ]
         },
         {
-            "AccountNumber": "21140110200",
+            "AccountNumber": "87882088826",
             "AmountDue": "40854.9600",
             "IntervalEnd": "2020-01-27",
             "IntervalStart": "2019-12-24",
@@ -13848,7 +13848,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5682376,
             "PreviousBalance": "39927.4900",
-            "RawAccountNumber": "2114011020-0",
+            "RawAccountNumber": "8788208882-6",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea481d5-a9db-de70-ac82-0efc6b37c109",
             "StatementDate": "2020-02-03",
             "StatementType": "statement_type_bill",
@@ -13859,9 +13859,9 @@
                 {
                     "IntervalEnd": "2020-01-26",
                     "IntervalStart": "2019-12-26",
-                    "MeterNumber": "2000027702",
+                    "MeterNumber": "0007711076",
                     "PK": 20355442,
-                    "PODid": "4772707462",
+                    "PODid": "1626322152",
                     "ServiceType": "electric",
                     "Tariff": "A10S Medium General Demand-Metered Service",
                     "charges": [

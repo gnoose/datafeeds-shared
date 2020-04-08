@@ -36,9 +36,14 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
         )
 
     def test_301_industrial_fixture(self):
-        """301 is a real meter that exhibits edge cases of CCA and corrections billing"""
+        """301 is a real meter that exhibits edge cases of CCA and corrections billing
+
+        meter oid 4504960933350245
+        """
         self.pge_fixture_test(
-            "301_input.json", "301_expected.json", start_date=date(2017, 1, 1),
+            "4504960933350245_input.json",
+            "4504960933350245_expected.json",
+            start_date=date(2017, 1, 1),
         )
 
     def test_3140_kearney_fixture(self):
@@ -54,9 +59,13 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
         )
 
     def test_90digital_fixture(self):
-        """The 90 fixture is a real meter that exhibits edge cases of CCA billing"""
+        """The 90 fixture is a real meter that exhibits edge cases of CCA billing
+
+        meter oid 4504827624949904"""
         self.pge_fixture_test(
-            "90_input.json", "90_expected.json", start_date=date(2017, 1, 1),
+            "4504827624949904_input.json",
+            "4504827624949904_expected.json",
+            start_date=date(2017, 1, 1),
         )
 
     def test_nem_charges(self):
@@ -91,6 +100,9 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
         self.pge_fixture_test(
             "4504832674154194_input.json", "4504832674154194_expected.json"
         )
+
+    def test_overlapping_periods(self):
+        self.pge_fixture_test("1830585771461_input.json", "1830585771461_expected.json")
 
 
 if __name__ == "__main__":
