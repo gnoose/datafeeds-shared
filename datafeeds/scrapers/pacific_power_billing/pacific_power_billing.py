@@ -36,7 +36,7 @@ class PacificPowerScraperException(Exception):
 
 class PacificPowerConfiguration(Configuration):
     def __init__(self, account_number: str, meter_number: str):
-        super().__init__()
+        super().__init__(scrape_bills=True)
         self.account_number = account_number
         self.meter_number = meter_number
 
@@ -223,7 +223,7 @@ class PacificPowerScraper(BaseWebScraper):
                 continue
 
             key = bill_upload.hash_bill_datum(self.meter_number, bill_datum)
-            attachment_entry = bill_upload.upload_bill(BytesIO(b), key)
+            attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(b), key)
             if attachment_entry:
                 bill_data.append(bill_datum._replace(attachments=[attachment_entry]))
             else:
