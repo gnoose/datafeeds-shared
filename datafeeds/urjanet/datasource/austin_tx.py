@@ -56,10 +56,13 @@ class AustinTXDatasource(UrjanetPyMySqlDataSource):
         """
         # The utility may totalize submeters, and have two meter numbers for one set of charges.
         # In this case, the SAID should contain both meter ids, separated by commas.
+        saids = []
+        # SAIDs may have a trailing letter that's not in the Urjanet version; try both versions
+        for said in self.said.split(","):
+            saids.append(said)
+            saids.append(re.sub(r"[A-Z]$", "", said))
         query = "SELECT * FROM Meter WHERE ServiceType in %s AND AccountFK=%s AND MeterNumber in %s"
-        result_set = self.fetch_all(
-            query, self.commodity_type.value, account_pk, self.said.split(",")
-        )
+        result_set = self.fetch_all(query, self.commodity_type.value, account_pk, saids)
         return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
 
