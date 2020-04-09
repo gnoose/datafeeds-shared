@@ -2,7 +2,8 @@ import json
 import requests
 import logging
 
-from typing import Optional, Dict
+from addict import Dict
+from typing import Optional
 from collections import namedtuple
 from dateutil.parser import parse as parse_datetime
 
@@ -35,7 +36,7 @@ class ApiError(Exception):
 
 class PGEEnergyExpertConfiguration(Configuration):
     def __init__(self, item_id):
-        super().__init__()
+        super().__init__(scrape_readings=True)
         self.item_id = item_id
 
 
