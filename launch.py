@@ -43,7 +43,6 @@ from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
 from datafeeds.scrapers.powertrack import datafeed as powertrack
 from datafeeds.scrapers.pse_interval import datafeed as pse_interval
 from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
-from datafeeds.scrapers.scl_meterwatch import datafeed as scl_meterwatch
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.sdge_greenbutton import datafeed as sdge_greenbutton_sync
 from datafeeds.scrapers.scl_meterwatch import datafeed as scl_meterwatch
@@ -154,7 +153,6 @@ scraper_functions = {
     "saltriver-billing": saltriver_billing,
     "saltriver-interval": saltriver_interval,
     "sandiego-water-urjanet": sandiego,
-    "scl-meterwatch": scl_meterwatch,
     "sdge-myaccount": sdge_myaccount,
     "sdge-urjanet": sdge,
     "sdge-green-button-sync": sdge_greenbutton_sync,
