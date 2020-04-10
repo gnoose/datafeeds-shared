@@ -46,6 +46,7 @@ from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
 from datafeeds.scrapers.scl_meterwatch import datafeed as scl_meterwatch
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
 from datafeeds.scrapers.sdge_greenbutton import datafeed as sdge_greenbutton_sync
+from datafeeds.scrapers.scl_meterwatch import datafeed as scl_meterwatch
 from datafeeds.scrapers.solaredge import datafeed as solaredge
 from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
@@ -162,6 +163,7 @@ scraper_functions = {
     "sce-react-basic-billing": sce_react_basic_billing,
     "sce-react-energymanager-interval": sce_react_energymanager_interval,
     "sce-react-energymanager-billing": sce_react_energymanager_billing,
+    "scl-meterwatch": scl_meterwatch,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
     "smud-energyprofiler-interval": smud_energyprofiler_interval,

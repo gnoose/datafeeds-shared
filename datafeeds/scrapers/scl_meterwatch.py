@@ -1,26 +1,13 @@
-import os
-import csv
 import logging
-from typing import List, Dict, Optional
-from math import ceil
+from typing import List, Optional
 
-from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.by import By
-
+from datafeeds.common import Timeline
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common.support import DateRange
 from datafeeds.common.support import Results
 from datafeeds.common.support import Configuration
 from datafeeds.common.typing import Status
-from datafeeds.common.util.selenium import (
-    IFrameSwitch,
-    file_exists_in_dir,
-    clear_downloads,
-)
+
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
@@ -28,12 +15,10 @@ from datafeeds.models import (
 )
 
 log = logging.getLogger(__name__)
-DATE_FORMAT = "%Y-%m-%d"
-MAX_INTERVAL_LENGTH = 1
 
 
 class SCLMeterWatchConfiguration(Configuration):
-    def __init__(self, meter_numbers: str):
+    def __init__(self, meter_numbers: List[str]):
         super().__init__(scrape_readings=True)
         self.meter_numbers = meter_numbers
 
@@ -44,18 +29,40 @@ class SCLMeterWatchScraper(BaseWebScraper):
         self.name = "SCL MeterWatch"
         self.url = "http://smw.seattle.gov"
 
-
     def _execute(self):
         self._driver.get(self.url)
-        # TODO:
-
-        return Results(readings=self.readings)
+        timeline = Timeline(self.start_date, self.end_date)
+        """
+            - go to http://smw.seattle.gov
+            - login
+            - get popup window
+        """
+        for meter_number in self._configuration.meter_numbers:
+            """
+            - choose account from Meter OR Meter Group dropdown (option value == meter_number)
+            - set dates in From Date, To Date (04/01/2020 format) (self.start_date, self.end_date)
+              - check available dates (Starts on 04/30/2018, Ends of 03/18/2020)
+              - continue if requested range not available
+            - click Download Data button
+              - saves to config.WORKING_DIRECTORY/15_minute_download.csv
+            - open file, read kWh Usage with csv into timeline (see energymanager_interval.py#221)
+              - get existing at datetime (timeline.lookup)
+              - timeline.insert current value + existing
+              - sample data:
+"Starting Date","Ending Date","Starting Time","Ending Time","kWh Cost","kWh Usage","kvarh"
+"03/01/2020","03/01/2020","00:00:01","00:15:00","$4.80","48.600","12.060"
+"03/01/2020","03/01/2020","00:15:01","00:30:00","$4.85","49.140","12.060"              
+            """
+            pass
+        return Results(readings=timeline.serialize())
 
 
 """
 BEGIN: old Firefox scraper for reference; remove when no longer needed
-"""
 
+convert etl_logging.get().debug(...) to log.debug(...)
+"""
+"""
 def _connect_and_download_data(username, password, service_id, start_date, end_date):
     firefox_profile = _build_profile(service_id)
     driver = _connect_to_firefox(firefox_profile)
@@ -98,7 +105,7 @@ def _connect_and_download_data(username, password, service_id, start_date, end_d
 
 def _build_profile(service_id):
     #In order to actually download files we have to use a bit of a hack.
-    #\Firefox by default puts up a dialog asking for a location
+    #Firefox by default puts up a dialog asking for a location
     #to save to, which is an issue as selenium can't respond to a native
     #dialog. Instead we setup a profile that allows us to bypass that
     #dialog and download straight away.
@@ -215,10 +222,11 @@ def _download_data(driver, service_id):
 
 def _outputpath(service_id):
     return "{0}/{1}".format(etl_logging.get().outputpath, service_id)
-
+"""
 """
 END: old Firefox scraper for reference; remove when no longer needed
 """
+
 
 def datafeed(
     account: SnapmeterAccount,
@@ -228,12 +236,15 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
 
-    configuration = SolrenGridConfiguration(
-        inverter_id=meter.service_id, site_id=datasource.meta.get("site_id")
-    )
+    meter_numbers = [meter.service_id]
+    # if totalized is set in meta, get list of meter numbers
+    totalized = (datasource.meta or {}).get("totalized")
+    if totalized:
+        meter_numbers = totalized.split(",")
+    configuration = SCLMeterWatchConfiguration(meter_numbers=meter_numbers)
 
     return run_datafeed(
-        SolrenScraper,
+        SCLMeterWatchScraper,
         account,
         meter,
         datasource,
