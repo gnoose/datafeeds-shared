@@ -1,5 +1,7 @@
 import time
 import logging
+import traceback
+
 import requests
 
 from io import BytesIO
@@ -64,7 +66,7 @@ class SMUDMyAccountBillingConfiguration(Configuration):
     def __init__(
         self, account_id: str,
     ):
-        super().__init__()
+        super().__init__(scrape_bills=True)
         self.account_id = account_id
 
 
@@ -73,7 +75,8 @@ class SmudMyAccountLoginPage(PageState):
 
     UsernameFieldId = "UserId"
     PasswordFieldId = "Password"
-    SignInCss = "div.action-bar button"
+    SignInForm = "sign-in-form"
+    SignInButton = '//button[@type="submit"]'
 
     def get_ready_condition(self):
         return EC.presence_of_element_located((By.ID, self.UsernameFieldId))
@@ -86,7 +89,9 @@ class SmudMyAccountLoginPage(PageState):
         log.info("Inserting credentials on login page.")
         self.driver.find_element_by_id(self.UsernameFieldId).send_keys(username)
         self.driver.find_element_by_id(self.PasswordFieldId).send_keys(password)
-        self.driver.find_element_by_css_selector(self.SignInCss).click()
+        self.driver.find_element_by_id(self.SignInForm).find_element_by_xpath(
+            self.SignInButton
+        ).click()
 
 
 class SmudMyAccountFailedLoginPage(PageState):
@@ -206,19 +211,19 @@ class SmudBillComparePage(PageState):
         return float(s.replace(",", ""))
 
     def _parse_raw_bill_data(self, raw_data: dict) -> BillPeriodDetails:
-        date_strings = raw_data.get("Bill Categories").split("-")
+        date_strings = raw_data.get("bill categories", "").split("-")
         return BillPeriodDetails(
             start=parse_date(date_strings[0]).date(),
             end=parse_date(date_strings[1]).date(),
             total_electric_charges=self._parse_cost_string(
-                raw_data.get("Total Electrical Charges")
+                raw_data.get("total electrical charges")
             ),
             total_charges=self._parse_cost_string(
-                raw_data.get("Total Electric Service Charges/Credits")
+                raw_data.get("total electric service charges/credits")
             ),
-            total_kwh=self._parse_usage_string(raw_data.get("Total kWh Used")),
-            max_kw=self._parse_usage_string(raw_data.get("Maximum kW")),
-            download_link=raw_data.get("Link"),
+            total_kwh=self._parse_usage_string(raw_data.get("total kwh used")),
+            max_kw=self._parse_usage_string(raw_data.get("maximum kw")),
+            download_link=raw_data.get("link"),
         )
 
     def get_visible_bill_details(self) -> List[BillPeriodDetails]:
@@ -253,7 +258,7 @@ class SmudBillComparePage(PageState):
             else:
                 column_texts = [col.text.strip() for col in billing_columns]
                 if len(column_texts) == 4:
-                    label = column_texts[0]
+                    label = column_texts[0].lower()
                     if label:
                         bill_1_raw_values[label] = column_texts[1]
                         bill_2_raw_values[label] = column_texts[2]
@@ -266,12 +271,13 @@ class SmudBillComparePage(PageState):
                 msg = "Failed to parse billing data from site. Raw values: {}".format(
                     raw_bill
                 )
+                traceback.print_exc()
                 raise UnexpectedBillDataException(msg) from e
 
         return results
 
     def select_bill(self, bill_period: BillPeriodSelector):
-        locator = "//div[@data-value='{}']".format(bill_period.value)
+        locator = "//option[@value='{}']".format(bill_period.value)
         self.driver.find_element_by_xpath(locator).click()
 
     def toggle_usage_details(self):
@@ -466,11 +472,11 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
 
     def bill_in_range(self, bill_detail: BillPeriodDetails) -> bool:
         """Determine whether a bill is in the scraper date range"""
-        if self.billing_start:
-            if bill_detail.start < self.billing_start:
+        if self.start_date:
+            if bill_detail.start < self.start_date:
                 return False
-        if self.billing_end:
-            if bill_detail.start > self.billing_end:
+        if self.end_date:
+            if bill_detail.start > self.end_date:
                 return False
         return True
 
