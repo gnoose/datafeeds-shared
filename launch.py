@@ -33,6 +33,7 @@ from datafeeds.scrapers.heco_interval import datafeed as heco_interval
 from datafeeds.scrapers.hudson import datafeed as hudson
 from datafeeds.scrapers.keller.keller import datafeed as keller
 from datafeeds.scrapers.ladwp_mvweb import datafeed as ladwp_mvweb
+from datafeeds.scrapers.nationalgrid_interval import datafeed as nationalgrid_interval
 from datafeeds.scrapers.nautilus import datafeed as nautilus
 from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
 from datafeeds.scrapers.pacific_power_billing.pacific_power_billing import (
@@ -137,6 +138,7 @@ scraper_functions = {
     "ladwp-water-urjanet": ladwp_water,
     "ladwp-urjanet": ladwp,
     "mountainview-urjanet": mountainview,
+    "nationalgrid-interval": nationalgrid_interval,
     "nationalgrid-urjanet": nationalgrid,
     "nve-urjanet": nve,
     "nautilus": nautilus,
