@@ -18,7 +18,7 @@ from dateutil import parser as date_parser
 
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.support import DateRange
-from datafeeds.common.exceptions import LoginError
+from datafeeds.common.exceptions import LoginError, InvalidMeterDataException
 from datafeeds.common.support import Results
 from datafeeds.common.support import Configuration
 
@@ -32,10 +32,6 @@ def _log(msg):
 
 
 class InvalidMeterException(Exception):
-    pass
-
-
-class InvalidMeterDataException(Exception):
     pass
 
 
