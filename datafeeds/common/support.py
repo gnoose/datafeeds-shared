@@ -1,6 +1,9 @@
 import argparse
+from typing import List
 
 from dateutil.relativedelta import relativedelta
+
+from datafeeds.common.typing import BillPdf
 
 
 class ScraperArgs:
@@ -49,9 +52,15 @@ class Configuration:
     or account/service ID
     """
 
-    def __init__(self, scrape_bills=False, scrape_readings=False):
+    def __init__(
+        self,
+        scrape_bills: bool = False,
+        scrape_readings: bool = False,
+        scrape_pdfs: bool = False,
+    ):
         self.scrape_bills = scrape_bills
         self.scrape_readings = scrape_readings
+        self.scrape_pdfs = scrape_pdfs
 
 
 class Credentials:
@@ -98,8 +107,9 @@ class DateRange:
 
 
 class Results:
-    """Container for bill and/or interval reading results"""
+    """Container for bill, interval, or pdf results"""
 
-    def __init__(self, bills=None, readings=None):
+    def __init__(self, bills=None, readings=None, pdfs: List[BillPdf] = None):
         self.bills = bills
         self.readings = readings
+        self.pdfs = pdfs

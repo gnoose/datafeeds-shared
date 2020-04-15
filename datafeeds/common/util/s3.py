@@ -103,3 +103,11 @@ def read_file_from_s3(bucket: str, key: str) -> Optional[bytes]:
         return None
 
     return response.get("Body").read()
+
+
+def remove_file_from_s3(bucket: str, key: str) -> None:
+    client = boto3.client("s3")
+    try:
+        client.delete_object(Bucket=bucket, Key=key)
+    except:  # noqa: E722
+        log.exception("Request to remove file %s/%s from S3 failed.", bucket, key)

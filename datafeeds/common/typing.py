@@ -76,6 +76,24 @@ BillingData = List[BillingDatum]
 BillingRange = NamedTuple("BillingRange", [("start", date), ("end", date)])
 
 
+class BillPdf:
+    """Container for a bill PDF."""
+
+    def __init__(self, utility_account_id: str, start: date, end: date, s3_key: str):
+        self.utility_account_id = utility_account_id
+        self.start = start
+        self.end = end
+        self.s3_key = s3_key
+
+    def to_json(self):
+        return {
+            "utility_account_id": self.utility_account_id,
+            "start": self.start.strftime("%Y-%m-%d"),
+            "end": self.end.strftime("%Y-%m-%d"),
+            "s3_key": self.s3_key,
+        }
+
+
 def make_billing_pdf_attachment(key):
     return [AttachmentEntry(key=key, kind="bill", format="PDF")]
 

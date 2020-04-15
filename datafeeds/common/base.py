@@ -90,6 +90,10 @@ class BaseScraper(Abstract):
     def scrape_bills(self):
         return self._configuration.scrape_bills
 
+    @property
+    def scrape_pdfs(self):
+        return self._configuration.scrape_pdfs
+
     def __enter__(self):
         self.start()
         return self
@@ -109,7 +113,7 @@ class BaseScraper(Abstract):
     # Passing in the handlers would make sense if this function was responsible for handling
     # whatever exceptions they might throw. But since it raises and the caller is obliged to
     # wrap this in a try-catch, there's no benefit to the current interface.
-    def scrape(self, readings_handler, bills_handler):
+    def scrape(self, readings_handler, bills_handler, pdfs_handler):
         log.info("Launching %s", self.name)
         if self.username:
             log.info("Username: %s", self.username)
@@ -136,6 +140,9 @@ class BaseScraper(Abstract):
                     readings_handler(results.readings)
                 else:
                     log.error("Expected to find interval data but none was returned.")
+
+            if self.scrape_pdfs and results.pdfs:
+                pdfs_handler(results.pdfs)
 
         except Exception:
             log.exception("Scraper run failed.")
@@ -236,9 +243,9 @@ class BaseWebScraper(BaseScraper):
         stop_max_attempt_number=3,
         wait_fixed=10000,
     )
-    def scrape(self, readings_handler, bills_handler):
+    def scrape(self, readings_handler, bills_handler, pdfs_handler):
         try:
-            super().scrape(readings_handler, bills_handler)
+            super().scrape(readings_handler, bills_handler, pdfs_handler)
         except Exception:
             self.screenshot("error")
             raise
@@ -318,6 +325,7 @@ class CSSSelectorBasePageObject(object):
     def wait_for_condition_or_error(
         self,
         condition,
+        seconds: int = 60,
         error_condition=None,
         error_cls=None,
         error_msg: Optional[str] = None,
@@ -326,22 +334,24 @@ class CSSSelectorBasePageObject(object):
         before proceeding.
 
         :param condition: ExpectedCondition instance
+        :param seconds: seconds to wait before TimeoutError is raised
         :param error_condition: ExpectedCondition instance if there's an error
         :param error_cls: Custom exception class
         :param error_msg: Error message if selector not found
         """
         if error_condition:
             # Waits for successful condition or error condition before proceeding
-            self._driver.wait().until(ec_or(condition, error_condition))
+            self._driver.wait(seconds=seconds).until(ec_or(condition, error_condition))
             # Pulls the css selector off of the expected conditions object
             if self.element_exists(error_condition.locator[1]):
                 raise error_cls(error_msg) if error_cls else Exception(error_msg)
         else:
-            self._driver.wait().until(condition)
+            self._driver.wait(seconds=seconds).until(condition)
 
     def wait_until_ready(
         self,
         selector: str,
+        seconds: int = 60,
         error_selector: Optional[str] = None,
         error_cls=None,
         error_msg: Optional[str] = None,
@@ -363,6 +373,40 @@ class CSSSelectorBasePageObject(object):
 
         self.wait_for_condition_or_error(
             condition=condition,
+            seconds=seconds,
+            error_condition=error_condition,
+            error_cls=error_cls,
+            error_msg=error_msg,
+        )
+
+    def wait_until_invisible(
+        self,
+        selector: str,
+        seconds: int = 60,
+        error_selector: Optional[str] = None,
+        error_cls=None,
+        error_msg: Optional[str] = None,
+    ):
+        """Convenience method that waits for as long as the element is visible via a css
+        selector before proceeding.
+        """
+        log.info(
+            "Waiting for {} ({}) to be invisible.".format(
+                self.__class__.__name__, selector
+            )
+        )
+
+        condition = EC.invisibility_of_element_located((By.CSS_SELECTOR, selector))
+        error_condition = None
+
+        if error_selector:
+            error_condition = EC.invisibility_of_element_located(
+                (By.CSS_SELECTOR, error_selector)
+            )
+
+        self.wait_for_condition_or_error(
+            condition=condition,
+            seconds=seconds,
             error_condition=error_condition,
             error_cls=error_cls,
             error_msg=error_msg,
@@ -372,6 +416,7 @@ class CSSSelectorBasePageObject(object):
         self,
         selector: str,
         text: str,
+        seconds: int = 60,
         error_selector: Optional[str] = None,
         alt_text: Optional[str] = None,
         error_cls=None,
@@ -391,6 +436,7 @@ class CSSSelectorBasePageObject(object):
 
         self.wait_for_condition_or_error(
             condition=condition,
+            seconds=seconds,
             error_condition=error_condition,
             error_cls=error_cls,
             error_msg=error_msg,

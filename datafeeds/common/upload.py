@@ -3,23 +3,28 @@ import logging
 import csv
 from deprecation import deprecated
 import os
-from typing import Optional, Union, BinaryIO
+from typing import Optional, Union, BinaryIO, List
 from io import BytesIO
 import hashlib
 
 
-from datafeeds import config
+from datafeeds import config, db
 from datafeeds.common import webapps, index, platform
 from datafeeds.common.typing import (
     BillingData,
     show_bill_summary,
     BillingDatum,
     AttachmentEntry,
+    BillPdf,
 )
 from datafeeds.common import interval_transform
-from datafeeds.common.util.s3 import upload_pdf_to_s3
-from datafeeds.common.util.s3 import s3_key_exists
-
+from datafeeds.common.util.s3 import (
+    upload_pdf_to_s3,
+    remove_file_from_s3,
+    s3_key_exists,
+)
+from datafeeds.models import UtilityService
+from datafeeds.models.bill import Bill
 
 BytesLikeObject = Union[BinaryIO, BytesIO]
 
@@ -77,6 +82,62 @@ def upload_readings(
         for when, intervals in readings.items():
             writer.writerow([meter_oid, str(when)] + [str(x) for x in intervals])
     log.info("Wrote interval data to %s." % path)
+
+
+def attach_bill_pdfs(
+    task_id: str, pdfs: List[BillPdf],
+):
+    """Attach a list of bill PDF files uploaded to S3 to bill records."""
+    if not pdfs:
+        return
+    # A bill PDF is associated with one utility account; it can contain data for
+    # multiple SAIDs.
+    count = 0
+    unused = []
+    for pdf in pdfs:
+        query = (
+            db.session.query(Bill)
+            .filter(UtilityService.utility_account_id == pdf.utility_account_id)
+            .filter(UtilityService.oid == Bill.service)
+            .filter(Bill.initial == pdf.start)
+            .filter(Bill.closing == pdf.end)
+        )
+        bill_count = query.count()
+        if not bill_count:
+            log.warning(
+                "no bills found for utility_account_id %s", pdf.utility_account_id
+            )
+            unused.append(pdf.s3_key)
+        attached = False
+        for bill in query:
+            # [{"kind": "bill", "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf", "format": "PDF"}]
+            current_pdfs = {
+                att["key"]
+                for att in bill.attachments or []
+                if att.get("format") == "PDF"
+            }
+            # if bill already has a PDF, skip (may use a different name hash)
+            if current_pdfs:
+                if pdf.s3_key in current_pdfs:
+                    attached = True
+                continue
+            attached = True
+            if not bill.attachments:
+                bill.attachments = []
+            bill.attachments.append(
+                {"kind": "bill", "key": pdf.s3_key, "format": "PDF"}
+            )
+            db.session.add(bill)
+            log.info("adding attachment %s to bill %s", pdf.s3_key, bill.oid)
+        if not attached:
+            unused.append(pdf.s3_key)
+        count += 1
+    log.info("attached %s/%s pdfs", count, len(pdfs))
+    for key in unused:
+        remove_file_from_s3(config.BILL_PDF_S3_BUCKET, key)
+    if task_id and config.enabled("ES_INDEX_JOBS"):
+        log.info("Updating billing range in Elasticsearch.")
+        index.update_bill_pdf_range(task_id, pdfs)
 
 
 @deprecated(details="To be replaced by ORM module.")
