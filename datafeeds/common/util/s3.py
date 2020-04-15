@@ -106,6 +106,9 @@ def read_file_from_s3(bucket: str, key: str) -> Optional[bytes]:
 
 
 def remove_file_from_s3(bucket: str, key: str) -> None:
+    if not config.enabled("S3_BILL_UPLOAD"):
+        log.debug("Bill upload disabled, skipping S3 remove.")
+        return
     client = boto3.client("s3")
     try:
         client.delete_object(Bucket=bucket, Key=key)

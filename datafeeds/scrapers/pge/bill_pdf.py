@@ -124,7 +124,7 @@ class DashboardPage(CSSSelectorBasePageObject):
             # data-date is in milliseconds
             timestamp = int(link_elem.get_attribute("data-date")) / 1000.0
 
-            bill_date = datetime.fromtimestamp(timestamp)
+            bill_date = datetime.fromtimestamp(timestamp).date()
 
             cost = re.search(self.HeaderCostPattern, header_text).group(1)
             cost = float(cost.replace(",", ""))
@@ -148,12 +148,13 @@ class DashboardPage(CSSSelectorBasePageObject):
 
             last4 = self.account_id.split("-")[0][6:10]
             filename = f"{last4}custbill{bill_date.strftime('%m%d%Y')}.pdf"
+            download_dir = "%s/current" % config.WORKING_DIRECTORY
 
             try:
                 self._driver.wait(30).until(
                     file_exists_in_dir(
                         # end pattern with $ to prevent matching filename.crdownload
-                        directory=config.WORKING_DIRECTORY,
+                        directory=download_dir,
                         pattern=f"^{filename}$",
                     )
                 )
@@ -161,7 +162,7 @@ class DashboardPage(CSSSelectorBasePageObject):
                 log.error(f"ERROR waiting for file {filename} to download...skipping")
                 continue
 
-            with open(config.WORKING_DIRECTORY + "/" + filename, "rb") as f:
+            with open("%s/%s" % (download_dir, filename), "rb") as f:
                 key = hash_bill(self.account_id, start_date, end_date, cost, "", "")
                 upload_bill_to_s3(file_handle=f, key=key)
 
