@@ -18,8 +18,11 @@ from datafeeds.common.typing import (
     BillPdf,
 )
 from datafeeds.common import interval_transform
-from datafeeds.common.util.s3 import upload_pdf_to_s3
-from datafeeds.common.util.s3 import s3_key_exists
+from datafeeds.common.util.s3 import (
+    upload_pdf_to_s3,
+    remove_file_from_s3,
+    s3_key_exists,
+)
 from datafeeds.models import UtilityService
 from datafeeds.models.bill import Bill
 
@@ -130,7 +133,8 @@ def attach_bill_pdfs(
             unused.append(pdf.s3_key)
         count += 1
     log.info("attached %s/%s pdfs", count, len(pdfs))
-    # TODO: remove pdf from S3?
+    for key in unused:
+        remove_file_from_s3(config.BILL_PDF_S3_BUCKET, key)
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
         index.update_bill_pdf_range(task_id, pdfs)

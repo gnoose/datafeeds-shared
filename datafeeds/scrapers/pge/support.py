@@ -17,7 +17,6 @@ def wait_for_block_overlay(driver, seconds=30):
 
 
 def wait_for_account(driver):
-
     # Main account homepage after login
     driver.wait().until(
         EC.presence_of_element_located((By.CSS_SELECTOR, "#accountUserName"))
@@ -29,7 +28,6 @@ def wait_for_account(driver):
 
 
 def wait_for_accounts_list(driver):
-
     # Main account homepage after login
     driver.wait().until(
         EC.presence_of_element_located((By.CSS_SELECTOR, "#accountListItems"))

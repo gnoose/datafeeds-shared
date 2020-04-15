@@ -3,6 +3,7 @@ import logging
 from datetime import date, datetime
 from typing import List, Optional
 
+from datafeeds import config
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import Results, Configuration
@@ -61,7 +62,7 @@ class DashboardPage(CSSSelectorBasePageObject):
         self.account_id = account_id
         target_account_xpath = f'//ul[@id="accountListItems"]/li/a[starts-with(text(), "{self.account_id}")]'
 
-        # verify if an account actually exists in accounts dropdown list, is this necessary ?
+        # verify if an account actually exists in accounts dropdown list
         if not self._driver.find(selector=target_account_xpath, xpath=True):
             log.error(
                 f"account with id {self.account_id} not found in accountListItems dropdown"
@@ -75,7 +76,7 @@ class DashboardPage(CSSSelectorBasePageObject):
             target_account_xpath
         ).get_attribute("innerText")
 
-        # visit dashboard for an accoutn directly
+        # visit dashboard for an account directly
         self._driver.get(
             f"https://m.pge.com/#myaccount/dashboard/summary/{account_id_with_check_digit}"
         )
@@ -85,19 +86,6 @@ class DashboardPage(CSSSelectorBasePageObject):
     def download_bills(self, start_date: date, end_date: date) -> List[str]:
         """Download bill PDFs for the specified date range."""
         keys: List[str] = []
-        """
-        click Bill & Payment history arrow
-        click View up to 24 months of activity
-        if date not in range, skip
-        click View Bill PDF
-          - file downloads to config.WORKING_DIRECTORY
-          - get filename: last 4 digits of account (excluding check digit), then date (03262020)
-            - example: 0440custbill03262020.pdf
-          - create key: hash_bill(self.utility_account, start_date, end_date, cost)
-          - upload with upload_bill_to_s3(file_handle: BytesLikeObject, key: str)
-          - add key to list
-        """
-
         log.info("Opening billing history")
 
         click(self._driver, css_selector="#arrowBillPaymentHistory")
@@ -107,18 +95,14 @@ class DashboardPage(CSSSelectorBasePageObject):
 
         log.info("Clicking 'view up to..' link")
 
-        # As always, cannot scope only by @id since multiple elements share id ?
         click(self._driver, css_selector=self.ViewMoreHistorySel)
         self.wait_until_ready(self.BillingHistoryTableSel)
 
-        panels_count = len(
-            self._driver.find_elements_by_css_selector(self.PanelxSel)
-        )
+        panels_count = len(self._driver.find_elements_by_css_selector(self.PanelxSel))
         log.info(f"found {panels_count} panels in billing widget")
 
         # Rather than get all matching elements and iterate through, use index
         # and manually get element each time to help avoid stale element errors
-
         for i in range(0, panels_count):
             panel = self._driver.find_elements_by_css_selector(self.PanelxSel)[i]
             # check if is a payment panel
@@ -162,18 +146,14 @@ class DashboardPage(CSSSelectorBasePageObject):
 
                 click(self._driver, elem=link_elem)
 
-            # FIXME kvlr: is there a way to KNOW the file being downloaded,
-            # rather than making assumptions about filename?
-            last4 = self.account_id.split("-")[0][6:10]  #
-
+            last4 = self.account_id.split("-")[0][6:10]
             filename = f"{last4}custbill{bill_date.strftime('%m%d%Y')}.pdf"
-            download_dir = self._driver.download_dir  # or import and use config.WORKING_DIR ?
 
             try:
                 self._driver.wait(30).until(
                     file_exists_in_dir(
                         # end pattern with $ to prevent matching filename.crdownload
-                        directory=download_dir,
+                        directory=config.WORKING_DIRECTORY,
                         pattern=f"^{filename}$",
                     )
                 )
@@ -181,12 +161,11 @@ class DashboardPage(CSSSelectorBasePageObject):
                 log.error(f"ERROR waiting for file {filename} to download...skipping")
                 continue
 
-            with open(download_dir + "/" + filename, "rb") as f:
+            with open(config.WORKING_DIRECTORY + "/" + filename, "rb") as f:
                 key = hash_bill(self.account_id, start_date, end_date, cost, "", "")
                 upload_bill_to_s3(file_handle=f, key=key)
 
             log.info(f"Uploaded {filename} to {key}")
-
             keys.append(key)
 
         return keys
@@ -198,8 +177,8 @@ class LoginPage(CSSSelectorBasePageObject):
     SigninButtonSelector = 'button[id="home_login_submit"]'
 
     def login(self, username: str, password: str):
-        """Authenticate with the web page.
-        https://www.pge.com/
+        """Authenticate with the web page https://www.pge.com/
+
         Fill in the username, password, then click "Sign in"
         """
 
@@ -251,14 +230,13 @@ class LoginPage(CSSSelectorBasePageObject):
         wait_for_account(self._driver)
 
     def get_error_msg(self) -> str:
-
         # There are a few(known) possible problems with logging in, so let's
         # disambiguate the login error a little bit...
 
         msg = "Couldn't log in"
         # Note: These are the actual error strings returned, so they are case - sensitive
-        accountDisabled = "Account temporarily disabled"
-        invalidCredentials = "Invalid Username or Password"
+        account_disabled = "Account temporarily disabled"
+        invalid_credentials = "Invalid Username or Password"
 
         def has_no_accounts() -> bool:
             # Some logins will actually not have any accounts linked at all
@@ -272,7 +250,6 @@ class LoginPage(CSSSelectorBasePageObject):
             # Look for both "no accounts" message as well as account form,
             # because there's a chance (like on the account linking page)
             # there *could* be accounts and might not show the form
-
             return (
                 len(self._driver.find_elements_by_xpath(na_text_xpath)) > 0
                 and len(self._driver.find_elements_by_xpath(na_form_xpath)) > 0
@@ -280,14 +257,13 @@ class LoginPage(CSSSelectorBasePageObject):
 
         def has_login_error(text) -> bool:
             # Failed logins will display a message of some sort
-
             sel = "//p[@class='login-error-msg' and contains(text(), '" + text + "')]"
             return len(self._driver.find_elements_by_xpath(sel)) > 0
 
-        if has_login_error(accountDisabled):
-            msg = accountDisabled
-        elif has_login_error(invalidCredentials):
-            msg = invalidCredentials
+        if has_login_error(account_disabled):
+            msg = account_disabled
+        elif has_login_error(invalid_credentials):
+            msg = invalid_credentials
         elif has_no_accounts():
             msg = "No accounts for login"
 
@@ -318,8 +294,8 @@ class PgeBillPdfScraper(BaseWebScraper):
 
         log.info("Visiting main dashboard")
         dashboard_page.visit_dashboard()
-        # select account
 
+        # select account
         log.info(f"Visiting account summary for {self._configuration.utility_account}")
         dashboard_page.select_account(self._configuration.utility_account)
         self.screenshot("after select account")
