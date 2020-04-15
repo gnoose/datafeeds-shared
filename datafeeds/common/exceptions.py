@@ -19,3 +19,7 @@ class DataSourceConfigurationError(Exception):
 
 class ScraperPreconditionError(Exception):
     pass
+
+
+class InvalidMeterDataException(Exception):
+    pass
