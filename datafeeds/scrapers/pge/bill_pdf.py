@@ -1,6 +1,6 @@
 import re
 import logging
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from typing import List, Optional
 
 from datafeeds import config
@@ -83,9 +83,11 @@ class DashboardPage(CSSSelectorBasePageObject):
         self.wait_until_ready(".NDB-footer-links")
         wait_for_block_overlay(self._driver)
 
-    def download_bills(self, start_date: date, end_date: date) -> List[str]:
+    def download_bills(
+        self, start_date: date, end_date: date, utility_account: str
+    ) -> List[BillPdf]:
         """Download bill PDFs for the specified date range."""
-        keys: List[str] = []
+        pdfs: List[BillPdf] = []
         log.info("Opening billing history")
 
         click(self._driver, css_selector="#arrowBillPaymentHistory")
@@ -105,34 +107,38 @@ class DashboardPage(CSSSelectorBasePageObject):
         # and manually get element each time to help avoid stale element errors
         for i in range(0, panels_count):
             panel = self._driver.find_elements_by_css_selector(self.PanelxSel)[i]
+
             # check if is a payment panel
             panel_header = panel.find_element_by_css_selector(".panel-title")
             header_text = panel_header.text
             if "Payment" in header_text:
-                log.info(f"Skipping panel {i} (payment)")
+                log.debug(f"Skipping panel {i} (payment)")
                 # skip if is a payment panel
                 continue
 
-            log.info(f"Processing panel {i} (bill)")
+            log.debug(f"Processing panel {i} (bill)")
 
             link_elem = panel.find_element_by_css_selector(
                 "div.pge_coc-dashboard-viewPay_billed_history_panel_viewBill_para_block"
                 " a.viewBill"
             )
-
             # Get date from the "data-date" attribute on link to download bill...
             # data-date is in milliseconds
             timestamp = int(link_elem.get_attribute("data-date")) / 1000.0
 
+            # when bill was issued
             bill_date = datetime.fromtimestamp(timestamp).date()
+            # bill issued about a week after end date; use this window to match dates
+            approx_bill_end = bill_date - timedelta(days=7)
+            approx_bill_start = approx_bill_end - timedelta(days=30)
 
             cost = re.search(self.HeaderCostPattern, header_text).group(1)
             cost = float(cost.replace(",", ""))
 
-            log.info(f"Found bill for {bill_date} with cost ${cost}")
+            log.info(f"Found bill issued {bill_date} with cost ${cost}")
 
-            if not start_date <= bill_date <= end_date:
-                log.info(f"ignoring bill, date: {bill_date} not in range ")
+            if not start_date <= approx_bill_end <= end_date:
+                log.info(f"ignoring bill, date: {approx_bill_end} not in range ")
                 continue
 
             try:
@@ -163,13 +169,23 @@ class DashboardPage(CSSSelectorBasePageObject):
                 continue
 
             with open("%s/%s" % (download_dir, filename), "rb") as f:
-                key = hash_bill(self.account_id, start_date, end_date, cost, "", "")
+                key = hash_bill(
+                    self.account_id, approx_bill_start, approx_bill_end, cost, "", ""
+                )
+
                 upload_bill_to_s3(file_handle=f, key=key)
 
             log.info(f"Uploaded {filename} to {key}")
-            keys.append(key)
+            pdfs.append(
+                BillPdf(
+                    utility_account_id=utility_account,
+                    start=approx_bill_start,
+                    end=approx_bill_end,
+                    s3_key=key,
+                )
+            )
 
-        return keys
+        return pdfs
 
 
 class LoginPage(CSSSelectorBasePageObject):
@@ -302,17 +318,9 @@ class PgeBillPdfScraper(BaseWebScraper):
         self.screenshot("after select account")
 
         # download bills
-        pdfs = []
-        for key in dashboard_page.download_bills(self.start_date, self.end_date):
-            pdfs.append(
-                BillPdf(
-                    utility_account_id=self._configuration.utility_account,
-                    start=self.start_date,
-                    end=self.end_date,
-                    s3_key=key,
-                )
-            )
-
+        pdfs = dashboard_page.download_bills(
+            self.start_date, self.end_date, self._configuration.utility_account
+        )
         return Results(pdfs=pdfs)
 
 

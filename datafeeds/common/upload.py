@@ -1,15 +1,16 @@
 import json
 import logging
 import csv
+from datetime import timedelta
+
 from deprecation import deprecated
 import os
 from typing import Optional, Union, BinaryIO, List
 from io import BytesIO
 import hashlib
 
-
 from datafeeds import config, db
-from datafeeds.common import webapps, index, platform
+from datafeeds.common import webapps, index, platform, DateRange
 from datafeeds.common.typing import (
     BillingData,
     show_bill_summary,
@@ -95,22 +96,46 @@ def attach_bill_pdfs(
     count = 0
     unused = []
     for pdf in pdfs:
+        log.info(
+            "bill PDF for utility_account_id=%s start=%s end=%s",
+            pdf.utility_account_id,
+            pdf.start,
+            pdf.end,
+        )
+        # use a date range since bill issue date might not match exactly
+        start_range = DateRange(
+            pdf.start - timedelta(days=5), pdf.start + timedelta(days=5)
+        )
+        end_range = DateRange(pdf.end - timedelta(days=5), pdf.end + timedelta(days=5))
         query = (
             db.session.query(Bill)
             .filter(UtilityService.utility_account_id == pdf.utility_account_id)
             .filter(UtilityService.oid == Bill.service)
-            .filter(Bill.initial == pdf.start)
-            .filter(Bill.closing == pdf.end)
+            .filter(Bill.initial > start_range.start_date)
+            .filter(Bill.initial < start_range.end_date)
+            .filter(Bill.closing > end_range.start_date)
+            .filter(Bill.closing < end_range.end_date)
         )
         bill_count = query.count()
         if not bill_count:
             log.warning(
-                "no bills found for utility_account_id %s", pdf.utility_account_id
+                "no bills found for utility_account_id %s %s-%s",
+                pdf.utility_account_id,
+                pdf.start,
+                pdf.end,
             )
             unused.append(pdf.s3_key)
         attached = False
         for bill in query:
             # [{"kind": "bill", "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf", "format": "PDF"}]
+            log.debug(
+                "matched bill pdf %s-%s to bill %s %s-%s",
+                pdf.start,
+                pdf.end,
+                bill.oid,
+                bill.initial,
+                bill.closing,
+            )
             current_pdfs = {
                 att["key"]
                 for att in bill.attachments or []
@@ -129,9 +154,10 @@ def attach_bill_pdfs(
             )
             db.session.add(bill)
             log.info("adding attachment %s to bill %s", pdf.s3_key, bill.oid)
-        if not attached:
+        if attached:
+            count += 1
+        else:
             unused.append(pdf.s3_key)
-        count += 1
     log.info("attached %s/%s pdfs", count, len(pdfs))
     for key in unused:
         remove_file_from_s3(config.BILL_PDF_S3_BUCKET, key)
