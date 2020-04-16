@@ -1,11 +1,18 @@
+import os
 import logging
-from typing import List, Optional
+import csv
+
+from dateutil.parser import parse as parse_date
+from typing import NewType, Tuple, List, Optional
+from datetime import datetime, date, timedelta
+
 
 from datafeeds.common import Timeline
-from datafeeds.common.base import BaseWebScraper
+from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import Results
 from datafeeds.common.support import Configuration
+from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.common.typing import Status
 
 from datafeeds.models import (
@@ -14,128 +21,68 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+
 log = logging.getLogger(__name__)
 
 
-class SCLMeterWatchConfiguration(Configuration):
-    def __init__(self, meter_numbers: List[str]):
-        super().__init__(scrape_readings=True)
-        self.meter_numbers = meter_numbers
+IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
 
 
-class SCLMeterWatchScraper(BaseWebScraper):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.name = "SCL MeterWatch"
-        self.url = "http://smw.seattle.gov"
+def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
+    """
+        read and parse data from csv file
+        Returns: list of tuples of datetime and kWh usage
+    """
 
-    def _execute(self):
-        self._driver.get(self.url)
-        timeline = Timeline(self.start_date, self.end_date)
-        """
-            - go to http://smw.seattle.gov
-            - login
-            - get popup window
-        """
-        for meter_number in self._configuration.meter_numbers:
-            """
-            - choose account from Meter OR Meter Group dropdown (option value == meter_number)
-            - set dates in From Date, To Date (04/01/2020 format) (self.start_date, self.end_date)
-              - check available dates (Starts on 04/30/2018, Ends of 03/18/2020)
-              - continue if requested range not available
-            - click Download Data button
-              - saves to config.WORKING_DIRECTORY/15_minute_download.csv
-            - open file, read kWh Usage with csv into timeline (see energymanager_interval.py#221)
-              - get existing at datetime (timeline.lookup)
-              - timeline.insert current value + existing
-              - sample data:
-"Starting Date","Ending Date","Starting Time","Ending Time","kWh Cost","kWh Usage","kvarh"
-"03/01/2020","03/01/2020","00:00:01","00:15:00","$4.80","48.600","12.060"
-"03/01/2020","03/01/2020","00:15:01","00:30:00","$4.85","49.140","12.060"              
-            """
-            pass
-        return Results(readings=timeline.serialize())
+    results = []
+    with open(csv_file_path, "r", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            # for some reason the last line of csv contains the following
+            # string instead of actual values, so skip that data row
+            if "</td></tr></table>" in row["Starting Date"]:
+                continue
 
+            reading_date = parse_date(row["Starting Date"].strip()).date()
+            starting_time_text = row["Starting Time"].strip()
 
-"""
-BEGIN: old Firefox scraper for reference; remove when no longer needed
+            # this is weird, some of the "Starting Time" fields in data are empty
+            # if that is the case, determine the starting time by subtracting
+            # 00:14:59 from "Ending Time"
+            if not starting_time_text:
+                starting_time = None
+                ending_time_text = row["Ending Time"].strip()
+                if ending_time_text:
+                    ending_time = parse_date(ending_time_text).time()
+                else:
+                    # skip the reading if no starting time or ending time is present
+                    log.debug(
+                        f"No starting time or ending time found for row: {row}"
+                    )
+                    continue
+            else:
+                starting_time = parse_date(row["Starting Time"].strip()).time()
 
-convert etl_logging.get().debug(...) to log.debug(...)
-"""
-"""
-def _connect_and_download_data(username, password, service_id, start_date, end_date):
-    firefox_profile = _build_profile(service_id)
-    driver = _connect_to_firefox(firefox_profile)
-    main_window = None
-    login_window = None
+            if starting_time:
+                reading_datetime = datetime.combine(reading_date, starting_time)
+            else:
+                reading_datetime = datetime.combine(
+                    reading_date, ending_time
+                ) - timedelta(minutes=14, seconds=59)
 
-    try:
-        etl_logging.get().debug('Navigating to meter watch...')
-        driver.get("http://smw.seattle.gov")
+            reading_value = float(row["kWh Usage"].strip())
+            results.append(IntervalReading((reading_datetime, reading_value)))
 
-        #Meterwatch immediatly spawns a popup when loaded which is the actual
-        #window we want. So we have to go and grab the main window handle and
-        #THEN go looking for the popup window and switch to it. We need
-        #to hold on to that main window handle to properly destroy everything
-        #later.
-        etl_logging.get().debug('Grabbing main window...')
-        main_window = _get_main_window(driver)
-
-        # Click the "Go" button to launch the login window.
-        driver.find_element_by_id('divLoginButton').click()
-
-        login_window = None
-        while not login_window:
-            for handle in driver.window_handles:
-                if handle != main_window:
-                    login_window = handle
-                    break
-
-        #We have our popup, so lets do stuff with it.
-        driver.switch_to.window(login_window)
-        etl_logging.get().debug("Driver title: " + driver.title)
-        assert 'Seattle MeterWatch' in driver.title
-
-        _login_to_meterwatch(driver, username, password)
-        _choose_account(driver, service_id)
-        _choose_dates(driver, start_date, end_date)
-        _download_data(driver, service_id)
-    finally:
-        driver.quit()
-
-def _build_profile(service_id):
-    #In order to actually download files we have to use a bit of a hack.
-    #Firefox by default puts up a dialog asking for a location
-    #to save to, which is an issue as selenium can't respond to a native
-    #dialog. Instead we setup a profile that allows us to bypass that
-    #dialog and download straight away.
-    etl_logging.get().debug('Creating firefox profile...')
-    rval = webdriver.FirefoxProfile()
-
-    rval.set_preference("browser.download.folderList", 2)
-    rval.set_preference("browser.download.manager.showWhenStarting", False)
-
-    # Allow popups
-    rval.set_preference("dom.disable_open_during_load", False)
-    rval.set_preference("dom.disable_beforeunload", False)
-
-    outputpath = _outputpath(service_id)
-    os.makedirs(outputpath)
-    etl_logging.get().debug('Setting download dir to {}'.format(outputpath))
-    rval.set_preference("browser.download.dir", outputpath)
-
-    rval.set_preference(
-        'browser.helperApps.neverAsk.saveToDisk',
-        'application/excel'
-    )
-
-    return rval
+    return results
 
 
 def _get_main_window(driver):
-    #The window handle is often not immediatly set, this goes
-    #into a loop until the handle is set. We need it to
-    #differeniate from the popup later.
+    # The window handle is often not immediatly set, this goes
+    # into a loop until the handle is set. We need it to
+    # differeniate from the popup later.
     rval = None
     elapsed = 0
     start_time = datetime.utcnow()
@@ -145,87 +92,231 @@ def _get_main_window(driver):
         elapsed = (datetime.utcnow() - start_time).seconds
 
     if not rval:
-        raise Exception('Unable to get main window, dying...')
+        raise Exception("Unable to get main window, dying...")
 
     return rval
 
-def _login_to_meterwatch(driver, username, password):
-    etl_logging.get().debug('Logging in to meterwatch...')
 
-    try:
-        driver.find_element_by_xpath(u'//input[@id="P101_USERNAME"]').send_keys(username)
-        driver.find_element_by_xpath(u'//input[@id="P101_PASSWORD"]').send_keys(password)
-        driver.find_element_by_xpath(u'//img[@alt="Login to Seattle MeterWatch"]').click()
+class LoginPage(CSSSelectorBasePageObject):
+    UsernameFieldSelector = 'input[id="P101_USERNAME"]'
+    PasswordFieldSelector = 'input[id="P101_PASSWORD"]'
+    SigninButtonSelector = 'img[alt="Login to Seattle MeterWatch"]'
 
-        ui.WebDriverWait(driver, 10).until(
-            EC.title_contains('Seattle MeterWatch : Display Meter Data')
-        )
-    except Exception:
-        raise Exception('Unable to login, invalid credentials?')
+    def login(self, username: str, password: str):
+        """
+          - go to http://smw.seattle.gov
+          - login
+          - wait for dropdown to load
+        """
+        log.debug("Logging in to meterwatch...")
+        self.wait_until_ready(self.UsernameFieldSelector)
+        self.wait_until_ready(self.SigninButtonSelector)
 
-def _choose_account(driver, service_id):
-    etl_logging.get().debug('Selecting correct account...')
-    select = ui.Select(driver.find_element_by_name('p_t04'))
-    meter_id = None
-    for option in select.options:
-        if option.text.startswith(service_id):#'669086'):
-            etl_logging.get().debug('Found account option: {}'.format(option.text))
-            meter_id = option.get_attribute('value')
-            select.select_by_value(meter_id)
-            break
+        log.info("Filling in form")
+        self._driver.fill(self.UsernameFieldSelector, username)
+        self._driver.fill(self.PasswordFieldSelector, password)
+
+        self.find_element(self.SigninButtonSelector).click()
+        try:
+            self.wait_until_ready('select[name="p_t04"]')
+
+        except Exception:
+            if self._driver.find('//li[text()="Security Information Invalid."'):
+                raise Exception("Unable to login, invalid credentials?")
+
+            raise Exception("Unable to login")
 
 
-    ui.WebDriverWait(driver, 10).until(
-        EC.element_to_be_selected(
-            driver.find_element_by_xpath(u'//option[@value="{}"]'.format(meter_id)),
-        )
-    )
+class MeterDataPage(CSSSelectorBasePageObject):
+    """
+        Display Meter Data page with account dropdown.
+        after login
+    """
 
-def _choose_dates(driver, start_date, end_date):
-    available_from_elem = driver.find_element_by_xpath(u'//label[@for="P10_FROM_DATE"]//span')
-    available_from_text = available_from_elem.text.split(' ')[-1]
-    available_from = datetime.strptime(available_from_text, '%m/%d/%Y')
+    DateAvailableFromSel = 'label[for="P10_FROM_DATE"] span'
+    DateAvailableFromInputSel = 'input[id="P10_FROM_DATE"]'
 
-    available_to_elem = driver.find_element_by_xpath(u'//label[@for="P10_THROUGH_DATE"]//span')
-    available_to_text = available_to_elem.text.split(' ')[-1]
-    available_to = datetime.strptime(available_to_text, '%m/%d/%Y')
+    DateAvailableToSel = 'label[for="P10_THROUGH_DATE"] span'
+    DateAvailableToInputSel = 'input[id="P10_THROUGH_DATE"]'
 
-    if start_date.date() < available_from.date():
-        start_date = available_from
+    DownloadBtnSel = "a[href=\"javascript:apex.submit('DOWNLOAD');\"].buttonhtml"
 
-    if end_date.date() > available_to.date():
-        end_date = available_to
+    def enter_dates(self, start_date: date, end_date: date):
+        """set dates in From Date, To Date (04/01/2020 format)
+           check available dates (Starts on 04/30/2018, Ends on 03/18/2020)
+           continue with maximum range if requested range not available"""
 
-    etl_logging.get().debug('Setting start date to: {}'.format(start_date.strftime('%m/%d/%Y')))
-    etl_logging.get().debug('Setting end date to: {}'.format(end_date.strftime('%m/%d/%Y')))
+        # wait for date inputs to be ready
+        self.wait_until_ready(self.DateAvailableFromSel)
+        self.wait_until_ready(self.DateAvailableToSel)
 
-    driver.find_element_by_xpath(u'//input[@id="P10_FROM_DATE"]').send_keys(start_date.strftime('%m/%d/%Y'))
-    driver.find_element_by_xpath(u'//input[@id="P10_THROUGH_DATE"]').send_keys(end_date.strftime('%m/%d/%Y'))
+        available_from_text = self.find_element(self.DateAvailableFromSel).text.split(" ")[-1]
+        available_from = datetime.strptime(available_from_text, "%m/%d/%Y")
 
-def _download_data(driver, service_id):
-    etl_logging.get().debug('Beginning download...')
-    driver.find_element_by_xpath(u'//a[@href="javascript:apex.submit(\'DOWNLOAD\');"]').click()
+        available_to_text = self.find_element(self.DateAvailableToSel).text.split(" ")[-1]
+        available_to = datetime.strptime(available_to_text, "%m/%d/%Y")
 
-    started_at = datetime.utcnow()
-    duration = 0
-    target_items = []
+        if start_date < available_from.date():
+            start_date = available_from.date()
 
-    while len(target_items) != 1 and duration < 180:
-        target_items = glob.glob('{}/*.csv*'.format(_outputpath(service_id)))
-        duration = (datetime.utcnow() - started_at).seconds
+        if end_date > available_to.date():
+            end_date = available_to.date()
 
-        etl_logging.get().debug('Downloading progress: {}'.format(os.listdir(_outputpath(service_id))))
-        time.sleep(1)
+        # the webpage shows an error if start_date is greater than end_date
+        # make sure its a valid range
+        if end_date < start_date:
+            raise Exception("end_date cannot be less than start_date")
 
-    if len(target_items) != 1:
-        raise Exception('Unable to download file...')
+        log.info("Setting start date to: {}".format(start_date.strftime("%m/%d/%Y")))
+        log.info("Setting end date to: {}".format(end_date.strftime("%m/%d/%Y")))
 
-def _outputpath(service_id):
-    return "{0}/{1}".format(etl_logging.get().outputpath, service_id)
-"""
-"""
-END: old Firefox scraper for reference; remove when no longer needed
-"""
+        # clear text fields first in case there's residual text from previous account here
+        self.find_element(self.DateAvailableFromInputSel).clear()
+        self.find_element(self.DateAvailableToInputSel).clear()
+
+        self._driver.fill(self.DateAvailableFromInputSel, start_date.strftime("%m/%d/%Y"))
+        self._driver.fill(self.DateAvailableToInputSel, end_date.strftime("%m/%d/%Y"))
+
+    def select_account(self, meter_number: str):
+        """choose account from Meter OR Meter Group dropdown (option value == meter_number)"""
+        log.info(f"Selecting account {meter_number}...")
+        select_xpath = '//select[@name="p_t04"]'
+
+        # wait for account dropdown to be ready
+        self.wait_until_ready('select[name="p_t04"]')
+
+        try:
+            option_elem = self._driver.wait(10).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, f"{select_xpath}/option[starts-with(text(), {meter_number})]")
+                )
+            )
+            log.info(f"Found account option: {option_elem.text}")
+        except TimeoutException:
+            raise Exception(f"{meter_number} not found in Meter number dropdown")
+
+        select = self._driver.get_select(select_xpath, xpath=True)
+        meter_id = option_elem.get_attribute("value")
+
+        select.select_by_value(meter_id)
+
+        # the page refreshes after selecting meter number, so wait until its loaded
+        self.wait_until_ready(f'option[value="{meter_id}"]')
+
+    def download_data(self, meter_number: str) -> str:
+        """
+          - click Download Data button
+          - saves to config.WORKING_DIRECTORY/15_minute_download.csv
+          Returns:
+           the path of the downloaded csv file.
+        """
+
+        # wait for the download button
+        self.wait_until_ready(self.DownloadBtnSel)
+
+        log.info("Beginning download...")
+        self.find_element(self.DownloadBtnSel).click()
+
+        # download filename is always 15_minute_download.csv for 15 minute intervals
+        filename = "15_minute_download.csv"
+
+        try:
+            self._driver.wait(1500).until(
+                file_exists_in_dir(
+                    # end pattern with $ to prevent matching
+                    # filename.crdownload
+                    directory=self._driver.download_dir,
+                    pattern=f"^{filename}$",
+                )
+            )
+        except Exception:
+            raise Exception(f"Unable to download file...")
+
+        log.info("Download Complete")
+
+        csv_file_path = os.path.join(self._driver.download_dir, meter_number + ".csv")
+
+        # rename downloaded filename to {meter_number}.csv for
+        # avoiding filename conflict in case of multiple accounts
+        os.rename(os.path.join(self._driver.download_dir, filename), csv_file_path)
+
+        return csv_file_path
+
+
+class SCLMeterWatchConfiguration(Configuration):
+
+    def __init__(self, meter_numbers: List[str]):
+        super().__init__(scrape_readings=True)  # set to true later if needed
+        self.meter_numbers = meter_numbers
+
+
+class SCLMeterWatchScraper(BaseWebScraper):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.name = "SCL MeterWatch"
+        self.url = "http://smw.seattle.gov"
+
+    def _execute(self):
+        # Meterwatch immediatly spawns a popup when loaded which is the actual
+        # window we want. So we have to go and grab the main window handle and
+        # THEN go looking for the popup window and switch to it.
+
+        timeline = Timeline(self.start_date, self.end_date)
+
+        main_window = _get_main_window(self._driver)
+        login_window = None
+
+        log.info(f"Navigating to {self.url}")
+        self._driver.get(self.url)
+
+        while not login_window:
+            for handle in self._driver.window_handles:
+                if handle != main_window:
+                    login_window = handle
+                    break
+
+        # We have our popup, so lets do stuff with it.
+        self._driver.switch_to.window(login_window)
+
+        log.debug("Driver title: " + self._driver.title)
+        assert "Seattle MeterWatch" in self._driver.title
+
+        login_page = LoginPage(self._driver)
+        meterdata_page = MeterDataPage(self._driver)
+
+        login_page.login(self.username, self.password)
+
+        for meter_number in self._configuration.meter_numbers:
+
+            try:
+                meterdata_page.select_account(meter_number)
+                meterdata_page.enter_dates(self.start_date, self.end_date)
+                csv_file_path = meterdata_page.download_data(meter_number)
+            except Exception as e:
+                log.exception(e)
+                continue
+
+            log.info(f"parsing kWh usage from downloaded data for {meter_number}")
+            # read kWh Usage with csv into timeline
+            for reading in parse_usage_from_csv(csv_file_path):
+                reading_datetime = reading[0]
+                reading_value = reading[1]
+
+                # subtract a second from reading_datetime because the Starting
+                # Time in data always start at 1 second (e.g: 00:15:01 instead
+                # of 00:15:00), and Timeline initializes the index with zero
+                # seconds (e.g 00:15:00)
+                reading_datetime = reading_datetime - timedelta(seconds=1)
+                current_value = timeline.lookup(reading_datetime)
+
+                # if value already exists for datetime, add to it
+                if current_value:
+                    reading_value = current_value + reading_value
+
+                timeline.insert(reading_datetime, reading_value)
+
+        return Results(readings=timeline.serialize())
 
 
 def datafeed(
