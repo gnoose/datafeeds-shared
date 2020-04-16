@@ -4,7 +4,10 @@ from datetime import date
 from dateutil import parser as date_parser
 
 from datafeeds.common.support import Credentials, DateRange
-from datafeeds.scrapers.scl_meterwatch import SCLMeterWatchConfiguration, SCLMeterWatchScraper
+from datafeeds.scrapers.scl_meterwatch import (
+    SCLMeterWatchConfiguration,
+    SCLMeterWatchScraper,
+)
 
 """
     Run this to launch the scl-meterwatch scraper:
@@ -18,9 +21,7 @@ from datafeeds.scrapers.scl_meterwatch import SCLMeterWatchConfiguration, SCLMet
 def test_scraper(
     service_id: str, start_date: date, end_date: date, username: str, password: str
 ):
-    configuration = SCLMeterWatchConfiguration(
-        meter_numbers=[service_id]
-    )
+    configuration = SCLMeterWatchConfiguration(meter_numbers=[service_id])
     credentials = Credentials(username, password)
     scraper = SCLMeterWatchScraper(
         credentials, DateRange(start_date, end_date), configuration

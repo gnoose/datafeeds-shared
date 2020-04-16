@@ -6,7 +6,7 @@ from dateutil.parser import parse as parse_date
 from typing import NewType, Tuple, List, Optional
 from datetime import datetime, date, timedelta
 
-
+from datafeeds import config
 from datafeeds.common import Timeline
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
@@ -55,23 +55,20 @@ def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
             if not starting_time_text:
                 starting_time = None
                 ending_time_text = row["Ending Time"].strip()
-                if ending_time_text:
-                    ending_time = parse_date(ending_time_text).time()
-                else:
-                    # skip the reading if no starting time or ending time is present
-                    log.debug(
-                        f"No starting time or ending time found for row: {row}"
-                    )
-                    continue
-            else:
-                starting_time = parse_date(row["Starting Time"].strip()).time()
 
-            if starting_time:
-                reading_datetime = datetime.combine(reading_date, starting_time)
-            else:
+                if not ending_time_text:
+                    # skip the reading if no starting time or ending time is present
+                    log.debug(f"No starting time or ending time found for row: {row}")
+                    continue
+
+                ending_time = parse_date(ending_time_text).time()
                 reading_datetime = datetime.combine(
                     reading_date, ending_time
                 ) - timedelta(minutes=14, seconds=59)
+
+            else:
+                starting_time = parse_date(row["Starting Time"].strip()).time()
+                reading_datetime = datetime.combine(reading_date, starting_time)
 
             reading_value = float(row["kWh Usage"].strip())
             results.append(IntervalReading((reading_datetime, reading_value)))
@@ -105,7 +102,7 @@ class LoginPage(CSSSelectorBasePageObject):
     def login(self, username: str, password: str):
         """
           - go to http://smw.seattle.gov
-          - login
+          - login with username,password and click Go
           - wait for dropdown to load
         """
         log.debug("Logging in to meterwatch...")
@@ -121,7 +118,9 @@ class LoginPage(CSSSelectorBasePageObject):
             self.wait_until_ready('select[name="p_t04"]')
 
         except Exception:
-            if self._driver.find('//li[text()="Security Information Invalid."'):
+            if self._driver.find(
+                '//li[text()="Security Information Invalid."', xpath=True
+            ):
                 raise Exception("Unable to login, invalid credentials?")
 
             raise Exception("Unable to login")
@@ -144,16 +143,20 @@ class MeterDataPage(CSSSelectorBasePageObject):
     def enter_dates(self, start_date: date, end_date: date):
         """set dates in From Date, To Date (04/01/2020 format)
            check available dates (Starts on 04/30/2018, Ends on 03/18/2020)
-           continue with maximum range if requested range not available"""
+           continue with the maximum available range if requested range not available"""
 
         # wait for date inputs to be ready
         self.wait_until_ready(self.DateAvailableFromSel)
         self.wait_until_ready(self.DateAvailableToSel)
 
-        available_from_text = self.find_element(self.DateAvailableFromSel).text.split(" ")[-1]
+        available_from_text = self.find_element(self.DateAvailableFromSel).text.split(
+            " "
+        )[-1]
         available_from = datetime.strptime(available_from_text, "%m/%d/%Y")
 
-        available_to_text = self.find_element(self.DateAvailableToSel).text.split(" ")[-1]
+        available_to_text = self.find_element(self.DateAvailableToSel).text.split(" ")[
+            -1
+        ]
         available_to = datetime.strptime(available_to_text, "%m/%d/%Y")
 
         if start_date < available_from.date():
@@ -170,11 +173,13 @@ class MeterDataPage(CSSSelectorBasePageObject):
         log.info("Setting start date to: {}".format(start_date.strftime("%m/%d/%Y")))
         log.info("Setting end date to: {}".format(end_date.strftime("%m/%d/%Y")))
 
-        # clear text fields first in case there's residual text from previous account here
+        # clear date fields first, in case there's residual text from previous account here
         self.find_element(self.DateAvailableFromInputSel).clear()
         self.find_element(self.DateAvailableToInputSel).clear()
 
-        self._driver.fill(self.DateAvailableFromInputSel, start_date.strftime("%m/%d/%Y"))
+        self._driver.fill(
+            self.DateAvailableFromInputSel, start_date.strftime("%m/%d/%Y")
+        )
         self._driver.fill(self.DateAvailableToInputSel, end_date.strftime("%m/%d/%Y"))
 
     def select_account(self, meter_number: str):
@@ -188,7 +193,10 @@ class MeterDataPage(CSSSelectorBasePageObject):
         try:
             option_elem = self._driver.wait(10).until(
                 EC.presence_of_element_located(
-                    (By.XPATH, f"{select_xpath}/option[starts-with(text(), {meter_number})]")
+                    (
+                        By.XPATH,
+                        f"{select_xpath}/option[starts-with(text(), {meter_number})]",
+                    )
                 )
             )
             log.info(f"Found account option: {option_elem.text}")
@@ -200,18 +208,19 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
         select.select_by_value(meter_id)
 
-        # the page refreshes after selecting meter number, so wait until its loaded
+        # the page refreshes after selecting meter number, so wait until its loaded ?
         self.wait_until_ready(f'option[value="{meter_id}"]')
 
     def download_data(self, meter_number: str) -> str:
         """
           - click Download Data button
           - saves to config.WORKING_DIRECTORY/15_minute_download.csv
+          - rename the downloaded file to config.WORKING_DIRECTORY/{meter_number}.csv
           Returns:
            the path of the downloaded csv file.
         """
 
-        # wait for the download button
+        # wait for the download button to be ready
         self.wait_until_ready(self.DownloadBtnSel)
 
         log.info("Beginning download...")
@@ -221,11 +230,11 @@ class MeterDataPage(CSSSelectorBasePageObject):
         filename = "15_minute_download.csv"
 
         try:
-            self._driver.wait(1500).until(
+            self._driver.wait(180).until(
                 file_exists_in_dir(
                     # end pattern with $ to prevent matching
                     # filename.crdownload
-                    directory=self._driver.download_dir,
+                    directory=config.WORKING_DIRECTORY,
                     pattern=f"^{filename}$",
                 )
             )
@@ -234,24 +243,22 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
         log.info("Download Complete")
 
-        csv_file_path = os.path.join(self._driver.download_dir, meter_number + ".csv")
+        csv_file_path = os.path.join(config.WORKING_DIRECTORY, meter_number + ".csv")
 
         # rename downloaded filename to {meter_number}.csv for
         # avoiding filename conflict in case of multiple accounts
-        os.rename(os.path.join(self._driver.download_dir, filename), csv_file_path)
+        os.rename(os.path.join(config.WORKING_DIRECTORY, filename), csv_file_path)
 
         return csv_file_path
 
 
 class SCLMeterWatchConfiguration(Configuration):
-
     def __init__(self, meter_numbers: List[str]):
-        super().__init__(scrape_readings=True)  # set to true later if needed
+        super().__init__(scrape_readings=True)
         self.meter_numbers = meter_numbers
 
 
 class SCLMeterWatchScraper(BaseWebScraper):
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = "SCL MeterWatch"
@@ -303,8 +310,8 @@ class SCLMeterWatchScraper(BaseWebScraper):
                 reading_datetime = reading[0]
                 reading_value = reading[1]
 
-                # subtract a second from reading_datetime because the Starting
-                # Time in data always start at 1 second (e.g: 00:15:01 instead
+                # subtract a second from reading_datetime because the "Starting
+                # Time" in data always start at 1 second (e.g: 00:15:01 instead
                 # of 00:15:00), and Timeline initializes the index with zero
                 # seconds (e.g 00:15:00)
                 reading_datetime = reading_datetime - timedelta(seconds=1)
