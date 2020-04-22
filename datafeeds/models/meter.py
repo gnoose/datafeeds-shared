@@ -41,13 +41,23 @@ class MeterFlowDirection(Enum):
     reverse = "reverse"
 
 
+class Building(ModelMixin, Base):
+    """This is not a complete model of a building (building + snapmeter_building tables).
+
+    It's just enough so that a meter can get its timezone through the building relationship.
+    """
+
+    __tablename__ = "building"
+    oid = sa.Column(sa.BigInteger, primary_key=True)
+    timezone = sa.Column(sa.Unicode)
+
+
 class Meter(ModelMixin, Base):
     __tablename__ = "meter"
 
     oid = sa.Column(sa.BigInteger, primary_key=True)
     billing = sa.Column(sa.Unicode)
-    # foreign key for SQLAlchemy: does not actually exist in database
-    # _building = sa.Column("building", sa.BigInteger, sa.ForeignKey("building.oid"))
+    _building = sa.Column("building", sa.BigInteger, sa.ForeignKey("building.oid"))
     commodity = sa.Column(sa.Unicode)
     interval = sa.Column(sa.Integer)
     kind = sa.Column(sa.Unicode)
@@ -62,7 +72,7 @@ class Meter(ModelMixin, Base):
         sa.Enum(*[f.value for f in MeterFlowDirection]), default="forward"
     )
 
-    # building = relationship("Building", back_populates="meters")
+    building = relationship("Building")
     utility_service = relationship("UtilityService")
     readings = relationship("MeterReading", back_populates="meter_obj")
 
