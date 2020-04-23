@@ -119,6 +119,7 @@ def run_datafeed(
         if isinstance(exc, LoginError) and disable_login_on_error and parent:
             parent.enabled = False
             db.session.add(parent)
+            log.warning("disabling %s login %s", parent.source_account_type, parent.oid)
             alert.disable_logins(parent)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):

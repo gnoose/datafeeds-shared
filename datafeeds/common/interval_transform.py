@@ -122,10 +122,14 @@ def to_positive(
             transformed[day][idx] = abs(val)
     # can't recover from mixed positive and negative values
     if issues:
-        timestamps = [row.interval_dt.strftime("%Y-%m-%d %H:%M") for row in issues]
+        description: List[str] = []
+        for row in issues:
+            description.append(
+                "%s = %s" % (row.interval_dt.strftime("%Y-%m-%d %H:%M"), row.value)
+            )
         raise (
             InvalidMeterDataException(
-                "mixed positive and negative values: %s" % timestamps
+                "mixed positive and negative values: %s" % description
             )
         )
     return transformed, issues
