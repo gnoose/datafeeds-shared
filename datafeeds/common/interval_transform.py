@@ -9,6 +9,7 @@ from dateutil import parser as date_parser
 from dateutil import tz
 
 from datafeeds import db
+from datafeeds.common.exceptions import InvalidMeterDataException
 from datafeeds.models import Meter, SnapmeterAccount, SnapmeterAccountMeter
 from datafeeds.common.typing import IntervalReadings, IntervalIssue
 from datafeeds.common import index
@@ -66,6 +67,7 @@ def remove_outliers(
     max_val = max_val * 10
     transformed = copy.deepcopy(readings)
     issues = []
+    meter_tz = tz.gettz(meter.timezone)
     for day in readings:
         bad_indexes = set()
         day_dt = date_parser.parse(day)
@@ -74,7 +76,6 @@ def remove_outliers(
                 continue
             bad_indexes.add(idx)
             interval_dt = day_dt + timedelta(minutes=(idx * meter.interval))
-            meter_tz = tz.gettz(meter.timezone)
             issues.append(
                 IntervalIssue(
                     interval_dt=interval_dt.replace(tzinfo=meter_tz),
@@ -88,7 +89,54 @@ def remove_outliers(
     return transformed, issues
 
 
+def to_positive(
+    readings: IntervalReadings, meter: Meter
+) -> Tuple[IntervalReadings, List[IntervalIssue]]:
+    """All readings should be positive values.
+
+    The meter.direction field determines how the values should be treated when summing.
+    Return updated readings and list of issues.
+    """
+    transformed = copy.deepcopy(readings)
+    sign = None
+    issues = []
+    meter_tz = tz.gettz(meter.timezone)
+    for day in readings:
+        day_dt = date_parser.parse(day)
+        for idx, val in enumerate(readings[day]):
+            if not val:
+                continue
+            this_sign = "positive" if val > 0.0 else "negative"
+            if not sign:
+                sign = this_sign
+            # all values in a set of readings data must have the same sign (flow direction)
+            if this_sign != sign:
+                interval_dt = day_dt + timedelta(minutes=(idx * meter.interval))
+                issues.append(
+                    IntervalIssue(
+                        interval_dt=interval_dt.replace(tzinfo=meter_tz),
+                        error="sign of value is different than previously seen values",
+                        value=val,
+                    )
+                )
+            transformed[day][idx] = abs(val)
+    # can't recover from mixed positive and negative values
+    if issues:
+        description: List[str] = []
+        for row in issues:
+            description.append(
+                "%s = %s" % (row.interval_dt.strftime("%Y-%m-%d %H:%M"), row.value)
+            )
+        raise (
+            InvalidMeterDataException(
+                "mixed positive and negative values: %s" % description
+            )
+        )
+    return transformed, issues
+
+
 class Transforms(Enum):
+    positive = partial(to_positive)
     outliers = partial(remove_outliers)
 
 
@@ -105,8 +153,12 @@ def transform(
 
     Transform as needed, and return the same format.
     """
-    if not readings or not transforms:
+    if not readings:
         return readings
+
+    if transforms is None:
+        transforms = []
+
     # get meter and account
     meter = db.session.query(Meter).get(meter_id)
     account = (
@@ -118,8 +170,13 @@ def transform(
     if not meter or not account:
         log.error("cannot load meter or account for meter %s", meter_id)
         return readings
+
     # run transforms and collect issues
     transformed = copy.deepcopy(readings)
+
+    # if positive transform throws an exception, let it bubble up: we don't support mixed data
+    (transformed, issues) = to_positive(transformed, meter)
+
     all_issues: List[IntervalIssue] = []
     for action in transforms:
         try:

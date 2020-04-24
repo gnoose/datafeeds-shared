@@ -92,9 +92,20 @@ class SceLoginPage(PageState):
     This is a very straightforward login process, featuring a username field, password field, and submit button.
     """
 
-    UsernameInputLocator = (By.XPATH, "//react-login-main//input[@id='userName']")
-    PasswordInputLocator = (By.XPATH, "//react-login-main//input[@id='password']")
-    SubmitButtonLocator = (By.XPATH, "//react-login-main//button")
+    LoginLinkLocator = (By.XPATH, "//a[contains(@class, 'login-background]")
+    UsernameInputLocator = (
+        By.XPATH,
+        "//div[contains(@class, 'LoginMainComponent')]  //input[" "@name='username']",
+    )
+    PasswordInputLocator = (
+        By.XPATH,
+        "//div[contains(@class, 'LoginMainComponent')] //input[" "@name='password']",
+    )
+    SubmitButtonLocator = (
+        By.XPATH,
+        "//div[contains(@class, 'LoginMainComponent')] //button["
+        "contains(@class, 'sceBtnSmPrimary')]",
+    )
 
     def get_ready_condition(self):
         return ec_and(

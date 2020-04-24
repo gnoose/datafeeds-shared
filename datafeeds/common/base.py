@@ -1,5 +1,6 @@
 from abc import ABC as Abstract, abstractmethod
 import csv
+from datetime import date
 import os
 import time
 from typing import List
@@ -67,19 +68,19 @@ class BaseScraper(Abstract):
         return self._credentials.password
 
     @property
-    def start_date(self):
+    def start_date(self) -> date:
         return self._date_range.start_date
 
     @start_date.setter
-    def start_date(self, dt):
+    def start_date(self, dt: date) -> None:
         self._date_range.start_date = dt
 
     @property
-    def end_date(self):
+    def end_date(self) -> date:
         return self._date_range.end_date
 
     @end_date.setter
-    def end_date(self, dt):
+    def end_date(self, dt: date):
         self._date_range.end_date = dt
 
     @property
