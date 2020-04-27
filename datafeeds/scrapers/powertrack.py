@@ -129,13 +129,14 @@ class SiteStatusPage:
         return file_path
 
     def calendar_back_click(self):
-        # TODO find a better selector if possible
+        # More svg with Selenium fun
+        # https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/6441#issuecomment-192146989
         back_button_xpath = (
-            '//*[@id="classic-view"]/div/div/div[2]/div[2]'
-            "/div/div/div/div/div[1]/div[1]/div/div/div[8]"
-            "/div/div/div/div[1]/img[1]"
+            """//*[@class='svg-inline--fa fa-chevron-left fa-w-10 fa-fw hover']"""
         )
-        back_button = self.driver.find_element_by_xpath(back_button_xpath)
+        back_button = self.driver.wait().until(
+            ec.element_to_be_clickable((By.XPATH, back_button_xpath))
+        )
         log.info("clicking back on the calendar")
         back_button.click()
 
