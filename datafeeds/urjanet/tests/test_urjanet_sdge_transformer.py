@@ -28,6 +28,10 @@ class TestUrjanetSDGETransformer(test_util.UrjaFixtureText):
     def test_sdge_1222476316(self):
         self.sdge_test("1222476316_input.json", "1222476316_expected.json")
 
+    def test_sdge_multi_meter(self):
+        """Test transform of account that contains multiple meters."""
+        self.sdge_test("4505136472785304_input.json", "4505136472785304_expected.json")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -2,10 +2,24 @@ from datetime import timedelta
 from typing import List
 import logging
 
-from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
+from datafeeds.urjanet.transformer import (
+    UrjanetGridiumTransformer,
+    GenericBillingPeriod,
+)
 from datafeeds.urjanet.model import Account, DateIntervalTree, UrjanetData
 
 log = logging.getLogger(__name__)
+
+
+class SDGEBillingPeriod(GenericBillingPeriod):
+    def get_total_charge(self):
+        total_charges = 0
+        for meter in self.account.meters:
+            for charges in meter.charges:
+                if charges.ChargeId == "ch.late_fee":
+                    continue
+                total_charges += charges.ChargeAmount
+        return total_charges
 
 
 class SDGETransformer(UrjanetGridiumTransformer):
@@ -62,7 +76,11 @@ class SDGETransformer(UrjanetGridiumTransformer):
                 bill_history.add(
                     account.IntervalStart + timedelta(days=1),
                     account.IntervalEnd,
-                    self.billing_period(account),
+                    SDGEBillingPeriod(account),
                 )
 
         return bill_history
+
+    @staticmethod
+    def billing_period(account: Account) -> SDGEBillingPeriod:
+        return SDGEBillingPeriod(account)
