@@ -546,10 +546,15 @@ class LoginPage:
     def get_login_button(self):
         return self._driver.find_element_by_css_selector(self.LoginButtonCss)
 
-    def login(self, username, password):
+    def login(self, username, password, scraper):
         log.info("Inserting credentials on login page.")
-        self._driver.fill(self.UsernameFieldCss, username)
-        self._driver.fill(self.PasswordFieldCss, password)
+        self._driver.find_element_by_css_selector(self.UsernameFieldCss).send_keys(
+            username
+        )
+        self._driver.find_element_by_css_selector(self.PasswordFieldCss).send_keys(
+            password
+        )
+        scraper.screenshot("after credentials")
         self.get_login_button().click()
         try:
             self._driver.wait(5).until(
@@ -672,7 +677,7 @@ class SdgeMyAccountScraper(BaseWebScraper):
         log.info("Logging in.")
         login_page.wait_until_ready()
         self.screenshot("beforelog.infoin")
-        login_page.login(self.username, self.password)
+        login_page.login(self.username, self.password, self)
 
         # On the homepage, fetch the visible account information. This info
         # tells us (among other things) which account id is associated with
