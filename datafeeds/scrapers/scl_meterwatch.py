@@ -10,6 +10,11 @@ from datafeeds import config
 from datafeeds.common import Timeline
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
+from datafeeds.common.exceptions import (
+    LoginError,
+    InvalidDateRangeError,
+    DataSourceConfigurationError,
+)
 from datafeeds.common.support import Results
 from datafeeds.common.support import Configuration
 from datafeeds.common.util.selenium import file_exists_in_dir
@@ -32,9 +37,9 @@ IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
 
 
 def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
-    """
-        read and parse data from csv file
-        Returns: list of tuples of datetime and kWh usage
+    """Read and parse data from csv file.
+
+    Returns: list of tuples of datetime and kWh usage
     """
 
     results = []
@@ -53,7 +58,6 @@ def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
             # if that is the case, determine the starting time by subtracting
             # 00:14:59 from "Ending Time"
             if not starting_time_text:
-                starting_time = None
                 ending_time_text = row["Ending Time"].strip()
 
                 if not ending_time_text:
@@ -77,9 +81,9 @@ def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
 
 
 def _get_main_window(driver):
-    # The window handle is often not immediatly set, this goes
+    # The window handle is often not immediately set, this goes
     # into a loop until the handle is set. We need it to
-    # differeniate from the popup later.
+    # differentiate from the popup later.
     rval = None
     elapsed = 0
     start_time = datetime.utcnow()
@@ -100,11 +104,7 @@ class LoginPage(CSSSelectorBasePageObject):
     SigninButtonSelector = 'img[alt="Login to Seattle MeterWatch"]'
 
     def login(self, username: str, password: str):
-        """
-          - go to http://smw.seattle.gov
-          - login with username,password and click Go
-          - wait for dropdown to load
-        """
+        """Login and wait for dropdown to load."""
         log.debug("Logging in to meterwatch...")
         self.wait_until_ready(self.UsernameFieldSelector)
         self.wait_until_ready(self.SigninButtonSelector)
@@ -121,16 +121,12 @@ class LoginPage(CSSSelectorBasePageObject):
             if self._driver.find(
                 '//li[text()="Security Information Invalid."', xpath=True
             ):
-                raise Exception("Unable to login, invalid credentials?")
-
-            raise Exception("Unable to login")
+                raise LoginError("Unable to login, invalid credentials?")
+            raise LoginError("Unable to login")
 
 
 class MeterDataPage(CSSSelectorBasePageObject):
-    """
-        Display Meter Data page with account dropdown.
-        after login
-    """
+    """Display Meter Data page with account dropdown."""
 
     DateAvailableFromSel = 'label[for="P10_FROM_DATE"] span'
     DateAvailableFromInputSel = 'input[id="P10_FROM_DATE"]'
@@ -141,10 +137,11 @@ class MeterDataPage(CSSSelectorBasePageObject):
     DownloadBtnSel = "a[href=\"javascript:apex.submit('DOWNLOAD');\"].buttonhtml"
 
     def enter_dates(self, start_date: date, end_date: date):
-        """set dates in From Date, To Date (04/01/2020 format)
-           check available dates (Starts on 04/30/2018, Ends on 03/18/2020)
-           continue with the maximum available range if requested range not available"""
+        """Set dates in From Date, To Date (04/01/2020 format)
 
+        Check available dates (Starts on 04/30/2018, Ends on 03/18/2020)
+        Continue with the maximum available range if requested range not available.
+        """
         # wait for date inputs to be ready
         self.wait_until_ready(self.DateAvailableFromSel)
         self.wait_until_ready(self.DateAvailableToSel)
@@ -158,6 +155,7 @@ class MeterDataPage(CSSSelectorBasePageObject):
             -1
         ]
         available_to = datetime.strptime(available_to_text, "%m/%d/%Y")
+        log.info("data available through %s" % available_to)
 
         if start_date < available_from.date():
             start_date = available_from.date()
@@ -168,7 +166,9 @@ class MeterDataPage(CSSSelectorBasePageObject):
         # the webpage shows an error if start_date is greater than end_date
         # make sure its a valid range
         if end_date < start_date:
-            raise Exception("end_date cannot be less than start_date")
+            raise InvalidDateRangeError(
+                "end_date %s cannot be less than start_date %s" % (end_date, start_date)
+            )
 
         log.info("Setting start date to: {}".format(start_date.strftime("%m/%d/%Y")))
         log.info("Setting end date to: {}".format(end_date.strftime("%m/%d/%Y")))
@@ -183,7 +183,7 @@ class MeterDataPage(CSSSelectorBasePageObject):
         self._driver.fill(self.DateAvailableToInputSel, end_date.strftime("%m/%d/%Y"))
 
     def select_account(self, meter_number: str):
-        """choose account from Meter OR Meter Group dropdown (option value == meter_number)"""
+        """Choose account from Meter OR Meter Group dropdown (option value == meter_number)"""
         log.info(f"Selecting account {meter_number}...")
         select_xpath = '//select[@name="p_t04"]'
 
@@ -201,25 +201,26 @@ class MeterDataPage(CSSSelectorBasePageObject):
             )
             log.info(f"Found account option: {option_elem.text}")
         except TimeoutException:
-            raise Exception(f"{meter_number} not found in Meter number dropdown")
+            raise DataSourceConfigurationError(
+                f"{meter_number} not found in Meter number dropdown"
+            )
 
         select = self._driver.get_select(select_xpath, xpath=True)
         meter_id = option_elem.get_attribute("value")
 
         select.select_by_value(meter_id)
 
-        # the page refreshes after selecting meter number, so wait until its loaded ?
+        # the page refreshes after selecting meter number, so wait until its loaded
         self.wait_until_ready(f'option[value="{meter_id}"]')
 
     def download_data(self, meter_number: str) -> str:
-        """
-          - click Download Data button
-          - saves to config.WORKING_DIRECTORY/15_minute_download.csv
-          - rename the downloaded file to config.WORKING_DIRECTORY/{meter_number}.csv
-          Returns:
-           the path of the downloaded csv file.
-        """
+        """Download data to the working directory.
 
+        Click Download Data button.
+        Saves to config.WORKING_DIRECTORY/15_minute_download.csv
+        Rename the downloaded file to config.WORKING_DIRECTORY/{meter_number}.csv
+        Return: the path of the downloaded csv file.
+        """
         # wait for the download button to be ready
         self.wait_until_ready(self.DownloadBtnSel)
 
@@ -228,13 +229,14 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
         # download filename is always 15_minute_download.csv for 15 minute intervals
         filename = "15_minute_download.csv"
+        download_dir = "%s/current" % config.WORKING_DIRECTORY
 
         try:
-            self._driver.wait(180).until(
+            self._driver.wait(30).until(
                 file_exists_in_dir(
                     # end pattern with $ to prevent matching
                     # filename.crdownload
-                    directory=config.WORKING_DIRECTORY,
+                    directory=download_dir,
                     pattern=f"^{filename}$",
                 )
             )
@@ -243,11 +245,11 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
         log.info("Download Complete")
 
-        csv_file_path = os.path.join(config.WORKING_DIRECTORY, meter_number + ".csv")
+        csv_file_path = os.path.join(download_dir, meter_number + ".csv")
 
         # rename downloaded filename to {meter_number}.csv for
         # avoiding filename conflict in case of multiple accounts
-        os.rename(os.path.join(config.WORKING_DIRECTORY, filename), csv_file_path)
+        os.rename(os.path.join(download_dir, filename), csv_file_path)
 
         return csv_file_path
 
@@ -265,7 +267,7 @@ class SCLMeterWatchScraper(BaseWebScraper):
         self.url = "http://smw.seattle.gov"
 
     def _execute(self):
-        # Meterwatch immediatly spawns a popup when loaded which is the actual
+        # Meterwatch immediately spawns a popup when loaded which is the actual
         # window we want. So we have to go and grab the main window handle and
         # THEN go looking for the popup window and switch to it.
 
@@ -295,14 +297,9 @@ class SCLMeterWatchScraper(BaseWebScraper):
         login_page.login(self.username, self.password)
 
         for meter_number in self._configuration.meter_numbers:
-
-            try:
-                meterdata_page.select_account(meter_number)
-                meterdata_page.enter_dates(self.start_date, self.end_date)
-                csv_file_path = meterdata_page.download_data(meter_number)
-            except Exception as e:
-                log.exception(e)
-                continue
+            meterdata_page.select_account(meter_number)
+            meterdata_page.enter_dates(self.start_date, self.end_date)
+            csv_file_path = meterdata_page.download_data(meter_number)
 
             log.info(f"parsing kWh usage from downloaded data for {meter_number}")
             # read kWh Usage with csv into timeline
@@ -323,7 +320,7 @@ class SCLMeterWatchScraper(BaseWebScraper):
 
                 timeline.insert(reading_datetime, reading_value)
 
-        return Results(readings=timeline.serialize())
+        return Results(readings=timeline.serialize(include_empty=False))
 
 
 def datafeed(

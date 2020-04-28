@@ -53,7 +53,7 @@ class Timeline:
 
         return None
 
-    def serialize(self):
+    def serialize(self, include_empty=True):
         """Write this datastructure to a JSON record of the form:
         {
             '%Y-%m-%d' : [ N float or null ]
@@ -68,11 +68,14 @@ class Timeline:
             data = self.index[day]
             temp = list(data.items())
             temp.sort(key=lambda x: x[0])
+            values = [v for (k, v) in temp]
+            if not include_empty and set(values) == {None}:
+                continue
 
             if len(temp) != expected:
                 msg = "Expected %d values for date %s, but found %d."
                 raise SerializationError(msg % (expected, str(day), len(temp)))
 
-            result[str(day)] = [v for (k, v) in temp]
+            result[str(day)] = values
 
         return result
