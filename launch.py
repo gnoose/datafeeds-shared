@@ -28,6 +28,7 @@ from datafeeds.datasources.smud_energyprofiler_interval import (
 from datafeeds.scrapers.atmos.atmos import datafeed as atmos
 from datafeeds.scrapers.bloom_interval import datafeed as bloom_interval
 from datafeeds.scrapers.engie import datafeed as engie
+from datafeeds.scrapers.fpl_myaccount import datafeed as fpl_myaccount
 from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
 from datafeeds.scrapers.hudson import datafeed as hudson
@@ -129,6 +130,7 @@ scraper_functions = {
     "grovestreams": grovestreams,
     "fostercity-water-urjanet": fostercity,
     "fpl-urjanet": fpl,
+    "fpl-myaccount": fpl_myaccount,
     "generic-urjanet-water": generic_water,
     "heco-interval": heco_interval,
     "heco-urjanet": heco_urjanet,
