@@ -2,7 +2,7 @@ import csv
 import time
 import logging
 
-from typing import Optional, Tuple, List, Dict, Callable
+from typing import Optional, Tuple, List, Dict, Callable, Union
 from datetime import timedelta, datetime, date, time as time_t
 from dateutil import parser as dateparser
 from dateutil.relativedelta import relativedelta
@@ -33,7 +33,7 @@ TIME = "time"
 DEMAND = "demand"
 DATE_FORMAT = "%m/%d/%Y"
 
-IntermediateReading = Dict[str, Dict[str, List[str]]]
+IntermediateReading = Dict[str, Dict[str, List[Union[float, str]]]]
 
 
 class MeterNotFoundException(Exception):
@@ -354,12 +354,14 @@ class HECOScraper(BaseWebScraper):
         return time_to_format.strftime("%H:%M")
 
     @staticmethod
-    def _finalize_readings(readings: IntermediateReading) -> Dict[str, List[str]]:
+    def _finalize_readings(
+        readings: IntermediateReading,
+    ) -> Dict[str, List[Union[float, str]]]:
         """
         Modifies the intermediate readings format to take the final desired format,
         dates mapped to arrays of demand values
         readings = {
-            'YYYY-MM-DD': ['100.3', '432.0', ...],
+            'YYYY-MM-DD': [100.3, 432.0, ...],
             'YYYY-MM-DD': ['104.3', '99.7', ...],
         }
         """
@@ -367,6 +369,13 @@ class HECOScraper(BaseWebScraper):
         for each_date in readings:
             finalized[each_date] = readings[each_date][DEMAND]
         return finalized
+
+    @staticmethod
+    def _convert_demand_type(demand: str) -> Union[float, str]:
+        try:
+            return float(demand)
+        except ValueError:
+            return demand
 
     def _process_csv(self, file_path: str, response: IntermediateReading):
         """
@@ -378,7 +387,7 @@ class HECOScraper(BaseWebScraper):
         96 demand values, at 15 minute increments, starting at midnight
         example: response = {
             'YYYY-MM-DD': {
-                'demand': ['100.3', '432.0', ...],
+                'demand': [100.3, 432.0, ...],
                 'time': ['00:00', '00:15', ...]
             }
         }
@@ -411,7 +420,9 @@ class HECOScraper(BaseWebScraper):
                 # To cover gaps in csv data returned, some days may be pulled multiple times.
                 if len(response[raw_date][DEMAND]) < EXPECTED_CSV_LEN:
                     response[raw_date][TIME].append(raw_time)
-                    response[raw_date][DEMAND].append(raw_demand)
+                    response[raw_date][DEMAND].append(
+                        self._convert_demand_type(raw_demand)
+                    )
 
                 current_date = raw_date
 
