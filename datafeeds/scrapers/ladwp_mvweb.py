@@ -19,6 +19,7 @@ from datafeeds.common.typing import Status
 from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource
 
 
+MAX_DAYS = 7
 log = logging.getLogger(__name__)
 
 
@@ -144,11 +145,12 @@ class Scraper(BaseApiScraper):
 
     def _execute(self):
         mvweb_session = self._login()
-        # get max of 5 days to reduce load
-        if (self.end_date - self.start_date).days > 5:
-            self.end_date = self.start_date + timedelta(days=5)
+        # shorten date range reduce load
+        if (self.end_date - self.start_date).days > MAX_DAYS:
+            self.start_date = self.end_date - timedelta(days=MAX_DAYS)
             log.info(
-                "max 5 days for MVWeb scraper; adjusting date range to %s - %s",
+                "max %s days for MVWeb scraper; adjusting date range to %s - %s",
+                MAX_DAYS,
                 self.start_date,
                 self.end_date,
             )
@@ -175,7 +177,7 @@ def datafeed(
         is_aggregate="t" in meta.get("mvWebAggregate", "false"),
     )
     # reduce load on MVWeb servers: skip if meter has data from within the last 3 days
-    max_reading = meter.readings_range.max_date
+    max_reading = meter.readings_range.max_date or date.today() - timedelta(days=365)
     interval_age = (date.today() - max_reading).days
     if interval_age <= 3:
         log.info(
