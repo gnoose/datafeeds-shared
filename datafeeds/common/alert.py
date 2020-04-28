@@ -51,4 +51,6 @@ def disable_logins(acct_ds: SnapmeterAccountDataSource):
         acct_ds.name,
         "\n".join(meter_list),
     )
-    post_slack_message(msg, "#scrapers", ":exclamation:", username="Scraper monitor")
+    post_slack_message(
+        msg, "#scraper-logins", ":exclamation:", username="Scraper monitor"
+    )
