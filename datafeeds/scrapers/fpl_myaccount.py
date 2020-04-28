@@ -2,7 +2,7 @@ import os
 import csv
 import logging
 
-from typing import NewType, Tuple, Optional, List
+from typing import Optional, List
 from dateutil.parser import parse as parse_date
 from datetime import datetime, date
 
@@ -11,7 +11,7 @@ from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.support import Configuration, Results
 from datafeeds.common.util.selenium import file_exists_in_dir
-from datafeeds.common.typing import Status
+from datafeeds.common.typing import Status, IntervalReading
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
@@ -24,7 +24,6 @@ from selenium.webdriver.common.by import By
 
 
 log = logging.getLogger(__name__)
-IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
 
 
 def scroll_to(driver, elem):
@@ -36,18 +35,17 @@ def scroll_to(driver, elem):
 
 def wait_for_loading_overlay(driver):
     # helper function to wait for page to load
-
     driver.wait().until(
         EC.invisibility_of_element_located((By.CSS_SELECTOR, "div.window-load"))
     )
 
-    # wait for fade animation ?
+    # wait for fade animation
     driver.sleep(0.5)
 
 
 class FPLMyAccountConfiguration(Configuration):
     def __init__(self, account_number: str):
-        super().__init__(scrape_bills=True)
+        super().__init__(scrape_readings=True)
         self.account_number = account_number
 
 
@@ -56,14 +54,11 @@ class EnergyDashboardPage(CSSSelectorBasePageObject):
     endingperiod_dropdown_sel = "span.ui-selectmenu-button.ui-selectmenu-button-closed"
 
     def heatmap(self):
-        """
-        - click Energy Data
-        - click Demand Heatmap
-        """
+        """Click Energy Data, then click Demand Heatmap
 
-        # navbar collapses into a side menu depending on screen size,
-        # so click the navbar toggle button in case its collapsed
-
+        The navbar collapses into a side menu depending on screen size,
+        so click the navbar toggle button in case its collapsed
+        """
         try:
             self._driver.find_or_raise("span.navbar-toggler-icon").click()
         except Exception:
@@ -83,7 +78,7 @@ class EnergyDashboardPage(CSSSelectorBasePageObject):
             raise Exception("Demand Heatmap not available.")
 
     def get_available_ending_dates(self) -> List[date]:
-        # get all period ending dates available
+        """Get all period ending dates available."""
 
         available_ending_dates = []
 
@@ -95,8 +90,7 @@ class EnergyDashboardPage(CSSSelectorBasePageObject):
         return available_ending_dates
 
     def select_period_ending_date(self, ending_date: date):
-
-        # check if the ending dates dropdown is not already open
+        """Check if the ending dates dropdown is not already open."""
         if not self._driver.find("span.ui-selectmenu-button.ui-selectmenu-button-open"):
             # open the ending dates dropdown
             self.find_element(self.endingperiod_dropdown_sel).click()
@@ -119,11 +113,8 @@ class EnergyDashboardPage(CSSSelectorBasePageObject):
 
         log.info("Waiting for file to Download")
 
-        # Temp Note: driver.download_dir == 'workdir/current'
-        #            config.WORKING_DIRECTORY == 'workdir'
-
         try:
-            filename = self._driver.wait(120).until(
+            filename = self._driver.wait(30).until(
                 file_exists_in_dir(
                     directory=self._driver.download_dir,
                     pattern=r"^demand_heatmap_.+?\.csv$",
@@ -161,7 +152,7 @@ class EnergyDashboardPage(CSSSelectorBasePageObject):
                     continue
 
                 results.append(
-                    IntervalReading((reading_datetime, float(reading_value)))
+                    IntervalReading(dt=reading_datetime, value=float(reading_value))
                 )
         return results
 
@@ -177,10 +168,11 @@ class EnergyDashboardPage(CSSSelectorBasePageObject):
         )
 
     def download_data(self, start_date: date, end_date: date):
-        """
-        - for each Period Ending date after start date
+        """Download data for periods ending after start date.
+
+        For each Period Ending date after start date
           - click button on top right of chart, then Download as CSV Spreadsheet
-          - downloads demand_heatmap_*.csv (ie demand_heatmap_UNIVERSITY_VENTURE_LTD_DBA_121_ALHAMBRA_TOWER_LLC_5110.csv)
+          - download demand_heatmap_*.csv (ie demand_heatmap_UNIVERSITY_VENTURE_LTD_DBA_121_ALHAMBRA_TOWER_LLC_5110.csv)
           - parse CSV and add to results
         """
         timeline = Timeline(start_date, end_date)
@@ -204,7 +196,7 @@ class EnergyDashboardPage(CSSSelectorBasePageObject):
             csv_file_path = self.download_as_csv()
             readings = self.parse_readings_from_csv(csv_file_path)
 
-            [timeline.insert(reading[0], reading[1]) for reading in readings]
+            [timeline.insert(reading.dt, reading.value) for reading in readings]
 
         return timeline.serialize()
 
@@ -232,7 +224,6 @@ class EnergyManagerPage(CSSSelectorBasePageObject):
         view_dashboard_btn.click()
 
     def _accept_dialog(self):
-
         # wait until the "Leaving FPL Website" dialog is visible
         self._driver.wait(5).until(
             EC.visibility_of_element_located(
@@ -250,9 +241,7 @@ class EnergyManagerPage(CSSSelectorBasePageObject):
         self._driver.sleep(1)
 
     def energy_dashboard(self) -> EnergyDashboardPage:
-        """
-        - click View Energy Dashboard
-        """
+        """Click View Energy Dashboard."""
 
         self.view_energy_dashboard()
         if self._driver.find(
@@ -269,13 +258,9 @@ class EnergyManagerPage(CSSSelectorBasePageObject):
             # sometimes for unknown reasons the "Leaving FPL Website" dialog
             # fails to open and ._accept_dialog raises TimeoutException,
             # if that's the case try clicking View Energy Dashboard button again
-
             log.info("the 'Leaving FPL website' dialog didn't appear, trying again...")
             self.view_energy_dashboard()
             self._accept_dialog()
-
-        except Exception:
-            raise
 
         # it takes a little while for dashboard to open in a new tab, so wait until new tab is open
         _count = 0
@@ -298,9 +283,7 @@ class AccountSummaryPage(CSSSelectorBasePageObject):
     visit_dashboard_sel = 'a[href="#commercialDashboard"]'
 
     def visit_dashboard(self) -> EnergyManagerPage:
-        """
-        - click Visit Energy Dashboard
-        """
+        """Click Visit Energy Dashboard."""
         self.wait_until_ready(self.visit_dashboard_sel)
 
         visit_dashboard_elem = self.find_element(self.visit_dashboard_sel)
@@ -320,11 +303,11 @@ class AccountDashboardPage(CSSSelectorBasePageObject):
         wait_for_loading_overlay(self._driver)
 
     def select_account(self, account_id: str) -> AccountSummaryPage:
-        """
-        - close popup if needed (//*[@id="emailBillPopup"]/div/a)
-        - click .account-number-link with text matching self.account_number
-        """
+        """Select an account.
 
+        Close popup if needed (//*[@id="emailBillPopup"]/div/a), then
+        click .account-number-link with text matching account_id
+        """
         # wait for the accounts list to populate
         self.wait_until_ready(
             "div.accounts-table.multi-card.list div.accounts-list-item"
@@ -358,20 +341,14 @@ class AccountDashboardPage(CSSSelectorBasePageObject):
 
 
 class LoginPage(CSSSelectorBasePageObject):
-    # core_view_form_ValidationTextBox_4
     UsernameFieldSelector = '#loginDiv input[placeholder="Email/User ID"]'
     PasswordFieldSelector = '#loginDiv input[placeholder="Password"]'
     SigninButtonSelector = "#loginDiv .login-page button.standard.btn"
 
     def login(self, username: str, password: str) -> AccountDashboardPage:
-        """
-        - go to https://www.fpl.com/my-account/login.html
-        - login with self.username, self.password
-        """
         self._driver.get("https://www.fpl.com/my-account/login.html")
 
         self.wait_until_ready(self.SigninButtonSelector)
-
         self._driver.fill(self.UsernameFieldSelector, username)
         self._driver.fill(self.PasswordFieldSelector, password)
 
@@ -380,7 +357,7 @@ class LoginPage(CSSSelectorBasePageObject):
         wait_for_loading_overlay(self._driver)
 
         # sometimes after login we're redirected to a different page,
-        # if that's the case, manually go to acconut landing page
+        # if that's the case, manually go to account landing page
         if (
             "https://www.fpl.com/my-account/account-landing.html"
             not in self._driver.current_url

@@ -219,8 +219,7 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
                 )
                 csv_file_path = os.path.join(self._driver.download_dir, csv_file_name)
                 for reading in parse_sce_csv_file(csv_file_path, self.service_id):
-                    when, value = reading
-                    timeline.insert(when, value)
+                    timeline.insert(reading.dt, reading.value)
             except TimeoutException:
                 raise TimeoutException(
                     "Downloading interval data from Energy Manager failed."

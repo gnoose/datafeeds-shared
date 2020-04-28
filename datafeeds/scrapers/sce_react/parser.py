@@ -1,13 +1,11 @@
 import csv
 from datetime import datetime
-from typing import NewType, Tuple, List, Optional
+from typing import List
 
 from dateutil.parser import parse as parse_date
 
+from datafeeds.common.typing import IntervalReading
 from datafeeds.scrapers.sce_react.errors import IntervalDataParseException
-
-# Note:the reading can be either a usage or a demand value, depending on context
-IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
 
 
 def _to_float(text):
@@ -80,7 +78,9 @@ def parse_sce_csv_file(path: str, service_id: str) -> List[IntervalReading]:
                 reading_time = parse_date(row[1].strip()).time()
                 reading_datetime = datetime.combine(reading_date, reading_time)
                 reading_value = _to_float(row[data_column].strip())
-                results.append(IntervalReading((reading_datetime, reading_value)))
+                results.append(
+                    IntervalReading(dt=reading_datetime, value=reading_value)
+                )
             except Exception as e:
                 msg = "An error occured while trying to parse interval data from the SCE website."
                 raise IntervalDataParseException(msg) from e

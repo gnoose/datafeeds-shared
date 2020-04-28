@@ -21,6 +21,11 @@ class IntervalRange(NamedTuple):
     end: datetime
 
 
+class IntervalReading(NamedTuple):
+    dt: datetime
+    value: float
+
+
 # dict of {"2017-04-02" : [59.1, 30.2, None, ...], ...}
 IntervalReadings = Dict[str, List[Optional[float]]]
 
