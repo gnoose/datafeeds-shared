@@ -1,6 +1,8 @@
-from datetime import date
 import logging
+
+from datetime import date, timedelta
 from typing import Optional
+from dateutil.parser import parse as parse_date
 
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
@@ -13,6 +15,7 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 
+from selenium.webdriver.common.keys import Keys
 
 log = logging.getLogger(__name__)
 
@@ -28,22 +31,32 @@ class ReportPage:
         self.driver = driver
 
     def parse_readings(self) -> IntervalReadings:
-        readings: IntervalReadings = {}
         """
         parse data from table (tr.chartColumn)
-        4/21/2020 12:15:00 AM 35.75
-        for row in find by class chartColumn
-            #  the timestamps are for the END of the interval
-            timestamp = date_parser.parse(first td) - timedelta(minutes=15)
-            # The kWh reading is easier, but we store kW
-            kW = float(second td) * 4
-            day = timestamp.strftime('%Y-%m-%d')
+        """
+
+        # dict of {"2017-04-02" : [59.1, 30.2, None, ...], ...}
+        readings: IntervalReadings = {}
+
+        for reading_row in self.driver.find_elements_by_css_selector("tr.chartColumn"):
+            ts_text = reading_row.find_elements_by_css_selector("td")[0].text.strip()
+            kwh_text = reading_row.find_elements_by_css_selector("td")[1].text.strip()
+            try:
+                #  the timestamps are for the END of the interval
+                timestamp = parse_date(ts_text) - timedelta(minutes=15)
+                # The kWh reading is easier, but we store kW
+                kW = float(kwh_text) * 4
+            except Exception:
+                log.info(f"skipping invalid data row... text: {reading_row.text}")
+                continue
+
+            day = timestamp.strftime("%Y-%m-%d")
             if day not in readings:
-                data[day] = [0.0] * 96
+                readings[day] = [0.0] * 96
 
             idx = int((timestamp.hour * 4) + (timestamp.minute / 15))
             readings[day][idx] = kW
-        """
+
         return readings
 
 
@@ -54,16 +67,47 @@ class SetupPage:
 
     def create_report(self, point_id: str, start: date, end: date) -> ReportPage:
         """
-    - switch to frame: frmPointList (self._driver.switch_to.frame(frame_reference=self._driver.find_element_by_xpath(x‌​path="//iframe[@name='frmPointList']"))
-      - then to frame name = nodeNav_pointList_main
-      - click //input[@name="ch_all"] to clear all
-      - click //input[@value=""] where value matches point_id param
-    - in main frame
-      - #periodSelect - select option with value = 0
-      - set #startDate_NativeVal to start (mm/dd/yyyy)
-      - set #endDate_NativeVal to send (mm/dd/yyyy)
-      - click Create #createButton
+            Enter the start,end dates and click Create
         """
+
+        # Switch to the iframe with points list
+        self.driver.switch_to.frame("frmPointList")
+        self.driver.switch_to.frame("nodeNav_pointList_main")
+
+        # uncheck all point ids
+        chkbx = self.driver.find_element_by_xpath('//input[@id="ch_all"]')
+        chkbx.click()
+
+        # make sure the ch_all checkbox is unchecked before continuing
+        while chkbx.is_selected():
+            chkbx.click()
+
+        # check the required point id
+        self.driver.find_element_by_xpath(f'//input[@value="{point_id}"]').click()
+
+        # exit points list iframe
+        self.driver.switch_to.default_content()
+
+        # Set Time Period to Custom Time Period
+        self.driver.get_select("#periodSelect").select_by_value("0")
+
+        startdate_input_elem = self.driver.find_element_by_xpath(
+            '//input[@id="startDate_NativeVal"]'
+        )
+        enddate_input_elem = self.driver.find_element_by_xpath(
+            '//input[@id="endDate_NativeVal"]'
+        )
+
+        # we need to overwrite the existing date , so send CTRL+a first
+        startdate_input_elem.send_keys(Keys.CONTROL + "a")
+        startdate_input_elem.send_keys(start.strftime("%m/%d/%Y"))
+
+        enddate_input_elem.send_keys(Keys.CONTROL + "a")
+        enddate_input_elem.send_keys(end.strftime("%m/%d/%Y"))
+
+        # Click the Create Button
+        self.driver.find_element_by_xpath('//input[@id="createButton"]').click()
+
         return ReportPage(self.driver)
 
 
