@@ -67,9 +67,13 @@ class CSVParser:
                 log.debug(msg)
                 # the exported csv's return blank values for part of the current day. Just return
                 if len(row[1]) == 0:
+                    log.warning("Column 1 of row is empty: %s", row)
                     break
                 dt = self.csv_str_to_date(row[0])
                 kw = self.kwh_to_kw(row[1])
+                # at night this can give very small values < 0
+                if kw < 0:
+                    kw = 0
                 results.append((dt, kw))
 
         return results
@@ -95,14 +99,27 @@ class SiteStatusPage:
 
         return install_date
 
-    def month_view_select(self):
-        month = self.driver.find_element_by_xpath("//div[contains(text(), 'Month')]")
-        log.info("Selecting month view")
-        month.click()
+    # def month_view_select(self):
+    #     month_xpath = "//div[contains(text(), 'Month')]"
+    #     month = self.driver.wait().until(
+    #         ec.element_to_be_clickable((By.XPATH,month_xpath))
+    #     )
+    #     # month = self.driver.find_element_by_xpath(month_xpath)
+    #     log.info("Selecting month view")
+    #     month.click()
+
+    def three_day_view_select(self):
+        three_day_xpath = "//div[contains(text(), '3 Day')]"
+        three_day = self.driver.wait().until(
+            ec.element_to_be_clickable((By.XPATH, three_day_xpath))
+        )
+        log.info("Selecting 3 day view")
+        three_day.click()
 
     def fifteen_minute_select(self):
-        fifteen_minute = self.driver.find_element_by_xpath(
-            "//div[contains(text(), '15 min')]"
+        fifteen_minute_xpath = "//div[contains(text(), '15 min')]"
+        fifteen_minute = self.driver.wait().until(
+            ec.element_to_be_clickable((By.XPATH, fifteen_minute_xpath))
         )
         log.info("Selecting 15 minute granularity")
         fifteen_minute.click()
@@ -113,7 +130,12 @@ class SiteStatusPage:
             "#classic-view > div > div > div:nth-child(2) > div:nth-child(2) > div > div > div > "
             "div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div > span > svg"
         )
-        hamburger = self.driver.find_element_by_css_selector(hamburger_selector)
+        log.info("Waiting for hamburger to be clickable")
+        # this wait is necessary or it fails with 'other element would get click'
+        time.sleep(5)
+        hamburger = self.driver.wait(60).until(
+            ec.element_to_be_clickable((By.CSS_SELECTOR, hamburger_selector))
+        )
         log.info("Clicking hamburger")
         hamburger.click()
 
@@ -264,30 +286,26 @@ class PowerTrackScraper(BaseWebScraper):
         time.sleep(5)
         status_page = portfolio_page.go_to_status_page(self.site_id)
         time.sleep(15)
-
         self.install_date = status_page.get_install_date()
         msg = "Installation date is %s" % self.install_date
 
         self.adjust_start_and_end_dates()
 
         log.info(msg)
-        status_page.month_view_select()
-        time.sleep(10)
+        status_page.three_day_view_select()
         status_page.fifteen_minute_select()
-        time.sleep(10)
         earliest_shown = status_page.get_earliest_shown()
-        one_month = timedelta(days=31)
+        four_days = timedelta(days=4)
 
-        while self.end_date < (earliest_shown - one_month):
+        while self.end_date < (earliest_shown - four_days):
             msg = "finding where to start. earliest_shown is %s" % earliest_shown
             log.info(msg)
             status_page.calendar_back_click()
-            time.sleep(5)
             earliest_shown = status_page.get_earliest_shown()
 
-        # calendar picker is very hard to use; just cycle backwards month at a time getting data
+        # calendar picker is very hard to use; just cycle backwards 3 days at a time getting data
         timeline = Timeline(self.start_date, self.end_date)
-        while (self.start_date - one_month) < earliest_shown:
+        while (self.start_date - four_days) < earliest_shown:
             msg = "gathering data. earliest_shown is %s" % earliest_shown
             log.info(msg)
             status_page.hamburger_click()
