@@ -551,9 +551,11 @@ class LoginPage:
         self._driver.find_element_by_css_selector(self.UsernameFieldCss).send_keys(
             username
         )
+        self._driver.sleep(1)
         self._driver.find_element_by_css_selector(self.PasswordFieldCss).send_keys(
             password
         )
+        self._driver.sleep(1)
         scraper.screenshot("after credentials")
         self.get_login_button().click()
         try:
@@ -677,7 +679,14 @@ class SdgeMyAccountScraper(BaseWebScraper):
         log.info("Logging in.")
         login_page.wait_until_ready()
         self.screenshot("beforelog.infoin")
-        login_page.login(self.username, self.password, self)
+        # login seems to sometimes fail; try twice
+        try:
+            login_page.login(self.username, self.password, self)
+        except LoginError:
+            log.info("login failed; trying login a second time")
+            self._driver.sleep(5)
+            self.screenshot("before second login")
+            login_page.login(self.username, self.password, self)
 
         # On the homepage, fetch the visible account information. This info
         # tells us (among other things) which account id is associated with
