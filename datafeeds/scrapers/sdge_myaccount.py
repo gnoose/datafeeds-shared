@@ -528,6 +528,7 @@ class LoginPage:
     UsernameFieldCss = 'input[id="UserID"]'
     PasswordFieldCss = 'input[id="Password"]'
     LoginButtonCss = 'button[id="jsLoginBtn"]'
+    RememberMeXpath = '//label[@for="RememberMe"] //span'
     # always on page but hidden until bad credentials validated
     FailedLoginSelector = "#UserIdPasswordInvalid"
 
@@ -548,15 +549,23 @@ class LoginPage:
 
     def login(self, username, password, scraper):
         log.info("Inserting credentials on login page.")
+        log.debug("setting username")
         self._driver.find_element_by_css_selector(self.UsernameFieldCss).send_keys(
             username
         )
         self._driver.sleep(1)
+        log.debug("setting password")
         self._driver.find_element_by_css_selector(self.PasswordFieldCss).send_keys(
             password
         )
         self._driver.sleep(1)
         scraper.screenshot("after credentials")
+        # click remember me to make sure focus exits password
+        log.debug("clicking remember me")
+        # input is absolutely positioned off the screen; click the label span instead
+        self._driver.find_element_by_xpath(self.RememberMeXpath).click()
+        scraper.screenshot("after remember me")
+        self._driver.sleep(1)
         self.get_login_button().click()
         try:
             self._driver.wait(5).until(
