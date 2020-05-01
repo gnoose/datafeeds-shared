@@ -99,7 +99,7 @@ class ViewBillPage:
             filepath = self.wait_for_bill_download(transDate)
             log.info(f"Download Complete")
 
-            bills.append((transDate, filepath))
+            bills.append((_date, filepath))
 
         return bills
 
