@@ -550,14 +550,20 @@ class LoginPage:
     def login(self, username, password, scraper):
         log.info("Inserting credentials on login page.")
         log.debug("setting username")
-        self._driver.find_element_by_css_selector(self.UsernameFieldCss).send_keys(
-            username
+        username_field = self._driver.find_element_by_css_selector(
+            self.UsernameFieldCss
         )
+        log.debug("clearing username")
+        username_field.click()
+        for _ in range(len(username)):
+            username_field.send_keys(Keys.BACKSPACE)
+        username_field.send_keys(username)
         self._driver.sleep(1)
         log.debug("setting password")
-        self._driver.find_element_by_css_selector(self.PasswordFieldCss).send_keys(
-            password
+        password_field = self._driver.find_element_by_css_selector(
+            self.PasswordFieldCss
         )
+        password_field.send_keys(password)
         self._driver.sleep(1)
         scraper.screenshot("after credentials")
         # click remember me to make sure focus exits password
@@ -692,8 +698,8 @@ class SdgeMyAccountScraper(BaseWebScraper):
         try:
             login_page.login(self.username, self.password, self)
         except LoginError:
-            log.info("login failed; trying login a second time")
-            self._driver.sleep(5)
+            log.info("login failed; trying login a second time in 30s")
+            self._driver.sleep(30)
             self.screenshot("before second login")
             login_page.login(self.username, self.password, self)
 
