@@ -39,8 +39,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     test_scraper(
         args.service_id,
-        date_parser.parse(args.start),
-        date_parser.parse(args.end),
+        date_parser.parse(args.start).date(),
+        date_parser.parse(args.end).date(),
         args.username,
         args.password,
     )
