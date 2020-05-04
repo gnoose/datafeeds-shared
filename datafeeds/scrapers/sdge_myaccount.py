@@ -699,6 +699,7 @@ class SdgeMyAccountScraper(BaseWebScraper):
             login_page.login(self.username, self.password, self)
         except LoginError:
             log.info("login failed; trying login a second time in 30s")
+            self._driver.get(self.login_url)
             self._driver.sleep(30)
             self.screenshot("before second login")
             login_page.login(self.username, self.password, self)
