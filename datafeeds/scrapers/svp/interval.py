@@ -31,9 +31,7 @@ class ReportPage:
         self.driver = driver
 
     def parse_readings(self) -> IntervalReadings:
-        """
-        parse data from table (tr.chartColumn)
-        """
+        """Parse data from report table."""
 
         # dict of {"2017-04-02" : [59.1, 30.2, None, ...], ...}
         readings: IntervalReadings = {}
@@ -66,9 +64,7 @@ class SetupPage:
         driver.get("http://198.182.15.116/itron/data_analyst/asp/data_setup.asp")
 
     def create_report(self, point_id: str, start: date, end: date) -> ReportPage:
-        """
-            Enter the start,end dates and click Create
-        """
+        """Enter the start and end dates and click Create"""
 
         # Switch to the iframe with points list
         self.driver.switch_to.frame("frmPointList")
@@ -83,7 +79,7 @@ class SetupPage:
             chkbx.click()
 
         # check the required point id
-        self.driver.find_element_by_xpath(f'//input[@value="{point_id}"]').click()
+        self.driver.find_element_by_xpath(f'//input[@ptid="{point_id}"]').click()
 
         # exit points list iframe
         self.driver.switch_to.default_content()
@@ -91,19 +87,21 @@ class SetupPage:
         # Set Time Period to Custom Time Period
         self.driver.get_select("#periodSelect").select_by_value("0")
 
-        startdate_input_elem = self.driver.find_element_by_xpath(
+        start_date_input_elem = self.driver.find_element_by_xpath(
             '//input[@id="startDate_NativeVal"]'
         )
-        enddate_input_elem = self.driver.find_element_by_xpath(
+        end_date_input_elem = self.driver.find_element_by_xpath(
             '//input[@id="endDate_NativeVal"]'
         )
 
-        # we need to overwrite the existing date , so send CTRL+a first
-        startdate_input_elem.send_keys(Keys.CONTROL + "a")
-        startdate_input_elem.send_keys(start.strftime("%m/%d/%Y"))
-
-        enddate_input_elem.send_keys(Keys.CONTROL + "a")
-        enddate_input_elem.send_keys(end.strftime("%m/%d/%Y"))
+        # clear existing data first
+        clear_keys = "".join([Keys.BACKSPACE * 10])
+        log.debug("set start date to %s", start.strftime("%m/%d/%Y"))
+        start_date_input_elem.send_keys(clear_keys)
+        start_date_input_elem.send_keys(start.strftime("%m/%d/%Y"))
+        log.debug("set end date to %s", end.strftime("%m/%d/%Y"))
+        end_date_input_elem.send_keys(clear_keys)
+        end_date_input_elem.send_keys(end.strftime("%m/%d/%Y"))
 
         # Click the Create Button
         self.driver.find_element_by_xpath('//input[@id="createButton"]').click()
