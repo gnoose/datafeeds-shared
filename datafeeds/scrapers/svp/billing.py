@@ -93,8 +93,10 @@ class ViewBillPage:
             trans_date = _date.strftime("%Y-%m-%d")
             log.info(f"downloading bill for {trans_date}")
 
-            download_url = f"https://mua.santaclaraca.gov/CC/connect/users/GetInfoSendBill" \
-                           f"?billDate={trans_date}"
+            download_url = (
+                f"https://mua.santaclaraca.gov/CC/connect/users/GetInfoSendBill"
+                f"?billDate={trans_date}"
+            )
             self.driver.get(download_url)
 
             file_path = self.wait_for_bill_download(trans_date)
