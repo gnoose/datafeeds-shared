@@ -528,6 +528,7 @@ class LoginPage:
     UsernameFieldCss = 'input[id="UserID"]'
     PasswordFieldCss = 'input[id="Password"]'
     LoginButtonCss = 'button[id="jsLoginBtn"]'
+    RememberMeXpath = '//label[@for="RememberMe"] //span'
     # always on page but hidden until bad credentials validated
     FailedLoginSelector = "#UserIdPasswordInvalid"
 
@@ -548,15 +549,29 @@ class LoginPage:
 
     def login(self, username, password, scraper):
         log.info("Inserting credentials on login page.")
-        self._driver.find_element_by_css_selector(self.UsernameFieldCss).send_keys(
-            username
+        log.debug("setting username")
+        username_field = self._driver.find_element_by_css_selector(
+            self.UsernameFieldCss
         )
+        log.debug("clearing username")
+        username_field.click()
+        for _ in range(len(username)):
+            username_field.send_keys(Keys.BACKSPACE)
+        username_field.send_keys(username)
         self._driver.sleep(1)
-        self._driver.find_element_by_css_selector(self.PasswordFieldCss).send_keys(
-            password
+        log.debug("setting password")
+        password_field = self._driver.find_element_by_css_selector(
+            self.PasswordFieldCss
         )
+        password_field.send_keys(password)
         self._driver.sleep(1)
         scraper.screenshot("after credentials")
+        # click remember me to make sure focus exits password
+        log.debug("clicking remember me")
+        # input is absolutely positioned off the screen; click the label span instead
+        self._driver.find_element_by_xpath(self.RememberMeXpath).click()
+        scraper.screenshot("after remember me")
+        self._driver.sleep(1)
         self.get_login_button().click()
         try:
             self._driver.wait(5).until(
@@ -683,8 +698,9 @@ class SdgeMyAccountScraper(BaseWebScraper):
         try:
             login_page.login(self.username, self.password, self)
         except LoginError:
-            log.info("login failed; trying login a second time")
-            self._driver.sleep(5)
+            log.info("login failed; trying login a second time in 30s")
+            self._driver.get(self.login_url)
+            self._driver.sleep(30)
             self.screenshot("before second login")
             login_page.login(self.username, self.password, self)
 

@@ -56,6 +56,7 @@ from datafeeds.scrapers.smud_myaccount_billing import datafeed as smud_myaccount
 from datafeeds.scrapers.socalgas.socalgas import datafeed as socalgas
 from datafeeds.scrapers.stem import datafeed as stem
 from datafeeds.scrapers.svp.billing import datafeed as svp_billing
+from datafeeds.scrapers.svp.interval import datafeed as svp_interval
 
 from datafeeds.scrapers.duke.billing import datafeed as duke_billing
 from datafeeds.scrapers.duke.intervals import datafeed as duke_interval
@@ -179,6 +180,7 @@ scraper_functions = {
     "solren": solren,
     "southlake-urjanet": southlake,
     "svp-billing": svp_billing,
+    "svp-interval": svp_interval,
     "tricounty-urjanet": tricounty,
     "watauga-urjanet": watauga,
 }
