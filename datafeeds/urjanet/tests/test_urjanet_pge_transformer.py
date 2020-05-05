@@ -104,6 +104,13 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
     def test_overlapping_periods(self):
         self.pge_fixture_test("1830585771461_input.json", "1830585771461_expected.json")
 
+    def test_zero_usages_in_corrections(self):
+        """
+        This fixture is a real meter where corrections issued had zero usages in the same billing period
+        as earlier statements in the same billing period with non-zero usages.
+        """
+        self.pge_fixture_test("6262199406_input.json", "6262199406_expected.json")
+
 
 if __name__ == "__main__":
     unittest.main()

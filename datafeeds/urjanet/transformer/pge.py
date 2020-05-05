@@ -139,7 +139,8 @@ class PacificGasElectricBillingPeriod(GenericBillingPeriod):
                 )
 
         if other.has_usages():
-            if not self.has_usages():
+            # Checking if we already have usages, and that they are nonzero
+            if not self.has_usages() or not self.get_total_usage():
                 self.usages = other.usages
                 modified = True
             else:
