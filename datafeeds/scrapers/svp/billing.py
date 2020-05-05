@@ -48,9 +48,9 @@ class ViewBillPage:
         return available_bill_dates
 
     def wait_for_bill_download(self, bill_date):
-        """
-        wait for document.pdf to download
-        Returns absolute path of the downloaded file
+        """Wait for document.pdf to download.
+
+        Returns absolute path of the downloaded file.
         """
 
         download_dir = config.WORKING_DIRECTORY + "/current"
@@ -72,9 +72,9 @@ class ViewBillPage:
     def download_bills(
         self, start_date: date, end_date: date
     ) -> List[Tuple[date, str]]:
-        """
-        Download all bills pdf in the range given by start_date and end_date (inclusive)
-        Returns: list of (transDate,filepath) for all downloaded bills
+        """Download all bills pdf in the range given by start_date and end_date (inclusive)
+
+        Returns: list of (date, file_path) for all downloaded bills.
         """
 
         bills: List[Tuple[date, str]] = []
@@ -90,16 +90,16 @@ class ViewBillPage:
             if not (start_date <= _date <= end_date):
                 continue
 
-            transDate = _date.strftime("%Y-%m-%d")
-            log.info(f"downloading bill for {transDate}")
+            trans_date = _date.strftime("%Y-%m-%d")
+            log.info(f"downloading bill for {trans_date}")
 
-            download_url = f"https://mua.santaclaraca.gov/CC/connect/users/GetInfoSendBill?billDate={transDate}"
+            download_url = f"https://mua.santaclaraca.gov/CC/connect/users/GetInfoSendBill" \
+                           f"?billDate={trans_date}"
             self.driver.get(download_url)
 
-            filepath = self.wait_for_bill_download(transDate)
+            file_path = self.wait_for_bill_download(trans_date)
             log.info(f"Download Complete")
-
-            bills.append((_date, filepath))
+            bills.append((_date, file_path))
 
         return bills
 

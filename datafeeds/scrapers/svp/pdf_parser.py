@@ -16,7 +16,7 @@ log = logging.getLogger(__name__)
 
 def extract_cost(text):
     cost = float(
-        re.search(r"Silicon Valley Power([\$\d,\.]+)", text)
+        re.search(r"Silicon Valley Power([$\d,.]+)", text)
         .group(1)
         .replace(",", "")
         .replace("$", "")
@@ -26,7 +26,7 @@ def extract_cost(text):
 
 def extract_used(text):
     used = float(
-        re.search(r"Energy([\$\d,\.]+)  ([\$\d,\.]+) kWh", text)
+        re.search(r"Energy([$\d,.]+)\s+([$\d,.]+) kWh", text)
         .group(2)
         .replace(",", "")
         .replace("$", "")
@@ -36,7 +36,7 @@ def extract_used(text):
 
 def extract_demand(text):
     demand = float(
-        re.search(r"DemandPower Factor:  ([\d\.%]+)     ([\$\d,\.]+)    ", text)
+        re.search(r"DemandPower Factor:\s+([\d.%]+)\s+([$\d,.]+)\s+", text)
         .group(2)
         .replace(",", "")
     )
@@ -44,7 +44,7 @@ def extract_demand(text):
 
 
 def extract_dates(text):
-    date_text = re.search(r"CurrentEWW((\d\d\/\d\d)+)", text).group(1)
+    date_text = re.search(r"CurrentEWW((\d\d/\d\d)+)", text).group(1)
 
     # split E,W,W dates into ['mm/dd','mm/dd','mm/dd','mm/dd','mm/dd','mm/dd']...
     # the first three elements are start dates (E,W,W) and the last three elements are end_dates
@@ -162,14 +162,10 @@ def process_pdf(service_id: str, statement_dt: date, pdf_filename: str) -> Billi
     cost = extract_cost(text)
     used = extract_used(text)
     demand = extract_demand(text)
-
     start_date, end_date = extract_dates(text)
-
     # adjust end date because SVP bills overlap on start/end dates
     end_date = end_date - timedelta(days=1)
-
     line_items: List[BillingDatumItemsEntry] = extract_line_items(text)
-
     key = hash_bill(
         service_id,
         start_date,
