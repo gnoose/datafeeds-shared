@@ -55,7 +55,7 @@ from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
 from datafeeds.scrapers.smud_myaccount_billing import datafeed as smud_myaccount_billing
 from datafeeds.scrapers.socalgas.socalgas import datafeed as socalgas
 from datafeeds.scrapers.stem import datafeed as stem
-
+from datafeeds.scrapers.svp.interval import datafeed as svp_interval
 from datafeeds.scrapers.duke.billing import datafeed as duke_billing
 from datafeeds.scrapers.duke.intervals import datafeed as duke_interval
 from datafeeds.scrapers.saltriver.intervals import datafeed as saltriver_interval
@@ -177,6 +177,7 @@ scraper_functions = {
     "solaredge": solaredge,
     "solren": solren,
     "southlake-urjanet": southlake,
+    "svp-interval": svp_interval,
     "tricounty-urjanet": tricounty,
     "watauga-urjanet": watauga,
 }
