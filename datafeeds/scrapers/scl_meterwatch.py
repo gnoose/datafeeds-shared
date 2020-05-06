@@ -306,6 +306,8 @@ class SCLMeterWatchScraper(BaseWebScraper):
             for reading in parse_usage_from_csv(csv_file_path):
                 reading_datetime = reading[0]
                 reading_value = reading[1]
+                # multiply by 4 because SCL returns 1/4 of an hour's worth
+                reading_value *= 4
 
                 # subtract a second from reading_datetime because the "Starting
                 # Time" in data always start at 1 second (e.g: 00:15:01 instead
@@ -331,7 +333,7 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
 
-    meter_numbers = [meter.service_id]
+    meter_numbers = meter.service_id.split(",")
     # if totalized is set in meta, get list of meter numbers
     totalized = (datasource.meta or {}).get("totalized")
     if totalized:
