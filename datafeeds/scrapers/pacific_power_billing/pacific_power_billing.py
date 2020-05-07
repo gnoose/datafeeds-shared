@@ -35,10 +35,11 @@ class PacificPowerScraperException(Exception):
 
 
 class PacificPowerConfiguration(Configuration):
-    def __init__(self, account_number: str, meter_number: str):
+    def __init__(self, utility: str, account_number: str, meter_number: str):
         super().__init__(scrape_bills=True)
         self.account_number = account_number
         self.meter_number = meter_number
+        self.utility = utility
 
 
 class BillHistoryPage:
@@ -178,6 +179,10 @@ class PacificPowerScraper(BaseWebScraper):
     def meter_number(self):
         return self._configuration.meter_number
 
+    @property
+    def utility(self):
+        return self._configuration.utility
+
     def _execute(self):
         if self.end_date - self.start_date < timedelta(days=60):
             log.info("Expanding date range to a minimum of 60 days.")
@@ -223,7 +228,14 @@ class PacificPowerScraper(BaseWebScraper):
                 continue
 
             key = bill_upload.hash_bill_datum(self.meter_number, bill_datum)
-            attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(b), key)
+            attachment_entry = bill_upload.upload_bill_to_s3(
+                BytesIO(b),
+                key,
+                source="pacificpower.net",
+                statement=bill_datum.statement,
+                utility=self.utility,
+                utility_account_id=self.account_number,
+            )
             if attachment_entry:
                 bill_data.append(bill_datum._replace(attachments=[attachment_entry]))
             else:
@@ -242,7 +254,9 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = PacificPowerConfiguration(
-        meter.utility_service.utility_account_id, meter.service_id
+        meter.utility_service.utility,
+        meter.utility_service.utility_account_id,
+        meter.service_id,
     )
 
     return run_datafeed(

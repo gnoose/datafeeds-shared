@@ -3,6 +3,8 @@ import time
 import logging
 import re
 from datetime import datetime
+from typing import List
+
 from dateutil.parser import parse as parse_date
 
 from selenium.webdriver.support import expected_conditions as EC
@@ -107,10 +109,12 @@ class DukeAccountsPage(PageState):
         This page contains a list of all the accounts
     """
 
-    def __init__(self, driver):
+    def __init__(self, driver, utility: str, account_id: str):
         super().__init__(driver)
         self.accounts_window = None
-        self.bill_info_list = []
+        self.bill_info_list: List[BillingDatum] = []
+        self.utility = utility
+        self.account_id = account_id
 
     @staticmethod
     def isfloat(value):
@@ -355,7 +359,18 @@ class DukeAccountsPage(PageState):
         bill_path = self.create_pdf_attachment(bill_date)
         with open(bill_path, "rb") as bill_file:
             key = hash_bill_datum(service_id, bill_data) + ".pdf"
-            return bill_data._replace(attachments=[upload_bill_to_s3(bill_file, key)])
+            return bill_data._replace(
+                attachments=[
+                    upload_bill_to_s3(
+                        bill_file,
+                        key,
+                        source="duke-energy.com",
+                        statement=parse_date(bill_date).date(),
+                        utility=self.utility,
+                        utility_account_id=self.account_id,
+                    )
+                ]
+            )
 
     def _go_to_account_bills_page(self):
         account_page_link = self.driver.find_element_by_id("billInformation")

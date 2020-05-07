@@ -20,8 +20,14 @@ class AustinTXDatasource(UrjanetPyMySqlDataSource):
     This class accepts an account number. All meters are currently loaded from each bill.
     """
 
-    def __init__(self, account_number: str, commodity_type: CommodityType, said: str):
-        super().__init__(account_number)
+    def __init__(
+        self,
+        utility: str,
+        account_number: str,
+        commodity_type: CommodityType,
+        said: str,
+    ):
+        super().__init__(utility, account_number)
         self.account_number = self.normalize_account_number(account_number)
         self.commodity_type = commodity_type
         self.said = said
@@ -79,6 +85,7 @@ def datafeed(
         datasource,
         params,
         AustinTXDatasource(
+            meter.utility_service.utility,
             meter.utility_account_id,
             CommodityType[meter.commodity],
             meter.utility_service.service_id,

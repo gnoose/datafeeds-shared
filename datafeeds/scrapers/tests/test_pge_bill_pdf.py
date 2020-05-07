@@ -27,7 +27,9 @@ def test_pdf_upload(task_id: str, pdfs: List[BillPdf]):
 def test_scraper(
     utility_account: str, start_date: date, end_date: date, username: str, password: str
 ):
-    configuration = PgeBillPdfConfiguration(utility_account=utility_account)
+    configuration = PgeBillPdfConfiguration(
+        utility="pge", utility_account=utility_account
+    )
     credentials = Credentials(username, password)
     scraper = PgeBillPdfScraper(
         credentials, DateRange(start_date, end_date), configuration

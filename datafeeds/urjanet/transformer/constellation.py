@@ -6,9 +6,6 @@ from datafeeds.urjanet.model import Account
 
 
 class ConstellationBillingPeriod(GenericBillingPeriod):
-    def __init__(self, account: Account):
-        self.account = account
-
     def get_total_charge(self):
         """Get cost by summing line items.
 

@@ -15,8 +15,15 @@ from datafeeds.urjanet.transformer.nationalgrid import NationalGridTransformer
 class NationalGridDatasource(UrjanetPyMySqlDataSource):
     """Load data from an Urjanet database"""
 
-    def __init__(self, account_number: str, said: str):
-        super().__init__(account_number)
+    def __init__(
+        self,
+        utility: str,
+        account_number: str,
+        said: str,
+        gen_utility: str,
+        gen_utility_account_id: str,
+    ):
+        super().__init__(utility, account_number, gen_utility, gen_utility_account_id)
         self.account_number = account_number
         self.said = said
 
@@ -80,13 +87,18 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
+    utility_service = meter.utility_service
     return run_urjanet_datafeed(
         account,
         meter,
         datasource,
         params,
         NationalGridDatasource(
-            meter.utility_account_id, meter.utility_service.service_id
+            utility_service.utility,
+            utility_service.utility_account_id,
+            utility_service.service_id,
+            utility_service.gen_utility,
+            utility_service.gen_utility_account_id,
         ),
         NationalGridTransformer(),
         task_id=task_id,

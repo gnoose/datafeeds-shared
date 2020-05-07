@@ -36,10 +36,18 @@ class AtmosScraperException(Exception):
 
 
 class AtmosConfiguration(Configuration):
-    def __init__(self, service_account: str, meter_serial: str):
+    def __init__(
+        self,
+        utility: str,
+        utility_account_id: str,
+        service_account: str,
+        meter_serial: str,
+    ):
         super().__init__(scrape_bills=True)
         self.service_account = service_account
         self.meter_serial = meter_serial
+        self.utility = utility
+        self.utility_account_id = utility_account_id
 
 
 class BillHistoryPage:
@@ -183,6 +191,14 @@ class AtmosScraper(BaseWebScraper):
     def meter_serial(self):
         return self._configuration.meter_serial
 
+    @property
+    def utility_account_id(self):
+        return self._configuration.utility_account_id
+
+    @property
+    def utility(self):
+        return self._configuration.utility
+
     def _execute(self):
         login_page = LoginPage(self._driver)
         home_page = login_page.login(self.username, self.password)
@@ -217,7 +233,15 @@ class AtmosScraper(BaseWebScraper):
                 bill_data_prime = []
                 for bill_datum in bill_data:
                     key = bill_upload.hash_bill_datum(self.service_account, bill_datum)
-                    attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(pdf), key)
+                    # statement date is not visible in the bill PDF text; use end date
+                    attachment_entry = bill_upload.upload_bill_to_s3(
+                        BytesIO(pdf),
+                        key,
+                        source="atmosenergy.com",
+                        statement=bill_datum.end,
+                        utility=self.utility,
+                        utility_account_id=self.utility_account_id,
+                    )
                     if attachment_entry:
                         bill_data_prime.append(
                             bill_datum._replace(attachments=[attachment_entry])
@@ -241,6 +265,8 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = AtmosConfiguration(
+        utility=meter.utility_service.utility,
+        utility_account_id=meter.utility_account_id,
         service_account=meter.service_id,
         meter_serial=datasource.meta.get("meterSerial"),
     )

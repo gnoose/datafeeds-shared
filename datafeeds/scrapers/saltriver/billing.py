@@ -157,6 +157,8 @@ class SaltRiverBillingScraper(BaseWebScraper):
                 BillingDatum(
                     start=details.bill_start,
                     end=details.bill_stop - timedelta(days=1),
+                    # no separate statement date
+                    statement=details.bill_stop - timedelta(days=1),
                     cost=details.cost,
                     used=details.total_kwh,
                     peak=details.on_peak_kw,

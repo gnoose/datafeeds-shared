@@ -187,13 +187,14 @@ class SdgeGreenButtonScraper(BaseApiScraper):
                 use = b.use / 1000 if b.unit == "Wh" else b.use
                 bills.add(
                     BillingDatum(
-                        _adjust_timezone(b.start).date(),
-                        _adjust_timezone(b.end).date(),
-                        b.total,
-                        use,
-                        None,  # Peak, line items, and attachments aren't available.
-                        None,
-                        None,
+                        start=_adjust_timezone(b.start).date(),
+                        end=_adjust_timezone(b.end).date(),
+                        statement=_adjust_timezone(b.end).date(),
+                        cost=b.total,
+                        used=use,
+                        peak=None,  # Peak, line items, and attachments aren't available.
+                        items=None,
+                        attachments=None,
                     )
                 )
 

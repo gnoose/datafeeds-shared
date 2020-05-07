@@ -15,10 +15,8 @@ from datafeeds.urjanet.transformer import TriCountyTransformer
 class TriCountyDatasource(UrjanetPyMySqlDataSource):
     """Load data from an Urjanet database"""
 
-    def __init__(self, account_number: str, said: str):
-        super().__init__(account_number)
-        # self.account_number = self.normalize_account_number(account_number)
-        self.account_number = account_number
+    def __init__(self, utility: str, account_number: str, said: str):
+        super().__init__(utility, account_number)
         self.said = said
 
     def load_accounts(self) -> List[Account]:
@@ -53,7 +51,11 @@ def datafeed(
         meter,
         datasource,
         params,
-        TriCountyDatasource(meter.utility_account_id, meter.utility_service.service_id),
+        TriCountyDatasource(
+            meter.utility_service.utility,
+            meter.utility_account_id,
+            meter.utility_service.service_id,
+        ),
         TriCountyTransformer(),
         task_id=task_id,
     )

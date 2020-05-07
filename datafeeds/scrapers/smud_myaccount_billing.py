@@ -1,3 +1,4 @@
+import re
 import time
 import logging
 import traceback
@@ -63,15 +64,14 @@ class UnexpectedBillDataException(Exception):
 
 
 class SMUDMyAccountBillingConfiguration(Configuration):
-    def __init__(
-        self, account_id: str,
-    ):
+    def __init__(self, utility: str, account_id: str):
         super().__init__(scrape_bills=True)
         self.account_id = account_id
+        self.utility = utility
 
 
 class SmudMyAccountLoginPage(PageState):
-    """Represents the lgin page in the web UI."""
+    """Represents the login page in the web UI."""
 
     UsernameFieldId = "UserId"
     PasswordFieldId = "Password"
@@ -303,6 +303,10 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
         return self._configuration.account_id
 
     @property
+    def utility(self):
+        return self._configuration.utility
+
+    @property
     def download_pdfs(self):
         """Returns True if bill PDFS should be downloaded, False otherwise"""
         return self._configuration.download_pdfs
@@ -451,9 +455,21 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
 
     def make_billing_datum(self, bill_detail: BillPeriodDetails) -> BillingDatum:
         """Convert a billing detail summary from the website to a Gridium BillingDatum object"""
+        # get statement date from link: Date=yyyy-mm-dd
+        date_re = re.compile(r"Date=(\d\d\d\d-\d\d-\d\d)")
+        match = date_re.search(bill_detail.download_link)
+        statement = None
+        if match:
+            try:
+                statement = parse_date(match.group(1)).date()
+            except Exception as exc:
+                log.warning("error parsing date %s: %s", match.group(1), exc)
+        if not statement:
+            statement = bill_detail.end
         bill_datum = BillingDatum(
             start=bill_detail.start,
             end=bill_detail.end,
+            statement=statement,
             cost=bill_detail.total_charges,
             used=bill_detail.total_kwh,
             peak=bill_detail.max_kw,
@@ -464,7 +480,14 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
         pdf_bytes = self.download_pdf(bill_detail)
         if pdf_bytes:
             key = bill_upload.hash_bill_datum(self.account_id, bill_datum)
-            attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(pdf_bytes), key)
+            attachment_entry = bill_upload.upload_bill_to_s3(
+                BytesIO(pdf_bytes),
+                key,
+                source="smud.org",
+                statement=statement,
+                utility=self.utility,
+                utility_account_id=self.account_id,
+            )
             if attachment_entry:
                 bill_datum = bill_datum._replace(attachments=[attachment_entry])
 
@@ -501,7 +524,8 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = SMUDMyAccountBillingConfiguration(
-        account_id=meter.utility_service.utility_account_id
+        utility=meter.utility_service.utility,
+        account_id=meter.utility_service.utility_account_id,
     )
 
     return run_datafeed(

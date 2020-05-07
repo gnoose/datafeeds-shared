@@ -11,7 +11,7 @@
             "PreviousBalance": "0.0000",
             "RawAccountNumber": "1",
             "SourceLink": "test_url",
-            "StatementDate": "2018-01-01",
+            "StatementDate": "2018-02-08",
             "StatementType": "statement_type_bill",
             "TotalBillAmount": "100.00",
             "UtilityProvider": "test_provider",

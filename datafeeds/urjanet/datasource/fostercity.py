@@ -18,8 +18,8 @@ class FosterCityWaterDatasource(UrjanetPyMySqlDataSource):
     This class accepts an account number. All meters are currently loaded from each bill.
     """
 
-    def __init__(self, account_number: str):
-        super().__init__(account_number)
+    def __init__(self, utility: str, account_number: str):
+        super().__init__(utility, account_number)
         self.account_number = self.normalize_account_number(account_number)
 
     @staticmethod
@@ -63,7 +63,9 @@ def datafeed(
         meter,
         datasource,
         params,
-        FosterCityWaterDatasource(meter.utility_account_id),
+        FosterCityWaterDatasource(
+            meter.utility_service.utility, meter.utility_account_id
+        ),
         FosterCityWaterTransformer(),
         task_id=task_id,
     )

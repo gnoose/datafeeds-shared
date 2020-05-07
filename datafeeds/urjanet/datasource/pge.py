@@ -26,8 +26,15 @@ class PacificGasElectricDatasource(UrjanetPyMySqlDataSource):
         said: Service account ID for the meter (meter.utility_service.service_id)
     """
 
-    def __init__(self, account_number: str, said: str):
-        super().__init__(account_number)
+    def __init__(
+        self,
+        utility: str,
+        account_number: str,
+        said: str,
+        gen_utility: str,
+        gen_account_number: str,
+    ):
+        super().__init__(utility, account_number, gen_utility, gen_account_number)
         self.meter_id = said
         self.account_number = self.normalize_account_number(account_number)
 
@@ -90,13 +97,19 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
+
+    utility_service = meter.utility_service
     return run_urjanet_datafeed(
         account,
         meter,
         datasource,
         params,
         PacificGasElectricDatasource(
-            meter.utility_account_id, meter.utility_service.service_id
+            utility_service.utility,
+            utility_service.utility_account_id,
+            utility_service.service_id,
+            utility_service.gen_utility,
+            utility_service.gen_utility_account_id,
         ),
         PacificGasElectricTransformer(),
         task_id=task_id,

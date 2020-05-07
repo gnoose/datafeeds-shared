@@ -41,11 +41,11 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
         service_id: The SCE service id to extract data for
     """
 
-    def __init__(
-        self, service_id: str,
-    ):
+    def __init__(self, utility: str, utility_account_id: str, service_id: str):
         super().__init__(scrape_bills=True, scrape_readings=False)
         self.service_id = service_id
+        self.utility = utility
+        self.utility_account_id = utility_account_id
 
 
 class SceReactEnergyManagerBillingScraper(BaseWebScraper):
@@ -58,6 +58,14 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
     @property
     def service_id(self) -> str:
         return self._configuration.service_id
+
+    @property
+    def utility(self) -> str:
+        return self._configuration.utility
+
+    @property
+    def utility_account_id(self) -> str:
+        return self._configuration.utility_account_id
 
     def define_state_machine(self):
         """Define the flow of this scraper as a state machine"""
@@ -246,6 +254,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
                     bill_data = BillingDatum(
                         start=current_bill_row.bill_start_date,
                         end=current_bill_row.bill_end_date - timedelta(days=1),
+                        statement=current_bill_row.statement_date,
                         cost=current_bill_row.bill_amount,
                         used=current_bill_row.kwh,
                         peak=current_bill_row.kw,
@@ -274,7 +283,16 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
             with open(bill_path, "rb") as bill_file:
                 key = bill_upload.hash_bill_datum(self.service_id, bill_data) + ".pdf"
                 return bill_data._replace(
-                    attachments=[bill_upload.upload_bill_to_s3(bill_file, key)]
+                    attachments=[
+                        bill_upload.upload_bill_to_s3(
+                            bill_file,
+                            key,
+                            statement=bill_data.statement,
+                            source="sce.com",
+                            utility=self.utility,
+                            utility_account_id=self.utility_account_id,
+                        )
+                    ]
                 )
         else:
             log.info(
@@ -347,7 +365,9 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = SceReactEnergyManagerBillingConfiguration(
-        service_id=meter.service_id
+        utility=meter.utility_service.utility,
+        utility_account_id=meter.utility_account_id,
+        service_id=meter.service_id,
     )
 
     return run_datafeed(

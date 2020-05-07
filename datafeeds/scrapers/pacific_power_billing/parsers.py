@@ -30,6 +30,7 @@ The parser makes the following assumptions:
 AMOUNT_REGEX = re.compile(r"Total New Charges([\d,]+\.\d\d)")
 USE_REGEX = re.compile(r"")
 DEMAND_REGEX = re.compile(r"")
+STATEMENT_REGEX = re.compile(r"BILLING DATE: (.*)")
 
 
 def extract_amount(text: str) -> Optional[float]:
@@ -39,6 +40,17 @@ def extract_amount(text: str) -> Optional[float]:
 
     try:
         return float(matches.group(1).replace(",", ""))
+    except ValueError:
+        return None
+
+
+def extract_statement_date(text: str) -> Optional[date]:
+    matches = STATEMENT_REGEX.search(text)
+    if not matches:
+        return None
+
+    try:
+        return parse_dt(matches.group(1)).date()
     except ValueError:
         return None
 
@@ -133,6 +145,7 @@ def parse_bill_text(text: str, meter_number: str) -> Optional[BillingDatum]:
         return BillingDatum(
             start=period[0],
             end=period[1],
+            statement=extract_statement_date(sections[0]),
             cost=amount,
             used=use,
             peak=peak,

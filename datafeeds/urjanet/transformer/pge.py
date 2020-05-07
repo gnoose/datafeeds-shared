@@ -1,3 +1,4 @@
+import functools
 import re
 import logging
 from decimal import Decimal
@@ -43,11 +44,12 @@ class PacificGasElectricBillingPeriod(GenericBillingPeriod):
            Note: there can be multiple relevant statements e.g. when (1) and (2) are on different statements
     """
 
-    def __init__(self):
-        self.utility_charges = []
-        self.third_party_charges = []
-        self.usages = []
-        self.source_statements = []
+    def __init__(self, account: Account):
+        super().__init__(account)
+        self.utility_charges: List[Charge] = []
+        self.third_party_charges: List[Charge] = []
+        self.usages: List[Usage] = []
+        self.source_statements: List[Account] = []
 
     def add_third_party_charge(self, charge: Charge) -> None:
         self.third_party_charges.append(charge)
@@ -175,7 +177,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                 else:
                     log.debug("Adding usage period: %s - %s", ival.begin, ival.end)
                     bill_history.add(
-                        ival.begin, ival.end, PacificGasElectricBillingPeriod()
+                        ival.begin, ival.end, PacificGasElectricBillingPeriod(account)
                     )
         # fix periods where start/end are the same
         bill_history = DateIntervalTree.shift_endpoints_start(bill_history)
@@ -193,6 +195,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                 GridiumBillingPeriod(
                     start=ival.begin,
                     end=ival.end,
+                    statement=period_data.statement(),
                     total_charge=period_data.get_total_charge(),
                     peak_demand=period_data.get_peak_demand(),
                     total_usage=period_data.get_total_usage(),
@@ -249,7 +252,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
         # to PacificGasElectricBillingPeriod objects, which hold the billing data available in the current statement for that
         # period.
         statement_data: Dict[Interval, PacificGasElectricBillingPeriod] = defaultdict(
-            PacificGasElectricBillingPeriod
+            functools.partial(PacificGasElectricBillingPeriod, urja_account)
         )
 
         # In a first pass, we iterate over all charges/usages associated with a meter, and try to insert them into the

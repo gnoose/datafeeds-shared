@@ -220,6 +220,8 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                 BillingDatum(
                     start=item.start_date,
                     end=item.end_date - timedelta(days=1),
+                    # no separate statement date
+                    statement=item.end_date - timedelta(days=1),
                     cost=item.usage_info.cost,
                     used=item.usage_info.usage,
                     peak=item.demand_info.demand,

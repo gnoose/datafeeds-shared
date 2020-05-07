@@ -432,7 +432,12 @@ def _unify_bill_history(pdf_bills, csv_bills):
             if ol > timedelta(days=20):
                 # It's likely these are the same bill, so merge them.
                 final_bills.append(
-                    cb._replace(start=pb.start, end=pb.end, attachments=pb.attachments)
+                    cb._replace(
+                        start=pb.start,
+                        end=pb.end,
+                        statement=pb.statement,
+                        attachments=pb.attachments,
+                    )
                 )
                 csv_bills.remove(cb)
                 merged_bill = True
@@ -445,13 +450,22 @@ def _unify_bill_history(pdf_bills, csv_bills):
 
 
 class PortlandBizportalConfiguration(Configuration):
-    def __init__(self, account_group, bizportal_account_number, service_id):
+    def __init__(
+        self,
+        utility: str,
+        utility_account_id: str,
+        account_group,
+        bizportal_account_number,
+        service_id,
+    ):
         super().__init__(scrape_bills=True)
         self.account_group = account_group
 
         # We need to guarantee that this ID is a string; it might have a prefix of zeros.
         self.bizportal_account_number = str(bizportal_account_number)
         self.service_id = service_id
+        self.utility = utility
+        self.utility_account_id = utility_account_id
 
 
 class Scraper(BaseApiScraper):
@@ -466,6 +480,14 @@ class Scraper(BaseApiScraper):
     @property
     def bizportal_account_number(self):
         return str(self._configuration.bizportal_account_number)
+
+    @property
+    def utility(self):
+        return str(self._configuration.utility)
+
+    @property
+    def utility_account_id(self):
+        return str(self._configuration.utility_account_id)
 
     @property
     def service_id(self):
@@ -521,7 +543,15 @@ class Scraper(BaseApiScraper):
                             0,
                             md.TotalKwh,
                         )
-                        bill_attachment = upload_bill_to_s3(f, key)
+                        # no statement date; use end date
+                        bill_attachment = upload_bill_to_s3(
+                            f,
+                            key,
+                            source="portlandgeneral.com",
+                            statement=period_end.date(),
+                            utility=self.utility,
+                            utility_account_id=self.utility_account_id,
+                        )
 
                 bills.append(
                     BillingDatum(
@@ -593,6 +623,8 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = PortlandBizportalConfiguration(
+        utility=meter.utility_service.utility,
+        utility_account_id=meter.utility_service.utility_account_id,
         account_group=datasource.meta.get("accountGroup"),
         bizportal_account_number=datasource.meta.get("bizportalAccountNumber"),
         service_id=meter.service_id,

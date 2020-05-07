@@ -70,6 +70,7 @@ class TestUrjanetScraper(unittest.TestCase):
             BillingDatum(
                 start=date(2018, 1, 1),
                 end=date(2018, 2, 1),
+                statement=date(2018, 2, 8),
                 cost=100.0,
                 used=16.0,
                 peak=0.0,

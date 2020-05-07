@@ -3,6 +3,7 @@ import json
 import logging
 import re
 import hashlib
+from typing import Optional
 
 import requests
 
@@ -141,7 +142,13 @@ def make_line_items(bill: GridiumBillingPeriod):
     ]
 
 
-def make_attachments(bill: GridiumBillingPeriod):
+def make_attachments(
+    bill: GridiumBillingPeriod,
+    utility: str,
+    account_id: str,
+    gen_utility: Optional[str] = None,
+    gen_utility_account_id: Optional[str] = None,
+):
     if not config.enabled("S3_BILL_UPLOAD"):
         return None
 
@@ -151,7 +158,17 @@ def make_attachments(bill: GridiumBillingPeriod):
 
     s3_keys = [statement_to_s3(url) for url in source_urls]
     attachments = [
-        AttachmentEntry(key=key, kind="bill", format="PDF")
+        AttachmentEntry(
+            key=key,
+            kind="bill",
+            format="PDF",
+            source="urjanet",
+            statement=bill.statement.strftime("%Y-%m-%d"),
+            utility=utility,
+            utility_account_id=account_id,
+            gen_utility=gen_utility,
+            gen_utility_account_id=gen_utility_account_id,
+        )
         for key in s3_keys
         if key is not None
     ]
@@ -162,16 +179,19 @@ def make_attachments(bill: GridiumBillingPeriod):
 
 
 def make_billing_datum(
-    bill: GridiumBillingPeriod, fetch_attachments=False
+    bill: GridiumBillingPeriod, utility: str, account_id: str, fetch_attachments=False
 ) -> BillingDatum:
     return BillingDatum(
         start=bill.start,
         end=bill.end,
+        statement=bill.statement,
         cost=_try_parse_float(bill.total_charge),
         used=_try_parse_float(bill.total_usage),
         peak=_try_parse_float(bill.peak_demand),
         items=make_line_items(bill),
-        attachments=make_attachments(bill) if fetch_attachments else None,
+        attachments=make_attachments(bill, utility, account_id)
+        if fetch_attachments
+        else None,
     )
 
 
@@ -202,8 +222,12 @@ class BaseUrjanetScraper(BaseScraper):
                 json_data = order_json(gridium_bills.to_json())
                 f.write(json.dumps(json_data, indent=4))
 
+        utility = self.urja_datasource.utility
+        account_id = self.urja_datasource.account_number
         billing_data_final = [
-            make_billing_datum(bill, fetch_attachments=self.fetch_attachments)
+            make_billing_datum(
+                bill, utility, account_id, fetch_attachments=self.fetch_attachments
+            )
             for bill in gridium_bills.periods
         ]
         return Results(bills=billing_data_final)

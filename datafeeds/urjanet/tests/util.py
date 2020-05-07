@@ -22,6 +22,8 @@ class FixtureDataSource(UrjanetDataSource):
     def __init__(self, fixture_path):
         super().__init__()
         self.fixture_path = fixture_path
+        self.utility = "utility:default"
+        self.account_number = "123"
 
     def load(self):
         with open(self.fixture_path) as f:

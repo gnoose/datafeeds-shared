@@ -1,7 +1,7 @@
 import json
 import logging
 import csv
-from datetime import timedelta
+from datetime import timedelta, date
 
 from deprecation import deprecated
 import os
@@ -26,6 +26,7 @@ from datafeeds.common.util.s3 import (
 )
 from datafeeds.models import UtilityService
 from datafeeds.models.bill import Bill
+from datafeeds.models.bill_document import BillDocument
 
 BytesLikeObject = Union[BinaryIO, BytesIO]
 
@@ -285,15 +286,34 @@ def hash_bill_datum(service_id: str, b: BillingDatum):
 
 
 def upload_bill_to_s3(
-    file_handle: BytesLikeObject, key: str
+    file_handle: BytesLikeObject,
+    key: str,
+    source: str,
+    statement: date,
+    utility: str,
+    utility_account_id: str,
+    gen_utility: Optional[str] = None,
+    gen_utility_account_id: Optional[str] = None,
 ) -> Optional[AttachmentEntry]:
-    entry = AttachmentEntry(key=key, kind="bill", format="PDF")
+    entry = AttachmentEntry(
+        key=key,
+        kind="bill",
+        format="PDF",
+        source=source,
+        statement=statement.strftime("%Y-%m-%d"),
+        utility=utility,
+        utility_account_id=utility_account_id,
+        gen_utility=gen_utility,
+        gen_utility_account_id=gen_utility_account_id,
+    )
     if s3_key_exists(config.BILL_PDF_S3_BUCKET, key):
         log.info("Bill %s already exists in S3. Skipping upload..." % key)
+        BillDocument.add_or_update(entry)
         return entry
 
     try:
         upload_pdf_to_s3(file_handle, config.BILL_PDF_S3_BUCKET, key)
+        BillDocument.add_or_update(entry)
     except:  # noqa E722
         log.exception("Failed to upload bill %s to S3.", key)
         return None

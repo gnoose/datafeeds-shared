@@ -15,8 +15,8 @@ from datafeeds.urjanet.transformer import SanFranciscoWaterTransformer
 class SanFranciscoWaterDatasource(UrjanetPyMySqlDataSource):
     """Load data from an Urjanet database"""
 
-    def __init__(self, account_number: str):
-        super().__init__(account_number)
+    def __init__(self, utility: str, account_number: str):
+        super().__init__(utility, account_number)
         self.account_number = account_number
 
     def load_accounts(self) -> List[Account]:
@@ -53,7 +53,9 @@ def datafeed(
         meter,
         datasource,
         params,
-        SanFranciscoWaterDatasource(meter.utility_account_id),
+        SanFranciscoWaterDatasource(
+            meter.utility_service.utility, meter.utility_account_id
+        ),
         SanFranciscoWaterTransformer(),
         task_id=task_id,
     )

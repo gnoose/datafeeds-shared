@@ -51,7 +51,7 @@ def datafeed(
         meter,
         datasource,
         params,
-        CalWaterDatasource(meter.utility_account_id),
+        CalWaterDatasource(meter.utility_service.utility, meter.utility_account_id),
         GenericWaterTransformer(),
         task_id,
     )

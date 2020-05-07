@@ -46,13 +46,15 @@ def bill_data_from_xls(xls: bytes, service_account: str) -> List[BillingDatum]:
                 continue
 
             used = used * 1.036  # Convert CCF to therms.
+            end = datetime.strptime(str(row["To Billing Date"]), "%Y%m%d").date()
 
             results.append(
                 BillingDatum(
                     start=datetime.strptime(
                         str(row["From Billing Date"]), "%Y%m%d"
                     ).date(),
-                    end=datetime.strptime(str(row["To Billing Date"]), "%Y%m%d").date(),
+                    end=end,
+                    statement=end,  # no separate statement date available
                     cost=cost,
                     used=used,
                     peak=None,
@@ -96,6 +98,7 @@ def process_bill(
     return BillingDatum(
         start=start,
         end=end,
+        statement=end,  # statement date is not visible in the bill PDF text; use end date
         cost=total_due,
         used=use,
         peak=None,

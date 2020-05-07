@@ -35,9 +35,6 @@ CONVERSIONS = {
 class GenericWaterBillingPeriod(GenericBillingPeriod):
     """Simple model of a water billing period."""
 
-    def __init__(self, account: Account):
-        self.account = account
-
     def get_total_charge(self):
         if self.account.NewCharges > Decimal(0.0):
             return self.account.NewCharges
@@ -114,6 +111,7 @@ class GenericWaterTransformer(UrjanetGridiumTransformer):
                 GridiumBillingPeriod(
                     start=ival.begin,
                     end=ival.end,
+                    statement=period_data.statement(),
                     total_charge=period_data.get_total_charge(),
                     peak_demand=None,  # No peak demand for water
                     total_usage=period_data.get_total_usage(),

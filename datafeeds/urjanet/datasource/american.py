@@ -18,8 +18,8 @@ class AmericanWaterDatasource(UrjanetPyMySqlDataSource):
     This class accepts an account number. All meters are currently loaded from each bill.
     """
 
-    def __init__(self, account_number: str):
-        super().__init__(account_number)
+    def __init__(self, utility: str, account_number: str):
+        super().__init__(utility, account_number)
         self.account_number = self.normalize_account_number(account_number)
 
     @staticmethod
@@ -58,7 +58,9 @@ def datafeed(
         meter,
         datasource,
         params,
-        AmericanWaterDatasource(meter.utility_account_id),
+        AmericanWaterDatasource(
+            meter.utility_service.utility, meter.utility_account_id
+        ),
         AmericanTransformer(),
         task_id,
     )

@@ -256,6 +256,9 @@ class GridiumBillingPeriod(JsonObject):
     # The end date of the billing period
     end = DateProperty()
 
+    # The statement date of the billing period
+    statement = DateProperty()
+
     # The tariff associated with this period
     tariff = StringProperty()
 

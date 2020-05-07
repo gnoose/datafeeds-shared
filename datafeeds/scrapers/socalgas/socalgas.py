@@ -514,7 +514,7 @@ class SocalGasScraper(BaseWebScraper):
             end_txt = parts[2]
             end = date_parser.parse(end_txt).date()
             start = end - timedelta(days=(int(billed_days_txt) - 1))
-            return (start, end)
+            return start, end
 
         def cost(td: str) -> float:
             stripped = td.replace("$", "").replace(" ", "").replace(",", "")
@@ -546,7 +546,7 @@ class SocalGasScraper(BaseWebScraper):
                 parts = date_range_raw.split()
                 start = parts[0]
                 end = parts[2]
-                return (start, end)
+                return start, end
 
             rows_as_cells = sorted((to_cells(r) for r in all_rows), key=by_range)
 
@@ -556,15 +556,19 @@ class SocalGasScraper(BaseWebScraper):
 
         def to_billing_datum(cells: List[str]) -> BillingDatum:
             start, end = billing_period(cells[1], cells[2])
-
+            statement = None
+            try:
+                statement = date_parser.parse(cells[0]).date()
+            except Exception:
+                statement = end
             # Unused fields:
             # --------------
-            # date_mailed = cells[0]
             # total_amount_due = cells[5]
 
             return BillingDatum(
                 start=start,
                 end=end,
+                statement=statement,
                 cost=cost(cells[4]),
                 used=used(cells[3]),
                 peak=None,

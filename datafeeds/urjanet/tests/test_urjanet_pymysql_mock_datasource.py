@@ -18,7 +18,7 @@ class MockPyMySqlDataSource(UrjanetPyMySqlDataSource):
     """
 
     def __init__(self):
-        super().__init__(None)
+        super().__init__(None, "utility:default")
 
     def load_accounts(self):
         return [

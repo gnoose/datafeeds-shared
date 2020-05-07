@@ -33,10 +33,11 @@ class HudsonScraperException(Exception):
 
 
 class HudsonConfiguration(Configuration):
-    def __init__(self, account_number: str, meter_number: str):
+    def __init__(self, utility: str, account_number: str, meter_number: str):
         super().__init__(scrape_bills=True)
         self.account_number = account_number
         self.meter_number = meter_number
+        self.utility = utility
 
 
 class BillHistoryPage:
@@ -70,6 +71,7 @@ class BillHistoryPage:
 
             log.info("Downloading PDF.")
             pdf_link = row.find_element_by_xpath(".//a")
+            statement = datetime.strptime(pdf_link.text, "%m/%d/%Y").date()
             pdf_link.click()
 
             # PDFs look like <UUID>.pdf
@@ -86,6 +88,7 @@ class BillHistoryPage:
             bill = BillingDatum(
                 start=start,
                 end=end,
+                statement=statement,
                 cost=cost,
                 used=used,
                 peak=None,
@@ -210,6 +213,10 @@ class HudsonScraper(BaseWebScraper):
     def meter_number(self):
         return self._configuration.meter_number
 
+    @property
+    def utility(self):
+        return self._configuration.utility
+
     def _execute(self):
         if self.end_date - self.start_date < timedelta(days=90):
             self.start_date = self.end_date - timedelta(days=90)
@@ -241,7 +248,14 @@ class HudsonScraper(BaseWebScraper):
                 continue
 
             key = bill_upload.hash_bill_datum(self.account_number, bd)
-            attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(pdf_bytes), key)
+            attachment_entry = bill_upload.upload_bill_to_s3(
+                BytesIO(pdf_bytes),
+                key,
+                statement=bd.statement,
+                source="hudsonenergy.net",
+                utility=self.utility,
+                utility_account_id=self.account_number,
+            )
             if attachment_entry:
                 bills.append(bd._replace(attachments=[attachment_entry]))
             else:
@@ -259,7 +273,9 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = HudsonConfiguration(
-        meter.utility_service.utility_account_id, meter.service_id
+        meter.utility_service.utility,
+        meter.utility_service.utility_account_id,
+        meter.service_id,
     )
 
     return run_datafeed(

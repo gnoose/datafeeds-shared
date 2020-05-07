@@ -1,4 +1,5 @@
 import logging
+from datetime import date
 from decimal import Decimal
 from typing import List, Optional
 
@@ -25,6 +26,9 @@ class GenericBillingPeriod:
 
     def __init__(self, account: Account):
         self.account = account
+
+    def statement(self) -> date:
+        return self.account.StatementDate
 
     def get_total_charge(self):
         return self.account.NewCharges
@@ -197,6 +201,7 @@ class UrjanetGridiumTransformer:
                 GridiumBillingPeriod(
                     start=ival.begin,
                     end=ival.end,
+                    statement=period_data.statement(),
                     total_charge=period_data.get_total_charge(),
                     peak_demand=period_data.get_peak_demand(),
                     total_usage=period_data.get_total_usage(),

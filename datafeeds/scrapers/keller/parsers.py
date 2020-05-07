@@ -200,6 +200,7 @@ def parse_bill_pdf(pdf: BytesIO) -> Optional[BillingDatum]:
         return BillingDatum(
             start=period[0],
             end=period[1],
+            statement=period[1],  # bill doesn't have a statement date; use end date
             cost=amount,
             used=use,
             peak=None,

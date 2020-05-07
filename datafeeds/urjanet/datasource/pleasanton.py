@@ -18,8 +18,8 @@ class PleasantonDatasource(UrjanetPyMySqlDataSource):
     This class accepts an account number. All meters are currently loaded from each bill.
     """
 
-    def __init__(self, account_number: str):
-        super().__init__(account_number)
+    def __init__(self, utility: str, account_number: str):
+        super().__init__(utility, account_number)
 
     def load_accounts(self) -> List[Account]:
         """Load accounts based on the account id"""
@@ -54,7 +54,7 @@ def datafeed(
         meter,
         datasource,
         params,
-        PleasantonDatasource(meter.utility_account_id),
+        PleasantonDatasource(meter.utility_service.utility, meter.utility_account_id),
         GenericWaterTransformer(),
         task_id,
     )

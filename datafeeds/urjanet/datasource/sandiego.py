@@ -52,7 +52,9 @@ def datafeed(
         meter,
         datasource,
         params,
-        SanDiegoWaterDatasource(meter.utility_account_id),
+        SanDiegoWaterDatasource(
+            meter.utility_service.utility, meter.utility_account_id
+        ),
         GenericWaterTransformer(),
         task_id,
     )

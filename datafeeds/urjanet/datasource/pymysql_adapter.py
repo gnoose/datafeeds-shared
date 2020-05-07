@@ -12,7 +12,7 @@ from abc import abstractmethod
 from decimal import Decimal
 from datetime import date
 from datetime import datetime
-from typing import List, Dict, Callable, Any, Type
+from typing import List, Dict, Callable, Any, Type, Optional
 
 from pymysql.cursors import DictCursor
 
@@ -155,10 +155,19 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
     may require different logic to correctly identify these rows.
     """
 
-    def __init__(self, account_number: str):
+    def __init__(
+        self,
+        utility: str,
+        account_number: str,
+        gen_utility: Optional[str] = None,
+        gen_account_number: Optional[str] = None,
+    ):
         """Initialize a datasource with a pymysql connection object."""
         super().__init__()
         self.account_number = account_number
+        self.utility = utility  # Gridium utility name
+        self.gen_account_number = gen_account_number
+        self.gen_utility = gen_utility
         # must set this before using
         self.conn: Any = None
 

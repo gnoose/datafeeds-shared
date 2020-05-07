@@ -1,3 +1,4 @@
+import functools
 import logging
 from decimal import Decimal
 from collections import defaultdict
@@ -28,10 +29,11 @@ log = logging.getLogger(__name__)
 class LosAngelesWaterBillingPeriod(GenericBillingPeriod):
     """A simple model of an LADWP water billing period"""
 
-    def __init__(self):
-        self.utility_charges = []
-        self.usages = []
-        self.source_statements = []
+    def __init__(self, account: Account):
+        super().__init__(account)
+        self.utility_charges: List[Charge] = []
+        self.usages: List[Usage] = []
+        self.source_statements: List[Account] = []
 
     def add_utility_charge(self, charge: Charge) -> None:
         self.utility_charges.append(charge)
@@ -83,8 +85,8 @@ class LosAngelesWaterTransformer(UrjanetGridiumTransformer):
     """This class supports transforming LADWP water Urjanet data into Gridium billing periods."""
 
     @staticmethod
-    def billing_period(account: Account,) -> LosAngelesWaterBillingPeriod:
-        return LosAngelesWaterBillingPeriod()
+    def billing_period(account: Account) -> LosAngelesWaterBillingPeriod:
+        return LosAngelesWaterBillingPeriod(account)
 
     def urja_to_gridium(self, urja_data: UrjanetData) -> GridiumBillingPeriodCollection:
         """Transform urjanet data into Gridium billing periods"""
@@ -114,7 +116,7 @@ class LosAngelesWaterTransformer(UrjanetGridiumTransformer):
                         )
                     )
                     bill_history.add(
-                        ival.begin, ival.end, LosAngelesWaterBillingPeriod()
+                        ival.begin, ival.end, LosAngelesWaterBillingPeriod(account)
                     )
 
         # Next, we go through the accounts again and insert relevant charge/usage information into the computed
@@ -131,6 +133,7 @@ class LosAngelesWaterTransformer(UrjanetGridiumTransformer):
                 GridiumBillingPeriod(
                     start=ival.begin,
                     end=ival.end,
+                    statement=period_data.statement(),
                     total_charge=period_data.get_total_charge(),
                     peak_demand=None,  # No peak demand for water
                     total_usage=period_data.get_total_usage(),
@@ -153,7 +156,7 @@ class LosAngelesWaterTransformer(UrjanetGridiumTransformer):
         self, bill_history: DateIntervalTree, urja_account: Account
     ) -> None:
         statement_data: Dict[Interval, LosAngelesWaterBillingPeriod] = defaultdict(
-            LosAngelesWaterBillingPeriod
+            functools.partial(LosAngelesWaterBillingPeriod, urja_account)
         )
 
         for meter in urja_account.meters:

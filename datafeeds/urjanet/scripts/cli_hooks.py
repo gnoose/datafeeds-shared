@@ -125,6 +125,9 @@ class DatasourceCli(metaclass=RegisteredCliHook):
     def make_transformer(self):
         return None
 
+    def utility(self):
+        return "utility:%s" % self.__cli_key__
+
 
 class NVEnergyCli(DatasourceCli):
     __cli_key__ = "nve"
@@ -138,7 +141,10 @@ class NVEnergyCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            NVEnergyDatasource(args.account_number, args.said, args.meter_number), conn,
+            NVEnergyDatasource(
+                self.utility(), args.account_number, args.said, args.meter_number
+            ),
+            conn,
         )
 
     def make_transformer(self):
@@ -161,7 +167,10 @@ class GenericWaterCli(DatasourceCli):
     def make_datasource(self, conn, args):
         return self.setup_datasource(
             GenericWaterDatasource(
-                args.utility_provider, args.account_number, args.conversion_factor
+                self.utility(),
+                args.utility_provider,
+                args.account_number,
+                args.conversion_factor,
             ),
             conn,
         )
@@ -179,7 +188,7 @@ class TriCountyCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            TriCountyDatasource(args.account_number, args.said), conn
+            TriCountyDatasource(self.utility(), args.account_number, args.said), conn,
         )
 
     def make_transformer(self):
@@ -195,7 +204,7 @@ class FPLCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            FPLDatasource(args.account_number, args.said), conn
+            FPLDatasource(self.utility(), args.account_number, args.said), conn
         )
 
     def make_transformer(self):
@@ -211,7 +220,8 @@ class NationalGridCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            NationalGridDatasource(args.account_number, args.said), conn
+            NationalGridDatasource(self.utility(), args.account_number, args.said),
+            conn,
         )
 
     def make_transformer(self):
@@ -227,7 +237,10 @@ class PgeCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            PacificGasElectricDatasource(args.account_number, args.service_id), conn
+            PacificGasElectricDatasource(
+                self.utility(), args.account_number, args.service_id, "utility:pge"
+            ),
+            conn,
         )
 
     def make_transformer(self):
@@ -243,7 +256,10 @@ class DirectEnergy(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            DirectEnergyDatasource(args.account_number, args.service_id), conn
+            DirectEnergyDatasource(
+                self.utility(), args.account_number, args.service_id
+            ),
+            conn,
         )
 
     def make_transformer(self):
@@ -259,7 +275,7 @@ class PseCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            PseDatasource(args.account_number, args.said), conn
+            PseDatasource(self.utility(), args.account_number, args.said), conn
         )
 
     def make_transformer(self):
@@ -275,7 +291,10 @@ class LadwpWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            LosAngelesWaterDatasource(args.account_number, args.service_id), conn
+            LosAngelesWaterDatasource(
+                self.utility(), args.account_number, args.service_id
+            ),
+            conn,
         )
 
     def make_transformer(self):
@@ -291,7 +310,7 @@ class LadwpCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            LADWPDatasource(args.account_number, args.service_id), conn
+            LADWPDatasource(self.utility(), args.account_number, args.service_id), conn
         )
 
     def make_transformer(self):
@@ -307,7 +326,7 @@ class SanFranciscoWaterCli(DatasourceCli):
     def make_datasource(self, conn, args):
 
         return self.setup_datasource(
-            SanFranciscoWaterDatasource(args.account_number), conn
+            SanFranciscoWaterDatasource(self.utility(), args.account_number), conn
         )
 
     def make_transformer(self):
@@ -322,7 +341,7 @@ class FosterCityWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            FosterCityWaterDatasource(args.account_number), conn
+            FosterCityWaterDatasource(self.utility(), args.account_number), conn,
         )
 
     def make_transformer(self):
@@ -337,7 +356,7 @@ class ColleyvilleWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            ColleyvilleWaterDatasource(args.account_number), conn
+            ColleyvilleWaterDatasource(self.utility(), args.account_number), conn,
         )
 
     def make_transformer(self):
@@ -351,7 +370,9 @@ class Constellation(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(ConstellationDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            self.utility(), ConstellationDatasource(args.account_number), conn
+        )
 
     def make_transformer(self):
         return ConstellationTransformer()
@@ -365,7 +386,7 @@ class FortWorthWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            FortWorthWaterDatasource(args.account_number), conn
+            FortWorthWaterDatasource(self.utility(), args.account_number), conn,
         )
 
     def make_transformer(self):
@@ -379,7 +400,9 @@ class SjWaterCli(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(SjWaterDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            SjWaterDatasource(self.utility(), args.account_number), conn
+        )
 
     def make_transformer(self):
         return GenericWaterTransformer()
@@ -392,7 +415,9 @@ class SanDiegoWaterCli(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(SanDiegoWaterDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            SanDiegoWaterDatasource(self.utility(), args.account_number), conn
+        )
 
     def make_transformer(self):
         return GenericWaterTransformer()
@@ -407,7 +432,7 @@ class SDGECli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            SDGEDatasource(args.account_number, args.said), conn
+            SDGEDatasource(self.utility(), args.account_number, args.said), conn
         )
 
     def make_transformer(self):
@@ -421,7 +446,11 @@ class SouthlakeCli(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(SouthlakeDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            self.utility(),
+            SouthlakeDatasource(self.utility(), args.account_number),
+            conn,
+        )
 
     def make_transformer(self):
         return SouthlakeTransformer()
@@ -434,7 +463,9 @@ class WataugaCli(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(WataugaDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            self.utility(), WataugaDatasource(self.utility(), args.account_number), conn
+        )
 
     def make_transformer(self):
         return WataugaTransformer()
@@ -452,7 +483,7 @@ class IrvineRanchWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            IrvineRanchWaterDatasource(args.account_number), conn
+            IrvineRanchWaterDatasource(self.utility(), args.account_number), conn,
         )
 
     def make_transformer(self):
@@ -466,7 +497,9 @@ class CalWaterCli(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(CalWaterDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            CalWaterDatasource(self.utility(), args.account_number), conn
+        )
 
     def make_transformer(self):
         return GenericWaterTransformer()
@@ -479,7 +512,9 @@ class MountainViewCli(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(MountainViewDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            MountainViewDatasource(self.utility(), args.account_number), conn,
+        )
 
     def make_transformer(self):
         return GenericWaterTransformer()
@@ -492,7 +527,9 @@ class PleasantonCli(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(PleasantonDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            PleasantonDatasource(self.utility(), args.account_number), conn,
+        )
 
     def make_transformer(self):
         return GenericWaterTransformer()
@@ -505,7 +542,9 @@ class AmericanWaterCli(DatasourceCli):
         parser.add_argument("account_number")
 
     def make_datasource(self, conn, args):
-        return self.setup_datasource(AmericanWaterDatasource(args.account_number), conn)
+        return self.setup_datasource(
+            AmericanWaterDatasource(self.utility(), args.account_number), conn
+        )
 
     def make_transformer(self):
         return AmericanTransformer()
@@ -522,7 +561,10 @@ class AustinTXCli(DatasourceCli):
     def make_datasource(self, conn, args):
         commodity_type = CommodityType[args.commodity_type]
         return self.setup_datasource(
-            AustinTXDatasource(args.account_number, commodity_type, args.said), conn
+            AustinTXDatasource(
+                self.utility(), args.account_number, commodity_type, args.said
+            ),
+            conn,
         )
 
     def make_transformer(self):
@@ -538,7 +580,7 @@ class HecoCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            HecoDatasource(args.account_number, args.said), conn
+            HecoDatasource(self.utility(), args.account_number, args.said), conn
         )
 
     def make_transformer(self):

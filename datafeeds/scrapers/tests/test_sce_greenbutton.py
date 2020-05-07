@@ -107,6 +107,7 @@ class TestSCEGreenButtonSync(TestCase):
             BillingDatum(
                 start=date(2019, 1, 1),
                 end=date(2019, 1, 31),
+                statement=date(2019, 1, 31),
                 cost=1000.0,
                 used=2000.0,
                 peak=None,
@@ -140,6 +141,7 @@ class TestSCEGreenButtonSync(TestCase):
             BillingDatum(
                 start=date(2019, 1, 1),
                 end=date(2019, 1, 31),
+                statement=date(2019, 1, 31),
                 cost=1.0,
                 used=200.0,
                 peak=None,
@@ -149,6 +151,7 @@ class TestSCEGreenButtonSync(TestCase):
             BillingDatum(
                 start=date(2019, 2, 1),
                 end=date(2019, 2, 28),
+                statement=date(2019, 2, 28),
                 cost=1000.0,
                 used=200.0,
                 peak=None,
@@ -158,6 +161,7 @@ class TestSCEGreenButtonSync(TestCase):
             BillingDatum(
                 start=date(2019, 3, 1),
                 end=date(2019, 3, 31),
+                statement=date(2019, 3, 31),
                 cost=1.0,
                 used=2.0,
                 peak=None,
@@ -167,6 +171,7 @@ class TestSCEGreenButtonSync(TestCase):
             BillingDatum(
                 start=date(2019, 4, 1),
                 end=date(2019, 4, 30),
+                statement=date(2019, 4, 30),
                 cost=1.0,
                 used=None,
                 peak=None,
@@ -176,6 +181,7 @@ class TestSCEGreenButtonSync(TestCase):
             BillingDatum(
                 start=date(2019, 5, 1),
                 end=date(2019, 5, 31),
+                statement=date(2019, 5, 31),
                 cost=10.0,
                 used=0.0,
                 peak=None,
@@ -185,6 +191,7 @@ class TestSCEGreenButtonSync(TestCase):
             BillingDatum(
                 start=date(2019, 6, 1),
                 end=date(2019, 6, 30),
+                statement=date(2019, 6, 30),
                 cost=10.0,
                 used=0.0,
                 peak=None,

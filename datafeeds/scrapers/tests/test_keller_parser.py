@@ -26,6 +26,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 5, 21),
             end=date(2019, 6, 21),
+            statement=date(2019, 6, 21),
             cost=344.85,
             used=15100 / 748.052,
             peak=None,
@@ -39,6 +40,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 4, 22),
             end=date(2019, 5, 21),
+            statement=date(2019, 5, 21),
             cost=1014.22,
             used=73800 / 748.052,
             peak=None,
@@ -52,6 +54,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 3, 20),
             end=date(2019, 4, 22),
+            statement=date(2019, 4, 22),
             cost=1017.75,
             used=74100 / 748.052,
             peak=None,
@@ -65,6 +68,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 5, 21),
             end=date(2019, 6, 21),
+            statement=date(2019, 6, 21),
             cost=332.96,
             used=43500 / 748.052,
             peak=None,
@@ -78,6 +82,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 4, 22),
             end=date(2019, 5, 21),
+            statement=date(2019, 5, 21),
             cost=71.44,
             used=0.0,
             peak=None,
@@ -91,6 +96,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 3, 20),
             end=date(2019, 4, 22),
+            statement=date(2019, 4, 22),
             cost=325.54,
             used=42500 / 748.052,
             peak=None,
@@ -104,6 +110,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 8, 21),
             end=date(2019, 9, 20),
+            statement=date(2019, 9, 20),
             cost=102.51,
             used=0.0,
             peak=None,
@@ -117,6 +124,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 8, 21),
             end=date(2019, 9, 20),
+            statement=date(2019, 9, 20),
             cost=52.70,
             used=0.0,
             peak=None,
@@ -130,6 +138,7 @@ class TestKellerParser(TestCase):
         expected = BillingDatum(
             start=date(2019, 8, 21),
             end=date(2019, 9, 19),
+            statement=date(2019, 9, 19),
             cost=1270.05,
             used=104400.0 / 748.052,
             peak=None,

@@ -19,9 +19,14 @@ class ConstellationDatasource(UrjanetPyMySqlDataSource):
     """Load data from an Urjanet database"""
 
     def __init__(
-        self, account_number: str = CONSTELLATION_ACCOUNT_ID, said: str = None
+        self,
+        utility: str = None,
+        account_number: str = CONSTELLATION_ACCOUNT_ID,
+        said: str = None,
+        gen_utility=None,
+        gen_utility_account_id=None,
     ):
-        super().__init__(account_number)
+        super().__init__(utility, account_number, gen_utility, gen_utility_account_id)
         self.account_number = account_number
         self.said = said
 
@@ -70,12 +75,19 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
+    utility_service = meter.utility_service
     return run_urjanet_datafeed(
         account,
         meter,
         datasource,
         params,
-        ConstellationDatasource(meter.utility_account_id),
+        ConstellationDatasource(
+            utility_service.utility,
+            utility_service.utility_account_id,
+            meter.service_id,
+            utility_service.gen_utility,
+            utility_service.gen_utility_account_id,
+        ),
         ConstellationTransformer(),
         task_id=task_id,
     )

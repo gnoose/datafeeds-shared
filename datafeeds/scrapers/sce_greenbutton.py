@@ -238,13 +238,14 @@ class Scraper(BaseApiScraper):
 
                 bills.add(
                     BillingDatum(
-                        _adjust_timezone(processed.start).date(),
-                        _adjust_timezone(processed.end).date(),
-                        processed.total,
-                        use,
-                        None,  # Peak, line items, and attachments aren't available.
-                        None,
-                        None,
+                        start=_adjust_timezone(processed.start).date(),
+                        end=_adjust_timezone(processed.end).date(),
+                        statement=_adjust_timezone(processed.end).date(),
+                        cost=processed.total,
+                        used=use,
+                        peak=None,  # Peak, line items, and attachments aren't available.
+                        items=None,
+                        attachments=None,
                     )
                 )
 

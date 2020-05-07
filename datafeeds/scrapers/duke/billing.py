@@ -26,8 +26,9 @@ class DukeBillingConfiguration(Configuration):
         account_id is optional.
     """
 
-    def __init__(self, account_id: str):
+    def __init__(self, utility: str, account_id: str):
         super().__init__(scrape_bills=True, scrape_readings=False)
+        self.utility = utility
         self.account_id = account_id
 
 
@@ -39,6 +40,11 @@ class DukeBillingScraper(BaseWebScraper):
         self.browser_name = "Chrome"
         self.name = "Duke Billing"
         self.billing_history = []
+
+    @property
+    def utility(self):
+        """ Return the utility"""
+        return self._configuration.utility
 
     @property
     def account_id(self):
@@ -87,7 +93,9 @@ class DukeBillingScraper(BaseWebScraper):
 
         state_machine.add_state(
             name="accounts_page",
-            page=duke_pages.DukeAccountsPage(self._driver),
+            page=duke_pages.DukeAccountsPage(
+                self._driver, self.utility, self.account_id
+            ),
             action=self.accounts_page_action,
             transitions=["done"],
         )
@@ -156,7 +164,9 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
 
-    configuration = DukeBillingConfiguration(meter.utility_account_id)
+    configuration = DukeBillingConfiguration(
+        meter.utility_service.utility, meter.utility_service.utility_account_id
+    )
 
     return run_datafeed(
         DukeBillingScraper,

@@ -51,7 +51,9 @@ def datafeed(
         meter,
         datasource,
         params,
-        IrvineRanchWaterDatasource(meter.utility_account_id),
+        IrvineRanchWaterDatasource(
+            meter.utility_service.utility, meter.utility_account_id
+        ),
         GenericWaterTransformer(),
         task_id,
     )

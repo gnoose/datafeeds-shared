@@ -15,8 +15,8 @@ from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 class FPLDatasource(UrjanetPyMySqlDataSource):
     """Load data from an Urjanet database"""
 
-    def __init__(self, account_number: str, said: str):
-        super().__init__(account_number)
+    def __init__(self, utility: str, account_number: str, said: str):
+        super().__init__(utility, account_number)
         self.account_number = account_number
         self.said = said
 
@@ -94,7 +94,11 @@ def datafeed(
         meter,
         datasource,
         params,
-        FPLDatasource(meter.utility_account_id, meter.utility_service.service_id),
+        FPLDatasource(
+            meter.utility_service.utility,
+            meter.utility_account_id,
+            meter.utility_service.service_id,
+        ),
         UrjanetGridiumTransformer(),
         task_id=task_id,
     )

@@ -53,7 +53,9 @@ class BillingDatumItemsEntry(NamedTuple):
     unit: str  # usually "kW" or "kWh"
 
 
-# Platform bill attachments have three fields: an S3 key, a "format", and a "kind".
+# Platform bill attachments have three or more fields: an S3 key, a "format", and a "kind".
+# The statement (date), created (date), source, utility, and utility_account_id fields were added
+# later; not all bill attachments have these.
 # The "format" field is used by platform to represent the file format of the attachment. At the time of writing,
 # platform only supports the "PDF" file format type. We sometimes resort to this field to identify an attachment
 # type, though we also currently look at the extension on the S3 key. The "kind" field should generally be
@@ -64,11 +66,18 @@ class AttachmentEntry(NamedTuple):
     key: str
     format: str
     kind: str
+    source: str
+    statement: str
+    utility: str  # no utility: prefix
+    utility_account_id: str
+    gen_utility: str  # no utility: prefix
+    gen_utility_account_id: str
 
 
 class BillingDatum(NamedTuple):
     start: date
     end: date
+    statement: date  # use end date if not available
     cost: float
     used: Optional[float]
     peak: Optional[float]
@@ -84,8 +93,16 @@ BillingRange = NamedTuple("BillingRange", [("start", date), ("end", date)])
 class BillPdf:
     """Container for a bill PDF."""
 
-    def __init__(self, utility_account_id: str, start: date, end: date, s3_key: str):
+    def __init__(
+        self,
+        utility_account_id: str,
+        gen_utility_account_id: str,
+        start: date,
+        end: date,
+        s3_key: str,
+    ):
         self.utility_account_id = utility_account_id
+        self.gen_utility_account_id = gen_utility_account_id
         self.start = start
         self.end = end
         self.s3_key = s3_key
@@ -93,14 +110,35 @@ class BillPdf:
     def to_json(self):
         return {
             "utility_account_id": self.utility_account_id,
+            "gen_utility_account_id": self.gen_utility_account_id,
             "start": self.start.strftime("%Y-%m-%d"),
             "end": self.end.strftime("%Y-%m-%d"),
             "s3_key": self.s3_key,
         }
 
 
-def make_billing_pdf_attachment(key):
-    return [AttachmentEntry(key=key, kind="bill", format="PDF")]
+def make_billing_pdf_attachment(
+    key: str,
+    source: str,
+    statement: date,
+    utility: str,
+    utility_account_id: str,
+    gen_utility: Optional[str] = None,
+    gen_utility_account_id: Optional[str] = None,
+):
+    return [
+        AttachmentEntry(
+            key=key,
+            kind="bill",
+            format="PDF",
+            source=source,
+            statement=statement.strftime("%Y-%m-%d"),
+            utility=utility.replace("utility:", ""),
+            utility_account_id=utility_account_id,
+            gen_utility=gen_utility.replace("utility:", "") if gen_utility else None,
+            gen_utility_account_id=gen_utility_account_id,
+        )
+    ]
 
 
 def is_contiguous(bd: BillingData) -> bool:

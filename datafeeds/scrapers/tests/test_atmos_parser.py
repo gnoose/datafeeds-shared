@@ -49,6 +49,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2019, 5, 31),
                 end=date(2019, 6, 26),
+                statement=date(2019, 6, 26),
                 cost=53.12,
                 used=6.00 * 1.036,
                 peak=None,
@@ -68,6 +69,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2019, 4, 16),
                 end=date(2019, 5, 14),
+                statement=date(2019, 5, 14),
                 cost=173.82,
                 used=327.00 * 1.036,
                 peak=None,
@@ -87,6 +89,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2019, 6, 7),
                 end=date(2019, 7, 5),
+                statement=date(2019, 7, 5),
                 cost=21.15,
                 used=9.51 * 1.036,
                 peak=None,
@@ -106,6 +109,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2017, 10, 12),
                 end=date(2017, 11, 13),
+                statement=date(2017, 11, 13),
                 cost=328.14,
                 used=407.00 * 1.036,
                 peak=None,
@@ -125,6 +129,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2017, 12, 13),
                 end=date(2018, 1, 10),
+                statement=date(2018, 1, 10),
                 cost=222.30,
                 used=264.00 * 1.036,
                 peak=None,
@@ -144,6 +149,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2017, 11, 14),
                 end=date(2017, 12, 12),
+                statement=date(2017, 12, 12),
                 cost=307.54,
                 used=345.00 * 1.036,
                 peak=None,
@@ -163,6 +169,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2018, 6, 27),
                 end=date(2018, 7, 26),
+                statement=date(2018, 7, 26),
                 cost=51.24,
                 used=10.0 * 1.036,
                 peak=None,
@@ -182,6 +189,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2018, 3, 24),
                 end=date(2018, 4, 23),
+                statement=date(2018, 4, 23),
                 cost=522.13,
                 used=750.0 * 1.036,
                 peak=None,
@@ -191,6 +199,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2018, 4, 24),
                 end=date(2018, 5, 24),
+                statement=date(2018, 5, 24),
                 cost=745.26,
                 used=1104.0 * 1.036,
                 peak=None,
@@ -212,6 +221,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2019, 5, 31),
                 end=date(2019, 6, 26),
+                statement=date(2019, 6, 26),
                 cost=53.12,
                 used=6.00 * 1.036,
                 peak=None,
@@ -229,6 +239,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2018, 5, 23),
                 end=date(2018, 6, 26),
+                statement=date(2018, 6, 26),
                 cost=54.14,
                 used=8.0 * 1.036,
                 peak=None,
@@ -246,6 +257,7 @@ class TestAtmosParser(TestCase):
             BillingDatum(
                 start=date(2018, 6, 27),
                 end=date(2018, 7, 26),
+                statement=date(2018, 7, 26),
                 cost=51.24,
                 used=10.0 * 1.036,
                 peak=None,

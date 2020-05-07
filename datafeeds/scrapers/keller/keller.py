@@ -48,9 +48,10 @@ KellerIdentifier = namedtuple(
 
 
 class KellerConfiguration(Configuration):
-    def __init__(self, account_number: str):
+    def __init__(self, utility: str, account_number: str):
         super().__init__(scrape_bills=True)
         self.account_number = account_number
+        self.utility = utility
 
 
 class BillHistoryPage:
@@ -160,6 +161,10 @@ class KellerScraper(BaseWebScraper):
         return self._configuration.account_number
 
     @property
+    def utility(self):
+        return self._configuration.utility
+
+    @property
     def keller_id(self) -> KellerIdentifier:
         account = self.account_number
         elements = account.split("-")
@@ -200,7 +205,15 @@ class KellerScraper(BaseWebScraper):
                 continue
 
             key = bill_upload.hash_bill_datum(self.account_number, bill_datum)
-            attachment_entry = bill_upload.upload_bill_to_s3(BytesIO(b), key)
+            # bill doesn't have a statement date; use end date
+            attachment_entry = bill_upload.upload_bill_to_s3(
+                BytesIO(b),
+                key,
+                statement=bill_datum.end,
+                source="cityofkeller.com",
+                utility=self.utility,
+                utility_account_id=self.account_number,
+            )
             if attachment_entry:
                 bill_data.append(bill_datum._replace(attachments=[attachment_entry]))
             else:
@@ -213,6 +226,7 @@ class KellerScraper(BaseWebScraper):
                 BillingDatum(
                     start=bill.start + timedelta(days=1),
                     end=bill.end,
+                    statement=bill.statement,
                     cost=bill.cost,
                     used=bill.used,
                     peak=bill.peak,
@@ -232,7 +246,9 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = KellerConfiguration(meter.utility_service.utility_account_id)
+    configuration = KellerConfiguration(
+        meter.utility_service.utility, meter.utility_service.utility_account_id
+    )
 
     return run_datafeed(
         KellerScraper,

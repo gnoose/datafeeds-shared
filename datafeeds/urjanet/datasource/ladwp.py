@@ -15,8 +15,8 @@ from datafeeds.urjanet.model import Account
 class LADWPDatasource(UrjanetPyMySqlDataSource):
     """Load data from an Urjanet database"""
 
-    def __init__(self, account_number: str, service_id: str):
-        super().__init__(account_number)
+    def __init__(self, utility: str, account_number: str, service_id: str):
+        super().__init__(utility, account_number)
         self.account_number = account_number
         self.service_id = service_id
 
@@ -61,7 +61,11 @@ def datafeed(
         meter,
         datasource,
         params,
-        LADWPDatasource(meter.utility_account_id, meter.utility_service.service_id),
+        LADWPDatasource(
+            meter.utility_service.utility,
+            meter.utility_account_id,
+            meter.utility_service.service_id,
+        ),
         LADWPTransformer(),
         task_id=task_id,
     )

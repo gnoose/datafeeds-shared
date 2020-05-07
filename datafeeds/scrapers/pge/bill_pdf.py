@@ -84,7 +84,13 @@ class DashboardPage(CSSSelectorBasePageObject):
         wait_for_block_overlay(self._driver)
 
     def download_bills(
-        self, start_date: date, end_date: date, utility_account: str
+        self,
+        start_date: date,
+        end_date: date,
+        utility_account: str,
+        utility: str,
+        gen_utility: Optional[str] = None,
+        gen_utility_account_id: Optional[str] = None,
     ) -> List[BillPdf]:
         """Download bill PDFs for the specified date range."""
         pdfs: List[BillPdf] = []
@@ -173,12 +179,22 @@ class DashboardPage(CSSSelectorBasePageObject):
                     self.account_id, approx_bill_start, approx_bill_end, cost, "", ""
                 )
 
-                upload_bill_to_s3(file_handle=f, key=key)
+                upload_bill_to_s3(
+                    file_handle=f,
+                    key=key,
+                    source="pge.com",
+                    statement=bill_date,
+                    utility=utility,
+                    utility_account_id=utility_account,
+                    gen_utility=gen_utility,
+                    gen_utility_account_id=gen_utility_account_id,
+                )
 
             log.info(f"Uploaded {filename} to {key}")
             pdfs.append(
                 BillPdf(
                     utility_account_id=utility_account,
+                    gen_utility_account_id=gen_utility,
                     start=approx_bill_start,
                     end=approx_bill_end,
                     s3_key=key,
@@ -319,15 +335,27 @@ class PgeBillPdfScraper(BaseWebScraper):
 
         # download bills
         pdfs = dashboard_page.download_bills(
-            self.start_date, self.end_date, self._configuration.utility_account
+            self.start_date,
+            self.end_date,
+            self._configuration.utility_account,
+            self._configuration.utility,
         )
         return Results(pdfs=pdfs)
 
 
 class PgeBillPdfConfiguration(Configuration):
-    def __init__(self, utility_account: str):
+    def __init__(
+        self,
+        utility: str,
+        utility_account: str,
+        gen_utility: Optional[str] = None,
+        gen_utility_account_id: Optional[str] = None,
+    ):
         super().__init__(scrape_pdfs=True)
         self.utility_account = utility_account
+        self.utility = utility
+        self.gen_utility = gen_utility
+        self.gen_utility_account_id = gen_utility_account_id
 
 
 def datafeed(
@@ -337,8 +365,12 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
+    utility_service = meter.utility_service
     configuration = PgeBillPdfConfiguration(
-        utility_account=meter.utility_service.utility_account_id,
+        utility_service.utility,
+        utility_service.utility_account_id,
+        utility_service.gen_utility,
+        utility_service.gen_utility_account_id,
     )
 
     return run_datafeed(

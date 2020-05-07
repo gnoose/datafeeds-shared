@@ -17,9 +17,13 @@ class GenericWaterDatasource(UrjanetPyMySqlDataSource):
     """This class accepts an account number. All meters are currently loaded from each bill."""
 
     def __init__(
-        self, utility_provider: str, account_number: str, conversion_factor: float = 1.0
+        self,
+        utility: str,  # Gridium utility
+        utility_provider: str,  # Urjanet utility
+        account_number: str,
+        conversion_factor: float = 1.0,
     ):
-        super().__init__(account_number)
+        super().__init__(utility, account_number)
         self.utility_provider = utility_provider
         self.account_number = self.account_number
         try:
@@ -76,6 +80,7 @@ def datafeed(
         datasource,
         params,
         GenericWaterDatasource(
+            meter.utility_service.utility,
             datasource.meta["utility_provider"],
             meter.utility_account_id,
             datasource.meta["conversion_factor"],
