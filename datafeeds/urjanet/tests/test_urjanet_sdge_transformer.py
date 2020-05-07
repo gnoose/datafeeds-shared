@@ -32,6 +32,49 @@ class TestUrjanetSDGETransformer(test_util.UrjaFixtureText):
         """Test transform of account that contains multiple meters."""
         self.sdge_test("4505136472785304_input.json", "4505136472785304_expected.json")
 
+    def test_sdge_correction(self):
+        """Test transform of a meter with a bill correction.
+
+        service_id = 06695173 (not provisioned in our system; changed to 06769269)
+
+        Original bill for 8/15/17 - 9/14/17
+            https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8c5420-6f4a-d5d7-95b2-22000aa6a643
+            Account PK: 5622439
+            14,959 kWh, $3,053.06
+        Corrected bill for 8/15/17 - 9/14/17
+            https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e8c5420-cfbe-dbd0-95b2-22000aa6a643
+            Account PK: 5622300
+            15,066 kWh, $3,066.06
+
+        Mysteriously, this bill PDF shows other periods (9/14, 10/15, 11/13, 12/13) with correction
+        amounts of $0.00
+        """
+        self.sdge_test("06695173_input.json", "06695173_expected.json")
+
+    def test_sdge_meter_not_included(self):
+        """Test transform of a statement that don't include data for the requested meter.
+
+        SDGE Urjanet data usually (but not always) contains data for one SAID per utility account.
+        This testcase verifies the case where a statement for a utility does not contain data for
+        the requested MeterNumber/SAID.
+
+        These should be skipped, and should not create billing periods with 0 usage and 0 cost.
+
+        Example: this statement for AccountNumber/utility_account_id 15234310047 contains data
+        for 06695173, but not 06769269.
+
+        mysql> select a.PK, StatementDate, a.IntervalStart, a.IntervalEnd, m.MeterNumber, SourceLink
+        from Account a, Meter m where a.PK=5650999 and m.AccountFK=a.PK
+        *************************** 1. row ***************************
+                   PK: 5650999
+        StatementDate: 2019-07-18
+        IntervalStart: 2019-06-16
+          IntervalEnd: 2019-07-16
+          MeterNumber: 06695173
+           SourceLink: https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9aaab6-5cb4-d2f3-b7d1-0ed11b1fc08a
+        """
+        self.sdge_test("06769269_input.json", "06769269_expected.json")
+
 
 if __name__ == "__main__":
     unittest.main()

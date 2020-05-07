@@ -1,32 +1,6 @@
 {
     "periods": [
         {
-            "end": "2014-05-31",
-            "peak_demand": null,
-            "start": "2014-05-01",
-            "tariff": null,
-            "total_charge": "0",
-            "total_usage": "0.0",
-            "line_items": [
-                {
-                    "ChargeActualName": "Delayed Payment Charge",
-                    "ChargeAmount": "491.9500",
-                    "ChargeId": "ch.late_fee",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2014-05-31",
-                    "IntervalStart": "2014-04-30",
-                    "IsAdjustmentCharge": true,
-                    "PK": 231588431,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "source_urls": [
-                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e5ea8e1-2294-dbdd-880e-22000b9ee943"
-            ]
-        },
-        {
             "end": "2014-11-30",
             "peak_demand": "6854.4000",
             "start": "2014-11-01",
