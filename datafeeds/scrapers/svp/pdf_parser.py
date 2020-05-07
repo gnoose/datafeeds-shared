@@ -155,7 +155,13 @@ def extract_line_items(text) -> List[BillingDatumItemsEntry]:
     return [meter, energy, demand, pfc, pvd, pbc, state_surcharge]
 
 
-def process_pdf(service_id: str, statement_dt: date, pdf_filename: str) -> BillingDatum:
+def process_pdf(
+    utility: str,
+    utility_account_id: str,
+    service_id: str,
+    statement_dt: date,
+    pdf_filename: str,
+) -> BillingDatum:
     log.info("Parsing text from PDF %s", pdf_filename)
     text = pdfparser.pdf_to_str(pdf_filename)
 
@@ -166,22 +172,21 @@ def process_pdf(service_id: str, statement_dt: date, pdf_filename: str) -> Billi
     # adjust end date because SVP bills overlap on start/end dates
     end_date = end_date - timedelta(days=1)
     line_items: List[BillingDatumItemsEntry] = extract_line_items(text)
-    key = hash_bill(
-        service_id,
-        start_date,
-        end_date,
-        # statement_date will go here (future PR)
-        cost,
-        demand,
-        used,
-    )
+    key = hash_bill(service_id, start_date, end_date, cost, demand, used,)
     with open(pdf_filename, "rb") as pdf_data:
-        attachment_entry = upload_bill_to_s3(BytesIO(pdf_data.read()), key)
+        attachment_entry = upload_bill_to_s3(
+            BytesIO(pdf_data.read()),
+            key,
+            source="mua.santaclaraca.gov",
+            statement=end_date,
+            utility=utility,
+            utility_account_id=utility_account_id,
+        )
 
     return BillingDatum(
         start=start_date,
         end=end_date,
-        # keep statement_dt param since it will be added here in another PR
+        statement=statement_dt,
         cost=cost,
         used=used,
         peak=demand,

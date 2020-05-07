@@ -17,7 +17,9 @@ from datafeeds.scrapers.svp.billing import SVPBillingConfiguration, SVPBillingSc
 def test_scraper(
     service_id: str, start_date: date, end_date: date, username: str, password: str
 ):
-    configuration = SVPBillingConfiguration(service_id=service_id)
+    configuration = SVPBillingConfiguration(
+        utility="utility:default", utility_account_id="12345", service_id=service_id
+    )
     credentials = Credentials(username, password)
     scraper = SVPBillingScraper(
         credentials, DateRange(start_date, end_date), configuration

@@ -26,8 +26,10 @@ log = logging.getLogger(__name__)
 
 
 class SVPBillingConfiguration(Configuration):
-    def __init__(self, service_id: str):
+    def __init__(self, utility: str, utility_account_id: str, service_id: str):
         super().__init__(scrape_bills=True)
+        self.utility = utility
+        self.utility_account_id = utility_account_id
         self.service_id = service_id
 
 
@@ -136,6 +138,14 @@ class SVPBillingScraper(BaseWebScraper):
     def service_id(self):
         return self._configuration.service_id
 
+    @property
+    def utility(self):
+        return self._configuration.utility
+
+    @property
+    def utility_account_id(self):
+        return self._configuration.utility_account_id
+
     def _execute(self):
         login_page = LoginPage(self._driver)
         bill_page = login_page.login(self.username, self.password)
@@ -146,7 +156,13 @@ class SVPBillingScraper(BaseWebScraper):
         log.info("Obtained %s bill PDF files." % (len(results)))
 
         bills: List[BillingDatum] = [
-            process_pdf(self.service_id, statement_dt, filename)
+            process_pdf(
+                self.utility,
+                self.utility_account_id,
+                self.service_id,
+                statement_dt,
+                filename,
+            )
             for (statement_dt, filename) in results
         ]
 
@@ -160,7 +176,12 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = SVPBillingConfiguration(meter.service_id)
+    utility_service = meter.utility_service
+    configuration = SVPBillingConfiguration(
+        utility_service.utility,
+        utility_service.utility_account_id,
+        utility_service.service_id,
+    )
 
     return run_datafeed(
         SVPBillingScraper,
