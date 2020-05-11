@@ -6,6 +6,7 @@ from typing import List, Optional
 from datafeeds import config
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
+from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Results, Configuration
 from datafeeds.common.typing import Status, BillPdf
 from datafeeds.common.util.selenium import file_exists_in_dir
@@ -18,7 +19,6 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 
-from datafeeds.scrapers.pge.errors import AccountNotFoundError, LoginError
 from datafeeds.scrapers.pge.support import (
     wait_for_block_overlay,
     wait_for_account,
@@ -47,7 +47,7 @@ class DashboardPage(CSSSelectorBasePageObject):
         ".pge_coc-dashboard-viewPay_billed_summary_panel"
         ":not(.hide)"
     )
-    HeaderCostPattern = r"\s\$([\d,\.]+)\s"
+    HeaderCostPattern = r"\s(-?\$[\d,\.]+)\s"
 
     def visit_dashboard(self):
         self._driver.get("https://m.pge.com/#dashboard")
@@ -67,7 +67,8 @@ class DashboardPage(CSSSelectorBasePageObject):
             log.error(
                 f"account with id {self.account_id} not found in accountListItems dropdown"
             )
-            raise AccountNotFoundError(
+            # raise a login error to disable login if account is not available
+            raise LoginError(
                 f"account with id {self.account_id} not found in accountListItems dropdown"
             )
 
@@ -139,7 +140,8 @@ class DashboardPage(CSSSelectorBasePageObject):
             approx_bill_start = approx_bill_end - timedelta(days=30)
 
             cost = re.search(self.HeaderCostPattern, header_text).group(1)
-            cost = float(cost.replace(",", ""))
+            # cost with $ and commas: $1,234.56 or -$1,234.56
+            cost = float(cost.replace("$", "").replace(",", ""))
 
             log.info(f"Found bill issued {bill_date} with cost ${cost}")
 
@@ -381,4 +383,5 @@ def datafeed(
         params,
         configuration=configuration,
         task_id=task_id,
+        disable_login_on_error=True,
     )
