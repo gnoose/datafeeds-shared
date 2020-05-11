@@ -180,7 +180,9 @@ class DashboardPage(CSSSelectorBasePageObject):
                 # close the download failed modal if there is one
                 try:
                     modal = self._driver.wait(5).until(
-                        EC.presence_of_element_located((By.ID, "downloadFailModal"))
+                        EC.presence_of_element_located(
+                            (By.XPATH, '//div[@id="downloadFailModal"] //button')
+                        )
                     )
                     log.info("closing download failed modal")
                     modal.click()
