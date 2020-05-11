@@ -130,6 +130,16 @@ CREATE TYPE public.provider_type_enum AS ENUM (
     'tnd-only'
 );
 
+--
+-- Name: partial_bill_provider_type_enum; Type: TYPE; Schema: public; Owner: gridium
+--
+
+CREATE TYPE public.partial_bill_provider_type_enum AS ENUM (
+    'tnd-only',
+    'generation-only',
+    'utility-bundled'
+);
+
 
 --
 -- Name: provider_enum; Type: TYPE; Schema: public; Owner: gridium
@@ -443,6 +453,53 @@ CREATE TABLE public.bill (
     notes character varying,
     visible boolean DEFAULT true NOT NULL
 );
+
+
+CREATE TABLE public.partial_bill (
+    oid bigint NOT NULL,
+    service bigint NOT NULL,
+    attachments json,
+    closing date,
+    cost double precision,
+    initial date,
+    items json,
+    manual boolean,
+    modified timestamp without time zone,
+    peak double precision,
+    used double precision,
+    notes character varying,
+    visible boolean DEFAULT true NOT NULL,
+    created timestamp without time zone,
+    matched boolean,
+    provider_type public.partial_bill_provider_type_enum,
+    superseded_by bigint
+);
+
+--
+-- Name: partial_bill; Type: TABLE; Schema: public; Owner: gridium
+--
+
+ALTER TABLE public.partial_bill OWNER TO gridium;
+
+--
+-- Name: partial_bill_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.partial_bill_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.partial_bill_oid_seq OWNER TO gridium;
+
+--
+-- Name: partial_bill_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.partial_bill_oid_seq OWNED BY public.partial_bill.oid;
 
 
 ALTER TABLE public.bill OWNER TO gridium;
@@ -6833,6 +6890,20 @@ ALTER TABLE ONLY public.workflow_task_run
 ALTER TABLE ONLY public.wsi_axis
     ADD CONSTRAINT wsi_axis_pkey PRIMARY KEY (oid);
 
+--
+-- Name: partial_bill partial_bill_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill
+    ADD CONSTRAINT partial_bill_pkey PRIMARY KEY (oid);
+
+--
+-- Name: partial_bill partial_bill_utility_service_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill
+    ADD CONSTRAINT partial_bill_utility_service_fkey FOREIGN KEY (service) REFERENCES public.utility_service(oid) ON DELETE CASCADE;
+
 
 --
 -- Name: account_user_unique; Type: INDEX; Schema: public; Owner: gridium
@@ -8065,6 +8136,12 @@ CREATE INDEX weather_station_coordinate_index ON public.weather_station USING gi
 
 CREATE INDEX weather_station_wban ON public.weather_station USING btree (wban);
 
+--
+-- Name: partial_bill_service_initial_closing_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX partial_bill_service_initial_closing_idx ON public.partial_bill USING btree (service, initial, closing);
+
 
 --
 -- Name: smd_authorization_audit_point audit_point_audit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
@@ -8537,6 +8614,12 @@ ALTER TABLE ONLY public.variance_clause
 ALTER TABLE ONLY public.variance_clause
     ADD CONSTRAINT variance_clause_baseline_fkey FOREIGN KEY (baseline) REFERENCES public.budget_aggregation(oid) ON DELETE CASCADE;
 
+
+--
+-- Name: partial_bill oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill ALTER COLUMN oid SET DEFAULT nextval('public.partial_bill_oid_seq'::regclass);
 
 
 

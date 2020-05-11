@@ -19,7 +19,12 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
     SnapmeterAccountDataSource as AccountDataSource,
 )
-from datafeeds.common.upload import upload_bills, upload_readings, attach_bill_pdfs
+from datafeeds.common.upload import (
+    upload_bills,
+    upload_readings,
+    attach_bill_pdfs,
+    upload_partial_bills,
+)
 from datafeeds.common.interval_transform import Transforms
 
 
@@ -67,6 +72,8 @@ def run_datafeed(
         upload_readings, transforms, task_id, meter.oid, acct_hex_id, datasource.name
     )
     pdfs_handler = ft.partial(attach_bill_pdfs, task_id)
+    partial_bill_handler = ft.partial(upload_partial_bills, meter, configuration)
+
     date_range = DateRange(
         *iso_to_dates(params.get("data_start"), params.get("data_end"))
     )
@@ -105,6 +112,7 @@ def run_datafeed(
                 readings_handler=readings_handler,
                 bills_handler=bill_handler,
                 pdfs_handler=pdfs_handler,
+                partial_bills_handler=partial_bill_handler,
             )
             status = "SUCCESS"
             retval = Status.SUCCEEDED

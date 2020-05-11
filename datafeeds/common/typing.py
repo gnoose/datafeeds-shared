@@ -44,6 +44,10 @@ class OverlappedBillingDataDateRangeError(Exception):
     pass
 
 
+class NoFutureBillsError(Exception):
+    pass
+
+
 class BillingDatumItemsEntry(NamedTuple):
     description: str
     quantity: float
@@ -282,6 +286,13 @@ def show_bill_summary(
     fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s"
     log.info(fmt % fields)
     for b in bills:
-        entries = [str(x) for x in b[:5]] + [str(b.attachments is not None)]
+        entries = [
+            str(b.start),
+            str(b.end),
+            str(b.cost),
+            str(b.used),
+            str(b.peak),
+            str(b.attachments is not None),
+        ]
         log.info(fmt % tuple(entries))
     log.info("=" * 80)

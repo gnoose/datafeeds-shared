@@ -11,6 +11,8 @@ import hashlib
 
 from datafeeds import config, db
 from datafeeds.common import webapps, index, platform, DateRange
+from datafeeds.common.support import Configuration
+from datafeeds.common.partial_billing import PartialBillProcessor
 from datafeeds.common.typing import (
     BillingData,
     show_bill_summary,
@@ -26,6 +28,7 @@ from datafeeds.common.util.s3 import (
 )
 from datafeeds.models import UtilityService
 from datafeeds.models.bill import Bill
+from datafeeds.models.meter import Meter
 from datafeeds.models.bill_document import BillDocument
 
 BytesLikeObject = Union[BinaryIO, BytesIO]
@@ -165,6 +168,22 @@ def attach_bill_pdfs(
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
         index.update_bill_pdf_range(task_id, pdfs)
+
+
+def upload_partial_bills(
+    meter: Meter, configuration: Configuration, billing_data: BillingData
+):
+    """
+    Goes through billing_data and uploads new partial bills directly to the partial bills table.
+    If a new partial bill differs from an existing partial bill,
+    a new bill is created, rather than overwriting the old one.
+
+    New partial bills are written directly to the db; they do not go through platform.
+    """
+    log.info("Starting processing of partial bill scraper results.")
+    processor = PartialBillProcessor(meter, configuration, billing_data)
+    processor.process_partial_bills()
+    processor.log_summary()
 
 
 @deprecated(details="To be replaced by ORM module.")

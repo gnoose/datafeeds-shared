@@ -1,6 +1,7 @@
 import argparse
 from typing import List
 
+from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
 from datafeeds.common.typing import BillPdf
@@ -50,6 +51,10 @@ class Configuration:
     """Container for customizable scraper options - inherit to add
     configuration for specific scraper runs, such as options from datasource
     or account/service ID
+
+    When creating a partial billing scraper, pass in service_id and utility_account_id
+    for T&D scrapers, and pass in gen_service_id and gen_utility_account_id for
+    generation scrapers.
     """
 
     def __init__(
@@ -57,10 +62,12 @@ class Configuration:
         scrape_bills: bool = False,
         scrape_readings: bool = False,
         scrape_pdfs: bool = False,
+        scrape_partial_bills: bool = False,
     ):
         self.scrape_bills = scrape_bills
         self.scrape_readings = scrape_readings
         self.scrape_pdfs = scrape_pdfs
+        self.scrape_partial_bills = scrape_partial_bills
 
 
 class Credentials:
@@ -77,6 +84,12 @@ class DateRange:
     def __init__(self, start_date, end_date):
         self.start_date = start_date
         self.end_date = end_date
+
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, DateRange):
+            return NotImplemented
+
+        return self.start_date == other.start_date and self.end_date == other.end_date
 
     def __iter__(self):
         current = self.start_date
@@ -105,11 +118,22 @@ class DateRange:
     def _fmt(dt):
         return dt.strftime("%m/%d/%Y")
 
+    def intersects(self, other: "DateRange") -> bool:
+        """
+        Determine if two DateRanges intersect
+        """
+        return (
+            self.end_date - other.start_date
+            >= timedelta(0)
+            >= self.start_date - other.end_date
+        )
+
 
 class Results:
     """Container for bill, interval, or pdf results"""
 
     def __init__(self, bills=None, readings=None, pdfs: List[BillPdf] = None):
+        # Can be bills or partial bills
         self.bills = bills
         self.readings = readings
         self.pdfs = pdfs

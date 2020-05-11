@@ -169,6 +169,7 @@ scraper_functions = {
     "sce-react-basic-billing": sce_react_basic_billing,
     "sce-react-energymanager-interval": sce_react_energymanager_interval,
     "sce-react-energymanager-billing": sce_react_energymanager_billing,
+    "sce-react-energymanager-partial-billing": sce_react_energymanager_billing,
     "scl-meterwatch": scl_meterwatch,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
@@ -480,7 +481,9 @@ sp_by_oid = subparser.add_parser(
 )
 sp_by_oid.set_defaults(func=launch_by_meter_args)
 sp_by_oid.add_argument("oid", type=int, help="Meter OID.")
-sp_by_oid.add_argument("source_type", type=str, help="billing or interval")
+sp_by_oid.add_argument(
+    "source_type", type=str, help="billing or interval or partial_billing"
+)
 sp_by_oid.add_argument(
     "--start",
     type=_date,

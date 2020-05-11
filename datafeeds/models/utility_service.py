@@ -12,6 +12,7 @@ from datafeeds.orm import ModelMixin, Base
 
 UTILITY_BUNDLED = "utility-bundled"
 TND_ONLY = "tnd-only"
+GENERATION_ONLY = "generation-only"
 
 PROVIDER_TYPES = [UTILITY_BUNDLED, TND_ONLY]
 

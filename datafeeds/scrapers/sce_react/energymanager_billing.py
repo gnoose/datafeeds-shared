@@ -39,10 +39,26 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
 
     Current configuration options:
         service_id: The SCE service id to extract data for
+        scrape_bills - Whether this is a billing scraper
+        scrape_partial_bills - Whether this is a partial billing scraper.
+
+        This SCE scraper can perform double duty.  We can attach it to a meter as
+        a billing scraper, or we can use this code to extract partial bills from SCE.
     """
 
-    def __init__(self, utility: str, utility_account_id: str, service_id: str):
-        super().__init__(scrape_bills=True, scrape_readings=False)
+    def __init__(
+        self,
+        utility: str,
+        utility_account_id: str,
+        service_id: str,
+        scrape_bills=True,
+        scrape_partial_bills=False,
+    ):
+        super().__init__(
+            scrape_bills=scrape_bills,
+            scrape_readings=False,
+            scrape_partial_bills=scrape_partial_bills,
+        )
         self.service_id = service_id
         self.utility = utility
         self.utility_account_id = utility_account_id
@@ -133,7 +149,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         return state_machine
 
     def _execute(self):
-        if self.scrape_bills:
+        if self.scrape_bills or self.scrape_partial_bills:
             return self.scrape_billing_data()
         log.info("No bill scraping was requested, so nothing to do!")
         return Results(bills=[])
@@ -368,6 +384,8 @@ def datafeed(
         utility=meter.utility_service.utility,
         utility_account_id=meter.utility_account_id,
         service_id=meter.service_id,
+        scrape_bills="billing" in datasource.source_types,
+        scrape_partial_bills="partial-billing" in datasource.source_types,
     )
 
     return run_datafeed(

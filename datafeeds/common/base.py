@@ -95,6 +95,10 @@ class BaseScraper(Abstract):
     def scrape_pdfs(self):
         return self._configuration.scrape_pdfs
 
+    @property
+    def scrape_partial_bills(self):
+        return self._configuration.scrape_partial_bills
+
     def __enter__(self):
         self.start()
         return self
@@ -114,7 +118,9 @@ class BaseScraper(Abstract):
     # Passing in the handlers would make sense if this function was responsible for handling
     # whatever exceptions they might throw. But since it raises and the caller is obliged to
     # wrap this in a try-catch, there's no benefit to the current interface.
-    def scrape(self, readings_handler, bills_handler, pdfs_handler):
+    def scrape(
+        self, readings_handler, bills_handler, pdfs_handler, partial_bills_handler
+    ):
         log.info("Launching %s", self.name)
         if self.username:
             log.info("Username: %s", self.username)
@@ -144,6 +150,12 @@ class BaseScraper(Abstract):
 
             if self.scrape_pdfs and results.pdfs:
                 pdfs_handler(results.pdfs)
+
+            if self.scrape_partial_bills and results.bills:
+                # Because billing scrapers might serve double-duty - the code may work for
+                # bundled bills, as well as be able to extract T&D bills for partial
+                # billing scrapers, we will just pass partial bills results under existing Result.bills
+                partial_bills_handler(results.bills)
 
         except Exception:
             log.exception("Scraper run failed.")
@@ -244,9 +256,13 @@ class BaseWebScraper(BaseScraper):
         stop_max_attempt_number=3,
         wait_fixed=10000,
     )
-    def scrape(self, readings_handler, bills_handler, pdfs_handler):
+    def scrape(
+        self, readings_handler, bills_handler, pdfs_handler, partial_bills_handler
+    ):
         try:
-            super().scrape(readings_handler, bills_handler, pdfs_handler)
+            super().scrape(
+                readings_handler, bills_handler, pdfs_handler, partial_bills_handler
+            )
         except Exception:
             self.screenshot("error")
             raise
