@@ -557,6 +557,7 @@ class Scraper(BaseApiScraper):
                     BillingDatum(
                         start=period_start.date(),
                         end=period_end.date(),
+                        statement=period_end.date(),
                         cost=md.AmountDue,
                         used=md.TotalKwh,
                         peak=0,
