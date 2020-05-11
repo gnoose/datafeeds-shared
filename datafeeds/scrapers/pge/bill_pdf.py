@@ -3,6 +3,8 @@ import logging
 from datetime import date, datetime, timedelta
 from typing import List, Optional
 
+from selenium.webdriver.common.by import By
+
 from datafeeds import config
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
@@ -27,6 +29,7 @@ from datafeeds.scrapers.pge.support import (
 )
 
 from selenium.common.exceptions import ElementNotInteractableException, TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
 
 log = logging.getLogger(__name__)
 
@@ -174,6 +177,15 @@ class DashboardPage(CSSSelectorBasePageObject):
                 )
             except TimeoutException:
                 log.error(f"ERROR waiting for file {filename} to download...skipping")
+                # close the download failed modal if there is one
+                try:
+                    modal = self._driver.wait(5).until(
+                        EC.presence_of_element_located((By.ID, "downloadFailModal"))
+                    )
+                    log.info("closing download failed modal")
+                    modal.click()
+                except TimeoutException:
+                    continue
                 continue
 
             with open("%s/%s" % (download_dir, filename), "rb") as f:
