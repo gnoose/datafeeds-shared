@@ -186,7 +186,8 @@ class DashboardPage(CSSSelectorBasePageObject):
                     )
                     log.info("closing download failed modal")
                     modal.click()
-                except TimeoutException:
+                    self._driver.sleep(3)
+                except Exception:
                     continue
                 continue
 
