@@ -114,6 +114,11 @@ class CSVParser:
                 # entire days can be missing. assume production is zero
                 except ValueError:
                     kw = 0.0
+                # ignore negative values, likely from the inverters using a small amount of power
+                # this matches how AlsoEnergy displays it on their chart
+                if kw < 0.0:
+                    log.info("ignoring negative value at %s\t%s", dt, kw)
+                    kw = 0.0
                 results.append((dt, kw))
 
         return results
