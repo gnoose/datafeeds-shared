@@ -62,6 +62,7 @@ def run_datafeed(
     task_id=None,
     transforms: Optional[List[Transforms]] = None,
     disable_login_on_error: Optional[bool] = False,
+    notify_on_login_error: Optional[bool] = True,
 ) -> Status:
     transforms = [] if transforms is None else transforms
     acct_hex_id = account.hex_id if account else ""
@@ -128,7 +129,8 @@ def run_datafeed(
             parent.enabled = False
             db.session.add(parent)
             log.warning("disabling %s login %s", parent.source_account_type, parent.oid)
-            alert.disable_logins(parent)
+            if notify_on_login_error:
+                alert.disable_logins(parent)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading final task status to Elasticsearch.")

@@ -28,7 +28,11 @@ from datafeeds.scrapers.pge.support import (
     click,
 )
 
-from selenium.common.exceptions import ElementNotInteractableException, TimeoutException
+from selenium.common.exceptions import (
+    ElementNotInteractableException,
+    TimeoutException,
+    ElementClickInterceptedException,
+)
 from selenium.webdriver.support import expected_conditions as EC
 
 log = logging.getLogger(__name__)
@@ -86,6 +90,19 @@ class DashboardPage(CSSSelectorBasePageObject):
         )
         self.wait_until_ready(".NDB-footer-links")
         wait_for_block_overlay(self._driver)
+
+    def close_modal(self, modal_id: str):
+        try:
+            modal = self._driver.wait(5).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, '//div[@id="%s"] //button' % modal_id)
+                )
+            )
+            log.info("closing %s modal" % modal_id)
+            modal.click()
+            self._driver.sleep(3)
+        except Exception:
+            pass
 
     def download_bills(
         self,
@@ -162,6 +179,10 @@ class DashboardPage(CSSSelectorBasePageObject):
                 )
 
                 click(self._driver, elem=link_elem)
+            except ElementClickInterceptedException as exc:
+                log.info("download link failed: %s %s", exc, exc.msg)
+                self.close_modal("downloadFailModal")
+                continue
 
             last4 = self.account_id.split("-")[0][6:10]
             filename = f"{last4}custbill{bill_date.strftime('%m%d%Y')}.pdf"
@@ -178,17 +199,7 @@ class DashboardPage(CSSSelectorBasePageObject):
             except TimeoutException:
                 log.error(f"ERROR waiting for file {filename} to download...skipping")
                 # close the download failed modal if there is one
-                try:
-                    modal = self._driver.wait(5).until(
-                        EC.presence_of_element_located(
-                            (By.XPATH, '//div[@id="downloadFailModal"] //button')
-                        )
-                    )
-                    log.info("closing download failed modal")
-                    modal.click()
-                    self._driver.sleep(3)
-                except Exception:
-                    continue
+                self.close_modal("downloadFailModal")
                 continue
 
             with open("%s/%s" % (download_dir, filename), "rb") as f:
@@ -399,4 +410,5 @@ def datafeed(
         configuration=configuration,
         task_id=task_id,
         disable_login_on_error=True,
+        notify_on_login_error=False,
     )
