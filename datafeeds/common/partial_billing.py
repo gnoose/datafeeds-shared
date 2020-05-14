@@ -75,8 +75,16 @@ class PartialBillProcessor:
         was passed to the scraper.  If the gen_service_id was passed in, we assume this is a generation partial bill.
         It is possible that the gen_service_id is stored on the Configuration.service_id field, so be flexible.
         """
-        said = getattr(self.configuration, "service_id", None) or getattr(
-            self.configuration, "gen_service_id", None
+        # For urja scrapers, we'll be pulling the service_id/gen_service_id off of the urjadatasource,
+        # otherwise, we'll retrieve it from self.configuration
+        config = (
+            self.configuration.urja_datasource
+            if hasattr(self.configuration, "urja_datasource")
+            else self.configuration
+        )
+
+        said = getattr(config, "service_id", None) or getattr(
+            config, "gen_service_id", None
         )
 
         if said == self.meter.utility_service.gen_service_id:
@@ -90,7 +98,7 @@ class PartialBillProcessor:
         have the same provider type (generation-only or T&D only)
         as the newly scraped pending partial bills.
 
-        Only returns partial bills that haven't been superseded by a later partial bill.
+        Only returns partial bills that have not been superseded by a later partial bill.
         """
         return (
             db.session.query(PartialBill)
@@ -104,7 +112,7 @@ class PartialBillProcessor:
     def _bad_override_detected(existing: PartialBill, pending: BillingDatum) -> bool:
         """
         Whether an incoming partial bill with zero usage was detected.  This partial bill
-        will be ignored if we're trying to override an existing partial bill with non-zero usage.
+        will be ignored if we are trying to override an existing partial bill with non-zero usage.
         """
         bad_override = (
             pending.cost != 0.0 and pending.used == 0 and existing.used != 0.0
@@ -172,7 +180,7 @@ class PartialBillProcessor:
         superseding = self._find_staged(pending_partial)
 
         if not superseding:
-            # Create a new partial bill, if one hasn't been created already
+            # Create a new partial bill, if one has not been created already
             superseding = PartialBill.generate(
                 self.meter.service, self.partial_bills_type, pending_partial
             )
@@ -243,14 +251,14 @@ class PartialBillProcessor:
                     break
                 elif existing_cycle.intersects(
                     pending_cycle
-                ):  # cycle doesn't match exactly, but intersects.
+                ):  # cycle does not match exactly, but intersects.
                     if not self._existing_is_manual(existing_partial, pending_partial):
                         # We create a new partial bill and supersede the old one
                         self._supersede(existing_partial, pending_partial)
                     found = True
 
             if not found:
-                # Pending partial bill doesn't already exist, so we stage a new one
+                # Pending partial bill does not already exist, so we stage a new one
                 pb = PartialBill.generate(
                     self.meter.service, self.partial_bills_type, pending_partial
                 )

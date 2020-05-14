@@ -1,0 +1,332 @@
+{
+    "periods": [
+        {
+            "end": "2019-06-17",
+            "peak_demand": "13.6000",
+            "start": "2019-05-17",
+            "statement": "2019-07-26",
+            "tariff": null,
+            "total_charge": "599.4500",
+            "total_usage": "8758.40000",
+            "line_items": [
+                {
+                    "ChargeActualName": "Lean Power - On-Peak - 699.2 kWh @ 0.06699",
+                    "ChargeAmount": "46.8400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0670",
+                    "ChargeUnitsUsed": "699.2000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714895,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Mid-Peak - 164 kWh @ 0.05764",
+                    "ChargeAmount": "9.4500",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0576",
+                    "ChargeUnitsUsed": "164.0000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714896,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Mid-Peak - Winter 819.6 kWh @ 0.04044",
+                    "ChargeAmount": "33.1400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0404",
+                    "ChargeUnitsUsed": "819.6000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714897,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Off-Peak - Winter 1295.2 kWh @ 0.02984",
+                    "ChargeAmount": "38.6500",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0298",
+                    "ChargeUnitsUsed": "1295.2000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714898,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Off-Peak - 3612 kWh @ 0.0284",
+                    "ChargeAmount": "102.5800",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0284",
+                    "ChargeUnitsUsed": "3612.0000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714899,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Super OfPk - 2168.4 kWh @ 0.00998",
+                    "ChargeAmount": "21.6400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0100",
+                    "ChargeUnitsUsed": "2168.4000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714900,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Utility Users Tax",
+                    "ChargeAmount": "28.4200",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714901,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "2.6300",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714902,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Demand - On-Peak - Summer 13.6 kW @ 19.6",
+                    "ChargeAmount": "266.5600",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "19.6000",
+                    "ChargeUnitsUsed": "13.6000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714903,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - Mid-Peak - Winter 13.5 kW @ 3.67",
+                    "ChargeAmount": "49.5400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "3.6700",
+                    "ChargeUnitsUsed": "13.5000",
+                    "IntervalEnd": "2019-06-18",
+                    "IntervalStart": "2019-05-17",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714904,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9fc6f4-1ea1-d503-aace-0ea6456c1562"
+            ]
+        },
+        {
+            "end": "2019-07-17",
+            "peak_demand": "27.2000",
+            "start": "2019-06-18",
+            "statement": "2019-07-26",
+            "tariff": null,
+            "total_charge": "859.7000",
+            "total_usage": "7969.10700",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - On-Peak - Summer 27.2 kW @ 19.6",
+                    "ChargeAmount": "533.1200",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "19.6000",
+                    "ChargeUnitsUsed": "27.2000",
+                    "IntervalEnd": "2019-07-18",
+                    "IntervalStart": "2019-06-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714905,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Lean Power - On-Peak - 1296.8 kWh @ 0.06699",
+                    "ChargeAmount": "86.8700",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0670",
+                    "ChargeUnitsUsed": "1296.8000",
+                    "IntervalEnd": "2019-07-18",
+                    "IntervalStart": "2019-06-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714906,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Mid-Peak - 239.6 kWh @ 0.05764",
+                    "ChargeAmount": "13.8100",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0576",
+                    "ChargeUnitsUsed": "239.6000",
+                    "IntervalEnd": "2019-07-18",
+                    "IntervalStart": "2019-06-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714907,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Off-Peak - 6432.7066 kWh @ 0.0284",
+                    "ChargeAmount": "182.6900",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0284",
+                    "ChargeUnitsUsed": "6432.7070",
+                    "IntervalEnd": "2019-07-18",
+                    "IntervalStart": "2019-06-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714908,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Utility Users Tax",
+                    "ChargeAmount": "40.8200",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-18",
+                    "IntervalStart": "2019-06-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714909,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "2.3900",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-07-18",
+                    "IntervalStart": "2019-06-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237714910,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9fc6f4-1ebc-d387-aace-0ea6456c1562"
+            ]
+        },
+        {
+            "end": "2019-08-16",
+            "peak_demand": "27.2000",
+            "start": "2019-07-18",
+            "statement": "2019-08-24",
+            "tariff": null,
+            "total_charge": "863.5400",
+            "total_usage": "8023.67600",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - On-Peak - Summer 27.2 kW @ 19.6",
+                    "ChargeAmount": "533.1200",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "19.6000",
+                    "ChargeUnitsUsed": "27.2000",
+                    "IntervalEnd": "2019-08-16",
+                    "IntervalStart": "2019-07-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237748485,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Lean Power - On-Peak - 1355.3331 kWh @ 0.06699",
+                    "ChargeAmount": "90.7900",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0670",
+                    "ChargeUnitsUsed": "1355.3330",
+                    "IntervalEnd": "2019-08-16",
+                    "IntervalStart": "2019-07-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237748486,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Mid-Peak - 233.6 kWh @ 0.05764",
+                    "ChargeAmount": "13.4600",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0576",
+                    "ChargeUnitsUsed": "233.6000",
+                    "IntervalEnd": "2019-08-16",
+                    "IntervalStart": "2019-07-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237748487,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Lean Power - Off-Peak - 6434.7429 kWh @ 0.0284",
+                    "ChargeAmount": "182.7500",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0284",
+                    "ChargeUnitsUsed": "6434.7430",
+                    "IntervalEnd": "2019-08-16",
+                    "IntervalStart": "2019-07-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237748488,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Utility Users Tax",
+                    "ChargeAmount": "41.0100",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-16",
+                    "IntervalStart": "2019-07-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237748489,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "2.4100",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-08-16",
+                    "IntervalStart": "2019-07-18",
+                    "IsAdjustmentCharge": true,
+                    "PK": 237748490,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea009e6-be7a-dfce-9b0f-0ecc85a5fb4b"
+            ]
+        }
+    ]
+}

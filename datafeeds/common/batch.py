@@ -12,7 +12,11 @@ from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.transformer.base import UrjanetGridiumTransformer
-from datafeeds.urjanet.scraper import BaseUrjanetScraper, BaseUrjanetConfiguration
+from datafeeds.urjanet.scraper import (
+    BaseUrjanetScraper,
+    BaseUrjanetConfiguration,
+    BasePartialBillUrjanetConfiguration,
+)
 from datafeeds.models import (
     Meter,
     SnapmeterAccount,
@@ -147,12 +151,19 @@ def run_urjanet_datafeed(
     urja_datasource: UrjanetPyMySqlDataSource,
     transformer: UrjanetGridiumTransformer,
     task_id: Optional[str] = None,
+    urja_partial_billing: Optional[bool] = False,
 ) -> Status:
     conn = db.urjanet_connection()
 
+    base_config = (
+        BasePartialBillUrjanetConfiguration
+        if urja_partial_billing
+        else BaseUrjanetConfiguration
+    )
+
     try:
         urja_datasource.conn = conn
-        scraper_config = BaseUrjanetConfiguration(
+        scraper_config = base_config(
             urja_datasource=urja_datasource,
             urja_transformer=transformer,
             utility_name=meter.utility_service.utility,

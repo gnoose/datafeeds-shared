@@ -72,6 +72,10 @@ class PartialBill(ModelMixin, Base):
     ) -> "PartialBill":
         """Generates a partial bill for the service from the BillingDatum.
         """
+        attachments = bill.attachments or []
+        if attachments and bill.attachments[0] is None:
+            attachments = []
+
         partial_bill = PartialBill(
             initial=bill.start,
             closing=bill.end,
@@ -97,7 +101,7 @@ class PartialBill(ModelMixin, Base):
                     "kind": attachment.kind,
                     "format": attachment.format,
                 }
-                for attachment in (bill.attachments or [])
+                for attachment in attachments
             ],
             service=service,
             provider_type=provider_type,

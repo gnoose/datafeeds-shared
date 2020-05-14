@@ -55,6 +55,9 @@ from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
 from datafeeds.urjanet.datasource.pse import PseDatasource
 from datafeeds.urjanet.datasource.pleasanton import PleasantonDatasource
 from datafeeds.urjanet.datasource.sandiego import SanDiegoWaterDatasource
+from datafeeds.urjanet.datasource.clean_power_alliance import (
+    SCECleanPowerAllianceDatasource,
+)
 from datafeeds.urjanet.datasource.sdge import SDGEDatasource
 from datafeeds.urjanet.datasource.sfpuc import SanFranciscoWaterDatasource
 from datafeeds.urjanet.datasource.sjwater import SjWaterDatasource
@@ -177,6 +180,30 @@ class GenericWaterCli(DatasourceCli):
 
     def make_transformer(self):
         return GenericWaterTransformer()
+
+
+class SCECleanPowerAllianceCli(DatasourceCli):
+    __cli_key__ = "clean_power_alliance"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("gen_utility", help="utility_service.gen_utility")
+        parser.add_argument("gen_said", help="utility_service.gen_service_id")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            SCECleanPowerAllianceDatasource(
+                self.utility(),
+                args.account_number,
+                args.gen_utility,
+                args.account_number,
+                gen_said=args.gen_said,
+            ),
+            conn,
+        )
+
+    def make_transformer(self):
+        return UrjanetGridiumTransformer()
 
 
 class TriCountyCli(DatasourceCli):

@@ -93,6 +93,9 @@ from datafeeds.urjanet.datasource.pge import datafeed as pge
 from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
 from datafeeds.urjanet.datasource.pse import datafeed as pse
 from datafeeds.urjanet.datasource.sandiego import datafeed as sandiego
+from datafeeds.urjanet.datasource.clean_power_alliance import (
+    datafeed as cleanpoweralliance,
+)
 from datafeeds.urjanet.datasource.sdge import datafeed as sdge
 from datafeeds.urjanet.datasource.sfpuc import datafeed as sfpuc
 from datafeeds.urjanet.datasource.sjwater import datafeed as sjwater
@@ -166,6 +169,7 @@ scraper_functions = {
     "sdge-green-button-sync": sdge_greenbutton_sync,
     "sfpuc-water-urjanet": sfpuc,
     "sce-green-button": sce_greenbutton,
+    "sce-clean-power-alliance-urjanet": cleanpoweralliance,
     "sce-react-basic-billing": sce_react_basic_billing,
     "sce-react-energymanager-interval": sce_react_energymanager_interval,
     "sce-react-energymanager-billing": sce_react_energymanager_billing,
@@ -333,6 +337,8 @@ def launch_by_name(
     username: Optional[str],
     password: Optional[str],
     meta: Optional[dict],
+    gen_service_id: Optional[str],  # The generation SAID, if applicable.
+    source_type: Optional[str],
 ):
     db.init()
     config.FEATURE_FLAGS = (
@@ -358,7 +364,7 @@ def launch_by_name(
     log.info("Metadata: %s", meta)
 
     # Set up the necessary objects to make a local run look like one in production.
-    service = UtilityService(service_id, account_id)
+    service = UtilityService(service_id, account_id, gen_service_id)
     db.session.add(service)
     db.session.flush()
 
@@ -386,6 +392,8 @@ def launch_by_name(
     mds = MeterDataSource(name=scraper_id, meta=meta)
     mds.meter = meter
     mds.account_data_source = ads
+    if source_type:
+        mds.source_types = [source_type]
     db.session.add(mds)
     db.session.flush()
 
@@ -420,6 +428,8 @@ def launch_by_name_args(args: Namespace):
         args.username,
         args.password,
         meta,
+        args.gen_service_id,
+        args.source_type,
     )
 
 
@@ -459,6 +469,7 @@ sp_by_name.add_argument(
 sp_by_name.add_argument(
     "service_id", type=str, help="Utility's identifier for the meter to be scraped."
 )
+
 sp_by_name.add_argument(
     "start",
     type=_date,
@@ -474,7 +485,16 @@ sp_by_name.add_argument(
     type=str,
     help='Additional scraper parameters in a JSON blob. (e.g. {"foo": "bar"}',
 )
-
+sp_by_name.add_argument(
+    "--gen_service_id",
+    type=str,
+    help="Utility's identifier for the meter to be scraped (generation service id).",
+)
+sp_by_name.add_argument(
+    "--source_type",
+    type=str,
+    help="Optional argument to allow source_type to be passed in ('billing', 'partial-billing', 'interval'.",
+)
 
 sp_by_oid = subparser.add_parser(
     "by-meter", help="...based on a Meter OID and source type"

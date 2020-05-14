@@ -43,7 +43,13 @@ class UtilityService(ModelMixin, Base):
     meter = relationship("Meter", back_populates="utility_service")
 
     # Don't use this constructor outside of tests.
-    def __init__(self, service_id: str, account_id: Optional[str] = None):
+    def __init__(
+        self,
+        service_id: str,
+        account_id: Optional[str] = None,
+        gen_service_id: Optional[str] = None,
+    ):
         self.oid = UtilityService.get_new_oid()
         self.service_id = service_id
         self.utility_account_id = account_id
+        self.gen_service_id = gen_service_id
