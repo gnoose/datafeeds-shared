@@ -24,7 +24,7 @@ def wait_for_account(driver):
     # The overlay will flicker several times before the page is fully loaded,
     # so try to sleep through the first few series of flickers
     driver.sleep(5)
-    wait_for_block_overlay(driver, 40)
+    wait_for_block_overlay(driver, 90)
 
 
 def wait_for_accounts_list(driver):
@@ -35,7 +35,7 @@ def wait_for_accounts_list(driver):
     # The overlay will flicker several times before the page is fully loaded,
     # so try to sleep through the first few series of flickers
     driver.sleep(5)
-    wait_for_block_overlay(driver, 40)
+    wait_for_block_overlay(driver, 90)
 
 
 def click(
