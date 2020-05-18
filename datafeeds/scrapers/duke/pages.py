@@ -2,8 +2,8 @@
 import time
 import logging
 import re
-from datetime import datetime
-from typing import List
+from datetime import datetime, date
+from typing import List, Tuple
 
 from dateutil.parser import parse as parse_date
 
@@ -13,7 +13,7 @@ from selenium.webdriver.common.by import By
 from datafeeds import config
 from datafeeds.common.util.selenium import window_count_equals
 from datafeeds.common.util.selenium import WindowSwitch
-from datafeeds.common.typing import BillingDatum
+from datafeeds.common.typing import BillingDatum, BillingRange
 from datafeeds.common.util.selenium import ec_and
 from datafeeds.common.util.pagestate.pagestate import PageState
 from datafeeds.scrapers.duke import errors
@@ -103,6 +103,112 @@ class DukeLandingPage(PageState):
         profiler_page_link = self.driver.find_element(*profiler_locator)
         profiler_page_link.click()
 
+
+class AccountListPage(PageState):
+    """Page object for account list page."""
+
+    def __init__(self, driver, account_id: str):
+        super().__init__(driver)
+        self.account_id = account_id
+
+    def get_ready_condition(self):
+        return EC.visibility_of_element_located((By.CSS_SELECTOR, "div.NavGrid"))
+
+    def click_account(self):
+        """Find and click account id."""
+        self.driver.find_element((
+            By.CSS_SELECTOR,
+            "/a[contains(., '%s')]" % self.account_id)).click()
+
+
+class BillHistoryPage(PageState):
+    """Page object for bill history page."""
+
+    def __init__(self, driver, start_date: date, end_date: date):
+        super().__init__(driver)
+        self.start_date = start_date
+        self.end_date = end_date
+        self.pdfs = List[Tuple[BillingRange, str]] = []
+
+    def get_ready_condition(self):
+        return EC.visibility_of_element_located((By.CSS_SELECTOR, "div.NavGrid"))
+
+    def download_pdfs(self):
+        """
+        for dates in start_date - end_date range
+          - build a list of start/end dates from the list of bills (end date in table, start date
+            is previous bill end date + 1 day)
+          - download PDFs for dates in range
+          - return billing date ranges and pdf filenames
+        """
+        pass
+        #self.pdfs.append(BillingRange(start=start, end=end), pdf_filename))
+
+    def get_details(self):
+        """
+        click 13 Month kWh history
+
+        <a target="_blank" style="cursor:pointer" class="marginRight40"
+        href="https://www2.duke-energy.com/037/BillView/MyBillViewAppsPortalServlet?...">13 Month
+        kWh History</a>
+        """
+        # click 13 Month kWh history
+        self.driver.find_element((
+            By.CSS_SELECTOR,
+            "/a[contains(., '13 Month kWh history')]")).click()
+        # click View Usage History
+        self._driver.find_element((By.CSS_SELECTOR, "a.bill-view-link")).click()
+        # click Export
+        self._driver.find_element((By.CSS_SELECTOR, "aagreementHistoryToExport")).click()
+        # open UsageHistory.csv
+        # parse CSV
+        """
+        Account Number,"#1769654818   ",,,,,,,,,,,,,,,,,,,,,,,
+Current Balance," $0.00",,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,
+"LGS - Large General Service",
+"Meter Number","#077618850"
+
+"Contract Demand",
+"Contract: 100"
+,
+"Bill Month","Bill Year","Electricity Usage","Electricity Usage Amount","Actual Demand","Billing Demand","Renewable Energy Rider","Sales Tax","# of Days","Adj","Total Charges",
+"4","2020","35,520","$2,821.30","111.2","111","$4.65","$197.82","32","N","$3,023.77",
+"3","2020","32,720","$2,535.85","88.8","89","$4.65","$177.84","29","N","$2,718.34",
+        """
+        # for each row, create a BillingDatums; find matching pdf in self.pdfs
+        """
+        create one of these per data row
+        bill_data = BillingDatum(
+            start=start_date,
+            end=end_date,
+            cost=float(charges),
+            used=usage_f,
+            peak=peak,
+            items=None,
+            attachments=None,
+        )
+        # Add attachment
+        bill_path = self.create_pdf_attachment(bill_date)
+        with open(bill_path, "rb") as bill_file:
+            key = hash_bill_datum(service_id, bill_data) + ".pdf"
+            return bill_data._replace(
+                attachments=[
+                    upload_bill_to_s3(
+                        bill_file,
+                        key,
+                        source="duke-energy.com",
+                        statement=parse_date(bill_date).date(),
+                        utility=self.utility,
+                        utility_account_id=self.account_id,
+                    )
+                ]
+            )
+        """
+        billing_data: List[BillingDatum] = []
+        return billing_data
+
+### this is the previous version of the page; can be removed when no longer needed
 
 class DukeAccountsPage(PageState):
     """Page object for the Duke Energy accounts page
@@ -445,23 +551,28 @@ class DukeAccountsPage(PageState):
                     "Didn't find Account page"
                 ) from e
 
-    def process_account(self, service_id, billing_start, billing_end):
+    def process_account(self, account_id, billing_start, billing_end):
         """Scrapes bills for one account in the accounts table"""
-        service_id = str(service_id)
-        log.info("About to scrape account %s" % service_id)
+        account_id = str(account_id)
+        log.info("About to scrape account %s" % account_id)
         self.accounts_window = self.driver.window_handles[1]
+        bill_history_selector = "//a[@href='/DukeEnergyB2B/Secure/Bills.aspx']"
+        account_selector = "/a[contains(., '%s')]" % account_id
         with WindowSwitch(self.driver, self.accounts_window):
             try:
                 wait = WebDriverWait(self.driver, 10)
                 wait.until(
                     EC.presence_of_element_located(
-                        (By.XPATH, "//*[@id='billViewAccounts_filter']/label/input")
+                        (By.XPATH, bill_history_selector)
                     )
                 )
+                self.driver.find_element(bill_history_selector).click()
+                self.driver.find_element(account_selector).click()
             except Exception as e:
                 raise errors.BillingScraperPageNotFoundException(
-                    "Didn't find Account page"
+                    "Didn't find Account page for %s" % account_id
                 ) from e
+            """
             account_search_locator = (
                 By.XPATH,
                 "//*[@id='billViewAccounts_filter']/label/input",
@@ -470,16 +581,18 @@ class DukeAccountsPage(PageState):
             account_search_box.send_keys(service_id)
             time.sleep(1)
             acc_link_locator = "//*[@id='billViewAccounts']/tbody/tr[1]/td[5]/a"
+
             try:
                 account_link = self.driver.find_element_by_xpath(acc_link_locator)
                 self._scrape_account(
-                    service_id, account_link, billing_start, billing_end
+                    account_id, account_link, billing_start, billing_end
                 )
                 self._go_back_to_accounts_page()
             except Exception as e:
                 raise errors.BillingScraperPageNotFoundException(
                     "Could not find account with service ID %s" % service_id
                 ) from e
+                        """
         return self.bill_info_list
 
     def process_all_accounts(self, billing_start, billing_end):

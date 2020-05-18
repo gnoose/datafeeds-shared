@@ -83,21 +83,43 @@ class DukeBillingScraper(BaseWebScraper):
             transitions=["main_landing_page"],
         )
 
-        # We get to the landing page, where we need to open the billing page with all the meters
+        # We get to the landing page, where we need to open the account list page
         state_machine.add_state(
             name="main_landing_page",
             page=duke_pages.DukeLandingPage(self._driver),
             action=self.landing_page_action,
-            transitions=["accounts_page"],
+            transitions=["account_list_page"],
         )
 
+        # find and click the account_id
         state_machine.add_state(
-            name="accounts_page",
-            page=duke_pages.DukeAccountsPage(
-                self._driver, self.utility, self.account_id
-            ),
-            action=self.accounts_page_action,
-            transitions=["done"],
+            name="account_list_page",
+            page=duke_pages.AccountListPage(self._driver, self.account_id),
+            action=self.account_list_page_action,
+            transitions=["bill_history_page"],
+        )
+
+        # download PDF and go to info page
+        state_machine.add_state(
+            name="bill_history_page",
+            page=duke_pages.BillHistoryPage(self._driver, self.account_id),
+            action=self.bill_history_page_action,
+            transitions=["bill_info_page"],
+        )
+
+        # click to go to usage details
+        state_machine.add_state(
+            name="bill_info_page",
+            page=duke_pages.BillInfoPage(self._driver),
+            action=self.bill_info_page_action,
+            transitions=["bill_info_page"],
+        )
+
+        # get bill details
+        state_machine.add_state(
+            name="usage_history_page",
+            page=duke_pages.UsageHistoryPage(self._driverd),
+            action=self.usage_history_page_action,
         )
 
         # And that's the end
@@ -137,6 +159,16 @@ class DukeBillingScraper(BaseWebScraper):
         """Process landing page action """
         page.open_accounts_page()
 
+    @staticmethod
+    def account_list_page_action(page: duke_pages.AccountListPage):
+        """Find and click the account_id."""
+        page.click_account()
+
+    def bill_history_page_action(self, page: duke_pages.BillHistoryPage):
+        """Download pdfs and get bill details."""
+        page.get_details(self.start_date, self.end_date)
+
+    # TODO: remove this when no longer needed
     def accounts_page_action(self, page: duke_pages.DukeAccountsPage):
         """Process accounts page action """
         if self.start_date and self.end_date:
