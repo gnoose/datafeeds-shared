@@ -265,16 +265,19 @@ class LoginPage(CSSSelectorBasePageObject):
             click(self._driver, css_selector=self.SigninButtonSelector)
             log.info("waiting for login to complete")
             wait_for_account(self._driver)
-        except TimeoutException:
+        except TimeoutException as exc:
             log.info(f"error logging in...")
             if self.shows_outage():
                 log.info("Shows outage page")
                 self.click_through_outage()
             else:
-                # should we use more specific custom exceptions here ?
                 msg = self.get_error_msg()
-                log.error(f"error logging in: {msg}")
-                raise LoginError(msg)
+                # if it's a known login error, raise a LoginError; this will disable the login
+                if msg:
+                    log.error(f"error logging in: {msg}")
+                    raise LoginError(msg)
+                # otherwise raise the TimeoutError; don't want to disable the login
+                raise exc
 
     def shows_outage(self) -> bool:
         outage_header_xpath = "//h1[contains(@class, 'pgeOutage')]"
@@ -294,7 +297,7 @@ class LoginPage(CSSSelectorBasePageObject):
         # There are a few(known) possible problems with logging in, so let's
         # disambiguate the login error a little bit...
 
-        msg = "Couldn't log in"
+        msg = None
         # Note: These are the actual error strings returned, so they are case - sensitive
         account_disabled = "Account temporarily disabled"
         invalid_credentials = "Invalid Username or Password"
