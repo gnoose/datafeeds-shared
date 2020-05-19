@@ -678,7 +678,11 @@ class SdgeMyAccountScraper(BaseWebScraper):
         try:
             return self._execute_internal()
         except TimeoutException:
-            raise ScraperTimeout("Scraper timed out waiting for an element to appear.")
+            self.screenshot("timeout")
+            raise ScraperTimeout(
+                "Scraper timed out on waiting for an element to appear: %s"
+                % self._driver.getCurrentUrl()
+            )
 
     def _execute_internal(self):
         # Direct the driver to the login page
