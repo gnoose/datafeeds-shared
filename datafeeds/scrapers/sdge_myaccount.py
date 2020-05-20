@@ -491,8 +491,9 @@ class HomePage:
             popup = self._driver.find_element_by_css_selector(self.PaperlessPopupCss)
         except:  # noqa: E722
             # If we can't find this popup, no worries
+            log.info("no popup")
             pass
-        # !!!
+
         # Close the popup if we found it
         if popup is not None:
             log.info("closing popup")
@@ -505,7 +506,7 @@ class HomePage:
 
         selectors = [self.NavBarCss, self.AccountsCss, self.AccountCellCss]
         for css in selectors:
-            self._driver.wait().until(
+            self._driver.wait(120).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, css))
             )
 
