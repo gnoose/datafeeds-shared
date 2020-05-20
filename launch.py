@@ -144,7 +144,7 @@ scraper_functions = {
     "keller": keller,
     "ladwp-mvweb": ladwp_mvweb,
     "ladwp-water-urjanet": ladwp_water,
-    "ladwp-urjanet": ladwp,
+    "ladwp-urjanet-v2": ladwp,
     "mountainview-urjanet": mountainview,
     "nationalgrid-interval": nationalgrid_interval,
     "nationalgrid-urjanet": nationalgrid,
