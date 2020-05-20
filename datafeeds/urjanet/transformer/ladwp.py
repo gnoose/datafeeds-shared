@@ -1,5 +1,7 @@
 import logging
-from typing import List
+from decimal import Decimal
+
+from typing import List, Optional
 
 from datafeeds.urjanet.transformer import (
     GenericBillingPeriod,
@@ -13,6 +15,37 @@ log = logging.getLogger(__name__)
 class LADWPBillingPeriod(GenericBillingPeriod):
     def __init__(self, account: Account):
         self.account = account
+
+    def get_total_charge(self):
+        return sum([c.ChargeAmount for c in self.iter_charges()])
+
+    def get_total_usage(self) -> Decimal:
+        total = Decimal(0.0)
+        for usage in self.iter_unique_usages():
+            if usage.RateComponent == "[total]" and usage.EnergyUnit == "kWh":
+                total += usage.UsageAmount
+        return total
+
+    def get_peak_demand(self) -> Optional[Decimal]:
+        """Find the peak demand for this period
+
+        LADWP tracks multiple peaks; for now, just get the highest.
+
+        mysql> select PK, EnergyUnit, UsageActualName, RateComponent, UsageAmount from `Usage`
+        where MeterFK=20384264 and EnergyUnit='kW';
+        +----------+------------+-----------------+---------------+-------------+
+        | PK       | EnergyUnit | UsageActualName | RateComponent | UsageAmount |
+        +----------+------------+-----------------+---------------+-------------+
+        | 73372283 | kW         | High Peak kW    | [on_peak]     |    235.2000 |
+        | 73372284 | kW         | Low Peak kW     | [mid_peak]    |    273.6000 |
+        | 73372285 | kW         | Base kW         | [off_peak]    |    232.8000 |
+        +----------+------------+-----------------+---------------+-------------+
+        """
+        peak = Decimal(-1)  # want to be able to tell if it was set
+        for usage in self.iter_unique_usages():
+            if usage.EnergyUnit == "kW":
+                peak = max(peak, usage.UsageAmount)
+        return peak if peak >= 0.0 else None
 
 
 class LADWPTransformer(UrjanetGridiumTransformer):

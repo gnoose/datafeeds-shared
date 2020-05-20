@@ -40,6 +40,28 @@ class TestUrjanetLADWPTransformer(test_util.UrjaFixtureText):
         self.ladwp_electricity_test(
             "1707479190338_input.json", "1707479190338_expected.json"
         )
+        # include only kWh in usage; this meter has kVARH values in Usage
+        """
+        mysql> select UsageActualName, RateComponent, UsageAmount, EnergyUnit from `Usage`
+        where MeterFK=20380627 and IntervalEnd='2020-04-02' and RateComponent='[total]';
+        +-----------------+---------------+-------------+------------+
+        | UsageActualName | RateComponent | UsageAmount | EnergyUnit |
+        +-----------------+---------------+-------------+------------+
+        |                 | [total]       | 421600.0000 | kWh        |
+        |                 | [total]       |  68000.0000 | kVARH      |
+        +-----------------+---------------+-------------+------------+
+        """
+        self.ladwp_electricity_test(
+            "1897216016387_input.json", "1897216016387_expected.json"
+        )
+        # when there are two SAIDs in an account, get charges only for the requested SAID
+        self.ladwp_electricity_test(
+            "1783933378562_input.json", "1783933378562_expected.json"
+        )
+        # get max of several peaks, not the sum of the peaks
+        self.ladwp_electricity_test(
+            "1783662075908_input.json", "1783662075908_expected.json"
+        )
 
 
 if __name__ == "__main__":
