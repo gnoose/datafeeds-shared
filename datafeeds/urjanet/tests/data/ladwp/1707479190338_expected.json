@@ -4,9 +4,10 @@
             "end": "2014-10-08",
             "peak_demand": "32.4000",
             "start": "2014-09-10",
+            "statement": "2014-10-10",
             "tariff": null,
-            "total_charge": "1504.5800",
-            "total_usage": "6960.00000",
+            "total_charge": "1523.5800",
+            "total_usage": "6960.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,335.61 x 12.5%",
@@ -548,11 +549,12 @@
         },
         {
             "end": "2014-11-09",
-            "peak_demand": "32.4000",
+            "peak_demand": "26.4000",
             "start": "2014-10-09",
+            "statement": "2014-11-12",
             "tariff": null,
             "total_charge": "1138.7400",
-            "total_usage": "5760.00000",
+            "total_usage": "5760.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,010.73 x 12.5%",
@@ -886,11 +888,12 @@
         },
         {
             "end": "2014-12-10",
-            "peak_demand": "32.4000",
+            "peak_demand": "24.0000",
             "start": "2014-11-10",
+            "statement": "2014-12-12",
             "tariff": null,
             "total_charge": "1056.7700",
-            "total_usage": "5360.00000",
+            "total_usage": "5360.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $937.97 x 12.5%",
@@ -1226,9 +1229,10 @@
             "end": "2015-01-12",
             "peak_demand": "41.2000",
             "start": "2014-12-11",
+            "statement": "2015-01-14",
             "tariff": null,
             "total_charge": "1312.5500",
-            "total_usage": "6760.00000",
+            "total_usage": "6760.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,164.97 x 12.5%",
@@ -1679,11 +1683,12 @@
         },
         {
             "end": "2015-02-11",
-            "peak_demand": "41.2000",
+            "peak_demand": "35.6000",
             "start": "2015-01-13",
+            "statement": "2015-02-13",
             "tariff": null,
-            "total_charge": "1145.0700",
-            "total_usage": "5880.00000",
+            "total_charge": "1126.0700",
+            "total_usage": "5880.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,016.32 x 12.5%",
@@ -2030,11 +2035,12 @@
         },
         {
             "end": "2015-03-12",
-            "peak_demand": "41.2000",
+            "peak_demand": "34.8000",
             "start": "2015-02-12",
+            "statement": "2015-03-16",
             "tariff": null,
             "total_charge": "1089.7600",
-            "total_usage": "5320.00000",
+            "total_usage": "5320.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $967.31 x 12.5%",
@@ -2368,11 +2374,12 @@
         },
         {
             "end": "2015-04-12",
-            "peak_demand": "41.2000",
+            "peak_demand": "30.4000",
             "start": "2015-03-13",
+            "statement": "2015-04-14",
             "tariff": null,
             "total_charge": "1174.5400",
-            "total_usage": "5720.00000",
+            "total_usage": "5720.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,042.56 x 12.5%",
@@ -2823,11 +2830,12 @@
         },
         {
             "end": "2015-05-11",
-            "peak_demand": "41.2000",
+            "peak_demand": "30.0000",
             "start": "2015-04-13",
+            "statement": "2015-05-13",
             "tariff": null,
             "total_charge": "1134.6500",
-            "total_usage": "5360.00000",
+            "total_usage": "5360.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,007.20 x 12.5%",
@@ -3161,11 +3169,12 @@
         },
         {
             "end": "2015-06-11",
-            "peak_demand": "41.2000",
+            "peak_demand": "33.2000",
             "start": "2015-05-12",
+            "statement": "2015-06-12",
             "tariff": null,
             "total_charge": "1272.3400",
-            "total_usage": "5440.00000",
+            "total_usage": "5440.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,129.56 x 12.5%",
@@ -3577,11 +3586,12 @@
         },
         {
             "end": "2015-07-12",
-            "peak_demand": "41.2000",
+            "peak_demand": "32.8000",
             "start": "2015-06-12",
+            "statement": "2015-07-14",
             "tariff": null,
             "total_charge": "1605.4600",
-            "total_usage": "6680.00000",
+            "total_usage": "6680.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,425.35 x 12.5%",
@@ -4032,11 +4042,12 @@
         },
         {
             "end": "2015-08-12",
-            "peak_demand": "41.2000",
+            "peak_demand": "32.8000",
             "start": "2015-07-13",
+            "statement": "2015-08-12",
             "tariff": null,
             "total_charge": "1687.6100",
-            "total_usage": "7120.00000",
+            "total_usage": "7120.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,498.27 x 12.5%",
@@ -4370,11 +4381,12 @@
         },
         {
             "end": "2015-09-10",
-            "peak_demand": "41.2000",
+            "peak_demand": "36.0000",
             "start": "2015-08-13",
+            "statement": "2015-09-11",
             "tariff": null,
             "total_charge": "1756.1300",
-            "total_usage": "7360.00000",
+            "total_usage": "7360.0000",
             "line_items": [
                 {
                     "ChargeActualName": "Service Charge - 11 days",
@@ -5033,11 +5045,12 @@
         },
         {
             "end": "2015-10-08",
-            "peak_demand": "41.2000",
+            "peak_demand": "33.6000",
             "start": "2015-09-11",
+            "statement": "2015-10-13",
             "tariff": null,
             "total_charge": "1552.9700",
-            "total_usage": "6840.00000",
+            "total_usage": "6840.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,378.66 x 12.5%",
@@ -5566,11 +5579,12 @@
         },
         {
             "end": "2015-11-09",
-            "peak_demand": "41.2000",
+            "peak_demand": "34.4000",
             "start": "2015-10-09",
+            "statement": "2015-11-12",
             "tariff": null,
             "total_charge": "1297.7500",
-            "total_usage": "6440.00000",
+            "total_usage": "6440.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,151.89 x 12.5%",
@@ -5904,11 +5918,12 @@
         },
         {
             "end": "2015-12-10",
-            "peak_demand": "41.2000",
+            "peak_demand": "36.8000",
             "start": "2015-11-10",
+            "statement": "2015-12-14",
             "tariff": null,
             "total_charge": "1218.3500",
-            "total_usage": "6080.00000",
+            "total_usage": "6080.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,081.41 x 12.5%",
@@ -6244,9 +6259,10 @@
             "end": "2016-01-12",
             "peak_demand": "46.0000",
             "start": "2015-12-11",
+            "statement": "2016-01-14",
             "tariff": null,
             "total_charge": "1469.7900",
-            "total_usage": "7720.00000",
+            "total_usage": "7720.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,304.49 x 12.5%",
@@ -6697,11 +6713,12 @@
         },
         {
             "end": "2016-02-11",
-            "peak_demand": "46.0000",
+            "peak_demand": "38.8000",
             "start": "2016-01-13",
+            "statement": "2016-02-16",
             "tariff": null,
             "total_charge": "1305.1400",
-            "total_usage": "6480.00000",
+            "total_usage": "6480.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,158.45 x 12.5%",
@@ -7035,11 +7052,12 @@
         },
         {
             "end": "2016-03-13",
-            "peak_demand": "46.0000",
+            "peak_demand": "33.6000",
             "start": "2016-02-12",
+            "statement": "2016-03-15",
             "tariff": null,
             "total_charge": "1132.3000",
-            "total_usage": "5360.00000",
+            "total_usage": "5360.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,005.11 x 12.5%",
@@ -7373,11 +7391,12 @@
         },
         {
             "end": "2016-04-11",
-            "peak_demand": "46.0000",
+            "peak_demand": "42.4000",
             "start": "2016-03-14",
+            "statement": "2016-04-13",
             "tariff": null,
             "total_charge": "1076.5500",
-            "total_usage": "5120.00000",
+            "total_usage": "5120.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $955.62 x 12.5%",
@@ -7828,11 +7847,12 @@
         },
         {
             "end": "2016-05-10",
-            "peak_demand": "46.0000",
+            "peak_demand": "36.4000",
             "start": "2016-04-12",
+            "statement": "2016-05-12",
             "tariff": null,
             "total_charge": "1064.7200",
-            "total_usage": "5040.00000",
+            "total_usage": "5040.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax - 2 days $65.33 x 12.5%",
@@ -8491,11 +8511,12 @@
         },
         {
             "end": "2016-06-09",
-            "peak_demand": "46.0000",
+            "peak_demand": "29.6000",
             "start": "2016-05-11",
+            "statement": "2016-06-13",
             "tariff": null,
             "total_charge": "1229.7000",
-            "total_usage": "5440.00000",
+            "total_usage": "5440.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,091.66 x 12.5%",
@@ -8907,11 +8928,12 @@
         },
         {
             "end": "2016-07-11",
-            "peak_demand": "46.0000",
+            "peak_demand": "37.6000",
             "start": "2016-06-10",
+            "statement": "2016-07-13",
             "tariff": null,
             "total_charge": "1693.3100",
-            "total_usage": "6800.00000",
+            "total_usage": "6800.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,503.41 x 12.5%",
@@ -9414,11 +9436,12 @@
         },
         {
             "end": "2016-08-09",
-            "peak_demand": "46.0000",
+            "peak_demand": "34.0000",
             "start": "2016-07-12",
+            "statement": "2016-08-11",
             "tariff": null,
             "total_charge": "1723.7100",
-            "total_usage": "7240.00000",
+            "total_usage": "7240.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,530.32 x 12.5%",
@@ -9765,11 +9788,12 @@
         },
         {
             "end": "2016-09-08",
-            "peak_demand": "46.0000",
+            "peak_demand": "34.0000",
             "start": "2016-08-10",
+            "statement": "2016-09-12",
             "tariff": null,
             "total_charge": "1597.0000",
-            "total_usage": "6120.00000",
+            "total_usage": "6120.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,417.98 x 12.5%",
@@ -10116,11 +10140,12 @@
         },
         {
             "end": "2016-10-10",
-            "peak_demand": "46.0000",
+            "peak_demand": "28.8000",
             "start": "2016-09-09",
+            "statement": "2016-10-12",
             "tariff": null,
             "total_charge": "1396.7500",
-            "total_usage": "5960.00000",
+            "total_usage": "5960.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,240.02 x 12.5%",
@@ -10662,11 +10687,12 @@
         },
         {
             "end": "2016-11-08",
-            "peak_demand": "46.0000",
+            "peak_demand": "25.2000",
             "start": "2016-10-11",
+            "statement": "2016-11-10",
             "tariff": null,
             "total_charge": "1116.5400",
-            "total_usage": "4920.00000",
+            "total_usage": "4920.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $991.21 x 12.5%",
@@ -11013,11 +11039,12 @@
         },
         {
             "end": "2016-12-11",
-            "peak_demand": "46.0000",
+            "peak_demand": "34.0000",
             "start": "2016-11-09",
+            "statement": "2016-12-13",
             "tariff": null,
             "total_charge": "1227.8100",
-            "total_usage": "5960.00000",
+            "total_usage": "5960.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,089.85 x 12.5%",
@@ -11366,9 +11393,10 @@
             "end": "2017-01-11",
             "peak_demand": "44.0000",
             "start": "2016-12-12",
+            "statement": "2017-01-13",
             "tariff": null,
             "total_charge": "1284.6200",
-            "total_usage": "6440.00000",
+            "total_usage": "6440.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,140.22 x 12.5%",
@@ -11845,11 +11873,12 @@
         },
         {
             "end": "2017-02-09",
-            "peak_demand": "44.0000",
+            "peak_demand": "42.8000",
             "start": "2017-01-12",
+            "statement": "2017-02-13",
             "tariff": null,
             "total_charge": "1338.8400",
-            "total_usage": "6480.00000",
+            "total_usage": "6480.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,188.41 x 12.5%",
@@ -12209,11 +12238,12 @@
         },
         {
             "end": "2017-03-13",
-            "peak_demand": "44.0000",
+            "peak_demand": "38.4000",
             "start": "2017-02-10",
+            "statement": "2017-03-15",
             "tariff": null,
             "total_charge": "1270.9900",
-            "total_usage": "6040.00000",
+            "total_usage": "6040.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,128.21 x 12.5%",
@@ -12573,11 +12603,12 @@
         },
         {
             "end": "2017-04-12",
-            "peak_demand": "44.0000",
+            "peak_demand": "25.6000",
             "start": "2017-03-14",
+            "statement": "2017-04-13",
             "tariff": null,
             "total_charge": "1167.4000",
-            "total_usage": "5320.00000",
+            "total_usage": "5320.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,036.32 x 12.5%",
@@ -13054,11 +13085,12 @@
         },
         {
             "end": "2017-05-10",
-            "peak_demand": "44.0000",
+            "peak_demand": "29.2000",
             "start": "2017-04-13",
+            "statement": "2017-05-12",
             "tariff": null,
             "total_charge": "1192.7600",
-            "total_usage": "5160.00000",
+            "total_usage": "5160.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,058.90 x 12.5%",
@@ -13418,11 +13450,12 @@
         },
         {
             "end": "2017-06-11",
-            "peak_demand": "44.0000",
+            "peak_demand": "31.2000",
             "start": "2017-05-11",
+            "statement": "2017-06-13",
             "tariff": null,
             "total_charge": "1305.9000",
-            "total_usage": "5520.00000",
+            "total_usage": "5520.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,159.38 x 12.5%",
@@ -13860,11 +13893,12 @@
         },
         {
             "end": "2017-07-11",
-            "peak_demand": "44.0000",
+            "peak_demand": "34.4000",
             "start": "2017-06-12",
+            "statement": "2017-07-13",
             "tariff": null,
-            "total_charge": "1711.1300",
-            "total_usage": "6600.00000",
+            "total_charge": "1701.1300",
+            "total_usage": "6600.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,519.31 x 12.5%",
@@ -14419,11 +14453,12 @@
         },
         {
             "end": "2017-08-09",
-            "peak_demand": "44.0000",
+            "peak_demand": "37.6000",
             "start": "2017-07-12",
+            "statement": "2017-08-11",
             "tariff": null,
             "total_charge": "1859.6500",
-            "total_usage": "7320.00000",
+            "total_usage": "7320.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,651.14 x 12.5%",
@@ -14783,11 +14818,12 @@
         },
         {
             "end": "2017-09-10",
-            "peak_demand": "44.0000",
+            "peak_demand": "34.0000",
             "start": "2017-08-10",
+            "statement": "2017-09-12",
             "tariff": null,
             "total_charge": "1789.6100",
-            "total_usage": "7320.00000",
+            "total_usage": "7320.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,588.88 x 12.5%",
@@ -15147,11 +15183,12 @@
         },
         {
             "end": "2017-10-10",
-            "peak_demand": "44.0000",
+            "peak_demand": "33.6000",
             "start": "2017-09-11",
+            "statement": "2017-10-12",
             "tariff": null,
             "total_charge": "1504.1200",
-            "total_usage": "5840.00000",
+            "total_usage": "5840.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,335.49 x 12.5%",
@@ -15706,11 +15743,12 @@
         },
         {
             "end": "2017-11-07",
-            "peak_demand": "44.0000",
+            "peak_demand": "32.8000",
             "start": "2017-10-11",
+            "statement": "2017-11-09",
             "tariff": null,
             "total_charge": "1322.7200",
-            "total_usage": "5800.00000",
+            "total_usage": "5800.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,174.26 x 12.5%",
@@ -16070,11 +16108,12 @@
         },
         {
             "end": "2017-12-10",
-            "peak_demand": "44.0000",
+            "peak_demand": "32.8000",
             "start": "2017-11-08",
+            "statement": "2017-12-12",
             "tariff": null,
             "total_charge": "1330.1400",
-            "total_usage": "5920.00000",
+            "total_usage": "5920.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,180.82 x 12.5%",
@@ -16434,11 +16473,12 @@
         },
         {
             "end": "2018-01-11",
-            "peak_demand": "42.8000",
+            "peak_demand": "37.2000",
             "start": "2017-12-11",
+            "statement": "2018-01-16",
             "tariff": null,
             "total_charge": "1428.8300",
-            "total_usage": "6800.00000",
+            "total_usage": "6800.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,268.32 x 12.5%",
@@ -16915,11 +16955,12 @@
         },
         {
             "end": "2018-02-09",
-            "peak_demand": "38.4000",
+            "peak_demand": "36.0000",
             "start": "2018-01-12",
+            "statement": "2018-02-12",
             "tariff": null,
             "total_charge": "1267.1400",
-            "total_usage": "5840.00000",
+            "total_usage": "5840.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,124.84 x 12.5%",
@@ -17281,9 +17322,10 @@
             "end": "2018-03-12",
             "peak_demand": "40.8000",
             "start": "2018-02-10",
+            "statement": "2018-03-14",
             "tariff": null,
             "total_charge": "1463.8400",
-            "total_usage": "7080.00000",
+            "total_usage": "7080.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,299.37 x 12.5%",
@@ -17645,9 +17687,10 @@
             "end": "2018-04-10",
             "peak_demand": "40.8000",
             "start": "2018-03-13",
+            "statement": "2018-04-12",
             "tariff": null,
             "total_charge": "1443.4700",
-            "total_usage": "6840.00000",
+            "total_usage": "6840.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,281.32 x 12.5%",
@@ -18124,11 +18167,12 @@
         },
         {
             "end": "2018-05-09",
-            "peak_demand": "40.8000",
+            "peak_demand": "33.2000",
             "start": "2018-04-11",
+            "statement": "2018-05-11",
             "tariff": null,
             "total_charge": "1470.0800",
-            "total_usage": "6920.00000",
+            "total_usage": "6920.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,304.95 x 12.5%",
@@ -18488,11 +18532,12 @@
         },
         {
             "end": "2018-06-11",
-            "peak_demand": "40.8000",
+            "peak_demand": "33.2000",
             "start": "2018-05-10",
+            "statement": "2018-06-12",
             "tariff": null,
             "total_charge": "1633.4500",
-            "total_usage": "7320.00000",
+            "total_usage": "7320.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,450.07 x 12.5%",
@@ -18930,11 +18975,12 @@
         },
         {
             "end": "2018-07-10",
-            "peak_demand": "40.8000",
+            "peak_demand": "36.8000",
             "start": "2018-06-12",
+            "statement": "2018-08-02",
             "tariff": null,
             "total_charge": "1810.2800",
-            "total_usage": "6680.00000",
+            "total_usage": "6680.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,607.41 x 12.5%",
@@ -19476,11 +19522,12 @@
         },
         {
             "end": "2018-08-09",
-            "peak_demand": "40.8000",
+            "peak_demand": "36.8000",
             "start": "2018-07-11",
+            "statement": "2018-08-10",
             "tariff": null,
             "total_charge": "1963.4500",
-            "total_usage": "7320.00000",
+            "total_usage": "7320.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,743.40 x 12.5%",
@@ -19840,11 +19887,12 @@
         },
         {
             "end": "2018-09-09",
-            "peak_demand": "40.8000",
+            "peak_demand": "34.0000",
             "start": "2018-08-10",
+            "statement": "2018-09-11",
             "tariff": null,
             "total_charge": "1850.3100",
-            "total_usage": "6760.00000",
+            "total_usage": "6760.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,642.98 x 12.5%",
@@ -20204,11 +20252,12 @@
         },
         {
             "end": "2018-10-09",
-            "peak_demand": "40.8000",
+            "peak_demand": "33.6000",
             "start": "2018-09-10",
+            "statement": "2018-10-11",
             "tariff": null,
             "total_charge": "1606.0600",
-            "total_usage": "6040.00000",
+            "total_usage": "6040.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,426.05 x 12.5%",
@@ -20763,11 +20812,12 @@
         },
         {
             "end": "2018-11-07",
-            "peak_demand": "40.8000",
+            "peak_demand": "31.6000",
             "start": "2018-10-10",
+            "statement": "2018-11-09",
             "tariff": null,
             "total_charge": "1343.7500",
-            "total_usage": "5600.00000",
+            "total_usage": "5600.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,193.00 x 12.5%",
@@ -21127,11 +21177,12 @@
         },
         {
             "end": "2018-12-10",
-            "peak_demand": "40.8000",
+            "peak_demand": "34.8000",
             "start": "2018-11-08",
+            "statement": "2018-12-12",
             "tariff": null,
             "total_charge": "1378.6700",
-            "total_usage": "6080.00000",
+            "total_usage": "6080.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,223.92 x 12.5%",
@@ -21491,11 +21542,12 @@
         },
         {
             "end": "2019-01-11",
-            "peak_demand": "40.8000",
+            "peak_demand": "38.8000",
             "start": "2018-12-11",
+            "statement": "2019-01-14",
             "tariff": null,
             "total_charge": "1572.6700",
-            "total_usage": "6920.00000",
+            "total_usage": "6920.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,396.12 x 12.5%",
@@ -21987,9 +22039,10 @@
             "end": "2019-02-11",
             "peak_demand": "42.8000",
             "start": "2019-01-12",
+            "statement": "2019-02-12",
             "tariff": null,
             "total_charge": "1745.2700",
-            "total_usage": "7760.00000",
+            "total_usage": "7760.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,549.28 x 12.5%",
@@ -22349,11 +22402,12 @@
         },
         {
             "end": "2019-04-10",
-            "peak_demand": "42.8000",
+            "peak_demand": "31.6000",
             "start": "2019-02-12",
+            "statement": "2019-04-17",
             "tariff": null,
             "total_charge": "2920.8000",
-            "total_usage": "12600.00000",
+            "total_usage": "12600.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax - 58 days $2,592.91 x 12.5%",
@@ -22830,11 +22884,12 @@
         },
         {
             "end": "2019-05-09",
-            "peak_demand": "42.8000",
+            "peak_demand": "24.8000",
             "start": "2019-04-11",
+            "statement": "2019-05-13",
             "tariff": null,
             "total_charge": "1236.6000",
-            "total_usage": "4760.00000",
+            "total_usage": "4760.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,097.93 x 12.5%",
@@ -23194,11 +23249,12 @@
         },
         {
             "end": "2019-06-11",
-            "peak_demand": "42.8000",
+            "peak_demand": "36.8000",
             "start": "2019-05-10",
+            "statement": "2019-06-12",
             "tariff": null,
             "total_charge": "1464.3800",
-            "total_usage": "5400.00000",
+            "total_usage": "5400.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,300.23 x 12.5%",
@@ -23636,11 +23692,12 @@
         },
         {
             "end": "2019-07-10",
-            "peak_demand": "42.8000",
+            "peak_demand": "32.8000",
             "start": "2019-06-12",
+            "statement": "2019-07-12",
             "tariff": null,
             "total_charge": "1507.7800",
-            "total_usage": "4760.00000",
+            "total_usage": "4760.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,338.98 x 12.5%",
@@ -24182,11 +24239,12 @@
         },
         {
             "end": "2019-08-08",
-            "peak_demand": "42.8000",
+            "peak_demand": "33.6000",
             "start": "2019-07-11",
+            "statement": "2019-08-12",
             "tariff": null,
             "total_charge": "1816.9600",
-            "total_usage": "6160.00000",
+            "total_usage": "6160.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,613.43 x 12.5%",
@@ -24546,11 +24604,12 @@
         },
         {
             "end": "2019-09-09",
-            "peak_demand": "42.8000",
+            "peak_demand": "30.8000",
             "start": "2019-08-09",
+            "statement": "2019-09-11",
             "tariff": null,
             "total_charge": "1844.2900",
-            "total_usage": "6360.00000",
+            "total_usage": "6360.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,637.67 x 12.5%",
@@ -24910,11 +24969,12 @@
         },
         {
             "end": "2019-10-09",
-            "peak_demand": "42.8000",
+            "peak_demand": "30.8000",
             "start": "2019-09-10",
+            "statement": "2019-10-11",
             "tariff": null,
             "total_charge": "1660.0500",
-            "total_usage": "5640.00000",
+            "total_usage": "5640.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,474.10 x 12.5%",
@@ -25469,11 +25529,12 @@
         },
         {
             "end": "2019-11-08",
-            "peak_demand": "42.8000",
+            "peak_demand": "27.6000",
             "start": "2019-10-10",
+            "statement": "2019-11-12",
             "tariff": null,
             "total_charge": "1351.2000",
-            "total_usage": "5120.00000",
+            "total_usage": "5120.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,199.70 x 12.5%",
@@ -25833,11 +25894,12 @@
         },
         {
             "end": "2019-12-11",
-            "peak_demand": "42.8000",
+            "peak_demand": "37.6000",
             "start": "2019-11-09",
+            "statement": "2019-12-12",
             "tariff": null,
             "total_charge": "1548.2500",
-            "total_usage": "6280.00000",
+            "total_usage": "6280.0000",
             "line_items": [
                 {
                     "ChargeActualName": "City of Los Angeles Utility Tax $1,374.55 x 12.5%",
@@ -26197,11 +26259,12 @@
         },
         {
             "end": "2020-01-13",
-            "peak_demand": "42.8000",
+            "peak_demand": "41.6000",
             "start": "2019-12-12",
+            "statement": "2020-01-14",
             "tariff": null,
             "total_charge": "1654.3800",
-            "total_usage": "6680.00000",
+            "total_usage": "6680.0000",
             "line_items": [
                 {
                     "ChargeActualName": "IRCA 42.8 kW x $2.02/kW",
@@ -26677,12 +26740,13 @@
             ]
         },
         {
-            "end": "2020-02-12",
-            "peak_demand": "41.6000",
+            "end": "2020-02-11",
+            "peak_demand": "36.8000",
             "start": "2020-01-14",
+            "statement": "2020-02-13",
             "tariff": null,
             "total_charge": "1439.8300",
-            "total_usage": "5880.00000",
+            "total_usage": "5880.0000",
             "line_items": [
                 {
                     "ChargeActualName": "IRCA 41.6 kW x $2.02/kW",
@@ -27038,6 +27102,853 @@
             ],
             "source_urls": [
                 "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea4f3ab-852e-d81d-83a0-0e90d2e6cf41"
+            ]
+        },
+        {
+            "end": "2020-03-12",
+            "peak_demand": "35.2000",
+            "start": "2020-02-12",
+            "statement": "2020-03-16",
+            "tariff": null,
+            "total_charge": "1431.6700",
+            "total_usage": "5680.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "IRCA 41.6 kW x $2.02/kW",
+                    "ChargeAmount": "84.0300",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "2.0200",
+                    "ChargeUnitsUsed": "41.6000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266056,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "ESA 41.6 kW x $0.46/kW",
+                    "ChargeAmount": "19.1400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.4600",
+                    "ChargeUnitsUsed": "41.6000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266057,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "RCA 41.6 kW x $0.96/kW",
+                    "ChargeAmount": "39.9400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.9600",
+                    "ChargeUnitsUsed": "41.6000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266058,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Facilities Charge 41.6 kW x $4.56/kW",
+                    "ChargeAmount": "189.7000",
+                    "ChargeId": "ch.facilities_charge",
+                    "ChargeRatePerUnit": "4.5600",
+                    "ChargeUnitsUsed": "41.6000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266059,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "High Peak Low Season Demand 25.6 kW x $4.30/kW",
+                    "ChargeAmount": "110.0800",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "25.6000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266060,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Service Charge",
+                    "ChargeAmount": "75.0000",
+                    "ChargeId": "ch.service_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266061,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "High Peak CRPSEA 1,400 kWh x $0.00829/kWh",
+                    "ChargeAmount": "11.6100",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0083",
+                    "ChargeUnitsUsed": "1400.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266062,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak VRPSEA 1,400 kWh x $0.02327/kWh",
+                    "ChargeAmount": "32.5800",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0233",
+                    "ChargeUnitsUsed": "1400.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266063,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak ECA 1,400 kWh x $0.0569/kWh",
+                    "ChargeAmount": "79.6600",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0569",
+                    "ChargeUnitsUsed": "1400.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266064,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak VEA 1,400 kWh x $-0.00438/kWh",
+                    "ChargeAmount": "-6.1300",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0044",
+                    "ChargeUnitsUsed": "1400.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266065,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak Low Season Energy 1,400 kWh x $0.05464/kWh",
+                    "ChargeAmount": "76.5000",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0546",
+                    "ChargeUnitsUsed": "1400.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266066,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak CRPSEA 1,240 kWh x $0.00829/kWh",
+                    "ChargeAmount": "10.2800",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0083",
+                    "ChargeUnitsUsed": "1240.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266067,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak VRPSEA 1,240 kWh x $0.02327/kWh",
+                    "ChargeAmount": "28.8500",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0233",
+                    "ChargeUnitsUsed": "1240.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266068,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak ECA 1,240 kWh x $0.0569/kWh",
+                    "ChargeAmount": "70.5600",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0569",
+                    "ChargeUnitsUsed": "1240.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266069,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak VEA 1,240 kWh x $-0.00438/kWh",
+                    "ChargeAmount": "-5.4300",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0044",
+                    "ChargeUnitsUsed": "1240.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266070,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak Low Season Energy 1,240 kWh x $0.05464/kWh",
+                    "ChargeAmount": "67.7500",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0546",
+                    "ChargeUnitsUsed": "1240.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266071,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak Low Season Demand 24.8 kW x $0.00/kW",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "24.8000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266072,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Base Low Season Demand 35.2 kW x $0.00/kW",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "35.2000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266073,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "City of Los Angeles Utility Tax $1,271.08 x 12.5%",
+                    "ChargeAmount": "158.8900",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266074,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Base CRPSEA 3,040 kWh x $0.00829/kWh",
+                    "ChargeAmount": "25.2000",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0083",
+                    "ChargeUnitsUsed": "3040.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266075,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base VRPSEA 3,040 kWh x $0.02327/kWh",
+                    "ChargeAmount": "70.7400",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0233",
+                    "ChargeUnitsUsed": "3040.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266076,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base ECA 3,040 kWh x $0.0569/kWh",
+                    "ChargeAmount": "172.9800",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0569",
+                    "ChargeUnitsUsed": "3040.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266077,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base VEA 3,040 kWh x $-0.00438/kWh",
+                    "ChargeAmount": "-13.3200",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0044",
+                    "ChargeUnitsUsed": "3040.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266078,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base Low Season Energy 3,040 kWh x $0.03798/kWh",
+                    "ChargeAmount": "115.4600",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0380",
+                    "ChargeUnitsUsed": "3040.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266079,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Green LA Program (REO) 0 kWh x $0.03/kWh",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0300",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266080,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "IRCA based on KWH 5,680 kWH x $0.0028/kWH",
+                    "ChargeAmount": "15.9000",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0028",
+                    "ChargeUnitsUsed": "5680.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266081,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "State Energy Surcharge 5,680 kWh x $0.0003/kWh",
+                    "ChargeAmount": "1.7000",
+                    "ChargeId": "ch.state_surcharge",
+                    "ChargeRatePerUnit": "0.0003",
+                    "ChargeUnitsUsed": "5680.0000",
+                    "IntervalEnd": "2020-03-13",
+                    "IntervalStart": "2020-02-12",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238266082,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea683ac-4597-d4b5-b21a-0eccb9a7defd"
+            ]
+        },
+        {
+            "end": "2020-04-16",
+            "peak_demand": "36.4000",
+            "start": "2020-03-13",
+            "statement": "2020-04-16",
+            "tariff": null,
+            "total_charge": "1490.8400",
+            "total_usage": "6240.0000",
+            "line_items": [
+                {
+                    "ChargeActualName": "IRCA 41.6 kW x $2.02/kW",
+                    "ChargeAmount": "84.0300",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "2.0200",
+                    "ChargeUnitsUsed": "41.6000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386497,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "ESA 41.6 kW x $0.46/kW",
+                    "ChargeAmount": "19.1400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.4600",
+                    "ChargeUnitsUsed": "41.6000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386498,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "RCA 41.6 kW x $0.96/kW",
+                    "ChargeAmount": "39.9400",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.9600",
+                    "ChargeUnitsUsed": "41.6000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386499,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Facilities Charge 41.6 kW x $4.56/kW",
+                    "ChargeAmount": "189.7000",
+                    "ChargeId": "ch.facilities_charge",
+                    "ChargeRatePerUnit": "4.5600",
+                    "ChargeUnitsUsed": "41.6000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386500,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "High Peak Low Season Demand 24 kW x $4.30/kW",
+                    "ChargeAmount": "103.2000",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "4.3000",
+                    "ChargeUnitsUsed": "24.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386501,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Service Charge",
+                    "ChargeAmount": "75.0000",
+                    "ChargeId": "ch.service_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386502,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "High Peak CRPSEA - 16 days 470.58824 kWh x $0.00811/kWh",
+                    "ChargeAmount": "3.8200",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0081",
+                    "ChargeUnitsUsed": "470.5880",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386503,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak VRPSEA - 18 days 529.41177 kWh x $0.02327/kWh",
+                    "ChargeAmount": "12.3200",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0233",
+                    "ChargeUnitsUsed": "529.4120",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386504,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak VEA - 16 days 470.58824 kWh x $-0.00839/kWh",
+                    "ChargeAmount": "-3.9500",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0084",
+                    "ChargeUnitsUsed": "470.5880",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386505,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak CRPSEA - 18 days 529.41177 kWh x $0.00829/kWh",
+                    "ChargeAmount": "4.3900",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0083",
+                    "ChargeUnitsUsed": "529.4120",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386506,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak VRPSEA - 16 days 470.58824 kWh x $0.02453/kWh",
+                    "ChargeAmount": "11.5400",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0245",
+                    "ChargeUnitsUsed": "470.5880",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386507,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak ECA 1,000 kWh x $0.0569/kWh",
+                    "ChargeAmount": "56.9000",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0569",
+                    "ChargeUnitsUsed": "1000.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386508,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak VEA - 18 days 529.41177 kWh x $-0.00438/kWh",
+                    "ChargeAmount": "-2.3200",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0044",
+                    "ChargeUnitsUsed": "529.4120",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386509,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "High Peak Low Season Energy 1,000 kWh x $0.05464/kWh",
+                    "ChargeAmount": "54.6400",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0546",
+                    "ChargeUnitsUsed": "1000.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386510,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak CRPSEA - 16 days 715.29412 kWh x $0.00811/kWh",
+                    "ChargeAmount": "5.8000",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0081",
+                    "ChargeUnitsUsed": "715.2940",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386511,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak VRPSEA - 18 days 804.70588 kWh x $0.02327/kWh",
+                    "ChargeAmount": "18.7300",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0233",
+                    "ChargeUnitsUsed": "804.7060",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386512,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak VEA - 16 days 715.29412 kWh x $-0.00839/kWh",
+                    "ChargeAmount": "-6.0000",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0084",
+                    "ChargeUnitsUsed": "715.2940",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386513,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak CRPSEA - 18 days 804.70588 kWh x $0.00829/kWh",
+                    "ChargeAmount": "6.6700",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0083",
+                    "ChargeUnitsUsed": "804.7060",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386514,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak VRPSEA - 16 days 715.29412 kWh x $0.02453/kWh",
+                    "ChargeAmount": "17.5500",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0245",
+                    "ChargeUnitsUsed": "715.2940",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386515,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak ECA 1,520 kWh x $0.0569/kWh",
+                    "ChargeAmount": "86.4900",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0569",
+                    "ChargeUnitsUsed": "1520.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386516,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak VEA - 18 days 804.70588 kWh x $-0.00438/kWh",
+                    "ChargeAmount": "-3.5200",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0044",
+                    "ChargeUnitsUsed": "804.7060",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386517,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak Low Season Energy 1,520 kWh x $0.05464/kWh",
+                    "ChargeAmount": "83.0500",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0546",
+                    "ChargeUnitsUsed": "1520.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386518,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Low Peak Low Season Demand 21.6 kW x $0.00/kW",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "21.6000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386519,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Base Low Season Demand 36.4 kW x $0.00/kW",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "36.4000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386520,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "City of Los Angeles Utility Tax $1,323.53 x 12.5%",
+                    "ChargeAmount": "165.4400",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386521,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Base CRPSEA - 16 days 1,750.58824 kWh x $0.00811/kWh",
+                    "ChargeAmount": "14.2000",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0081",
+                    "ChargeUnitsUsed": "1750.5880",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386522,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base VRPSEA - 18 days 1,969.41177 kWh x $0.02327/kWh",
+                    "ChargeAmount": "45.8300",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0233",
+                    "ChargeUnitsUsed": "1969.4120",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386523,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base VEA - 16 days 1,750.58824 kWh x $-0.00839/kWh",
+                    "ChargeAmount": "-14.6900",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0084",
+                    "ChargeUnitsUsed": "1750.5880",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386524,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base CRPSEA - 18 days 1,969.41177 kWh x $0.00829/kWh",
+                    "ChargeAmount": "16.3300",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0083",
+                    "ChargeUnitsUsed": "1969.4120",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386525,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base VRPSEA - 16 days 1,750.58824 kWh x $0.02453/kWh",
+                    "ChargeAmount": "42.9400",
+                    "ChargeId": "ch.renewable_resource_adjustment",
+                    "ChargeRatePerUnit": "0.0245",
+                    "ChargeUnitsUsed": "1750.5880",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386526,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base ECA 3,720 kWh x $0.0569/kWh",
+                    "ChargeAmount": "211.6700",
+                    "ChargeId": "ch.cost_adjustment",
+                    "ChargeRatePerUnit": "0.0569",
+                    "ChargeUnitsUsed": "3720.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386527,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base VEA - 18 days 1,969.41177 kWh x $-0.00438/kWh",
+                    "ChargeAmount": "-8.6300",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "-0.0044",
+                    "ChargeUnitsUsed": "1969.4120",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386528,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Base Low Season Energy 3,720 kWh x $0.03798/kWh",
+                    "ChargeAmount": "141.2900",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.0380",
+                    "ChargeUnitsUsed": "3720.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386529,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Green LA Program (REO) 0 kWh x $0.03/kWh",
+                    "ChargeAmount": "0.0000",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0300",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386530,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "IRCA based on KWH 6,240 kWH x $0.0028/kWH",
+                    "ChargeAmount": "17.4700",
+                    "ChargeId": "ch.usage_charge",
+                    "ChargeRatePerUnit": "0.0028",
+                    "ChargeUnitsUsed": "6240.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386531,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "State Energy Surcharge 6,240 kWh x $0.0003/kWh",
+                    "ChargeAmount": "1.8700",
+                    "ChargeId": "ch.state_surcharge",
+                    "ChargeRatePerUnit": "0.0003",
+                    "ChargeUnitsUsed": "6240.0000",
+                    "IntervalEnd": "2020-04-16",
+                    "IntervalStart": "2020-03-13",
+                    "IsAdjustmentCharge": true,
+                    "PK": 238386532,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea80b8c-efba-dfc6-a45c-0e198db263a1"
             ]
         }
     ]
