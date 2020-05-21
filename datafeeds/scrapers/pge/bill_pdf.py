@@ -3,6 +3,8 @@ import logging
 from datetime import date, datetime, timedelta
 from typing import List, Optional
 
+from dateutil import parser as date_parser
+
 from datafeeds import config
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
@@ -91,8 +93,7 @@ class DashboardPage(CSSSelectorBasePageObject):
 
     def download_bills(
         self,
-        start_date: date,
-        end_date: date,
+        latest: date,
         utility_account: str,
         utility: str,
         gen_utility: Optional[str] = None,
@@ -150,8 +151,8 @@ class DashboardPage(CSSSelectorBasePageObject):
 
             log.info(f"Found bill issued {bill_date} with cost ${cost}")
 
-            if not start_date <= approx_bill_end <= end_date:
-                log.info(f"ignoring bill, date: {approx_bill_end} not in range ")
+            if approx_bill_end <= latest:
+                log.info(f"ignoring bill, date: {approx_bill_end} already download")
                 continue
 
             try:
@@ -349,13 +350,17 @@ class PgeBillPdfScraper(BaseWebScraper):
         dashboard_page.select_account(self._configuration.utility_account)
         self.screenshot("after select account")
 
+        # get latest statement date already retrieved
+        datasource = self._configuration.datasource
+        latest = date_parser.parse(datasource.meta.get("latest", "2010-01-01")).date()
         # download bills
         pdfs = dashboard_page.download_bills(
-            self.start_date,
-            self.end_date,
-            self._configuration.utility_account,
-            self._configuration.utility,
+            latest, self._configuration.utility_account, self._configuration.utility,
         )
+        # set latest statement date
+        if pdfs:
+            latest_download = max([pdf.end for pdf in pdfs])
+            datasource.meta["latest"] = latest_download.strftime("%Y-%m-%d")
         return Results(pdfs=pdfs)
 
 
@@ -364,14 +369,16 @@ class PgeBillPdfConfiguration(Configuration):
         self,
         utility: str,
         utility_account: str,
-        gen_utility: Optional[str] = None,
-        gen_utility_account_id: Optional[str] = None,
+        gen_utility: Optional[str],
+        gen_utility_account_id: Optional[str],
+        datasource: MeterDataSource,
     ):
         super().__init__(scrape_pdfs=True)
         self.utility_account = utility_account
         self.utility = utility
         self.gen_utility = gen_utility
         self.gen_utility_account_id = gen_utility_account_id
+        self.datasource = datasource
 
 
 def datafeed(
@@ -387,6 +394,7 @@ def datafeed(
         utility_service.utility_account_id,
         utility_service.gen_utility,
         utility_service.gen_utility_account_id,
+        datasource,
     )
 
     return run_datafeed(
