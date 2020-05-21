@@ -1,4 +1,5 @@
 import sqlalchemy as sa
+from sqlalchemy.ext.mutable import MutableDict
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.dialects.postgresql import JSONB, ARRAY
 import pyaes
@@ -115,7 +116,7 @@ class SnapmeterMeterDataSource(ModelMixin, Base):
         sa.ForeignKey("snapmeter_account_data_source.oid"),
     )
     account_data_source = relationship("SnapmeterAccountDataSource")
-    meta = sa.Column(JSONB)
+    meta = sa.Column(MutableDict.as_mutable(JSONB))
     source_types = sa.Column(ARRAY(sa.Unicode))
 
     @classmethod
