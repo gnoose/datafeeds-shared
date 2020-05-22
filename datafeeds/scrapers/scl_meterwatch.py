@@ -136,6 +136,14 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
     DownloadBtnSel = "a[href=\"javascript:apex.submit('DOWNLOAD');\"].buttonhtml"
 
+    @staticmethod
+    def _get_date(date_text: str) -> Optional[datetime]:
+        try:
+            return datetime.strptime(date_text, "%m/%d/%Y")
+        except ValueError:
+            # When UI incorrectly says "NO DATA FOUND"
+            return None
+
     def enter_dates(self, start_date: date, end_date: date):
         """Set dates in From Date, To Date (04/01/2020 format)
 
@@ -149,19 +157,20 @@ class MeterDataPage(CSSSelectorBasePageObject):
         available_from_text = self.find_element(self.DateAvailableFromSel).text.split(
             " "
         )[-1]
-        available_from = datetime.strptime(available_from_text, "%m/%d/%Y")
+        available_from = self._get_date(available_from_text)
 
         available_to_text = self.find_element(self.DateAvailableToSel).text.split(" ")[
             -1
         ]
-        available_to = datetime.strptime(available_to_text, "%m/%d/%Y")
+        available_to = self._get_date(available_to_text)
         log.info("data available through %s" % available_to)
 
-        if start_date < available_from.date():
-            start_date = available_from.date()
+        if available_from and available_to:
+            if start_date < available_from.date():
+                start_date = available_from.date()
 
-        if end_date > available_to.date():
-            end_date = available_to.date()
+            if end_date > available_to.date():
+                end_date = available_to.date()
 
         # the webpage shows an error if start_date is greater than end_date
         # make sure its a valid range
