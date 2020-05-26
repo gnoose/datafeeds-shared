@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, time
 import unittest
 
 from datafeeds.common.timeline import Timeline, SerializationError
@@ -71,3 +71,35 @@ class TimelineTests(unittest.TestCase):
 
         with self.assertRaises(SerializationError):
             tl.serialize()
+
+    def test_extend_timeline(self):
+        d1 = date(2020, 5, 1)
+        d2 = date(2020, 5, 14)
+
+        tl = Timeline(d1, d2)
+        dt1 = datetime(2020, 5, 1)
+        tl.insert(dt1, 402.1)
+        self.assertEqual(tl.index[d1][time(0, 0, 0)], 402.1)
+
+        earlier_d1 = date(2020, 4, 1)
+        earlier_d2 = date(2020, 4, 16)
+
+        # Start date of timeline is backed up
+        tl.extend_timeline(earlier_d1, earlier_d2)
+        self.assertEqual(tl._start, earlier_d1)
+        self.assertEqual(tl._end, d2)
+        # Existing interval data in original timeline is not overwritten
+        self.assertEqual(tl.index[d1][time(0, 0, 0)], 402.1)
+        self.assertIsNone(tl.index[earlier_d1][time(0, 0, 0)])
+
+        # End date of timeline is extended
+        dt2 = datetime(2020, 5, 14)
+        tl.insert(dt2, 500)
+        self.assertEqual(tl.index[d2][time(0, 0, 0)], 500)
+
+        later_d1 = date(2020, 5, 15)
+        later_d2 = date(2020, 5, 31)
+        tl.extend_timeline(later_d1, later_d2)
+        self.assertEqual(tl._start, earlier_d1)
+        self.assertEqual(tl._end, later_d2)
+        self.assertEqual(tl.index[d2][time(0, 0, 0)], 500)

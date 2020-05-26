@@ -46,6 +46,9 @@ def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
     with open(csv_file_path, "r", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if not row.get("Starting Date"):
+                continue
+
             # for some reason the last line of csv contains the following
             # string instead of actual values, so skip that data row
             if "</td></tr></table>" in row["Starting Date"]:
@@ -144,11 +147,13 @@ class MeterDataPage(CSSSelectorBasePageObject):
             # When UI incorrectly says "NO DATA FOUND"
             return None
 
-    def enter_dates(self, start_date: date, end_date: date):
+    def enter_dates(self, start_date: date, end_date: date) -> Tuple[date, date]:
         """Set dates in From Date, To Date (04/01/2020 format)
 
         Check available dates (Starts on 04/30/2018, Ends on 03/18/2020)
         Continue with the maximum available range if requested range not available.
+
+        :returns adjusted start and end dates
         """
         # wait for date inputs to be ready
         self.wait_until_ready(self.DateAvailableFromSel)
@@ -165,12 +170,29 @@ class MeterDataPage(CSSSelectorBasePageObject):
         available_to = self._get_date(available_to_text)
         log.info("data available through %s" % available_to)
 
+        # If available dates not displayed, push forward with requested dates.
         if available_from and available_to:
+            original_start = start_date
+            original_end = end_date
+
             if start_date < available_from.date():
+                # Snapping start date to earliest available
                 start_date = available_from.date()
 
             if end_date > available_to.date():
+                # Snapping end date to latest available
                 end_date = available_to.date()
+
+            if start_date > end_date:
+                # Entire range requested was later than available dates.
+                # Back up start date to request original date range.
+                start_date = end_date + (original_start - original_end)
+
+            if start_date != original_start:
+                log.info("Start date adjusted to {}".format(start_date))
+
+            if end_date != original_end:
+                log.info("End date adjusted to {}".format(end_date))
 
         # the webpage shows an error if start_date is greater than end_date
         # make sure its a valid range
@@ -190,6 +212,8 @@ class MeterDataPage(CSSSelectorBasePageObject):
             self.DateAvailableFromInputSel, start_date.strftime("%m/%d/%Y")
         )
         self._driver.fill(self.DateAvailableToInputSel, end_date.strftime("%m/%d/%Y"))
+
+        return start_date, end_date
 
     def select_account(self, meter_number: str):
         """Choose account from Meter OR Meter Group dropdown (option value == meter_number)"""
@@ -307,10 +331,15 @@ class SCLMeterWatchScraper(BaseWebScraper):
 
         for meter_number in self._configuration.meter_numbers:
             meterdata_page.select_account(meter_number)
-            meterdata_page.enter_dates(self.start_date, self.end_date)
+            self.start_date, self.end_date = meterdata_page.enter_dates(
+                self.start_date, self.end_date
+            )
+            # Widen timeline if necessary after dates may have been adjusted from original.
+            timeline.extend_timeline(self.start_date, self.end_date)
             csv_file_path = meterdata_page.download_data(meter_number)
 
             log.info(f"parsing kWh usage from downloaded data for {meter_number}")
+
             # read kWh Usage with csv into timeline
             for reading in parse_usage_from_csv(csv_file_path):
                 reading_datetime = reading[0]
