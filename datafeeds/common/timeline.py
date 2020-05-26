@@ -30,12 +30,31 @@ class Timeline:
 
         self.index = defaultdict(dict)
 
-        current = datetime(start.year, start.month, start.day)
-        stop = datetime(end.year, end.month, end.day)
+        self._initially_populate(start, end)
+
+    def _initially_populate(self, start_populate: datetime, end_populate: datetime):
+        """Prepopulates the index with Nones"""
+        current = datetime(
+            start_populate.year, start_populate.month, start_populate.day
+        )
+        stop = datetime(end_populate.year, end_populate.month, end_populate.day)
 
         while current < stop + timedelta(hours=24):
             self.index[current.date()][current.time()] = None
-            current = current + timedelta(minutes=interval)
+            current = current + timedelta(minutes=self._interval)
+
+    def extend_timeline(self, new_start, new_end):
+        """Widens the timeline, if applicable.  Does not shrink the timeline, to avoid dropping
+        interval data that may already be present"""
+        if self._start > new_start:
+            # Shifts the start of the timeline to an earlier date
+            self._initially_populate(new_start, self._start - timedelta(hours=24))
+            self._start = new_start
+
+        if self._end < new_end:
+            # Extends the end of the timeline to a later date
+            self._initially_populate(self._end + timedelta(hours=24), new_end)
+            self._end = new_end
 
     def insert(self, dt, value):
         """Insert a value at the input datetime."""
