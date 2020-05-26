@@ -6,7 +6,7 @@
             "start": "2014-09-10",
             "statement": "2014-10-10",
             "tariff": null,
-            "total_charge": "1523.5800",
+            "total_charge": "1504.5800",
             "total_usage": "6960.0000",
             "line_items": [
                 {
@@ -1687,7 +1687,7 @@
             "start": "2015-01-13",
             "statement": "2015-02-13",
             "tariff": null,
-            "total_charge": "1126.0700",
+            "total_charge": "1145.0700",
             "total_usage": "5880.0000",
             "line_items": [
                 {
@@ -13897,7 +13897,7 @@
             "start": "2017-06-12",
             "statement": "2017-07-13",
             "tariff": null,
-            "total_charge": "1701.1300",
+            "total_charge": "1711.1300",
             "total_usage": "6600.0000",
             "line_items": [
                 {
@@ -27470,7 +27470,7 @@
             ]
         },
         {
-            "end": "2020-04-16",
+            "end": "2020-04-15",
             "peak_demand": "36.4000",
             "start": "2020-03-13",
             "statement": "2020-04-16",

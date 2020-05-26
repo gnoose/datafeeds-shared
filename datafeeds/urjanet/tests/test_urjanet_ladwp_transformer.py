@@ -62,6 +62,53 @@ class TestUrjanetLADWPTransformer(test_util.UrjaFixtureText):
         self.ladwp_electricity_test(
             "1783662075908_input.json", "1783662075908_expected.json"
         )
+        # two billing periods on one statement, with inconsistent date ranges
+        self.ladwp_electricity_test(
+            "1783662075906_input.json", "1783662075906_expected.json"
+        )
+        # use line items sum if total includes both billing periods
+        self.ladwp_electricity_test(
+            "2958424893675_input.json", "2958424893675_expected.json"
+        )
+        # exclude cancelled floating charges
+        self.ladwp_electricity_test(
+            "4504741985576710_input.json", "4504741985576710_expected.json"
+        )
+        # exclude deposit floating charges
+        self.ladwp_electricity_test(
+            "1704730394626_input.json", "1704730394626_expected.json"
+        )
+        # exclude Sewer Service floating charges
+        self.ladwp_electricity_test(
+            "1707869342446_input.json", "1707869342446_expected.json"
+        )
+        # exclude Late Payment floating charges
+        self.ladwp_electricity_test(
+            "2958424893679_input.json", "2958424893679_expected.json"
+        )
+        # duplicate usages with dates off by 1
+        """
+        mysql> select PK, IntervalStart, IntervalEnd, RateComponent, UsageActualName, UsageAmount
+        from `Usage`
+        where AccountFK=5597518 and EnergyUnit = 'kWh' and IntervalStart >= '2017-10-01'
+        order by RateComponent;
+        +----------+---------------+-------------+---------------+-----------------+--------------+
+        | PK       | IntervalStart | IntervalEnd | RateComponent | UsageActualName | UsageAmount  |
+        +----------+---------------+-------------+---------------+-----------------+--------------+
+        | 72338292 | 2017-10-11    | 2017-11-08  | [mid_peak]    | Low Peak kWh    |       0.0000 |
+        | 72338293 | 2017-10-11    | 2017-11-08  | [mid_peak]    | Low Peak kWh    |  110000.0000 |
+        | 72338294 | 2017-10-12    | 2017-11-08  | [mid_peak]    | Low Peak kWh    |  110000.0000 |
+        | 72338300 | 2017-10-12    | 2017-11-08  | [off_peak]    | Base kWh        |  196000.0000 |
+        | 72338303 | 2017-10-11    | 2017-11-08  | [off_peak]    | Base kWh        |       0.0000 |
+        | 72338295 | 2017-10-12    | 2017-11-08  | [on_peak]     | High Peak kWh   |   90000.0000 |
+        | 72338298 | 2017-10-11    | 2017-11-08  | [on_peak]     | High Peak kWh   |   90000.0000 |
+        | 72338299 | 2017-10-11    | 2017-11-08  | [on_peak]     | High Peak kWh   |       0.0000 |
+        | 72338289 | 2017-10-11    | 2017-11-08  | [total]       |                 | 1739000.0000 |
+        +----------+---------------+-------------+---------------+-----------------+--------------+
+        """
+        self.ladwp_electricity_test(
+            "1707869340434_input.json", "1707869340434_expected.json"
+        )
 
 
 if __name__ == "__main__":

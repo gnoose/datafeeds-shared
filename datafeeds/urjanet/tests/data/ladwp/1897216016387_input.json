@@ -1,7 +1,7 @@
 {
     "accounts": [
         {
-            "AccountNumber": "1222088218",
+            "AccountNumber": "7577077777",
             "AmountDue": "83450.1100",
             "IntervalEnd": "2014-12-31",
             "IntervalStart": "2014-11-13",
@@ -9,7 +9,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5506271,
             "PreviousBalance": "0.0000",
-            "RawAccountNumber": "122 208 8218",
+            "RawAccountNumber": "757 707 7777",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e5d5fba-398d-dd9b-a125-22000b954e35",
             "StatementDate": "2015-01-02",
             "StatementType": "statement_type_bill",
@@ -46,7 +46,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "2513611121",
+            "AccountNumber": "5115855155",
             "AmountDue": "68915.0400",
             "IntervalEnd": "2016-11-30",
             "IntervalStart": "2016-09-27",
@@ -54,7 +54,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5524497,
             "PreviousBalance": "56967.9700",
-            "RawAccountNumber": "251 361 1121",
+            "RawAccountNumber": "511 585 5155",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6c1f6e-ed26-d492-abb6-22000b8ecbcd",
             "StatementDate": "2016-12-06",
             "StatementType": "statement_type_adjustment",
@@ -91,7 +91,7 @@
             "meters": []
         },
         {
-            "AccountNumber": "3540000430",
+            "AccountNumber": "2201688028",
             "AmountDue": "79994.5900",
             "IntervalEnd": "2020-01-30",
             "IntervalStart": "2019-12-31",
@@ -99,7 +99,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686355,
             "PreviousBalance": "76112.5700",
-            "RawAccountNumber": "354 000 0430",
+            "RawAccountNumber": "220 168 8028",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea55f82-6e76-d2be-8696-0e4f43ea92e1",
             "StatementDate": "2020-01-31",
             "StatementType": "statement_type_bill",
@@ -110,9 +110,9 @@
                 {
                     "IntervalEnd": "2020-01-30",
                     "IntervalStart": "2019-12-31",
-                    "MeterNumber": "APMYVL77373-77770 333",
+                    "MeterNumber": "APMYVL00000-00000 010",
                     "PK": 20362620,
-                    "PODid": "3007744740",
+                    "PODid": "3270577577",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -623,7 +623,7 @@
             ]
         },
         {
-            "AccountNumber": "3323322232",
+            "AccountNumber": "4551133543",
             "AmountDue": "75709.4000",
             "IntervalEnd": "2019-01-30",
             "IntervalStart": "2018-12-31",
@@ -631,7 +631,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686856,
             "PreviousBalance": "76087.5500",
-            "RawAccountNumber": "332 332 2232",
+            "RawAccountNumber": "455 113 3543",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd7-0dba-d659-b407-0e205cebf2e9",
             "StatementDate": "2019-01-31",
             "StatementType": "statement_type_bill",
@@ -642,9 +642,9 @@
                 {
                     "IntervalEnd": "2019-01-30",
                     "IntervalStart": "2018-12-31",
-                    "MeterNumber": "APMYVL44111-44440 121",
+                    "MeterNumber": "APMYVL44202-44442 232",
                     "PK": 20363612,
-                    "PODid": "7877866867",
+                    "PODid": "0222222222",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -1155,7 +1155,7 @@
             ]
         },
         {
-            "AccountNumber": "2008800020",
+            "AccountNumber": "1511433113",
             "AmountDue": "61801.0000",
             "IntervalEnd": "2018-02-28",
             "IntervalStart": "2018-01-30",
@@ -1163,7 +1163,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686861,
             "PreviousBalance": "64378.7900",
-            "RawAccountNumber": "200 880 0020",
+            "RawAccountNumber": "151 143 3113",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd8-b01a-def1-b407-0e205cebf2e9",
             "StatementDate": "2018-03-01",
             "StatementType": "statement_type_bill",
@@ -1174,9 +1174,9 @@
                 {
                     "IntervalEnd": "2018-02-28",
                     "IntervalStart": "2018-01-30",
-                    "MeterNumber": "APMYVL22111-22221 121",
+                    "MeterNumber": "APMYVL00404-00004 414",
                     "PK": 20363620,
-                    "PODid": "4212833831",
+                    "PODid": "0150511515",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -1687,7 +1687,7 @@
             ]
         },
         {
-            "AccountNumber": "4644444444",
+            "AccountNumber": "0250555505",
             "AmountDue": "93316.8300",
             "IntervalEnd": "2019-12-02",
             "IntervalStart": "2019-10-28",
@@ -1695,7 +1695,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686864,
             "PreviousBalance": "90528.9800",
-            "RawAccountNumber": "464 444 4444",
+            "RawAccountNumber": "025 055 5505",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd5-89b4-df1d-b407-0e205cebf2e9",
             "StatementDate": "2019-12-02",
             "StatementType": "statement_type_bill",
@@ -1706,9 +1706,9 @@
                 {
                     "IntervalEnd": "2019-12-02",
                     "IntervalStart": "2019-10-28",
-                    "MeterNumber": "APMYVL66262-66666 222",
+                    "MeterNumber": "APMYVL66262-66661 202",
                     "PK": 20363624,
-                    "PODid": "3131300303",
+                    "PODid": "1307177170",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -2219,7 +2219,7 @@
             ]
         },
         {
-            "AccountNumber": "5505000050",
+            "AccountNumber": "2310211121",
             "AmountDue": "76087.5500",
             "IntervalEnd": "2018-12-31",
             "IntervalStart": "2018-11-29",
@@ -2227,7 +2227,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686869,
             "PreviousBalance": "81173.0600",
-            "RawAccountNumber": "550 500 0050",
+            "RawAccountNumber": "231 021 1121",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd7-35b7-d365-b407-0e205cebf2e9",
             "StatementDate": "2019-01-02",
             "StatementType": "statement_type_bill",
@@ -2291,9 +2291,9 @@
                 {
                     "IntervalEnd": "2018-12-31",
                     "IntervalStart": "2018-11-29",
-                    "MeterNumber": "APMYVL88888-88888 858",
+                    "MeterNumber": "APMYVL55313-55555 323",
                     "PK": 20363631,
-                    "PODid": "0550011015",
+                    "PODid": "9999399399",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -2804,7 +2804,7 @@
             ]
         },
         {
-            "AccountNumber": "1311233113",
+            "AccountNumber": "1016311111",
             "AmountDue": "90528.9800",
             "IntervalEnd": "2019-10-28",
             "IntervalStart": "2019-09-26",
@@ -2812,7 +2812,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686878,
             "PreviousBalance": "93655.7200",
-            "RawAccountNumber": "131 123 3113",
+            "RawAccountNumber": "101 631 1111",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd5-b2c5-da39-b407-0e205cebf2e9",
             "StatementDate": "2019-10-29",
             "StatementType": "statement_type_bill",
@@ -2823,9 +2823,9 @@
                 {
                     "IntervalEnd": "2019-10-28",
                     "IntervalStart": "2019-09-26",
-                    "MeterNumber": "APMYVL11151-11110 101",
+                    "MeterNumber": "APMYVL44101-44447 151",
                     "PK": 20363644,
-                    "PODid": "5555555555",
+                    "PODid": "3441444444",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -3570,7 +3570,7 @@
             ]
         },
         {
-            "AccountNumber": "2004244024",
+            "AccountNumber": "2111211121",
             "AmountDue": "81173.0600",
             "IntervalEnd": "2018-11-29",
             "IntervalStart": "2018-10-26",
@@ -3578,7 +3578,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686882,
             "PreviousBalance": "75787.6100",
-            "RawAccountNumber": "200 424 4024",
+            "RawAccountNumber": "211 121 1121",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd7-5a6e-da71-b407-0e205cebf2e9",
             "StatementDate": "2018-11-30",
             "StatementType": "statement_type_bill",
@@ -3589,9 +3589,9 @@
                 {
                     "IntervalEnd": "2018-11-29",
                     "IntervalStart": "2018-10-26",
-                    "MeterNumber": "APMYVL33434-33333 474",
+                    "MeterNumber": "APMYVL66636-66663 666",
                     "PK": 20363650,
-                    "PODid": "6601400400",
+                    "PODid": "0501300300",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -4102,7 +4102,7 @@
             ]
         },
         {
-            "AccountNumber": "6620477267",
+            "AccountNumber": "4001488048",
             "AmountDue": "93655.7200",
             "IntervalEnd": "2019-09-26",
             "IntervalStart": "2019-08-27",
@@ -4110,7 +4110,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686890,
             "PreviousBalance": "93356.7500",
-            "RawAccountNumber": "662 047 7267",
+            "RawAccountNumber": "400 148 8048",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd5-d80f-d8aa-b407-0e205cebf2e9",
             "StatementDate": "2019-09-27",
             "StatementType": "statement_type_bill",
@@ -4121,9 +4121,9 @@
                 {
                     "IntervalEnd": "2019-09-26",
                     "IntervalStart": "2019-08-27",
-                    "MeterNumber": "APMYVL99595-99995 595",
+                    "MeterNumber": "APMYVL55505-55551 555",
                     "PK": 20363661,
-                    "PODid": "1606666660",
+                    "PODid": "2434344343",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -4634,7 +4634,7 @@
             ]
         },
         {
-            "AccountNumber": "1111566116",
+            "AccountNumber": "2242222422",
             "AmountDue": "75787.6100",
             "IntervalEnd": "2018-10-26",
             "IntervalStart": "2018-09-26",
@@ -4642,7 +4642,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686894,
             "PreviousBalance": "79109.0600",
-            "RawAccountNumber": "111 156 6116",
+            "RawAccountNumber": "224 222 2422",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd7-82c5-dccd-b407-0e205cebf2e9",
             "StatementDate": "2018-10-29",
             "StatementType": "statement_type_bill",
@@ -4653,9 +4653,9 @@
                 {
                     "IntervalEnd": "2018-10-26",
                     "IntervalStart": "2018-09-26",
-                    "MeterNumber": "APMYVL00020-00003 000",
+                    "MeterNumber": "APMYVL33232-33331 232",
                     "PK": 20363667,
-                    "PODid": "1666055056",
+                    "PODid": "7441799794",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -5400,7 +5400,7 @@
             ]
         },
         {
-            "AccountNumber": "0656655505",
+            "AccountNumber": "3160166636",
             "AmountDue": "93356.7500",
             "IntervalEnd": "2019-08-27",
             "IntervalStart": "2019-07-29",
@@ -5408,7 +5408,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686903,
             "PreviousBalance": "102008.3000",
-            "RawAccountNumber": "065 665 5505",
+            "RawAccountNumber": "316 016 6636",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd6-04df-daf8-b407-0e205cebf2e9",
             "StatementDate": "2019-08-28",
             "StatementType": "statement_type_bill",
@@ -5419,9 +5419,9 @@
                 {
                     "IntervalEnd": "2019-08-27",
                     "IntervalStart": "2019-07-29",
-                    "MeterNumber": "APMYVL44404-44444 444",
+                    "MeterNumber": "APMYVL33000-33337 030",
                     "PK": 20363681,
-                    "PODid": "8688866868",
+                    "PODid": "4443733734",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -5932,7 +5932,7 @@
             ]
         },
         {
-            "AccountNumber": "4321000240",
+            "AccountNumber": "4024833243",
             "AmountDue": "79109.0600",
             "IntervalEnd": "2018-09-26",
             "IntervalStart": "2018-08-28",
@@ -5940,7 +5940,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686907,
             "PreviousBalance": "87484.3800",
-            "RawAccountNumber": "432 100 0240",
+            "RawAccountNumber": "402 483 3243",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd7-ab8a-dd0e-b407-0e205cebf2e9",
             "StatementDate": "2018-09-27",
             "StatementType": "statement_type_bill",
@@ -5951,9 +5951,9 @@
                 {
                     "IntervalEnd": "2018-09-26",
                     "IntervalStart": "2018-08-28",
-                    "MeterNumber": "APMYVL33222-33333 252",
+                    "MeterNumber": "APMYVL77777-77771 747",
                     "PK": 20363687,
-                    "PODid": "0013399391",
+                    "PODid": "0550111115",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -6464,7 +6464,7 @@
             ]
         },
         {
-            "AccountNumber": "3331711331",
+            "AccountNumber": "3333433333",
             "AmountDue": "102008.3000",
             "IntervalEnd": "2019-07-29",
             "IntervalStart": "2019-06-27",
@@ -6472,7 +6472,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686915,
             "PreviousBalance": "90902.3500",
-            "RawAccountNumber": "333 171 1331",
+            "RawAccountNumber": "333 343 3333",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd6-2810-d736-b407-0e205cebf2e9",
             "StatementDate": "2019-07-30",
             "StatementType": "statement_type_bill",
@@ -6483,9 +6483,9 @@
                 {
                     "IntervalEnd": "2019-07-29",
                     "IntervalStart": "2019-06-27",
-                    "MeterNumber": "APMYVL22222-22222 232",
+                    "MeterNumber": "APMYVL11212-11111 232",
                     "PK": 20363699,
-                    "PODid": "4440233234",
+                    "PODid": "0101199190",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -7178,7 +7178,7 @@
             ]
         },
         {
-            "AccountNumber": "3405688038",
+            "AccountNumber": "3366333633",
             "AmountDue": "87484.3800",
             "IntervalEnd": "2018-08-28",
             "IntervalStart": "2018-07-27",
@@ -7186,7 +7186,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686919,
             "PreviousBalance": "83324.4400",
-            "RawAccountNumber": "340 568 8038",
+            "RawAccountNumber": "336 633 3633",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd7-ce9e-d48c-b407-0e205cebf2e9",
             "StatementDate": "2018-08-28",
             "StatementType": "statement_type_bill",
@@ -7197,9 +7197,9 @@
                 {
                     "IntervalEnd": "2018-08-28",
                     "IntervalStart": "2018-07-27",
-                    "MeterNumber": "APMYVL00777-00007 777",
+                    "MeterNumber": "APMYVL77191-77776 161",
                     "PK": 20363705,
-                    "PODid": "5555111115",
+                    "PODid": "7077488487",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -7710,7 +7710,7 @@
             ]
         },
         {
-            "AccountNumber": "2642844424",
+            "AccountNumber": "4404044044",
             "AmountDue": "90902.3500",
             "IntervalEnd": "2019-06-27",
             "IntervalStart": "2019-05-29",
@@ -7718,7 +7718,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686927,
             "PreviousBalance": "79372.8400",
-            "RawAccountNumber": "264 284 4424",
+            "RawAccountNumber": "440 404 4044",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd6-4d9e-db58-b407-0e205cebf2e9",
             "StatementDate": "2019-06-28",
             "StatementType": "statement_type_bill",
@@ -7729,9 +7729,9 @@
                 {
                     "IntervalEnd": "2019-06-27",
                     "IntervalStart": "2019-05-29",
-                    "MeterNumber": "APMYVL11111-11115 151",
+                    "MeterNumber": "APMYVL11111-11111 111",
                     "PK": 20363717,
-                    "PODid": "0202322320",
+                    "PODid": "9698899899",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -8359,7 +8359,7 @@
             ]
         },
         {
-            "AccountNumber": "2166611621",
+            "AccountNumber": "0000700000",
             "AmountDue": "83324.4400",
             "IntervalEnd": "2018-07-27",
             "IntervalStart": "2018-06-27",
@@ -8367,7 +8367,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686931,
             "PreviousBalance": "71813.8700",
-            "RawAccountNumber": "216 661 1621",
+            "RawAccountNumber": "000 070 0000",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd7-f96d-dcba-b407-0e205cebf2e9",
             "StatementDate": "2018-07-30",
             "StatementType": "statement_type_bill",
@@ -8378,9 +8378,9 @@
                 {
                     "IntervalEnd": "2018-07-27",
                     "IntervalStart": "2018-06-27",
-                    "MeterNumber": "APMYVL11111-11111 151",
+                    "MeterNumber": "APMYVL33616-33333 636",
                     "PK": 20363723,
-                    "PODid": "0411411411",
+                    "PODid": "2021599592",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -9073,7 +9073,7 @@
             ]
         },
         {
-            "AccountNumber": "4222422242",
+            "AccountNumber": "6576633763",
             "AmountDue": "79372.8400",
             "IntervalEnd": "2019-05-29",
             "IntervalStart": "2019-04-29",
@@ -9081,7 +9081,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686939,
             "PreviousBalance": "78773.2000",
-            "RawAccountNumber": "422 242 2242",
+            "RawAccountNumber": "657 663 3763",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd6-7e22-d284-b407-0e205cebf2e9",
             "StatementDate": "2019-05-30",
             "StatementType": "statement_type_bill",
@@ -9092,9 +9092,9 @@
                 {
                     "IntervalEnd": "2019-05-29",
                     "IntervalStart": "2019-04-29",
-                    "MeterNumber": "APMYVL55505-55553 555",
+                    "MeterNumber": "APMYVL44141-44440 141",
                     "PK": 20363735,
-                    "PODid": "1142244244",
+                    "PODid": "2320055052",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -9605,7 +9605,7 @@
             ]
         },
         {
-            "AccountNumber": "6565288668",
+            "AccountNumber": "6606033063",
             "AmountDue": "71813.8700",
             "IntervalEnd": "2018-06-27",
             "IntervalStart": "2018-05-29",
@@ -9613,7 +9613,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686943,
             "PreviousBalance": "69840.2400",
-            "RawAccountNumber": "656 528 8668",
+            "RawAccountNumber": "660 603 3063",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd8-1e81-dfbc-b407-0e205cebf2e9",
             "StatementDate": "2018-06-28",
             "StatementType": "statement_type_bill",
@@ -9624,9 +9624,9 @@
                 {
                     "IntervalEnd": "2018-06-27",
                     "IntervalStart": "2018-05-29",
-                    "MeterNumber": "APMYVL55636-55550 646",
+                    "MeterNumber": "APMYVL00222-00001 202",
                     "PK": 20363741,
-                    "PODid": "6365566566",
+                    "PODid": "2025722722",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -10254,7 +10254,7 @@
             ]
         },
         {
-            "AccountNumber": "2636033323",
+            "AccountNumber": "3330699339",
             "AmountDue": "78773.2000",
             "IntervalEnd": "2019-04-29",
             "IntervalStart": "2019-03-29",
@@ -10262,7 +10262,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686952,
             "PreviousBalance": "73509.0000",
-            "RawAccountNumber": "263 603 3323",
+            "RawAccountNumber": "333 069 9339",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd6-a18f-dfb0-b407-0e205cebf2e9",
             "StatementDate": "2019-05-07",
             "StatementType": "statement_type_bill",
@@ -10273,9 +10273,9 @@
                 {
                     "IntervalEnd": "2019-04-29",
                     "IntervalStart": "2019-03-29",
-                    "MeterNumber": "APMYVL33444-33331 434",
+                    "MeterNumber": "APMYVL88666-88888 606",
                     "PK": 20363754,
-                    "PODid": "2111222221",
+                    "PODid": "0303000000",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -10903,7 +10903,7 @@
             ]
         },
         {
-            "AccountNumber": "3123322232",
+            "AccountNumber": "1311188118",
             "AmountDue": "69840.2400",
             "IntervalEnd": "2018-05-29",
             "IntervalStart": "2018-04-27",
@@ -10911,7 +10911,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686956,
             "PreviousBalance": "64746.5300",
-            "RawAccountNumber": "312 332 2232",
+            "RawAccountNumber": "131 118 8118",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd8-44fa-d918-b407-0e205cebf2e9",
             "StatementDate": "2018-05-30",
             "StatementType": "statement_type_bill",
@@ -10922,9 +10922,9 @@
                 {
                     "IntervalEnd": "2018-05-29",
                     "IntervalStart": "2018-04-27",
-                    "MeterNumber": "APMYVL33333-33333 333",
+                    "MeterNumber": "APMYVL33303-33333 353",
                     "PK": 20363760,
-                    "PODid": "5350555555",
+                    "PODid": "0555055055",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -11435,7 +11435,7 @@
             ]
         },
         {
-            "AccountNumber": "0223233203",
+            "AccountNumber": "3676633733",
             "AmountDue": "73509.0000",
             "IntervalEnd": "2019-03-29",
             "IntervalStart": "2019-02-28",
@@ -11443,7 +11443,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686965,
             "PreviousBalance": "71940.3900",
-            "RawAccountNumber": "022 323 3203",
+            "RawAccountNumber": "367 663 3733",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd6-c5b7-d571-b407-0e205cebf2e9",
             "StatementDate": "2019-04-01",
             "StatementType": "statement_type_bill",
@@ -11454,9 +11454,9 @@
                 {
                     "IntervalEnd": "2019-03-29",
                     "IntervalStart": "2019-02-28",
-                    "MeterNumber": "APMYVL77373-77772 373",
+                    "MeterNumber": "APMYVL11777-11111 777",
                     "PK": 20363773,
-                    "PODid": "6616299291",
+                    "PODid": "6606166160",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -11967,7 +11967,7 @@
             ]
         },
         {
-            "AccountNumber": "6010166166",
+            "AccountNumber": "0207444004",
             "AmountDue": "64746.5300",
             "IntervalEnd": "2018-04-27",
             "IntervalStart": "2018-03-29",
@@ -11975,7 +11975,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686969,
             "PreviousBalance": "61096.2800",
-            "RawAccountNumber": "601 016 6166",
+            "RawAccountNumber": "020 744 4004",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd8-68e0-d054-b407-0e205cebf2e9",
             "StatementDate": "2018-04-30",
             "StatementType": "statement_type_bill",
@@ -11986,9 +11986,9 @@
                 {
                     "IntervalEnd": "2018-04-27",
                     "IntervalStart": "2018-03-29",
-                    "MeterNumber": "APMYVL11111-11113 131",
+                    "MeterNumber": "APMYVL88888-88885 888",
                     "PK": 20363779,
-                    "PODid": "5312888881",
+                    "PODid": "5441555554",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -12616,7 +12616,7 @@
             ]
         },
         {
-            "AccountNumber": "1411111111",
+            "AccountNumber": "3551311531",
             "AmountDue": "71940.3900",
             "IntervalEnd": "2019-02-28",
             "IntervalStart": "2019-01-30",
@@ -12624,7 +12624,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686978,
             "PreviousBalance": "75709.4000",
-            "RawAccountNumber": "141 111 1111",
+            "RawAccountNumber": "355 131 1531",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd6-e66d-d5cd-b407-0e205cebf2e9",
             "StatementDate": "2019-03-01",
             "StatementType": "statement_type_bill",
@@ -12635,9 +12635,9 @@
                 {
                     "IntervalEnd": "2019-02-28",
                     "IntervalStart": "2019-01-30",
-                    "MeterNumber": "APMYVL77727-77777 777",
+                    "MeterNumber": "APMYVL66000-66660 030",
                     "PK": 20363792,
-                    "PODid": "8888888888",
+                    "PODid": "4545088084",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -13148,7 +13148,7 @@
             ]
         },
         {
-            "AccountNumber": "4702022042",
+            "AccountNumber": "0313088108",
             "AmountDue": "61096.2800",
             "IntervalEnd": "2018-03-29",
             "IntervalStart": "2018-02-28",
@@ -13156,7 +13156,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686983,
             "PreviousBalance": "61801.0000",
-            "RawAccountNumber": "470 202 2042",
+            "RawAccountNumber": "031 308 8108",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd8-8d90-d295-b407-0e205cebf2e9",
             "StatementDate": "2018-03-30",
             "StatementType": "statement_type_bill",
@@ -13167,9 +13167,9 @@
                 {
                     "IntervalEnd": "2018-03-29",
                     "IntervalStart": "2018-02-28",
-                    "MeterNumber": "APMYVL22424-22220 414",
+                    "MeterNumber": "APMYVL33535-33331 545",
                     "PK": 20363800,
-                    "PODid": "0506677670",
+                    "PODid": "0481788788",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -13680,7 +13680,7 @@
             ]
         },
         {
-            "AccountNumber": "0707766006",
+            "AccountNumber": "2423422222",
             "AmountDue": "76112.5700",
             "IntervalEnd": "2019-12-31",
             "IntervalStart": "2019-12-02",
@@ -13688,7 +13688,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5686986,
             "PreviousBalance": "93316.8300",
-            "RawAccountNumber": "070 776 6006",
+            "RawAccountNumber": "242 342 2222",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea57bd5-6089-d651-b407-0e205cebf2e9",
             "StatementDate": "2020-01-02",
             "StatementType": "statement_type_bill",
@@ -13699,9 +13699,9 @@
                 {
                     "IntervalEnd": "2019-12-31",
                     "IntervalStart": "2019-12-02",
-                    "MeterNumber": "APMYVL11010-11111 000",
+                    "MeterNumber": "APMYVL22222-22222 232",
                     "PK": 20363804,
-                    "PODid": "2311133131",
+                    "PODid": "2025255252",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -14212,7 +14212,7 @@
             ]
         },
         {
-            "AccountNumber": "2203122022",
+            "AccountNumber": "3135055335",
             "AmountDue": "85389.3400",
             "IntervalEnd": "2020-03-02",
             "IntervalStart": "2020-01-30",
@@ -14220,7 +14220,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5688502,
             "PreviousBalance": "79994.5900",
-            "RawAccountNumber": "220 312 2022",
+            "RawAccountNumber": "313 505 5335",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea5e02e-258b-d0a8-8921-0e8c9c2dd043",
             "StatementDate": "2020-03-03",
             "StatementType": "statement_type_bill",
@@ -14245,9 +14245,9 @@
                 {
                     "IntervalEnd": "2020-03-02",
                     "IntervalStart": "2020-01-30",
-                    "MeterNumber": "APMYVL66626-66665 626",
+                    "MeterNumber": "APMYVL44202-44440 262",
                     "PK": 20368299,
-                    "PODid": "1111155151",
+                    "PODid": "2200700700",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
@@ -14758,7 +14758,7 @@
             ]
         },
         {
-            "AccountNumber": "4004855045",
+            "AccountNumber": "2209299029",
             "AmountDue": "76373.6600",
             "IntervalEnd": "2020-04-02",
             "IntervalStart": "2020-03-02",
@@ -14766,7 +14766,7 @@
             "OutstandingBalance": "0.0000",
             "PK": 5693067,
             "PreviousBalance": "85389.3400",
-            "RawAccountNumber": "400 485 5045",
+            "RawAccountNumber": "220 929 9029",
             "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea75b69-b396-d90b-b207-0eeb54a4d03d",
             "StatementDate": "2020-04-02",
             "StatementType": "statement_type_bill",
@@ -14777,9 +14777,9 @@
                 {
                     "IntervalEnd": "2020-04-02",
                     "IntervalStart": "2020-03-02",
-                    "MeterNumber": "APMYVL00232-00005 202",
+                    "MeterNumber": "APMYVL44626-44440 666",
                     "PK": 20380627,
-                    "PODid": "3505877870",
+                    "PODid": "0001400400",
                     "ServiceType": "electric",
                     "Tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
                     "charges": [
