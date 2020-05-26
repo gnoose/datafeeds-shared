@@ -339,6 +339,7 @@ def launch_by_name(
     meta: Optional[dict],
     gen_service_id: Optional[str],  # The generation SAID, if applicable.
     source_type: Optional[str],
+    exit: Optional[bool] = True,
 ):
     db.init()
     config.FEATURE_FLAGS = (
@@ -406,7 +407,9 @@ def launch_by_name(
 
     db.session.rollback()  # Don't commit fake objects to the database.
     db.session.close()
-    sys.exit(1 if status == Status.FAILED else 0)
+    if exit:
+        print("exiting")
+        sys.exit(1 if status == Status.FAILED else 0)
 
 
 def launch_by_oid_args(args: Namespace):

@@ -144,6 +144,29 @@ transformer (ie utility) to use:
 
     python transform_urja_json.py keller_isd_input.json southlake
 
+### creating and updating test cases
+
+Testcases should include the meter oid in the name, in case they need to be updated after changes to the scraper. Thee filenames should not include the service id or utility account id, since these can be considered sensitive information. These are anonymized in the examples below.
+
+Get the utility account and service id for a provisioned meter:
+
+```
+gridium=> select m.name, us.utility_account_id, us.service_id from meter m, utility_service us where m.oid=1783662075908 and m.service=us.oid;
+         name          | utility_account_id |     service_id
+-----------------------+--------------------+---------------------
+ 311 S Spring St (x12) | 9333330000         | APMYV00677-00007777
+```
+
+Run `urja_test_fixture.sh` with the meter oid, utility, utility account id, and SAID as parameters:
+
+    ./scripts/urja_test_fixture.sh 1783933378562 ladwp 9333330000 APMYV00677-00007777
+
+This will:
+  - run `dump_urja_json.py` to create an input file with the meter oid: `meterOid_input.json`
+  - run `transform_urja_json.py` to create an expected file with the meter oid: `meterOid_input.json`, by running the transformtransformer defined for the utility in [cli_hooks.py](../datafeeds/urjanet/scripts/cli_hooks.py)
+  - `git add` to the files
+  - output a line to add to the test file
+
 ### Supporting a new utilty
 A new Utility can be added to the CLI by adding an entry to the
 [cli_hooks.py](../datafeeds/urjanet/scripts/cli_hooks.py)

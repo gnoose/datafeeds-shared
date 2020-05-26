@@ -1,86 +1,6 @@
 {
     "periods": [
         {
-            "end": "2014-12-31",
-            "peak_demand": null,
-            "start": "2014-11-13",
-            "statement": "2015-01-02",
-            "tariff": null,
-            "total_charge": "2519.0000",
-            "total_usage": "0",
-            "line_items": [
-                {
-                    "ChargeActualName": "Deposit Charges *",
-                    "ChargeAmount": "2500.0000",
-                    "ChargeId": "ch.misc_charge",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2014-12-31",
-                    "IntervalStart": "2014-11-13",
-                    "IsAdjustmentCharge": true,
-                    "PK": 231550130,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Electric Start Service Fee",
-                    "ChargeAmount": "19.0000",
-                    "ChargeId": "ch.service_charge",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2014-12-31",
-                    "IntervalStart": "2014-11-13",
-                    "IsAdjustmentCharge": true,
-                    "PK": 231550131,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "source_urls": [
-                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e5d5fba-398d-dd9b-a125-22000b954e35"
-            ]
-        },
-        {
-            "end": "2016-11-30",
-            "peak_demand": null,
-            "start": "2016-09-27",
-            "statement": "2016-12-06",
-            "tariff": null,
-            "total_charge": "0.0000",
-            "total_usage": "0",
-            "line_items": [
-                {
-                    "ChargeActualName": "Total Corrections",
-                    "ChargeAmount": "-56967.9700",
-                    "ChargeId": "ch.adjustments",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2016-11-30",
-                    "IntervalStart": "2016-09-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 232163129,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                },
-                {
-                    "ChargeActualName": "Electric Service Charges - Previous Estimated Read CANCELLED AMOUNT",
-                    "ChargeAmount": "56967.9700",
-                    "ChargeId": "ch.service_charge",
-                    "ChargeRatePerUnit": "0.0000",
-                    "ChargeUnitsUsed": "0.0000",
-                    "IntervalEnd": "2016-10-27",
-                    "IntervalStart": "2016-09-27",
-                    "IsAdjustmentCharge": true,
-                    "PK": 232163130,
-                    "ThirdPartyProvider": "",
-                    "UsageUnit": ""
-                }
-            ],
-            "source_urls": [
-                "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e6c1f6e-ed26-d492-abb6-22000b8ecbcd"
-            ]
-        },
-        {
             "end": "2018-02-27",
             "peak_demand": "896.0000",
             "start": "2018-01-30",
@@ -11134,7 +11054,7 @@
             "start": "2020-01-30",
             "statement": "2020-03-03",
             "tariff": null,
-            "total_charge": "85389.3400",
+            "total_charge": "85399.3400",
             "total_usage": "480800.0000",
             "line_items": [
                 {
@@ -11546,7 +11466,7 @@
             ]
         },
         {
-            "end": "2020-04-02",
+            "end": "2020-04-01",
             "peak_demand": "944.0000",
             "start": "2020-03-02",
             "statement": "2020-04-02",
