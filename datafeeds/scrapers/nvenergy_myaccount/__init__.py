@@ -50,6 +50,11 @@ NVE_CERT_BUNDLE = os.path.join(
 
 logger = None
 NVE_API = "https://services.nvenergy.com/api/1.0/cdx/"
+"""
+NVEnergy often updates the available data only once per billing period. Widen the requested range
+at least this many days to prevent gaps.
+"""
+MIN_DAYS = 30
 
 
 UsagePoint = namedtuple("UsagePoint", ["datetime", "kW"])
@@ -88,9 +93,13 @@ class NvEnergyMyAccountScraper(BaseApiScraper):
         token_refresh = None
 
         dt = timedelta(hours=24)
-        current = self.start_date
 
-        timeline = Timeline(self.start_date, self.end_date)
+        days = (self.end_date - self.start_date).days
+        if days < MIN_DAYS:
+            current = self.end_date - MIN_DAYS
+        else:
+            current = self.start_date
+        timeline = Timeline(current, self.end_date)
 
         while current <= self.end_date:
             if not token_refresh or datetime.now() - token_refresh > timedelta(
