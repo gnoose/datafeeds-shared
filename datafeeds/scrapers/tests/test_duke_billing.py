@@ -1,8 +1,6 @@
 import argparse
-from unittest import mock
 from datetime import date
-import functools as ft
-from typing import List
+from unittest import mock
 
 from dateutil import parser as date_parser
 
@@ -18,36 +16,36 @@ from datafeeds.scrapers.duke.billing import DukeBillingConfiguration, DukeBillin
 
 
 def test_scraper(
-    utility_account: str, start_date: date, end_date: date, username: str, password: str
+    account_id: str, start_date: date, end_date: date, username: str, password: str
 ):
-    configuration = DukeBillingConfiguration(
-        utility="duke", utility_account=utility_account
-    )
+    configuration = DukeBillingConfiguration(utility="duke", account_id=account_id)
     credentials = Credentials(username, password)
     scraper = DukeBillingScraper(
         credentials, DateRange(start_date, end_date), configuration
     )
     scraper.start()
-    scraper.scrape(
-        readings_handler=None,
-        bills_handler=print,
-        pdfs_handler=None,
-    )
+    with mock.patch("datafeeds.scrapers.duke.pages.upload_bill_to_s3"):
+        scraper.scrape(
+            readings_handler=None,
+            bills_handler=print,
+            partial_bills_handler=print,
+            pdfs_handler=None,
+        )
     scraper.stop()
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("utility_account", type=str)
+    parser.add_argument("account_id", type=str)
     parser.add_argument("start", type=str)
     parser.add_argument("end", type=str)
     parser.add_argument("username", type=str)
     parser.add_argument("password", type=str)
     args = parser.parse_args()
     test_scraper(
-        args.utility_account,
-        date_parser.parse(args.start),
-        date_parser.parse(args.end),
+        args.account_id,
+        date_parser.parse(args.start).date(),
+        date_parser.parse(args.end).date(),
         args.username,
         args.password,
     )

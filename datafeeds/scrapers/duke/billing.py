@@ -102,24 +102,11 @@ class DukeBillingScraper(BaseWebScraper):
         # download PDF and go to info page
         state_machine.add_state(
             name="bill_history_page",
-            page=duke_pages.BillHistoryPage(self._driver, self.account_id),
+            page=duke_pages.BillHistoryPage(
+                self._driver, self.account_id, self.start_date, self.end_date
+            ),
             action=self.bill_history_page_action,
-            transitions=["bill_info_page"],
-        )
-
-        # click to go to usage details
-        state_machine.add_state(
-            name="bill_info_page",
-            page=duke_pages.BillInfoPage(self._driver),
-            action=self.bill_info_page_action,
-            transitions=["bill_info_page"],
-        )
-
-        # get bill details
-        state_machine.add_state(
-            name="usage_history_page",
-            page=duke_pages.UsageHistoryPage(self._driverd),
-            action=self.usage_history_page_action,
+            transitions=["done"],
         )
 
         # And that's the end
@@ -166,11 +153,6 @@ class DukeBillingScraper(BaseWebScraper):
 
     def bill_history_page_action(self, page: duke_pages.BillHistoryPage):
         """Download pdfs and get bill details."""
-        page.get_details(self.start_date, self.end_date)
-
-    # TODO: remove this when no longer needed
-    def accounts_page_action(self, page: duke_pages.DukeAccountsPage):
-        """Process accounts page action """
         if self.start_date and self.end_date:
             if self.start_date > self.end_date:
                 err_msg = "The scraper start date must be before the end date (start={}, end={})".format(
@@ -178,14 +160,8 @@ class DukeBillingScraper(BaseWebScraper):
                 )
                 raise errors.BillingScraperInvalidDateRangeException(err_msg)
 
-        if self.account_id:
-            self.billing_history = page.process_account(
-                self.account_id, self.start_date, self.end_date
-            )
-        else:
-            self.billing_history = page.process_all_accounts(
-                self.start_date, self.end_date
-            )
+        page.download_pdfs()
+        self.billing_history = page.get_details(self.utility, self.account_id)
 
 
 def datafeed(
