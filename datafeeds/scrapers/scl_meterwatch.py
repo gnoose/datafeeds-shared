@@ -35,6 +35,12 @@ log = logging.getLogger(__name__)
 
 IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
 
+"""
+SCL Meter Watch can have delays in arrival of interval data. Widen the requested range
+at least this many days to prevent gaps.
+"""
+MIN_DAYS = 30
+
 
 def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
     """Read and parse data from csv file.
@@ -188,11 +194,10 @@ class MeterDataPage(CSSSelectorBasePageObject):
                 # Back up start date to request original date range.
                 start_date = end_date + (original_start - original_end)
 
-            if start_date != original_start:
-                log.info("Start date adjusted to {}".format(start_date))
-
-            if end_date != original_end:
-                log.info("End date adjusted to {}".format(end_date))
+        days = (end_date - start_date).days
+        if days < MIN_DAYS:
+            # Widening date range to avoid data gaps.
+            start_date = end_date - timedelta(days=MIN_DAYS)
 
         # the webpage shows an error if start_date is greater than end_date
         # make sure its a valid range
