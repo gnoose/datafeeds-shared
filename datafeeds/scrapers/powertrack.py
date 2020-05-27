@@ -125,16 +125,13 @@ class SiteStatusPage:
         fifteen_minute.click()
 
     def hamburger_click(self):
-        # TODO find a better selector if possible
-        hamburger_selector = (
-            "#classic-view > div > div > div:nth-child(2) > div:nth-child(2) > div > div > div > "
-            "div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div > span > svg"
-        )
+        hamburger_xpath = """//*[@class='svg-inline--fa fa-bars fa-w-14 fa-fw ']"""
         log.info("Waiting for hamburger to be clickable")
-        # this wait is necessary or it fails with 'other element would get click'
+        # This wait is necessary or it fails with 'other element would get click'
         time.sleep(5)
         hamburger = self.driver.wait(60).until(
-            ec.element_to_be_clickable((By.CSS_SELECTOR, hamburger_selector))
+            ec.element_to_be_clickable((By.XPATH, hamburger_xpath))
+            # ec.element_to_be_clickable((By.CSS_SELECTOR, hamburger_selector))
         )
         log.info("Clicking hamburger")
         hamburger.click()
@@ -151,10 +148,9 @@ class SiteStatusPage:
         return file_path
 
     def calendar_back_click(self):
-        # More svg with Selenium fun
         # https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/6441#issuecomment-192146989
         back_button_xpath = (
-            """//*[@class='svg-inline--fa fa-chevron-left fa-w-10 fa-fw hover']"""
+            """//*[@class='svg-inline--fa fa-chevron-left fa-w-10 fa-fw ']"""
         )
         back_button = self.driver.wait().until(
             ec.element_to_be_clickable((By.XPATH, back_button_xpath))
