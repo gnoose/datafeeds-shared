@@ -1,10 +1,9 @@
 """ Duke Page module """
-import time
 import logging
 import os
 import csv
+import re
 
-from itertools import islice
 from datetime import date, timedelta
 from typing import List, Tuple
 
@@ -17,8 +16,9 @@ from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.common.typing import BillingDatum, BillingRange
 from datafeeds.common.util.selenium import ec_and
 from datafeeds.common.util.pagestate.pagestate import PageState
+from datafeeds.parsers import pdfparser
 from datafeeds.scrapers.duke import errors
-from datafeeds.common.upload import hash_bill_datum, upload_bill_to_s3
+from datafeeds.common.upload import hash_bill, upload_bill_to_s3
 
 
 logger = None
@@ -46,7 +46,6 @@ class DukeLoginPage(PageState):
 
     def login(self, username: str, password: str):
         """Log into the Duke account """
-        time.sleep(15)
         username_field = self.driver.find_element(*self.UsernameInputLocator)
         username_field.send_keys(username)
 
@@ -100,7 +99,7 @@ class DukeLandingPage(PageState):
             *self.link_to_accs_locator
         )
         bills_page_for_meters_link.click()
-        time.sleep(1)
+        self.driver.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
     def open_profiler_page(self):
@@ -125,9 +124,8 @@ class AccountListPage(PageState):
         account_link = self.driver.find_element(
             By.XPATH, f"//a[contains(., '{self.account_id}')]"
         )
-
         scroll_to(self.driver, account_link)
-        time.sleep(0.5)
+        self.driver.sleep(0.5)
         account_link.click()
 
 
@@ -138,15 +136,17 @@ class BillHistoryPage(PageState):
         super().__init__(driver)
         self.start_date = start_date
         self.end_date = end_date
-        self.pdfs: List[Tuple[BillingRange, str]] = []
+        self.account_id = account_id
+        self.pdfs: List[Tuple[BillingRange, str, date]] = []
+        self.download_dir = f"{config.WORKING_DIRECTORY}/current"
 
     def get_ready_condition(self):
         return EC.visibility_of_element_located((By.CSS_SELECTOR, "tr.GridHeader"))
 
     def download_pdfs(self):
+        """Download PDFs and collect billing date ranges.
 
-        """
-        for dates in start_date - end_date range
+        For dates in start_date - end_date range
           - build a list of start/end dates from the list of bills (end date in table, start date
             is previous bill end date + 1 day)
           - download PDFs for dates in range
@@ -157,48 +157,78 @@ class BillHistoryPage(PageState):
             By.CSS_SELECTOR, "tr > td:nth-child(2) > a"
         )
         available_dates = [parse_date(i.text).date() for i in available_dates]
+        log.debug("available dates: %s", [dt.strftime("%Y-%m-%d") for dt in available_dates])
 
         # loop through dates in table in ascending order
-        for _date in reversed(available_dates):
+        previous_date = None
+        for pdf_date in reversed(available_dates):
+            if previous_date is None:
+                previous_date = pdf_date
             # skip if the date isn't in the specified range
-            if not (self.start_date <= _date <= self.end_date):
-                previous_date = _date
+            if not (self.start_date <= pdf_date <= self.end_date):
+                previous_date = pdf_date
+                log.debug("skipping date outside range: %s", pdf_date)
                 continue
 
             view_pdf_link = self.driver.find_element_by_xpath(
-                f'//a[.="{_date.strftime("%-m/%-d/%Y")}"]'
+                f'//a[.="{pdf_date.strftime("%-m/%-d/%Y")}"]'
             )
 
             scroll_to(self.driver, view_pdf_link)
-            time.sleep(0.5)
+            self.driver.sleep(0.5)
             view_pdf_link.click()
 
-            download_dir = f"{config.WORKING_DIRECTORY}/current"
             try:
                 self.driver.wait(30).until(
-                    file_exists_in_dir(directory=download_dir, pattern=r"^View.pdf$",)
+                    file_exists_in_dir(
+                        directory=self.download_dir, pattern=r"^View.pdf$",
+                    )
                 )
             except Exception:
-                raise Exception(f"Unable to download file...")
+                raise Exception(f"Unable to download file for %s" % pdf_date)
 
-            curr_path = os.path.join(download_dir, f"View.pdf")
+            curr_path = os.path.join(self.download_dir, f"View.pdf")
             new_path = os.path.join(
-                download_dir, f"bill_{_date.strftime('%-m_%-d_%Y')}.pdf"
+                self.download_dir, f"bill_{pdf_date.strftime('%-m_%-d_%Y')}.pdf"
             )
             os.rename(curr_path, new_path)
 
-            self.pdfs.append(
-                (
-                    BillingRange(start=previous_date + timedelta(days=1), end=_date),
-                    new_path,
+            """
+            Get the date range from the pdf: Service From:\n\nFEB 20 to MAR 20 ( 29 Days).
+            Billing ranges overlap: FEB 20 to MAR 20, MAR 20 - APR 21; exclude last date
+            """
+            text = pdfparser.pdf_to_str(new_path)
+            dates = re.search(r"([A-Z]+ \d+) to ([A-Z]+ \d+)", text, re.MULTILINE)
+            if dates:
+                start_text = dates.group(1)
+                end_text = dates.group(2)
+                end = parse_date("%s %s" % (end_text, pdf_date.year)).date()
+                year = pdf_date.year - 1 if start_text == "DEC" else pdf_date.year
+                start = parse_date("%s %s" % (start_text, year)).date()
+                log.info(
+                    "%s bill has date range %s - %s from pdf",
+                    pdf_date.strftime("%Y-%m-%d"),
+                    start.strftime("%Y-%m-%d"),
+                    end.strftime("%Y-%m-%d"),
                 )
+            else:
+                start = previous_date - timedelta(days=1)
+                end = pdf_date
+                log.info(
+                    "%s bill has date range %s - %s from table",
+                    pdf_date.strftime("%Y-%m-%d"),
+                    start.strftime("%Y-%m-%d"),
+                    end.strftime("%Y-%m-%d"),
+                )
+            self.pdfs.append(
+                (BillingRange(start=start, end=end - timedelta(days=1)), new_path, pdf_date)
             )
-
-            previous_date = _date
+            log.debug("found pdf for %s - %s", start, end)
+            previous_date = pdf_date
 
         return self.pdfs
 
-    def get_details(self, utility, account_id):
+    def get_details(self, utility: str, account_id: str) -> List[BillingDatum]:
         billing_data: List[BillingDatum] = []
 
         # click 13 Month kWh history
@@ -206,93 +236,90 @@ class BillHistoryPage(PageState):
             By.XPATH, "//a[contains(., '13 Month kWh History')]"
         ).click()
 
-        time.sleep(1)
+        self.driver.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[-1])
         # click View Usage History
         self.driver.find_element(By.XPATH, "//a[.='View Usage History']").click()
         # click Export
         self.driver.find_element(By.CSS_SELECTOR, "a#agreementHistoryToExport").click()
 
-        download_dir = f"{config.WORKING_DIRECTORY}/current"
         try:
             self.driver.wait(30).until(
                 file_exists_in_dir(
-                    directory=download_dir, pattern=r"^UsageHistory\.csv$",
+                    directory=self.download_dir, pattern=r"^UsageHistory\.csv$",
                 )
             )
 
         except Exception:
-            raise Exception(f"Unable to download file...")
+            raise Exception(f"Unable to download 13 Month kWh history")
 
-        file_path = download_dir + "/UsageHistory.csv"
+        # open UsageHistory.csv and parse CSV
+        """
+        Account Number,"#1769654818   ",,,,,,,,,,,,,,,,,,,,,,,
+        Current Balance," $0.00",,,,,,,,,,,,,,,,,,,,,,,
+        ,,,,,,,,,,,,,,,,,,,,,,,,,
+        "LGS - Large General Service",
+        "Meter Number","#077618850"
+        "Contract Demand",
+        "Contract: 100"
+        ,
+         0            1           2                   3                          4
+        "Bill Month","Bill Year","Electricity Usage","Electricity Usage Amount","Actual Demand",
+         5                6                        7           8           9     10
+        "Billing Demand","Renewable Energy Rider","Sales Tax","# of Days","Adj","Total Charges",
+        """
+        seen_header = False
+        with open("%s/UsageHistory.csv" % self.download_dir, "r") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if not row:
+                    continue
+                if row[0] == "Bill Month":
+                    seen_header = True
+                    continue
+                if not seen_header:
+                    continue
+                month = int(row[0])
+                year = int(row[1])
 
-        # open UsageHistory.csv
-        # parse CSV
+                # find pdf in self.pdfs with the same month and year
+                pdfs = [
+                    pdf
+                    for pdf in self.pdfs
+                    if (pdf[0].end.month == month and pdf[0].end.year == year)
+                ]
+                log.debug("found pdf for %s/%s: %s", month, year, pdfs)
 
-        n = 0
-        f = open(file_path, "r")
-        #  we need to skip few of the starting lines
-        for line in f.readlines():
-            if line.startswith(
-                '"Bill Month","Bill Year"'
-            ):  # line with headers was found
-                break
-            n += 1
-        f.close()
-        f = islice(open(file_path, "r"), n, None)
-        reader = csv.DictReader(f)
-        for row in reader:
-            month = int(row["Bill Month"])
-            year = int(row["Bill Year"])
+                # skip entry if no pdf found for the date
+                if len(pdfs) != 1:
+                    log.info("no pdf found with end date %s/%s", month, year)
+                    continue
+                (billing_range, pdf_path, statement_date) = pdfs[0]
 
-            # find pdf in self.pdfs with the same month and year
-            a = [
-                i
-                for i in self.pdfs
-                if (i[0].end.month == month and i[0].end.year == year)
-            ]
-
-            # skip entry if no pdf found for the date
-            if len(a) != 1:
-                continue
-
-            a = a[0]
-
-            billing_range = a[0]
-            pdf_path = a[1]
-
-            start = billing_range.start
-            end = billing_range.end
-            cost = float(row["Total Charges"].replace("$", "").replace(",", ""))
-            usage = float(row["Electricity Usage"].replace(",", ""))
-            peak = float(row["Billing Demand"].replace(",", ""))
-
-            bill_data = BillingDatum(
-                start=start,
-                end=end,
-                cost=cost,
-                peak=peak,
-                statement=billing_range.end,
-                used=usage,
-                items=None,
-                attachments=None,
-            )
-
-            with open(pdf_path, "rb") as bill_file:
-                key = hash_bill_datum(account_id, bill_data) + ".pdf"
-                bill_data = bill_data._replace(
-                    attachments=[
-                        upload_bill_to_s3(
-                            bill_file,
-                            key,
-                            source="duke-energy.com",
-                            statement=billing_range.end,
-                            utility=utility,
-                            utility_account_id=account_id,
-                        )
-                    ]
+                start = billing_range.start
+                end = billing_range.end
+                cost = float(row[10].replace("$", "").replace(",", ""))
+                usage = float(row[2].replace(",", ""))
+                peak = float(row[5].replace(",", ""))
+                with open(pdf_path, "rb") as bill_file:
+                    attachment = upload_bill_to_s3(
+                        bill_file,
+                        "%s.pdf" % hash_bill(account_id, start, end, cost, peak, usage),
+                        source="duke-energy.com",
+                        statement=billing_range.end,
+                        utility=utility,
+                        utility_account_id=account_id,
+                    )
+                bill_data = BillingDatum(
+                    start=start,
+                    end=end,
+                    cost=cost,
+                    peak=peak,
+                    statement=statement_date,
+                    used=usage,
+                    items=None,
+                    attachments=[attachment],
                 )
-            billing_data.append(bill_data)
-        f.close()
+                billing_data.append(bill_data)
 
         return billing_data
