@@ -157,7 +157,7 @@ class BillHistoryPage(PageState):
             By.CSS_SELECTOR, "tr > td:nth-child(2) > a"
         )
         available_dates = [parse_date(i.text).date() for i in available_dates]
-        log.debug(
+        log.info(
             "available dates: %s", [dt.strftime("%Y-%m-%d") for dt in available_dates]
         )
 
