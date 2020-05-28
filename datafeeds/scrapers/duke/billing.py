@@ -22,9 +22,7 @@ log = logging.getLogger(__name__)
 
 
 class DukeBillingConfiguration(Configuration):
-    """ Duke Billing scraper configuration
-        account_id is optional.
-    """
+    """Duke Billing scraper configuration: utility and utility account id."""
 
     def __init__(self, utility: str, account_id: str):
         super().__init__(scrape_bills=True, scrape_readings=False)
@@ -33,7 +31,7 @@ class DukeBillingConfiguration(Configuration):
 
 
 class DukeBillingScraper(BaseWebScraper):
-    """ Duke Billing scraper """
+    """Duke Billing scraper """
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -43,12 +41,12 @@ class DukeBillingScraper(BaseWebScraper):
 
     @property
     def utility(self):
-        """ Return the utility"""
+        """Return the utility"""
         return self._configuration.utility
 
     @property
     def account_id(self):
-        """ Return the service ID """
+        """Return the service ID"""
         return self._configuration.account_id
 
     def define_state_machine(self):
@@ -83,20 +81,29 @@ class DukeBillingScraper(BaseWebScraper):
             transitions=["main_landing_page"],
         )
 
-        # We get to the landing page, where we need to open the billing page with all the meters
+        # We get to the landing page, where we need to open the account list page
         state_machine.add_state(
             name="main_landing_page",
             page=duke_pages.DukeLandingPage(self._driver),
             action=self.landing_page_action,
-            transitions=["accounts_page"],
+            transitions=["account_list_page"],
         )
 
+        # find and click the account_id
         state_machine.add_state(
-            name="accounts_page",
-            page=duke_pages.DukeAccountsPage(
-                self._driver, self.utility, self.account_id
+            name="account_list_page",
+            page=duke_pages.AccountListPage(self._driver, self.account_id),
+            action=self.account_list_page_action,
+            transitions=["bill_history_page"],
+        )
+
+        # download PDF and go to info page
+        state_machine.add_state(
+            name="bill_history_page",
+            page=duke_pages.BillHistoryPage(
+                self._driver, self.account_id, self.start_date, self.end_date
             ),
-            action=self.accounts_page_action,
+            action=self.bill_history_page_action,
             transitions=["done"],
         )
 
@@ -108,14 +115,14 @@ class DukeBillingScraper(BaseWebScraper):
         return state_machine
 
     def _execute(self):
-        """ Define, run and return the results from running this SM """
+        """Define, run and return the results from running this state machine."""
         state_machine = self.define_state_machine()
         final_state = state_machine.run()
         if final_state == "done":
             final_bills = adjust_bill_dates(self.billing_history)
             return Results(bills=final_bills)
         raise errors.BillingScraperException(
-            "The scraper did not reach a finished state, "
+            "The scraper did not reach a finished state; "
             "this will require developer attention."
         )
 
@@ -124,12 +131,12 @@ class DukeBillingScraper(BaseWebScraper):
         self._driver.get("https://www.duke-energy.com/my-account/single-sign-in")
 
     def login_action(self, page: duke_pages.DukeLoginPage):
-        """Process login action """
+        """Process login action"""
         page.login(self.username, self.password)
 
     @staticmethod
     def login_failed_action(page: duke_pages.DukeLoginFailedPage):
-        """Throws an exception on failure to login """
+        """Throws an exception on failure to login"""
         page.raise_on_error()
 
     @staticmethod
@@ -137,23 +144,21 @@ class DukeBillingScraper(BaseWebScraper):
         """Process landing page action """
         page.open_accounts_page()
 
-    def accounts_page_action(self, page: duke_pages.DukeAccountsPage):
-        """Process accounts page action """
-        if self.start_date and self.end_date:
-            if self.start_date > self.end_date:
-                err_msg = "The scraper start date must be before the end date (start={}, end={})".format(
-                    self.start_date, self.end_date
-                )
-                raise errors.BillingScraperInvalidDateRangeException(err_msg)
+    @staticmethod
+    def account_list_page_action(page: duke_pages.AccountListPage):
+        """Find and click the account_id."""
+        page.click_account()
 
-        if self.account_id:
-            self.billing_history = page.process_account(
-                self.account_id, self.start_date, self.end_date
-            )
-        else:
-            self.billing_history = page.process_all_accounts(
+    def bill_history_page_action(self, page: duke_pages.BillHistoryPage):
+        """Download pdfs and get bill details."""
+        if self.start_date and self.end_date and self.start_date > self.end_date:
+            err_msg = "The scraper start date must be before the end date (start={}, end={})".format(
                 self.start_date, self.end_date
             )
+            raise errors.BillingScraperInvalidDateRangeException(err_msg)
+
+        page.download_pdfs()
+        self.billing_history = page.get_details(self.utility, self.account_id)
 
 
 def datafeed(
