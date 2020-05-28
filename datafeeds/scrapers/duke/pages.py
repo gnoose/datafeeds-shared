@@ -157,7 +157,9 @@ class BillHistoryPage(PageState):
             By.CSS_SELECTOR, "tr > td:nth-child(2) > a"
         )
         available_dates = [parse_date(i.text).date() for i in available_dates]
-        log.debug("available dates: %s", [dt.strftime("%Y-%m-%d") for dt in available_dates])
+        log.debug(
+            "available dates: %s", [dt.strftime("%Y-%m-%d") for dt in available_dates]
+        )
 
         # loop through dates in table in ascending order
         previous_date = None
@@ -221,7 +223,11 @@ class BillHistoryPage(PageState):
                     end.strftime("%Y-%m-%d"),
                 )
             self.pdfs.append(
-                (BillingRange(start=start, end=end - timedelta(days=1)), new_path, pdf_date)
+                (
+                    BillingRange(start=start, end=end - timedelta(days=1)),
+                    new_path,
+                    pdf_date,
+                )
             )
             log.debug("found pdf for %s - %s", start, end)
             previous_date = pdf_date
