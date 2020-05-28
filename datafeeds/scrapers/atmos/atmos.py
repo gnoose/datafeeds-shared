@@ -56,9 +56,9 @@ class BillHistoryPage:
 
     def set_dates(self, start_date: date, end_date: date):
         """Request the maximum 23 months of billing history."""
-
-        start = max(date.today() - relativedelta(months=23), start_date)
         end = min(date.today(), end_date)
+        # site will return no results if start and end month are the same, so
+        start = min(start_date, end_date - relativedelta(months=1))
 
         start_month = start.strftime("%B")
         start_year = start.year
