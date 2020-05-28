@@ -226,7 +226,7 @@ class ExportCsvDialog:
 
     def begin_export_csv(self):
         """Start the CSV Export."""
-
+        log.info("Starting CSV export")
         # TODO: This is a little arduous right now, and I'd like to simplify if
         # possible. We click the background to make sure that previous UI
         # elements lose focus, then move to the export button and click
@@ -241,13 +241,15 @@ class ExportCsvDialog:
             action_chains.move_to_element(export)
             action_chains.pause(5)
             action_chains.click(export)
+            log.debug("\tstarting action chain")
             action_chains.perform()
 
     def wait_until_export_done(self):
         """Wait for the CSV export to finish. This might take 10s of seconds"""
+        log.info("Waiting for CSV export")
         with IFrameSwitch(self._driver, self.TargetIFrame):
             # Be a little more generous with this wait
-            wait = WebDriverWait(self._driver, 120)
+            wait = WebDriverWait(self._driver, 180)
             wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, self.DownloadCss))
             )
@@ -264,7 +266,6 @@ class ExportCsvDialog:
 
         @retry(stop_max_attempt_number=3, wait_fixed=10000)
         def get_download_link():
-
             return self._driver.find_element_by_css_selector(self.DownloadCss)
 
         with IFrameSwitch(self._driver, self.TargetIFrame):
@@ -303,9 +304,11 @@ class ExportCsvDialog:
             self._remove_attribute("txtEndDate", "class")
 
             date_fmt = "%m/%d/%Y"
-            start_field.clear()
+            # .clear doesn't always work, but this should
+            for _ in range(10):
+                start_field.send_keys(Keys.BACKSPACE)
+                end_field.send_keys(Keys.BACKSPACE)
             start_field.send_keys(start_date.strftime(date_fmt))
-            end_field.clear()
             end_field.send_keys(end_date.strftime(date_fmt))
 
     def get_min_start_date(self):
@@ -488,10 +491,12 @@ class HomePage:
             popup = self._driver.find_element_by_css_selector(self.PaperlessPopupCss)
         except:  # noqa: E722
             # If we can't find this popup, no worries
+            log.info("no popup")
             pass
 
         # Close the popup if we found it
         if popup is not None:
+            log.info("closing popup")
             close_button = popup.find_element_by_css_selector("button")
             # Pause after closing to make sure it disappears
             actions = ActionChains(self._driver)
@@ -501,7 +506,7 @@ class HomePage:
 
         selectors = [self.NavBarCss, self.AccountsCss, self.AccountCellCss]
         for css in selectors:
-            self._driver.wait().until(
+            self._driver.wait(120).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, css))
             )
 
@@ -678,7 +683,11 @@ class SdgeMyAccountScraper(BaseWebScraper):
         try:
             return self._execute_internal()
         except TimeoutException:
-            raise ScraperTimeout("Scraper timed out waiting for an element to appear.")
+            self.screenshot("timeout")
+            raise ScraperTimeout(
+                "Scraper timed out on waiting for an element to appear: %s"
+                % self._driver.current_url
+            )
 
     def _execute_internal(self):
         # Direct the driver to the login page
@@ -693,7 +702,7 @@ class SdgeMyAccountScraper(BaseWebScraper):
         # Authenticate
         log.info("Logging in.")
         login_page.wait_until_ready()
-        self.screenshot("beforelog.infoin")
+        self.screenshot("before login")
         # login seems to sometimes fail; try twice
         try:
             login_page.login(self.username, self.password, self)
@@ -703,14 +712,14 @@ class SdgeMyAccountScraper(BaseWebScraper):
             self._driver.sleep(30)
             self.screenshot("before second login")
             login_page.login(self.username, self.password, self)
+        self.screenshot("after login")
 
         # On the homepage, fetch the visible account information. This info
         # tells us (among other things) which account id is associated with
         # which account name.
         log.info("Waiting for home page to be ready.")
         home_page.wait_until_ready()
-
-        self.screenshot("home_page")
+        self.screenshot("home page loaded")
 
         # Go to the 'My Energy' Page
         log.info("Navigating to 'My Energy' page.")

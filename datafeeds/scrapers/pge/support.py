@@ -38,6 +38,28 @@ def wait_for_accounts_list(driver):
     wait_for_block_overlay(driver, 90)
 
 
+def close_modal(driver) -> bool:
+    """Find and close an active modal.
+
+    <div class="modal fade in"...>
+    return true if modal button found and clicked
+    """
+    try:
+        modal = driver.wait(5).until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, 'div[class="modal fade in"]')
+            )
+        )
+        log.info("closing modal %s", modal.get_attribute("id"))
+        # click close button: <button data-dismiss="modal"...>
+        modal.find_element_by_css_selector('button[data-dismiss="modal"]').click()
+        driver.sleep(3)
+        return True
+    except Exception as exc:
+        log.info("error closing modal: %s", exc)
+        return False
+
+
 def click(
     driver,
     css_selector: str = None,
@@ -69,7 +91,8 @@ def click(
                 wait_for_block_overlay(driver)
                 continue
             else:
-                raise
+                if not close_modal(driver):
+                    raise
 
         finally:
             retries_left -= 1

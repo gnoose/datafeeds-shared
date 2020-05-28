@@ -82,7 +82,8 @@ class PartialBill(ModelMixin, Base):
             cost=bill.cost,
             used=bill.used,
             peak=bill.peak,
-            modified=datetime.now(),
+            created=datetime.utcnow(),
+            modified=datetime.utcnow(),
             manual=False,
             items=[
                 {

@@ -3,6 +3,7 @@ from unittest import mock
 from datetime import date
 import functools as ft
 from typing import List
+from unittest.mock import MagicMock
 
 from dateutil import parser as date_parser
 
@@ -28,7 +29,11 @@ def test_scraper(
     utility_account: str, start_date: date, end_date: date, username: str, password: str
 ):
     configuration = PgeBillPdfConfiguration(
-        utility="pge", utility_account=utility_account
+        utility="pge",
+        utility_account=utility_account,
+        gen_utility=None,
+        gen_utility_account_id=None,
+        datasource=MagicMock(),
     )
     credentials = Credentials(username, password)
     scraper = PgeBillPdfScraper(
