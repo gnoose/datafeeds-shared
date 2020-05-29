@@ -5,7 +5,7 @@ import csv
 import re
 
 from datetime import date, timedelta
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
 from dateutil.parser import parse as parse_date
 
@@ -205,13 +205,15 @@ class BillHistoryPage(PageState):
                 start_text = dates.group(1)
                 end_text = dates.group(2)
                 end = parse_date("%s %s" % (end_text, pdf_date.year)).date()
-                year = pdf_date.year - 1 if start_text == "DEC" else pdf_date.year
+                year = pdf_date.year - 1 if "JAN" in end_text else pdf_date.year
                 start = parse_date("%s %s" % (start_text, year)).date()
                 log.info(
-                    "%s bill has date range %s - %s from pdf",
+                    "%s bill has date range %s - %s from pdf (%s to %s)",
                     pdf_date.strftime("%Y-%m-%d"),
                     start.strftime("%Y-%m-%d"),
                     end.strftime("%Y-%m-%d"),
+                    start_text,
+                    end_text,
                 )
             else:
                 start = previous_date - timedelta(days=1)
@@ -234,6 +236,116 @@ class BillHistoryPage(PageState):
 
         return self.pdfs
 
+    def get_pdf(self, dt: date):
+        """Find and return a pdf in self.pdfs with the same month and year"""
+        pdfs = [
+            pdf
+            for pdf in self.pdfs
+            if (pdf[0].end.month == dt.month and pdf[0].end.year == dt.year)
+        ]
+        log.debug("found pdf for %s/%s: %s", dt.month, dt.year, pdfs)
+        if len(pdfs) != 1:
+            return None
+        return pdfs[0]
+
+    def parse_csv(self, filename: str) -> Dict[date, BillingDatum]:
+        """Parse a UsageHistory.csv into a collection of BillingDatum objects."""
+
+        """
+        Account Number,"#1769654818   ",,,,,,,,,,,,,,,,,,,,,,,
+        Current Balance," $0.00",,,,,,,,,,,,,,,,,,,,,,,
+        ,,,,,,,,,,,,,,,,,,,,,,,,,
+        "LGS - Large General Service",
+        "Meter Number","#077618850"
+        "Contract Demand",
+        "Contract: 100"
+        ,
+
+        and then an assortment of layouts:
+
+        "Bill Month","Bill Year","Extra Facilities","Sales Tax","# of Days","Adj","Total Charges",
+
+        "Bill Month","Bill Year","Customer Charge","On-Peak Actual Demand(Winter)",
+        "On-Peak Billing Demand","On-Peak Billing Demand Amount","On-Peak Actual Demand(Summer)",
+        "On-Peak Billing Demand","On-Peak Billing Demand Amount","Off-Peak Actual Demand",
+        "On-Peak Energy(Winter)","On-Peak Energy(Winter) Amount","On-Peak Energy(Summer)",
+        "On-Peak Energy(Summer) Amount","Off-Peak Energy","Off-Peak Energy Amount","Economy Demand",
+        "Economy Demand Amount","Renewable Energy Rider","Sales Tax","# of Days","Adj","Total Charges",
+
+        "Bill Month","Bill Year","Standby Generation Credit","Sales Tax","# of Days","Adj","Total Charges",
+
+        "Bill Month","Bill Year","Electricity Usage","Electricity Usage Amount","Actual Demand",
+        "Billing Demand","Renewable Energy Rider","Sales Tax","# of Days","Adj","Total Charges",
+
+        "Bill Month","Bill Year","Electricity Usage","Electricity Usage Amount","Sales Tax",
+        "# of Days","Adj","Total Charges",
+
+        "Bill Month","Bill Year","Standby Generation Credit","Sales Tax","# of Days","Adj",
+        "Total Charges",
+        """
+        data: Dict[date, BillingDatum] = {}
+        # find the headers; they vary by meter typee, and aren't at the top of the file
+        headers = []
+        with open(filename, "r") as f:
+            reader = csv.reader(f)
+            for header_row in reader:
+                if header_row and "Bill Month" in header_row:
+                    headers = header_row
+                    break
+        log.info("found headers %s", headers)
+        seen_headers = False
+        with open(filename, "r") as f:
+            dict_reader = csv.DictReader(f, headers)
+            for row in dict_reader:
+                log.debug("row=%s", row)
+                # skip rows up to header
+                if "Bill Month" in row and row["Bill Month"] == "Bill Month":
+                    seen_headers = True
+                    continue
+                if not seen_headers:
+                    continue
+                month = int(row["Bill Month"])
+                year = int(row["Bill Year"])
+                pdf = self.get_pdf(date(year, month, 1))
+                # skip entry if no pdf found for the date
+                if not pdf:
+                    log.info("no pdf found with end date %s/%s", month, year)
+                    continue
+                (billing_range, pdf_path, statement_date) = pdf
+                start = billing_range.start
+                end = billing_range.end
+                cost = float(row["Total Charges"].replace("$", "").replace(",", ""))
+                # get the max peak and used from possibly multiple columns
+                peak = None
+                used = 0.0
+                for col in row.keys():
+                    if not row[col] or "$" in row[col]:
+                        continue
+                    if not ("Demand" in col or "Energy" in col):
+                        continue
+                    log.debug("col %s = %s", col, row[col])
+                    val = float(row[col].replace(",", ""))
+                    # On-Peak Actual Demand(Winter) or Billing Demand
+                    if "Demand" in col:
+                        peak = val if peak is None else max(val, peak)
+                    # On-Peak Energy(Winter) and Off-Peak Energy
+                    # but not On-Peak Energy(Winter) Amount or Off-Peak Energy Amount
+                    if "Energy" in col and "Amount" not in col:
+                        used += val
+                if "Electricity Usage" in row:
+                    used = float(row["Electricity Usage"].replace(",", ""))  # type: ignore
+                data[end] = BillingDatum(
+                    start=start,
+                    end=end,
+                    cost=cost,
+                    peak=peak,
+                    statement=statement_date,
+                    used=used,
+                    items=None,
+                    attachments=None,
+                )
+        return data
+
     def get_details(self, utility: str, account_id: str) -> List[BillingDatum]:
         billing_data: List[BillingDatum] = []
 
@@ -244,88 +356,76 @@ class BillHistoryPage(PageState):
 
         self.driver.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        # click View Usage History
-        self.driver.find_element(By.XPATH, "//a[.='View Usage History']").click()
-        # click Export
-        self.driver.find_element(By.CSS_SELECTOR, "a#agreementHistoryToExport").click()
-
-        try:
-            self.driver.wait(30).until(
-                file_exists_in_dir(
-                    directory=self.download_dir, pattern=r"^UsageHistory\.csv$",
-                )
-            )
-
-        except Exception:
-            raise Exception(f"Unable to download 13 Month kWh history")
-
-        # open UsageHistory.csv and parse CSV
-        """
-        Account Number,"#1769654818   ",,,,,,,,,,,,,,,,,,,,,,,
-        Current Balance," $0.00",,,,,,,,,,,,,,,,,,,,,,,
-        ,,,,,,,,,,,,,,,,,,,,,,,,,
-        "LGS - Large General Service",
-        "Meter Number","#077618850"
-        "Contract Demand",
-        "Contract: 100"
-        ,
-         0            1           2                   3                          4
-        "Bill Month","Bill Year","Electricity Usage","Electricity Usage Amount","Actual Demand",
-         5                6                        7           8           9     10
-        "Billing Demand","Renewable Energy Rider","Sales Tax","# of Days","Adj","Total Charges",
-        """
-        seen_header = False
-        with open("%s/UsageHistory.csv" % self.download_dir, "r") as f:
-            reader = csv.reader(f)
-            for row in reader:
-                if not row:
-                    continue
-                if row[0] == "Bill Month":
-                    seen_header = True
-                    continue
-                if not seen_header:
-                    continue
-                month = int(row[0])
-                year = int(row[1])
-
-                # find pdf in self.pdfs with the same month and year
-                pdfs = [
-                    pdf
-                    for pdf in self.pdfs
-                    if (pdf[0].end.month == month and pdf[0].end.year == year)
-                ]
-                log.debug("found pdf for %s/%s: %s", month, year, pdfs)
-
-                # skip entry if no pdf found for the date
-                if len(pdfs) != 1:
-                    log.info("no pdf found with end date %s/%s", month, year)
-                    continue
-                (billing_range, pdf_path, statement_date) = pdfs[0]
-
-                start = billing_range.start
-                end = billing_range.end
-                cost = float(row[10].replace("$", "").replace(",", ""))
-                usage = float(row[2].replace(",", ""))
-                peak = float(row[5].replace(",", ""))
-                with open(pdf_path, "rb") as bill_file:
-                    attachment = upload_bill_to_s3(
-                        bill_file,
-                        "%s.pdf" % hash_bill(account_id, start, end, cost, peak, usage),
-                        source="duke-energy.com",
-                        statement=billing_range.end,
-                        utility=utility,
-                        utility_account_id=account_id,
+        # there can be multiple View Usage History links for a totalized meter
+        links = self.driver.find_elements(By.XPATH, "//a[.='View Usage History']")
+        log.info("%s View Usage History links", len(links))
+        data: Dict[date, List[BillingDatum]] = {}
+        for idx in range(len(links)):
+            # re-get links each time to avoid stale element errors
+            links = self.driver.find_elements(By.XPATH, "//a[.='View Usage History']")
+            log.info("getting usage %s/%s", idx + 1, len(links))
+            # click View Usage History
+            links[idx].click()
+            # click Export
+            self.driver.find_element(
+                By.CSS_SELECTOR, "a#agreementHistoryToExport"
+            ).click()
+            try:
+                self.driver.wait(30).until(
+                    file_exists_in_dir(
+                        directory=self.download_dir, pattern=r"^UsageHistory\.csv$",
                     )
-                bill_data = BillingDatum(
-                    start=start,
-                    end=end,
-                    cost=cost,
-                    peak=peak,
-                    statement=statement_date,
-                    used=usage,
-                    items=None,
-                    attachments=[attachment],
                 )
-                billing_data.append(bill_data)
+            except Exception:
+                raise Exception(f"Unable to download 13 Month kWh history")
+            usage_filename = "%s/%s-UsageHistory.csv" % (self.download_dir, idx)
+            os.rename("%s/UsageHistory.csv" % self.download_dir, usage_filename)
+            history = self.parse_csv(usage_filename)
+            for dt in history:
+                data.setdefault(dt, [])
+                data[dt].append(history[dt])
+            self.driver.back()
 
+        # combine the BillingDatum records for each date
+        for dt in data:
+            log.debug("bills for %s = %s", dt, data[dt])
+            (billing_range, pdf_path, statement_date) = self.get_pdf(dt)
+            cost = 0.0
+            peak = None
+            used = 0.0
+            for bill_datum in data[dt]:
+                cost += bill_datum.cost
+                used += bill_datum.used
+                if bill_datum.peak:
+                    peak = (
+                        bill_datum.peak if peak is None else max(bill_datum.peak, peak)
+                    )
+            with open(pdf_path, "rb") as bill_file:
+                attachment = upload_bill_to_s3(
+                    bill_file,
+                    "%s.pdf"
+                    % hash_bill(
+                        account_id,
+                        billing_range.start,
+                        billing_range.end,
+                        cost,
+                        peak,
+                        used,
+                    ),
+                    source="duke-energy.com",
+                    statement=statement_date,
+                    utility=utility,
+                    utility_account_id=account_id,
+                )
+            bill_data = BillingDatum(
+                start=billing_range.start,
+                end=billing_range.end,
+                cost=cost,
+                peak=peak,
+                statement=statement_date,
+                used=used,
+                items=None,
+                attachments=[attachment],
+            )
+            billing_data.append(bill_data)
         return billing_data
