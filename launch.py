@@ -27,6 +27,7 @@ from datafeeds.datasources.smud_energyprofiler_interval import (
 
 from datafeeds.scrapers.atmos.atmos import datafeed as atmos
 from datafeeds.scrapers.bloom_interval import datafeed as bloom_interval
+from datafeeds.scrapers.energinet_interval import datafeed as energinet_interval
 from datafeeds.scrapers.engie import datafeed as engie
 from datafeeds.scrapers.fpl_myaccount import datafeed as fpl_myaccount
 from datafeeds.scrapers.grovestreams import datafeed as grovestreams
@@ -130,6 +131,7 @@ scraper_functions = {
     "directenergy-urjanet": directenergy,
     "duke-energy-billing": duke_billing,
     "duke-energy-interval": duke_interval,
+    "energinet-interval": energinet_interval,
     "engie": engie,
     "fortworth-water-urjanet": fortworth,
     "grovestreams": grovestreams,
