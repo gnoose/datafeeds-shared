@@ -305,9 +305,10 @@ class ExportCsvDialog:
 
             date_fmt = "%m/%d/%Y"
             # .clear doesn't always work, but this should
-            for _ in range(10):
+            for _ in range(11):
                 start_field.send_keys(Keys.BACKSPACE)
                 end_field.send_keys(Keys.BACKSPACE)
+            self._driver.sleep(1)
             start_field.send_keys(start_date.strftime(date_fmt))
             end_field.send_keys(end_date.strftime(date_fmt))
 
@@ -744,6 +745,7 @@ class SdgeMyAccountScraper(BaseWebScraper):
 
         log.info("Opening 'Export CSV' dialog.")
         my_energy_page.navigate_to_csv_export()
+        self.screenshot("navigate_to_csv")
         export_csv_dialog.wait_until_ready()
         self.screenshot("csv_export_dialog_initial")
 

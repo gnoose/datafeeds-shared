@@ -686,7 +686,7 @@ class EnergyManagerServiceListingHelper:
 
         return ServiceListingRow(
             checkbox=data[0].find_element_by_xpath(
-                ".//div[contains(@class, 'sce-registration-checkbox')]"
+                ".//div[contains(@class, 'sce-registration-checkbox')]//..//.."
             ),
             row_id=data[0].find_element_by_tag_name("input").get_attribute("id"),
             customer_number=data[1].text,
@@ -727,6 +727,7 @@ class EnergyManagerServiceListingHelper:
             for parsed_row in parsed_rows:
                 if service_id == parsed_row.service_acct_id:
                     time.sleep(5)
+                    log.debug("trying to click checkbox")
                     parsed_row.checkbox.click()
                     return True
 
@@ -753,6 +754,7 @@ class EnergyManagerServiceListingHelper:
         in its initial configuration, and causes various DOM modifications as part of selecting
         the desired service.
         """
+        log.debug("looking for service_id %s", service_id)
         service_divs = self.driver.find_elements(*self.ServiceDivLocator)
         if not service_divs:
             return False
