@@ -1121,7 +1121,7 @@ class SceEnergyManagerBillingPage(PageState):
             raise sce_errors.BillingDataParseException(msg)
         try:
             return BillingDataRow(
-                selector=data_elements[0],
+                selector=data_elements[0].find_elements_by_tag_name("input")[0],
                 service_acct=data_elements[1].text,
                 service_acct_name=data_elements[2].text,
                 service_acct_address=data_elements[3].text,
