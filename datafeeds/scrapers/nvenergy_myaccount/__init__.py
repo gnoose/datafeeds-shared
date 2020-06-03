@@ -96,7 +96,7 @@ class NvEnergyMyAccountScraper(BaseApiScraper):
 
         days = (self.end_date - self.start_date).days
         if days < MIN_DAYS:
-            current = self.end_date - MIN_DAYS
+            current = self.end_date - timedelta(days=MIN_DAYS)
         else:
             current = self.start_date
         timeline = Timeline(current, self.end_date)
