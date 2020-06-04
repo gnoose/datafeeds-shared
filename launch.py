@@ -131,7 +131,7 @@ scraper_functions = {
     "directenergy-urjanet": directenergy,
     "duke-energy-billing": duke_billing,
     "duke-energy-interval": duke_interval,
-    "energinet-interval": energinet_interval,
+    "energinet": energinet_interval,
     "engie": engie,
     "fortworth-water-urjanet": fortworth,
     "grovestreams": grovestreams,
