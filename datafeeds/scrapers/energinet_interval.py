@@ -67,7 +67,6 @@ class Scraper(BaseApiScraper):
             date_ = parse_date(period["timeInterval"]["end"]).date()
             for point in period["Point"]:
                 hour = parse_date("%s:00" % (int(point["position"]) - 1)).time()
-
                 value = float(point["out_Quantity.quantity"])
                 timeline.insert(datetime.combine(date_, hour), value)
 
@@ -77,18 +76,10 @@ class Scraper(BaseApiScraper):
         log.info("Login successful")
 
         timeline = Timeline(self.start_date, self.end_date)
-
-        # break start - end date range into 14 day chunks
         # get and parse data 14 days at a time
         start_date = self.start_date
         while start_date < self.end_date:
-            if start_date + timedelta(days=14) > self.end_date:
-                end_date = start_date + timedelta(
-                    days=(self.end_date - start_date).days
-                )
-            else:
-                end_date = start_date + timedelta(days=14)
-
+            end_date = min(self.end_date, start_date + timedelta(days=14))
             self._get_data(timeline, start_date, end_date)
             start_date = end_date
 
