@@ -20,9 +20,8 @@ log = logging.getLogger(__name__)
 
 
 class Configuration(BaseConfiguration):
-    def __init__(self, api_key, metering_point):
+    def __init__(self, metering_point):
         super().__init__(scrape_readings=True)
-        self.api_key = api_key
         self.metering_point = metering_point
 
 
@@ -35,7 +34,7 @@ class Scraper(BaseApiScraper):
     def _login(self):
         response = self.session.get(
             "https://api.eloverblik.dk/CustomerApi/api/Token",
-            headers={"Authorization": "Bearer %s" % self._configuration.api_key},
+            headers={"Authorization": "Bearer %s" % self._credentials.password},
         )
         if response.status_code != requests.codes.ok:
             raise LoginError("Login failed; status code = %s" % response.status_code)
@@ -48,6 +47,11 @@ class Scraper(BaseApiScraper):
 
     def _get_data(self, timeline: Timeline, start: date, end: date):
         """Get up to 14 days of data and insert into timeline."""
+        log.info(
+            "loading data for %s - %s",
+            start.strftime("%Y-%m-%d"),
+            end.strftime("%Y-%m-%d"),
+        )
         response = self.session.post(
             "https://api.eloverblik.dk/CustomerApi/api/MeterData/GetTimeSeries/%s/%s/Hour"
             % (start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d")),
@@ -59,9 +63,14 @@ class Scraper(BaseApiScraper):
             },
         ).json()
 
-        data = response["result"][0]["MyEnergyData_MarketDocument"]["TimeSeries"][0][
-            "Period"
-        ]
+        if not response or not response.get("result"):
+            log.info("no data available: response=%s", response)
+            return
+        doc = response["result"][0].get("MyEnergyData_MarketDocument")
+        if not doc or not doc.get("TimeSeries"):
+            log.warning("no data available: response=%s", doc)
+            return
+        data = doc["TimeSeries"][0].get("Period", [])
 
         for period in data:
             date_ = parse_date(period["timeInterval"]["end"]).date()
@@ -81,7 +90,7 @@ class Scraper(BaseApiScraper):
         while start_date < self.end_date:
             end_date = min(self.end_date, start_date + timedelta(days=14))
             self._get_data(timeline, start_date, end_date)
-            start_date = end_date
+            start_date = end_date + timedelta(days=1)
 
         return Results(readings=timeline.serialize())
 
@@ -93,9 +102,7 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = Configuration(
-        api_key=datasource.account_data_source.password, metering_point=meter.service_id
-    )
+    configuration = Configuration(metering_point=meter.service_id)
 
     return run_datafeed(
         Scraper,
