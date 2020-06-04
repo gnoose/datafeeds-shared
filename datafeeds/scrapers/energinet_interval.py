@@ -1,34 +1,29 @@
 """This scraper collects interval data from the Engerginet API."""
-from datetime import timedelta, date
 import json
 import logging
+import requests
 from typing import Optional
 
-import requests
+from datetime import timedelta, date, datetime
+from dateutil.parser import parse as parse_date
 
-from datafeeds.config import GROVESTREAMS_API_BASE as API_BASE
 from datafeeds.common import Timeline
 from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common.battery import TimeSeriesType
-from datafeeds.common.exceptions import LoginError, ApiError
+from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration as BaseConfiguration, Results
 from datafeeds.common.typing import Status
 from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource
-from datafeeds.parsers.grovestreams import parse_login, parse_intervals
-from datafeeds.scrapers.support.time import (
-    date_to_datetime,
-    dt_to_platform_pst,
-    dt_to_epoch_ms,
-)
 
 
 log = logging.getLogger(__name__)
 
 
 class Configuration(BaseConfiguration):
-    def __init__(self, organization_name, component_id, meter_type):
+    def __init__(self, api_key, metering_point):
         super().__init__(scrape_readings=True)
+        self.api_key = api_key
+        self.metering_point = metering_point
 
 
 class Scraper(BaseApiScraper):
@@ -53,7 +48,7 @@ class Scraper(BaseApiScraper):
 
     def _get_data(self, timeline: Timeline, start: date, end: date):
         """Get up to 14 days of data and insert into timeline."""
-        data = self.session.post(
+        response = self.session.post(
             "https://api.eloverblik.dk/CustomerApi/api/MeterData/GetTimeSeries/%s/%s/Hour"
             % (start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d")),
             headers={"Accept": "application/json", "Content-Type": "application/json"},
@@ -62,47 +57,19 @@ class Scraper(BaseApiScraper):
                     "meteringPoint": [self._configuration.metering_point]
                 }
             },
-        )
+        ).json()
 
-        # parse result into a Timeline: timeline.insert(datetime, value)
-        # data = result[0]["MyEnergyData_MarketDocument"]["TimeSeries"][0]["Period"]
-        # date from data["timeInterval"]["end"]
-        # time from Point[index]["position"] (1 = 00:00, 24 = 23:00)
-        # value from Point[index]["out_Quantity.quantity
-        """
-        {
-    "result": [
-        {
-            "MyEnergyData_MarketDocument": {
-                "TimeSeries": [
-                    {
-                        "MarketEvaluationPoint": {
-                            "mRID": {
-                                "codingScheme": "A10",
-                                "name": "571313113162139726"
-                            }
-                        },
-                        "Period": [
-                            {
-                                "Point": [
-                                    {
-                                        "out_Quantity.quality": "A04",
-                                        "out_Quantity.quantity": "591.5",
-                                        "position": "1"
-                                    },
-                                    {
-                                        "out_Quantity.quality": "A04",
-                                        "out_Quantity.quantity": "588.5",
-                                        "position": "2"
-                                    },
-                                    ...
-                                ],
-                                "resolution": "PT1H",
-                                "timeInterval": {
-                                    "end": "2020-05-01T22:00:00Z",
-                                    "start": "2020-04-30T22:00:00Z"
-                                }                                    
-        """
+        data = response["result"][0]["MyEnergyData_MarketDocument"]["TimeSeries"][0][
+            "Period"
+        ]
+
+        for period in data:
+            date_ = parse_date(period["timeInterval"]["end"]).date()
+            for point in period["Point"]:
+                hour = parse_date("%s:00" % (int(point["position"]) - 1)).time()
+
+                value = float(point["out_Quantity.quantity"])
+                timeline.insert(datetime.combine(date_, hour), value)
 
     def _execute(self):
         log.info("Attempting to log into the eloverblik API.")
@@ -110,8 +77,20 @@ class Scraper(BaseApiScraper):
         log.info("Login successful")
 
         timeline = Timeline(self.start_date, self.end_date)
-        # TODO: break start - end date range into 14 day chunks
+
+        # break start - end date range into 14 day chunks
         # get and parse data 14 days at a time
+        start_date = self.start_date
+        while start_date < self.end_date:
+            if start_date + timedelta(days=14) > self.end_date:
+                end_date = start_date + timedelta(
+                    days=(self.end_date - start_date).days
+                )
+            else:
+                end_date = start_date + timedelta(days=14)
+
+            self._get_data(timeline, start_date, end_date)
+            start_date = end_date
 
         return Results(readings=timeline.serialize())
 
