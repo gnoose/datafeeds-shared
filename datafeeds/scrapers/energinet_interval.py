@@ -75,9 +75,14 @@ class Scraper(BaseApiScraper):
         for period in data:
             date_ = parse_date(period["timeInterval"]["end"]).date()
             for point in period["Point"]:
-                hour = parse_date("%s:00" % (int(point["position"]) - 1)).time()
-                value = float(point["out_Quantity.quantity"])
-                timeline.insert(datetime.combine(date_, hour), value)
+                # sometimes returns position outside of 1..24
+                try:
+                    hour = parse_date("%s:00" % (int(point["position"]) - 1)).time()
+                    value = float(point["out_Quantity.quantity"])
+                    timeline.insert(datetime.combine(date_, hour), value)
+                except ValueError as exc:
+                    log.warning("error parsing point %s: %s", point, exc)
+                    continue
 
     def _execute(self):
         log.info("Attempting to log into the eloverblik API.")
