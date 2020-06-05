@@ -84,7 +84,7 @@ class Scraper(BaseApiScraper):
         self._login()
         log.info("Login successful")
 
-        timeline = Timeline(self.start_date, self.end_date)
+        timeline = Timeline(self.start_date, self.end_date, interval=60)
         # get and parse data 14 days at a time
         start_date = self.start_date
         while start_date < self.end_date:
