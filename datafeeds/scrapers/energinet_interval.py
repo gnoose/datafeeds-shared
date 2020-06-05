@@ -95,7 +95,7 @@ class Scraper(BaseApiScraper):
         while start_date < self.end_date:
             end_date = min(self.end_date, start_date + timedelta(days=14))
             self._get_data(timeline, start_date, end_date)
-            start_date = end_date + timedelta(days=1)
+            start_date = end_date  # end date is exclusive
 
         return Results(readings=timeline.serialize())
 
