@@ -82,6 +82,8 @@ def detect_and_close_survey(driver, timeout=5):
         WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located(locator)
         ).click()
+        log.info("popup closed")
+        driver.sleep(1)
     except Exception:
         pass
 
@@ -965,16 +967,17 @@ class SceEnergyManagerBasicUsagePage(PageState):
 
         # For some reason, we seem to get a popup showing up at this particular moment in a number of tests
         # To protect against that, try this a couple of times, if it fails, closing the popup in between
-        retries = 1
+        retries = 2
         while True:
             try:
                 WebDriverWait(self.driver, 5).until(
                     EC.visibility_of_element_located(self.DownloadExcelLocator)
                 ).click()
-            except Exception:
+            except Exception as exc:
+                log.info("click download failed: %s; %s tries", exc, retries)
                 detect_and_close_survey(self.driver)
                 if retries == 0:
-                    raise
+                    raise exc
                 retries -= 1
             else:
                 break
