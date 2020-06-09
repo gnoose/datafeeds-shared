@@ -46,24 +46,6 @@ class SDGETransformer(UrjanetGridiumTransformer):
         # (e.g. in the case that a correction bill in issued)
         bill_history = DateIntervalTree()
         for account in ordered_accounts:
-            # account.meters is the list of bill parts that apply to this Gridium meter
-            # Meter.MeterNumber like %meter.utility_service.service_id%
-            # if there aren't any, this bill doesn't apply; skip it
-            if not account.meters:
-                log.debug(
-                    "Skipping billing period; no data for this meter: account_pk={}, start={}, "
-                    "end={}".format(
-                        account.PK, account.IntervalStart, account.IntervalEnd
-                    )
-                )
-                continue
-            if bill_history.overlaps(account.IntervalStart, account.IntervalEnd):
-                log.debug(
-                    "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, account.IntervalStart, account.IntervalEnd
-                    )
-                )
-                continue
             """
             SDGE bills are issued with overlapping date ranges:
                 Billing Period: 9/30/19 - 10/31/19 Total Days: 31
@@ -82,7 +64,41 @@ class SDGETransformer(UrjanetGridiumTransformer):
 
             Add +1 to the the IntervalStart for the billing period start date
             """
-            if (account.IntervalEnd - account.IntervalStart).days > 45:
+            start = account.IntervalStart + timedelta(days=1)
+            end = account.IntervalEnd
+            # account.meters is the list of bill parts that apply to this Gridium meter
+            # Meter.MeterNumber like %meter.utility_service.service_id%
+            # if there aren't any, this bill doesn't apply; skip it
+            if not account.meters:
+                log.debug(
+                    "Skipping billing period; no data for this meter: account_pk={}, start={}, "
+                    "end={}".format(account.PK, start, end)
+                )
+                continue
+
+            if bill_history.overlaps(start, end, strict=False):
+                # try getting date range from Meter
+                start = account.meters[0].IntervalStart + timedelta(days=1)
+                end = account.meters[0].IntervalEnd
+                log.debug(
+                    "Billing period overlap: {} - {}; trying with date range from usage: {} "
+                    "- {}".format(
+                        account.IntervalStart + timedelta(days=1),
+                        account.IntervalEnd,
+                        start,
+                        end,
+                    )
+                )
+                # if it still overlaps, skip it
+                if bill_history.overlaps(start, end, strict=False):
+                    log.debug(
+                        "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
+                            account.PK, start, end
+                        )
+                    )
+                    continue
+
+            if (end - start).days > 45:
                 # if bill is too long, it's likely a correction; get billing periods from usages
                 for meter in account.meters:
                     for usage in [
@@ -123,13 +139,11 @@ class SDGETransformer(UrjanetGridiumTransformer):
             else:
                 log.debug(
                     "Adding billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, account.IntervalStart, account.IntervalEnd
+                        account.PK, start, end
                     )
                 )
                 bill_history.add(
-                    account.IntervalStart + timedelta(days=1),  # prevent overlapping
-                    account.IntervalEnd,
-                    SDGEBillingPeriod(account),
+                    start, end, SDGEBillingPeriod(account),
                 )
 
         return bill_history

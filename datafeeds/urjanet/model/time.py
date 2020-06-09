@@ -56,9 +56,19 @@ class DateIntervalTree:
         # Note we convert from ordinal values to actual date objects
         return [DateIntervalTree.from_date_interval(ival) for ival in self.tree.items()]
 
-    def overlaps(self, begin: date, end: date) -> bool:
-        """Determine whether the given date interval (strictly) overlaps with any interval in the tree"""
-        ival = DateIntervalTree.to_date_interval(begin, end, None)
+    def overlaps(self, begin: date, end: date, strict: bool = True) -> bool:
+        """Determine whether the given date interval overlaps with any interval in the tree.
+
+        According to intervaltree, intervals include the lower bound but not the upper bound:
+        2015-07-23 -2015-08-21 does not overlap 2015-08-21-2015-09-21
+        If strict is false, add a day to the end date to return True for single day overlaps.
+        """
+        if strict:
+            ival = DateIntervalTree.to_date_interval(begin, end, None)
+        else:
+            ival = DateIntervalTree.to_date_interval(
+                begin, end + timedelta(days=1), None
+            )
         return self.tree.overlaps(ival.begin, ival.end)
 
     def range_query(self, begin: date, end: date) -> List[Interval]:

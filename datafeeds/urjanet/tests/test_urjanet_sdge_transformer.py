@@ -75,6 +75,33 @@ class TestUrjanetSDGETransformer(test_util.UrjaFixtureText):
         """
         self.sdge_test("06769269_input.json", "06769269_expected.json")
 
+    def test_sdge_overlapping_dates(self):
+        """Test that Account record with overlapping dates should use dates from Meter instead.
+
+        This statement contains data for two meters, with different date ranges. The date ranges
+        in Account overlap:
+        mysql> select PK, IntervalStart, IntervalEnd, StatementDate
+        from Account
+        where AccountNumber='96420041075' and IntervalEnd >= '2015-07-01' and IntervalEnd < '2015-10-01';
+        +---------+---------------+-------------+---------------+
+        | PK      | IntervalStart | IntervalEnd | StatementDate |
+        +---------+---------------+-------------+---------------+
+        | 5505663 | 2015-06-22    | 2015-07-22  | 2015-07-27    |
+        | 5505686 | 2015-07-22    | 2015-08-21  | 2015-09-08    |
+        | 5505685 | 2015-08-20    | 2015-09-21  | 2015-09-28    |
+        +---------+---------------+-------------+---------------+
+
+        The Meter table has different date ranges for each SAID:
+        mysql> select PK, MeterNumber, IntervalStart, IntervalEnd from Meter where AccountFK=5505686;
+        +----------+-------------+---------------+-------------+
+        | PK       | MeterNumber | IntervalStart | IntervalEnd |
+        +----------+-------------+---------------+-------------+
+        | 19757873 | 00641958    | 2015-07-22    | 2015-08-21  |
+        | 19757874 | 06699590    | 2015-07-22    | 2015-08-20  |
+        +----------+-------------+---------------+-------------+
+        """
+        self.sdge_test("2000499001794_input.json", "2000499001794_expected.json")
+
 
 if __name__ == "__main__":
     unittest.main()
