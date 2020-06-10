@@ -57,6 +57,7 @@ class Session:
         self.api_base = api_base
         self.api_key = api_key
         self.format = "application/json"
+        self.meter_readings_available = True
 
     # SolarEdge API has maximum of 1 month interval per request
     def _get_results(self, url, endpoint_parser, extra_params: dict = None):
@@ -69,7 +70,6 @@ class Session:
         if resp.status_code == codes.ok:
             results = endpoint_parser(resp.text)
             return results
-
         else:
             # The API isn't working. Abort.
             msg = "Received unexpected API response. status_code: %d text: %s"
@@ -102,6 +102,19 @@ class Session:
             results = self._get_results(
                 url, parser.parse_intervals, extra_params=required_params
             )
+            # Workaround for a site that returns empty meter data
+            if not results:
+                self.meter_readings_available = False
+                log.warning("No Meter Data. Trying Site API")
+                url = api_base + "/energy"
+                required_params = {
+                    "timeUnit": "QUARTER_OF_AN_HOUR",
+                    "startDate": str(t0.date()),
+                    "endDate": str(t1.date()),
+                }
+                results = self._get_results(
+                    url, parser.parse_site_intervals, extra_params=required_params
+                )
             for ind, result in enumerate(results):
                 results[ind] = (
                     Interval(
@@ -113,7 +126,6 @@ class Session:
 
             t0 = t1
             t1 = min(datetime(end.year, end.month, end.day), t0 + delta)
-
         return accum
 
     @staticmethod
@@ -192,8 +204,14 @@ class SolarEdgeScraper(BaseApiScraper):
         ivls = sess.get_intervals(
             self.site_url, start_time, end_time, self.install_date
         )
-        meter_ivls = sess.meter_readings(ivls, self.meter_self)
-        relative_ivls = sess.relative_energy(meter_ivls)
+
+        if sess.meter_readings_available:
+            # Site-level data is not separated by inverter
+            meter_ivls = sess.meter_readings(ivls, self.meter_self)
+            # Site-level data is not a lifetime reading
+            relative_ivls = sess.relative_energy(meter_ivls)
+        else:
+            relative_ivls = [x[0] for x in ivls]
 
         # if there are fewer than 10% non-empty intervals for
         # end_date, then drop it
