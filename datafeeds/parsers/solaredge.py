@@ -7,16 +7,6 @@ from addict import Dict
 from datafeeds.parsers.base import validate, SchemaValidationFailure
 
 
-# site_details_schema = {
-#     "type": "object",
-#     "properties": {
-#         "meterEnergyDetails": {
-#             "type": "object",
-#
-#         }
-#     }
-# }
-
 site_details_schema = {
     "definitions": {
         "site": {
@@ -30,7 +20,7 @@ site_details_schema = {
                 "lastUpdateTime": {"type": "string", "format": "date"},
                 "currency": {"type": "string"},
                 "installationDate": {"type": "string", "format": "date"},
-                "ptoDate": {"type": "string", "format": "date"},
+                "ptoDate": {"type": ["string", "null"], "format": "date"},
                 "notes": {"type": "string"},
                 "type": {"type": "string"},
                 "location": {
@@ -176,5 +166,4 @@ def parse_site_intervals(text):
             serial_number="None",
         )
         intervals.append(ivl)
-    print(intervals)
     return intervals

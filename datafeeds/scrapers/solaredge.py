@@ -234,7 +234,7 @@ class SolarEdgeScraper(BaseApiScraper):
                 #  Multiply by 4 to get the kW reading we store
                 kw = iv.kwh * 4
                 final_timeline.insert(current_time, kw)
-                log.info("Approximate time of reading: %s, kW: %s", current_time, kw)
+                # log.info("Approximate time of reading: %s, kW: %s", current_time, kw)
                 current_time = current_time + delta
         return final_timeline
 
