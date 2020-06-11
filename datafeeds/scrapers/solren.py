@@ -60,11 +60,15 @@ class OverviewPage:
 
 
 class SiteAnalyticsPage:
-    dropdown_button_one_selector = "button.ui-multiselect:nth-of-type(1)"
-    dropdown_button_two_selector = "button.ui-multiselect:nth-of-type(2)"
+    dropdown_button_one_selector = "button.ui-multiselect:nth-of-type(1) span"
+    dropdown_button_two_selector = "button.ui-multiselect:nth-of-type(2) span"
     block_ui_xpath = "//div[@class='blockUI blockOverlay']"
-    lhs_li_xpath = "//input[contains(@name, 'multiselect_selectD1')][contains(@value, '{}')]/ancestor::li"
-    rhs_li_xpath = "//input[contains(@name, 'multiselect_selectD2')][contains(@value, '{}')]/ancestor::li"
+    lhs_li_xpath = (
+        "//input[contains(@name, 'multiselect_selectD1')][contains(@value, '{}')]/.."
+    )
+    rhs_li_xpath = (
+        "//input[contains(@name, 'multiselect_selectD2')][contains(@value, '{}')]/.."
+    )
 
     ac_power_id = "btnACPowerId"
     install_date_selector = "input#installDate"
@@ -82,17 +86,21 @@ class SiteAnalyticsPage:
     def _select_individual_inverter(
         self, dropdown_button: str, xpath: str, inverter_id: str
     ):
+        log.debug("waiting for %s to be clickable", dropdown_button)
         element = self._driver.wait().until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, dropdown_button))
         )
+        log.debug("clicking %s", dropdown_button)
         element.click()
         try:
             element = self._driver.find_element_by_xpath(xpath.format(inverter_id))
+            log.debug("clicking inverter %s", xpath.format(inverter_id))
             # A property that actually scrolls the element into view
             element.location_once_scrolled_into_view
             element.click()
         except NoSuchElementException:
             raise Exception("Inverter {} not found in dropdown".format(inverter_id))
+
         self._driver.sleep(1)
 
     def select_inverter_from_both_dropdowns(self, inverter_id: str):
