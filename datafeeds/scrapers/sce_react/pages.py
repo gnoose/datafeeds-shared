@@ -608,7 +608,7 @@ class SceServiceAccountDetailModal(PageState):
         # Scrape demand info for applicable billing periods
         results = []
         for start, end in date_ranges:
-            if start_date < start < end_date:
+            if start_date <= start <= end_date:
                 self.select_date_range(start, end)
                 demand, cost = self.get_visible_demand_info()
                 results.append(
