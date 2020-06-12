@@ -104,26 +104,38 @@ class Session:
             )
             # Workaround for a site that returns empty meter data
             if not results:
-                self.meter_readings_available = False
-                log.warning("No Meter Data. Trying Site API")
-                url = api_base + "/energy"
-                required_params = {
-                    "timeUnit": "QUARTER_OF_AN_HOUR",
-                    "startDate": str(t0.date()),
-                    "endDate": str(t1.date()),
-                }
-                results = self._get_results(
-                    url, parser.parse_site_intervals, extra_params=required_params
-                )
+                while t0 < t1 and t0 < datetime(end.year, end.month, end.day):
+                    self.meter_readings_available = False
+                    log.warning("No Meter Data. Trying Site API")
+                    url = api_base + "/energy"
+                    required_params = {
+                        "timeUnit": "QUARTER_OF_AN_HOUR",
+                        "startDate": str(t0.date()),
+                        "endDate": str(t1.date()),
+                    }
+                    results = self._get_results(
+                        url, parser.parse_site_intervals, extra_params=required_params
+                    )
+                    for ind, result in enumerate(results):
+                        results[ind] = (
+                            Interval(
+                                start=start,
+                                kwh=result.kwh,
+                                serial_number=result.serial_number,
+                            ),
+                        )
+                    accum += results
+                    t0 = t1
+                    t1 = min(datetime(end.year, end.month, end.day), t0 + delta)
+                return accum
+
             for ind, result in enumerate(results):
                 results[ind] = (
                     Interval(
                         start=start, kwh=result.kwh, serial_number=result.serial_number
                     ),
                 )
-
             accum += results
-
             t0 = t1
             t1 = min(datetime(end.year, end.month, end.day), t0 + delta)
         return accum
