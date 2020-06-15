@@ -2,7 +2,8 @@ import os
 import time
 import logging
 
-from .parsers import parse_bill_pdf
+from datafeeds import config
+from datafeeds.parsers.pacific_power import parse_bill_pdf
 
 from glob import glob
 from io import BytesIO
@@ -227,15 +228,18 @@ class PacificPowerScraper(BaseWebScraper):
                 log.info("There was a problem parsing a bill PDF #%d." % ii)
                 continue
 
-            key = bill_upload.hash_bill_datum(self.meter_number, bill_datum)
-            attachment_entry = bill_upload.upload_bill_to_s3(
-                BytesIO(b),
-                key,
-                source="pacificpower.net",
-                statement=bill_datum.statement,
-                utility=self.utility,
-                utility_account_id=self.account_number,
-            )
+            attachment_entry = None
+            if config.enabled("S3_BILL_UPLOAD"):
+                key = bill_upload.hash_bill_datum(self.meter_number, bill_datum)
+                attachment_entry = bill_upload.upload_bill_to_s3(
+                    BytesIO(b),
+                    key,
+                    source="pacificpower.net",
+                    statement=bill_datum.statement,
+                    utility=self.utility,
+                    utility_account_id=self.account_number,
+                )
+
             if attachment_entry:
                 bill_data.append(bill_datum._replace(attachments=[attachment_entry]))
             else:
