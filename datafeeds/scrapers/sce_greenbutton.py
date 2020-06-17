@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 import logging
 from typing import Optional, List
 
@@ -183,6 +183,11 @@ class Scraper(BaseApiScraper):
         # Truncate so that we don't make trivial requests.
         start = max(self.start_date, date(2015, 1, 1))
         end = min(self.end_date, date.today())
+
+        # SCE sometimes does not publish the most recent bill until several weeks after its close date.
+        # Ensure the time window is large enough to capture some bills.
+        if end - start < timedelta(days=90):
+            start = end - timedelta(days=90)
 
         date_range = DateRange(start, end)
 
