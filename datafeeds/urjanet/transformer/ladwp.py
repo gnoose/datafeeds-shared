@@ -250,6 +250,7 @@ class LADWPTransformer(UrjanetGridiumTransformer):
         # (e.g. in the case that a correction bill in issued)
         bill_history = DateIntervalTree()
         for idx, account in enumerate(ordered_accounts):
+            start_date = account.IntervalStart
             end_date = (
                 account.IntervalEnd - timedelta(days=1)
                 if idx == 0
@@ -265,21 +266,30 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                     )
                 )
                 continue
-            if bill_history.overlaps(account.IntervalStart, end_date):
+            if bill_history.overlaps(start_date, end_date):
+                # try using date range from Meter instead
+                meter = account.meters[0]
+                log.debug(
+                    "Account date range overlaps ({} - {}); trying Meter ({} - {})".format(
+                        start_date, end_date, meter.IntervalStart, meter.IntervalEnd
+                    )
+                )
+                start_date = meter.IntervalStart
+                end_date = meter.IntervalEnd
+
+            if bill_history.overlaps(start_date, end_date):
                 log.debug(
                     "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, account.IntervalStart, end_date
+                        account.PK, start_date, end_date
                     )
                 )
                 continue
             # can be a correction or multiple billing periods on one statement
             # get billing periods from charges -- dates on first half of usages spans the
             # whole statement
-            if (end_date - account.IntervalStart).days > 45:
+            if (end_date - start_date).days > 45:
                 log.debug(
-                    "Splitting long billing period: %s - %s",
-                    account.IntervalStart,
-                    account.IntervalEnd,
+                    "Splitting long billing period: %s - %s", start_date, end_date,
                 )
                 for meter in account.meters:
                     seen: Set[Tuple] = set()
@@ -309,11 +319,11 @@ class LADWPTransformer(UrjanetGridiumTransformer):
             else:
                 log.debug(
                     "Adding billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, account.IntervalStart, end_date
+                        account.PK, start_date, end_date
                     )
                 )
                 bill_history.add(
-                    account.IntervalStart, end_date, self.billing_period(account),
+                    start_date, end_date, self.billing_period(account),
                 )
 
         # Adjust date endpoints to avoid 1-day overlaps
