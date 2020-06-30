@@ -10,26 +10,97 @@ from datafeeds.urjanet.transformer import (
 
 from datafeeds.urjanet.model import Account, UrjanetData, DateIntervalTree
 
-
 log = logging.getLogger(__name__)
 
 
 class NVEnergyBillingPeriod(GenericBillingPeriod):
+
+    # Overrides GenericBillingPeriod.iter_charges
+    def iter_charges(self):
+        """
+        Pulls all charges off of the attached meters, and then a portion of the floating charges,
+        including certain charges that likely should have been attributed to the meter.
+        """
+        for meter in self.account.meters:
+            for charge in meter.charges:
+                yield charge
+
+        # These are for green energy rider charges, whose usages are not incorporated into the bill, but the
+        # charges are still attributed to the meter.
+        included_floating_charges = [
+            "ch.usage_charge",
+            "ch.all_applicable_distribution_riders",
+            "ch.universal_energy_charge",
+            "ch.renewable_energy_surcharge",
+            "ch.temp_green_power_financing",
+            "ch.energy_efficiency_charge",
+        ]
+
+        for charge in self.account.floating_charges:
+            # Only include certain floating charges from the bill.  If a service charge is "floating", for example,
+            # it is likely to be for a different meter, such as a gas.
+            if charge.ChargeId in included_floating_charges:
+                yield charge
+
+    # Overrides GenericBillingPeriod.get_total_usage
+    def get_total_usage(self) -> Decimal:
+        """
+        Overrides get_total_usage to avoid demand and reactive_consumption (kVARH) totals being included.
+        Also attempts to include usages in TOU periods if urja missed them.
+        """
+        tou_usages = [
+            "WOTE",
+            "WTOA",
+            "WTOR",
+            "WTOD",
+            "SOTE",
+            "SUMA",
+            "SUMR",
+            "SUMD",
+            "SFTE",
+            "SUFA",
+            "SUFR",
+            "SUFD",
+            "SMTE",
+        ]
+
+        usages = [
+            u
+            for u in self.iter_unique_usages()
+            if (u.RateComponent == "[total]" or u.UsageActualName in tou_usages)
+            and u.MeasurementType == "general_consumption"
+        ]
+
+        """
+        Urjanet does not always parse usages correctly when NVEnergy customers are on TOU rates.  The usage associated
+        with the WOTE rate might be categorized as a total rate component, when in reality, the usages under the SOTE,
+        SMTE, and SFTE rates also need to be included.
+
+        WOTE - Winter TOU
+        SOTE - Summer TOU On-Peak
+        SMTE - Summer TOU Mid-Peak
+        SFTE - Summer TOU Off-Peak
+
+        We include the usages associated with TOU periods, and then remove if urja already included them in the total.
+        """
+
+        non_total = sum([u.UsageAmount for u in usages if u.RateComponent != "[total]"])
+        for u in usages:
+            if u.UsageAmount == non_total:
+                usages.remove(u)
+
+        return Decimal(sum([u.UsageAmount for u in usages]))
+
+    # Overrides GenericBillingPeriod.get_total_charge
     def get_total_charge(self):
-        """Get from account.NewCharges if available, else add up Charges."""
-        if self.account.NewCharges:
-            log.debug(
-                "\t%s has NewCharges\t%s",
-                self.account.IntervalStart,
-                self.account.NewCharges,
-            )
-            return self.account.NewCharges
+        """Sum the Charges on the Meter, along with selected floating charges"""
         charges = Decimal(0.0)
         for charge in self.iter_charges():
             charges += charge.ChargeAmount
         log.debug("\t%s summed charges\t%s", self.account.IntervalStart, charges)
         return charges
 
+    # Overrides GenericBillingPeriod.get_peak_demand
     def get_peak_demand(self) -> Optional[Decimal]:
         """Attempt to determine peak demand from the set of usage entities associated with a billing period.
 
@@ -75,10 +146,12 @@ class NVEnergyTransformer(UrjanetGridiumTransformer):
         # (e.g. in the case that a correction bill in issued)
         bill_history = DateIntervalTree()
         for account in ordered_accounts:
-            if bill_history.overlaps(account.IntervalStart, account.IntervalEnd):
+            # If no meters associated with the account, this might be the final bill.
+            resource = account.meters[0] if account.meters else account
+            if bill_history.overlaps(resource.IntervalStart, resource.IntervalEnd):
                 log.debug(
-                    "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, account.IntervalStart, account.IntervalEnd
+                    "Skipping overlapping billing period: meter_pk={}, start={}, end={}".format(
+                        resource.PK, resource.IntervalStart, resource.IntervalEnd
                     )
                 )
             else:
@@ -91,8 +164,8 @@ class NVEnergyTransformer(UrjanetGridiumTransformer):
                 adjust the start date.
                 """
                 bill_history.add(
-                    account.IntervalStart + timedelta(days=1),
-                    account.IntervalEnd,
+                    resource.IntervalStart + timedelta(days=1),
+                    resource.IntervalEnd,
                     self.billing_period(account),
                 )
 
