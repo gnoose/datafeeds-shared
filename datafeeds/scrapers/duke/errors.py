@@ -1,6 +1,12 @@
 """Custom exceptions for duke energy scrapers"""
 
 
+class BillingScraperAccountUnavailable(Exception):
+    """The requested account was not available."""
+
+    pass
+
+
 class BillingScraperException(Exception):
     """The scraper did not finish scraping"""
 
