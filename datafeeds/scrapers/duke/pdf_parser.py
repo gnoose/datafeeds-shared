@@ -273,10 +273,9 @@ def parse_pdf(pdf_filename: str, utility: str, utility_account_id: str) -> Billi
         attachment_entry = upload_bill_to_s3(
             BytesIO(pdf_data.read()),
             key,
-            source="/www.duke-energy.com",
+            source="www.duke-energy.com",
             statement=data.end,
             utility=utility,
             utility_account_id=utility_account_id,
         )
-    data._replace(attachments=[attachment_entry])
-    return data
+    return data._replace(attachments=[attachment_entry])
