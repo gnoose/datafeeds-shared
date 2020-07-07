@@ -41,8 +41,12 @@ def extract_dates(text: str) -> Tuple[date, date, date]:
     dt_str = re.search(r"Bill date\s+(\w+ \d+, \d+)", text, re.DOTALL).group(1)
     statement_dt = parse_date(dt_str).date()
     match = re.search(r"For service\s+(\w+ \d+) - (\w+ \d+)", text, re.DOTALL)
-    from_dt = _date_with_year(match.group(1), statement_dt)
     to_dt = _date_with_year(match.group(2), statement_dt)
+    from_dt = _date_with_year(match.group(1), statement_dt)
+    # if statement date is Jan and statement period is Nov x - Dec y,
+    # make sure from_dt is in same year as to_dt
+    if from_dt.month == 11 and to_dt.month == 12 and from_dt.year != to_dt.year:
+        from_dt = date(to_dt.year, from_dt.month, from_dt.day)
     return from_dt, to_dt, statement_dt
 
 
@@ -172,6 +176,10 @@ def old_extract_dates(text: str) -> Tuple[date, date, date]:
     match = re.search(r"Service From:.*?(\w+ \d+) to (\w+ \d+)", text, re.DOTALL)
     from_dt = _date_with_year(match.group(1), statement_dt)
     to_dt = _date_with_year(match.group(2), statement_dt)
+    # if statement date is Jan and statement period is Nov x - Dec y,
+    # make sure from_dt is in same year as to_dt
+    if from_dt.month == 11 and to_dt.month == 12 and from_dt.year != to_dt.year:
+        from_dt = date(to_dt.year, from_dt.month, from_dt.day)
     return from_dt, to_dt, statement_dt
 
 

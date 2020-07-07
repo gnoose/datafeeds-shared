@@ -71,3 +71,13 @@ class DukeBillTestCase(unittest.TestCase):
         self.assertAlmostEqual(29.89, data.cost, 2)
         self.assertAlmostEqual(155, data.used, 2)
         self.assertIsNone(data.peak)
+
+    def test_parse_old_pdf4(self):
+        """Verify that we can extract dates from an old-format PDF over a year boundary."""
+        text = pdfparser.pdf_to_str("private_fixtures/duke_bill_old_4.pdf")
+        data = pdf_parser.parse_old_pdf(text)
+        self.assertEqual(date(2019, 11, 27), data.start)
+        self.assertEqual(date(2019, 12, 30), data.end)
+        self.assertAlmostEqual(19.60, data.cost, 2)
+        self.assertAlmostEqual(156, data.used, 2)
+        self.assertIsNone(data.peak)
