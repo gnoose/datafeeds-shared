@@ -8,7 +8,6 @@ from math import isnan
 import requests
 from requests import codes
 
-#  from datafeeds import config
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.exceptions import ApiError
 from datafeeds.common.base import BaseApiScraper
@@ -153,7 +152,7 @@ class Session:
     @staticmethod
     def relative_energy(ivls: list) -> list:
         """Meters API returns lifetime energy readings so subtract to get
-        each reading. The first reading is None."""
+        each reading. The first reading is omitted."""
         new_ivls_list = []
         prev = 0
         for k, v in enumerate(ivls):
@@ -200,7 +199,6 @@ class SolarEdgeScraper(BaseApiScraper):
     def _open_session(self):
         api_key = self.password
         sess = Session(self.site_url, api_key)
-        #  sess = Session(self.site_url, config.SOLAREDGE_API_KEY)
         site = sess.site()
         self.site_tz = site.time_zone
         self.install_date = site.installation_date
@@ -217,6 +215,7 @@ class SolarEdgeScraper(BaseApiScraper):
             self.site_url, start_time, end_time, self.install_date
         )
 
+        log.info("meter_readings_available is %s", sess.meter_readings_available)
         if sess.meter_readings_available:
             # Site-level data is not separated by inverter
             meter_ivls = sess.meter_readings(ivls, self.meter_self)
@@ -238,7 +237,9 @@ class SolarEdgeScraper(BaseApiScraper):
         current_time = start_time_pst
         delta = timedelta(minutes=15)
 
-        for k, iv in enumerate(relative_ivls):
+        # Ops team has reported Solaredge readings are 15 minutes behind PG&E readings. Move readings up to account for this.
+        for k, iv in enumerate(relative_ivls[1:]):
+            log.info("k : %s, iv: %s", k, iv)
             if iv.kwh is None or isnan(iv.kwh):
                 current_time = current_time + delta
                 continue
