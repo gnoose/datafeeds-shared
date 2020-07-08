@@ -470,7 +470,6 @@ CREATE TABLE public.partial_bill (
     notes character varying,
     visible boolean DEFAULT true NOT NULL,
     created timestamp without time zone,
-    matched boolean,
     provider_type public.partial_bill_provider_type_enum,
     superseded_by bigint
 );

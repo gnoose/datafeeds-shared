@@ -8,8 +8,13 @@ from datafeeds.models import (
     SnapmeterMeterDataSource as MeterDataSource,
 )
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
-from datafeeds.urjanet.model import Account, Meter as UrjaMeter
-from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
+from datafeeds.urjanet.model import (
+    Account,
+    Meter as UrjaMeter,
+)
+from datafeeds.urjanet.transformer.clean_power_alliance import (
+    CleanPowerAllianceTransformer,
+)
 
 
 class SCECleanPowerAllianceDatasource(UrjanetPyMySqlDataSource):
@@ -81,7 +86,7 @@ def datafeed(
             gen_account_number=meter.utility_service.gen_utility_account_id,
             gen_said=meter.utility_service.gen_service_id,
         ),
-        transformer=UrjanetGridiumTransformer(),
+        transformer=CleanPowerAllianceTransformer(),
         task_id=task_id,
         urja_partial_billing=True,
     )

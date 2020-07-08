@@ -64,8 +64,6 @@ class PartialBill(ModelMixin, Base):
     created = sa.Column(sa.DateTime, default=func.now())
     # Type of partial bill - is this a generation bill or a T&D bill?
     provider_type = sa.Column(sa.Enum(*PARTIAL_BILL_PROVIDER_TYPES))
-    # Pending removal - concept is being moved to Bill.has_all_charges
-    matched = sa.Column(sa.Boolean, nullable=False, default=False)
     # If the partial bill has been superseded by a newer bill, store its oid here.
     superseded_by = sa.Column(
         sa.BigInteger, sa.ForeignKey("partial_bill.oid"), nullable=True
