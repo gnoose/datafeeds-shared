@@ -10,6 +10,8 @@ from datafeeds.common.typing import (
     BillingDatum,
     OverlappedBillingDataDateRangeError,
     NoFutureBillsError,
+    AttachmentEntry,
+    BillingDatumItemsEntry,
 )
 from datafeeds.scrapers.sce_react.energymanager_billing import (
     SceReactEnergyManagerBillingConfiguration,
@@ -256,6 +258,189 @@ class TestPartialBillProcessor(unittest.TestCase):
         db.session.flush()
         self.assertEqual(partial_bills.count(), 7)
         self.assertIsNone(most_recent_bill.superseded_by)
+
+    def test_new_pdfs_override(self):
+        service = self.meter.utility_service
+
+        # Three new partial bills added for the given service
+        upload.upload_partial_bills(self.meter, self.configuration, billing_data)
+
+        partial_bills = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.service == service.oid)
+            .order_by(PartialBill.initial)
+            .order_by(PartialBill.created)
+        )
+        self.assertEqual(partial_bills.count(), 3)
+
+        first_attachments = [
+            AttachmentEntry(
+                key="123456789",
+                kind="bill",
+                format="PDF",
+                source="",
+                statement="2010-10-01",
+                utility="pge",
+                utility_account_id=service.utility_account_id,
+                gen_utility=service.gen_utility,
+                gen_utility_account_id=service.gen_utility_account_id,
+            )
+        ]
+
+        new_partials = [
+            BillingDatum(
+                start=datetime(2019, 1, 6),
+                end=datetime(2019, 2, 3),
+                cost=987.76,
+                used=4585.0,
+                peak=25.0,
+                items=None,
+                attachments=first_attachments,
+                statement=datetime(2019, 2, 3),
+            )
+        ]
+
+        # Partial coming in with new attachment
+        upload.upload_partial_bills(self.meter, self.configuration, new_partials)
+        self.assertEqual(partial_bills.count(), 4)
+
+        superseded_partial = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.superseded_by.isnot(None))
+            .first()
+        )
+        self.assertEqual(superseded_partial.initial, new_partials[0].start)
+        self.assertEqual(superseded_partial.closing, new_partials[0].end)
+        self.assertEqual(superseded_partial.attachments, [])
+
+        replacement = db.session.query(PartialBill).get(
+            superseded_partial.superseded_by
+        )
+        self.assertEqual(replacement.initial, new_partials[0].start)
+        self.assertEqual(replacement.closing, new_partials[0].end)
+        self.assertEqual(
+            replacement.attachments,
+            [{"key": "123456789", "kind": "bill", "format": "PDF"}],
+        )
+
+        second_attachments = [
+            AttachmentEntry(
+                key="1234a56789",
+                kind="bill",
+                format="PDF",
+                source="",
+                statement="2010-10-01",
+                utility="pge",
+                utility_account_id=service.utility_account_id,
+                gen_utility=service.gen_utility,
+                gen_utility_account_id=service.gen_utility_account_id,
+            )
+        ]
+        new_partials = [
+            BillingDatum(
+                start=datetime(2019, 1, 6),
+                end=datetime(2019, 2, 3),
+                cost=987.76,
+                used=4585.0,
+                peak=25.0,
+                items=None,
+                attachments=second_attachments,
+                statement=datetime(2019, 2, 3),
+            )
+        ]
+        # Partial coming in with updated attachment
+        upload.upload_partial_bills(self.meter, self.configuration, new_partials)
+        self.assertEqual(partial_bills.count(), 5)
+
+        replacement = (
+            db.session.query(PartialBill)
+            .filter(
+                PartialBill.superseded_by.is_(None),
+                PartialBill.initial == datetime(2019, 1, 6),
+            )
+            .first()
+        )
+
+        self.assertEqual(replacement.initial, new_partials[0].start)
+        self.assertEqual(replacement.closing, new_partials[0].end)
+        self.assertEqual(
+            replacement.attachments,
+            [{"key": "1234a56789", "kind": "bill", "format": "PDF"}],
+        )
+
+    def test_new_line_items_override(self):
+        service = self.meter.utility_service
+
+        # Three new partial bills added for the given service
+        upload.upload_partial_bills(self.meter, self.configuration, billing_data)
+
+        partial_bills = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.service == service.oid)
+            .order_by(PartialBill.initial)
+            .order_by(PartialBill.created)
+        )
+        self.assertEqual(partial_bills.count(), 3)
+
+        items = [
+            BillingDatumItemsEntry(
+                description="Part Peak 129,262.000000 kWh @ $0.10640",
+                quantity=129262.0,
+                rate=0.1064,
+                total=13753.48,
+                kind="use",
+                unit="kwh",
+            )
+        ]
+
+        new_partials = [
+            BillingDatum(
+                start=datetime(2019, 1, 6),
+                end=datetime(2019, 2, 3),
+                cost=987.76,
+                used=4585.0,
+                peak=25.0,
+                items=items,
+                attachments=[],
+                statement=datetime(2019, 2, 3),
+            )
+        ]
+
+        # Partial coming in with new line items
+        upload.upload_partial_bills(self.meter, self.configuration, new_partials)
+        self.assertEqual(partial_bills.count(), 4)
+
+        superseded_partial = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.superseded_by.isnot(None))
+            .first()
+        )
+        self.assertEqual(superseded_partial.initial, new_partials[0].start)
+        self.assertEqual(superseded_partial.closing, new_partials[0].end)
+        self.assertEqual(superseded_partial.items, [])
+
+        replacement = db.session.query(PartialBill).get(
+            superseded_partial.superseded_by
+        )
+        self.assertEqual(replacement.initial, new_partials[0].start)
+        self.assertEqual(replacement.closing, new_partials[0].end)
+        self.assertEqual(
+            replacement.items,
+            [
+                {
+                    "description": "Part Peak 129,262.000000 kWh @ $0.10640",
+                    "quantity": 129262.0,
+                    "rate": 0.1064,
+                    "total": 13753.48,
+                    "kind": "use",
+                    "unit": "kwh",
+                }
+            ],
+        )
+
+        # No data changed, so no new partials created
+        upload.upload_partial_bills(self.meter, self.configuration, new_partials)
+        self.assertEqual(partial_bills.count(), 4)
 
 
 class TestPartialBillValidator(unittest.TestCase):

@@ -3,11 +3,16 @@
 This module covers tables managed by webapps/platform that describe utility services.
 Except for unit tests, analytics should treat these tables as Read Only.
 """
+from typing import Dict, List, Union
 from datetime import datetime
 from sqlalchemy import JSON, func
 
 from datafeeds.orm import ModelMixin, Base
-from datafeeds.common.typing import BillingDatum
+from datafeeds.common.typing import (
+    BillingDatum,
+    AttachmentEntry,
+    BillingDatumItemsEntry,
+)
 
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
@@ -59,7 +64,7 @@ class PartialBill(ModelMixin, Base):
     created = sa.Column(sa.DateTime, default=func.now())
     # Type of partial bill - is this a generation bill or a T&D bill?
     provider_type = sa.Column(sa.Enum(*PARTIAL_BILL_PROVIDER_TYPES))
-    # Whether partial bill has been fully matched.  Its cost has been fully absorbed into totalized Bills.
+    # Pending removal - concept is being moved to Bill.has_all_charges
     matched = sa.Column(sa.Boolean, nullable=False, default=False)
     # If the partial bill has been superseded by a newer bill, store its oid here.
     superseded_by = sa.Column(
@@ -85,31 +90,41 @@ class PartialBill(ModelMixin, Base):
             created=datetime.utcnow(),
             modified=datetime.utcnow(),
             manual=False,
-            items=[
-                {
-                    "description": item.description,
-                    "quantity": item.quantity,
-                    "rate": item.rate,
-                    "total": item.total,
-                    "kind": item.kind,
-                    "unit": item.unit,
-                }
-                for item in (bill.items or [])
-            ],
-            attachments=[
-                {
-                    "key": attachment.key,
-                    "kind": attachment.kind,
-                    "format": attachment.format,
-                }
-                for attachment in attachments
-            ],
+            items=cls.map_line_items(bill.items),
+            attachments=cls.map_attachments(attachments),
             service=service,
             provider_type=provider_type,
         )
         db.session.add(partial_bill)
         db.session.flush()
         return partial_bill
+
+    @staticmethod
+    def map_attachments(attachments: List[AttachmentEntry]) -> List[Dict[str, str]]:
+        return [
+            {
+                "key": attachment.key,
+                "kind": attachment.kind,
+                "format": attachment.format,
+            }
+            for attachment in attachments
+        ]
+
+    @staticmethod
+    def map_line_items(
+        items: List[BillingDatumItemsEntry],
+    ) -> List[Dict[str, Union[str, float]]]:
+        return [
+            {
+                "description": item.description,
+                "quantity": item.quantity,
+                "rate": item.rate,
+                "total": item.total,
+                "kind": item.kind,
+                "unit": item.unit,
+            }
+            for item in (items or [])
+        ]
 
     def differs(self, other: BillingDatum) -> bool:
         """
@@ -122,6 +137,8 @@ class PartialBill(ModelMixin, Base):
             self.peak != other.peak
             or self.cost != other.cost
             or self.used != other.used
+            or self.attachments != (self.map_attachments(other.attachments or []))
+            or self.items != (self.map_line_items(other.items or []))
         )
 
     def matches(self, other: BillingDatum) -> bool:
