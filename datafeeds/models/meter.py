@@ -136,15 +136,15 @@ class MeterReading(ModelMixin, Base):
                             if current_day.readings[idx] != val:
                                 modified = True
                             current_day.readings[idx] = val
-                db.session.add(current_day)
                 if modified:
+                    db.session.add(current_day)
                     current_day.modified = datetime.now()
                     # tell SQLAlchemy a JSON field changed
                     flag_modified(current_day, "readings")
                 log.info(
-                    "merged readings for %s\t%s",
+                    "merged readings for %s; modified=%s",
                     current_day.occurred,
-                    current_day.readings,
+                    modified,
                 )
             else:
                 db.session.add(new_day)
