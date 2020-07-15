@@ -28,7 +28,7 @@ from datafeeds.common.util.s3 import (
 )
 from datafeeds.models import UtilityService
 from datafeeds.models.bill import Bill
-from datafeeds.models.meter import Meter
+from datafeeds.models.meter import Meter, MeterReading
 from datafeeds.models.bill_document import BillDocument
 
 BytesLikeObject = Union[BinaryIO, BytesIO]
@@ -71,7 +71,11 @@ def upload_readings(
         readings = interval_transform.transform(
             transforms, task_id, scraper, meter_oid, readings
         )
-        _upload_via_webapps(readings, account_hex_id, meter_oid)
+        if scraper in config.DIRECT_INTERVAL_UPLOAD:
+            log.info("writing interval data to the database for %s", meter_oid)
+            MeterReading.merge_readings(MeterReading.from_json(meter_oid, readings))
+        else:
+            _upload_via_webapps(readings, account_hex_id, meter_oid)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         index.update_readings_range(task_id, meter_oid, readings)

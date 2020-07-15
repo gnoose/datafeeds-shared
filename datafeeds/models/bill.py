@@ -5,7 +5,7 @@ Except for unit tests, analytics should treat these tables as Read Only.
 """
 from typing import Dict, List, Union
 from datetime import datetime
-from sqlalchemy import JSON, func
+from sqlalchemy import JSON
 
 from datafeeds.orm import ModelMixin, Base
 from datafeeds.common.typing import (
@@ -15,6 +15,7 @@ from datafeeds.common.typing import (
 )
 
 import sqlalchemy as sa
+from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
 from datafeeds import db
@@ -33,7 +34,7 @@ class Bill(ModelMixin, Base):
     initial = sa.Column(sa.Date)
     items = sa.Column(JSON)
     manual = sa.Column(sa.Boolean)
-    modified = sa.Column(sa.DateTime)
+    modified = sa.Column(sa.DateTime, default=func.now(), onupdate=func.now())
     peak = sa.Column(sa.Float)
     service = sa.Column(sa.BigInteger)
     used = sa.Column(sa.Float)

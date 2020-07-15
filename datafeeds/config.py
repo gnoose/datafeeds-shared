@@ -139,6 +139,9 @@ FEATURE_FLAGS: Set[str] = set(
     u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")
 ) & VALID_FEATURE_FLAGS
 
+# upload results for these scrapers directly to the database (instead of platform)
+DIRECT_INTERVAL_UPLOAD = {"svp-interval", "bloom", "nationalgrid-interval"}
+
 
 def enabled(feature: str) -> bool:
     if feature not in VALID_FEATURE_FLAGS:
