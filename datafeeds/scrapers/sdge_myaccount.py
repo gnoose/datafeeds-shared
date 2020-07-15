@@ -380,14 +380,6 @@ class MyEnergyPage:
                 (By.CSS_SELECTOR, self.HiddenAccountNumberCss)
             )
         )
-        main = self._driver.find_element_by_css_selector("#main-content")
-        if "My Energy is not available" in main.text:
-            raise InvalidAccountException("My Energy is not available for this account")
-
-        log.debug("waiting for ViewSelectorCss %s", self.ViewSelectorCss)
-        self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, self.ViewSelectorCss))
-        )
 
     def get_active_account_number(self):
         """ Return the currently active account number."""
