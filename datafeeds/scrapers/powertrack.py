@@ -117,7 +117,7 @@ class SiteStatusPage:
         three_day.click()
 
     def fifteen_minute_select(self):
-        fifteen_minute_xpath = "//div[contains(text(), '15 min')]"
+        fifteen_minute_xpath = "//span[contains(text(), '15 min')]"
         fifteen_minute = self.driver.wait().until(
             ec.element_to_be_clickable((By.XPATH, fifteen_minute_xpath))
         )
@@ -209,7 +209,7 @@ class LoginPage:
         self.driver = driver
 
     def _portfolio_page_load_successful(self) -> bool:
-        portfolio_xpath = """//*[@id="portfolio-view"]/div/div[1]/span"""
+        portfolio_xpath = """//div[.='Rolling 24hr kW']"""
         try:
             WebDriverWait(self.driver, 10).until(
                 ec.presence_of_element_located((By.XPATH, portfolio_xpath))
