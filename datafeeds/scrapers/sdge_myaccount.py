@@ -134,10 +134,11 @@ class SdgeMyAccountConfiguration(Configuration):
         service_id (str): Identifies a specific meter
     """
 
-    def __init__(self, account_id, service_id):
+    def __init__(self, account_id: str, service_id: str, direction: str):
         super().__init__(scrape_readings=True)
         self.account_id = account_id
         self.service_id = service_id
+        self.direction = direction
 
 
 class ExportCsvDialog:
@@ -239,14 +240,16 @@ class ExportCsvDialog:
             action_chains.click(background)
             action_chains.pause(5)
             action_chains.move_to_element(export)
-            action_chains.pause(5)
+            action_chains.pause(10)
             action_chains.click(export)
             log.debug("\tstarting action chain")
+            log.debug("click background: %s", self.BackgroundCss)
+            log.debug("move to / click export: %s", self.ExportCss)
             action_chains.perform()
 
     def wait_until_export_done(self):
         """Wait for the CSV export to finish. This might take 10s of seconds"""
-        log.info("Waiting for CSV export")
+        log.info("Waiting for CSV export: %s", self.DownloadCss)
         with IFrameSwitch(self._driver, self.TargetIFrame):
             # Be a little more generous with this wait
             wait = WebDriverWait(self._driver, 180)
@@ -621,12 +624,25 @@ def extract_csv_rows(download_path):
                         yield CsvRow._make(row)
 
 
-def to_raw_reading(csv_row):
+def to_raw_reading(csv_row, direction: str):
     """Convert a CSV row to an interval reading."""
     reading_date = dateparser.parse(csv_row.Date).date()
     reading_time = dateparser.parse(csv_row.StartTime).time()
     kwh_value = float(csv_row.Value)
-
+    if (
+        direction == "forward"
+        and kwh_value < 0
+        or direction == "reverse"
+        and kwh_value > 0
+    ):
+        log.info(
+            "dropping reading for %s meter on %s %s: invalid sign %s",
+            direction,
+            reading_date,
+            reading_time,
+            kwh_value,
+        )
+        return RawReading(date=reading_date, time=reading_time, value=None)
     # Multiply the KWH value by 4 to get KW
     return RawReading(date=reading_date, time=reading_time, value=kwh_value * 4)
 
@@ -676,6 +692,10 @@ class SdgeMyAccountScraper(BaseWebScraper):
     @property
     def service_id(self):
         return self._configuration.service_id
+
+    @property
+    def direction(self):
+        return self._configuration.direction
 
     def _execute(self):
         try:
@@ -791,6 +811,7 @@ class SdgeMyAccountScraper(BaseWebScraper):
 
             log.info("Clicking 'Export' button.")
             export_csv_dialog.begin_export_csv()
+            log.info("done begin_export_csv")
             export_csv_dialog.wait_until_export_done()
 
             # Save the current window handle. We will be closing windows
@@ -805,7 +826,7 @@ class SdgeMyAccountScraper(BaseWebScraper):
             log.info("Processing downloaded file: {0}".format(download_path))
             # ...then process the downloaded file.
             for row in extract_csv_rows(download_path):
-                raw_reading = to_raw_reading(row)
+                raw_reading = to_raw_reading(row, self.direction)
                 raw_readings[raw_reading.date].append(raw_reading)
 
             # Clean up any downloaded files
@@ -852,7 +873,7 @@ def datafeed(
     """
 
     configuration = SdgeMyAccountConfiguration(
-        meter.utility_account_id, meter.service_id
+        meter.utility_account_id, meter.service_id, meter.direction
     )
     return run_datafeed(
         SdgeMyAccountScraper,
