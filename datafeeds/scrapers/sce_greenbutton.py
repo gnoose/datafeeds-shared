@@ -235,6 +235,10 @@ class Scraper(BaseApiScraper):
                     log.info("Skipping bill with null use: %s" % b)
                     continue
 
+                if processed.start > processed.end:
+                    log.info("Skipping bill with start after end: %s")
+                    continue
+
                 use = (
                     processed.use / 1000
                     if processed.unit == "Wh" and processed.use is not None
@@ -259,7 +263,8 @@ class Scraper(BaseApiScraper):
         # If bills arrived in a large historical block, ingest will return the block.
         # Filter the bills for just those whose start date appears in the scraped time period.
         filtered_bills = [b for b in corrected_bills if start <= b.start <= end]
-        final_bills = adjust_bill_dates(filtered_bills)
+        adjusted_bills = adjust_bill_dates(filtered_bills)
+        final_bills = [b for b in adjusted_bills if b.start <= b.end]
 
         return Results(
             # readings=timeline.serialize(),  # SCE GB: Enable interval data.
