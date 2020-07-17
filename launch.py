@@ -72,6 +72,7 @@ from datafeeds.scrapers.sce_react.energymanager_billing import (
 from datafeeds.scrapers.sce_react.energymanager_interval import (
     datafeed as sce_react_energymanager_interval,
 )
+from datafeeds.smd.tasks import run_authorization_step, run_validation_step
 
 from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
@@ -442,6 +443,18 @@ def launch_by_meter_args(args: Namespace):
     launch_by_meter(args.oid, args.start, args.end, args.source_type)
 
 
+def launch_provisioning_scraper(args: Namespace):
+    acceptable = ("authorize", "verify", "deauthorize")
+    if args.command not in acceptable:
+        log.info("Invalid command: %s", args.command)
+        sys.exit(1)
+
+    if args.command == "authorize":
+        run_authorization_step(args.workflow)
+    else:
+        run_validation_step(args.workflow)
+
+
 def _date(d):
     return datetime.strptime(d, "%Y-%m-%d").date()
 
@@ -461,7 +474,6 @@ sp_by_oid.add_argument(
 sp_by_oid.add_argument(
     "end", type=_date, help="Final date of the range to scrape (YYYY-MM-DD, exclusive)"
 )
-
 
 sp_by_name = subparser.add_parser("by-name", help="...based on a Scraper name.")
 sp_by_name.set_defaults(func=launch_by_name_args)
@@ -519,6 +531,16 @@ sp_by_oid.add_argument(
     type=_date,
     help="Final date of the range to scrape (YYYY-MM-DD, exclusive)",
 )
+
+sp_provisioning = subparser.add_parser(
+    "provisioning", help="Provision a meter on PG&E's SMD portal."
+)
+
+sp_provisioning.add_argument("command", type=str, help="authorize or verify")
+sp_provisioning.add_argument(
+    "workflow", type=int, help="OID of the workflow to update."
+)
+sp_provisioning.set_defaults(func=launch_provisioning_scraper)
 
 
 def main():

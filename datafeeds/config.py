@@ -191,6 +191,9 @@ DEBUG_SELENIUM_SCRAPERS = 0
 # Default selenium browser
 SELENIUM_BROWSER = "Chrome"
 
+# Key for decrypting secrets stored in our database.
+AES_SECRET_KEY = os.environ.get("AES_SECRET_KEY", None)
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,
