@@ -72,9 +72,10 @@ def upload_readings(
             transforms, task_id, scraper, meter_oid, readings
         )
         if scraper in config.DIRECT_INTERVAL_UPLOAD:
-            log.info("writing interval data to the database for %s", meter_oid)
+            log.info("writing interval data to the database for %s %s", scraper, meter_oid)
             MeterReading.merge_readings(MeterReading.from_json(meter_oid, readings))
         else:
+            log.info("uploading interval data to platform for %s %s", scraper, meter_oid)
             _upload_via_webapps(readings, account_hex_id, meter_oid)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
