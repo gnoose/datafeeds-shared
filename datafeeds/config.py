@@ -164,6 +164,8 @@ DIRECT_INTERVAL_UPLOAD = {
     "scl-meterwatch",
     "austin-energy-interval",
     "smart-meter-texas",
+    "socalgas",
+    "ladwp-mvweb",
 }
 
 
