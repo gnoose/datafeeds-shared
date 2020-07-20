@@ -34,6 +34,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f1", "test", date(2018, 5, 9), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 5, 9),
@@ -46,6 +47,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f2", "test", date(2018, 6, 8), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 6, 8),
@@ -58,6 +60,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f3", "test", date(2018, 7, 12), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
         ]
 
@@ -73,6 +76,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f1", "test", date(2018, 5, 9), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 5, 10),
@@ -85,6 +89,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f2", "test", date(2018, 6, 8), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 6, 9),
@@ -97,6 +102,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f3", "test", date(2018, 7, 12), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
         ]
 
@@ -116,6 +122,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f1", "test", date(2018, 5, 9), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 5, 9),
@@ -128,6 +135,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f2", "test", date(2018, 6, 8), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 6, 8),
@@ -140,6 +148,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f3", "test", date(2018, 7, 12), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
         ]
 
@@ -155,6 +164,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f1", "test", date(2018, 5, 9), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 5, 10),
@@ -167,6 +177,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f2", "test", date(2018, 6, 8), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 6, 9),
@@ -179,6 +190,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f3", "test", date(2018, 7, 12), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
         ]
 
@@ -198,6 +210,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f0", "test", date(2018, 4, 8), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 4, 8),
@@ -210,6 +223,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f1", "test", date(2018, 5, 9), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 5, 9),
@@ -222,6 +236,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f2", "test", date(2018, 6, 8), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 6, 8),
@@ -234,6 +249,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f3", "test", date(2018, 7, 12), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
         ]
 
@@ -247,6 +263,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 peak=379,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 5, 9),
@@ -257,6 +274,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 peak=264,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 6, 8),
@@ -267,6 +285,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 peak=278,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
         ]
 
@@ -282,6 +301,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f0", "test", date(2018, 4, 8), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 4, 9),
@@ -294,6 +314,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f1", "test", date(2018, 5, 9), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 5, 10),
@@ -306,6 +327,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f2", "test", date(2018, 6, 8), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 6, 9),
@@ -318,6 +340,7 @@ class TestPortlandBizportalScraper(unittest.TestCase):
                 attachments=make_billing_pdf_attachment(
                     "f3", "test", date(2018, 7, 12), "portland-ge", "123"
                 ),
+                utility_code=None,
             ),
         ]
 

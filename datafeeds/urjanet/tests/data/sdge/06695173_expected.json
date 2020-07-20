@@ -4,7 +4,8 @@
             "end": "2016-10-16",
             "peak_demand": "24.6000",
             "start": "2016-09-15",
-            "tariff": null,
+            "statement": "2016-10-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2542.1400",
             "total_usage": "14141.00000",
             "line_items": [
@@ -238,7 +239,8 @@
             "end": "2016-11-14",
             "peak_demand": "25.3000",
             "start": "2016-10-17",
-            "tariff": null,
+            "statement": "2016-11-16",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2220.0400",
             "total_usage": "13011.00000",
             "line_items": [
@@ -576,7 +578,8 @@
             "end": "2016-12-14",
             "peak_demand": "28.8000",
             "start": "2016-11-15",
-            "tariff": null,
+            "statement": "2016-12-16",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2378.8100",
             "total_usage": "14526.00000",
             "line_items": [
@@ -836,7 +839,8 @@
             "end": "2017-01-16",
             "peak_demand": "33.0000",
             "start": "2016-12-15",
-            "tariff": null,
+            "statement": "2017-01-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2675.9000",
             "total_usage": "16134.00000",
             "line_items": [
@@ -1200,7 +1204,8 @@
             "end": "2017-02-14",
             "peak_demand": "33.3000",
             "start": "2017-01-17",
-            "tariff": null,
+            "statement": "2017-02-16",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2594.3600",
             "total_usage": "14519.00000",
             "line_items": [
@@ -1408,7 +1413,8 @@
             "end": "2017-03-16",
             "peak_demand": "32.6000",
             "start": "2017-02-15",
-            "tariff": null,
+            "statement": "2017-03-20",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2592.2100",
             "total_usage": "14459.00000",
             "line_items": [
@@ -1707,7 +1713,8 @@
             "end": "2017-04-17",
             "peak_demand": "31.0000",
             "start": "2017-03-17",
-            "tariff": null,
+            "statement": "2017-04-20",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2718.1300",
             "total_usage": "16074.00000",
             "line_items": [
@@ -1915,7 +1922,8 @@
             "end": "2017-05-16",
             "peak_demand": "35.8000",
             "start": "2017-04-18",
-            "tariff": null,
+            "statement": "2017-05-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2887.1200",
             "total_usage": "14581.00000",
             "line_items": [
@@ -2240,7 +2248,8 @@
             "end": "2017-06-15",
             "peak_demand": "28.8000",
             "start": "2017-05-17",
-            "tariff": null,
+            "statement": "2017-06-19",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2750.0000",
             "total_usage": "14553.00000",
             "line_items": [
@@ -2448,7 +2457,8 @@
             "end": "2017-07-17",
             "peak_demand": "29.8000",
             "start": "2017-06-16",
-            "tariff": null,
+            "statement": "2017-07-19",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2907.2600",
             "total_usage": "15664.00000",
             "line_items": [
@@ -2656,7 +2666,8 @@
             "end": "2017-08-15",
             "peak_demand": "31.0000",
             "start": "2017-07-18",
-            "tariff": null,
+            "statement": "2017-08-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2925.5300",
             "total_usage": "14145.00000",
             "line_items": [
@@ -2864,7 +2875,8 @@
             "end": "2017-09-14",
             "peak_demand": "31.4000",
             "start": "2017-08-16",
-            "tariff": null,
+            "statement": "2018-02-08",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3066.0600",
             "total_usage": "15066.00000",
             "line_items": [
@@ -3111,7 +3123,8 @@
             "end": "2017-10-15",
             "peak_demand": "33.3000",
             "start": "2017-09-15",
-            "tariff": null,
+            "statement": "2018-02-08",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3129.2900",
             "total_usage": "15394.00000",
             "line_items": [
@@ -3332,7 +3345,8 @@
             "end": "2017-11-13",
             "peak_demand": "31.0000",
             "start": "2017-10-16",
-            "tariff": null,
+            "statement": "2018-02-08",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2872.7200",
             "total_usage": "14522.00000",
             "line_items": [
@@ -3670,7 +3684,8 @@
             "end": "2017-12-13",
             "peak_demand": "31.7000",
             "start": "2017-11-14",
-            "tariff": null,
+            "statement": "2018-02-08",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2926.1400",
             "total_usage": "14372.00000",
             "line_items": [
@@ -4008,7 +4023,8 @@
             "end": "2018-01-15",
             "peak_demand": "30.7000",
             "start": "2017-12-14",
-            "tariff": null,
+            "statement": "2018-02-08",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3250.7600",
             "total_usage": "15591.00000",
             "line_items": [
@@ -4359,7 +4375,8 @@
             "end": "2018-02-13",
             "peak_demand": "33.0000",
             "start": "2018-01-16",
-            "tariff": null,
+            "statement": "2018-02-15",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3137.4000",
             "total_usage": "13795.00000",
             "line_items": [
@@ -4567,7 +4584,8 @@
             "end": "2018-03-15",
             "peak_demand": "30.1000",
             "start": "2018-02-14",
-            "tariff": null,
+            "statement": "2018-03-19",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3150.3700",
             "total_usage": "15012.00000",
             "line_items": [
@@ -4775,7 +4793,8 @@
             "end": "2018-04-15",
             "peak_demand": "35.8000",
             "start": "2018-03-16",
-            "tariff": null,
+            "statement": "2018-04-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3255.0800",
             "total_usage": "14914.00000",
             "line_items": [
@@ -4983,7 +5002,8 @@
             "end": "2018-05-15",
             "peak_demand": "30.4000",
             "start": "2018-04-16",
-            "tariff": null,
+            "statement": "2018-05-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2934.9400",
             "total_usage": "13764.00000",
             "line_items": [
@@ -5191,7 +5211,8 @@
             "end": "2018-06-14",
             "peak_demand": "26.2000",
             "start": "2018-05-16",
-            "tariff": null,
+            "statement": "2018-06-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2926.4600",
             "total_usage": "13831.00000",
             "line_items": [
@@ -5516,7 +5537,8 @@
             "end": "2018-07-16",
             "peak_demand": "27.5000",
             "start": "2018-06-15",
-            "tariff": null,
+            "statement": "2018-07-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3259.5700",
             "total_usage": "15138.00000",
             "line_items": [
@@ -5841,7 +5863,8 @@
             "end": "2018-08-14",
             "peak_demand": "26.9000",
             "start": "2018-07-17",
-            "tariff": null,
+            "statement": "2018-08-16",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3319.8300",
             "total_usage": "14493.00000",
             "line_items": [
@@ -6062,7 +6085,8 @@
             "end": "2018-09-13",
             "peak_demand": "31.7000",
             "start": "2018-08-15",
-            "tariff": null,
+            "statement": "2018-09-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3256.6000",
             "total_usage": "14809.00000",
             "line_items": [
@@ -6270,7 +6294,8 @@
             "end": "2018-10-14",
             "peak_demand": "25.9000",
             "start": "2018-09-14",
-            "tariff": null,
+            "statement": "2018-10-16",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2951.5400",
             "total_usage": "14956.00000",
             "line_items": [
@@ -6530,7 +6555,8 @@
             "end": "2018-11-13",
             "peak_demand": "27.5000",
             "start": "2018-10-15",
-            "tariff": null,
+            "statement": "2018-11-15",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2782.5100",
             "total_usage": "14114.00000",
             "line_items": [
@@ -6855,7 +6881,8 @@
             "end": "2018-12-13",
             "peak_demand": "26.9000",
             "start": "2018-11-14",
-            "tariff": null,
+            "statement": "2018-12-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2746.9900",
             "total_usage": "12739.00000",
             "line_items": [
@@ -7063,7 +7090,8 @@
             "end": "2019-01-15",
             "peak_demand": "27.2000",
             "start": "2018-12-14",
-            "tariff": null,
+            "statement": "2019-01-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3106.6700",
             "total_usage": "15222.00000",
             "line_items": [
@@ -7427,7 +7455,8 @@
             "end": "2019-02-13",
             "peak_demand": "25.3000",
             "start": "2019-01-16",
-            "tariff": null,
+            "statement": "2019-02-15",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2818.2100",
             "total_usage": "12727.00000",
             "line_items": [
@@ -7648,7 +7677,8 @@
             "end": "2019-03-17",
             "peak_demand": "27.5000",
             "start": "2019-02-14",
-            "tariff": null,
+            "statement": "2019-03-19",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3190.9200",
             "total_usage": "15475.00000",
             "line_items": [
@@ -7869,7 +7899,8 @@
             "end": "2019-04-16",
             "peak_demand": "26.2000",
             "start": "2019-03-18",
-            "tariff": null,
+            "statement": "2019-04-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2996.3700",
             "total_usage": "14145.00000",
             "line_items": [
@@ -8090,7 +8121,8 @@
             "end": "2019-05-15",
             "peak_demand": "26.2000",
             "start": "2019-04-17",
-            "tariff": null,
+            "statement": "2019-05-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2949.9800",
             "total_usage": "13640.00000",
             "line_items": [
@@ -8311,7 +8343,8 @@
             "end": "2019-06-16",
             "peak_demand": "26.2000",
             "start": "2019-05-16",
-            "tariff": null,
+            "statement": "2019-06-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3197.2900",
             "total_usage": "14998.00000",
             "line_items": [
@@ -8649,7 +8682,8 @@
             "end": "2019-07-16",
             "peak_demand": "28.2000",
             "start": "2019-06-17",
-            "tariff": null,
+            "statement": "2019-07-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3340.5300",
             "total_usage": "14612.00000",
             "line_items": [

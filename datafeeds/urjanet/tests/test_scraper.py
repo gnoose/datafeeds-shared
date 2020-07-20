@@ -93,6 +93,7 @@ class TestUrjanetScraper(unittest.TestCase):
                     ),
                 ],
                 attachments=None,
+                utility_code=None,
             )
         ]
 

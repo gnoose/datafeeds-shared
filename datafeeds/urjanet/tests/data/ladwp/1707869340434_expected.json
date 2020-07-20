@@ -5,7 +5,7 @@
             "peak_demand": "1820.0000",
             "start": "2014-09-10",
             "statement": "2014-10-10",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "92686.9400",
             "total_usage": "508000.0000",
             "line_items": [
@@ -630,7 +630,7 @@
             "peak_demand": "1480.0000",
             "start": "2014-10-10",
             "statement": "2014-11-12",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "76456.8700",
             "total_usage": "469000.0000",
             "line_items": [
@@ -1008,7 +1008,7 @@
             "peak_demand": "1340.0000",
             "start": "2014-11-12",
             "statement": "2014-12-12",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "63525.4900",
             "total_usage": "363000.0000",
             "line_items": [
@@ -1386,7 +1386,7 @@
             "peak_demand": "1260.0000",
             "start": "2014-12-11",
             "statement": "2015-01-14",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "65704.7400",
             "total_usage": "393000.0000",
             "line_items": [
@@ -1881,7 +1881,7 @@
             "peak_demand": "1260.0000",
             "start": "2015-01-14",
             "statement": "2015-02-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "61901.5600",
             "total_usage": "366000.0000",
             "line_items": [
@@ -2272,7 +2272,7 @@
             "peak_demand": "1660.0000",
             "start": "2015-02-12",
             "statement": "2015-03-18",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "72083.0900",
             "total_usage": "439000.0000",
             "line_items": [
@@ -2650,7 +2650,7 @@
             "peak_demand": "1460.0000",
             "start": "2015-03-17",
             "statement": "2015-04-14",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "62530.2300",
             "total_usage": "362000.0000",
             "line_items": [
@@ -3145,7 +3145,7 @@
             "peak_demand": "1380.0000",
             "start": "2015-04-13",
             "statement": "2015-05-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "63420.2300",
             "total_usage": "374000.0000",
             "line_items": [
@@ -3523,7 +3523,7 @@
             "peak_demand": "1380.0000",
             "start": "2015-05-12",
             "statement": "2015-06-12",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "68865.9900",
             "total_usage": "381000.0000",
             "line_items": [
@@ -4018,7 +4018,7 @@
             "peak_demand": "1820.0000",
             "start": "2015-06-11",
             "statement": "2015-07-14",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "90034.6600",
             "total_usage": "482000.0000",
             "line_items": [
@@ -4513,7 +4513,7 @@
             "peak_demand": "1800.0000",
             "start": "2015-07-13",
             "statement": "2015-08-12",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "91055.3400",
             "total_usage": "460000.0000",
             "line_items": [
@@ -4891,7 +4891,7 @@
             "peak_demand": "1840.0000",
             "start": "2015-08-12",
             "statement": "2015-09-11",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "94616.3600",
             "total_usage": "483000.0000",
             "line_items": [
@@ -5646,7 +5646,7 @@
             "peak_demand": "1800.0000",
             "start": "2015-09-10",
             "statement": "2015-10-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "88868.9100",
             "total_usage": "483000.0000",
             "line_items": [
@@ -6271,7 +6271,7 @@
             "peak_demand": "1800.0000",
             "start": "2015-10-09",
             "statement": "2015-11-12",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "78033.6500",
             "total_usage": "476000.0000",
             "line_items": [
@@ -6662,7 +6662,7 @@
             "peak_demand": "1360.0000",
             "start": "2015-11-10",
             "statement": "2015-12-14",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "65874.7700",
             "total_usage": "391000.0000",
             "line_items": [
@@ -7053,7 +7053,7 @@
             "peak_demand": "1180.0000",
             "start": "2015-12-11",
             "statement": "2016-01-14",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "60946.5400",
             "total_usage": "364000.0000",
             "line_items": [
@@ -7561,7 +7561,7 @@
             "peak_demand": "1380.0000",
             "start": "2016-01-13",
             "statement": "2016-02-16",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "62291.4400",
             "total_usage": "373000.0000",
             "line_items": [
@@ -7952,7 +7952,7 @@
             "peak_demand": "1380.0000",
             "start": "2016-02-12",
             "statement": "2016-03-15",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "65906.3200",
             "total_usage": "406000.0000",
             "line_items": [
@@ -8343,7 +8343,7 @@
             "peak_demand": "1500.0000",
             "start": "2016-03-15",
             "statement": "2016-04-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "56405.6200",
             "total_usage": "338000.0000",
             "line_items": [
@@ -8851,7 +8851,7 @@
             "peak_demand": "1380.0000",
             "start": "2016-04-12",
             "statement": "2016-05-12",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "57945.6400",
             "total_usage": "360000.0000",
             "line_items": [
@@ -9619,7 +9619,7 @@
             "peak_demand": "1460.0000",
             "start": "2016-05-11",
             "statement": "2016-06-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "64071.3300",
             "total_usage": "377000.0000",
             "line_items": [
@@ -10127,7 +10127,7 @@
             "peak_demand": "1700.0000",
             "start": "2016-06-10",
             "statement": "2016-07-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "85125.7300",
             "total_usage": "465000.0000",
             "line_items": [
@@ -10687,7 +10687,7 @@
             "peak_demand": "1440.0000",
             "start": "2016-07-12",
             "statement": "2016-08-11",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "85959.1000",
             "total_usage": "470000.0000",
             "line_items": [
@@ -11091,7 +11091,7 @@
             "peak_demand": "1300.0000",
             "start": "2016-08-10",
             "statement": "2016-09-12",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "78137.7000",
             "total_usage": "419000.0000",
             "line_items": [
@@ -11495,7 +11495,7 @@
             "peak_demand": "1680.0000",
             "start": "2016-09-09",
             "statement": "2016-10-12",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "83600.0900",
             "total_usage": "468000.0000",
             "line_items": [
@@ -12133,7 +12133,7 @@
             "peak_demand": "1540.0000",
             "start": "2016-10-11",
             "statement": "2016-11-10",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "66135.0600",
             "total_usage": "396000.0000",
             "line_items": [
@@ -12537,7 +12537,7 @@
             "peak_demand": "1480.0000",
             "start": "2016-11-09",
             "statement": "2016-12-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "66224.9300",
             "total_usage": "405000.0000",
             "line_items": [
@@ -12941,7 +12941,7 @@
             "peak_demand": "1460.0000",
             "start": "2016-12-12",
             "statement": "2017-01-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "64518.3400",
             "total_usage": "382000.0000",
             "line_items": [
@@ -13462,7 +13462,7 @@
             "peak_demand": "1400.0000",
             "start": "2017-01-13",
             "statement": "2017-02-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "64082.8200",
             "total_usage": "371000.0000",
             "line_items": [
@@ -13866,7 +13866,7 @@
             "peak_demand": "1440.0000",
             "start": "2017-02-11",
             "statement": "2017-03-15",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "67254.1800",
             "total_usage": "390000.0000",
             "line_items": [
@@ -14270,7 +14270,7 @@
             "peak_demand": "1400.0000",
             "start": "2017-03-14",
             "statement": "2017-06-13",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "175693.5600",
             "total_usage": "988000.0000",
             "line_items": [
@@ -14921,7 +14921,7 @@
             "peak_demand": "1740.0000",
             "start": "2017-06-12",
             "statement": "2017-07-18",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "63872.6800",
             "total_usage": "466000.0000",
             "line_items": [
@@ -15234,7 +15234,7 @@
             "peak_demand": "1680.0000",
             "start": "2017-07-13",
             "statement": "2017-12-01",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "90422.9800",
             "total_usage": "470000.0000",
             "line_items": [
@@ -15638,7 +15638,7 @@
             "peak_demand": "1680.0000",
             "start": "2017-08-11",
             "statement": "2017-12-01",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "82397.8600",
             "total_usage": "329000.0000",
             "line_items": [
@@ -16042,7 +16042,7 @@
             "peak_demand": "1680.0000",
             "start": "2017-09-12",
             "statement": "2017-12-01",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "86461.6100",
             "total_usage": "344000.0000",
             "line_items": [
@@ -16680,7 +16680,7 @@
             "peak_demand": "1680.0000",
             "start": "2017-10-12",
             "statement": "2017-12-01",
-            "tariff": null,
+            "tariff": "A-3 and A-3[i] Subtransmission Electric - Rate A TOU - KVAR Metered Service",
             "total_charge": "71529.6200",
             "total_usage": "396000.0000",
             "line_items": [

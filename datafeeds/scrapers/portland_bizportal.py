@@ -375,6 +375,7 @@ class CsvBillParser:
                     ),
                     items=[],
                     attachments=None,
+                    utility_code=None,
                 )
 
                 bills.append(bill)
@@ -563,6 +564,7 @@ class Scraper(BaseApiScraper):
                         peak=0,
                         attachments=[bill_attachment] if bill_attachment else None,
                         items=[],  # No line items
+                        utility_code=None,
                     )
                 )
 

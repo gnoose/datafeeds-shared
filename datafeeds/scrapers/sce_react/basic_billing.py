@@ -227,6 +227,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                     peak=item.demand_info.demand if item.demand_info else None,
                     items=None,
                     attachments=None,
+                    utility_code=None,
                 )
             )
 

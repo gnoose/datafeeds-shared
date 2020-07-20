@@ -4,7 +4,8 @@
             "end": "2017-04-21",
             "peak_demand": "27.2000",
             "start": "2017-03-24",
-            "tariff": null,
+            "statement": "2017-04-21",
+            "tariff": "J General Service-Demand",
             "total_charge": "2837.6100",
             "total_usage": "11680.00000",
             "line_items": [
@@ -134,7 +135,8 @@
             "end": "2017-05-22",
             "peak_demand": "27.2000",
             "start": "2017-04-22",
-            "tariff": null,
+            "statement": "2017-05-22",
+            "tariff": "J General Service-Demand",
             "total_charge": "2975.4700",
             "total_usage": "12640.00000",
             "line_items": [
@@ -264,7 +266,8 @@
             "end": "2017-06-22",
             "peak_demand": "27.2000",
             "start": "2017-05-23",
-            "tariff": null,
+            "statement": "2017-06-22",
+            "tariff": "J General Service-Demand",
             "total_charge": "3021.9000",
             "total_usage": "12880.00000",
             "line_items": [
@@ -394,7 +397,8 @@
             "end": "2017-07-24",
             "peak_demand": "27.2000",
             "start": "2017-06-23",
-            "tariff": null,
+            "statement": "2017-07-24",
+            "tariff": "J General Service-Demand",
             "total_charge": "3158.5400",
             "total_usage": "13440.00000",
             "line_items": [
@@ -524,7 +528,8 @@
             "end": "2017-08-22",
             "peak_demand": "27.2000",
             "start": "2017-07-25",
-            "tariff": null,
+            "statement": "2017-08-22",
+            "tariff": "J General Service-Demand",
             "total_charge": "2933.2500",
             "total_usage": "12480.00000",
             "line_items": [
@@ -654,7 +659,8 @@
             "end": "2017-09-20",
             "peak_demand": "27.2000",
             "start": "2017-08-23",
-            "tariff": null,
+            "statement": "2017-09-20",
+            "tariff": "J General Service-Demand",
             "total_charge": "2945.6900",
             "total_usage": "12640.00000",
             "line_items": [
@@ -784,7 +790,8 @@
             "end": "2017-10-20",
             "peak_demand": "27.2000",
             "start": "2017-09-21",
-            "tariff": null,
+            "statement": "2017-10-20",
+            "tariff": "J General Service-Demand",
             "total_charge": "2995.2100",
             "total_usage": "12880.00000",
             "line_items": [
@@ -914,7 +921,8 @@
             "end": "2017-11-20",
             "peak_demand": "26.8000",
             "start": "2017-10-21",
-            "tariff": null,
+            "statement": "2017-11-20",
+            "tariff": "J General Service-Demand",
             "total_charge": "2922.7200",
             "total_usage": "12480.00000",
             "line_items": [
@@ -1044,7 +1052,8 @@
             "end": "2017-12-20",
             "peak_demand": "26.4000",
             "start": "2017-11-21",
-            "tariff": null,
+            "statement": "2017-12-20",
+            "tariff": "J General Service-Demand",
             "total_charge": "2848.4700",
             "total_usage": "11920.00000",
             "line_items": [
@@ -1174,7 +1183,8 @@
             "end": "2018-01-19",
             "peak_demand": "26.4000",
             "start": "2017-12-21",
-            "tariff": null,
+            "statement": "2018-01-19",
+            "tariff": "J General Service-Demand",
             "total_charge": "2822.6900",
             "total_usage": "11520.00000",
             "line_items": [
@@ -1304,7 +1314,8 @@
             "end": "2018-02-21",
             "peak_demand": "26.4000",
             "start": "2018-01-20",
-            "tariff": null,
+            "statement": "2018-02-21",
+            "tariff": "J General Service-Demand",
             "total_charge": "3117.9500",
             "total_usage": "12400.00000",
             "line_items": [
@@ -1447,7 +1458,8 @@
             "end": "2018-03-23",
             "peak_demand": "27.2000",
             "start": "2018-02-22",
-            "tariff": null,
+            "statement": "2018-03-23",
+            "tariff": "J General Service-Demand",
             "total_charge": "3022.1800",
             "total_usage": "11600.00000",
             "line_items": [
@@ -1577,7 +1589,8 @@
             "end": "2018-04-24",
             "peak_demand": "29.6000",
             "start": "2018-03-24",
-            "tariff": null,
+            "statement": "2018-04-24",
+            "tariff": "J General Service-Demand",
             "total_charge": "3047.6400",
             "total_usage": "11760.00000",
             "line_items": [
@@ -1720,7 +1733,8 @@
             "end": "2018-05-23",
             "peak_demand": "27.2000",
             "start": "2018-04-25",
-            "tariff": null,
+            "statement": "2018-05-23",
+            "tariff": "J General Service-Demand",
             "total_charge": "2779.5900",
             "total_usage": "10640.00000",
             "line_items": [
@@ -1863,7 +1877,8 @@
             "end": "2018-06-22",
             "peak_demand": "28.0000",
             "start": "2018-05-24",
-            "tariff": null,
+            "statement": "2018-06-22",
+            "tariff": "J General Service-Demand",
             "total_charge": "3105.3800",
             "total_usage": "11600.00000",
             "line_items": [
@@ -2006,7 +2021,8 @@
             "end": "2018-07-23",
             "peak_demand": "28.4000",
             "start": "2018-06-23",
-            "tariff": null,
+            "statement": "2018-07-23",
+            "tariff": "J General Service-Demand",
             "total_charge": "3275.6100",
             "total_usage": "12000.00000",
             "line_items": [
@@ -2149,7 +2165,8 @@
             "end": "2018-08-22",
             "peak_demand": "28.8000",
             "start": "2018-07-24",
-            "tariff": null,
+            "statement": "2018-08-22",
+            "tariff": "J General Service-Demand",
             "total_charge": "3415.3900",
             "total_usage": "12560.00000",
             "line_items": [
@@ -2292,7 +2309,8 @@
             "end": "2018-09-21",
             "peak_demand": "28.4000",
             "start": "2018-08-23",
-            "tariff": null,
+            "statement": "2018-09-21",
+            "tariff": "J General Service-Demand",
             "total_charge": "3443.1500",
             "total_usage": "12240.00000",
             "line_items": [
@@ -2435,7 +2453,8 @@
             "end": "2018-10-23",
             "peak_demand": "28.8000",
             "start": "2018-09-22",
-            "tariff": null,
+            "statement": "2018-10-23",
+            "tariff": "J General Service-Demand",
             "total_charge": "3712.5100",
             "total_usage": "13200.00000",
             "line_items": [
@@ -2565,7 +2584,8 @@
             "end": "2018-11-21",
             "peak_demand": "28.4000",
             "start": "2018-10-24",
-            "tariff": null,
+            "statement": "2018-11-21",
+            "tariff": "J General Service-Demand",
             "total_charge": "3251.0700",
             "total_usage": "11120.00000",
             "line_items": [
@@ -2695,7 +2715,8 @@
             "end": "2018-12-21",
             "peak_demand": "28.4000",
             "start": "2018-11-22",
-            "tariff": null,
+            "statement": "2018-12-21",
+            "tariff": "J General Service-Demand",
             "total_charge": "3465.9400",
             "total_usage": "11760.00000",
             "line_items": [
@@ -2825,7 +2846,8 @@
             "end": "2019-01-22",
             "peak_demand": "28.4000",
             "start": "2018-12-22",
-            "tariff": null,
+            "statement": "2019-01-22",
+            "tariff": "J General Service-Demand",
             "total_charge": "3541.2000",
             "total_usage": "12560.00000",
             "line_items": [
@@ -2955,7 +2977,8 @@
             "end": "2019-02-21",
             "peak_demand": "28.8000",
             "start": "2019-01-23",
-            "tariff": null,
+            "statement": "2019-02-21",
+            "tariff": "J General Service-Demand",
             "total_charge": "3270.8700",
             "total_usage": "12560.00000",
             "line_items": [
@@ -3085,7 +3108,8 @@
             "end": "2019-03-22",
             "peak_demand": "28.4000",
             "start": "2019-02-22",
-            "tariff": null,
+            "statement": "2019-03-22",
+            "tariff": "J General Service-Demand",
             "total_charge": "3219.8300",
             "total_usage": "12160.00000",
             "line_items": [
@@ -3202,7 +3226,8 @@
             "end": "2019-04-24",
             "peak_demand": "28.8000",
             "start": "2019-03-23",
-            "tariff": null,
+            "statement": "2019-04-24",
+            "tariff": "J General Service-Demand",
             "total_charge": "3888.2200",
             "total_usage": "14480.00000",
             "line_items": [
@@ -3319,7 +3344,8 @@
             "end": "2019-05-23",
             "peak_demand": "28.8000",
             "start": "2019-04-25",
-            "tariff": null,
+            "statement": "2019-05-23",
+            "tariff": "J General Service-Demand",
             "total_charge": "3573.5300",
             "total_usage": "12720.00000",
             "line_items": [
@@ -3449,7 +3475,8 @@
             "end": "2019-06-22",
             "peak_demand": "28.8000",
             "start": "2019-05-24",
-            "tariff": null,
+            "statement": "2019-06-22",
+            "tariff": "J General Service-Demand",
             "total_charge": "3514.0800",
             "total_usage": "12400.00000",
             "line_items": [
@@ -3579,7 +3606,8 @@
             "end": "2019-07-25",
             "peak_demand": "28.0000",
             "start": "2019-06-23",
-            "tariff": null,
+            "statement": "2019-07-25",
+            "tariff": "J General Service-Demand",
             "total_charge": "3759.7900",
             "total_usage": "13680.00000",
             "line_items": [
@@ -3709,7 +3737,8 @@
             "end": "2019-08-23",
             "peak_demand": "28.4000",
             "start": "2019-07-26",
-            "tariff": null,
+            "statement": null,
+            "tariff": "J General Service-Demand",
             "total_charge": "3389.4400",
             "total_usage": "12240.00000",
             "line_items": [
@@ -3839,7 +3868,8 @@
             "end": "2019-09-23",
             "peak_demand": "28.4000",
             "start": "2019-08-24",
-            "tariff": null,
+            "statement": null,
+            "tariff": "J General Service-Demand",
             "total_charge": "3399.3700",
             "total_usage": "12720.00000",
             "line_items": [
@@ -3956,7 +3986,8 @@
             "end": "2019-10-23",
             "peak_demand": "28.4000",
             "start": "2019-09-24",
-            "tariff": null,
+            "statement": null,
+            "tariff": "J General Service-Demand",
             "total_charge": "3318.6000",
             "total_usage": "12640.00000",
             "line_items": [

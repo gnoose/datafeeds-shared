@@ -4,7 +4,8 @@
             "end": "2020-01-20",
             "peak_demand": null,
             "start": "2019-12-17",
-            "tariff": null,
+            "statement": "2020-01-24",
+            "tariff": "COM",
             "total_charge": "278.5100",
             "total_usage": "2993.00000",
             "line_items": [
@@ -30,7 +31,8 @@
             "end": "2020-02-20",
             "peak_demand": null,
             "start": "2020-01-21",
-            "tariff": null,
+            "statement": "2020-02-25",
+            "tariff": "COM",
             "total_charge": "232.6000",
             "total_usage": "2451.00000",
             "line_items": [

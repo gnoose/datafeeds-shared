@@ -38,6 +38,15 @@ class GenericBillingPeriod:
             for usage in meter.usages:
                 yield usage
 
+    def tariff(self) -> Optional[str]:
+        """
+        Returns the first Tariff found on the first meter, otherwise None
+        """
+        for meter in self.account.meters:
+            if meter.Tariff:
+                return meter.Tariff
+        return None
+
     def iter_unique_usages(self):
         """Yield a set of unique usage readings for this billing period
 
@@ -207,7 +216,7 @@ class UrjanetGridiumTransformer:
                     total_usage=period_data.get_total_usage(),
                     source_urls=period_data.get_source_urls(),
                     line_items=list(period_data.iter_charges()),
-                    tariff=None,
+                    tariff=period_data.tariff(),
                 )
             )
         return GridiumBillingPeriodCollection(periods=gridium_periods)

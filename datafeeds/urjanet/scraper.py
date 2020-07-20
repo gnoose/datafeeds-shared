@@ -192,6 +192,7 @@ def make_billing_datum(
         attachments=make_attachments(bill, utility, account_id)
         if fetch_attachments
         else None,
+        utility_code=bill.tariff,
     )
 
 

@@ -192,4 +192,5 @@ def process_pdf(
         peak=demand,
         items=line_items,
         attachments=[attachment_entry],
+        utility_code=None,
     )

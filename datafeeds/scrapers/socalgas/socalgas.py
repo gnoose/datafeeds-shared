@@ -574,6 +574,7 @@ class SocalGasScraper(BaseWebScraper):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
 
         return [to_billing_datum(r) for r in with_amendments(rows)]

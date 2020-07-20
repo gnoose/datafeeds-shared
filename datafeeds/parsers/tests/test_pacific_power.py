@@ -34,6 +34,7 @@ class TestPacificPowerParser(TestCase):
             peak=29960,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -50,6 +51,7 @@ class TestPacificPowerParser(TestCase):
             peak=26.0,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -67,6 +69,7 @@ class TestPacificPowerParser(TestCase):
             peak=12.0,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -83,6 +86,7 @@ class TestPacificPowerParser(TestCase):
             peak=5.0,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -99,6 +103,7 @@ class TestPacificPowerParser(TestCase):
             peak=35767.0,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -115,6 +120,7 @@ class TestPacificPowerParser(TestCase):
             peak=11,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -131,5 +137,6 @@ class TestPacificPowerParser(TestCase):
             peak=27278.0,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)

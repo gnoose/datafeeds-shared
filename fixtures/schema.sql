@@ -471,7 +471,11 @@ CREATE TABLE public.partial_bill (
     visible boolean DEFAULT true NOT NULL,
     created timestamp without time zone,
     provider_type public.partial_bill_provider_type_enum,
-    superseded_by bigint
+    superseded_by bigint,
+    service_id character varying(128),
+    utility_code character varying,
+    utility character varying(128),
+    utility_account_id character varying
 );
 
 --

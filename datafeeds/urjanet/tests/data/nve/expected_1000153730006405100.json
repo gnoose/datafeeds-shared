@@ -5,7 +5,7 @@
             "peak_demand": "8.0000",
             "start": "2017-10-24",
             "statement": "2017-11-28",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "246.4100",
             "total_usage": "2445.0000",
             "line_items": [
@@ -110,7 +110,7 @@
             "peak_demand": "116.0000",
             "start": "2017-11-22",
             "statement": "2017-12-27",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1680.2000",
             "total_usage": "7223.0000",
             "line_items": [
@@ -241,7 +241,7 @@
             "peak_demand": "113.0000",
             "start": "2017-12-22",
             "statement": "2018-01-27",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1579.4600",
             "total_usage": "5990.0000",
             "line_items": [
@@ -385,7 +385,7 @@
             "peak_demand": "15.0000",
             "start": "2018-01-25",
             "statement": "2018-02-27",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "458.6900",
             "total_usage": "4816.0000",
             "line_items": [
@@ -490,7 +490,7 @@
             "peak_demand": "113.0000",
             "start": "2018-02-23",
             "statement": "2018-03-28",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1697.0800",
             "total_usage": "7875.0000",
             "line_items": [
@@ -621,7 +621,7 @@
             "peak_demand": "113.0000",
             "start": "2018-03-24",
             "statement": "2018-04-26",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1663.4600",
             "total_usage": "7568.0000",
             "line_items": [
@@ -778,7 +778,7 @@
             "peak_demand": "111.0000",
             "start": "2018-04-24",
             "statement": "2018-05-26",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1373.4000",
             "total_usage": "3067.0000",
             "line_items": [
@@ -922,7 +922,7 @@
             "peak_demand": "9.0000",
             "start": "2018-05-24",
             "statement": "2018-06-27",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "164.8200",
             "total_usage": "1545.0000",
             "line_items": [
@@ -1040,7 +1040,7 @@
             "peak_demand": "111.0000",
             "start": "2018-06-23",
             "statement": "2018-07-27",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "2379.6700",
             "total_usage": "20550.0000",
             "line_items": [
@@ -1197,7 +1197,7 @@
             "peak_demand": "113.0000",
             "start": "2018-07-25",
             "statement": "2018-08-28",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "2480.2800",
             "total_usage": "22031.0000",
             "line_items": [
@@ -1341,7 +1341,7 @@
             "peak_demand": "112.0000",
             "start": "2018-08-24",
             "statement": "2018-09-27",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1687.7700",
             "total_usage": "8421.0000",
             "line_items": [
@@ -1485,7 +1485,7 @@
             "peak_demand": "13.0000",
             "start": "2018-09-25",
             "statement": "2018-10-26",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "184.8100",
             "total_usage": "1840.0000",
             "line_items": [
@@ -1655,7 +1655,7 @@
             "peak_demand": "10.0000",
             "start": "2018-10-24",
             "statement": "2018-11-03",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "54.0800",
             "total_usage": "551.0000",
             "line_items": [
@@ -1773,7 +1773,7 @@
             "peak_demand": "14.0000",
             "start": "2018-11-01",
             "statement": "2018-12-05",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "385.3300",
             "total_usage": "4294.0000",
             "line_items": [
@@ -1891,7 +1891,7 @@
             "peak_demand": "14.0000",
             "start": "2018-12-01",
             "statement": "2019-01-04",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "564.0700",
             "total_usage": "6476.0000",
             "line_items": [
@@ -2009,7 +2009,7 @@
             "peak_demand": "14.0000",
             "start": "2019-01-01",
             "statement": "2019-02-05",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "527.8900",
             "total_usage": "6009.0000",
             "line_items": [
@@ -2127,7 +2127,7 @@
             "peak_demand": "14.0000",
             "start": "2019-02-01",
             "statement": "2019-03-05",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "554.2000",
             "total_usage": "6329.0000",
             "line_items": [
@@ -2245,7 +2245,7 @@
             "peak_demand": "14.0000",
             "start": "2019-03-01",
             "statement": "2019-04-04",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "449.9000",
             "total_usage": "5061.0000",
             "line_items": [
@@ -2363,7 +2363,7 @@
             "peak_demand": "110.0000",
             "start": "2019-04-01",
             "statement": "2019-05-03",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1437.0400",
             "total_usage": "4467.0000",
             "line_items": [
@@ -2507,7 +2507,7 @@
             "peak_demand": "108.0000",
             "start": "2019-05-01",
             "statement": "2019-06-05",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1384.0200",
             "total_usage": "3910.0000",
             "line_items": [
@@ -2651,7 +2651,7 @@
             "peak_demand": "14.0000",
             "start": "2019-06-01",
             "statement": "2019-07-04",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "173.6800",
             "total_usage": "1685.0000",
             "line_items": [
@@ -2769,7 +2769,7 @@
             "peak_demand": "9.0000",
             "start": "2019-07-01",
             "statement": "2019-08-03",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "202.7100",
             "total_usage": "1978.0000",
             "line_items": [
@@ -2887,7 +2887,7 @@
             "peak_demand": "7.0000",
             "start": "2019-08-01",
             "statement": "2019-09-06",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "199.5400",
             "total_usage": "1941.0000",
             "line_items": [
@@ -3005,7 +3005,7 @@
             "peak_demand": "14.0000",
             "start": "2019-09-01",
             "statement": "2019-10-03",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "216.9000",
             "total_usage": "2144.0000",
             "line_items": [
@@ -3123,7 +3123,7 @@
             "peak_demand": "107.0000",
             "start": "2019-10-01",
             "statement": "2019-11-05",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1391.0200",
             "total_usage": "4248.0000",
             "line_items": [
@@ -3267,7 +3267,7 @@
             "peak_demand": "115.0000",
             "start": "2019-11-01",
             "statement": "2019-12-05",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1578.9000",
             "total_usage": "6064.0000",
             "line_items": [
@@ -3411,7 +3411,7 @@
             "peak_demand": "113.0000",
             "start": "2019-12-01",
             "statement": "2020-01-04",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1659.4000",
             "total_usage": "7864.0000",
             "line_items": [
@@ -3555,7 +3555,7 @@
             "peak_demand": "15.0000",
             "start": "2020-01-01",
             "statement": "2020-02-05",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "567.5200",
             "total_usage": "6734.0000",
             "line_items": [
@@ -3660,7 +3660,7 @@
             "peak_demand": "15.0000",
             "start": "2020-02-01",
             "statement": "2020-03-05",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "476.2600",
             "total_usage": "5583.0000",
             "line_items": [
@@ -3765,7 +3765,7 @@
             "peak_demand": "123.0000",
             "start": "2020-03-01",
             "statement": "2020-04-03",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1549.1600",
             "total_usage": "7358.0000",
             "line_items": [
@@ -3896,7 +3896,7 @@
             "peak_demand": "116.0000",
             "start": "2020-04-01",
             "statement": "2020-05-05",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1451.3900",
             "total_usage": "7116.0000",
             "line_items": [
@@ -4040,7 +4040,7 @@
             "peak_demand": "110.0000",
             "start": "2020-05-01",
             "statement": "2020-06-04",
-            "tariff": null,
+            "tariff": "MEDIUM GENERAL SERVICE",
             "total_charge": "1134.9900",
             "total_usage": "2332.0000",
             "line_items": [

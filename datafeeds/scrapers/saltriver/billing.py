@@ -164,6 +164,7 @@ class SaltRiverBillingScraper(BaseWebScraper):
                     peak=details.on_peak_kw,
                     items=None,
                     attachments=None,
+                    utility_code=None,
                 )
             )
 

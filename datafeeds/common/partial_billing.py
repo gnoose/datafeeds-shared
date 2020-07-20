@@ -142,8 +142,17 @@ class PartialBillProcessor:
             log.info(title)
             log.info("=" * 80)
 
-        fields = ("Start", "End", "Cost", "Use", "Peak", "Has PDF", "Type")
-        fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s %-10s"
+        fields = (
+            "Start",
+            "End",
+            "Cost",
+            "Use",
+            "Peak",
+            "Utility Code",
+            "Has PDF",
+            "Type",
+        )
+        fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s    %-10s  %-10s"
         log.info(fmt % fields)
         for pb in partial_bills:
             entries = [
@@ -152,6 +161,7 @@ class PartialBillProcessor:
                 str(pb.cost),
                 str(pb.used),
                 str(pb.peak),
+                str(pb.utility_code),
                 str(pb.attachments != []),
                 str(pb.provider_type),
             ]
@@ -182,7 +192,7 @@ class PartialBillProcessor:
         if not superseding:
             # Create a new partial bill, if one has not been created already
             superseding = PartialBill.generate(
-                self.meter.service, self.partial_bills_type, pending_partial
+                self.meter.utility_service, self.partial_bills_type, pending_partial
             )
             # Added for logging purposes
             self.staged_partial.append(superseding)
@@ -260,7 +270,7 @@ class PartialBillProcessor:
             if not found:
                 # Pending partial bill does not already exist, so we stage a new one
                 pb = PartialBill.generate(
-                    self.meter.service, self.partial_bills_type, pending_partial
+                    self.meter.utility_service, self.partial_bills_type, pending_partial
                 )
                 self.staged_partial.append(pb)
 

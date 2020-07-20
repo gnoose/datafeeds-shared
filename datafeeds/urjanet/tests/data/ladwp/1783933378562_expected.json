@@ -5,7 +5,7 @@
             "peak_demand": "59.2000",
             "start": "2017-07-28",
             "statement": "2017-08-29",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4998.4000",
             "total_usage": "27680.0000",
             "line_items": [
@@ -357,7 +357,7 @@
             "peak_demand": "60.8000",
             "start": "2017-08-28",
             "statement": "2017-09-28",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4886.7300",
             "total_usage": "26400.0000",
             "line_items": [
@@ -709,7 +709,7 @@
             "peak_demand": "60.8000",
             "start": "2017-09-27",
             "statement": "2017-10-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4535.7500",
             "total_usage": "26560.0000",
             "line_items": [
@@ -1256,7 +1256,7 @@
             "peak_demand": "57.6000",
             "start": "2017-10-27",
             "statement": "2017-11-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4603.4000",
             "total_usage": "27680.0000",
             "line_items": [
@@ -1608,7 +1608,7 @@
             "peak_demand": "62.4000",
             "start": "2017-11-29",
             "statement": "2018-01-02",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4292.1700",
             "total_usage": "26560.0000",
             "line_items": [
@@ -1960,7 +1960,7 @@
             "peak_demand": "62.4000",
             "start": "2017-12-29",
             "statement": "2018-01-31",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4580.9600",
             "total_usage": "28640.0000",
             "line_items": [
@@ -2429,7 +2429,7 @@
             "peak_demand": "64.0000",
             "start": "2018-01-30",
             "statement": "2018-03-01",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4334.2000",
             "total_usage": "26400.0000",
             "line_items": [
@@ -2781,7 +2781,7 @@
             "peak_demand": "68.8000",
             "start": "2018-02-28",
             "statement": "2018-03-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4571.5000",
             "total_usage": "27840.0000",
             "line_items": [
@@ -3133,7 +3133,7 @@
             "peak_demand": "62.4000",
             "start": "2018-03-29",
             "statement": "2018-04-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4537.4200",
             "total_usage": "27520.0000",
             "line_items": [
@@ -3602,7 +3602,7 @@
             "peak_demand": "65.6000",
             "start": "2018-04-27",
             "statement": "2018-05-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "4738.0800",
             "total_usage": "28960.0000",
             "line_items": [
@@ -3954,7 +3954,7 @@
             "peak_demand": "64.0000",
             "start": "2018-05-29",
             "statement": "2018-06-28",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5162.0100",
             "total_usage": "27840.0000",
             "line_items": [
@@ -4384,7 +4384,7 @@
             "peak_demand": "68.8000",
             "start": "2018-06-27",
             "statement": "2018-07-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5822.1500",
             "total_usage": "30080.0000",
             "line_items": [
@@ -4918,7 +4918,7 @@
             "peak_demand": "70.4000",
             "start": "2018-07-27",
             "statement": "2018-08-28",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "7759.1300",
             "total_usage": "42880.0000",
             "line_items": [
@@ -5270,7 +5270,7 @@
             "peak_demand": "67.2000",
             "start": "2018-08-27",
             "statement": "2018-10-31",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "9480.8300",
             "total_usage": "48640.0000",
             "line_items": [
@@ -5817,7 +5817,7 @@
             "peak_demand": "68.8000",
             "start": "2018-10-26",
             "statement": "2018-11-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5592.5800",
             "total_usage": "32480.0000",
             "line_items": [
@@ -6169,7 +6169,7 @@
             "peak_demand": "72.0000",
             "start": "2018-11-29",
             "statement": "2019-01-02",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5503.2900",
             "total_usage": "31680.0000",
             "line_items": [
@@ -6521,7 +6521,7 @@
             "peak_demand": "84.8000",
             "start": "2018-12-31",
             "statement": "2019-01-31",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5740.6200",
             "total_usage": "31200.0000",
             "line_items": [
@@ -6873,7 +6873,7 @@
             "peak_demand": "83.2000",
             "start": "2019-01-30",
             "statement": "2019-03-01",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5645.9400",
             "total_usage": "30560.0000",
             "line_items": [
@@ -7225,7 +7225,7 @@
             "peak_demand": "78.4000",
             "start": "2019-02-28",
             "statement": "2019-04-01",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5595.5200",
             "total_usage": "30400.0000",
             "line_items": [
@@ -7577,7 +7577,7 @@
             "peak_demand": "72.0000",
             "start": "2019-03-29",
             "statement": "2019-04-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5934.4200",
             "total_usage": "32160.0000",
             "line_items": [
@@ -8046,7 +8046,7 @@
             "peak_demand": "73.6000",
             "start": "2019-04-29",
             "statement": "2019-05-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "5873.1700",
             "total_usage": "31520.0000",
             "line_items": [
@@ -8398,7 +8398,7 @@
             "peak_demand": "72.0000",
             "start": "2019-05-29",
             "statement": "2019-06-28",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "6378.1700",
             "total_usage": "30720.0000",
             "line_items": [
@@ -8828,7 +8828,7 @@
             "peak_demand": "76.8000",
             "start": "2019-06-27",
             "statement": "2019-07-30",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "6930.1000",
             "total_usage": "32960.0000",
             "line_items": [
@@ -9362,7 +9362,7 @@
             "peak_demand": "83.2000",
             "start": "2019-07-29",
             "statement": "2019-08-28",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "6976.4800",
             "total_usage": "32800.0000",
             "line_items": [
@@ -9714,7 +9714,7 @@
             "peak_demand": "81.6000",
             "start": "2019-08-27",
             "statement": "2019-09-27",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "6956.2700",
             "total_usage": "32480.0000",
             "line_items": [
@@ -10066,7 +10066,7 @@
             "peak_demand": "78.4000",
             "start": "2019-09-26",
             "statement": "2019-10-29",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "6595.2900",
             "total_usage": "34720.0000",
             "line_items": [
@@ -10613,7 +10613,7 @@
             "peak_demand": "80.0000",
             "start": "2019-10-28",
             "statement": "2019-12-02",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "6431.8300",
             "total_usage": "34080.0000",
             "line_items": [
@@ -10965,7 +10965,7 @@
             "peak_demand": "88.0000",
             "start": "2019-11-27",
             "statement": "2020-01-02",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "7039.2100",
             "total_usage": "37760.0000",
             "line_items": [
@@ -11317,7 +11317,7 @@
             "peak_demand": "91.2000",
             "start": "2019-12-31",
             "statement": "2020-01-31",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "7056.9000",
             "total_usage": "37600.0000",
             "line_items": [
@@ -11669,7 +11669,7 @@
             "peak_demand": "99.2000",
             "start": "2020-01-30",
             "statement": "2020-03-03",
-            "tariff": null,
+            "tariff": "A-2 and A-2[i] Primary Electric - Rate B TOU - KVAR Metered Service",
             "total_charge": "7255.4800",
             "total_usage": "38080.0000",
             "line_items": [

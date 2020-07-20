@@ -32,6 +32,7 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -46,6 +47,7 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -60,6 +62,7 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -74,6 +77,7 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -88,6 +92,7 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -102,6 +107,7 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -116,6 +122,7 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -130,6 +137,7 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)
 
@@ -144,5 +152,6 @@ class TestKellerParser(TestCase):
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
         self.assertEqual(expected, actual)

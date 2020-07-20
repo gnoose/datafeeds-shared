@@ -4,7 +4,8 @@
             "end": "2018-12-12",
             "peak_demand": null,
             "start": "2018-11-07",
-            "tariff": null,
+            "statement": "2018-12-21",
+            "tariff": "PUB",
             "total_charge": "4688.2500",
             "total_usage": "57300.00000",
             "line_items": [
@@ -30,7 +31,8 @@
             "end": "2019-02-12",
             "peak_demand": null,
             "start": "2019-01-14",
-            "tariff": null,
+            "statement": "2019-02-21",
+            "tariff": "PUB",
             "total_charge": "4225.5200",
             "total_usage": "53300.00000",
             "line_items": [
@@ -56,7 +58,8 @@
             "end": "2019-04-12",
             "peak_demand": null,
             "start": "2019-03-13",
-            "tariff": null,
+            "statement": "2019-04-22",
+            "tariff": "PUB",
             "total_charge": "4625.9400",
             "total_usage": "54800.00000",
             "line_items": [
@@ -82,7 +85,8 @@
             "end": "2019-06-12",
             "peak_demand": null,
             "start": "2019-05-14",
-            "tariff": null,
+            "statement": "2019-06-21",
+            "tariff": "PUB",
             "total_charge": "6009.0200",
             "total_usage": "62800.00000",
             "line_items": [
@@ -108,7 +112,8 @@
             "end": "2019-07-15",
             "peak_demand": null,
             "start": "2019-06-13",
-            "tariff": null,
+            "statement": "2019-07-22",
+            "tariff": "PUB",
             "total_charge": "5680.4500",
             "total_usage": "61000.00000",
             "line_items": [
@@ -134,7 +139,8 @@
             "end": "2019-08-13",
             "peak_demand": null,
             "start": "2019-07-16",
-            "tariff": null,
+            "statement": "2019-08-21",
+            "tariff": "PUB",
             "total_charge": "7091.0400",
             "total_usage": "80700.00000",
             "line_items": [
@@ -160,7 +166,8 @@
             "end": "2019-09-12",
             "peak_demand": null,
             "start": "2019-08-14",
-            "tariff": null,
+            "statement": "2019-09-23",
+            "tariff": "PUB",
             "total_charge": "8829.1600",
             "total_usage": "103600.00000",
             "line_items": [
@@ -186,7 +193,8 @@
             "end": "2019-10-14",
             "peak_demand": null,
             "start": "2019-09-13",
-            "tariff": null,
+            "statement": "2019-10-22",
+            "tariff": "PUB",
             "total_charge": "7979.4100",
             "total_usage": "93600.00000",
             "line_items": [
@@ -212,7 +220,8 @@
             "end": "2019-11-13",
             "peak_demand": null,
             "start": "2019-10-15",
-            "tariff": null,
+            "statement": "2019-11-22",
+            "tariff": "PUB",
             "total_charge": "5446.8500",
             "total_usage": "68800.00000",
             "line_items": [
@@ -238,7 +247,8 @@
             "end": "2019-12-16",
             "peak_demand": null,
             "start": "2019-11-14",
-            "tariff": null,
+            "statement": "2019-12-20",
+            "tariff": "PUB",
             "total_charge": "4824.3700",
             "total_usage": "60900.00000",
             "line_items": [

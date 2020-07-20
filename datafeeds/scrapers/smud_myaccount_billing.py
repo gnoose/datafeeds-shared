@@ -475,6 +475,7 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
             peak=bill_detail.max_kw,
             items=None,
             attachments=None,
+            utility_code=None,
         )
 
         pdf_bytes = self.download_pdf(bill_detail)

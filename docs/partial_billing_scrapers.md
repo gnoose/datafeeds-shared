@@ -106,6 +106,31 @@ def datafeed(
     )
 ```
 
+## Scraping Utility Codes
+We want to start extracting service configuration and storing on partial bills. When adding a partial billing scraper, 
+attempt to scrape the `utility_code` (the utility's version of the tariff), and pass into BillingDatum.  This will 
+be persisted to the PartialBill record in the `PartialBillProcessor`.
+
+```python
+if key not in raw_billing_data:
+    rate = None
+    if service_row:
+        rate = service_row.rate
+        
+    bill_data = BillingDatum(
+        start=current_bill_row.bill_start_date,
+        end=current_bill_row.bill_end_date - timedelta(days=1),
+        statement=current_bill_row.statement_date,
+        cost=current_bill_row.bill_amount,
+        used=current_bill_row.kwh,
+        peak=current_bill_row.kw,
+        items=None,
+        attachments=None,
+        utility_code=rate,
+    )
+```
+
+
 ## Running partial billing scrapers locally
 
 Running a generation-only partial-billing scraper.  Pass in the `gen_service_id` optional config.

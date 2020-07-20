@@ -60,6 +60,7 @@ def bill_data_from_xls(xls: bytes, service_account: str) -> List[BillingDatum]:
                     peak=None,
                     items=None,
                     attachments=None,
+                    utility_code=None,
                 )
             )
 
@@ -104,6 +105,7 @@ def process_bill(
         peak=None,
         items=None,
         attachments=None,
+        utility_code=None,
     )
 
 

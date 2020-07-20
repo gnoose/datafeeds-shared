@@ -113,6 +113,7 @@ class TestSCEGreenButtonSync(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
 
@@ -147,6 +148,7 @@ class TestSCEGreenButtonSync(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2019, 2, 1),
@@ -157,6 +159,7 @@ class TestSCEGreenButtonSync(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2019, 3, 1),
@@ -167,6 +170,7 @@ class TestSCEGreenButtonSync(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2019, 4, 1),
@@ -177,6 +181,7 @@ class TestSCEGreenButtonSync(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2019, 5, 1),
@@ -187,6 +192,7 @@ class TestSCEGreenButtonSync(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2019, 6, 1),
@@ -197,6 +203,7 @@ class TestSCEGreenButtonSync(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
         ]
 

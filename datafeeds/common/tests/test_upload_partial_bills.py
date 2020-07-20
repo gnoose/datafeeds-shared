@@ -29,6 +29,7 @@ billing_data = [
         items=None,
         attachments=[],
         statement=datetime(2019, 2, 3),
+        utility_code=None,
     ),
     BillingDatum(
         start=datetime(2019, 2, 4),
@@ -39,6 +40,7 @@ billing_data = [
         items=None,
         attachments=[],
         statement=datetime(2019, 3, 4),
+        utility_code=None,
     ),
     BillingDatum(
         start=datetime(2019, 3, 5),
@@ -49,6 +51,7 @@ billing_data = [
         items=None,
         attachments=[],
         statement=datetime(2019, 4, 2),
+        utility_code=None,
     ),
 ]  # Intentionally has datetimes instead of dates
 
@@ -88,6 +91,8 @@ class TestPartialBillProcessor(unittest.TestCase):
     @mock.patch("datafeeds.common.partial_billing.PartialBillProcessor.log_summary")
     def test_create_partial_bills(self, mocked_logging):
         service = self.meter.utility_service
+        service.tariff = "TOU-GS-3D"
+        db.session.add(service)
 
         partial_bills = (
             db.session.query(PartialBill)
@@ -112,6 +117,9 @@ class TestPartialBillProcessor(unittest.TestCase):
         self.assertEqual(original_bill.closing, billing_data[0].end)
         self.assertEqual(original_bill.cost, float(billing_data[0].cost))
         self.assertEqual(original_bill.peak, float(billing_data[0].peak))
+        self.assertEqual(
+            original_bill.utility_code, None, "utility code is None if None scraped",
+        )
 
         # No new partial bills have arrived, so no changes made
         upload.upload_partial_bills(self.meter, self.configuration, billing_data)
@@ -129,6 +137,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=date(2019, 2, 3),
+                utility_code=None,
             )
         ]
         # Existing bill superseded because new partial bill with new cost uploaded
@@ -155,6 +164,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=date(2019, 3, 25),
+                utility_code=None,
             )
         ]
         # New bill overlaps dates with two existing partial bills
@@ -182,6 +192,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=date(2019, 3, 25),
+                utility_code=None,
             )
         ]
         # Bad usage detected so we don't supersede the original bill
@@ -200,6 +211,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=date(2019, 5, 4),
+                utility_code=None,
             )
         ]
         # Zero usage okay as long as we're not overwriting existing zero usage
@@ -218,6 +230,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=date(2019, 6, 3),
+                utility_code=None,
             )
         ]
         # Snaps start date, because initial bill starts on the closing date of an existing bill
@@ -250,6 +263,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=date(2019, 6, 3),
+                utility_code=None,
             )
         ]
         upload.upload_partial_bills(
@@ -297,6 +311,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=None,
                 attachments=first_attachments,
                 statement=datetime(2019, 2, 3),
+                utility_code=None,
             )
         ]
 
@@ -346,6 +361,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=None,
                 attachments=second_attachments,
                 statement=datetime(2019, 2, 3),
+                utility_code=None,
             )
         ]
         # Partial coming in with updated attachment
@@ -403,6 +419,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 items=items,
                 attachments=[],
                 statement=datetime(2019, 2, 3),
+                utility_code=None,
             )
         ]
 
@@ -442,6 +459,52 @@ class TestPartialBillProcessor(unittest.TestCase):
         upload.upload_partial_bills(self.meter, self.configuration, new_partials)
         self.assertEqual(partial_bills.count(), 4)
 
+    def test_scrape_utility_code(self):
+        service = self.meter.utility_service
+
+        # Three new partial bills added for the given service
+        upload.upload_partial_bills(self.meter, self.configuration, billing_data)
+
+        partial_bills = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.service == service.oid)
+            .order_by(PartialBill.initial)
+            .order_by(PartialBill.created)
+        )
+        self.assertEqual(partial_bills.count(), 3)
+
+        # partial scraped with new tariff
+        new_partial = BillingDatum(
+            start=datetime(2019, 1, 6),
+            end=datetime(2019, 2, 3),
+            cost=987.76,
+            used=4585.0,
+            peak=25.0,
+            items=None,
+            attachments=[],
+            statement=datetime(2019, 2, 3),
+            utility_code="A6",
+        )
+
+        upload.upload_partial_bills(self.meter, self.configuration, [new_partial])
+        self.assertEqual(partial_bills.count(), 4)
+
+        superseded_partial = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.superseded_by.isnot(None))
+            .first()
+        )
+        self.assertEqual(superseded_partial.initial, new_partial.start.date())
+        self.assertEqual(superseded_partial.closing, new_partial.end.date())
+        self.assertEqual(superseded_partial.utility_code, None)
+
+        replacement = db.session.query(PartialBill).get(
+            superseded_partial.superseded_by
+        )
+        self.assertEqual(
+            replacement.utility_code, "A6", "scraped tariffs persist to partial"
+        )
+
 
 class TestPartialBillValidator(unittest.TestCase):
     @classmethod
@@ -475,6 +538,7 @@ class TestPartialBillValidator(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=date(2019, 3, 25),
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2019, 3, 15),
@@ -485,6 +549,7 @@ class TestPartialBillValidator(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=date(2019, 4, 15),
+                utility_code=None,
             ),
         ]
 
@@ -504,6 +569,7 @@ class TestPartialBillValidator(unittest.TestCase):
                 items=None,
                 attachments=[],
                 statement=today + timedelta(days=30),
+                utility_code=None,
             )
         ]
 

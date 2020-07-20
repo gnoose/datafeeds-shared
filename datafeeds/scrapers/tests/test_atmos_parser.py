@@ -55,6 +55,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -75,6 +76,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -95,6 +97,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -115,6 +118,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -135,6 +139,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -155,6 +160,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -175,6 +181,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -195,6 +202,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
             BillingDatum(
                 start=date(2018, 4, 24),
@@ -205,6 +213,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             ),
         ]
         self.assertEqual(expected, actual)
@@ -227,6 +236,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -245,6 +255,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)
@@ -263,6 +274,7 @@ class TestAtmosParser(TestCase):
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
         ]
         self.assertEqual(expected, actual)

@@ -87,6 +87,7 @@ class BillingDatum(NamedTuple):
     peak: Optional[float]
     items: Optional[List[BillingDatumItemsEntry]]
     attachments: Optional[List[AttachmentEntry]]
+    utility_code: Optional[str]  # utility's version of the tariff
 
 
 BillingData = List[BillingDatum]
@@ -282,8 +283,8 @@ def show_bill_summary(
         log.info(title)
         log.info("=" * 80)
 
-    fields = ("Start", "End", "Cost", "Use", "Peak", "Has PDF")
-    fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s"
+    fields = ("Start", "End", "Cost", "Use", "Peak", "Has PDF", "Utility Code")
+    fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s %-10s"
     log.info(fmt % fields)
     for b in bills:
         entries = [
@@ -293,6 +294,7 @@ def show_bill_summary(
             str(b.used),
             str(b.peak),
             str(b.attachments is not None),
+            str(b.utility_code),
         ]
         log.info(fmt % tuple(entries))
     log.info("=" * 80)

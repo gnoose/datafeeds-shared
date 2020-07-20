@@ -166,6 +166,7 @@ def parse_new_pdf(text: str) -> BillingDatum:
         peak=demand,
         items=cost_items,
         attachments=[],
+        utility_code=None,
     )
 
 
@@ -255,6 +256,7 @@ def parse_old_pdf(text: str) -> BillingDatum:
         peak=demand,
         items=cost_items,
         attachments=[],
+        utility_code=None,
     )
 
 

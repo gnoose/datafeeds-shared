@@ -5,7 +5,7 @@
             "peak_demand": "637.0000",
             "start": "2017-08-01",
             "statement": "2017-09-13",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "112568.6600",
             "total_usage": "348343.0000",
             "line_items": [
@@ -396,7 +396,7 @@
             "peak_demand": "667.0000",
             "start": "2017-09-01",
             "statement": "2017-10-10",
-            "tariff": null,
+            "tariff": "Medium General Svc TOU Transmission",
             "total_charge": "110061.0400",
             "total_usage": "373739.0000",
             "line_items": [
@@ -800,7 +800,7 @@
             "peak_demand": "824.0000",
             "start": "2017-10-01",
             "statement": "2017-11-17",
-            "tariff": null,
+            "tariff": "Medium General Svc TOU Transmission",
             "total_charge": "98340.7600",
             "total_usage": "333651.0000",
             "line_items": [
@@ -1165,7 +1165,7 @@
             "peak_demand": "0.0000",
             "start": "2017-11-01",
             "statement": "2017-12-12",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "62877.2800",
             "total_usage": "5.0000",
             "line_items": [
@@ -1335,7 +1335,7 @@
             "peak_demand": "1.0000",
             "start": "2017-12-01",
             "statement": "2018-01-09",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "57476.8200",
             "total_usage": "252.0000",
             "line_items": [
@@ -1518,7 +1518,7 @@
             "peak_demand": "1.0000",
             "start": "2018-01-01",
             "statement": "2018-02-06",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "63341.8500",
             "total_usage": "289.0000",
             "line_items": [
@@ -1701,7 +1701,7 @@
             "peak_demand": "17650.0000",
             "start": "2018-02-01",
             "statement": "2018-03-06",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "251006.9600",
             "total_usage": "3471071.0000",
             "line_items": [
@@ -2053,7 +2053,7 @@
             "peak_demand": "18359.0000",
             "start": "2018-03-01",
             "statement": "2018-04-04",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "432651.8000",
             "total_usage": "7264735.0000",
             "line_items": [
@@ -2405,7 +2405,7 @@
             "peak_demand": "14906.0000",
             "start": "2018-04-01",
             "statement": "2018-05-04",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "443680.9600",
             "total_usage": "7554498.0000",
             "line_items": [
@@ -2796,7 +2796,7 @@
             "peak_demand": "17980.0000",
             "start": "2018-05-01",
             "statement": "2018-06-02",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "503738.8500",
             "total_usage": "8504487.0000",
             "line_items": [
@@ -3187,7 +3187,7 @@
             "peak_demand": "19802.0000",
             "start": "2018-06-01",
             "statement": "2018-07-18",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "539518.9100",
             "total_usage": "8362767.0000",
             "line_items": [
@@ -3578,7 +3578,7 @@
             "peak_demand": "12363.0000",
             "start": "2018-07-01",
             "statement": "2018-08-03",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "755835.6000",
             "total_usage": "8633264.0000",
             "line_items": [
@@ -3969,7 +3969,7 @@
             "peak_demand": "22003.0000",
             "start": "2018-08-01",
             "statement": "2018-09-11",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "815723.0800",
             "total_usage": "8777469.0000",
             "line_items": [
@@ -4360,7 +4360,7 @@
             "peak_demand": "12519.0000",
             "start": "2018-09-01",
             "statement": "2018-10-11",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "764976.7900",
             "total_usage": "8710825.0000",
             "line_items": [
@@ -4751,7 +4751,7 @@
             "peak_demand": "13372.0000",
             "start": "2018-10-01",
             "statement": "2018-11-09",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "517952.8300",
             "total_usage": "9458904.0000",
             "line_items": [
@@ -5142,7 +5142,7 @@
             "peak_demand": "13751.0000",
             "start": "2018-11-01",
             "statement": "2018-12-11",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "508548.0400",
             "total_usage": "9677493.0000",
             "line_items": [
@@ -5533,7 +5533,7 @@
             "peak_demand": "14773.0000",
             "start": "2018-12-01",
             "statement": "2019-01-09",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "522102.0300",
             "total_usage": "10263938.0000",
             "line_items": [
@@ -5924,7 +5924,7 @@
             "peak_demand": "14917.0000",
             "start": "2019-01-01",
             "statement": "2019-02-09",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "533406.9000",
             "total_usage": "10554238.0000",
             "line_items": [
@@ -6315,7 +6315,7 @@
             "peak_demand": "15297.0000",
             "start": "2019-02-01",
             "statement": "2019-03-06",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "498297.2900",
             "total_usage": "9942371.0000",
             "line_items": [
@@ -6706,7 +6706,7 @@
             "peak_demand": "15113.0000",
             "start": "2019-03-01",
             "statement": "2019-04-03",
-            "tariff": null,
+            "tariff": "unknown_tariff",
             "total_charge": "549120.3500",
             "total_usage": "10930497.0000",
             "line_items": [
@@ -7097,7 +7097,7 @@
             "peak_demand": "15116.0000",
             "start": "2019-04-01",
             "statement": "2019-05-11",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "550980.0500",
             "total_usage": "10508220.0000",
             "line_items": [
@@ -7488,7 +7488,7 @@
             "peak_demand": "15280.0000",
             "start": "2019-05-01",
             "statement": "2019-06-06",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "299651.8600",
             "total_usage": "4447178.0000",
             "line_items": [
@@ -7879,7 +7879,7 @@
             "peak_demand": "0.0000",
             "start": "2019-06-01",
             "statement": "2019-07-03",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "109580.8500",
             "total_usage": "274.0000",
             "line_items": [
@@ -8075,7 +8075,7 @@
             "peak_demand": "1.0000",
             "start": "2019-07-01",
             "statement": "2019-08-08",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "112617.0200",
             "total_usage": "217.0000",
             "line_items": [
@@ -8271,7 +8271,7 @@
             "peak_demand": "0.0000",
             "start": "2019-08-01",
             "statement": "2019-09-11",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "122003.2500",
             "total_usage": "72.0000",
             "line_items": [
@@ -8493,7 +8493,7 @@
             "peak_demand": "0.0000",
             "start": "2019-09-01",
             "statement": "2019-10-04",
-            "tariff": null,
+            "tariff": "SMALL GENERAL SERVICE",
             "total_charge": "108650.9600",
             "total_usage": "68.0000",
             "line_items": [
@@ -8689,7 +8689,7 @@
             "peak_demand": "36976.0000",
             "start": "2019-10-01",
             "statement": "2019-11-15",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "1297366.7200",
             "total_usage": "26612386.0000",
             "line_items": [
@@ -9106,7 +9106,7 @@
             "peak_demand": "37032.0000",
             "start": "2019-11-01",
             "statement": "2019-12-12",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "1252056.0200",
             "total_usage": "26176838.0000",
             "line_items": [
@@ -9523,7 +9523,7 @@
             "peak_demand": "37630.0000",
             "start": "2020-01-01",
             "statement": "2020-02-08",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "1229103.0800",
             "total_usage": "27290824.0000",
             "line_items": [
@@ -9901,7 +9901,7 @@
             "peak_demand": "37615.0000",
             "start": "2020-02-01",
             "statement": "2020-03-13",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "1284107.7400",
             "total_usage": "25477072.0000",
             "line_items": [
@@ -10305,7 +10305,7 @@
             "peak_demand": "37953.0000",
             "start": "2020-03-01",
             "statement": "2020-04-09",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "1265873.4500",
             "total_usage": "27324995.0000",
             "line_items": [
@@ -10709,7 +10709,7 @@
             "peak_demand": "38486.0000",
             "start": "2020-04-01",
             "statement": "2020-05-13",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "1186860.5700",
             "total_usage": "27058014.0000",
             "line_items": [
@@ -11152,7 +11152,7 @@
             "peak_demand": "39054.0000",
             "start": "2020-05-01",
             "statement": "2020-06-13",
-            "tariff": null,
+            "tariff": "Large General Service Transmission",
             "total_charge": "1258703.4700",
             "total_usage": "28346459.0000",
             "line_items": [

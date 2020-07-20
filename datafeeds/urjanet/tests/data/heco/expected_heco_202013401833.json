@@ -4,7 +4,8 @@
             "end": "2017-04-26",
             "peak_demand": null,
             "start": "2017-03-28",
-            "tariff": null,
+            "statement": "2017-04-26",
+            "tariff": "P Large Power Service",
             "total_charge": "125506.4000",
             "total_usage": "535800.00000",
             "line_items": [
@@ -173,7 +174,8 @@
             "end": "2017-05-25",
             "peak_demand": null,
             "start": "2017-04-27",
-            "tariff": null,
+            "statement": "2017-05-25",
+            "tariff": "P Large Power Service",
             "total_charge": "118948.2700",
             "total_usage": "516000.00000",
             "line_items": [
@@ -316,7 +318,8 @@
             "end": "2017-06-26",
             "peak_demand": null,
             "start": "2017-05-26",
-            "tariff": null,
+            "statement": "2017-06-26",
+            "tariff": "P Large Power Service",
             "total_charge": "134154.7000",
             "total_usage": "595200.00000",
             "line_items": [
@@ -459,7 +462,8 @@
             "end": "2017-07-26",
             "peak_demand": null,
             "start": "2017-06-27",
-            "tariff": null,
+            "statement": "2017-07-26",
+            "tariff": "P Large Power Service",
             "total_charge": "134368.0400",
             "total_usage": "582600.00000",
             "line_items": [
@@ -628,7 +632,8 @@
             "end": "2017-08-25",
             "peak_demand": null,
             "start": "2017-07-27",
-            "tariff": null,
+            "statement": "2017-08-25",
+            "tariff": "P Large Power Service",
             "total_charge": "134356.9400",
             "total_usage": "591000.00000",
             "line_items": [
@@ -771,7 +776,8 @@
             "end": "2017-09-25",
             "peak_demand": null,
             "start": "2017-08-26",
-            "tariff": null,
+            "statement": "2017-09-25",
+            "tariff": "P Large Power Service",
             "total_charge": "141436.6200",
             "total_usage": "636000.00000",
             "line_items": [
@@ -927,7 +933,8 @@
             "end": "2017-10-25",
             "peak_demand": null,
             "start": "2017-09-26",
-            "tariff": null,
+            "statement": "2017-10-25",
+            "tariff": "P Large Power Service",
             "total_charge": "142281.4300",
             "total_usage": "638400.00000",
             "line_items": [
@@ -1083,7 +1090,8 @@
             "end": "2017-11-24",
             "peak_demand": null,
             "start": "2017-10-26",
-            "tariff": null,
+            "statement": "2017-11-24",
+            "tariff": "P Large Power Service",
             "total_charge": "134279.7800",
             "total_usage": "587400.00000",
             "line_items": [
@@ -1226,7 +1234,8 @@
             "end": "2017-12-26",
             "peak_demand": null,
             "start": "2017-11-25",
-            "tariff": null,
+            "statement": "2017-12-26",
+            "tariff": "P Large Power Service",
             "total_charge": "133230.5100",
             "total_usage": "575400.00000",
             "line_items": [
@@ -1369,7 +1378,8 @@
             "end": "2018-01-24",
             "peak_demand": null,
             "start": "2017-12-27",
-            "tariff": null,
+            "statement": "2018-01-24",
+            "tariff": "P Large Power Service",
             "total_charge": "122649.6600",
             "total_usage": "512400.00000",
             "line_items": [
@@ -1512,7 +1522,8 @@
             "end": "2018-02-26",
             "peak_demand": null,
             "start": "2018-01-25",
-            "tariff": null,
+            "statement": "2018-02-26",
+            "tariff": "P Large Power Service",
             "total_charge": "147690.6900",
             "total_usage": "609000.00000",
             "line_items": [
@@ -1668,7 +1679,8 @@
             "end": "2018-03-27",
             "peak_demand": null,
             "start": "2018-02-27",
-            "tariff": null,
+            "statement": "2018-03-27",
+            "tariff": "P Large Power Service",
             "total_charge": "128455.5200",
             "total_usage": "500400.00000",
             "line_items": [
@@ -1811,7 +1823,8 @@
             "end": "2018-04-26",
             "peak_demand": null,
             "start": "2018-03-28",
-            "tariff": null,
+            "statement": "2018-04-26",
+            "tariff": "P Large Power Service",
             "total_charge": "136825.5600",
             "total_usage": "549000.00000",
             "line_items": [
@@ -1967,7 +1980,8 @@
             "end": "2018-05-25",
             "peak_demand": null,
             "start": "2018-04-27",
-            "tariff": null,
+            "statement": "2018-05-25",
+            "tariff": "P Large Power Service",
             "total_charge": "129913.3800",
             "total_usage": "510000.00000",
             "line_items": [
@@ -2123,7 +2137,8 @@
             "end": "2018-06-26",
             "peak_demand": null,
             "start": "2018-05-26",
-            "tariff": null,
+            "statement": "2018-06-26",
+            "tariff": "P Large Power Service",
             "total_charge": "150325.2000",
             "total_usage": "585600.00000",
             "line_items": [
@@ -2279,7 +2294,8 @@
             "end": "2018-07-26",
             "peak_demand": null,
             "start": "2018-06-27",
-            "tariff": null,
+            "statement": "2018-07-26",
+            "tariff": "P Large Power Service",
             "total_charge": "147101.0100",
             "total_usage": "555600.00000",
             "line_items": [
@@ -2435,7 +2451,8 @@
             "end": "2018-08-27",
             "peak_demand": null,
             "start": "2018-07-27",
-            "tariff": null,
+            "statement": "2018-08-27",
+            "tariff": "P Large Power Service",
             "total_charge": "161922.6000",
             "total_usage": "622200.00000",
             "line_items": [
@@ -2591,7 +2608,8 @@
             "end": "2018-09-26",
             "peak_demand": null,
             "start": "2018-08-28",
-            "tariff": null,
+            "statement": "2018-09-26",
+            "tariff": "P Large Power Service",
             "total_charge": "161876.9000",
             "total_usage": "594000.00000",
             "line_items": [
@@ -2747,7 +2765,8 @@
             "end": "2018-10-26",
             "peak_demand": null,
             "start": "2018-09-27",
-            "tariff": null,
+            "statement": "2018-10-26",
+            "tariff": "P Large Power Service",
             "total_charge": "166411.2300",
             "total_usage": "604800.00000",
             "line_items": [
@@ -2890,7 +2909,8 @@
             "end": "2018-11-27",
             "peak_demand": null,
             "start": "2018-10-27",
-            "tariff": null,
+            "statement": "2018-11-27",
+            "tariff": "P Large Power Service",
             "total_charge": "167420.2400",
             "total_usage": "605400.00000",
             "line_items": [
@@ -3033,7 +3053,8 @@
             "end": "2019-01-25",
             "peak_demand": null,
             "start": "2018-12-28",
-            "tariff": null,
+            "statement": "2019-01-25",
+            "tariff": "P Large Power Service",
             "total_charge": "141548.5800",
             "total_usage": "513000.00000",
             "line_items": [
@@ -3176,7 +3197,8 @@
             "end": "2019-02-26",
             "peak_demand": null,
             "start": "2019-01-26",
-            "tariff": null,
+            "statement": "2019-02-26",
+            "tariff": "P Large Power Service",
             "total_charge": "136961.1600",
             "total_usage": "548400.00000",
             "line_items": [
@@ -3319,7 +3341,8 @@
             "end": "2019-03-27",
             "peak_demand": null,
             "start": "2019-02-27",
-            "tariff": null,
+            "statement": "2019-03-27",
+            "tariff": "P Large Power Service",
             "total_charge": "133051.3600",
             "total_usage": "504000.00000",
             "line_items": [
@@ -3449,7 +3472,8 @@
             "end": "2019-04-26",
             "peak_demand": null,
             "start": "2019-03-28",
-            "tariff": null,
+            "statement": "2019-04-26",
+            "tariff": "P Large Power Service",
             "total_charge": "142825.0200",
             "total_usage": "529800.00000",
             "line_items": [
@@ -3579,7 +3603,8 @@
             "end": "2019-05-28",
             "peak_demand": null,
             "start": "2019-04-27",
-            "tariff": null,
+            "statement": "2019-05-28",
+            "tariff": "P Large Power Service",
             "total_charge": "159240.1300",
             "total_usage": "582600.00000",
             "line_items": [
@@ -3722,7 +3747,8 @@
             "end": "2019-06-26",
             "peak_demand": null,
             "start": "2019-05-29",
-            "tariff": null,
+            "statement": "2019-06-26",
+            "tariff": "P Large Power Service",
             "total_charge": "150279.0300",
             "total_usage": "543000.00000",
             "line_items": [
@@ -3865,7 +3891,8 @@
             "end": "2019-07-26",
             "peak_demand": null,
             "start": "2019-06-27",
-            "tariff": null,
+            "statement": "2019-07-26",
+            "tariff": "P Large Power Service",
             "total_charge": "155652.0100",
             "total_usage": "577800.00000",
             "line_items": [
@@ -4008,7 +4035,8 @@
             "end": "2019-08-27",
             "peak_demand": null,
             "start": "2019-07-27",
-            "tariff": null,
+            "statement": null,
+            "tariff": "P Large Power Service",
             "total_charge": "166331.4900",
             "total_usage": "625800.00000",
             "line_items": [
@@ -4164,7 +4192,8 @@
             "end": "2019-09-25",
             "peak_demand": null,
             "start": "2019-08-28",
-            "tariff": null,
+            "statement": null,
+            "tariff": "P Large Power Service",
             "total_charge": "149272.1300",
             "total_usage": "573000.00000",
             "line_items": [
@@ -4294,7 +4323,8 @@
             "end": "2019-10-25",
             "peak_demand": null,
             "start": "2019-09-26",
-            "tariff": null,
+            "statement": null,
+            "tariff": "P Large Power Service",
             "total_charge": "146439.7500",
             "total_usage": "575400.00000",
             "line_items": [

@@ -19,7 +19,12 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
 from datafeeds import db
-from datafeeds.models.utility_service import TND_ONLY, GENERATION_ONLY, UTILITY_BUNDLED
+from datafeeds.models.utility_service import (
+    TND_ONLY,
+    GENERATION_ONLY,
+    UTILITY_BUNDLED,
+    UtilityService,
+)
 
 PARTIAL_BILL_PROVIDER_TYPES = [TND_ONLY, GENERATION_ONLY, UTILITY_BUNDLED]
 
@@ -69,12 +74,27 @@ class PartialBill(ModelMixin, Base):
     superseded_by = sa.Column(
         sa.BigInteger, sa.ForeignKey("partial_bill.oid"), nullable=True
     )
+    # service_id, tariff, utility, and utility_account_id are stored
+    # here to preserve history
+    service_id = sa.Column(sa.Unicode)
+    utility = sa.Column(sa.Unicode)
+    utility_account_id = sa.Column(sa.Unicode)
+
+    # Utility's version of the tariff
+    utility_code = sa.Column(sa.Unicode)
+
+    utility_service = relationship("UtilityService")
 
     @classmethod
     def generate(
-        cls, service: int, provider_type: str, bill: BillingDatum
+        cls, service: UtilityService, provider_type: str, bill: BillingDatum
     ) -> "PartialBill":
         """Generates a partial bill for the service from the BillingDatum.
+
+        Caches the service_id, utility_account_id, and utility from the UtilityService record
+        on the partial bill for record-keeping.
+
+        If the utility code was scraped (the utility's version of the tariff), stash this on the partial as well.
         """
         attachments = bill.attachments or []
         if attachments and bill.attachments[0] is None:
@@ -91,8 +111,18 @@ class PartialBill(ModelMixin, Base):
             manual=False,
             items=cls.map_line_items(bill.items),
             attachments=cls.map_attachments(attachments),
-            service=service,
+            service=service.oid,
             provider_type=provider_type,
+            service_id=service.gen_service_id
+            if provider_type == GENERATION_ONLY
+            else service.service_id,
+            utility_account_id=service.gen_utility_account_id
+            if provider_type == GENERATION_ONLY
+            else service.utility_account_id,
+            utility=service.gen_utility
+            if provider_type == GENERATION_ONLY
+            else service.utility,
+            utility_code=bill.utility_code or None,
         )
         db.session.add(partial_bill)
         db.session.flush()
@@ -131,6 +161,9 @@ class PartialBill(ModelMixin, Base):
         to see if the key fields differ.
 
         Used to determine if the current partial bill should be replaced.
+        Not considering service_id, utility_account_id, or utility in whether
+        to supersede the partial bill, because these attributes are not scraped,
+        but pulled from the current utility_service.
         """
         return (
             self.peak != other.peak
@@ -138,12 +171,16 @@ class PartialBill(ModelMixin, Base):
             or self.used != other.used
             or self.attachments != (self.map_attachments(other.attachments or []))
             or self.items != (self.map_line_items(other.items or []))
+            or self.utility_code != other.utility_code
         )
 
     def matches(self, other: BillingDatum) -> bool:
         """
         Returns True if the key fields between the given partial bill
         and pending billing datum match.
+
+        Used to determine if a partial bill is already staged to be created
+        during a scraper run.
         """
         return (
             self.peak == other.peak

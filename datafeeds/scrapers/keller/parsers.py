@@ -206,6 +206,7 @@ def parse_bill_pdf(pdf: BytesIO) -> Optional[BillingDatum]:
             peak=None,
             items=None,
             attachments=None,
+            utility_code=None,
         )
 
     return None

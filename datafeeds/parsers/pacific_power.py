@@ -151,6 +151,7 @@ def parse_bill_text(text: str, meter_number: str) -> Optional[BillingDatum]:
             peak=peak,
             items=None,
             attachments=None,
+            utility_code=None,
         )
 
     return None
