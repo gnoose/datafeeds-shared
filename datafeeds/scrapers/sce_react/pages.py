@@ -78,7 +78,7 @@ GenericBusyIndicatorLocator = (
 
 def detect_and_close_survey(driver, timeout=5):
     try:
-        locator = (By.CLASS_NAME, "acsDeclineButton")
+        locator = (By.CLASS_NAME, "fsrInvite__closeWrapper")
         WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located(locator)
         ).click()
@@ -340,7 +340,7 @@ class SceServiceAccountDetailModal(PageState):
     )
     DatePopupYearLocator = (
         By.XPATH,
-        "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]//p",
+        "//div[contains(@class, 'GraphDialogs__sceTextColor')]//span",
     )
 
     def get_ready_condition(self):
@@ -412,7 +412,7 @@ class SceServiceAccountDetailModal(PageState):
         # questionable. This might need to be replaced by something more robust if it proves troublesome.
         date_divs_locator = (
             By.XPATH,
-            "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]/div/div//div",
+            "//ul[contains(@class, 'GraphDialogs__listdata')]/li/button",
         )
         return [
             element
