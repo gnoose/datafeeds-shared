@@ -1,4 +1,3 @@
-import json
 import logging
 import csv
 from datetime import timedelta, date
@@ -10,7 +9,7 @@ from io import BytesIO
 import hashlib
 
 from datafeeds import config, db
-from datafeeds.common import webapps, index, platform, DateRange
+from datafeeds.common import index, platform, DateRange
 from datafeeds.common.support import Configuration
 from datafeeds.common.partial_billing import PartialBillProcessor
 from datafeeds.common.typing import (
@@ -60,27 +59,14 @@ def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
 
 
 def upload_readings(
-    transforms,
-    task_id: str,
-    meter_oid: int,
-    account_hex_id: str,
-    scraper: str,
-    readings,
+    transforms, task_id: str, meter_oid: int, scraper: str, readings,
 ):
     if readings and config.enabled("PLATFORM_UPLOAD"):
         readings = interval_transform.transform(
             transforms, task_id, scraper, meter_oid, readings
         )
-        if scraper in config.DIRECT_INTERVAL_UPLOAD:
-            log.info(
-                "writing interval data to the database for %s %s", scraper, meter_oid
-            )
-            MeterReading.merge_readings(MeterReading.from_json(meter_oid, readings))
-        else:
-            log.info(
-                "uploading interval data to platform for %s %s", scraper, meter_oid
-            )
-            _upload_via_webapps(readings, account_hex_id, meter_oid)
+        log.info("writing interval data to the database for %s %s", scraper, meter_oid)
+        MeterReading.merge_readings(MeterReading.from_json(meter_oid, readings))
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         index.update_readings_range(task_id, meter_oid, readings)
@@ -236,68 +222,6 @@ def _upload_to_platform(service_id: str, billing_data: BillingData):
         "/object/utility-service/{}/bills/import".format(service_id),
         {"importance": "product", "bills": bills},
     )
-
-
-@deprecated(details="To be replaced by ORM module.")
-def _upload_via_webapps(data, account_id, meter_id, dst_strategy="none"):
-    """Upload formatted interval data to platform. This handles batching
-    the upload to maximize efficiency and general error handling around it.
-    The interval format is:
-
-    {
-        '%Y-%m-%d': [96]
-    }
-
-    IE:
-    {
-        '2017-04-02' : [59.1, 30.2,...]
-    }
-    """
-
-    data_to_upload = {}
-    batch_number = 0
-    response = webapps.post("/transactions/create", {"target": meter_id})
-    transaction_oid = response["oid"]
-
-    log.debug("Opened stasis transaction. Transaction OID: %s.", transaction_oid)
-
-    for key in data.keys():
-        data_to_upload[key] = data[key]
-        if len(data_to_upload) == UPLOAD_DATA_BATCH_SIZE:
-            log.debug(
-                "Uploading %d-%d of %d"
-                % (
-                    batch_number * UPLOAD_DATA_BATCH_SIZE,
-                    (batch_number * UPLOAD_DATA_BATCH_SIZE) + UPLOAD_DATA_BATCH_SIZE,
-                    len(data),
-                )
-            )
-
-            webapps.post(
-                "/accounts/%s/meters/%s/readings" % (account_id, meter_id),
-                dict(
-                    transaction=transaction_oid,
-                    readings=json.dumps(data_to_upload),
-                    dstStrategy=dst_strategy,
-                ),
-            )
-
-            data_to_upload = {}
-            batch_number += 1
-
-    if data_to_upload:
-        log.debug("Uploading last data batch.")
-        webapps.post(
-            "/accounts/%s/meters/%s/readings" % (account_id, meter_id),
-            dict(
-                transaction=transaction_oid,
-                readings=json.dumps(data_to_upload),
-                dstStrategy=dst_strategy,
-            ),
-        )
-
-    webapps.post("/transactions/commit", {"oid": transaction_oid})
-    log.debug("Committed stasis transaction.")
 
 
 def hash_bill(service_id, start_date, end_date, cost, demand, use):

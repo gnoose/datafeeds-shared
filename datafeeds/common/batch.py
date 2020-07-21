@@ -74,7 +74,7 @@ def run_datafeed(
 
     bill_handler = ft.partial(upload_bills, meter.utility_service.service_id, task_id)
     readings_handler = ft.partial(
-        upload_readings, transforms, task_id, meter.oid, acct_hex_id, datasource.name
+        upload_readings, transforms, task_id, meter.oid, datasource.name
     )
     pdfs_handler = ft.partial(attach_bill_pdfs, task_id)
     partial_bill_handler = ft.partial(upload_partial_bills, meter, configuration)
