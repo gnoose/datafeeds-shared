@@ -61,15 +61,18 @@ def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
 def upload_readings(
     transforms, task_id: str, meter_oid: int, scraper: str, readings,
 ):
+    updated: List[MeterReading] = []
     if readings and config.enabled("PLATFORM_UPLOAD"):
         readings = interval_transform.transform(
             transforms, task_id, scraper, meter_oid, readings
         )
         log.info("writing interval data to the database for %s %s", scraper, meter_oid)
-        MeterReading.merge_readings(MeterReading.from_json(meter_oid, readings))
+        updated = MeterReading.merge_readings(
+            MeterReading.from_json(meter_oid, readings)
+        )
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
-        index.update_readings_range(task_id, meter_oid, readings)
+        index.set_interval_fields(task_id, meter_oid, updated)
 
     log.info("Final Interval Summary")
     for when, intervals in readings.items():

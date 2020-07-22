@@ -10,7 +10,7 @@ import logging
 import math
 from datetime import date, datetime, timedelta
 from enum import Enum
-from typing import List, Tuple, Optional, Dict, Any, Set
+from typing import List, Tuple, Optional, Dict, Set
 
 from dateutil import parser as date_parser
 from sqlalchemy import func
@@ -87,15 +87,17 @@ class MeterReading(ModelMixin, Base):
         return reading_objects
 
     @classmethod
-    def merge_readings(cls, readings: List[Any]):  # can't use MeterReading here
+    def merge_readings(cls, readings: List["MeterReading"]) -> List["MeterReading"]:
         """Merge a set of new MeterReadings with existing MeterReadings for a single meter.
 
         All readings must be for the same meter. If frozen is true, ignore the new data. If a
         MeterReading exists for this meter/date, update the values with the data in readings,
         but don't replace values with None. If a MeterReading does not exist, create a new one.
+        Return a list of MeterReading objects with updated data.
         """
+        updated: List["MeterReading"] = []
         if not readings:
-            return
+            return updated
         dates = {reading.occurred for reading in readings}
         meter_id = readings[0].meter
 
@@ -141,6 +143,7 @@ class MeterReading(ModelMixin, Base):
                     current_day.modified = datetime.now()
                     # tell SQLAlchemy a JSON field changed
                     flag_modified(current_day, "readings")
+                    updated.append(current_day)
                 log.info(
                     "merged readings for %s; modified=%s",
                     current_day.occurred,
@@ -148,7 +151,9 @@ class MeterReading(ModelMixin, Base):
                 )
             else:
                 db.session.add(new_day)
+                updated.append(new_day)
                 log.info("created new readings for %s", new_day.occurred)
+        return updated
 
 
 class MeterFlowDirection(Enum):

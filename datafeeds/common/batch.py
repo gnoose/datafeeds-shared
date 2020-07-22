@@ -1,7 +1,7 @@
 from datetime import datetime, date, timedelta
 import functools as ft
 import logging
-from typing import Optional, List
+from typing import Optional, List, Dict
 
 from dateutil import parser as dateparser
 
@@ -110,8 +110,8 @@ def run_datafeed(
                 "origin": "datafeeds",
             },
         )
+    index_doc: Dict[str, str] = {}
     try:
-        error = None
         with scraper_class(credentials, date_range, configuration) as scraper:
             scraper.scrape(
                 readings_handler=readings_handler,
@@ -119,14 +119,17 @@ def run_datafeed(
                 pdfs_handler=pdfs_handler,
                 partial_bills_handler=partial_bill_handler,
             )
-            status = "SUCCESS"
+            index_doc = {"status": "SUCCESS"}
             retval = Status.SUCCEEDED
 
     except Exception as exc:
         log.exception("Scraper run failed.")
-        status = "FAILURE"
         retval = Status.FAILED
-        error = repr(exc)
+        index_doc = {
+            "status": "FAILURE",
+            "error": repr(exc),
+            "exception": type(exc).__name__,
+        }
         # disable the login if scraping threw a LoginError, caller requested disabling on error,
         # and meter data source has a parent account data source
         if isinstance(exc, LoginError) and disable_login_on_error and parent:
@@ -138,7 +141,7 @@ def run_datafeed(
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading final task status to Elasticsearch.")
-        index.index_etl_run(task_id, {"status": status, "error": error}, update=True)
+        index.index_etl_run(task_id, index_doc, update=True)
 
     return retval
 

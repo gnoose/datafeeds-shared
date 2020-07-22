@@ -1,5 +1,5 @@
 from datetime import datetime, date, timedelta
-from typing import List, Optional
+from typing import List, Optional, Set, Dict, Any
 import logging
 
 from dateutil import parser as date_parser
@@ -23,7 +23,8 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-
+from datafeeds.models.meter import MeterReading
+from datafeeds.models.user import SnapmeterUserSubscription, SnapmeterAccountUser
 
 log = logging.getLogger(__name__)
 
@@ -179,6 +180,43 @@ def update_readings_range(task_id: str, meter_id: int, readings: dict):
         "intervalFrom": date_parser.parse(min(readings.keys())),
         "intervalTo": latest,
     }
+
+    index_etl_run(task_id, doc, update=True)
+
+
+@dbtask
+def set_interval_fields(task_id: str, meter_oid: int, readings: List[MeterReading]):
+    """Index info about the interval data retrieved in this run.
+
+    intervalUpdatedFrom, intervalUpdatedTo - date range of non-null new/updated data
+    updatedDays - count of days containing updated data
+    weeklyEmailSubscribers - count of external weekly email subscribers for this meter
+    accountUsers - count of external users for this account
+    age - days between max updated data and now
+    """
+    dates: Set[date] = set()
+    for reading in readings or []:
+        values = set(reading.readings)
+        if not values == {None}:
+            dates.add(reading.occurred)
+    doc: Dict[str, Any] = {}
+    doc.update(
+        {
+            "updatedDays": len(dates),
+            "emailSubscribers": SnapmeterUserSubscription.email_subscriber_count(
+                meter_oid
+            ),
+            "accountUsers": SnapmeterAccountUser.account_user_count(meter_oid),
+        }
+    )
+    if dates:
+        doc.update(
+            {
+                "intervalUpdatedFrom": min(dates),
+                "intervalUpdatedTo": max(dates),
+                "age": (date.today() - max(dates)).days,
+            }
+        )
 
     index_etl_run(task_id, doc, update=True)
 

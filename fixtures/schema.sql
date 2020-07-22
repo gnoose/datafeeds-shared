@@ -7699,5 +7699,3 @@ CREATE INDEX idx_bill_modified_meter ON public.bill USING btree (modified);
 --
 
 CREATE INDEX idx_meter_reading_modified ON public.meter_reading USING btree (modified);
-
-
