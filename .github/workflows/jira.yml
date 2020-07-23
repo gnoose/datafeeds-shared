@@ -20,7 +20,7 @@ jobs:
     - name: Find issue
       id: find
       uses: atlassian/gajira-find-issue-key@master
-      £ Do not fail the job if an issue key is not included
+      # Do not fail the job if an issue key is not included
       continue-on-error: true
       with: 
         from: commits
