@@ -101,8 +101,16 @@ def run_datafeed(
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading task information to Elasticsearch.")
-        index.index_etl_run(
-            task_id,
+        doc = index.run_meta(meter.oid)
+        if configuration:
+            doc.update(
+                {
+                    "billScraper": configuration.scrape_bills
+                    or configuration.scrape_partial_bills,
+                    "intervalScraper": configuration.scrape_readings,
+                }
+            )
+        doc.update(
             {
                 "started": datetime.now(),
                 "status": "STARTED",
@@ -114,6 +122,8 @@ def run_datafeed(
                 "origin": "datafeeds",
             },
         )
+        index.index_etl_run(task_id, doc)
+
     index_doc: Dict[str, str] = {}
     try:
         with scraper_class(credentials, date_range, configuration) as scraper:

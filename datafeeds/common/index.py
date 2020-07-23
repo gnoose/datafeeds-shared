@@ -58,7 +58,8 @@ def _get_es_connection():
     "intervalFrom": {"type": "date"}, - date range of non-null new/updated data
     "intervalTo": {"type": "date"},
     "runName": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
-    "dataType"{"type": "keyword"} (interval or billing)
+    "billScraper": {"type": "boolean"}
+    "intervalScraper": {"type": "boolean"}
     "updatedDays": {"type": "number"} - count of days containing updated data
     "weeklyEmailSubscribers": {"type": "number"} - count of external weekly email subscribers for this meter
     "accountUsers": {"type": "number"} - count of external users for this account
@@ -118,18 +119,12 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
     es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc)
 
 
-def _run_meta(meter_oid: int, data_type: str) -> Dict[str, Any]:
+def run_meta(meter_oid: int) -> Dict[str, Any]:
     """Set metadata common to all runs."""
-    doc: Dict[str, Any] = {}
-    doc.update(
-        {
-            "dataType": data_type,
-            "emailSubscribers": SnapmeterUserSubscription.email_subscriber_count(
-                meter_oid
-            ),
-            "accountUsers": SnapmeterAccountUser.account_user_count(meter_oid),
-        }
-    )
+    doc: Dict[str, Any] = {
+        "emailSubscribers": SnapmeterUserSubscription.email_subscriber_count(meter_oid),
+        "accountUsers": SnapmeterAccountUser.account_user_count(meter_oid),
+    }
     return doc
 
 
@@ -141,13 +136,14 @@ def update_billing_range(task_id: str, meter_oid: int, bills: BillingData):
     accountUsers - count of external users for this account
     billingFrom, billingTo - date range for bills retrieved during this run (all bills, not just updated)
     """
-    doc = _run_meta(meter_oid, "bill")
-    if bills:
-        billing = BillingRange(
-            start=min([bill.start for bill in bills]),
-            end=max([bill.end for bill in bills]),
-        )
-        doc.update({"billingFrom": billing.start, "billingTo": billing.end})
+    if not bills:
+        return
+    doc: Dict[str, Any] = {}
+    billing = BillingRange(
+        start=min([bill.start for bill in bills]),
+        end=max([bill.end for bill in bills]),
+    )
+    doc.update({"billingFrom": billing.start, "billingTo": billing.end})
     index_etl_run(task_id, doc, update=True)
 
 
@@ -159,13 +155,13 @@ def update_bill_pdf_range(task_id: str, meter_oid: int, pdfs: List[BillPdf]):
     accountUsers - count of external users for this account
     billingFrom, billingTo - date range for bills retrieved during this run (all bills, not just updated)
     """
-    doc = _run_meta(meter_oid, "bill")
-    if pdfs:
-        billing = BillingRange(
-            start=min([bill.start for bill in pdfs]),
-            end=max([bill.end for bill in pdfs]),
-        )
-        doc.update({"billingFrom": billing.start, "billingTo": billing.end})
+    if not pdfs:
+        return
+    doc: Dict[str, Any] = {}
+    billing = BillingRange(
+        start=min([bill.start for bill in pdfs]), end=max([bill.end for bill in pdfs]),
+    )
+    doc.update({"billingFrom": billing.start, "billingTo": billing.end})
     index_etl_run(task_id, doc, update=True)
 
 
@@ -186,7 +182,7 @@ def set_interval_fields(task_id: str, meter_oid: int, readings: List[MeterReadin
     accountUsers - count of external users for this account
     age - days between max updated data and now
     """
-    doc = _run_meta(meter_oid, "interval")
+    doc: Dict[str, Any] = {}
     dates: Set[date] = set()
     for reading in readings or []:
         values = set(reading.readings)

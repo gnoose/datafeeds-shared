@@ -51,35 +51,32 @@ class IndexTests(unittest.TestCase):
         db.session.add(self.user)
         db.session.flush()
 
-    @mock.patch("datafeeds.common.index.index_etl_run")
-    def test_update_billing_range(self, index_etl_run):
+    def test_run_meta(self):
         meter = self.meters[0]
-        meter = self.meters[0]
-        # no readings, no users
-        bills: BillingData = []
-        task_id = "abc123"
-        index.update_billing_range(task_id, meter.oid, bills)
+        # no users
         self.assertEqual(
-            {"dataType": "bill", "emailSubscribers": 0, "accountUsers": 0},
-            index_etl_run.call_args[0][1],
+            {"emailSubscribers": 0, "accountUsers": 0}, index.run_meta(meter.oid)
         )
         # with users, but user is internal
         self.add_internal_user()
-        index_etl_run.reset_mock()
-        index.update_billing_range(task_id, meter.oid, bills)
         self.assertEqual(
-            {"dataType": "bill", "emailSubscribers": 0, "accountUsers": 0},
-            index_etl_run.call_args[0][1],
+            {"emailSubscribers": 0, "accountUsers": 0}, index.run_meta(meter.oid)
         )
         # with external user
         self.set_external_user()
-        index_etl_run.reset_mock()
-        index.update_billing_range(task_id, meter.oid, bills)
         self.assertEqual(
-            {"dataType": "bill", "emailSubscribers": 1, "accountUsers": 1},
-            index_etl_run.call_args[0][1],
+            {"emailSubscribers": 1, "accountUsers": 1}, index.run_meta(meter.oid)
         )
-        # with users and bills
+
+    @mock.patch("datafeeds.common.index.index_etl_run")
+    def test_update_billing_range(self, index_etl_run):
+        meter = self.meters[0]
+        # no bills
+        bills: BillingData = []
+        task_id = "abc123"
+        index.update_billing_range(task_id, meter.oid, bills)
+        self.assertEqual(0, index_etl_run.call_count)
+        # with bills
         end = date.today() - timedelta(days=7)
         for _ in range(3):
             start = end - timedelta(days=30)
@@ -97,12 +94,8 @@ class IndexTests(unittest.TestCase):
                 )
             )
             end = start - timedelta(days=1)
-        index_etl_run.reset_mock()
         index.update_billing_range(task_id, meter.oid, bills)
         expected = {
-            "dataType": "bill",
-            "emailSubscribers": 1,
-            "accountUsers": 1,
             "billingFrom": min(b.start for b in bills),
             "billingTo": max(b.end for b in bills),
         }
@@ -111,31 +104,12 @@ class IndexTests(unittest.TestCase):
     @mock.patch("datafeeds.common.index.index_etl_run")
     def test_update_bill_pdf_range(self, index_etl_run):
         meter = self.meters[0]
-        # no pdfs, no users
+        # no pdfs
         pdfs: List[BillPdf] = []
         task_id = "abc123"
         index.update_bill_pdf_range(task_id, meter.oid, pdfs)
-        self.assertEqual(
-            {"dataType": "bill", "emailSubscribers": 0, "accountUsers": 0},
-            index_etl_run.call_args[0][1],
-        )
-        # with users, but user is internal
-        self.add_internal_user()
-        index_etl_run.reset_mock()
-        index.update_bill_pdf_range(task_id, meter.oid, pdfs)
-        self.assertEqual(
-            {"dataType": "bill", "emailSubscribers": 0, "accountUsers": 0},
-            index_etl_run.call_args[0][1],
-        )
-        # with external user
-        self.set_external_user()
-        index_etl_run.reset_mock()
-        index.update_bill_pdf_range(task_id, meter.oid, pdfs)
-        self.assertEqual(
-            {"dataType": "bill", "emailSubscribers": 1, "accountUsers": 1},
-            index_etl_run.call_args[0][1],
-        )
-        # with users and pdfs
+        self.assertEqual(0, index_etl_run.call_count)
+        # with pdfs
         end = date.today() - timedelta(days=7)
         for _ in range(3):
             start = end - timedelta(days=30)
@@ -152,9 +126,6 @@ class IndexTests(unittest.TestCase):
         index_etl_run.reset_mock()
         index.update_bill_pdf_range(task_id, meter.oid, pdfs)
         expected = {
-            "dataType": "bill",
-            "emailSubscribers": 1,
-            "accountUsers": 1,
             "billingFrom": min(b.start for b in pdfs),
             "billingTo": max(b.end for b in pdfs),
         }
@@ -163,43 +134,11 @@ class IndexTests(unittest.TestCase):
     @mock.patch("datafeeds.common.index.index_etl_run")
     def test_set_interval_fields(self, index_etl_run):
         meter = self.meters[0]
-        # no readings, no users
+        # no readings
         task_id = "abc123"
         index.set_interval_fields(task_id, meter.oid, [])
         self.assertEqual(
-            {
-                "dataType": "interval",
-                "updatedDays": 0,
-                "emailSubscribers": 0,
-                "accountUsers": 0,
-            },
-            index_etl_run.call_args[0][1],
-        )
-        # with users, but user is internal
-        self.add_internal_user()
-        index_etl_run.reset_mock()
-        index.set_interval_fields(task_id, meter.oid, [])
-        self.assertEqual(
-            {
-                "dataType": "interval",
-                "updatedDays": 0,
-                "emailSubscribers": 0,
-                "accountUsers": 0,
-            },
-            index_etl_run.call_args[0][1],
-        )
-        # with external user
-        self.set_external_user()
-        index_etl_run.reset_mock()
-        index.set_interval_fields(task_id, meter.oid, [])
-        self.assertEqual(
-            {
-                "dataType": "interval",
-                "updatedDays": 0,
-                "emailSubscribers": 1,
-                "accountUsers": 1,
-            },
-            index_etl_run.call_args[0][1],
+            {"updatedDays": 0,}, index_etl_run.call_args[0][1],
         )
         # with users and readings
         today = date.today()
@@ -213,13 +152,9 @@ class IndexTests(unittest.TestCase):
             readings.append(
                 MeterReading(meter=meter.oid, occurred=dt, readings=[1.0] * 96)
             )
-        index_etl_run.reset_mock()
         index.set_interval_fields(task_id, meter.oid, readings)
         expected = {
-            "dataType": "interval",
             "updatedDays": 3,
-            "emailSubscribers": 1,
-            "accountUsers": 1,
             "intervalFrom": dates[0],
             "intervalTo": dates[-1],
             "age": 5,
