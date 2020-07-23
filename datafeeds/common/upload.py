@@ -37,14 +37,19 @@ log = logging.getLogger(__name__)
 UPLOAD_DATA_BATCH_SIZE = 20
 
 
-def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
+def upload_bills(
+    meter_oid: int,
+    service_id: str,
+    billing_data: BillingData,
+    task_id: Optional[str] = None,
+):
     if config.enabled("PLATFORM_UPLOAD"):
         log.info("Uploading bills to platform via HTTP request.")
         _upload_to_platform(service_id, billing_data)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
-        index.update_billing_range(task_id, billing_data)
+        index.update_billing_range(task_id, meter_oid, billing_data)
 
     title = "Final Billing Summary"
     show_bill_summary(billing_data, title)
@@ -59,7 +64,7 @@ def upload_bills(service_id: str, task_id: str, billing_data: BillingData):
 
 
 def upload_readings(
-    transforms, task_id: str, meter_oid: int, scraper: str, readings,
+    transforms, meter_oid: int, scraper: str, readings, task_id: Optional[str] = None
 ):
     updated: List[MeterReading] = []
     if readings and config.enabled("PLATFORM_UPLOAD"):
@@ -88,7 +93,7 @@ def upload_readings(
 
 
 def attach_bill_pdfs(
-    task_id: str, pdfs: List[BillPdf],
+    meter_oid: int, pdfs: List[BillPdf], task_id: Optional[str] = None,
 ):
     """Attach a list of bill PDF files uploaded to S3 to bill records."""
     if not pdfs:
@@ -165,11 +170,14 @@ def attach_bill_pdfs(
         remove_file_from_s3(config.BILL_PDF_S3_BUCKET, key)
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
-        index.update_bill_pdf_range(task_id, pdfs)
+        index.update_bill_pdf_range(task_id, meter_oid, pdfs)
 
 
 def upload_partial_bills(
-    meter: Meter, configuration: Configuration, billing_data: BillingData
+    meter: Meter,
+    configuration: Configuration,
+    billing_data: BillingData,
+    task_id: Optional[str] = None,
 ):
     """
     Goes through billing_data and uploads new partial bills directly to the partial bills table.
@@ -182,6 +190,9 @@ def upload_partial_bills(
     processor = PartialBillProcessor(meter, configuration, billing_data)
     processor.process_partial_bills()
     processor.log_summary()
+    if task_id and config.enabled("ES_INDEX_JOBS"):
+        log.info("Updating billing range in Elasticsearch.")
+        index.update_billing_range(task_id, meter.oid, billing_data)
 
 
 @deprecated(details="To be replaced by ORM module.")

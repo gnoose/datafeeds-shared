@@ -72,12 +72,16 @@ def run_datafeed(
     acct_hex_id = account.hex_id if account else ""
     acct_name = account.name if account else ""
 
-    bill_handler = ft.partial(upload_bills, meter.utility_service.service_id, task_id)
-    readings_handler = ft.partial(
-        upload_readings, transforms, task_id, meter.oid, datasource.name
+    bill_handler = ft.partial(
+        upload_bills, meter.oid, meter.utility_service.service_id, task_id
     )
-    pdfs_handler = ft.partial(attach_bill_pdfs, task_id)
-    partial_bill_handler = ft.partial(upload_partial_bills, meter, configuration)
+    readings_handler = ft.partial(
+        upload_readings, transforms, meter.oid, datasource.name, task_id
+    )
+    pdfs_handler = ft.partial(attach_bill_pdfs, meter.oid, task_id)
+    partial_bill_handler = ft.partial(
+        upload_partial_bills, meter, configuration, task_id
+    )
 
     date_range = DateRange(
         *iso_to_dates(params.get("data_start"), params.get("data_end"))

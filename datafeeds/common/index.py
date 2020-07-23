@@ -1,4 +1,4 @@
-from datetime import datetime, date, timedelta
+from datetime import datetime, date
 from typing import List, Optional, Set, Dict, Any
 import logging
 
@@ -12,7 +12,6 @@ from datafeeds.db import dbtask
 from datafeeds.common.typing import (
     BillingData,
     BillingRange,
-    IntervalRange,
     IntervalIssue,
     Status,
     BillPdf,
@@ -56,9 +55,14 @@ def _get_es_connection():
     "url": {"type": "keyword"},
     "billingFrom": {"type": "date"},
     "billingTo": {"type": "date"},
-    "intervalFrom": {"type": "date"},
+    "intervalFrom": {"type": "date"}, - date range of non-null new/updated data
     "intervalTo": {"type": "date"},
     "runName": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+    "dataType"{"type": "keyword"} (interval or billing)
+    "updatedDays": {"type": "number"} - count of days containing updated data
+    "weeklyEmailSubscribers": {"type": "number"} - count of external weekly email subscribers for this meter
+    "accountUsers": {"type": "number"} - count of external users for this account
+    "age": {"type": "number"} - days between max updated data and now
 """
 
 
@@ -114,37 +118,55 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
     es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc)
 
 
-def update_dates(
-    task_id: str, billing: BillingRange = None, interval: IntervalRange = None
-):
-    """set date ranges retrieved by this run"""
-    doc = {}
-    if billing:
+def _run_meta(meter_oid: int, data_type: str) -> Dict[str, Any]:
+    """Set metadata common to all runs."""
+    doc: Dict[str, Any] = {}
+    doc.update(
+        {
+            "dataType": data_type,
+            "emailSubscribers": SnapmeterUserSubscription.email_subscriber_count(
+                meter_oid
+            ),
+            "accountUsers": SnapmeterAccountUser.account_user_count(meter_oid),
+        }
+    )
+    return doc
+
+
+def update_billing_range(task_id: str, meter_oid: int, bills: BillingData):
+    """Index info about the data retrieved in this run.
+
+    dataType - bill
+    weeklyEmailSubscribers - count of external weekly email subscribers for this meter
+    accountUsers - count of external users for this account
+    billingFrom, billingTo - date range for bills retrieved during this run (all bills, not just updated)
+    """
+    doc = _run_meta(meter_oid, "bill")
+    if bills:
+        billing = BillingRange(
+            start=min([bill.start for bill in bills]),
+            end=max([bill.end for bill in bills]),
+        )
         doc.update({"billingFrom": billing.start, "billingTo": billing.end})
-    if interval:
-        doc.update({"intervalFrom": interval.start, "intervalTo": interval.end})
-    if doc:
-        index_etl_run(task_id, doc, update=True)
+    index_etl_run(task_id, doc, update=True)
 
 
-def update_billing_range(task_id: str, bills: BillingData):
-    """set billing range retrieved by this run"""
-    if not bills:
-        return
-    billing = BillingRange(
-        start=min([bill.start for bill in bills]), end=max([bill.end for bill in bills])
-    )
-    update_dates(task_id, billing=billing)
+def update_bill_pdf_range(task_id: str, meter_oid: int, pdfs: List[BillPdf]):
+    """Index info about the data retrieved in this run.
 
-
-def update_bill_pdf_range(task_id: str, pdfs: List[BillPdf]):
-    """set billing range retrieved by this run"""
-    if not pdfs:
-        return
-    billing = BillingRange(
-        start=min([bill.start for bill in pdfs]), end=max([bill.end for bill in pdfs])
-    )
-    update_dates(task_id, billing=billing)
+    dataType - bill
+    weeklyEmailSubscribers - count of external weekly email subscribers for this meter
+    accountUsers - count of external users for this account
+    billingFrom, billingTo - date range for bills retrieved during this run (all bills, not just updated)
+    """
+    doc = _run_meta(meter_oid, "bill")
+    if pdfs:
+        billing = BillingRange(
+            start=min([bill.start for bill in pdfs]),
+            end=max([bill.end for bill in pdfs]),
+        )
+        doc.update({"billingFrom": billing.start, "billingTo": billing.end})
+    index_etl_run(task_id, doc, update=True)
 
 
 def _meter_interval(meter_id):
@@ -154,70 +176,31 @@ def _meter_interval(meter_id):
 
 
 @dbtask
-def update_readings_range(task_id: str, meter_id: int, readings: dict):
-    # noinspection SpellCheckingInspection
-    """set readings range retrieved by this run
-
-        readings data looks like 'yyyy-mdd-dd': [v1, v2, ...]
-        get last valid readings date using meter interval
-        """
-    if not readings:
-        return
-    max_dt = max(readings.keys())  # this is a string
-    data = readings[max_dt]
-    # go backwards through the readings to find the last non-empty index
-    for idx in range(len(data) - 1, -1, -1):
-        if data[idx] is not None:  # 0 may be valid
-            break
-    missing = len(data) - idx
-    interval = _meter_interval(meter_id)
-    latest = (
-        date_parser.parse(max_dt)
-        + timedelta(days=1)
-        - timedelta(minutes=interval * missing)
-    )
-    doc = {
-        "intervalFrom": date_parser.parse(min(readings.keys())),
-        "intervalTo": latest,
-    }
-
-    index_etl_run(task_id, doc, update=True)
-
-
-@dbtask
 def set_interval_fields(task_id: str, meter_oid: int, readings: List[MeterReading]):
     """Index info about the interval data retrieved in this run.
 
+    dataType - interval
     intervalUpdatedFrom, intervalUpdatedTo - date range of non-null new/updated data
     updatedDays - count of days containing updated data
     weeklyEmailSubscribers - count of external weekly email subscribers for this meter
     accountUsers - count of external users for this account
     age - days between max updated data and now
     """
+    doc = _run_meta(meter_oid, "interval")
     dates: Set[date] = set()
     for reading in readings or []:
         values = set(reading.readings)
         if not values == {None}:
             dates.add(reading.occurred)
-    doc: Dict[str, Any] = {}
-    doc.update(
-        {
-            "updatedDays": len(dates),
-            "emailSubscribers": SnapmeterUserSubscription.email_subscriber_count(
-                meter_oid
-            ),
-            "accountUsers": SnapmeterAccountUser.account_user_count(meter_oid),
-        }
-    )
+    doc["updatedDays"] = len(dates)
     if dates:
         doc.update(
             {
-                "intervalUpdatedFrom": min(dates),
-                "intervalUpdatedTo": max(dates),
+                "intervalFrom": min(dates),
+                "intervalTo": max(dates),
                 "age": (date.today() - max(dates)).days,
             }
         )
-
     index_etl_run(task_id, doc, update=True)
 
 
