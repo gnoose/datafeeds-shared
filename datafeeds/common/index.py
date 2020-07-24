@@ -102,7 +102,10 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
     min_dt = datetime(2000, 1, 1)
     max_dt = datetime(2000, 1, 1)
     if doc.get("intervalTo"):
-        max_dt = max(max_dt, _get_date(doc["intervalTo"]))
+        interval_to = _get_date(doc["intervalTo"])
+        if isinstance(interval_to, date):
+            interval_to = datetime.combine(interval_to, datetime.min.time())
+        max_dt = max(max_dt, interval_to)
     if doc.get("billingTo"):
         billing_to = _get_date(doc["billingTo"])
         if isinstance(billing_to, date):
