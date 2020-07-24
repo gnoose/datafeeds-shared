@@ -38,10 +38,7 @@ UPLOAD_DATA_BATCH_SIZE = 20
 
 
 def upload_bills(
-    meter_oid: int,
-    service_id: str,
-    billing_data: BillingData,
-    task_id: Optional[str] = None,
+    meter_oid: int, service_id: str, task_id: str, billing_data: BillingData,
 ):
     if config.enabled("PLATFORM_UPLOAD"):
         log.info("Uploading bills to platform via HTTP request.")
@@ -63,9 +60,7 @@ def upload_bills(
     log.info("Wrote bill data to %s." % path)
 
 
-def upload_readings(
-    transforms, meter_oid: int, scraper: str, readings, task_id: Optional[str] = None
-):
+def upload_readings(transforms, meter_oid: int, scraper: str, task_id: str, readings):
     updated: List[MeterReading] = []
     if readings and config.enabled("PLATFORM_UPLOAD"):
         readings = interval_transform.transform(
@@ -93,7 +88,7 @@ def upload_readings(
 
 
 def attach_bill_pdfs(
-    meter_oid: int, pdfs: List[BillPdf], task_id: Optional[str] = None,
+    meter_oid: int, task_id: str, pdfs: List[BillPdf],
 ):
     """Attach a list of bill PDF files uploaded to S3 to bill records."""
     if not pdfs:
@@ -174,10 +169,7 @@ def attach_bill_pdfs(
 
 
 def upload_partial_bills(
-    meter: Meter,
-    configuration: Configuration,
-    billing_data: BillingData,
-    task_id: Optional[str] = None,
+    meter: Meter, configuration: Configuration, task_id: str, billing_data: BillingData,
 ):
     """
     Goes through billing_data and uploads new partial bills directly to the partial bills table.

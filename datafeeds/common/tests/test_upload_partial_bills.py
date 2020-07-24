@@ -104,7 +104,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         self.assertEqual(partial_bills.count(), 0)
 
         # Three new partial bills added for the given service
-        upload.upload_partial_bills(self.meter, self.configuration, billing_data)
+        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
         db.session.flush()
         self.assertEqual(partial_bills.count(), 3)
         all_bills = partial_bills.all()
@@ -122,7 +122,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         )
 
         # No new partial bills have arrived, so no changes made
-        upload.upload_partial_bills(self.meter, self.configuration, billing_data)
+        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
         db.session.flush()
         self.assertEqual(partial_bills.count(), 3)
         self.assertEqual([pb.modified for pb in partial_bills.all()], modified_dates)
@@ -141,7 +141,7 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         # Existing bill superseded because new partial bill with new cost uploaded
-        upload.upload_partial_bills(self.meter, self.configuration, altered_cost)
+        upload.upload_partial_bills(self.meter, self.configuration, None, altered_cost)
         db.session.flush()
         self.assertEqual(partial_bills.count(), 4)
         replacement_bill = self._get_partial_bill_from_billing_datum(altered_cost[0])
@@ -169,7 +169,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
         # New bill overlaps dates with two existing partial bills
         upload.upload_partial_bills(
-            self.meter, self.configuration, overlapping_bill_datum
+            self.meter, self.configuration, None, overlapping_bill_datum
         )
         db.session.flush()
         overlapping_bill = self._get_partial_bill_from_billing_datum(
@@ -196,7 +196,9 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         # Bad usage detected so we don't supersede the original bill
-        upload.upload_partial_bills(self.meter, self.configuration, bad_usage_detected)
+        upload.upload_partial_bills(
+            self.meter, self.configuration, None, bad_usage_detected
+        )
         db.session.flush()
         self.assertEqual(partial_bills.count(), 5)
         self.assertEqual(partial_bills.filter(PartialBill.used == 0.0).count(), 0)
@@ -215,7 +217,7 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         # Zero usage okay as long as we're not overwriting existing zero usage
-        upload.upload_partial_bills(self.meter, self.configuration, bad_usage_new)
+        upload.upload_partial_bills(self.meter, self.configuration, None, bad_usage_new)
         db.session.flush()
         self.assertEqual(partial_bills.count(), 6)
         self.assertEqual(partial_bills.filter(PartialBill.used == 0.0).count(), 1)
@@ -235,7 +237,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
         # Snaps start date, because initial bill starts on the closing date of an existing bill
         upload.upload_partial_bills(
-            self.meter, self.configuration, overlaps_with_closing
+            self.meter, self.configuration, None, overlaps_with_closing
         )
         db.session.flush()
         self.assertEqual(partial_bills.count(), 7)
@@ -267,7 +269,7 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         upload.upload_partial_bills(
-            self.meter, self.configuration, new_bill_updating_manual
+            self.meter, self.configuration, None, new_bill_updating_manual
         )
         db.session.flush()
         self.assertEqual(partial_bills.count(), 7)
@@ -277,7 +279,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         service = self.meter.utility_service
 
         # Three new partial bills added for the given service
-        upload.upload_partial_bills(self.meter, self.configuration, billing_data)
+        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
 
         partial_bills = (
             db.session.query(PartialBill)
@@ -316,7 +318,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
 
         # Partial coming in with new attachment
-        upload.upload_partial_bills(self.meter, self.configuration, new_partials)
+        upload.upload_partial_bills(self.meter, self.configuration, None, new_partials)
         self.assertEqual(partial_bills.count(), 4)
 
         superseded_partial = (
@@ -365,7 +367,7 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         # Partial coming in with updated attachment
-        upload.upload_partial_bills(self.meter, self.configuration, new_partials)
+        upload.upload_partial_bills(self.meter, self.configuration, None, new_partials)
         self.assertEqual(partial_bills.count(), 5)
 
         replacement = (
@@ -388,7 +390,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         service = self.meter.utility_service
 
         # Three new partial bills added for the given service
-        upload.upload_partial_bills(self.meter, self.configuration, billing_data)
+        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
 
         partial_bills = (
             db.session.query(PartialBill)
@@ -424,7 +426,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
 
         # Partial coming in with new line items
-        upload.upload_partial_bills(self.meter, self.configuration, new_partials)
+        upload.upload_partial_bills(self.meter, self.configuration, None, new_partials)
         self.assertEqual(partial_bills.count(), 4)
 
         superseded_partial = (
@@ -456,14 +458,14 @@ class TestPartialBillProcessor(unittest.TestCase):
         )
 
         # No data changed, so no new partials created
-        upload.upload_partial_bills(self.meter, self.configuration, new_partials)
+        upload.upload_partial_bills(self.meter, self.configuration, None, new_partials)
         self.assertEqual(partial_bills.count(), 4)
 
     def test_scrape_utility_code(self):
         service = self.meter.utility_service
 
         # Three new partial bills added for the given service
-        upload.upload_partial_bills(self.meter, self.configuration, billing_data)
+        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
 
         partial_bills = (
             db.session.query(PartialBill)
@@ -486,7 +488,7 @@ class TestPartialBillProcessor(unittest.TestCase):
             utility_code="A6",
         )
 
-        upload.upload_partial_bills(self.meter, self.configuration, [new_partial])
+        upload.upload_partial_bills(self.meter, self.configuration, None, [new_partial])
         self.assertEqual(partial_bills.count(), 4)
 
         superseded_partial = (
