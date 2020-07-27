@@ -141,6 +141,20 @@ class TestUrjanetLADWPTransformer(test_util.UrjaFixtureText):
         self.ladwp_electricity_test(
             "3109584374973_input.json", "3109584374973_expected.json"
         )
+        # Account has a single day date range
+        self.ladwp_electricity_test(
+            "1846296798118_input.json", "1846296798118_expected.json"
+        )
+        # single day Account and Meter records
+        self.ladwp_electricity_test(
+            "1707869342549_input.json", "1707869342549_expected.json"
+        )
+        self.ladwp_electricity_test(
+            "1707869342551_input.json", "1707869342551_expected.json"
+        )
+        self.ladwp_electricity_test(
+            "1846296798118_input.json", "1846296798118_expected.json"
+        )
 
 
 if __name__ == "__main__":
