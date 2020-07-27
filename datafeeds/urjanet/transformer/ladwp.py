@@ -296,6 +296,9 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                     for charge in meter.charges:
                         if (charge.IntervalStart, charge.IntervalEnd) in seen:
                             continue
+                        # IntervalTree doesn't allow 0-length ranges
+                        if charge.IntervalStart == charge.IntervalEnd:
+                            continue
                         seen.add((charge.IntervalStart, charge.IntervalEnd))
                         log.debug(
                             "Adding billing period from charge: account={} meter={}, "
@@ -360,9 +363,21 @@ class LADWPTransformer(UrjanetGridiumTransformer):
         account_range.add(account.IntervalStart, account.IntervalEnd)
         for meter in account.meters:
             meter_range = DateIntervalTree()
+            log.debug(
+                "meter interval range: %s to %s", meter.IntervalStart, meter.IntervalEnd
+            )
             meter_range.add(meter.IntervalStart, meter.IntervalEnd)
             charge_range = DateIntervalTree()
             for charge in meter.charges:
+                # IntervalTree doesn't allow 0-length ranges
+                if charge.IntervalStart == charge.IntervalEnd:
+                    continue
+                log.debug(
+                    "charge %s interval range: %s to %s",
+                    charge.PK,
+                    charge.IntervalStart,
+                    charge.IntervalEnd,
+                )
                 charge_range.add(charge.IntervalStart, charge.IntervalEnd)
             if len(charge_range.intervals()) > 1:
                 min_charge_dt = min([r.begin for r in charge_range.intervals()])

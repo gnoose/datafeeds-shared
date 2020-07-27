@@ -137,6 +137,10 @@ class TestUrjanetLADWPTransformer(test_util.UrjaFixtureText):
         self.ladwp_electricity_test(
             "1777465083514_input.json", "1777465083514_expected.json"
         )
+        # Meter has Charge records with a single day date range
+        self.ladwp_electricity_test(
+            "3109584374973_input.json", "3109584374973_expected.json"
+        )
 
 
 if __name__ == "__main__":

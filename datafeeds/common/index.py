@@ -60,10 +60,11 @@ def _get_es_connection():
     "runName": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
     "billScraper": {"type": "boolean"}
     "intervalScraper": {"type": "boolean"}
-    "updatedDays": {"type": "number"} - count of days containing updated data
-    "weeklyEmailSubscribers": {"type": "number"} - count of external weekly email subscribers for this meter
-    "accountUsers": {"type": "number"} - count of external users for this account
-    "age": {"type": "number"} - days between max updated data and now
+    "updatedDays": {"type": "long"} - count of days containing updated data
+    "weeklyEmailSubscribers": {"type": "long"} - count of external weekly email subscribers for this meter
+    "accountUsers": {"type": "long"} - count of external users for this account
+    "age": {"type": "long"} - days between max updated data and now
+    "exception": {"type": "keyword"} - just the exception type
 """
 
 
