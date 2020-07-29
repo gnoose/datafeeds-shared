@@ -237,20 +237,22 @@ class SmudBillComparePage(PageState):
         bill_2_raw_values = {}
         for billing_row in billing_row_divs:
             billing_columns = billing_row.find_elements(By.XPATH, "./div")
-            billing_links = billing_row.find_elements(By.PARTIAL_LINK_TEXT, "View Bill")
+            billing_links = billing_row.find_elements(
+                By.CSS_SELECTOR, "a.gtm-billcompare-link-viewbill"
+            )
             if billing_links:
                 try:
-                    bill_1_raw_values["Link"] = (
+                    bill_1_raw_values["link"] = (
                         billing_columns[1]
-                        .find_element_by_tag_name("a")
+                        .find_element_by_css_selector(".gtm-billcompare-link-viewbill")
                         .get_attribute("href")
                     )
                 except Exception:
                     pass
                 try:
-                    bill_2_raw_values["Link"] = (
+                    bill_2_raw_values["link"] = (
                         billing_columns[2]
-                        .find_element_by_tag_name("a")
+                        .find_element_by_css_selector(".gtm-billcompare-link-viewbill")
                         .get_attribute("href")
                     )
                 except Exception:
@@ -457,7 +459,11 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
         """Convert a billing detail summary from the website to a Gridium BillingDatum object"""
         # get statement date from link: Date=yyyy-mm-dd
         date_re = re.compile(r"Date=(\d\d\d\d-\d\d-\d\d)")
-        match = date_re.search(bill_detail.download_link)
+        match = (
+            date_re.search(bill_detail.download_link)
+            if bill_detail.download_link
+            else None
+        )
         statement = None
         if match:
             try:
