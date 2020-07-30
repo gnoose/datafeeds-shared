@@ -299,6 +299,9 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                 )
                 for meter in account.meters:
                     seen: Set[Tuple] = set()
+                    # add the long billing period we're trying to split to seen:
+                    # sometimes there's a charge with this same too-long range
+                    seen.add((start_date, end_date))
                     for charge in meter.charges:
                         if (charge.IntervalStart, charge.IntervalEnd) in seen:
                             continue
@@ -313,6 +316,24 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                                 charge.PK,
                                 charge.IntervalStart,
                                 charge.IntervalEnd,
+                            )
+                        )
+                        # copy the account and set the date range on the meter
+                        account_copy = self.copy_account_data(
+                            account, meter, charge.IntervalStart, charge.IntervalEnd
+                        )
+                        bill_history.add(
+                            charge.IntervalStart,
+                            charge.IntervalEnd,
+                            LADWPBillingPeriod(account_copy),
+                        )
+                    # if the long range is the only one, use it
+                    if {(start_date, end_date)} == seen and meter.charges:
+                        charge = meter.charges[0]
+                        log.debug(
+                            "Adding long billing period from charges: account={} meter={}, "
+                            "start={}, end={}".format(
+                                account.PK, meter.PK, start_date, end_date,
                             )
                         )
                         # copy the account and set the date range on the meter

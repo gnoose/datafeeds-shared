@@ -155,6 +155,11 @@ class TestUrjanetLADWPTransformer(test_util.UrjaFixtureText):
         self.ladwp_electricity_test(
             "1846296798118_input.json", "1846296798118_expected.json"
         )
+        # This meter has a long billing period (2019-06-12 to 2019-08-09). The transformer uses Charge records
+        # to split these, but one Charge record (PK=237348898) has the same long period.
+        self.ladwp_electricity_test(
+            "1707479190340_input.json", "1707479190340_expected.json"
+        )
 
 
 if __name__ == "__main__":
