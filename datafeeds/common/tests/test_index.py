@@ -119,6 +119,7 @@ class IndexTests(unittest.TestCase):
                     gen_utility_account_id=None,
                     start=start,
                     end=end,
+                    statement=end,
                     s3_key="abc123.pdf",
                 )
             )

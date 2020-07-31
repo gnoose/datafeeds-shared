@@ -104,12 +104,14 @@ class BillPdf:
         gen_utility_account_id: str,
         start: date,
         end: date,
+        statement: date,
         s3_key: str,
     ):
         self.utility_account_id = utility_account_id
         self.gen_utility_account_id = gen_utility_account_id
         self.start = start
         self.end = end
+        self.statement = statement
         self.s3_key = s3_key
 
     def to_json(self):
@@ -118,6 +120,7 @@ class BillPdf:
             "gen_utility_account_id": self.gen_utility_account_id,
             "start": self.start.strftime("%Y-%m-%d"),
             "end": self.end.strftime("%Y-%m-%d"),
+            "statement": self.statement.strftime("%Y-%m-%d"),
             "s3_key": self.s3_key,
         }
 

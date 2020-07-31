@@ -1,7 +1,7 @@
 import re
 import logging
 from datetime import date, datetime, timedelta
-from typing import List, Optional
+from typing import List, Optional, Any, Dict
 
 from dateutil import parser as date_parser
 
@@ -211,6 +211,7 @@ class DashboardPage(CSSSelectorBasePageObject):
                     gen_utility_account_id=gen_utility,
                     start=approx_bill_start,
                     end=approx_bill_end,
+                    statement=bill_date,
                     s3_key=key,
                 )
             )
@@ -352,7 +353,9 @@ class PgeBillPdfScraper(BaseWebScraper):
 
         # get latest statement date already retrieved
         datasource = self._configuration.datasource
-        latest = date_parser.parse(datasource.meta.get("latest", "2010-01-01")).date()
+        latest = date_parser.parse(
+            (datasource.meta or {}).get("latest", "2010-01-01")
+        ).date()
         # download bills
         pdfs = dashboard_page.download_bills(
             latest, self._configuration.utility_account, self._configuration.utility,
@@ -360,6 +363,8 @@ class PgeBillPdfScraper(BaseWebScraper):
         # set latest statement date
         if pdfs:
             latest_download = max([pdf.end for pdf in pdfs])
+            if not datasource.meta:
+                datasource.meta: Dict[str, Any] = {}
             datasource.meta["latest"] = latest_download.strftime("%Y-%m-%d")
         return Results(pdfs=pdfs)
 

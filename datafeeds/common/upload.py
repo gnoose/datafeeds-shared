@@ -9,7 +9,7 @@ from io import BytesIO
 import hashlib
 
 from datafeeds import config, db
-from datafeeds.common import index, platform, DateRange
+from datafeeds.common import index, platform
 from datafeeds.common.support import Configuration
 from datafeeds.common.partial_billing import PartialBillProcessor
 from datafeeds.common.typing import (
@@ -99,24 +99,17 @@ def attach_bill_pdfs(
     unused = []
     for pdf in pdfs:
         log.info(
-            "bill PDF for utility_account_id=%s start=%s end=%s",
+            "bill PDF for utility_account_id=%s statement=%s",
             pdf.utility_account_id,
-            pdf.start,
-            pdf.end,
+            pdf.statement,
         )
-        # use a date range since bill issue date might not match exactly
-        start_range = DateRange(
-            pdf.start - timedelta(days=5), pdf.start + timedelta(days=5)
-        )
-        end_range = DateRange(pdf.end - timedelta(days=5), pdf.end + timedelta(days=5))
+        # look for bill that ended recently before the statement date
         query = (
             db.session.query(Bill)
             .filter(UtilityService.utility_account_id == pdf.utility_account_id)
             .filter(UtilityService.oid == Bill.service)
-            .filter(Bill.initial > start_range.start_date)
-            .filter(Bill.initial < start_range.end_date)
-            .filter(Bill.closing > end_range.start_date)
-            .filter(Bill.closing < end_range.end_date)
+            .filter(Bill.closing > pdf.statement - timedelta(days=14))
+            .filter(Bill.closing <= pdf.statement)
         )
         bill_count = query.count()
         if not bill_count:
@@ -130,10 +123,9 @@ def attach_bill_pdfs(
         attached = False
         for bill in query:
             # [{"kind": "bill", "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf", "format": "PDF"}]
-            log.debug(
-                "matched bill pdf %s-%s to bill %s %s-%s",
-                pdf.start,
-                pdf.end,
+            log.info(
+                "matched bill pdf %s to bill %s %s-%s",
+                pdf.statement,
                 bill.oid,
                 bill.initial,
                 bill.closing,
