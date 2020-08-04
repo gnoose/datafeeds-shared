@@ -14,7 +14,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from retrying import retry
 from typing import Optional
 from datafeeds import config
-from datafeeds.common.typing import BillingDatum
+from datafeeds.common.typing import BillingDatum, Status
 from datafeeds.common.support import Configuration
 from datafeeds.common.webdriver.virtualdisplay import VirtualDisplay
 from datafeeds.common.util.selenium import ec_or, file_exists_in_dir
@@ -120,7 +120,7 @@ class BaseScraper(Abstract):
     # wrap this in a try-catch, there's no benefit to the current interface.
     def scrape(
         self, readings_handler, bills_handler, pdfs_handler, partial_bills_handler
-    ):
+    ) -> Status:
         log.info("Launching %s", self.name)
         if self.username:
             log.info("Username: %s", self.username)
@@ -138,28 +138,55 @@ class BaseScraper(Abstract):
 
             if self.scrape_bills:
                 if results.bills:
-                    bills_handler(results.bills)
+                    bills_status = bills_handler(results.bills)
                 else:
                     log.error("Expected to find bills but none were returned.")
-
+                    bills_status = None
+            else:
+                bills_status = None
             if self.scrape_readings:
                 if results.readings:
-                    readings_handler(results.readings)
+                    readings_status = readings_handler(results.readings)
                 else:
                     log.error("Expected to find interval data but none was returned.")
+                    readings_status = None
+            else:
+                readings_status = None
 
             if self.scrape_pdfs and results.pdfs:
-                pdfs_handler(results.pdfs)
+                pdfs_status = pdfs_handler(results.pdfs)
+            else:
+                pdfs_status = None
 
             if self.scrape_partial_bills and results.bills:
                 # Because billing scrapers might serve double-duty - the code may work for
                 # bundled bills, as well as be able to extract T&D bills for partial
                 # billing scrapers, we will just pass partial bills results under existing Result.bills
-                partial_bills_handler(results.bills)
+                partial_bills_status = partial_bills_handler(results.bills)
+            else:
+                partial_bills_status = None
 
         except Exception:
             log.exception("Scraper run failed.")
             raise
+
+        for status in (
+            bills_status,
+            readings_status,
+            pdfs_status,
+            partial_bills_status,
+        ):
+            if status == Status.SUCCEEDED:
+                return Status.SUCCEEDED
+        for status in (
+            bills_status,
+            readings_status,
+            pdfs_status,
+            partial_bills_status,
+        ):
+            if status == Status.COMPLETED:
+                return Status.COMPLETED
+        return Status.FAILED
 
     @staticmethod
     def log_bills(bills: List[BillingDatum]):
@@ -258,14 +285,16 @@ class BaseWebScraper(BaseScraper):
     )
     def scrape(
         self, readings_handler, bills_handler, pdfs_handler, partial_bills_handler
-    ):
+    ) -> Status:
         try:
-            super().scrape(
+            status = super().scrape(
                 readings_handler, bills_handler, pdfs_handler, partial_bills_handler
             )
         except Exception:
             self.screenshot("error")
             raise
+
+        return status
 
     def screenshot(self, filename, whole=True):
         self._shot_number += 1
