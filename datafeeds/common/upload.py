@@ -7,6 +7,7 @@ import os
 from typing import Optional, Union, BinaryIO, List
 from io import BytesIO
 import hashlib
+from sqlalchemy import func
 
 from datafeeds import config, db
 from datafeeds.common import index, platform
@@ -18,6 +19,7 @@ from datafeeds.common.typing import (
     BillingDatum,
     AttachmentEntry,
     BillPdf,
+    Status,
 )
 from datafeeds.common import interval_transform
 from datafeeds.common.util.s3 import (
@@ -37,9 +39,17 @@ log = logging.getLogger(__name__)
 UPLOAD_DATA_BATCH_SIZE = 20
 
 
+def _latest_closing(said) -> Optional[date]:
+    query = db.session.query(
+        func.max(Bill.closing).label("most_recent_closing")
+    ).filter(Bill.service == UtilityService.oid, UtilityService.service_id == said)
+    res = query.first()
+    return res.most_recent_closing if res else None
+
+
 def upload_bills(
     meter_oid: int, service_id: str, task_id: str, billing_data: BillingData,
-):
+) -> Status:
     if config.enabled("PLATFORM_UPLOAD"):
         log.info("Uploading bills to platform via HTTP request.")
         _upload_to_platform(service_id, billing_data)
@@ -52,15 +62,24 @@ def upload_bills(
     show_bill_summary(billing_data, title)
 
     path = os.path.join(config.WORKING_DIRECTORY, "bills.csv")
+    end = date(year=1900, month=1, day=1)
     with open(path, "w") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Service ID", "Start", "End", "Cost", "Used", "Peak"])
         for b in billing_data:
             writer.writerow([service_id, b.start, b.end, b.cost, b.used, b.peak])
+            if b.end > end:
+                end = b.end
     log.info("Wrote bill data to %s." % path)
+    cur_most_recent = _latest_closing(service_id)
+    if cur_most_recent and (end > cur_most_recent):
+        return Status.SUCCEEDED
+    return Status.COMPLETED
 
 
-def upload_readings(transforms, meter_oid: int, scraper: str, task_id: str, readings):
+def upload_readings(
+    transforms, meter_oid: int, scraper: str, task_id: str, readings
+) -> Status:
     updated: List[MeterReading] = []
     if readings and config.enabled("PLATFORM_UPLOAD"):
         readings = interval_transform.transform(
@@ -86,13 +105,15 @@ def upload_readings(transforms, meter_oid: int, scraper: str, task_id: str, read
             writer.writerow([meter_oid, str(when)] + [str(x) for x in intervals])
     log.info("Wrote interval data to %s." % path)
 
+    if updated:
+        return Status.SUCCEEDED
+    return Status.COMPLETED
 
-def attach_bill_pdfs(
-    meter_oid: int, task_id: str, pdfs: List[BillPdf],
-):
+
+def attach_bill_pdfs(meter_oid: int, task_id: str, pdfs: List[BillPdf],) -> Status:
     """Attach a list of bill PDF files uploaded to S3 to bill records."""
     if not pdfs:
-        return
+        return Status.COMPLETED
     # A bill PDF is associated with one utility account; it can contain data for
     # multiple SAIDs.
     count = 0
@@ -159,10 +180,14 @@ def attach_bill_pdfs(
         log.info("Updating billing range in Elasticsearch.")
         index.update_bill_pdf_range(task_id, meter_oid, pdfs)
 
+    if count:
+        return Status.SUCCEEDED
+    return Status.COMPLETED
+
 
 def upload_partial_bills(
     meter: Meter, configuration: Configuration, task_id: str, billing_data: BillingData,
-):
+) -> Status:
     """
     Goes through billing_data and uploads new partial bills directly to the partial bills table.
     If a new partial bill differs from an existing partial bill,
@@ -172,11 +197,13 @@ def upload_partial_bills(
     """
     log.info("Starting processing of partial bill scraper results.")
     processor = PartialBillProcessor(meter, configuration, billing_data)
-    processor.process_partial_bills()
+    status = processor.process_partial_bills()
     processor.log_summary()
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
         index.update_billing_range(task_id, meter.oid, billing_data)
+
+    return status
 
 
 @deprecated(details="To be replaced by ORM module.")

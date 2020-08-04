@@ -14,6 +14,8 @@ class Status(Enum):
     SUCCEEDED = 0
     FAILED = 1
     SKIPPED = 2
+    # COMPLETED means the scraper ran to completion but not did retrieve new data
+    COMPLETED = 3
 
 
 class IntervalRange(NamedTuple):

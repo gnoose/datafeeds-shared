@@ -1,23 +1,28 @@
 import unittest
 from unittest import mock
 
+import random
 from datetime import date, datetime, timedelta
 
 from datafeeds import db
 from datafeeds.common import upload, test_utils
+from datafeeds.common.exceptions import InvalidMeterDataException
 from datafeeds.common.partial_billing import PartialBillValidator
 from datafeeds.common.typing import (
     BillingDatum,
+    BillPdf,
     OverlappedBillingDataDateRangeError,
     NoFutureBillsError,
     AttachmentEntry,
     BillingDatumItemsEntry,
+    Status,
 )
+
 from datafeeds.scrapers.sce_react.energymanager_billing import (
     SceReactEnergyManagerBillingConfiguration,
 )
 
-from datafeeds.models.bill import PartialBill
+from datafeeds.models.bill import Bill, PartialBill
 
 billing_data = [
     BillingDatum(
@@ -104,8 +109,11 @@ class TestPartialBillProcessor(unittest.TestCase):
         self.assertEqual(partial_bills.count(), 0)
 
         # Three new partial bills added for the given service
-        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
+        status = upload.upload_partial_bills(
+            self.meter, self.configuration, None, billing_data
+        )
         db.session.flush()
+        self.assertEqual(status, Status.SUCCEEDED)
         self.assertEqual(partial_bills.count(), 3)
         all_bills = partial_bills.all()
         modified_dates = [pb.modified for pb in all_bills]
@@ -141,8 +149,11 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         # Existing bill superseded because new partial bill with new cost uploaded
-        upload.upload_partial_bills(self.meter, self.configuration, None, altered_cost)
+        status = upload.upload_partial_bills(
+            self.meter, self.configuration, None, altered_cost
+        )
         db.session.flush()
+        self.assertEqual(status, Status.SUCCEEDED)
         self.assertEqual(partial_bills.count(), 4)
         replacement_bill = self._get_partial_bill_from_billing_datum(altered_cost[0])
 
@@ -559,6 +570,11 @@ class TestPartialBillValidator(unittest.TestCase):
             validator = PartialBillValidator(overlapping_bills)
             validator.run_prevalidation()
 
+        status = upload.upload_partial_bills(
+            self.meter, self.configuration, None, overlapping_bills
+        )
+        self.assertEqual(status, Status.FAILED)
+
     def test_validate_partial_bills_no_future_bills_error(self):
         today = datetime.today().date()
         future_bill = [
@@ -578,3 +594,236 @@ class TestPartialBillValidator(unittest.TestCase):
         with self.assertRaises(NoFutureBillsError):
             validator = PartialBillValidator(future_bill)
             validator.run_prevalidation()
+
+        status = upload.upload_partial_bills(
+            self.meter, self.configuration, None, future_bill
+        )
+        self.assertEqual(status, Status.FAILED)
+
+
+bills_list = [
+    BillingDatum(
+        start=date(2019, 1, 6),
+        end=date(2019, 2, 3),
+        cost=987.76,
+        used=4585.0,
+        peak=25.0,
+        items=None,
+        attachments=[],
+        statement=date(2019, 2, 3),
+        utility_code=None,
+    ),
+    BillingDatum(
+        start=date(2019, 2, 4),
+        end=date(2019, 3, 4),
+        cost=882.39,
+        used=4787.0,
+        peak=54.0,
+        items=None,
+        attachments=[],
+        statement=date(2019, 3, 4),
+        utility_code=None,
+    ),
+    BillingDatum(
+        start=date(2019, 3, 5),
+        end=date(2019, 4, 2),
+        cost=706.5,
+        used=3072.0,
+        peak=45.0,
+        items=None,
+        attachments=[],
+        statement=date(2019, 4, 2),
+        utility_code=None,
+    ),
+]
+
+
+class TestBillUpload(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        test_utils.init_test_db()
+
+    def setUp(self):
+        (account, meters) = test_utils.create_meters()
+        self.meter_ids = [m.oid for m in meters]
+        self.meter = meters[0]
+        self.configuration = SceReactEnergyManagerBillingConfiguration(
+            utility=self.meter.utility_service.utility,
+            utility_account_id=self.meter.utility_service.utility_account_id,
+            service_id=self.meter.service_id,
+            scrape_bills=True,
+            scrape_partial_bills=False,
+        )
+
+    @classmethod
+    def tearDown(cls):
+        db.session.rollback()
+
+    def test_upload_bills(self):
+        service = self.meter.utility_service
+        db.session.add(service)
+
+        bill_1 = Bill()
+        bill_1.closing = date(2019, 4, 2)
+        bill_1.service = service.oid
+        db.session.add(bill_1)
+        db.session.flush()
+
+        print("service_id is %s" % service.service_id)
+        status = upload.upload_bills(self.meter, service.service_id, None, bills_list)
+        # No bills newer bills have arrived
+        self.assertEqual(status, Status.COMPLETED)
+
+        new_bills_list = [
+            BillingDatum(
+                start=date(2019, 1, 6),
+                end=date(2019, 6, 3),
+                cost=987.76,
+                used=4585.0,
+                peak=25.0,
+                items=None,
+                attachments=[],
+                statement=date(2019, 2, 3),
+                utility_code=None,
+            )
+        ]
+
+        status = upload.upload_bills(
+            self.meter, service.service_id, None, new_bills_list
+        )
+        # A more recent bill arrived
+        self.assertEqual(status, Status.SUCCEEDED)
+
+        bill_2 = Bill()
+        bill_2.service = service.oid
+        bill_2.closing = date(2018, 4, 2)
+        bill_3 = Bill()
+        bill_3.service = service.oid
+        most_recent = date(2020, 6, 1)
+        bill_3.closing = most_recent
+        db.session.add(bill_2)
+        db.session.add(bill_3)
+        db.session.flush()
+
+        # _latest_closing returns the most recent closing
+        self.assertEqual(most_recent, upload._latest_closing(service.service_id))
+
+
+class TestReadingsUpload(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        test_utils.init_test_db()
+
+    def setUp(self):
+        (account, meters) = test_utils.create_meters()
+        self.meter_ids = [m.oid for m in meters]
+        self.meter = meters[0]
+        self.configuration = SceReactEnergyManagerBillingConfiguration(
+            utility=self.meter.utility_service.utility,
+            utility_account_id=self.meter.utility_service.utility_account_id,
+            service_id=self.meter.service_id,
+        )
+
+    @classmethod
+    def tearDown(cls):
+        db.session.rollback()
+
+    @mock.patch("datafeeds.config.enabled")
+    def test_upload_readings(self, mocked_config):
+        readings_data = {"2017-04-02": [59.1, 30.2, None]}
+        transforms = []
+
+        # 96 readings per day are expected
+        with self.assertRaises(InvalidMeterDataException):
+            upload.upload_readings(
+                transforms, self.meter_ids[0], None, None, readings_data
+            )
+        readings_data_list = []
+        for i in range(96):
+            readings_data_list.append(random.randrange(10000) / 100)
+        readings_data = {"2017-04-02": readings_data_list}
+        status = upload.upload_readings(
+            transforms, self.meter_ids[0], None, None, readings_data
+        )
+        self.assertEqual(status, Status.SUCCEEDED)
+
+        status = upload.upload_readings(
+            transforms, self.meter_ids[0], None, None, readings_data
+        )
+        # There is no new data
+        self.assertEqual(status, Status.COMPLETED)
+
+        readings_data_list = []
+        for i in range(96):
+            readings_data_list.append(random.randrange(10000) / 100)
+        readings_data = {"2017-04-02": readings_data_list}
+        status = upload.upload_readings(
+            transforms, self.meter_ids[0], None, None, readings_data
+        )
+        # Now there is new data
+        self.assertEqual(status, Status.SUCCEEDED)
+
+        # Different day means new data
+        readings_data = {"2017-04-03": readings_data_list}
+        status = upload.upload_readings(
+            transforms, self.meter_ids[0], None, None, readings_data
+        )
+        self.assertEqual(status, Status.SUCCEEDED)
+
+        # New data can be from past days
+        readings_data = {"2017-04-01": readings_data_list}
+        status = upload.upload_readings(
+            transforms, self.meter_ids[0], None, None, readings_data
+        )
+        self.assertEqual(status, Status.SUCCEEDED)
+
+
+class TestPdfAttachment(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        test_utils.init_test_db()
+
+    def setUp(self):
+        (account, meters) = test_utils.create_meters()
+        self.meter_ids = [m.oid for m in meters]
+        self.meter = meters[0]
+        self.configuration = SceReactEnergyManagerBillingConfiguration(
+            utility=self.meter.utility_service.utility,
+            utility_account_id=self.meter.utility_service.utility_account_id,
+            service_id=self.meter.service_id,
+        )
+        self.service = self.meter.utility_service
+
+    @classmethod
+    def tearDown(cls):
+        db.session.rollback()
+
+    def test_attach_bill_pdfs(self):
+        pdfs = []
+        # Empty list has no new data
+        status = upload.attach_bill_pdfs(self.meter_ids[0], None, pdfs)
+        self.assertEqual(status, Status.COMPLETED)
+
+        service = self.meter.utility_service
+        db.session.add(service)
+
+        bill_1 = Bill()
+        bill_1.initial = date(2019, 4, 2)
+        bill_1.closing = date(2019, 5, 2)
+        bill_1.service = service.oid
+        db.session.add(bill_1)
+        db.session.flush()
+        key = "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf"
+        service = self.meter.utility_service
+        print(service.utility_account_id)
+        bill_pdf = BillPdf(
+            service.utility_account_id,
+            service.utility_account_id,
+            date(2019, 4, 2),
+            date(2019, 5, 2),
+            key,
+        )
+        pdfs.append(bill_pdf)
+        status = upload.attach_bill_pdfs(self.meter_ids[0], key, pdfs)
+        # Now there is new data
+        self.assertEqual(status, Status.SUCCEEDED)
