@@ -174,7 +174,7 @@ def datafeed(
     meta = datasource.meta or {}
     configuration = Configuration(
         mvweb_id=meta.get("mvWebId"),
-        is_aggregate="t" in meta.get("mvWebAggregate", "false"),
+        is_aggregate="t" in (meta.get("mvWebAggregate", "false") or "false"),
     )
     # reduce load on MVWeb servers: skip if meter has data from within the last 3 days
     max_reading = meter.readings_range.max_date or date.today() - timedelta(days=365)
