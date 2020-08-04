@@ -11,8 +11,6 @@ from datafeeds.common.typing import (
     show_bill_summary,
     assert_is_without_overlaps,
     NoFutureBillsError,
-    OverlappedBillingDataDateRangeError,
-    Status,
 )
 from datafeeds.common.support import Configuration
 from datafeeds.models.bill import GENERATION_ONLY, TND_ONLY
@@ -232,12 +230,8 @@ class PartialBillProcessor:
         If a new partial bill differs from an existing partial bill,
         a new partial bill is created, rather than overwriting the old one.
         """
-        # Run initial validation of all the partial bills.  Failures are caught
-        # and the scraper run is marked as FAILED.
-        try:
-            PartialBillValidator(self.billing_data).run_prevalidation()
-        except (OverlappedBillingDataDateRangeError, NoFutureBillsError):
-            return Status.FAILED
+        # Run initial validation of all the partial bills.  Failure will cause a premature exit.
+        PartialBillValidator(self.billing_data).run_prevalidation()
 
         # Snap the start date of the first new bill, if applicable
         self._snap_first_start_date()
@@ -279,8 +273,6 @@ class PartialBillProcessor:
                     self.meter.utility_service, self.partial_bills_type, pending_partial
                 )
                 self.staged_partial.append(pb)
-
-        return Status.SUCCEEDED if self.staged_partial else Status.COMPLETED
 
     def log_summary(self):
         """Logs the partial bills scraped.

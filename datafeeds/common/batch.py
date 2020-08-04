@@ -127,17 +127,14 @@ def run_datafeed(
     index_doc: Dict[str, str] = {}
     try:
         with scraper_class(credentials, date_range, configuration) as scraper:
-            scraper_status = scraper.scrape(
+            scraper.scrape(
                 readings_handler=readings_handler,
                 bills_handler=bill_handler,
                 pdfs_handler=pdfs_handler,
                 partial_bills_handler=partial_bill_handler,
             )
-            if scraper_status == Status.SUCCEEDED or Status.COMPLETED:
-                index_doc = {"status": "SUCCESS"}
-            else:
-                index_doc = {"status": "FAILURE"}
-            retval = scraper_status
+            index_doc = {"status": "SUCCESS"}
+            retval = Status.SUCCEEDED
 
     except Exception as exc:
         log.exception("Scraper run failed.")
