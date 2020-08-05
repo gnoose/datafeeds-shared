@@ -133,11 +133,11 @@ def run_datafeed(
                 pdfs_handler=pdfs_handler,
                 partial_bills_handler=partial_bill_handler,
             )
-            if scraper_status == Status.SUCCEEDED or Status.COMPLETED:
-                index_doc = {"status": "SUCCESS"}
+            index_doc = {"status": "SUCCESS"}
+            if scraper_status in [Status.SUCCEEDED, Status.COMPLETED]:
+                retval = Status.SUCCEEDED
             else:
-                index_doc = {"status": "FAILURE"}
-            retval = scraper_status
+                retval = Status.FAILED
 
     except Exception as exc:
         log.exception("Scraper run failed.")

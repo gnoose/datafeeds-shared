@@ -1,6 +1,6 @@
 import logging
 import csv
-from datetime import timedelta, date
+from datetime import timedelta, date, datetime
 
 from deprecation import deprecated
 import os
@@ -68,8 +68,11 @@ def upload_bills(
         writer.writerow(["Service ID", "Start", "End", "Cost", "Used", "Peak"])
         for b in billing_data:
             writer.writerow([service_id, b.start, b.end, b.cost, b.used, b.peak])
-            if b.end > end:
-                end = b.end
+            if type(b.end) == datetime:
+                end = max(b.end.date(), end)  # type: ignore
+            else:
+                if b.end > end:
+                    end = b.end
     log.info("Wrote bill data to %s." % path)
     cur_most_recent = _latest_closing(service_id)
     if cur_most_recent and (end > cur_most_recent):
