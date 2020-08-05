@@ -52,7 +52,7 @@ class LoginPage(CSSSelectorBasePageObject):
 
 
 class LandingPage(CSSSelectorBasePageObject):
-    ReportTabSelector = ".sidenav ul li:nth-child(3) a.nav-dropdown-toggle"
+    ReportTabSelector = ".sidenav ul li:nth-child(2) a.nav-dropdown-toggle"
     DataTabSelector = ".sidenav li.open ul.nav-dropdown-items li:nth-child(2)"
 
     def go_to_data_extract(self):
