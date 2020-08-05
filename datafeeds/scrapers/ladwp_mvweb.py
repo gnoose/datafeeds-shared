@@ -13,7 +13,11 @@ from datafeeds import config
 from datafeeds.common import Timeline
 from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common.exceptions import LoginError, DataSourceConfigurationError
+from datafeeds.common.exceptions import (
+    InvalidMeterDataException,
+    LoginError,
+    DataSourceConfigurationError,
+)
 from datafeeds.common.support import Configuration as BaseConfiguration, Results
 from datafeeds.common.typing import Status
 from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource
@@ -62,16 +66,18 @@ class Scraper(BaseApiScraper):
         if re.match(r"^.*<TITLE>MV-WEB Login Failed</TITLE>.*$", response.text):
             raise LoginError()
 
+        api_key = None
         for line in response.text.split("\r\n"):
             if re.match(r"^.*KEY=.*$", line):
                 api_key = line.split("=")[1].strip('"')
                 break
+        if api_key:
+            return api_key
+
         else:
             raise DataSourceConfigurationError(
                 "Unable to find KEY value for authentication"
             )
-
-        return api_key
 
     @staticmethod
     def _response_to_javaobj(response):
@@ -115,8 +121,11 @@ class Scraper(BaseApiScraper):
                 }
             )
 
+        log.info("requesting data from %s", url)
         response = requests.get(url, params=params)
         log.debug("Response Status: %s", response.status_code)
+        if not len(response.content):
+            raise InvalidMeterDataException("No data received from %s" % url)
         obj = self._response_to_javaobj(response)
 
         ptz = gettz("America/Los_Angeles")
