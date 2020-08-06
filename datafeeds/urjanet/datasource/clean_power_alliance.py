@@ -7,6 +7,7 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+from datafeeds.models.bill import GENERATION_ONLY
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import (
     Account,
@@ -89,4 +90,5 @@ def datafeed(
         transformer=CleanPowerAllianceTransformer(),
         task_id=task_id,
         urja_partial_billing=True,
+        partial_type=GENERATION_ONLY,
     )

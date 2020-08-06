@@ -29,6 +29,7 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+from datafeeds.models.bill import TND_ONLY
 
 
 log = logging.getLogger(__name__)
@@ -58,6 +59,7 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
             scrape_bills=scrape_bills,
             scrape_readings=False,
             scrape_partial_bills=scrape_partial_bills,
+            partial_type=TND_ONLY,
         )
         self.service_id = service_id
         self.utility = utility

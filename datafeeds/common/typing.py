@@ -46,6 +46,10 @@ class OverlappedBillingDataDateRangeError(Exception):
     pass
 
 
+class InvalidPartialTypeError(Exception):
+    pass
+
+
 class NoFutureBillsError(Exception):
     pass
 

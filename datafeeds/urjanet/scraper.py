@@ -209,12 +209,17 @@ class BaseUrjanetConfiguration(Configuration):
 
 class BasePartialBillUrjanetConfiguration(Configuration):
     def __init__(
-        self, urja_datasource, urja_transformer, utility_name, fetch_attachments
+        self,
+        urja_datasource,
+        urja_transformer,
+        utility_name,
+        fetch_attachments,
+        partial_type,
     ):
         """For use where Urjanet is a partial billing datasource - the given scraper
         pulls down T&D-only, or generation-only charges
         """
-        super().__init__(scrape_partial_bills=True)
+        super().__init__(scrape_partial_bills=True, partial_type=partial_type)
         self.urja_datasource = urja_datasource
         self.urja_transformer = urja_transformer
         self.utility_name = utility_name

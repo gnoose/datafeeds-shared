@@ -172,6 +172,7 @@ def run_urjanet_datafeed(
     transformer: UrjanetGridiumTransformer,
     task_id: Optional[str] = None,
     urja_partial_billing: Optional[bool] = False,
+    partial_type: Optional[str] = None,
 ) -> Status:
     conn = db.urjanet_connection()
 
@@ -188,6 +189,7 @@ def run_urjanet_datafeed(
             urja_transformer=transformer,
             utility_name=meter.utility_service.utility,
             fetch_attachments=True,
+            partial_type=partial_type,
         )
 
         return run_datafeed(

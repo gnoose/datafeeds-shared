@@ -8,6 +8,7 @@ from datafeeds.common import DateRange
 from datafeeds.common.typing import (
     BillingDatum,
     BillingData,
+    InvalidPartialTypeError,
     show_bill_summary,
     assert_is_without_overlaps,
     NoFutureBillsError,
@@ -73,25 +74,13 @@ class PartialBillProcessor:
     @property
     def partial_bills_type(self):
         """
-        Infers if the incoming partial bills are "tnd-only" bills or "generation-bills" by matching on the service_id that
-        was passed to the scraper.  If the gen_service_id was passed in, we assume this is a generation partial bill.
-        It is possible that the gen_service_id is stored on the Configuration.service_id field, so be flexible.
+        Retrieves the partial bills type from the scraper configuration.
         """
-        # For urja scrapers, we'll be pulling the service_id/gen_service_id off of the urjadatasource,
-        # otherwise, we'll retrieve it from self.configuration
-        config = (
-            self.configuration.urja_datasource
-            if hasattr(self.configuration, "urja_datasource")
-            else self.configuration
-        )
-
-        said = getattr(config, "service_id", None) or getattr(
-            config, "gen_service_id", None
-        )
-
-        if said == self.meter.utility_service.gen_service_id:
-            return GENERATION_ONLY
-        return TND_ONLY
+        partial_type = getattr(self.configuration, "partial_type", None)
+        if partial_type in (TND_ONLY, GENERATION_ONLY):
+            return partial_type
+        else:
+            raise InvalidPartialTypeError()
 
     @property
     def haves(self) -> List[PartialBill]:

@@ -67,10 +67,9 @@ For a meter where there are multiple SA's involved, `UtilityService.service_id` 
 corresponding generation SAID should be stored in `UtilityService.gen_service_id`.  If you are building a T&D-only
 partial billing scraper, you should generally pass in the `service_id` or `utility_account_id` to the Configuration. 
 If you are building a generation-only partial-billing scraper, you should use the generation service fields, and pass 
-in the `gen_service_id` or `gen_utility_account_id` to the Configuration.  The `PartialBillProcessor`
-will be looking for the `service_id` or `gen_service_id` in the Configuration and attempt to match the value to the
-value on the meter's service to determine if this is a `tnd-only` partial bill or a `generation-only` partial bill.
-This will be set on `PartialBill.provider_type` for use in the stitching process later.
+in the `gen_service_id` or `gen_utility_account_id` to the Configuration. The scraper configuration should pass in 
+`partial_type` which will either be `tnd-only` or `generation-only`. This will be set on `PartialBill.provider_type` for 
+use in the stitching process later.
 
 ### Urjanet 
 
