@@ -133,7 +133,11 @@ def run_datafeed(
                 pdfs_handler=pdfs_handler,
                 partial_bills_handler=partial_bill_handler,
             )
-            index_doc = {"status": "SUCCESS"}
+            if scraper_status == Status.SUCCEEDED:
+                # Avoid muddying Elasticsearch results
+                index_doc = {"status": "SUCCESS"}
+            else:
+                index_doc = {"status": scraper_status.name}
             if scraper_status in [Status.SUCCEEDED, Status.COMPLETED]:
                 retval = Status.SUCCEEDED
             else:
