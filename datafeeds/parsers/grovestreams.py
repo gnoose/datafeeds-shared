@@ -221,7 +221,11 @@ def parse_intervals(text):
 
         if datum is not None:
             # If the data is null, don't bother incorporating it.
-            interval_data.append(Interval(start=current_dt, end=next_dt, kwh=datum))
+            # JSON numbers could parse to integers or floating point numbers.
+            # For consistency, cast everything to float.
+            interval_data.append(
+                Interval(start=current_dt, end=next_dt, kwh=float(datum))
+            )
 
         current_dt = next_dt
 

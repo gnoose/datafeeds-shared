@@ -58,7 +58,8 @@ class SaveReadingsTests(unittest.TestCase):
         valid_dates: Set[date] = set()
         for idx in range(3):
             valid_dates.add(dt)
-            readings[dt.strftime("%Y-%m-%d")] = [2.0] * 96
+            # Check that both floating point and integer values are acceptable.
+            readings[dt.strftime("%Y-%m-%d")] = [2.0] * 90 + [2] * 6
             dt += timedelta(days=1)
         # empty data ignored
         readings[dt.strftime("%Y-%m-%d")] = []

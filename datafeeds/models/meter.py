@@ -57,11 +57,20 @@ class MeterReading(ModelMixin, Base):
         reading_objects: List[MeterReading] = []
         for dt_str in readings:
             day_readings = readings[dt_str]
+
             if not len(day_readings):
                 continue
+
             # skip if all values are empty
             if {None} == set(day_readings):
                 continue
+
+            # Cast integers (which are an acceptable input) to floating point values for consistency.
+            # Leave all other values alone.
+            day_readings = [
+                float(val) if isinstance(val, int) else val for val in day_readings
+            ]
+
             # throw error if values are not floats
             for val in day_readings:
                 if val is not None and type(val) != float:
