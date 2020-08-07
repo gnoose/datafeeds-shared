@@ -1,7 +1,7 @@
 from datetime import datetime, date, timedelta
 import functools as ft
 import logging
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Union
 
 from dateutil import parser as dateparser
 
@@ -180,21 +180,24 @@ def run_urjanet_datafeed(
 ) -> Status:
     conn = db.urjanet_connection()
 
-    base_config = (
-        BasePartialBillUrjanetConfiguration
-        if urja_partial_billing
-        else BaseUrjanetConfiguration
-    )
-
+    scraper_config: Union[BasePartialBillUrjanetConfiguration, BaseUrjanetConfiguration]
     try:
         urja_datasource.conn = conn
-        scraper_config = base_config(
-            urja_datasource=urja_datasource,
-            urja_transformer=transformer,
-            utility_name=meter.utility_service.utility,
-            fetch_attachments=True,
-            partial_type=partial_type,
-        )
+        if urja_partial_billing:
+            scraper_config = BasePartialBillUrjanetConfiguration(
+                urja_datasource=urja_datasource,
+                urja_transformer=transformer,
+                utility_name=meter.utility_service.utility,
+                fetch_attachments=True,
+                partial_type=partial_type,
+            )
+        else:
+            scraper_config = BaseUrjanetConfiguration(
+                urja_datasource=urja_datasource,
+                urja_transformer=transformer,
+                utility_name=meter.utility_service.utility,
+                fetch_attachments=True,
+            )
 
         return run_datafeed(
             BaseUrjanetScraper,
