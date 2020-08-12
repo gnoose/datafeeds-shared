@@ -6,6 +6,7 @@ from typing import Optional, Tuple, List, Dict, Callable, Union
 from datetime import timedelta, datetime, date, time as time_t
 from dateutil import parser as dateparser
 from dateutil.relativedelta import relativedelta
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from retrying import retry
 
@@ -46,12 +47,16 @@ def iframe_decorator(func: Callable):
     the necessary elements.
     """
 
-    # Disabling these rules here because of weirdness around including
+    # Adding these rules here because of weirdness around including
     # this decorator (that depends on the IFrameBasePageObject) inside
     # the class, while still making it available to subclasses
-
     def func_wrapper(self, *args, **kwargs):
-        with IFrameSwitch(self._driver, self.get_iframe_selector()):
+        iframe_selector = self.get_iframe_selector()
+        if iframe_selector:
+            # Switches to iframe only if exists
+            with IFrameSwitch(self._driver, self.get_iframe_selector()):
+                return func(self, *args, **kwargs)
+        else:
             return func(self, *args, **kwargs)
 
     return func_wrapper
@@ -61,7 +66,10 @@ class IFrameBasePageObject(CSSSelectorBasePageObject):
     IFrameSelector = "div.powertrax > iframe"
 
     def get_iframe_selector(self):
-        return self.find_element(self.IFrameSelector)
+        try:
+            return self.find_element(self.IFrameSelector)
+        except NoSuchElementException:
+            return None
 
     @iframe_decorator
     def wait_until_ready(
@@ -148,20 +156,18 @@ class AccountOverviewPage(CSSSelectorBasePageObject):
 
 
 class DownloadPage(IFrameBasePageObject):
-    DownloadLinkSelector = 'a[href$="/mvweb/download"]'
-
     @retry(stop_max_attempt_number=3, wait_fixed=10000)
-    def get_download_page_link(self):
-        return self.find_element(self.DownloadLinkSelector)
+    def get_download_page_link(self, download_selector):
+        return self.find_element(download_selector)
 
     @iframe_decorator
-    def navigate_to_download_page(self):
+    def navigate_to_download_page(self, download_selector):
         """Navigate to download page
 
         Click on the download link.
         """
         log.info("Clicking on the Download link")
-        self.get_download_page_link().click()
+        self.get_download_page_link(download_selector).click()
 
 
 class MeterPage(IFrameBasePageObject):
@@ -283,9 +289,14 @@ class IntervalForm(IFrameBasePageObject):
 
 class HECOScraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
+        """
+        HECO MVWeb Selenium Scraper
+        """
         super().__init__(*args, **kwargs)
         self.name = "HECO"
         self.login_url = "https://mybiz.heco.com/"
+        # Download link selector can differ on MVWeb implementation
+        self.download_link_selector = 'a[href$="/mvweb/download"]'
 
     # Overrides BaseWebScraper.start
     def start(self):
@@ -430,18 +441,11 @@ class HECOScraper(BaseWebScraper):
         HECOScraper._remove_incomplete_demand_data(response, current_date)
         return response
 
-    def _execute(self):
-        # Direct the driver to the login page
-        self._driver.get(self.login_url)
-        # Create page helpers
+    def login_to_mvweb(self):
+        """
+        Log in through HECO interface and then navigate to MVWeb Portal
+        """
         login_page = LoginPage(self._driver)
-        overview_page = AccountOverviewPage(self._driver)
-        download_page = DownloadPage(self._driver)
-        meter_page = MeterPage(self._driver)
-        search_result = MeterSearchResult(self._driver)
-        available_dates = AvailableDateComponent(self._driver)
-        interval_form = IntervalForm(self._driver)
-
         # Log in
         login_page.wait_until_ready(login_page.UsernameFieldSelector)
         self.screenshot("before login")
@@ -449,6 +453,7 @@ class HECOScraper(BaseWebScraper):
 
         # Navigate to PowerTrax - if successful login, should see PowerTrax login.
         # Otherwise, expecting error message e.g. bad user id or password
+        overview_page = AccountOverviewPage(self._driver)
         overview_page.wait_until_ready(
             overview_page.PowerTraxLinkSelector,
             error_selector=overview_page.LoginErrorSelector,
@@ -458,12 +463,25 @@ class HECOScraper(BaseWebScraper):
         self.screenshot("before navigating to powertrax")
         overview_page.navigate_to_powertrax()
 
+    def _execute(self):
+        # Direct the driver to the login page
+        self._driver.get(self.login_url)
+        # Create page helpers
+        download_page = DownloadPage(self._driver)
+        meter_page = MeterPage(self._driver)
+        search_result = MeterSearchResult(self._driver)
+        available_dates = AvailableDateComponent(self._driver)
+        interval_form = IntervalForm(self._driver)
+
+        self.login_to_mvweb()
+
         # Navigate to Download Page
         # Pause to let the IFrame to settle down
         time.sleep(5)
-        download_page.wait_until_ready(selector=download_page.DownloadLinkSelector)
+
+        download_page.wait_until_ready(selector=self.download_link_selector)
         self.screenshot("before clicking on download link")
-        download_page.navigate_to_download_page()
+        download_page.navigate_to_download_page(self.download_link_selector)
         time.sleep(10)
 
         # Enter MeterId in the search box
