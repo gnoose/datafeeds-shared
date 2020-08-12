@@ -147,7 +147,7 @@ def run_datafeed(
         log.exception("Scraper run failed.")
         retval = Status.FAILED
         index_doc = {
-            "status": "FAILURE",
+            "status": "FAILED",
             "error": repr(exc),
             "exception": type(exc).__name__,
         }
