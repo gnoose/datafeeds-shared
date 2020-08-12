@@ -37,7 +37,15 @@ DATE_FORMAT = "%m/%d/%Y"
 IntermediateReading = Dict[str, Dict[str, List[Union[float, str]]]]
 
 
+class MissingMeterIDConfigurationException(Exception):
+    pass
+
+
 class MeterNotFoundException(Exception):
+    pass
+
+
+class NoAvailableData(Exception):
     pass
 
 
@@ -182,6 +190,8 @@ class MeterPage(IFrameBasePageObject):
         than paginate through them, use the search bar.
         """
         log.info("Searching by meter id.")
+        if not meter_id:
+            raise MissingMeterIDConfigurationException()
         self.get_meter_searchbox().send_keys(meter_id)
 
 
@@ -217,6 +227,8 @@ class AvailableDateComponent(IFrameBasePageObject):
         """
         log.info("Extracting available dates.")
         available_date_arr = self._get_available_dates_element().text.split(" to ")
+        if available_date_arr[1] == "00/00/0000":
+            raise NoAvailableData()
         start_date = datetime.strptime(
             available_date_arr[0], "Data available from {}".format(DATE_FORMAT)
         ).date()
