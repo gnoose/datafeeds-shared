@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 from typing import NewType, Tuple, List, Optional
 from datetime import datetime, date, timedelta
 
-from datafeeds import config
+from datafeeds import config, db
 from datafeeds.common import Timeline
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
@@ -35,12 +35,6 @@ log = logging.getLogger(__name__)
 
 MAX_DOWNLOAD_DAYS = 180
 IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
-
-"""
-SCL Meter Watch can have delays in arrival of interval data. Widen the requested range
-at least this many days to prevent gaps.
-"""
-MIN_DAYS = 30
 
 
 def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
@@ -146,6 +140,10 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
     DownloadBtnSel = "a[href=\"javascript:apex.submit('DOWNLOAD');\"].buttonhtml"
 
+    def __init__(self, driver, config):
+        super().__init__(driver)
+        self._configuration = config
+
     @staticmethod
     def _get_date(date_text: str) -> Optional[datetime]:
         try:
@@ -153,6 +151,11 @@ class MeterDataPage(CSSSelectorBasePageObject):
         except ValueError:
             # When UI incorrectly says "NO DATA FOUND"
             return None
+
+    @staticmethod
+    def start_date_from_readings(meter_id: int, start_date: date) -> date:
+        meter = db.session.query(Meter).get(meter_id)
+        return min(meter.last_reading_date or start_date, start_date)
 
     def adjust_start_and_end_dates(
         self, start_date: date, end_date: date
@@ -196,10 +199,9 @@ class MeterDataPage(CSSSelectorBasePageObject):
                 # Back up start date to request original date range.
                 start_date = end_date + (original_start - original_end)
 
-        days = (end_date - start_date).days
-        if days < MIN_DAYS:
-            # Widening date range to avoid data gaps.
-            start_date = end_date - timedelta(days=MIN_DAYS)
+        start_date = self.start_date_from_readings(
+            self._configuration.meter.oid, start_date
+        )
 
         # the webpage shows an error if start_date is greater than end_date
         # make sure its a valid range
@@ -299,9 +301,10 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
 
 class SCLMeterWatchConfiguration(Configuration):
-    def __init__(self, meter_numbers: List[str]):
+    def __init__(self, meter_numbers: List[str], meter_oid: str):
         super().__init__(scrape_readings=True)
         self.meter_numbers = meter_numbers
+        self.meter_oid = meter_oid
 
 
 class SCLMeterWatchScraper(BaseWebScraper):
@@ -316,7 +319,6 @@ class SCLMeterWatchScraper(BaseWebScraper):
         # THEN go looking for the popup window and switch to it.
         handles_before = self._driver.window_handles
         timeline = Timeline(self.start_date, self.end_date)
-
         main_window = _get_main_window(self._driver)
         login_window = None
 
@@ -339,7 +341,7 @@ class SCLMeterWatchScraper(BaseWebScraper):
         assert "Seattle MeterWatch" in self._driver.title
 
         login_page = LoginPage(self._driver)
-        meterdata_page = MeterDataPage(self._driver)
+        meterdata_page = MeterDataPage(self._driver, self._configuration)
 
         login_page.login(self.username, self.password)
 
@@ -395,7 +397,9 @@ def datafeed(
     totalized = (datasource.meta or {}).get("totalized")
     if totalized:
         meter_numbers = totalized.split(",")
-    configuration = SCLMeterWatchConfiguration(meter_numbers=meter_numbers)
+    configuration = SCLMeterWatchConfiguration(
+        meter_numbers=meter_numbers, meter_oid=meter.oid
+    )
 
     return run_datafeed(
         SCLMeterWatchScraper,

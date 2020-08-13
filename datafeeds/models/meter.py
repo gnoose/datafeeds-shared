@@ -237,6 +237,10 @@ class Meter(ModelMixin, Base):
         if parent is not None:
             self.parent = parent
 
+    @property
+    def last_reading_date(self):
+        return self.readings_range.max_date
+
     @classmethod
     def readings_sign(cls, direction):
         return -1 if direction == "reverse" else 1
