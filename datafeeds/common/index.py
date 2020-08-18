@@ -27,7 +27,8 @@ from datafeeds.models.user import SnapmeterUserSubscription, SnapmeterAccountUse
 
 log = logging.getLogger(__name__)
 
-INDEX = "etl-tasks"  # alias to indexes named etl-tasks-2019.05.15-1
+INDEX = "etl-tasks"  # write alias
+INDEX_PATTERN = "etl-tasks-*"
 INTERVAL_ISSUE_INDEX = "etl-interval-issues"
 LOG_URL_PATTERN = "https://snapmeter.com/api/admin/etl-tasks/%s/log"
 
@@ -91,7 +92,9 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
     if update:
         # noinspection SpellCheckingInspection
         try:
-            task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
+            task = es.get(
+                index=INDEX_PATTERN, doc_type="_doc", id=task_id, _source=True
+            )
             doc = task["_source"]
         except NotFoundError:
             log.error("update of task %s failed: not found", task_id)
@@ -272,7 +275,7 @@ def index_logs(
 
     try:
         # Try to acquire a copy of the existing document created for this run.
-        task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
+        task = es.get(index=INDEX_PATTERN, doc_type="_doc", id=task_id, _source=True)
         doc = task["_source"]
     except NotFoundError:
         # Make a document with fundamental information about the run.

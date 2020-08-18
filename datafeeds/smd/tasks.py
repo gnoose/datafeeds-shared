@@ -6,7 +6,7 @@ import uuid
 from elasticsearch import NotFoundError
 
 from datafeeds import db, config
-from datafeeds.common.index import _get_es_connection, INDEX
+from datafeeds.common.index import _get_es_connection, INDEX, INDEX_PATTERN
 from datafeeds.common.typing import Status
 from datafeeds.db import dbtask
 from datafeeds.smd.authorization import (
@@ -32,7 +32,7 @@ def index_provisioning_operation(
 
     try:
         # Try to acquire a copy of the existing document created for this run.
-        task = es.get(index=INDEX, doc_type="_doc", id=TASK_ID, _source=True)
+        task = es.get(index=INDEX_PATTERN, doc_type="_doc", id=TASK_ID, _source=True)
         doc = task["_source"]
     except NotFoundError:
         # Make a document with fundamental information about the run.
