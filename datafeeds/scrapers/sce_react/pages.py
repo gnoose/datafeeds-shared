@@ -446,7 +446,7 @@ class SceServiceAccountDetailModal(PageState):
                 results.append((start, end))
 
             prev_button = date_popup.find_element_by_xpath(
-                ".//span[contains(@class, GraphDialogs__prevIcon)]"
+                "// button[@aria-label='Previous year']"
             )
             prev_button.click()
 
@@ -523,7 +523,7 @@ class SceServiceAccountDetailModal(PageState):
                 break
 
             prev_button = date_popup.find_element_by_xpath(
-                ".//span[contains(@class, GraphDialogs__prevIcon)]"
+                "// button[@aria-label='Previous year']"
             )
             prev_button.click()
 
