@@ -9,6 +9,7 @@ from dateutil import parser as date_parser
 from dateutil import tz
 
 from datafeeds import db
+from datafeeds.common.alert import post_slack_message
 from datafeeds.common.exceptions import InvalidMeterDataException
 from datafeeds.models import Meter, SnapmeterAccount, SnapmeterAccountMeter
 from datafeeds.common.typing import IntervalReadings, IntervalIssue
@@ -127,6 +128,21 @@ def to_positive(
             description.append(
                 "%s = %s" % (row.interval_dt.strftime("%Y-%m-%d %H:%M"), row.value)
             )
+        account = meter.account()
+        if account:
+            url = "https://snapmeter.com/admin/accounts/%s/meters/%s" % (
+                account.hex_id,
+                meter.oid,
+            )
+        else:
+            url = "Meter %s (%s)" % (meter.name, meter.oid)
+        post_slack_message(
+            "Scraper found mixed positive and negative readings for meter %s (%s); create a submeter to capture these."
+            % (url, meter.direction),
+            "#scrapers",
+            ":exclamation:",
+            username="Scraper monitor",
+        )
         raise (
             InvalidMeterDataException(
                 "mixed positive and negative values: %s" % description

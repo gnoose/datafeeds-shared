@@ -16,11 +16,12 @@ from dateutil import parser as date_parser
 from sqlalchemy import func
 from sqlalchemy.orm.attributes import flag_modified
 import sqlalchemy as sa
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, joinedload
 
 from datafeeds import db
 from datafeeds.common.exceptions import InvalidMeterDataException
 from datafeeds.orm import ModelMixin, Base
+from datafeeds.models.account import SnapmeterAccountMeter, SnapmeterAccount
 from datafeeds.models.utility_service import UtilityService
 
 
@@ -420,3 +421,13 @@ class Meter(ModelMixin, Base):
     @property
     def service_id(self) -> str:
         return self.utility_service.service_id
+
+    def account(self) -> Optional[SnapmeterAccount]:
+        sam = (
+            db.session.query(SnapmeterAccountMeter)
+            .filter(SnapmeterAccountMeter.meter == self.oid)
+            .options(joinedload(SnapmeterAccountMeter.account_obj))
+        ).first()
+        if sam:
+            return sam.account_obj
+        return None
