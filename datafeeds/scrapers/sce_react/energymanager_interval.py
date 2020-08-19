@@ -257,4 +257,5 @@ def datafeed(
         params,
         configuration=configuration,
         task_id=task_id,
+        disable_login_on_error=True,
     )
