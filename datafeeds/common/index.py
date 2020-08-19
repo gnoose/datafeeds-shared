@@ -75,6 +75,26 @@ def _get_date(dt):
     return dt
 
 
+def get_index_doc(task_id: str) -> Dict[str, Any]:
+    es = _get_es_connection()
+    # noinspection SpellCheckingInspection
+    try:
+        # get doesn't work with an index alias
+        results = es.search(
+            index=INDEX_PATTERN,
+            doc_type="_doc",
+            _source=True,
+            body={"query": {"match": {"_id": task_id}}},
+        )["hits"]["hits"]
+        if not results:
+            log.error("update of task %s failed: not found", task_id)
+            return {}
+        return results[0]["_source"]
+    except NotFoundError:
+        log.error("update of task %s failed: not found", task_id)
+        return {}
+
+
 def index_etl_run(task_id: str, run: dict, update: bool = False):
     """index an ETL run; get and update existing run if specified
 
@@ -90,14 +110,8 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
     es = _get_es_connection()
     doc = {}
     if update:
-        # noinspection SpellCheckingInspection
-        try:
-            task = es.get(
-                index=INDEX_PATTERN, doc_type="_doc", id=task_id, _source=True
-            )
-            doc = task["_source"]
-        except NotFoundError:
-            log.error("update of task %s failed: not found", task_id)
+        doc = get_index_doc(task_id)
+        if not doc:
             return
     doc.update(run)
     doc["updated"] = datetime.now()
@@ -273,11 +287,8 @@ def index_logs(
     """Upload the logs for this task to elasticsearch for later analysis."""
     es = _get_es_connection()
 
-    try:
-        # Try to acquire a copy of the existing document created for this run.
-        task = es.get(index=INDEX_PATTERN, doc_type="_doc", id=task_id, _source=True)
-        doc = task["_source"]
-    except NotFoundError:
+    doc = get_index_doc(task_id)
+    if not doc:
         # Make a document with fundamental information about the run.
         doc = dict(
             meterId=meter.oid,
