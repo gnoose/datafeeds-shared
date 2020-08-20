@@ -75,11 +75,24 @@ def _get_date(dt):
     return dt
 
 
-def get_index_doc(task_id: str) -> Dict[str, Any]:
+def search_index_doc(task_id: str) -> Dict[str, Any]:
     es = _get_es_connection()
     # noinspection SpellCheckingInspection
     try:
-        # get doesn't work with an index alias
+        """
+        TODO: Auto-rollover updates the is_write_index to false for the rolled-over index, but es.get fails with
+        Alias [etl-tasks] has more than one indices associated with it [[etl-tasks-000006, etl-tasks-000005]],
+        can't execute a single index op
+
+        es.get requires a single index name, not a pattern (etl-tasks-*); using a pattern fails with a permission error.
+        es.search works with an index pattern, but can return an out of date version of the the document.
+
+        Use es.get and disable auto-rollover until elastic.co explains how to do this.
+
+        https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html says
+        "This simplifies things by allowing for one alias to behave both as the write and read aliases for indices that
+        are being managed with Rollover." but that does not seem to be what's happening.
+        """
         results = es.search(
             index=INDEX_PATTERN,
             doc_type="_doc",
@@ -90,6 +103,16 @@ def get_index_doc(task_id: str) -> Dict[str, Any]:
             log.error("update of task %s failed: not found", task_id)
             return {}
         return results[0]["_source"]
+    except NotFoundError:
+        log.error("update of task %s failed: not found", task_id)
+        return {}
+
+
+def get_index_doc(task_id: str) -> Dict[str, Any]:
+    es = _get_es_connection()
+    try:
+        task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
+        return task["_source"]
     except NotFoundError:
         log.error("update of task %s failed: not found", task_id)
         return {}
