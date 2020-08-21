@@ -75,7 +75,7 @@ def _get_date(dt):
     return dt
 
 
-def search_index_doc(task_id: str) -> Dict[str, Any]:
+def get_index_doc(task_id: str) -> Dict[str, Any]:
     es = _get_es_connection()
     # noinspection SpellCheckingInspection
     try:
@@ -108,7 +108,7 @@ def search_index_doc(task_id: str) -> Dict[str, Any]:
         return {}
 
 
-def get_index_doc(task_id: str) -> Dict[str, Any]:
+def get_index_doc_unaliased(task_id: str) -> Dict[str, Any]:
     es = _get_es_connection()
     try:
         task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
@@ -160,7 +160,7 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
         update,
         doc,
     )
-    es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc)
+    es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc, refresh="wait_for")
 
 
 def run_meta(meter_oid: int) -> Dict[str, Any]:
