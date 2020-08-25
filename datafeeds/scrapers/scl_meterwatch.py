@@ -301,10 +301,10 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
 
 class SCLMeterWatchConfiguration(Configuration):
-    def __init__(self, meter_numbers: List[str], meter_oid: str):
+    def __init__(self, meter_numbers: List[str], meter: Meter):
         super().__init__(scrape_readings=True)
         self.meter_numbers = meter_numbers
-        self.meter_oid = meter_oid
+        self.meter = meter
 
 
 class SCLMeterWatchScraper(BaseWebScraper):
@@ -324,6 +324,7 @@ class SCLMeterWatchScraper(BaseWebScraper):
 
         log.info(f"Navigating to {self.url}")
         self._driver.get(self.url)
+        self.screenshot("initial_url")
 
         self._driver.wait().until(
             lambda driver: len(handles_before) != len(driver.window_handles),
@@ -397,9 +398,7 @@ def datafeed(
     totalized = (datasource.meta or {}).get("totalized")
     if totalized:
         meter_numbers = totalized.split(",")
-    configuration = SCLMeterWatchConfiguration(
-        meter_numbers=meter_numbers, meter_oid=meter.oid
-    )
+    configuration = SCLMeterWatchConfiguration(meter_numbers=meter_numbers, meter=meter)
 
     return run_datafeed(
         SCLMeterWatchScraper,
