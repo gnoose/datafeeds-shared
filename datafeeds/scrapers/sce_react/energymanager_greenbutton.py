@@ -1,29 +1,19 @@
 import os
 import time
 import logging
+from urllib.parse import urlencode
 
 import requests
 
 import datafeeds.scrapers.sce_react.pages as sce_pages
-import datafeeds.scrapers.sce_react.errors as sce_errors
 from datafeeds.scrapers.sce_react.energymanager_interval import SceReactEnergyManagerIntervalScraper
-from datafeeds.scrapers.sce_react.parser import parse_sce_csv_file
 
-from typing import Optional, List, Dict
-from dateutil.relativedelta import relativedelta
-
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from typing import Optional
 
 from datafeeds.common.util.pagestate.pagestate import PageStateMachine
-from datafeeds.common.util.selenium import file_exists_in_dir
 
 from datafeeds.common.timeline import Timeline
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common.support import DateRange
-from datafeeds.common.support import Results
-from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.support import Configuration
 from datafeeds.common.typing import Status
 from datafeeds.models import (
@@ -40,11 +30,15 @@ class SceReactEnergyManagerGreenButtonConfiguration(Configuration):
 
     Current configuration options:
         service_id: The SCE service id to extract data for
+        meta: datasource meta
+        meter: meter being scraped
     """
 
-    def __init__(self, service_id: str):
+    def __init__(self, service_id: str, meta: str, meter: Meter):
         super().__init__(scrape_bills=False, scrape_readings=True)
         self.service_id = service_id
+        self.meta = meta
+        self.meter = meter
 
 
 class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScraper):
@@ -87,7 +81,7 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
             name="landing_page",
             page=sce_pages.SceLandingPage(self._driver),
             action=self.landing_page_action,
-            transitions=["energy_manager_landing"],
+            transitions=[],
         )
         # And that's the end
         state_machine.add_state("done")
@@ -120,12 +114,14 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
             else:
                 street_addr = building.street1
             address = f"{building.state} {street_addr.upper()} {city.upper()} {zip}"
+        address = urlencode(address)
         # day-mon-year
         start_dt = self.start_date.strftime("%d-%m-%Y")
         end_dt = self.end_date.strftime("%d-%m-%Y")
         url = f"https://prodms.dms.sce.com/myaccount/v1/downloadFile?serviceAccountNumber={service_account_num}" \
               f"&serviceAccountAddress={address}&startDate={start_dt}&endDate={end_dt}&fileFormat=csv"
-        # get cookies: driver.manage().getCookies()
+        log.debug("url = %s", url)
+        log.debug("cookies = %s", self._driver.get_cookies())
         # join with ; (ie name1=value1; name2=value2)
         cookie_str = ""
         headers = {
