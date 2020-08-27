@@ -176,12 +176,17 @@ class MeterFlowDirection(Enum):
 class Building(ModelMixin, Base):
     """This is not a complete model of a building (building + snapmeter_building tables).
 
-    It's just enough so that a meter can get its timezone through the building relationship.
+    It's just enough so that a meter can get its address and timezone through the building relationship.
     """
 
     __tablename__ = "building"
     oid = sa.Column(sa.BigInteger, primary_key=True)
     timezone = sa.Column(sa.Unicode)
+    street1 = sa.Column(sa.Unicode)
+    street2 = sa.Column(sa.Unicode)
+    city = sa.Column(sa.Unicode)
+    state = sa.Column(sa.Unicode)
+    zip = sa.Column(sa.Unicode)
 
 
 class Meter(ModelMixin, Base):
