@@ -4,7 +4,8 @@
             "end": "2016-09-14",
             "peak_demand": "796.8000",
             "start": "2016-08-16",
-            "tariff": null,
+            "statement": "2016-10-20",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "54142.3600",
             "total_usage": "213476.00000",
             "line_items": [
@@ -225,7 +226,8 @@
             "end": "2016-10-16",
             "peak_demand": "755.2000",
             "start": "2016-09-15",
-            "tariff": null,
+            "statement": "2016-10-20",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "52963.4500",
             "total_usage": "191533.00000",
             "line_items": [
@@ -459,7 +461,8 @@
             "end": "2016-11-14",
             "peak_demand": "665.6000",
             "start": "2016-10-17",
-            "tariff": null,
+            "statement": "2016-11-17",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "39117.5900",
             "total_usage": "146291.00000",
             "line_items": [
@@ -797,7 +800,8 @@
             "end": "2016-12-14",
             "peak_demand": "566.4000",
             "start": "2016-11-15",
-            "tariff": null,
+            "statement": "2016-12-16",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "31792.4600",
             "total_usage": "124429.00000",
             "line_items": [
@@ -1057,7 +1061,8 @@
             "end": "2017-01-16",
             "peak_demand": "624.0000",
             "start": "2016-12-15",
-            "tariff": null,
+            "statement": "2017-02-03",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "32990.4300",
             "total_usage": "114264.00000",
             "line_items": [
@@ -1421,7 +1426,8 @@
             "end": "2017-02-14",
             "peak_demand": "553.6000",
             "start": "2017-01-17",
-            "tariff": null,
+            "statement": "2017-02-16",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "30345.5500",
             "total_usage": "101283.00000",
             "line_items": [
@@ -1629,7 +1635,8 @@
             "end": "2017-03-16",
             "peak_demand": "515.2000",
             "start": "2017-02-15",
-            "tariff": null,
+            "statement": "2017-03-22",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "30553.6500",
             "total_usage": "112324.00000",
             "line_items": [
@@ -1941,7 +1948,8 @@
             "end": "2017-04-17",
             "peak_demand": "528.0000",
             "start": "2017-03-17",
-            "tariff": null,
+            "statement": "2017-05-09",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "34211.9700",
             "total_usage": "130125.00000",
             "line_items": [
@@ -2149,7 +2157,8 @@
             "end": "2017-05-16",
             "peak_demand": "585.6000",
             "start": "2017-04-18",
-            "tariff": null,
+            "statement": "2017-05-19",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "37463.3900",
             "total_usage": "130720.00000",
             "line_items": [
@@ -2474,7 +2483,8 @@
             "end": "2017-06-15",
             "peak_demand": "476.8000",
             "start": "2017-05-17",
-            "tariff": null,
+            "statement": "2017-06-20",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "37044.5500",
             "total_usage": "138421.00000",
             "line_items": [
@@ -2682,7 +2692,8 @@
             "end": "2017-07-17",
             "peak_demand": "780.8000",
             "start": "2017-06-16",
-            "tariff": null,
+            "statement": "2017-07-19",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "56805.7600",
             "total_usage": "210754.00000",
             "line_items": [
@@ -2890,7 +2901,8 @@
             "end": "2017-08-15",
             "peak_demand": "812.8000",
             "start": "2017-07-18",
-            "tariff": null,
+            "statement": "2017-08-17",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "60589.9800",
             "total_usage": "225947.00000",
             "line_items": [
@@ -3098,7 +3110,8 @@
             "end": "2017-09-14",
             "peak_demand": "832.0000",
             "start": "2017-08-16",
-            "tariff": null,
+            "statement": "2018-02-09",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "69576.9300",
             "total_usage": "243778.00000",
             "line_items": [
@@ -3345,7 +3358,8 @@
             "end": "2017-10-15",
             "peak_demand": "688.0000",
             "start": "2017-09-15",
-            "tariff": null,
+            "statement": "2018-02-09",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "49533.6700",
             "total_usage": "176649.00000",
             "line_items": [
@@ -3566,7 +3580,8 @@
             "end": "2017-11-13",
             "peak_demand": "720.0000",
             "start": "2017-10-16",
-            "tariff": null,
+            "statement": "2018-02-09",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "45683.9800",
             "total_usage": "158098.00000",
             "line_items": [
@@ -3904,7 +3919,8 @@
             "end": "2017-12-13",
             "peak_demand": "566.4000",
             "start": "2017-11-14",
-            "tariff": null,
+            "statement": "2018-02-09",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "37544.0600",
             "total_usage": "143261.00000",
             "line_items": [
@@ -4242,7 +4258,8 @@
             "end": "2018-01-15",
             "peak_demand": "489.6000",
             "start": "2017-12-14",
-            "tariff": null,
+            "statement": "2018-02-09",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "34087.3700",
             "total_usage": "122586.00000",
             "line_items": [
@@ -4593,7 +4610,8 @@
             "end": "2018-02-13",
             "peak_demand": "560.0000",
             "start": "2018-01-16",
-            "tariff": null,
+            "statement": "2018-02-15",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "38625.9800",
             "total_usage": "127687.00000",
             "line_items": [
@@ -4801,7 +4819,8 @@
             "end": "2018-03-15",
             "peak_demand": "441.6000",
             "start": "2018-02-14",
-            "tariff": null,
+            "statement": "2018-03-19",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "31648.1500",
             "total_usage": "112451.00000",
             "line_items": [
@@ -5009,7 +5028,8 @@
             "end": "2018-04-15",
             "peak_demand": "598.4000",
             "start": "2018-03-16",
-            "tariff": null,
+            "statement": "2018-04-17",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "38582.6100",
             "total_usage": "122097.00000",
             "line_items": [
@@ -5230,7 +5250,8 @@
             "end": "2018-05-15",
             "peak_demand": "553.6000",
             "start": "2018-04-16",
-            "tariff": null,
+            "statement": "2018-05-17",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "34852.4200",
             "total_usage": "113592.00000",
             "line_items": [
@@ -5438,7 +5459,8 @@
             "end": "2018-06-14",
             "peak_demand": "502.4000",
             "start": "2018-05-16",
-            "tariff": null,
+            "statement": "2018-06-18",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "36633.5200",
             "total_usage": "130380.00000",
             "line_items": [
@@ -5763,7 +5785,8 @@
             "end": "2018-07-16",
             "peak_demand": "790.4000",
             "start": "2018-06-15",
-            "tariff": null,
+            "statement": "2018-07-18",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "59599.7800",
             "total_usage": "184926.00000",
             "line_items": [
@@ -6088,7 +6111,8 @@
             "end": "2018-08-14",
             "peak_demand": "780.8000",
             "start": "2018-07-17",
-            "tariff": null,
+            "statement": "2018-08-16",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "79295.0000",
             "total_usage": "251844.00000",
             "line_items": [
@@ -6309,7 +6333,8 @@
             "end": "2018-09-13",
             "peak_demand": "713.6000",
             "start": "2018-08-15",
-            "tariff": null,
+            "statement": "2018-09-17",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "57729.1400",
             "total_usage": "213992.00000",
             "line_items": [
@@ -6517,7 +6542,8 @@
             "end": "2018-10-14",
             "peak_demand": "652.8000",
             "start": "2018-09-14",
-            "tariff": null,
+            "statement": "2018-10-16",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "46617.7900",
             "total_usage": "165828.00000",
             "line_items": [
@@ -6777,7 +6803,8 @@
             "end": "2018-11-13",
             "peak_demand": "560.0000",
             "start": "2018-10-15",
-            "tariff": null,
+            "statement": "2018-11-15",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "38423.6800",
             "total_usage": "143153.00000",
             "line_items": [
@@ -7102,7 +7129,8 @@
             "end": "2018-12-13",
             "peak_demand": "422.4000",
             "start": "2018-11-14",
-            "tariff": null,
+            "statement": "2018-12-17",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "31618.5800",
             "total_usage": "112070.00000",
             "line_items": [
@@ -7310,7 +7338,8 @@
             "end": "2019-01-15",
             "peak_demand": "432.0000",
             "start": "2018-12-14",
-            "tariff": null,
+            "statement": "2019-01-17",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "29106.9200",
             "total_usage": "98694.00000",
             "line_items": [
@@ -7674,7 +7703,8 @@
             "end": "2019-02-13",
             "peak_demand": "412.8000",
             "start": "2019-01-16",
-            "tariff": null,
+            "statement": "2019-02-20",
+            "tariff": "TOU Plus - AL-TOU-Industrial",
             "total_charge": "29886.1400",
             "total_usage": "96450.00000",
             "line_items": [
@@ -7895,7 +7925,8 @@
             "end": "2019-03-17",
             "peak_demand": "422.4000",
             "start": "2019-02-14",
-            "tariff": null,
+            "statement": "2019-03-19",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "26720.1600",
             "total_usage": "104124.00000",
             "line_items": [
@@ -8129,7 +8160,8 @@
             "end": "2019-04-16",
             "peak_demand": "624.0000",
             "start": "2019-03-18",
-            "tariff": null,
+            "statement": "2019-04-18",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "31583.4200",
             "total_usage": "112901.00000",
             "line_items": [
@@ -8363,7 +8395,8 @@
             "end": "2019-05-15",
             "peak_demand": "416.0000",
             "start": "2019-04-17",
-            "tariff": null,
+            "statement": "2019-05-17",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "27286.8700",
             "total_usage": "108587.00000",
             "line_items": [
@@ -8610,7 +8643,8 @@
             "end": "2019-06-16",
             "peak_demand": "553.6000",
             "start": "2019-05-16",
-            "tariff": null,
+            "statement": "2019-06-18",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "39351.7800",
             "total_usage": "115990.00000",
             "line_items": [
@@ -8974,7 +9008,8 @@
             "end": "2019-07-16",
             "peak_demand": "681.6000",
             "start": "2019-06-17",
-            "tariff": null,
+            "statement": "2019-07-18",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "56599.9400",
             "total_usage": "137854.00000",
             "line_items": [
@@ -9208,7 +9243,8 @@
             "end": "2019-08-14",
             "peak_demand": "732.8000",
             "start": "2019-07-17",
-            "tariff": null,
+            "statement": "2019-08-16",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "66627.1000",
             "total_usage": "189715.00000",
             "line_items": [
@@ -9442,7 +9478,8 @@
             "end": "2019-09-15",
             "peak_demand": "764.8000",
             "start": "2019-08-15",
-            "tariff": null,
+            "statement": "2019-09-17",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "74931.1500",
             "total_usage": "243767.00000",
             "line_items": [
@@ -9676,7 +9713,8 @@
             "end": "2019-10-14",
             "peak_demand": "755.2000",
             "start": "2019-09-16",
-            "tariff": null,
+            "statement": "2019-10-16",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "68188.1900",
             "total_usage": "195426.00000",
             "line_items": [
@@ -9910,7 +9948,8 @@
             "end": "2019-11-13",
             "peak_demand": "678.4000",
             "start": "2019-10-15",
-            "tariff": null,
+            "statement": "2019-11-15",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "54905.4300",
             "total_usage": "172055.00000",
             "line_items": [
@@ -10274,7 +10313,8 @@
             "end": "2019-12-15",
             "peak_demand": "633.6000",
             "start": "2019-11-14",
-            "tariff": null,
+            "statement": "2019-12-17",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "38959.7100",
             "total_usage": "126301.00000",
             "line_items": [
@@ -10508,7 +10548,8 @@
             "end": "2020-01-15",
             "peak_demand": "422.4000",
             "start": "2019-12-16",
-            "tariff": null,
+            "statement": "2020-01-17",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "29514.1600",
             "total_usage": "116952.00000",
             "line_items": [
@@ -10859,7 +10900,8 @@
             "end": "2020-02-13",
             "peak_demand": "588.8000",
             "start": "2020-01-16",
-            "tariff": null,
+            "statement": "2020-02-18",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "37005.2400",
             "total_usage": "122860.00000",
             "line_items": [
@@ -11184,7 +11226,8 @@
             "end": "2020-03-16",
             "peak_demand": "640.0000",
             "start": "2020-02-14",
-            "tariff": null,
+            "statement": "2020-03-18",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "41738.2500",
             "total_usage": "143994.00000",
             "line_items": [
@@ -11418,7 +11461,8 @@
             "end": "2020-04-15",
             "peak_demand": "585.6000",
             "start": "2020-03-17",
-            "tariff": null,
+            "statement": "2020-04-17",
+            "tariff": "Time of Use - AL-TOU2-Industrial",
             "total_charge": "33413.8500",
             "total_usage": "116558.00000",
             "line_items": [

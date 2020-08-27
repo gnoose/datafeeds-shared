@@ -8,7 +8,6 @@ from math import isnan
 import requests
 from requests import codes
 
-#  from datafeeds import config
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.exceptions import ApiError
 from datafeeds.common.base import BaseApiScraper
@@ -57,6 +56,7 @@ class Session:
         self.api_base = api_base
         self.api_key = api_key
         self.format = "application/json"
+        self.meter_readings_available = True
 
     # SolarEdge API has maximum of 1 month interval per request
     def _get_results(self, url, endpoint_parser, extra_params: dict = None):
@@ -69,7 +69,6 @@ class Session:
         if resp.status_code == codes.ok:
             results = endpoint_parser(resp.text)
             return results
-
         else:
             # The API isn't working. Abort.
             msg = "Received unexpected API response. status_code: %d text: %s"
@@ -102,18 +101,42 @@ class Session:
             results = self._get_results(
                 url, parser.parse_intervals, extra_params=required_params
             )
+            # Workaround for a site that returns empty meter data
+            if not results:
+                while t0 < t1 and t0 < datetime(end.year, end.month, end.day):
+                    self.meter_readings_available = False
+                    log.warning("No Meter Data. Trying Site API")
+                    url = api_base + "/energy"
+                    required_params = {
+                        "timeUnit": "QUARTER_OF_AN_HOUR",
+                        "startDate": str(t0.date()),
+                        "endDate": str(t1.date()),
+                    }
+                    results = self._get_results(
+                        url, parser.parse_site_intervals, extra_params=required_params
+                    )
+                    for ind, result in enumerate(results):
+                        results[ind] = (
+                            Interval(
+                                start=start,
+                                kwh=result.kwh,
+                                serial_number=result.serial_number,
+                            ),
+                        )
+                    accum += results
+                    t0 = t1
+                    t1 = min(datetime(end.year, end.month, end.day), t0 + delta)
+                return accum
+
             for ind, result in enumerate(results):
                 results[ind] = (
                     Interval(
                         start=start, kwh=result.kwh, serial_number=result.serial_number
                     ),
                 )
-
             accum += results
-
             t0 = t1
             t1 = min(datetime(end.year, end.month, end.day), t0 + delta)
-
         return accum
 
     @staticmethod
@@ -129,7 +152,7 @@ class Session:
     @staticmethod
     def relative_energy(ivls: list) -> list:
         """Meters API returns lifetime energy readings so subtract to get
-        each reading. The first reading is None."""
+        each reading. The first reading is omitted."""
         new_ivls_list = []
         prev = 0
         for k, v in enumerate(ivls):
@@ -176,7 +199,6 @@ class SolarEdgeScraper(BaseApiScraper):
     def _open_session(self):
         api_key = self.password
         sess = Session(self.site_url, api_key)
-        #  sess = Session(self.site_url, config.SOLAREDGE_API_KEY)
         site = sess.site()
         self.site_tz = site.time_zone
         self.install_date = site.installation_date
@@ -192,8 +214,15 @@ class SolarEdgeScraper(BaseApiScraper):
         ivls = sess.get_intervals(
             self.site_url, start_time, end_time, self.install_date
         )
-        meter_ivls = sess.meter_readings(ivls, self.meter_self)
-        relative_ivls = sess.relative_energy(meter_ivls)
+
+        log.info("meter_readings_available is %s", sess.meter_readings_available)
+        if sess.meter_readings_available:
+            # Site-level data is not separated by inverter
+            meter_ivls = sess.meter_readings(ivls, self.meter_self)
+            # Site-level data is not a lifetime reading
+            relative_ivls = sess.relative_energy(meter_ivls)
+        else:
+            relative_ivls = [x[0] for x in ivls]
 
         # if there are fewer than 10% non-empty intervals for
         # end_date, then drop it
@@ -208,7 +237,9 @@ class SolarEdgeScraper(BaseApiScraper):
         current_time = start_time_pst
         delta = timedelta(minutes=15)
 
-        for k, iv in enumerate(relative_ivls):
+        # Ops team has reported Solaredge readings are 15 minutes behind PG&E readings. Move readings up to account for this.
+        for k, iv in enumerate(relative_ivls[1:]):
+            log.info("k : %s, iv: %s", k, iv)
             if iv.kwh is None or isnan(iv.kwh):
                 current_time = current_time + delta
                 continue
@@ -216,7 +247,7 @@ class SolarEdgeScraper(BaseApiScraper):
                 #  Multiply by 4 to get the kW reading we store
                 kw = iv.kwh * 4
                 final_timeline.insert(current_time, kw)
-                log.info("Approximate time of reading: %s, kW: %s", current_time, kw)
+                # log.info("Approximate time of reading: %s, kW: %s", current_time, kw)
                 current_time = current_time + delta
         return final_timeline
 

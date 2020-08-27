@@ -232,6 +232,7 @@ class KellerScraper(BaseWebScraper):
                     peak=bill.peak,
                     items=bill.items,
                     attachments=bill.attachments,
+                    utility_code=None,
                 )
             )
         final_bills = adjust_bill_dates(adjusted_bill_data)

@@ -6,17 +6,26 @@ Except for unit tests, analytics should treat these tables as Read Only.
 
 
 import json
+import logging
 import math
 from datetime import date, datetime, timedelta
 from enum import Enum
-from typing import List, Tuple, Optional, Dict
+from typing import List, Tuple, Optional, Dict, Set
 
+from dateutil import parser as date_parser
+from sqlalchemy import func
+from sqlalchemy.orm.attributes import flag_modified
 import sqlalchemy as sa
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, joinedload
 
 from datafeeds import db
+from datafeeds.common.exceptions import InvalidMeterDataException
 from datafeeds.orm import ModelMixin, Base
+from datafeeds.models.account import SnapmeterAccountMeter, SnapmeterAccount
 from datafeeds.models.utility_service import UtilityService
+
+
+log = logging.getLogger(__name__)
 
 
 class MeterReading(ModelMixin, Base):
@@ -30,8 +39,131 @@ class MeterReading(ModelMixin, Base):
     occurred = sa.Column(sa.Date)
     readings = sa.Column(sa.JSON)
     frozen = sa.Column(sa.Boolean)
+    modified = sa.Column(sa.DateTime, default=func.now(), onupdate=func.now())
 
     meter_obj = relationship("Meter", back_populates="readings")
+
+    @classmethod
+    def from_json(
+        cls, meter_id: int, readings: Dict[str, List[float]]
+    ) -> List["MeterReading"]:
+        """Convert a list of dict of readings returned by a scraper to a list of MeterReadings.
+
+        Throw an exception if meter interval doesn't match the size of the readings array.
+        Don't create a MeterReading if values are empty or all None.
+        This does not compare against existing MeterReading objects for the same meter/day.
+        """
+        meter = db.session.query(Meter).get(meter_id)
+        expected = int(24 * 60 / meter.interval)
+        reading_objects: List[MeterReading] = []
+        for dt_str in readings:
+            day_readings = readings[dt_str]
+
+            if not len(day_readings):
+                continue
+
+            # skip if all values are empty
+            if {None} == set(day_readings):
+                continue
+
+            # Cast integers (which are an acceptable input) to floating point values for consistency.
+            # Leave all other values alone.
+            day_readings = [
+                float(val) if isinstance(val, int) else val for val in day_readings
+            ]
+
+            # throw error if values are not floats
+            for val in day_readings:
+                if val is not None and type(val) != float:
+                    raise InvalidMeterDataException(
+                        "expected readings to be floats; found %s %s in %s"
+                        % (val, type(val), day_readings)
+                    )
+            # throw error if length does not match meter interval
+            if len(day_readings) != expected:
+                raise InvalidMeterDataException(
+                    "expected %s readings for meter with %s minute interval; found %s for %s"
+                    % (expected, meter.interval, len(day_readings), dt_str)
+                )
+            reading_objects.append(
+                MeterReading(
+                    meter=meter_id,
+                    occurred=date_parser.parse(dt_str).date(),
+                    readings=day_readings,
+                    frozen=False,
+                    modified=datetime.now(),
+                )
+            )
+        return reading_objects
+
+    @classmethod
+    def merge_readings(cls, readings: List["MeterReading"]) -> List["MeterReading"]:
+        """Merge a set of new MeterReadings with existing MeterReadings for a single meter.
+
+        All readings must be for the same meter. If frozen is true, ignore the new data. If a
+        MeterReading exists for this meter/date, update the values with the data in readings,
+        but don't replace values with None. If a MeterReading does not exist, create a new one.
+        Return a list of MeterReading objects with updated data.
+        """
+        updated: List["MeterReading"] = []
+        if not readings:
+            return updated
+        dates = {reading.occurred for reading in readings}
+        meter_id = readings[0].meter
+
+        # get existing readings
+        frozen: Set[date] = set()
+        current: Dict[date, MeterReading] = {}
+        query = db.session.query(MeterReading).filter(
+            MeterReading.meter == meter_id, MeterReading.occurred.in_(tuple(dates)),
+        )
+        for row in query:
+            if row.frozen:
+                frozen.add(row.occurred)
+            else:
+                current[row.occurred] = row
+        log.info("loaded %s frozen readings", len(frozen))
+        log.info("loaded %s current readings for %s dates", len(current), len(dates))
+
+        # merge readings
+        for new_day in readings:
+            if new_day.occurred in frozen:
+                log.info("skipping new reading for %s; frozen", new_day.occurred)
+                continue
+            current_day: MeterReading = current.get(new_day.occurred)
+            if current_day:
+                modified = False
+                if len(current_day.readings) != len(new_day.readings):
+                    log.info(
+                        "replacing %s readings for %s with %s readings",
+                        len(current_day.readings),
+                        current_day.occurred,
+                        len(new_day.readings),
+                    )
+                    current_day.readings = new_day.readings
+                    modified = True
+                else:
+                    for idx, val in enumerate(new_day.readings):
+                        if val is not None:
+                            if current_day.readings[idx] != val:
+                                modified = True
+                            current_day.readings[idx] = val
+                if modified:
+                    db.session.add(current_day)
+                    current_day.modified = datetime.now()
+                    # tell SQLAlchemy a JSON field changed
+                    flag_modified(current_day, "readings")
+                    updated.append(current_day)
+                log.info(
+                    "merged readings for %s; modified=%s",
+                    current_day.occurred,
+                    modified,
+                )
+            else:
+                db.session.add(new_day)
+                updated.append(new_day)
+                log.info("created new readings for %s", new_day.occurred)
+        return updated
 
 
 class MeterFlowDirection(Enum):
@@ -105,6 +237,10 @@ class Meter(ModelMixin, Base):
 
         if parent is not None:
             self.parent = parent
+
+    @property
+    def last_reading_date(self):
+        return self.readings_range.max_date
 
     @classmethod
     def readings_sign(cls, direction):
@@ -285,3 +421,13 @@ class Meter(ModelMixin, Base):
     @property
     def service_id(self) -> str:
         return self.utility_service.service_id
+
+    def account(self) -> Optional[SnapmeterAccount]:
+        sam = (
+            db.session.query(SnapmeterAccountMeter)
+            .filter(SnapmeterAccountMeter.meter == self.oid)
+            .options(joinedload(SnapmeterAccountMeter.account_obj))
+        ).first()
+        if sam:
+            return sam.account_obj
+        return None

@@ -94,6 +94,7 @@ class BillHistoryPage:
                 peak=None,
                 items=None,
                 attachments=None,
+                utility_code=None,
             )
             results.append((bill, pdf_data))
 

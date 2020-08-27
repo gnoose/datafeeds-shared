@@ -64,6 +64,7 @@ class UrjaFixtureText(unittest.TestCase):
             )
             self.assertEqual(e.total_usage, r.total_usage, "%s total usage" % fixture)
             self.assertEqual(e.peak_demand, r.peak_demand, "%s peak demand" % fixture)
+            self.assertEqual(e.tariff, r.tariff, "%s tariff" % fixture)
 
 
 def default_usage(

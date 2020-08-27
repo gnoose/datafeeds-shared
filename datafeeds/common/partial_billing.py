@@ -8,9 +8,12 @@ from datafeeds.common import DateRange
 from datafeeds.common.typing import (
     BillingDatum,
     BillingData,
+    InvalidPartialTypeError,
     show_bill_summary,
     assert_is_without_overlaps,
     NoFutureBillsError,
+    OverlappedBillingDataDateRangeError,
+    Status,
 )
 from datafeeds.common.support import Configuration
 from datafeeds.models.bill import GENERATION_ONLY, TND_ONLY
@@ -71,25 +74,13 @@ class PartialBillProcessor:
     @property
     def partial_bills_type(self):
         """
-        Infers if the incoming partial bills are "tnd-only" bills or "generation-bills" by matching on the service_id that
-        was passed to the scraper.  If the gen_service_id was passed in, we assume this is a generation partial bill.
-        It is possible that the gen_service_id is stored on the Configuration.service_id field, so be flexible.
+        Retrieves the partial bills type from the scraper configuration.
         """
-        # For urja scrapers, we'll be pulling the service_id/gen_service_id off of the urjadatasource,
-        # otherwise, we'll retrieve it from self.configuration
-        config = (
-            self.configuration.urja_datasource
-            if hasattr(self.configuration, "urja_datasource")
-            else self.configuration
-        )
-
-        said = getattr(config, "service_id", None) or getattr(
-            config, "gen_service_id", None
-        )
-
-        if said == self.meter.utility_service.gen_service_id:
-            return GENERATION_ONLY
-        return TND_ONLY
+        partial_type = getattr(self.configuration, "partial_type", None)
+        if partial_type in (TND_ONLY, GENERATION_ONLY):
+            return partial_type
+        else:
+            raise InvalidPartialTypeError()
 
     @property
     def haves(self) -> List[PartialBill]:
@@ -142,8 +133,17 @@ class PartialBillProcessor:
             log.info(title)
             log.info("=" * 80)
 
-        fields = ("Start", "End", "Cost", "Use", "Peak", "Has PDF", "Type")
-        fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s %-10s"
+        fields = (
+            "Start",
+            "End",
+            "Cost",
+            "Use",
+            "Peak",
+            "Utility Code",
+            "Has PDF",
+            "Type",
+        )
+        fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s    %-10s  %-10s"
         log.info(fmt % fields)
         for pb in partial_bills:
             entries = [
@@ -152,6 +152,7 @@ class PartialBillProcessor:
                 str(pb.cost),
                 str(pb.used),
                 str(pb.peak),
+                str(pb.utility_code),
                 str(pb.attachments != []),
                 str(pb.provider_type),
             ]
@@ -182,7 +183,7 @@ class PartialBillProcessor:
         if not superseding:
             # Create a new partial bill, if one has not been created already
             superseding = PartialBill.generate(
-                self.meter.service, self.partial_bills_type, pending_partial
+                self.meter.utility_service, self.partial_bills_type, pending_partial
             )
             # Added for logging purposes
             self.staged_partial.append(superseding)
@@ -220,8 +221,12 @@ class PartialBillProcessor:
         If a new partial bill differs from an existing partial bill,
         a new partial bill is created, rather than overwriting the old one.
         """
-        # Run initial validation of all the partial bills.  Failure will cause a premature exit.
-        PartialBillValidator(self.billing_data).run_prevalidation()
+        # Run initial validation of all the partial bills.  Failures are caught
+        # and the scraper run is marked as FAILED.
+        try:
+            PartialBillValidator(self.billing_data).run_prevalidation()
+        except (OverlappedBillingDataDateRangeError, NoFutureBillsError):
+            return Status.FAILED
 
         # Snap the start date of the first new bill, if applicable
         self._snap_first_start_date()
@@ -260,9 +265,11 @@ class PartialBillProcessor:
             if not found:
                 # Pending partial bill does not already exist, so we stage a new one
                 pb = PartialBill.generate(
-                    self.meter.service, self.partial_bills_type, pending_partial
+                    self.meter.utility_service, self.partial_bills_type, pending_partial
                 )
                 self.staged_partial.append(pb)
+
+        return Status.SUCCEEDED if self.staged_partial else Status.COMPLETED
 
     def log_summary(self):
         """Logs the partial bills scraped.

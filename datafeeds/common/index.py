@@ -1,5 +1,5 @@
-from datetime import datetime, date, timedelta
-from typing import List, Optional
+from datetime import datetime, date
+from typing import List, Optional, Set, Dict, Any
 import logging
 
 from dateutil import parser as date_parser
@@ -12,7 +12,6 @@ from datafeeds.db import dbtask
 from datafeeds.common.typing import (
     BillingData,
     BillingRange,
-    IntervalRange,
     IntervalIssue,
     Status,
     BillPdf,
@@ -23,11 +22,13 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-
+from datafeeds.models.meter import MeterReading
+from datafeeds.models.user import SnapmeterUserSubscription, SnapmeterAccountUser
 
 log = logging.getLogger(__name__)
 
-INDEX = "etl-tasks"  # alias to indexes named etl-tasks-2019.05.15-1
+INDEX = "etl-tasks"  # write alias
+INDEX_PATTERN = "etl-tasks-*"
 INTERVAL_ISSUE_INDEX = "etl-interval-issues"
 LOG_URL_PATTERN = "https://snapmeter.com/api/admin/etl-tasks/%s/log"
 
@@ -55,9 +56,16 @@ def _get_es_connection():
     "url": {"type": "keyword"},
     "billingFrom": {"type": "date"},
     "billingTo": {"type": "date"},
-    "intervalFrom": {"type": "date"},
+    "intervalFrom": {"type": "date"}, - date range of non-null new/updated data
     "intervalTo": {"type": "date"},
     "runName": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+    "billScraper": {"type": "boolean"}
+    "intervalScraper": {"type": "boolean"}
+    "updatedDays": {"type": "long"} - count of days containing updated data
+    "weeklyEmailSubscribers": {"type": "long"} - count of external weekly email subscribers for this meter
+    "accountUsers": {"type": "long"} - count of external users for this account
+    "age": {"type": "long"} - days between max updated data and now
+    "exception": {"type": "keyword"} - just the exception type
 """
 
 
@@ -65,6 +73,49 @@ def _get_date(dt):
     if isinstance(dt, str):
         return date_parser.parse(dt)
     return dt
+
+
+def get_index_doc(task_id: str) -> Dict[str, Any]:
+    es = _get_es_connection()
+    # noinspection SpellCheckingInspection
+    try:
+        """
+        TODO: Auto-rollover updates the is_write_index to false for the rolled-over index, but es.get fails with
+        Alias [etl-tasks] has more than one indices associated with it [[etl-tasks-000006, etl-tasks-000005]],
+        can't execute a single index op
+
+        es.get requires a single index name, not a pattern (etl-tasks-*); using a pattern fails with a permission error.
+        es.search works with an index pattern, but can return an out of date version of the the document.
+
+        Use es.get and disable auto-rollover until elastic.co explains how to do this.
+
+        https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html says
+        "This simplifies things by allowing for one alias to behave both as the write and read aliases for indices that
+        are being managed with Rollover." but that does not seem to be what's happening.
+        """
+        results = es.search(
+            index=INDEX_PATTERN,
+            doc_type="_doc",
+            _source=True,
+            body={"query": {"match": {"_id": task_id}}},
+        )["hits"]["hits"]
+        if not results:
+            log.error("update of task %s failed: not found", task_id)
+            return {}
+        return results[0]["_source"]
+    except NotFoundError:
+        log.error("update of task %s failed: not found", task_id)
+        return {}
+
+
+def get_index_doc_unaliased(task_id: str) -> Dict[str, Any]:
+    es = _get_es_connection()
+    try:
+        task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
+        return task["_source"]
+    except NotFoundError:
+        log.error("update of task %s failed: not found", task_id)
+        return {}
 
 
 def index_etl_run(task_id: str, run: dict, update: bool = False):
@@ -82,12 +133,8 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
     es = _get_es_connection()
     doc = {}
     if update:
-        # noinspection SpellCheckingInspection
-        try:
-            task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
-            doc = task["_source"]
-        except NotFoundError:
-            log.error("update of task %s failed: not found", task_id)
+        doc = get_index_doc(task_id)
+        if not doc:
             return
     doc.update(run)
     doc["updated"] = datetime.now()
@@ -96,7 +143,10 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
     min_dt = datetime(2000, 1, 1)
     max_dt = datetime(2000, 1, 1)
     if doc.get("intervalTo"):
-        max_dt = max(max_dt, _get_date(doc["intervalTo"]))
+        interval_to = _get_date(doc["intervalTo"])
+        if isinstance(interval_to, date):
+            interval_to = datetime.combine(interval_to, datetime.min.time())
+        max_dt = max(max_dt, interval_to)
     if doc.get("billingTo"):
         billing_to = _get_date(doc["billingTo"])
         if isinstance(billing_to, date):
@@ -110,40 +160,53 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
         update,
         doc,
     )
-    es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc)
+    es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc, refresh="wait_for")
 
 
-def update_dates(
-    task_id: str, billing: BillingRange = None, interval: IntervalRange = None
-):
-    """set date ranges retrieved by this run"""
-    doc = {}
-    if billing:
-        doc.update({"billingFrom": billing.start, "billingTo": billing.end})
-    if interval:
-        doc.update({"intervalFrom": interval.start, "intervalTo": interval.end})
-    if doc:
-        index_etl_run(task_id, doc, update=True)
+def run_meta(meter_oid: int) -> Dict[str, Any]:
+    """Set metadata common to all runs."""
+    doc: Dict[str, Any] = {
+        "emailSubscribers": SnapmeterUserSubscription.email_subscriber_count(meter_oid),
+        "accountUsers": SnapmeterAccountUser.account_user_count(meter_oid),
+    }
+    return doc
 
 
-def update_billing_range(task_id: str, bills: BillingData):
-    """set billing range retrieved by this run"""
+def update_billing_range(task_id: str, meter_oid: int, bills: BillingData):
+    """Index info about the data retrieved in this run.
+
+    dataType - bill
+    weeklyEmailSubscribers - count of external weekly email subscribers for this meter
+    accountUsers - count of external users for this account
+    billingFrom, billingTo - date range for bills retrieved during this run (all bills, not just updated)
+    """
     if not bills:
         return
+    doc: Dict[str, Any] = {}
     billing = BillingRange(
-        start=min([bill.start for bill in bills]), end=max([bill.end for bill in bills])
+        start=min([bill.start for bill in bills]),
+        end=max([bill.end for bill in bills]),
     )
-    update_dates(task_id, billing=billing)
+    doc.update({"billingFrom": billing.start, "billingTo": billing.end})
+    index_etl_run(task_id, doc, update=True)
 
 
-def update_bill_pdf_range(task_id: str, pdfs: List[BillPdf]):
-    """set billing range retrieved by this run"""
+def update_bill_pdf_range(task_id: str, meter_oid: int, pdfs: List[BillPdf]):
+    """Index info about the data retrieved in this run.
+
+    dataType - bill
+    weeklyEmailSubscribers - count of external weekly email subscribers for this meter
+    accountUsers - count of external users for this account
+    billingFrom, billingTo - date range for bills retrieved during this run (all bills, not just updated)
+    """
     if not pdfs:
         return
+    doc: Dict[str, Any] = {}
     billing = BillingRange(
-        start=min([bill.start for bill in pdfs]), end=max([bill.end for bill in pdfs])
+        start=min([bill.start for bill in pdfs]), end=max([bill.end for bill in pdfs]),
     )
-    update_dates(task_id, billing=billing)
+    doc.update({"billingFrom": billing.start, "billingTo": billing.end})
+    index_etl_run(task_id, doc, update=True)
 
 
 def _meter_interval(meter_id):
@@ -153,33 +216,31 @@ def _meter_interval(meter_id):
 
 
 @dbtask
-def update_readings_range(task_id: str, meter_id: int, readings: dict):
-    # noinspection SpellCheckingInspection
-    """set readings range retrieved by this run
+def set_interval_fields(task_id: str, meter_oid: int, readings: List[MeterReading]):
+    """Index info about the interval data retrieved in this run.
 
-        readings data looks like 'yyyy-mdd-dd': [v1, v2, ...]
-        get last valid readings date using meter interval
-        """
-    if not readings:
-        return
-    max_dt = max(readings.keys())  # this is a string
-    data = readings[max_dt]
-    # go backwards through the readings to find the last non-empty index
-    for idx in range(len(data) - 1, -1, -1):
-        if data[idx] is not None:  # 0 may be valid
-            break
-    missing = len(data) - idx
-    interval = _meter_interval(meter_id)
-    latest = (
-        date_parser.parse(max_dt)
-        + timedelta(days=1)
-        - timedelta(minutes=interval * missing)
-    )
-    doc = {
-        "intervalFrom": date_parser.parse(min(readings.keys())),
-        "intervalTo": latest,
-    }
-
+    dataType - interval
+    intervalUpdatedFrom, intervalUpdatedTo - date range of non-null new/updated data
+    updatedDays - count of days containing updated data
+    weeklyEmailSubscribers - count of external weekly email subscribers for this meter
+    accountUsers - count of external users for this account
+    age - days between max updated data and now
+    """
+    doc: Dict[str, Any] = {}
+    dates: Set[date] = set()
+    for reading in readings or []:
+        values = set(reading.readings)
+        if not values == {None}:
+            dates.add(reading.occurred)
+    doc["updatedDays"] = len(dates)
+    if dates:
+        doc.update(
+            {
+                "intervalFrom": min(dates),
+                "intervalTo": max(dates),
+                "age": (date.today() - max(dates)).days,
+            }
+        )
     index_etl_run(task_id, doc, update=True)
 
 
@@ -249,11 +310,8 @@ def index_logs(
     """Upload the logs for this task to elasticsearch for later analysis."""
     es = _get_es_connection()
 
-    try:
-        # Try to acquire a copy of the existing document created for this run.
-        task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
-        doc = task["_source"]
-    except NotFoundError:
+    doc = get_index_doc(task_id)
+    if not doc:
         # Make a document with fundamental information about the run.
         doc = dict(
             meterId=meter.oid,

@@ -4,7 +4,8 @@
             "end": "2013-01-08",
             "peak_demand": null,
             "start": "2012-12-10",
-            "tariff": null,
+            "statement": "2013-01-12",
+            "tariff": "SVL",
             "total_charge": "46102.3000",
             "total_usage": "572957.50000",
             "line_items": [
@@ -355,7 +356,8 @@
             "end": "2013-02-07",
             "peak_demand": null,
             "start": "2013-01-09",
-            "tariff": null,
+            "statement": "2013-02-12",
+            "tariff": "SVL",
             "total_charge": "45151.8700",
             "total_usage": "549177.75000",
             "line_items": [
@@ -706,7 +708,8 @@
             "end": "2013-03-07",
             "peak_demand": null,
             "start": "2013-02-08",
-            "tariff": null,
+            "statement": "2013-03-12",
+            "tariff": "SVL",
             "total_charge": "40948.1100",
             "total_usage": "498072.75000",
             "line_items": [
@@ -1057,7 +1060,8 @@
             "end": "2013-04-08",
             "peak_demand": null,
             "start": "2013-03-08",
-            "tariff": null,
+            "statement": "2013-04-12",
+            "tariff": "SVL",
             "total_charge": "44448.9200",
             "total_usage": "553830.00000",
             "line_items": [
@@ -1408,7 +1412,8 @@
             "end": "2013-05-09",
             "peak_demand": null,
             "start": "2013-04-09",
-            "tariff": null,
+            "statement": "2013-05-14",
+            "tariff": "SVL",
             "total_charge": "43995.5700",
             "total_usage": "545066.25000",
             "line_items": [
@@ -1759,7 +1764,8 @@
             "end": "2013-06-09",
             "peak_demand": null,
             "start": "2013-05-10",
-            "tariff": null,
+            "statement": "2013-06-14",
+            "tariff": "SVL",
             "total_charge": "48321.4600",
             "total_usage": "612136.00000",
             "line_items": [
@@ -2110,7 +2116,8 @@
             "end": "2013-07-09",
             "peak_demand": null,
             "start": "2013-06-10",
-            "tariff": null,
+            "statement": "2013-07-16",
+            "tariff": "SVL",
             "total_charge": "49800.5700",
             "total_usage": "622219.00000",
             "line_items": [
@@ -2461,7 +2468,8 @@
             "end": "2013-08-08",
             "peak_demand": null,
             "start": "2013-07-10",
-            "tariff": null,
+            "statement": "2013-08-13",
+            "tariff": "SVL",
             "total_charge": "49585.9800",
             "total_usage": "617385.50000",
             "line_items": [
@@ -2812,7 +2820,8 @@
             "end": "2013-09-09",
             "peak_demand": null,
             "start": "2013-08-09",
-            "tariff": null,
+            "statement": "2013-09-18",
+            "tariff": "SVL",
             "total_charge": "49990.8900",
             "total_usage": "635791.25000",
             "line_items": [
@@ -3137,7 +3146,8 @@
             "end": "2013-10-08",
             "peak_demand": null,
             "start": "2013-09-10",
-            "tariff": null,
+            "statement": "2013-10-12",
+            "tariff": "SVL",
             "total_charge": "44661.5900",
             "total_usage": "551512.50000",
             "line_items": [
@@ -3462,7 +3472,8 @@
             "end": "2013-11-07",
             "peak_demand": null,
             "start": "2013-10-09",
-            "tariff": null,
+            "statement": "2013-11-12",
+            "tariff": "SVL",
             "total_charge": "42220.1600",
             "total_usage": "529693.00000",
             "line_items": [
@@ -3787,7 +3798,8 @@
             "end": "2013-12-08",
             "peak_demand": null,
             "start": "2013-11-08",
-            "tariff": null,
+            "statement": "2013-12-12",
+            "tariff": "SVL",
             "total_charge": "46705.7600",
             "total_usage": "578529.25000",
             "line_items": [
@@ -4112,7 +4124,8 @@
             "end": "2014-01-08",
             "peak_demand": null,
             "start": "2013-12-09",
-            "tariff": null,
+            "statement": "2014-01-14",
+            "tariff": "SVL",
             "total_charge": "50310.6700",
             "total_usage": "618057.00000",
             "line_items": [
@@ -4437,7 +4450,8 @@
             "end": "2014-02-09",
             "peak_demand": null,
             "start": "2014-01-09",
-            "tariff": null,
+            "statement": "2014-02-13",
+            "tariff": "SVL",
             "total_charge": "46425.1200",
             "total_usage": "616876.50000",
             "line_items": [
@@ -4723,7 +4737,8 @@
             "end": "2014-03-09",
             "peak_demand": null,
             "start": "2014-02-10",
-            "tariff": null,
+            "statement": "2014-03-13",
+            "tariff": "SVL",
             "total_charge": "43445.7800",
             "total_usage": "538749.50000",
             "line_items": [
@@ -5009,7 +5024,8 @@
             "end": "2014-04-07",
             "peak_demand": null,
             "start": "2014-03-10",
-            "tariff": null,
+            "statement": "2014-04-10",
+            "tariff": "SVL",
             "total_charge": "41220.5800",
             "total_usage": "518632.75000",
             "line_items": [
@@ -5295,7 +5311,8 @@
             "end": "2014-05-07",
             "peak_demand": null,
             "start": "2014-04-08",
-            "tariff": null,
+            "statement": "2014-05-10",
+            "tariff": "SVL",
             "total_charge": "42407.4700",
             "total_usage": "540142.75000",
             "line_items": [
@@ -5581,7 +5598,8 @@
             "end": "2014-06-08",
             "peak_demand": null,
             "start": "2014-05-08",
-            "tariff": null,
+            "statement": "2014-06-11",
+            "tariff": "SVL",
             "total_charge": "44239.4900",
             "total_usage": "571029.25000",
             "line_items": [
@@ -5867,7 +5885,8 @@
             "end": "2014-07-08",
             "peak_demand": null,
             "start": "2014-06-09",
-            "tariff": null,
+            "statement": "2014-07-11",
+            "tariff": "SVL",
             "total_charge": "45705.5800",
             "total_usage": "591070.00000",
             "line_items": [
@@ -6140,7 +6159,8 @@
             "end": "2014-08-07",
             "peak_demand": null,
             "start": "2014-07-09",
-            "tariff": null,
+            "statement": "2014-08-12",
+            "tariff": "SVL",
             "total_charge": "46315.1300",
             "total_usage": "600730.75000",
             "line_items": [
@@ -6426,7 +6446,8 @@
             "end": "2014-09-08",
             "peak_demand": null,
             "start": "2014-08-08",
-            "tariff": null,
+            "statement": "2014-09-11",
+            "tariff": "SVL",
             "total_charge": "49367.6800",
             "total_usage": "638183.00000",
             "line_items": [
@@ -6725,7 +6746,8 @@
             "end": "2014-10-07",
             "peak_demand": null,
             "start": "2014-09-09",
-            "tariff": null,
+            "statement": "2014-10-10",
+            "tariff": "SVL",
             "total_charge": "43965.1700",
             "total_usage": "546999.25000",
             "line_items": [
@@ -7024,7 +7046,8 @@
             "end": "2014-11-09",
             "peak_demand": null,
             "start": "2014-10-08",
-            "tariff": null,
+            "statement": "2014-11-12",
+            "tariff": "SVL",
             "total_charge": "46457.2100",
             "total_usage": "596923.50000",
             "line_items": [
@@ -7336,7 +7359,8 @@
             "end": "2014-12-07",
             "peak_demand": null,
             "start": "2014-11-10",
-            "tariff": null,
+            "statement": "2014-12-10",
+            "tariff": "SVL",
             "total_charge": "42315.1500",
             "total_usage": "515521.75000",
             "line_items": [
@@ -7648,7 +7672,8 @@
             "end": "2015-01-07",
             "peak_demand": null,
             "start": "2014-12-08",
-            "tariff": null,
+            "statement": "2015-01-13",
+            "tariff": "SVL",
             "total_charge": "46390.3300",
             "total_usage": "591178.75000",
             "line_items": [
@@ -7960,7 +7985,8 @@
             "end": "2015-02-08",
             "peak_demand": null,
             "start": "2015-01-08",
-            "tariff": null,
+            "statement": "2015-02-11",
+            "tariff": "SVL",
             "total_charge": "47434.0800",
             "total_usage": "607699.44000",
             "line_items": [
@@ -8337,7 +8363,8 @@
             "end": "2015-03-09",
             "peak_demand": null,
             "start": "2015-02-09",
-            "tariff": null,
+            "statement": "2015-03-13",
+            "tariff": "SVL",
             "total_charge": "42576.5600",
             "total_usage": "545044.32000",
             "line_items": [
@@ -8753,7 +8780,8 @@
             "end": "2015-04-08",
             "peak_demand": null,
             "start": "2015-03-10",
-            "tariff": null,
+            "statement": "2015-04-11",
+            "tariff": "SVL",
             "total_charge": "42624.8100",
             "total_usage": "546805.44000",
             "line_items": [
@@ -9065,7 +9093,8 @@
             "end": "2015-05-07",
             "peak_demand": null,
             "start": "2015-04-09",
-            "tariff": null,
+            "statement": "2015-05-10",
+            "tariff": "SVL",
             "total_charge": "41582.6300",
             "total_usage": "528550.56000",
             "line_items": [
@@ -9377,7 +9406,8 @@
             "end": "2015-06-08",
             "peak_demand": null,
             "start": "2015-05-08",
-            "tariff": null,
+            "statement": "2015-06-11",
+            "tariff": "SVL",
             "total_charge": "47328.9900",
             "total_usage": "610475.04000",
             "line_items": [
@@ -9689,7 +9719,8 @@
             "end": "2015-07-08",
             "peak_demand": null,
             "start": "2015-06-09",
-            "tariff": null,
+            "statement": "2015-07-17",
+            "tariff": "SVL",
             "total_charge": "44915.3600",
             "total_usage": "629966.16000",
             "line_items": [
@@ -10001,7 +10032,8 @@
             "end": "2015-08-09",
             "peak_demand": null,
             "start": "2015-07-09",
-            "tariff": null,
+            "statement": "2015-08-12",
+            "tariff": "SVL",
             "total_charge": "46983.5200",
             "total_usage": "679606.56000",
             "line_items": [
@@ -10313,7 +10345,8 @@
             "end": "2015-09-08",
             "peak_demand": null,
             "start": "2015-08-10",
-            "tariff": null,
+            "statement": "2015-09-11",
+            "tariff": "SVL",
             "total_charge": "44312.2300",
             "total_usage": "626663.52000",
             "line_items": [
@@ -10651,7 +10684,8 @@
             "end": "2015-10-08",
             "peak_demand": null,
             "start": "2015-09-09",
-            "tariff": null,
+            "statement": "2015-10-11",
+            "tariff": "SVL",
             "total_charge": "40353.2600",
             "total_usage": "574145.28000",
             "line_items": [
@@ -10989,7 +11023,8 @@
             "end": "2015-11-08",
             "peak_demand": null,
             "start": "2015-10-09",
-            "tariff": null,
+            "statement": "2015-11-11",
+            "tariff": "SVL",
             "total_charge": "39881.1600",
             "total_usage": "554327.28000",
             "line_items": [
@@ -11327,7 +11362,8 @@
             "end": "2015-12-08",
             "peak_demand": null,
             "start": "2015-11-09",
-            "tariff": null,
+            "statement": "2015-12-11",
+            "tariff": "SVL",
             "total_charge": "39715.6600",
             "total_usage": "550632.96000",
             "line_items": [
@@ -11652,7 +11688,8 @@
             "end": "2016-01-10",
             "peak_demand": null,
             "start": "2015-12-09",
-            "tariff": null,
+            "statement": "2016-01-13",
+            "tariff": "SVL",
             "total_charge": "42174.1700",
             "total_usage": "582636.96000",
             "line_items": [
@@ -11977,7 +12014,8 @@
             "end": "2016-02-07",
             "peak_demand": null,
             "start": "2016-01-11",
-            "tariff": null,
+            "statement": "2016-02-10",
+            "tariff": "SVL",
             "total_charge": "39257.2600",
             "total_usage": "521947.44000",
             "line_items": [
@@ -12302,7 +12340,8 @@
             "end": "2016-03-07",
             "peak_demand": null,
             "start": "2016-02-08",
-            "tariff": null,
+            "statement": "2016-03-10",
+            "tariff": "SVL",
             "total_charge": "38869.8400",
             "total_usage": "518695.92000",
             "line_items": [
@@ -12614,7 +12653,8 @@
             "end": "2016-04-07",
             "peak_demand": null,
             "start": "2016-03-08",
-            "tariff": null,
+            "statement": "2016-04-11",
+            "tariff": "SVL",
             "total_charge": "40438.2800",
             "total_usage": "548856.72000",
             "line_items": [
@@ -12926,7 +12966,8 @@
             "end": "2016-05-08",
             "peak_demand": null,
             "start": "2016-04-08",
-            "tariff": null,
+            "statement": "2016-05-11",
+            "tariff": "SVL",
             "total_charge": "39275.0100",
             "total_usage": "526460.40000",
             "line_items": [
@@ -13238,7 +13279,8 @@
             "end": "2016-06-08",
             "peak_demand": null,
             "start": "2016-05-09",
-            "tariff": null,
+            "statement": "2016-06-11",
+            "tariff": "SVL",
             "total_charge": "40393.7400",
             "total_usage": "547896.24000",
             "line_items": [
@@ -13550,7 +13592,8 @@
             "end": "2016-07-10",
             "peak_demand": null,
             "start": "2016-06-09",
-            "tariff": null,
+            "statement": "2016-07-13",
+            "tariff": "SVL",
             "total_charge": "45678.8900",
             "total_usage": "642407.04000",
             "line_items": [
@@ -13862,7 +13905,8 @@
             "end": "2016-08-07",
             "peak_demand": null,
             "start": "2016-07-11",
-            "tariff": null,
+            "statement": "2016-08-10",
+            "tariff": "SVL",
             "total_charge": "42503.9700",
             "total_usage": "582217.92000",
             "line_items": [
@@ -14174,7 +14218,8 @@
             "end": "2016-09-07",
             "peak_demand": null,
             "start": "2016-08-08",
-            "tariff": null,
+            "statement": "2016-09-10",
+            "tariff": "SVL",
             "total_charge": "45833.0800",
             "total_usage": "631885.68000",
             "line_items": [
@@ -14486,7 +14531,8 @@
             "end": "2016-10-06",
             "peak_demand": null,
             "start": "2016-09-08",
-            "tariff": null,
+            "statement": "2016-10-09",
+            "tariff": "SVL",
             "total_charge": "42777.1300",
             "total_usage": "580164.48000",
             "line_items": [
@@ -14798,7 +14844,8 @@
             "end": "2016-11-07",
             "peak_demand": null,
             "start": "2016-10-07",
-            "tariff": null,
+            "statement": "2016-11-10",
+            "tariff": "SVL",
             "total_charge": "41841.4800",
             "total_usage": "575740.80000",
             "line_items": [
@@ -15136,7 +15183,8 @@
             "end": "2016-12-07",
             "peak_demand": null,
             "start": "2016-11-08",
-            "tariff": null,
+            "statement": "2016-12-10",
+            "tariff": "SVL",
             "total_charge": "38396.7800",
             "total_usage": "506304.72000",
             "line_items": [
@@ -15461,7 +15509,8 @@
             "end": "2017-01-09",
             "peak_demand": null,
             "start": "2016-12-08",
-            "tariff": null,
+            "statement": "2017-01-12",
+            "tariff": "SVL",
             "total_charge": "42045.4800",
             "total_usage": "579438.72000",
             "line_items": [
@@ -15786,7 +15835,8 @@
             "end": "2017-02-07",
             "peak_demand": null,
             "start": "2017-01-10",
-            "tariff": null,
+            "statement": "2017-02-10",
+            "tariff": "SVL",
             "total_charge": "37997.8900",
             "total_usage": "505379.52000",
             "line_items": [
@@ -16111,7 +16161,8 @@
             "end": "2017-03-07",
             "peak_demand": null,
             "start": "2017-02-08",
-            "tariff": null,
+            "statement": "2017-03-10",
+            "tariff": "SVL",
             "total_charge": "36916.5700",
             "total_usage": "489457.44000",
             "line_items": [
@@ -16423,7 +16474,8 @@
             "end": "2017-04-09",
             "peak_demand": null,
             "start": "2017-03-08",
-            "tariff": null,
+            "statement": "2017-04-12",
+            "tariff": "SVL",
             "total_charge": "41850.7000",
             "total_usage": "583239.60000",
             "line_items": [
@@ -16735,7 +16787,8 @@
             "end": "2017-05-07",
             "peak_demand": null,
             "start": "2017-04-10",
-            "tariff": null,
+            "statement": "2017-05-10",
+            "tariff": "SVL",
             "total_charge": "37466.5300",
             "total_usage": "495339.84000",
             "line_items": [
@@ -17047,7 +17100,8 @@
             "end": "2017-06-07",
             "peak_demand": null,
             "start": "2017-05-08",
-            "tariff": null,
+            "statement": "2017-06-10",
+            "tariff": "SVL",
             "total_charge": "41072.1300",
             "total_usage": "567077.04000",
             "line_items": [
@@ -17359,7 +17413,8 @@
             "end": "2017-07-10",
             "peak_demand": null,
             "start": "2017-06-08",
-            "tariff": null,
+            "statement": "2017-07-12",
+            "tariff": "SVL",
             "total_charge": "44377.7200",
             "total_usage": "635157.36000",
             "line_items": [
@@ -17645,7 +17700,8 @@
             "end": "2017-08-08",
             "peak_demand": null,
             "start": "2017-07-11",
-            "tariff": null,
+            "statement": "2017-08-11",
+            "tariff": "SVL",
             "total_charge": "40756.3900",
             "total_usage": "565842.24000",
             "line_items": [
@@ -17931,7 +17987,8 @@
             "end": "2017-09-10",
             "peak_demand": null,
             "start": "2017-08-09",
-            "tariff": null,
+            "statement": "2017-09-13",
+            "tariff": "SVL",
             "total_charge": "43532.0300",
             "total_usage": "612751.68000",
             "line_items": [
@@ -18217,7 +18274,8 @@
             "end": "2017-10-09",
             "peak_demand": null,
             "start": "2017-09-11",
-            "tariff": null,
+            "statement": "2017-10-12",
+            "tariff": "SVL",
             "total_charge": "42639.9200",
             "total_usage": "578460.24000",
             "line_items": [
@@ -18503,7 +18561,8 @@
             "end": "2017-11-07",
             "peak_demand": null,
             "start": "2017-10-10",
-            "tariff": null,
+            "statement": "2017-11-10",
+            "tariff": "SVL",
             "total_charge": "39766.3100",
             "total_usage": "534672.00000",
             "line_items": [
@@ -18815,7 +18874,8 @@
             "end": "2017-12-06",
             "peak_demand": null,
             "start": "2017-11-08",
-            "tariff": null,
+            "statement": "2017-12-09",
+            "tariff": "SVL",
             "total_charge": "38659.7900",
             "total_usage": "506003.04000",
             "line_items": [
@@ -19114,7 +19174,8 @@
             "end": "2018-01-09",
             "peak_demand": null,
             "start": "2017-12-07",
-            "tariff": null,
+            "statement": "2018-01-19",
+            "tariff": "SVL",
             "total_charge": "46524.4800",
             "total_usage": "630093.60000",
             "line_items": [
@@ -19413,7 +19474,8 @@
             "end": "2018-02-05",
             "peak_demand": null,
             "start": "2018-01-10",
-            "tariff": null,
+            "statement": "2018-02-13",
+            "tariff": "SVL",
             "total_charge": "39606.6000",
             "total_usage": "506763.36000",
             "line_items": [

@@ -4,7 +4,8 @@
             "end": "2016-01-22",
             "peak_demand": null,
             "start": "2015-12-21",
-            "tariff": null,
+            "statement": "2016-01-26",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "315.6700",
             "total_usage": "63.76536000000",
             "line_items": [
@@ -121,7 +122,8 @@
             "end": "2018-02-20",
             "peak_demand": null,
             "start": "2018-01-23",
-            "tariff": null,
+            "statement": "2018-02-26",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "37.0200",
             "total_usage": "1.73784000000",
             "line_items": [
@@ -225,7 +227,8 @@
             "end": "2018-03-20",
             "peak_demand": null,
             "start": "2018-02-21",
-            "tariff": null,
+            "statement": "2018-03-23",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "51.1700",
             "total_usage": "4.81248000000",
             "line_items": [
@@ -329,7 +332,8 @@
             "end": "2018-04-22",
             "peak_demand": null,
             "start": "2018-03-21",
-            "tariff": null,
+            "statement": "2018-04-25",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "124.4900",
             "total_usage": "20.72040000000",
             "line_items": [
@@ -433,7 +437,8 @@
             "end": "2018-05-21",
             "peak_demand": null,
             "start": "2018-04-23",
-            "tariff": null,
+            "statement": "2018-05-24",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "124.0600",
             "total_usage": "24.06240000000",
             "line_items": [
@@ -537,7 +542,8 @@
             "end": "2018-06-21",
             "peak_demand": null,
             "start": "2018-05-22",
-            "tariff": null,
+            "statement": "2018-06-26",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "206.1100",
             "total_usage": "44.11440000000",
             "line_items": [
@@ -641,7 +647,8 @@
             "end": "2018-07-22",
             "peak_demand": null,
             "start": "2018-06-22",
-            "tariff": null,
+            "statement": "2018-07-25",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "196.1400",
             "total_usage": "38.90088000000",
             "line_items": [
@@ -745,7 +752,8 @@
             "end": "2018-08-22",
             "peak_demand": null,
             "start": "2018-07-23",
-            "tariff": null,
+            "statement": "2018-08-27",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "200.2300",
             "total_usage": "39.83664000000",
             "line_items": [
@@ -849,7 +857,8 @@
             "end": "2018-09-20",
             "peak_demand": null,
             "start": "2018-08-23",
-            "tariff": null,
+            "statement": "2018-09-25",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "290.4700",
             "total_usage": "60.42336000000",
             "line_items": [
@@ -953,7 +962,8 @@
             "end": "2018-10-21",
             "peak_demand": null,
             "start": "2018-09-21",
-            "tariff": null,
+            "statement": "2018-10-24",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "245.9400",
             "total_usage": "50.26368000000",
             "line_items": [
@@ -1057,7 +1067,8 @@
             "end": "2018-11-20",
             "peak_demand": null,
             "start": "2018-10-22",
-            "tariff": null,
+            "statement": "2018-11-27",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "82.4900",
             "total_usage": "13.90272000000",
             "line_items": [
@@ -1161,7 +1172,8 @@
             "end": "2018-12-19",
             "peak_demand": null,
             "start": "2018-11-21",
-            "tariff": null,
+            "statement": "2018-12-26",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "62.8000",
             "total_usage": "9.09024000000",
             "line_items": [
@@ -1265,7 +1277,8 @@
             "end": "2019-01-22",
             "peak_demand": null,
             "start": "2018-12-20",
-            "tariff": null,
+            "statement": "2019-01-25",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "61.7000",
             "total_usage": "8.82288000000",
             "line_items": [
@@ -1369,7 +1382,8 @@
             "end": "2019-02-20",
             "peak_demand": null,
             "start": "2019-01-23",
-            "tariff": null,
+            "statement": "2019-03-05",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "64.4500",
             "total_usage": "9.49128000000",
             "line_items": [
@@ -1473,7 +1487,8 @@
             "end": "2019-03-21",
             "peak_demand": null,
             "start": "2019-02-21",
-            "tariff": null,
+            "statement": "2019-03-26",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "71.5500",
             "total_usage": "11.22912000000",
             "line_items": [
@@ -1577,7 +1592,8 @@
             "end": "2019-04-22",
             "peak_demand": null,
             "start": "2019-03-22",
-            "tariff": null,
+            "statement": "2019-04-25",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "174.3800",
             "total_usage": "36.36096000000",
             "line_items": [
@@ -1681,7 +1697,8 @@
             "end": "2019-05-21",
             "peak_demand": null,
             "start": "2019-04-23",
-            "tariff": null,
+            "statement": "2019-05-29",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "354.3600",
             "total_usage": "80.34168000000",
             "line_items": [
@@ -1785,7 +1802,8 @@
             "end": "2019-06-20",
             "peak_demand": null,
             "start": "2019-05-22",
-            "tariff": null,
+            "statement": "2019-06-26",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "386.0800",
             "total_usage": "88.09512000000",
             "line_items": [
@@ -1889,7 +1907,8 @@
             "end": "2019-07-23",
             "peak_demand": null,
             "start": "2019-06-21",
-            "tariff": null,
+            "statement": "2019-07-26",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "310.9900",
             "total_usage": "65.10216000000",
             "line_items": [
@@ -1993,7 +2012,8 @@
             "end": "2019-08-22",
             "peak_demand": null,
             "start": "2019-07-24",
-            "tariff": null,
+            "statement": "2019-08-27",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "394.7800",
             "total_usage": "84.21840000000",
             "line_items": [
@@ -2097,7 +2117,8 @@
             "end": "2019-09-22",
             "peak_demand": null,
             "start": "2019-08-23",
-            "tariff": null,
+            "statement": "2019-09-25",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "386.5800",
             "total_usage": "82.34688000000",
             "line_items": [
@@ -2201,7 +2222,8 @@
             "end": "2019-10-23",
             "peak_demand": null,
             "start": "2019-09-23",
-            "tariff": null,
+            "statement": "2019-10-25",
+            "tariff": "City of Austin Water Irrigation - Commercial",
             "total_charge": "397.7200",
             "total_usage": "84.88680000000",
             "line_items": [

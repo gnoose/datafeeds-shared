@@ -29,6 +29,7 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+from datafeeds.models.bill import TND_ONLY
 
 
 log = logging.getLogger(__name__)
@@ -58,6 +59,7 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
             scrape_bills=scrape_bills,
             scrape_readings=False,
             scrape_partial_bills=scrape_partial_bills,
+            partial_type=TND_ONLY,
         )
         self.service_id = service_id
         self.utility = utility
@@ -223,7 +225,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
     ):
         sce_pages.detect_and_close_survey(self._driver)
         page.configure_report()
-        page.select_service_id(self.service_id)
+        service_row = page.select_service_id(self.service_id)
 
         min_start_date = page.get_minimum_selectable_start_date()
         date_range = self.energy_manager_date_range(min_start_date)
@@ -267,6 +269,10 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
                 current_bill_row = visible_bills[bill_index]
                 key = (current_bill_row.bill_start_date, current_bill_row.bill_end_date)
                 if key not in raw_billing_data:
+                    rate = None
+                    if service_row:
+                        rate = service_row.rate
+
                     bill_data = BillingDatum(
                         start=current_bill_row.bill_start_date,
                         end=current_bill_row.bill_end_date - timedelta(days=1),
@@ -276,6 +282,7 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
                         peak=current_bill_row.kw,
                         items=None,
                         attachments=None,
+                        utility_code=rate,
                     )
 
                     bill_data = self.download_and_attach_pdf(
@@ -396,4 +403,5 @@ def datafeed(
         params,
         configuration=configuration,
         task_id=task_id,
+        disable_login_on_error=True,
     )

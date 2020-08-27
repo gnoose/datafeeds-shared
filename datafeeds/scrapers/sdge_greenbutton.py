@@ -195,6 +195,7 @@ class SdgeGreenButtonScraper(BaseApiScraper):
                         peak=None,  # Peak, line items, and attachments aren't available.
                         items=None,
                         attachments=None,
+                        utility_code=None,
                     )
                 )
 

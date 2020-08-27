@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 from datafeeds import db
 from datafeeds.common import interval_transform, test_utils
@@ -58,7 +58,8 @@ class IntervalTransformTests(unittest.TestCase):
             else:
                 self.assertEqual(abs(orig_val), val)
 
-    def test_mixed_transform(self):
+    @patch("datafeeds.common.interval_transform.post_slack_message")
+    def test_mixed_transform(self, slack):
         meter = MagicMock()
         meter.interval = 15
         meter.timezone = "America/Los_Angeles"
@@ -68,6 +69,7 @@ class IntervalTransformTests(unittest.TestCase):
             "2020-04-01": [float(idx) if idx % 2 else 0.0 for idx in range(intervals)],
         }
         (transformed, issues) = interval_transform.to_positive(readings, meter)
+        slack.assert_not_called()
         self.assertEqual(0, len(issues), "positive and 0s is ok")
         readings = {
             # negatives and zeroes
@@ -76,6 +78,7 @@ class IntervalTransformTests(unittest.TestCase):
             ],
         }
         (transformed, issues) = interval_transform.to_positive(readings, meter)
+        slack.assert_not_called()
         self.assertEqual(0, len(issues), "negative and 0s is ok")
         readings = {
             # positive and zeroes
@@ -88,6 +91,7 @@ class IntervalTransformTests(unittest.TestCase):
         with self.assertRaises(InvalidMeterDataException) as exc:
             interval_transform.to_positive(readings, meter)
             self.assertTrue("mixed positive and negative values" in exc)
+        self.assertIn("mixed positive and negative", slack.call_args_list[0][0][0])
 
     def test_transform(self):
         """Transform always runs positive transform."""

@@ -4,7 +4,8 @@
             "end": "2019-08-14",
             "peak_demand": "26.6000",
             "start": "2019-07-17",
-            "tariff": null,
+            "statement": "2019-08-20",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3192.8500",
             "total_usage": "14121.00000",
             "line_items": [
@@ -225,7 +226,8 @@
             "end": "2019-09-15",
             "peak_demand": "26.9000",
             "start": "2019-08-15",
-            "tariff": null,
+            "statement": "2019-09-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3349.0400",
             "total_usage": "15331.00000",
             "line_items": [
@@ -446,7 +448,8 @@
             "end": "2019-10-14",
             "peak_demand": "25.6000",
             "start": "2019-09-16",
-            "tariff": null,
+            "statement": "2019-10-16",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3098.7100",
             "total_usage": "13707.00000",
             "line_items": [
@@ -667,7 +670,8 @@
             "end": "2019-11-13",
             "peak_demand": "26.6000",
             "start": "2019-10-15",
-            "tariff": null,
+            "statement": "2019-11-15",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3183.0000",
             "total_usage": "14392.00000",
             "line_items": [
@@ -1005,7 +1009,8 @@
             "end": "2019-12-15",
             "peak_demand": "26.9000",
             "start": "2019-11-14",
-            "tariff": null,
+            "statement": "2019-12-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3235.7800",
             "total_usage": "15128.00000",
             "line_items": [
@@ -1226,7 +1231,8 @@
             "end": "2020-01-15",
             "peak_demand": "27.2000",
             "start": "2019-12-16",
-            "tariff": null,
+            "statement": "2020-01-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3140.8500",
             "total_usage": "14720.00000",
             "line_items": [
@@ -1577,7 +1583,8 @@
             "end": "2020-02-13",
             "peak_demand": "27.2000",
             "start": "2020-01-16",
-            "tariff": null,
+            "statement": "2020-02-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3062.6700",
             "total_usage": "13906.00000",
             "line_items": [
@@ -1902,7 +1909,8 @@
             "end": "2020-03-16",
             "peak_demand": "26.9000",
             "start": "2020-02-14",
-            "tariff": null,
+            "statement": "2020-03-18",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "3287.1000",
             "total_usage": "15368.00000",
             "line_items": [
@@ -2123,7 +2131,8 @@
             "end": "2020-04-15",
             "peak_demand": "26.2000",
             "start": "2020-03-17",
-            "tariff": null,
+            "statement": "2020-04-17",
+            "tariff": "TOU Plus - AL-TOU-Commercial",
             "total_charge": "2936.6100",
             "total_usage": "13548.00000",
             "line_items": [

@@ -219,7 +219,10 @@ class LADWPTransformer(UrjanetGridiumTransformer):
         Match on start date += 1.
         """
         account_copy = copy.copy(account)
-        meter_copy = [m for m in account_copy.meters if m.PK == meter.PK][0]
+        orig_meters = [m for m in account_copy.meters if m.PK == meter.PK]
+        if not orig_meters:
+            return account_copy
+        meter_copy = orig_meters[0]
         # set the meter date range
         meter_copy.IntervalStart = start
         meter_copy.IntervalEnd = end
@@ -250,6 +253,7 @@ class LADWPTransformer(UrjanetGridiumTransformer):
         # (e.g. in the case that a correction bill in issued)
         bill_history = DateIntervalTree()
         for idx, account in enumerate(ordered_accounts):
+            start_date = account.IntervalStart
             end_date = (
                 account.IntervalEnd - timedelta(days=1)
                 if idx == 0
@@ -265,26 +269,43 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                     )
                 )
                 continue
-            if bill_history.overlaps(account.IntervalStart, end_date):
+            meter = account.meters[0]
+            if (
+                bill_history.overlaps(start_date, end_date)
+                and meter.IntervalEnd > meter.IntervalStart
+            ):
+                # try using date range from Meter instead
+                log.debug(
+                    "Account date range overlaps ({} - {}); trying Meter ({} - {})".format(
+                        start_date, end_date, meter.IntervalStart, meter.IntervalEnd
+                    )
+                )
+                start_date = meter.IntervalStart
+                end_date = meter.IntervalEnd
+
+            if bill_history.overlaps(start_date, end_date):
                 log.debug(
                     "Skipping overlapping billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, account.IntervalStart, end_date
+                        account.PK, start_date, end_date
                     )
                 )
                 continue
             # can be a correction or multiple billing periods on one statement
-            # get billing periods from charges -- dates on first half of usages spans the
-            # whole statement
-            if (end_date - account.IntervalStart).days > 45:
+            # get billing periods from charges -- dates on first half of usages spans the whole statement
+            # but don't create single day periods
+            if (end_date - start_date).days > 45:
                 log.debug(
-                    "Splitting long billing period: %s - %s",
-                    account.IntervalStart,
-                    account.IntervalEnd,
+                    "Splitting long billing period: %s - %s", start_date, end_date,
                 )
                 for meter in account.meters:
                     seen: Set[Tuple] = set()
+                    # add the long billing period we're trying to split to seen:
+                    # sometimes there's a charge with this same too-long range
+                    seen.add((start_date, end_date))
                     for charge in meter.charges:
                         if (charge.IntervalStart, charge.IntervalEnd) in seen:
+                            continue
+                        if (charge.IntervalEnd - charge.IntervalStart).days <= 1:
                             continue
                         seen.add((charge.IntervalStart, charge.IntervalEnd))
                         log.debug(
@@ -306,14 +327,32 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                             charge.IntervalEnd,
                             LADWPBillingPeriod(account_copy),
                         )
+                    # if the long range is the only one, use it
+                    if {(start_date, end_date)} == seen and meter.charges:
+                        charge = meter.charges[0]
+                        log.debug(
+                            "Adding long billing period from charges: account={} meter={}, "
+                            "start={}, end={}".format(
+                                account.PK, meter.PK, start_date, end_date,
+                            )
+                        )
+                        # copy the account and set the date range on the meter
+                        account_copy = self.copy_account_data(
+                            account, meter, charge.IntervalStart, charge.IntervalEnd
+                        )
+                        bill_history.add(
+                            charge.IntervalStart,
+                            charge.IntervalEnd,
+                            LADWPBillingPeriod(account_copy),
+                        )
             else:
                 log.debug(
                     "Adding billing period: account_pk={}, start={}, end={}".format(
-                        account.PK, account.IntervalStart, end_date
+                        account.PK, start_date, end_date
                     )
                 )
                 bill_history.add(
-                    account.IntervalStart, end_date, self.billing_period(account),
+                    start_date, end_date, self.billing_period(account),
                 )
 
         # Adjust date endpoints to avoid 1-day overlaps
@@ -347,12 +386,31 @@ class LADWPTransformer(UrjanetGridiumTransformer):
         The Charge records have IntervalStart and IntervalEnd for both date ranges.
         """
         account_range = DateIntervalTree()
-        account_range.add(account.IntervalStart, account.IntervalEnd)
+        log.debug(
+            "account interval range: %s to %s",
+            account.IntervalStart,
+            account.IntervalEnd,
+        )
+        if account.IntervalEnd > account.IntervalStart:
+            account_range.add(account.IntervalStart, account.IntervalEnd)
         for meter in account.meters:
             meter_range = DateIntervalTree()
-            meter_range.add(meter.IntervalStart, meter.IntervalEnd)
+            log.debug(
+                "meter interval range: %s to %s", meter.IntervalStart, meter.IntervalEnd
+            )
+            if meter.IntervalEnd > meter.IntervalStart:
+                meter_range.add(meter.IntervalStart, meter.IntervalEnd)
             charge_range = DateIntervalTree()
             for charge in meter.charges:
+                # don't create single day periods
+                if (charge.IntervalEnd - charge.IntervalStart).days <= 1:
+                    continue
+                log.debug(
+                    "charge %s interval range: %s to %s",
+                    charge.PK,
+                    charge.IntervalStart,
+                    charge.IntervalEnd,
+                )
                 charge_range.add(charge.IntervalStart, charge.IntervalEnd)
             if len(charge_range.intervals()) > 1:
                 min_charge_dt = min([r.begin for r in charge_range.intervals()])

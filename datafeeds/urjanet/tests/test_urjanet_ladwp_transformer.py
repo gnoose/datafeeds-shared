@@ -110,6 +110,57 @@ class TestUrjanetLADWPTransformer(test_util.UrjaFixtureText):
             "1707869340434_input.json", "1707869340434_expected.json"
         )
 
+        # Account date ranges overlap too much; use Meter date range instead
+        """
+        mysql> select PK, IntervalStart, IntervalEnd from Account
+        where AccountNumber='2317168547' and UtilityProvider = 'LADeptOfWAndP' and
+            IntervalStart > '2019-12-01' order by IntervalEnd;
+        +---------+---------------+-------------+
+        | PK      | IntervalStart | IntervalEnd |
+        +---------+---------------+-------------+
+        | 5678901 | 2019-12-02    | 2020-01-02  |
+        | 5688493 | 2019-12-31    | 2020-03-03  |
+        | 5692910 | 2020-03-02    | 2020-04-01  |
+        +---------+---------------+-------------+
+
+        mysql> select AccountFK, PK, MeterNumber, IntervalStart, IntervalEnd from Meter
+        where AccountFK in (5678901, 5688493);
+        +-----------+----------+------------------------+---------------+-------------+
+        | AccountFK | PK       | MeterNumber            | IntervalStart | IntervalEnd |
+        +-----------+----------+------------------------+---------------+-------------+
+        |   5678901 | 20345682 | 1BPMYVL00231-0000 3342 | 2019-12-02    | 2019-12-31  |
+        |   5678901 | 20345683 |                        | 2019-12-02    | 2020-01-02  |
+        |   5688493 | 20368287 | 1BPMYVL00231-0000 3342 | 2019-12-31    | 2020-03-02  |
+        |   5688493 | 20368288 |                        | 2020-01-02    | 2020-03-03  |
+        +-----------+----------+------------------------+---------------+-------------+
+        """
+        self.ladwp_electricity_test(
+            "1777465083514_input.json", "1777465083514_expected.json"
+        )
+        # Meter has Charge records with a single day date range
+        self.ladwp_electricity_test(
+            "3109584374973_input.json", "3109584374973_expected.json"
+        )
+        # Account has a single day date range
+        self.ladwp_electricity_test(
+            "1846296798118_input.json", "1846296798118_expected.json"
+        )
+        # single day Account and Meter records
+        self.ladwp_electricity_test(
+            "1707869342549_input.json", "1707869342549_expected.json"
+        )
+        self.ladwp_electricity_test(
+            "1707869342551_input.json", "1707869342551_expected.json"
+        )
+        self.ladwp_electricity_test(
+            "1846296798118_input.json", "1846296798118_expected.json"
+        )
+        # This meter has a long billing period (2019-06-12 to 2019-08-09). The transformer uses Charge records
+        # to split these, but one Charge record (PK=237348898) has the same long period.
+        self.ladwp_electricity_test(
+            "1707479190340_input.json", "1707479190340_expected.json"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

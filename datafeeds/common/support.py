@@ -5,6 +5,7 @@ from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
 from datafeeds.common.typing import BillPdf
+from datafeeds.models.bill import GENERATION_ONLY, TND_ONLY
 
 
 class ScraperArgs:
@@ -63,11 +64,15 @@ class Configuration:
         scrape_readings: bool = False,
         scrape_pdfs: bool = False,
         scrape_partial_bills: bool = False,
+        partial_type: str = None,
     ):
         self.scrape_bills = scrape_bills
         self.scrape_readings = scrape_readings
         self.scrape_pdfs = scrape_pdfs
         self.scrape_partial_bills = scrape_partial_bills
+        self.partial_type = (
+            partial_type if partial_type in [TND_ONLY, GENERATION_ONLY] else None
+        )
 
 
 class Credentials:

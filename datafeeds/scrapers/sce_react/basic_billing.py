@@ -223,10 +223,11 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                     # no separate statement date
                     statement=item.end_date - timedelta(days=1),
                     cost=item.usage_info.cost,
-                    used=item.usage_info.usage,
-                    peak=item.demand_info.demand,
+                    used=item.usage_info.usage if item.usage_info else None,
+                    peak=item.demand_info.demand if item.demand_info else None,
                     items=None,
                     attachments=None,
+                    utility_code=None,
                 )
             )
 

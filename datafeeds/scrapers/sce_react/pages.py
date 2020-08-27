@@ -78,10 +78,12 @@ GenericBusyIndicatorLocator = (
 
 def detect_and_close_survey(driver, timeout=5):
     try:
-        locator = (By.CLASS_NAME, "acsDeclineButton")
+        locator = (By.CLASS_NAME, "fsrInvite__closeWrapper")
         WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located(locator)
         ).click()
+        log.info("popup closed")
+        driver.sleep(1)
     except Exception:
         pass
 
@@ -338,7 +340,7 @@ class SceServiceAccountDetailModal(PageState):
     )
     DatePopupYearLocator = (
         By.XPATH,
-        "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]//p",
+        "//div[contains(@class, 'GraphDialogs__sceTextColor')]//span",
     )
 
     def get_ready_condition(self):
@@ -410,7 +412,7 @@ class SceServiceAccountDetailModal(PageState):
         # questionable. This might need to be replaced by something more robust if it proves troublesome.
         date_divs_locator = (
             By.XPATH,
-            "//div[contains(@class, 'GraphDialogs__dateRangePopUp')]/div/div//div",
+            "//ul[contains(@class, 'GraphDialogs__listdata')]/li/button",
         )
         return [
             element
@@ -444,7 +446,7 @@ class SceServiceAccountDetailModal(PageState):
                 results.append((start, end))
 
             prev_button = date_popup.find_element_by_xpath(
-                ".//span[contains(@class, GraphDialogs__prevIcon)]"
+                "// button[@aria-label='Previous year']"
             )
             prev_button.click()
 
@@ -521,7 +523,7 @@ class SceServiceAccountDetailModal(PageState):
                 break
 
             prev_button = date_popup.find_element_by_xpath(
-                ".//span[contains(@class, GraphDialogs__prevIcon)]"
+                "// button[@aria-label='Previous year']"
             )
             prev_button.click()
 
@@ -606,7 +608,7 @@ class SceServiceAccountDetailModal(PageState):
         # Scrape demand info for applicable billing periods
         results = []
         for start, end in date_ranges:
-            if start_date < start < end_date:
+            if start_date <= start <= end_date:
                 self.select_date_range(start, end)
                 demand, cost = self.get_visible_demand_info()
                 results.append(
@@ -701,7 +703,7 @@ class EnergyManagerServiceListingHelper:
 
     def select_service_id_in_div(
         self, service_id: str, service_div: WebElement
-    ) -> bool:
+    ) -> Optional[ServiceListingRow]:
         """Helper function for service ID selection.
 
         There are two separate tables from which one can select services; one for Edison Smart connect meters,
@@ -726,10 +728,7 @@ class EnergyManagerServiceListingHelper:
             # Look for the desired service ID
             for parsed_row in parsed_rows:
                 if service_id == parsed_row.service_acct_id:
-                    time.sleep(5)
-                    log.debug("trying to click checkbox")
-                    parsed_row.checkbox.click()
-                    return True
+                    return parsed_row
 
             try:
                 next_button = service_div.find_element_by_partial_link_text("Next")
@@ -743,12 +742,12 @@ class EnergyManagerServiceListingHelper:
             # revisit that.
             time.sleep(10)
 
-        return False
+        return None
 
-    def select_service_id(self, service_id: str) -> bool:
-        """Attempt to select a service ID in the Energy Manager UI.
+    def get_matching_service_row(self, service_id: str) -> Optional[ServiceListingRow]:
+        """Attempt to return the service row with the matching service ID in the Energy Manager UI.
 
-        Returns True if the service ID was successfully found and selected, False otherwise.
+        Returns the service row if the service ID was successfully found, None otherwise.
         Note that this function is currently not idempotent; it can't be called twice
         with different service IDs, for example. It expects the Energy Manager page to be
         in its initial configuration, and causes various DOM modifications as part of selecting
@@ -757,19 +756,20 @@ class EnergyManagerServiceListingHelper:
         log.debug("looking for service_id %s", service_id)
         service_divs = self.driver.find_elements(*self.ServiceDivLocator)
         if not service_divs:
-            return False
+            return None
 
-        if self.select_service_id_in_div(service_id, service_divs[0]):
-            return True
+        service_row = self.select_service_id_in_div(service_id, service_divs[0])
+        if service_row:
+            return service_row
 
         if self.try_expand_smart_meters():
             # A new div will appear with the smart meters, so requery the DOM
             service_divs = self.driver.find_elements(*self.ServiceDivLocator)
-            return len(service_divs) > 1 and self.select_service_id_in_div(
-                service_id, service_divs[1]
-            )
+            if len(service_divs) > 1:
+                service_row = self.select_service_id_in_div(service_id, service_divs[1])
+                return service_row
 
-        return False
+        return None
 
     def try_expand_smart_meters(self):
         """Attempt to expand the Edison Smart Meters portion of the Energy Manager UI.
@@ -850,14 +850,19 @@ class SceEnergyManagerBasicUsagePage(PageState):
 
         return basic_usage_selected
 
-    def select_service_id(self, service_id: str):
+    def select_service_id(self, service_id: str) -> ServiceListingRow:
         """Choose a specific service ID to gather data for"""
         service_listing = EnergyManagerServiceListingHelper(self.driver)
-        if not service_listing.select_service_id(service_id):
+        service_row = service_listing.get_matching_service_row(service_id)
+        if not service_row:
             message = "No service ID matching '{}' was found in Energy Manager".format(
                 service_id
             )
             raise sce_errors.ServiceIdException(message)
+        time.sleep(5)
+        log.debug("trying to click checkbox")
+        service_row.checkbox.click()
+        return service_row
 
     def configure_report(self):
         """Apply a default configuration to the report
@@ -965,16 +970,17 @@ class SceEnergyManagerBasicUsagePage(PageState):
 
         # For some reason, we seem to get a popup showing up at this particular moment in a number of tests
         # To protect against that, try this a couple of times, if it fails, closing the popup in between
-        retries = 1
+        retries = 2
         while True:
             try:
                 WebDriverWait(self.driver, 5).until(
                     EC.visibility_of_element_located(self.DownloadExcelLocator)
                 ).click()
-            except Exception:
+            except Exception as exc:
+                log.info("click download failed: %s; %s tries", exc, retries)
                 detect_and_close_survey(self.driver)
                 if retries == 0:
-                    raise
+                    raise exc
                 retries -= 1
             else:
                 break
@@ -1026,14 +1032,19 @@ class SceEnergyManagerBillingPage(PageState):
             EC.visibility_of_element_located(self.CustomTimeLocator)
         ).click()
 
-    def select_service_id(self, service_id: str):
+    def select_service_id(self, service_id: str) -> ServiceListingRow:
         """Choose a specific service ID to gather data for"""
         service_listing = EnergyManagerServiceListingHelper(self.driver)
-        if not service_listing.select_service_id(service_id):
+        service_row = service_listing.get_matching_service_row(service_id)
+        if not service_row:
             message = "No service ID matching '{}' was found in Energy Manager".format(
                 service_id
             )
             raise sce_errors.ServiceIdException(message)
+        time.sleep(5)
+        log.debug("trying to click checkbox")
+        service_row.checkbox.click()
+        return service_row
 
     def set_time_range(self, start_date: date, end_date: date):
         # Set the "From" month

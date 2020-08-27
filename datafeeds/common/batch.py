@@ -1,7 +1,7 @@
 from datetime import datetime, date, timedelta
 import functools as ft
 import logging
-from typing import Optional, List
+from typing import Optional, List, Dict, Union
 
 from dateutil import parser as dateparser
 
@@ -72,12 +72,16 @@ def run_datafeed(
     acct_hex_id = account.hex_id if account else ""
     acct_name = account.name if account else ""
 
-    bill_handler = ft.partial(upload_bills, meter.utility_service.service_id, task_id)
-    readings_handler = ft.partial(
-        upload_readings, transforms, task_id, meter.oid, acct_hex_id, datasource.name
+    bill_handler = ft.partial(
+        upload_bills, meter.oid, meter.utility_service.service_id, task_id
     )
-    pdfs_handler = ft.partial(attach_bill_pdfs, task_id)
-    partial_bill_handler = ft.partial(upload_partial_bills, meter, configuration)
+    readings_handler = ft.partial(
+        upload_readings, transforms, meter.oid, datasource.name, task_id
+    )
+    pdfs_handler = ft.partial(attach_bill_pdfs, meter.oid, task_id)
+    partial_bill_handler = ft.partial(
+        upload_partial_bills, meter, configuration, task_id
+    )
 
     date_range = DateRange(
         *iso_to_dates(params.get("data_start"), params.get("data_end"))
@@ -97,8 +101,16 @@ def run_datafeed(
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading task information to Elasticsearch.")
-        index.index_etl_run(
-            task_id,
+        doc = index.run_meta(meter.oid)
+        if configuration:
+            doc.update(
+                {
+                    "billScraper": configuration.scrape_bills
+                    or configuration.scrape_partial_bills,
+                    "intervalScraper": configuration.scrape_readings,
+                }
+            )
+        doc.update(
             {
                 "started": datetime.now(),
                 "status": "STARTED",
@@ -110,23 +122,35 @@ def run_datafeed(
                 "origin": "datafeeds",
             },
         )
+        index.index_etl_run(task_id, doc)
+
+    index_doc: Dict[str, str] = {}
     try:
-        error = None
         with scraper_class(credentials, date_range, configuration) as scraper:
-            scraper.scrape(
+            scraper_status = scraper.scrape(
                 readings_handler=readings_handler,
                 bills_handler=bill_handler,
                 pdfs_handler=pdfs_handler,
                 partial_bills_handler=partial_bill_handler,
             )
-            status = "SUCCESS"
-            retval = Status.SUCCEEDED
+            if scraper_status == Status.SUCCEEDED:
+                # Avoid muddying Elasticsearch results
+                index_doc = {"status": "SUCCESS"}
+            else:
+                index_doc = {"status": scraper_status.name}
+            if scraper_status in [Status.SUCCEEDED, Status.COMPLETED]:
+                retval = Status.SUCCEEDED
+            else:
+                retval = Status.FAILED
 
     except Exception as exc:
         log.exception("Scraper run failed.")
-        status = "FAILURE"
         retval = Status.FAILED
-        error = repr(exc)
+        index_doc = {
+            "status": "FAILED",
+            "error": repr(exc),
+            "exception": type(exc).__name__,
+        }
         # disable the login if scraping threw a LoginError, caller requested disabling on error,
         # and meter data source has a parent account data source
         if isinstance(exc, LoginError) and disable_login_on_error and parent:
@@ -138,7 +162,7 @@ def run_datafeed(
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading final task status to Elasticsearch.")
-        index.index_etl_run(task_id, {"status": status, "error": error}, update=True)
+        index.index_etl_run(task_id, index_doc, update=True)
 
     return retval
 
@@ -152,23 +176,28 @@ def run_urjanet_datafeed(
     transformer: UrjanetGridiumTransformer,
     task_id: Optional[str] = None,
     urja_partial_billing: Optional[bool] = False,
+    partial_type: Optional[str] = None,
 ) -> Status:
     conn = db.urjanet_connection()
 
-    base_config = (
-        BasePartialBillUrjanetConfiguration
-        if urja_partial_billing
-        else BaseUrjanetConfiguration
-    )
-
+    scraper_config: Union[BasePartialBillUrjanetConfiguration, BaseUrjanetConfiguration]
     try:
         urja_datasource.conn = conn
-        scraper_config = base_config(
-            urja_datasource=urja_datasource,
-            urja_transformer=transformer,
-            utility_name=meter.utility_service.utility,
-            fetch_attachments=True,
-        )
+        if urja_partial_billing:
+            scraper_config = BasePartialBillUrjanetConfiguration(
+                urja_datasource=urja_datasource,
+                urja_transformer=transformer,
+                utility_name=meter.utility_service.utility,
+                fetch_attachments=True,
+                partial_type=partial_type,
+            )
+        else:
+            scraper_config = BaseUrjanetConfiguration(
+                urja_datasource=urja_datasource,
+                urja_transformer=transformer,
+                utility_name=meter.utility_service.utility,
+                fetch_attachments=True,
+            )
 
         return run_datafeed(
             BaseUrjanetScraper,

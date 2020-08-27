@@ -4,7 +4,8 @@
             "end": "2017-10-03",
             "peak_demand": "770.0000",
             "start": "2017-09-01",
-            "tariff": null,
+            "statement": "2017-10-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "18003.6700",
             "total_usage": "170000.00000",
             "line_items": [
@@ -212,7 +213,8 @@
             "end": "2018-02-28",
             "peak_demand": "670.0000",
             "start": "2018-02-01",
-            "tariff": null,
+            "statement": "2018-03-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "22368.7300",
             "total_usage": "201000.00000",
             "line_items": [
@@ -407,7 +409,8 @@
             "end": "2018-04-01",
             "peak_demand": "560.0000",
             "start": "2018-03-01",
-            "tariff": null,
+            "statement": "2018-04-04",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "19387.6700",
             "total_usage": "178000.00000",
             "line_items": [
@@ -615,7 +618,8 @@
             "end": "2018-04-30",
             "peak_demand": "580.0000",
             "start": "2018-04-02",
-            "tariff": null,
+            "statement": "2018-05-03",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "19410.5400",
             "total_usage": "171000.00000",
             "line_items": [
@@ -823,7 +827,8 @@
             "end": "2018-05-31",
             "peak_demand": "670.0000",
             "start": "2018-05-01",
-            "tariff": null,
+            "statement": "2018-06-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "23932.8300",
             "total_usage": "223000.00000",
             "line_items": [
@@ -1031,7 +1036,8 @@
             "end": "2018-07-01",
             "peak_demand": "840.0000",
             "start": "2018-06-01",
-            "tariff": null,
+            "statement": "2018-07-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "29072.1200",
             "total_usage": "264000.00000",
             "line_items": [
@@ -1239,7 +1245,8 @@
             "end": "2018-07-31",
             "peak_demand": "840.0000",
             "start": "2018-07-02",
-            "tariff": null,
+            "statement": "2018-08-03",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "30127.4300",
             "total_usage": "282000.00000",
             "line_items": [
@@ -1447,7 +1454,8 @@
             "end": "2018-09-03",
             "peak_demand": "870.0000",
             "start": "2018-08-01",
-            "tariff": null,
+            "statement": "2018-09-06",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "31841.4000",
             "total_usage": "303000.00000",
             "line_items": [
@@ -1655,7 +1663,8 @@
             "end": "2018-09-30",
             "peak_demand": "630.0000",
             "start": "2018-09-04",
-            "tariff": null,
+            "statement": "2018-10-03",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "21439.8600",
             "total_usage": "194000.00000",
             "line_items": [
@@ -1863,7 +1872,8 @@
             "end": "2018-10-31",
             "peak_demand": "640.0000",
             "start": "2018-10-01",
-            "tariff": null,
+            "statement": "2018-11-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "21839.5400",
             "total_usage": "200000.00000",
             "line_items": [
@@ -2058,7 +2068,8 @@
             "end": "2018-11-30",
             "peak_demand": "520.0000",
             "start": "2018-11-01",
-            "tariff": null,
+            "statement": "2018-12-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "19356.8400",
             "total_usage": "190000.00000",
             "line_items": [
@@ -2253,7 +2264,8 @@
             "end": "2019-01-01",
             "peak_demand": "480.0000",
             "start": "2018-12-01",
-            "tariff": null,
+            "statement": "2019-01-04",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "19594.3900",
             "total_usage": "205000.00000",
             "line_items": [
@@ -2448,7 +2460,8 @@
             "end": "2019-01-31",
             "peak_demand": "570.0000",
             "start": "2019-01-02",
-            "tariff": null,
+            "statement": "2019-02-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "20672.1100",
             "total_usage": "199000.00000",
             "line_items": [
@@ -2643,7 +2656,8 @@
             "end": "2019-02-28",
             "peak_demand": "680.0000",
             "start": "2019-02-01",
-            "tariff": null,
+            "statement": "2019-03-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "20381.9500",
             "total_usage": "164000.00000",
             "line_items": [
@@ -2838,7 +2852,8 @@
             "end": "2019-03-31",
             "peak_demand": "660.0000",
             "start": "2019-03-01",
-            "tariff": null,
+            "statement": "2019-04-03",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "20645.9500",
             "total_usage": "174000.00000",
             "line_items": [
@@ -3033,7 +3048,8 @@
             "end": "2019-04-30",
             "peak_demand": "630.0000",
             "start": "2019-04-01",
-            "tariff": null,
+            "statement": "2019-05-03",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "20286.7300",
             "total_usage": "176000.00000",
             "line_items": [
@@ -3228,7 +3244,8 @@
             "end": "2019-06-02",
             "peak_demand": "630.0000",
             "start": "2019-05-01",
-            "tariff": null,
+            "statement": "2019-06-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "22494.4400",
             "total_usage": "214000.00000",
             "line_items": [
@@ -3423,7 +3440,8 @@
             "end": "2019-06-30",
             "peak_demand": "680.0000",
             "start": "2019-06-03",
-            "tariff": null,
+            "statement": "2019-07-03",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "23077.4700",
             "total_usage": "204000.00000",
             "line_items": [
@@ -3631,7 +3649,8 @@
             "end": "2019-07-31",
             "peak_demand": "660.0000",
             "start": "2019-07-01",
-            "tariff": null,
+            "statement": "2019-08-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "24945.1900",
             "total_usage": "248000.00000",
             "line_items": [
@@ -3826,7 +3845,8 @@
             "end": "2019-09-02",
             "peak_demand": "830.0000",
             "start": "2019-08-01",
-            "tariff": null,
+            "statement": "2019-09-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "29614.6500",
             "total_usage": "282000.00000",
             "line_items": [
@@ -4021,7 +4041,8 @@
             "end": "2019-09-30",
             "peak_demand": "830.0000",
             "start": "2019-09-03",
-            "tariff": null,
+            "statement": "2019-10-03",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "26244.9800",
             "total_usage": "224000.00000",
             "line_items": [
@@ -4216,7 +4237,8 @@
             "end": "2019-11-01",
             "peak_demand": "710.0000",
             "start": "2019-10-01",
-            "tariff": null,
+            "statement": "2019-11-05",
+            "tariff": "City of Austin Electric - Secondary Voltage > 300kW",
             "total_charge": "23345.7600",
             "total_usage": "201000.00000",
             "line_items": [

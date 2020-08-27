@@ -1,51 +1,83 @@
-import argparse
 from datetime import date
-from unittest import mock
+import logging
+import unittest
 
-from dateutil import parser as date_parser
+from datafeeds.scrapers.duke import pdf_parser
+from datafeeds.parsers import pdfparser
 
-from datafeeds.common.support import Credentials, DateRange
-from datafeeds.scrapers.duke.billing import DukeBillingConfiguration, DukeBillingScraper
-
-"""
-    Run this to launch the Duke billing scraper:
-
-    $ export PYTHONPATH=$(pwd)
-    $ python datafeeds/scrapers/tests/test_duke_billing.py utility_acct start end username password
-"""
+logging.getLogger("pdfminer").setLevel(logging.WARNING)
 
 
-def test_scraper(
-    account_id: str, start_date: date, end_date: date, username: str, password: str
-):
-    configuration = DukeBillingConfiguration(utility="duke", account_id=account_id)
-    credentials = Credentials(username, password)
-    scraper = DukeBillingScraper(
-        credentials, DateRange(start_date, end_date), configuration
-    )
-    scraper.start()
-    with mock.patch("datafeeds.scrapers.duke.pages.upload_bill_to_s3"):
-        scraper.scrape(
-            readings_handler=None,
-            bills_handler=print,
-            partial_bills_handler=print,
-            pdfs_handler=None,
-        )
-    scraper.stop()
+class DukeBillTestCase(unittest.TestCase):
+    def test_parse_new_pdf1(self):
+        """Verify that we can extract cost, use, and demand from June 2020+ version of PDF."""
+        text = pdfparser.pdf_to_str("private_fixtures/duke_bill_new_1.pdf")
+        data = pdf_parser.parse_new_pdf(text)
+        self.assertEqual(date(2020, 5, 10), data.start)
+        self.assertEqual(date(2020, 6, 9), data.end)
+        self.assertAlmostEqual(123113.66, data.cost, 2)
+        self.assertAlmostEqual(1806000.0, data.used, 2)
+        self.assertAlmostEqual(3840.0, data.peak, 2)
 
+    def test_parse_new_pdf2(self):
+        """Verify that we can extract cost, use, and demand from another new-format PDF."""
+        text = pdfparser.pdf_to_str("private_fixtures/duke_bill_new_2.pdf")
+        data = pdf_parser.parse_new_pdf(text)
+        self.assertEqual(date(2020, 4, 21), data.start)
+        self.assertEqual(date(2020, 5, 25), data.end)
+        self.assertAlmostEqual(29.89, data.cost, 2)
+        self.assertAlmostEqual(155, data.used, 2)
+        self.assertIsNone(data.peak)
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("account_id", type=str)
-    parser.add_argument("start", type=str)
-    parser.add_argument("end", type=str)
-    parser.add_argument("username", type=str)
-    parser.add_argument("password", type=str)
-    args = parser.parse_args()
-    test_scraper(
-        args.account_id,
-        date_parser.parse(args.start).date(),
-        date_parser.parse(args.end).date(),
-        args.username,
-        args.password,
-    )
+    def test_parse_new_pdf3(self):
+        """Verify that we can extract cost, use, and demand from another new-format PDF."""
+        text = pdfparser.pdf_to_str("private_fixtures/duke_bill_new_3.pdf")
+        data = pdf_parser.parse_new_pdf(text)
+        self.assertEqual(date(2020, 4, 21), data.start)
+        self.assertEqual(date(2020, 5, 23), data.end)
+        self.assertAlmostEqual(3048.76, data.cost, 2)
+        self.assertAlmostEqual(38320, data.used, 2)
+        self.assertAlmostEqual(86, data.peak)
+
+    def test_parse_old_pdf1(self):
+        """Verify that we can extract cost, use, and demand from version of PDF prior to June 2020.
+
+        This bill includes a prior balance due line item that should be excluded from bill total.
+        """
+        text = pdfparser.pdf_to_str("private_fixtures/duke_bill_old_1.pdf")
+        data = pdf_parser.parse_old_pdf(text)
+        self.assertEqual(date(2020, 4, 10), data.start)
+        self.assertEqual(date(2020, 5, 9), data.end)
+        self.assertAlmostEqual(89972.41, data.cost, 2)
+        self.assertAlmostEqual(1312000.0, data.used, 2)
+        self.assertAlmostEqual(3000.0, data.peak, 2)
+
+    def test_parse_old_pdf2(self):
+        """Verify that we can extract cost, use, and demand from another old-format PDF."""
+        text = pdfparser.pdf_to_str("private_fixtures/duke_bill_old_2.pdf")
+        data = pdf_parser.parse_old_pdf(text)
+        self.assertEqual(date(2018, 10, 29), data.start)
+        self.assertEqual(date(2018, 12, 3), data.end)
+        self.assertAlmostEqual(685.16, data.cost, 2)
+        self.assertAlmostEqual(5581.0, data.used, 2)
+        self.assertAlmostEqual(30.0, data.peak, 2)
+
+    def test_parse_old_pdf3(self):
+        """Verify that we can extract cost, use, and demand from another old-format PDF."""
+        text = pdfparser.pdf_to_str("private_fixtures/duke_bill_old_3.pdf")
+        data = pdf_parser.parse_old_pdf(text)
+        self.assertEqual(date(2020, 3, 20), data.start)
+        self.assertEqual(date(2020, 4, 20), data.end)
+        self.assertAlmostEqual(29.89, data.cost, 2)
+        self.assertAlmostEqual(155, data.used, 2)
+        self.assertIsNone(data.peak)
+
+    def test_parse_old_pdf4(self):
+        """Verify that we can extract dates from an old-format PDF over a year boundary."""
+        text = pdfparser.pdf_to_str("private_fixtures/duke_bill_old_4.pdf")
+        data = pdf_parser.parse_old_pdf(text)
+        self.assertEqual(date(2019, 11, 27), data.start)
+        self.assertEqual(date(2019, 12, 30), data.end)
+        self.assertAlmostEqual(19.60, data.cost, 2)
+        self.assertAlmostEqual(156, data.used, 2)
+        self.assertIsNone(data.peak)

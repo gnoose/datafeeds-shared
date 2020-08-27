@@ -14,6 +14,8 @@ class Status(Enum):
     SUCCEEDED = 0
     FAILED = 1
     SKIPPED = 2
+    # COMPLETED means the scraper ran to completion but not did retrieve new data
+    COMPLETED = 3
 
 
 class IntervalRange(NamedTuple):
@@ -41,6 +43,10 @@ class NonContiguousBillingDataDateRangeError(Exception):
 
 
 class OverlappedBillingDataDateRangeError(Exception):
+    pass
+
+
+class InvalidPartialTypeError(Exception):
     pass
 
 
@@ -87,6 +93,7 @@ class BillingDatum(NamedTuple):
     peak: Optional[float]
     items: Optional[List[BillingDatumItemsEntry]]
     attachments: Optional[List[AttachmentEntry]]
+    utility_code: Optional[str]  # utility's version of the tariff
 
 
 BillingData = List[BillingDatum]
@@ -103,12 +110,14 @@ class BillPdf:
         gen_utility_account_id: str,
         start: date,
         end: date,
+        statement: date,
         s3_key: str,
     ):
         self.utility_account_id = utility_account_id
         self.gen_utility_account_id = gen_utility_account_id
         self.start = start
         self.end = end
+        self.statement = statement
         self.s3_key = s3_key
 
     def to_json(self):
@@ -117,6 +126,7 @@ class BillPdf:
             "gen_utility_account_id": self.gen_utility_account_id,
             "start": self.start.strftime("%Y-%m-%d"),
             "end": self.end.strftime("%Y-%m-%d"),
+            "statement": self.statement.strftime("%Y-%m-%d"),
             "s3_key": self.s3_key,
         }
 
@@ -282,8 +292,8 @@ def show_bill_summary(
         log.info(title)
         log.info("=" * 80)
 
-    fields = ("Start", "End", "Cost", "Use", "Peak", "Has PDF")
-    fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s"
+    fields = ("Start", "End", "Cost", "Use", "Peak", "Has PDF", "Utility Code")
+    fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s %-10s"
     log.info(fmt % fields)
     for b in bills:
         entries = [
@@ -293,6 +303,7 @@ def show_bill_summary(
             str(b.used),
             str(b.peak),
             str(b.attachments is not None),
+            str(b.utility_code),
         ]
         log.info(fmt % tuple(entries))
     log.info("=" * 80)

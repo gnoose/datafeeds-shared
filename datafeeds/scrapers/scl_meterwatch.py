@@ -3,10 +3,11 @@ import logging
 import csv
 
 from dateutil.parser import parse as parse_date
+from dateutil.relativedelta import relativedelta
 from typing import NewType, Tuple, List, Optional
 from datetime import datetime, date, timedelta
 
-from datafeeds import config
+from datafeeds import config, db
 from datafeeds.common import Timeline
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
@@ -15,8 +16,7 @@ from datafeeds.common.exceptions import (
     InvalidDateRangeError,
     DataSourceConfigurationError,
 )
-from datafeeds.common.support import Results
-from datafeeds.common.support import Configuration
+from datafeeds.common.support import Configuration, DateRange, Results
 from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.common.typing import Status
 
@@ -33,13 +33,8 @@ from selenium.webdriver.support import expected_conditions as EC
 log = logging.getLogger(__name__)
 
 
+MAX_DOWNLOAD_DAYS = 180
 IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
-
-"""
-SCL Meter Watch can have delays in arrival of interval data. Widen the requested range
-at least this many days to prevent gaps.
-"""
-MIN_DAYS = 30
 
 
 def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
@@ -145,6 +140,10 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
     DownloadBtnSel = "a[href=\"javascript:apex.submit('DOWNLOAD');\"].buttonhtml"
 
+    def __init__(self, driver, config):
+        super().__init__(driver)
+        self._configuration = config
+
     @staticmethod
     def _get_date(date_text: str) -> Optional[datetime]:
         try:
@@ -153,9 +152,15 @@ class MeterDataPage(CSSSelectorBasePageObject):
             # When UI incorrectly says "NO DATA FOUND"
             return None
 
-    def enter_dates(self, start_date: date, end_date: date) -> Tuple[date, date]:
-        """Set dates in From Date, To Date (04/01/2020 format)
+    @staticmethod
+    def start_date_from_readings(meter_id: int, start_date: date) -> date:
+        meter = db.session.query(Meter).get(meter_id)
+        return min(meter.last_reading_date or start_date, start_date)
 
+    def adjust_start_and_end_dates(
+        self, start_date: date, end_date: date
+    ) -> Tuple[date, date]:
+        """
         Check available dates (Starts on 04/30/2018, Ends on 03/18/2020)
         Continue with the maximum available range if requested range not available.
 
@@ -194,10 +199,9 @@ class MeterDataPage(CSSSelectorBasePageObject):
                 # Back up start date to request original date range.
                 start_date = end_date + (original_start - original_end)
 
-        days = (end_date - start_date).days
-        if days < MIN_DAYS:
-            # Widening date range to avoid data gaps.
-            start_date = end_date - timedelta(days=MIN_DAYS)
+        start_date = self.start_date_from_readings(
+            self._configuration.meter.oid, start_date
+        )
 
         # the webpage shows an error if start_date is greater than end_date
         # make sure its a valid range
@@ -209,6 +213,12 @@ class MeterDataPage(CSSSelectorBasePageObject):
         log.info("Setting start date to: {}".format(start_date.strftime("%m/%d/%Y")))
         log.info("Setting end date to: {}".format(end_date.strftime("%m/%d/%Y")))
 
+        return start_date, end_date
+
+    def enter_dates(self, start_date: date, end_date: date):
+        """Set dates in From Date, To Date (04/01/2020 format)
+        """
+
         # clear date fields first, in case there's residual text from previous account here
         self.find_element(self.DateAvailableFromInputSel).clear()
         self.find_element(self.DateAvailableToInputSel).clear()
@@ -217,8 +227,6 @@ class MeterDataPage(CSSSelectorBasePageObject):
             self.DateAvailableFromInputSel, start_date.strftime("%m/%d/%Y")
         )
         self._driver.fill(self.DateAvailableToInputSel, end_date.strftime("%m/%d/%Y"))
-
-        return start_date, end_date
 
     def select_account(self, meter_number: str):
         """Choose account from Meter OR Meter Group dropdown (option value == meter_number)"""
@@ -293,9 +301,10 @@ class MeterDataPage(CSSSelectorBasePageObject):
 
 
 class SCLMeterWatchConfiguration(Configuration):
-    def __init__(self, meter_numbers: List[str]):
+    def __init__(self, meter_numbers: List[str], meter: Meter):
         super().__init__(scrape_readings=True)
         self.meter_numbers = meter_numbers
+        self.meter = meter
 
 
 class SCLMeterWatchScraper(BaseWebScraper):
@@ -308,20 +317,23 @@ class SCLMeterWatchScraper(BaseWebScraper):
         # Meterwatch immediately spawns a popup when loaded which is the actual
         # window we want. So we have to go and grab the main window handle and
         # THEN go looking for the popup window and switch to it.
-
+        handles_before = self._driver.window_handles
         timeline = Timeline(self.start_date, self.end_date)
-
         main_window = _get_main_window(self._driver)
         login_window = None
 
         log.info(f"Navigating to {self.url}")
         self._driver.get(self.url)
+        self.screenshot("initial_url")
 
-        while not login_window:
-            for handle in self._driver.window_handles:
-                if handle != main_window:
-                    login_window = handle
-                    break
+        self._driver.wait().until(
+            lambda driver: len(handles_before) != len(driver.window_handles),
+            "Issues loading login page.",
+        )
+
+        for handle in self._driver.window_handles:
+            if handle != main_window:
+                login_window = handle
 
         # We have our popup, so lets do stuff with it.
         self._driver.switch_to.window(login_window)
@@ -330,40 +342,45 @@ class SCLMeterWatchScraper(BaseWebScraper):
         assert "Seattle MeterWatch" in self._driver.title
 
         login_page = LoginPage(self._driver)
-        meterdata_page = MeterDataPage(self._driver)
+        meterdata_page = MeterDataPage(self._driver, self._configuration)
 
         login_page.login(self.username, self.password)
 
         for meter_number in self._configuration.meter_numbers:
             meterdata_page.select_account(meter_number)
-            self.start_date, self.end_date = meterdata_page.enter_dates(
+            self.start_date, self.end_date = meterdata_page.adjust_start_and_end_dates(
                 self.start_date, self.end_date
             )
             # Widen timeline if necessary after dates may have been adjusted from original.
             timeline.extend_timeline(self.start_date, self.end_date)
-            csv_file_path = meterdata_page.download_data(meter_number)
+            date_range = DateRange(self.start_date, self.end_date)
+            interval_size = relativedelta(days=MAX_DOWNLOAD_DAYS)
 
-            log.info(f"parsing kWh usage from downloaded data for {meter_number}")
+            for sub_range in date_range.split_iter(delta=interval_size):
+                meterdata_page.enter_dates(sub_range.start_date, sub_range.end_date)
+                csv_file_path = meterdata_page.download_data(meter_number)
 
-            # read kWh Usage with csv into timeline
-            for reading in parse_usage_from_csv(csv_file_path):
-                reading_datetime = reading[0]
-                reading_value = reading[1]
-                # multiply by 4 because SCL returns 1/4 of an hour's worth
-                reading_value *= 4
+                log.info(f"parsing kWh usage from downloaded data for {meter_number}")
 
-                # subtract a second from reading_datetime because the "Starting
-                # Time" in data always start at 1 second (e.g: 00:15:01 instead
-                # of 00:15:00), and Timeline initializes the index with zero
-                # seconds (e.g 00:15:00)
-                reading_datetime = reading_datetime - timedelta(seconds=1)
-                current_value = timeline.lookup(reading_datetime)
+                # read kWh Usage with csv into timeline
+                for reading in parse_usage_from_csv(csv_file_path):
+                    reading_datetime = reading[0]
+                    reading_value = reading[1]
+                    # multiply by 4 because SCL returns 1/4 of an hour's worth
+                    reading_value *= 4
 
-                # if value already exists for datetime, add to it
-                if current_value:
-                    reading_value = current_value + reading_value
+                    # subtract a second from reading_datetime because the "Starting
+                    # Time" in data always start at 1 second (e.g: 00:15:01 instead
+                    # of 00:15:00), and Timeline initializes the index with zero
+                    # seconds (e.g 00:15:00)
+                    reading_datetime = reading_datetime - timedelta(seconds=1)
+                    current_value = timeline.lookup(reading_datetime)
 
-                timeline.insert(reading_datetime, reading_value)
+                    # if value already exists for datetime, add to it
+                    if current_value:
+                        reading_value = current_value + reading_value
+
+                    timeline.insert(reading_datetime, reading_value)
 
         return Results(readings=timeline.serialize(include_empty=False))
 
@@ -381,7 +398,7 @@ def datafeed(
     totalized = (datasource.meta or {}).get("totalized")
     if totalized:
         meter_numbers = totalized.split(",")
-    configuration = SCLMeterWatchConfiguration(meter_numbers=meter_numbers)
+    configuration = SCLMeterWatchConfiguration(meter_numbers=meter_numbers, meter=meter)
 
     return run_datafeed(
         SCLMeterWatchScraper,

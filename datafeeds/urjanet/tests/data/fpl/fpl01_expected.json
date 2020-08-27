@@ -4,7 +4,8 @@
             "end": "2015-05-28",
             "peak_demand": null,
             "start": "2015-04-29",
-            "tariff": null,
+            "statement": "2015-05-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "32771.6200",
             "total_usage": "338400.00000",
             "line_items": [
@@ -186,7 +187,8 @@
             "end": "2015-06-28",
             "peak_demand": null,
             "start": "2015-05-29",
-            "tariff": null,
+            "statement": "2015-06-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "35540.2300",
             "total_usage": "370800.00000",
             "line_items": [
@@ -394,7 +396,8 @@
             "end": "2015-07-28",
             "peak_demand": null,
             "start": "2015-06-29",
-            "tariff": null,
+            "statement": "2015-07-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "34907.9900",
             "total_usage": "376000.00000",
             "line_items": [
@@ -576,7 +579,8 @@
             "end": "2015-08-27",
             "peak_demand": null,
             "start": "2015-07-29",
-            "tariff": null,
+            "statement": "2015-09-01",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "34763.9200",
             "total_usage": "369600.00000",
             "line_items": [
@@ -758,7 +762,8 @@
             "end": "2015-09-28",
             "peak_demand": null,
             "start": "2015-08-28",
-            "tariff": null,
+            "statement": "2015-09-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "33520.1600",
             "total_usage": "358000.00000",
             "line_items": [
@@ -940,7 +945,8 @@
             "end": "2015-10-27",
             "peak_demand": null,
             "start": "2015-09-29",
-            "tariff": null,
+            "statement": "2015-10-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "29939.1000",
             "total_usage": "305200.00000",
             "line_items": [
@@ -1122,7 +1128,8 @@
             "end": "2015-11-24",
             "peak_demand": null,
             "start": "2015-10-28",
-            "tariff": null,
+            "statement": "2015-11-25",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "28190.0500",
             "total_usage": "295200.00000",
             "line_items": [
@@ -1304,7 +1311,8 @@
             "end": "2015-12-29",
             "peak_demand": null,
             "start": "2015-11-25",
-            "tariff": null,
+            "statement": "2015-12-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "30334.2300",
             "total_usage": "348400.00000",
             "line_items": [
@@ -1486,7 +1494,8 @@
             "end": "2016-01-27",
             "peak_demand": null,
             "start": "2015-12-30",
-            "tariff": null,
+            "statement": "2016-01-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "23918.1300",
             "total_usage": "265600.00000",
             "line_items": [
@@ -1668,7 +1677,8 @@
             "end": "2016-02-25",
             "peak_demand": null,
             "start": "2016-01-28",
-            "tariff": null,
+            "statement": "2016-02-26",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "24316.8100",
             "total_usage": "270000.00000",
             "line_items": [
@@ -1850,7 +1860,8 @@
             "end": "2016-03-29",
             "peak_demand": null,
             "start": "2016-02-26",
-            "tariff": null,
+            "statement": "2016-03-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "27526.5400",
             "total_usage": "325200.00000",
             "line_items": [
@@ -2032,7 +2043,8 @@
             "end": "2016-04-27",
             "peak_demand": null,
             "start": "2016-03-30",
-            "tariff": null,
+            "statement": "2016-04-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "26763.0600",
             "total_usage": "297600.00000",
             "line_items": [
@@ -2214,7 +2226,8 @@
             "end": "2016-05-26",
             "peak_demand": null,
             "start": "2016-04-28",
-            "tariff": null,
+            "statement": "2016-05-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "28671.2800",
             "total_usage": "317600.00000",
             "line_items": [
@@ -2396,7 +2409,8 @@
             "end": "2016-06-27",
             "peak_demand": null,
             "start": "2016-05-27",
-            "tariff": null,
+            "statement": "2016-06-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "31568.2600",
             "total_usage": "358800.00000",
             "line_items": [
@@ -2578,7 +2592,8 @@
             "end": "2016-07-27",
             "peak_demand": null,
             "start": "2016-06-28",
-            "tariff": null,
+            "statement": "2016-07-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "31448.9200",
             "total_usage": "348000.00000",
             "line_items": [
@@ -2760,7 +2775,8 @@
             "end": "2016-08-29",
             "peak_demand": null,
             "start": "2016-07-28",
-            "tariff": null,
+            "statement": "2016-08-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "33115.9300",
             "total_usage": "382000.00000",
             "line_items": [
@@ -2942,7 +2958,8 @@
             "end": "2016-09-28",
             "peak_demand": null,
             "start": "2016-08-30",
-            "tariff": null,
+            "statement": "2016-09-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "31441.8600",
             "total_usage": "349200.00000",
             "line_items": [
@@ -3150,7 +3167,8 @@
             "end": "2016-10-27",
             "peak_demand": null,
             "start": "2016-09-29",
-            "tariff": null,
+            "statement": "2016-10-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "28102.2400",
             "total_usage": "304400.00000",
             "line_items": [
@@ -3332,7 +3350,8 @@
             "end": "2016-11-28",
             "peak_demand": null,
             "start": "2016-10-28",
-            "tariff": null,
+            "statement": "2016-11-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "26225.8800",
             "total_usage": "309600.00000",
             "line_items": [
@@ -3514,7 +3533,8 @@
             "end": "2016-12-28",
             "peak_demand": null,
             "start": "2016-11-29",
-            "tariff": null,
+            "statement": "2016-12-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "25029.8900",
             "total_usage": "286400.00000",
             "line_items": [
@@ -3696,7 +3716,8 @@
             "end": "2017-01-29",
             "peak_demand": null,
             "start": "2016-12-29",
-            "tariff": null,
+            "statement": "2017-01-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "24519.5200",
             "total_usage": "265200.00000",
             "line_items": [
@@ -3878,7 +3899,8 @@
             "end": "2017-02-26",
             "peak_demand": null,
             "start": "2017-01-30",
-            "tariff": null,
+            "statement": "2017-02-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "22429.5100",
             "total_usage": "235600.00000",
             "line_items": [
@@ -4060,7 +4082,8 @@
             "end": "2017-03-28",
             "peak_demand": null,
             "start": "2017-02-27",
-            "tariff": null,
+            "statement": "2017-03-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "24552.1500",
             "total_usage": "255200.00000",
             "line_items": [
@@ -4242,7 +4265,8 @@
             "end": "2017-04-26",
             "peak_demand": null,
             "start": "2017-03-29",
-            "tariff": null,
+            "statement": "2017-04-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "27157.9300",
             "total_usage": "266000.00000",
             "line_items": [
@@ -4424,7 +4448,8 @@
             "end": "2017-05-29",
             "peak_demand": null,
             "start": "2017-04-27",
-            "tariff": null,
+            "statement": "2017-05-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "31210.5300",
             "total_usage": "316400.00000",
             "line_items": [
@@ -4606,7 +4631,8 @@
             "end": "2017-06-28",
             "peak_demand": null,
             "start": "2017-05-30",
-            "tariff": null,
+            "statement": "2017-06-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "31241.2900",
             "total_usage": "303600.00000",
             "line_items": [
@@ -4775,7 +4801,8 @@
             "end": "2017-07-27",
             "peak_demand": null,
             "start": "2017-06-29",
-            "tariff": null,
+            "statement": "2017-07-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "31637.2300",
             "total_usage": "308800.00000",
             "line_items": [
@@ -4944,7 +4971,8 @@
             "end": "2017-08-28",
             "peak_demand": null,
             "start": "2017-07-28",
-            "tariff": null,
+            "statement": "2017-08-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "32529.5400",
             "total_usage": "334800.00000",
             "line_items": [
@@ -5113,7 +5141,8 @@
             "end": "2017-09-27",
             "peak_demand": null,
             "start": "2017-08-29",
-            "tariff": null,
+            "statement": "2017-09-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "30297.5500",
             "total_usage": "305600.00000",
             "line_items": [
@@ -5282,7 +5311,8 @@
             "end": "2017-10-29",
             "peak_demand": null,
             "start": "2017-09-28",
-            "tariff": null,
+            "statement": "2017-10-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "30143.4500",
             "total_usage": "314800.00000",
             "line_items": [
@@ -5451,7 +5481,8 @@
             "end": "2017-11-28",
             "peak_demand": null,
             "start": "2017-10-30",
-            "tariff": null,
+            "statement": "2017-11-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "24452.1400",
             "total_usage": "256400.00000",
             "line_items": [
@@ -5620,7 +5651,8 @@
             "end": "2017-12-28",
             "peak_demand": null,
             "start": "2017-11-29",
-            "tariff": null,
+            "statement": "2017-12-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "23348.0200",
             "total_usage": "235200.00000",
             "line_items": [
@@ -5789,7 +5821,8 @@
             "end": "2018-01-29",
             "peak_demand": null,
             "start": "2017-12-29",
-            "tariff": null,
+            "statement": "2018-01-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "23302.7400",
             "total_usage": "230400.00000",
             "line_items": [
@@ -5958,7 +5991,8 @@
             "end": "2018-02-26",
             "peak_demand": null,
             "start": "2018-01-30",
-            "tariff": null,
+            "statement": "2018-02-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "23587.3100",
             "total_usage": "233600.00000",
             "line_items": [
@@ -6127,7 +6161,8 @@
             "end": "2018-03-28",
             "peak_demand": null,
             "start": "2018-02-27",
-            "tariff": null,
+            "statement": "2018-03-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "21883.5800",
             "total_usage": "226400.00000",
             "line_items": [
@@ -6296,7 +6331,8 @@
             "end": "2018-04-26",
             "peak_demand": null,
             "start": "2018-03-29",
-            "tariff": null,
+            "statement": "2018-04-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "26210.8100",
             "total_usage": "260400.00000",
             "line_items": [
@@ -6478,7 +6514,8 @@
             "end": "2018-05-29",
             "peak_demand": null,
             "start": "2018-04-27",
-            "tariff": null,
+            "statement": "2018-05-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "28769.8800",
             "total_usage": "311600.00000",
             "line_items": [
@@ -6686,7 +6723,8 @@
             "end": "2018-06-27",
             "peak_demand": null,
             "start": "2018-05-30",
-            "tariff": null,
+            "statement": "2018-06-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "28806.6700",
             "total_usage": "302400.00000",
             "line_items": [
@@ -6868,7 +6906,8 @@
             "end": "2018-07-29",
             "peak_demand": null,
             "start": "2018-06-28",
-            "tariff": null,
+            "statement": "2018-07-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "33086.4300",
             "total_usage": "352000.00000",
             "line_items": [
@@ -7050,7 +7089,8 @@
             "end": "2018-08-29",
             "peak_demand": null,
             "start": "2018-07-30",
-            "tariff": null,
+            "statement": "2018-08-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "30714.1200",
             "total_usage": "338800.00000",
             "line_items": [
@@ -7232,7 +7272,8 @@
             "end": "2018-09-26",
             "peak_demand": null,
             "start": "2018-08-30",
-            "tariff": null,
+            "statement": "2018-09-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "27382.0900",
             "total_usage": "283200.00000",
             "line_items": [
@@ -7414,7 +7455,8 @@
             "end": "2018-10-28",
             "peak_demand": null,
             "start": "2018-09-27",
-            "tariff": null,
+            "statement": "2018-10-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "29172.3400",
             "total_usage": "314800.00000",
             "line_items": [
@@ -7596,7 +7638,8 @@
             "end": "2018-11-28",
             "peak_demand": null,
             "start": "2018-10-29",
-            "tariff": null,
+            "statement": "2018-11-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "26205.6400",
             "total_usage": "288400.00000",
             "line_items": [
@@ -7778,7 +7821,8 @@
             "end": "2018-12-28",
             "peak_demand": null,
             "start": "2018-11-29",
-            "tariff": null,
+            "statement": "2018-12-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "23205.6900",
             "total_usage": "240800.00000",
             "line_items": [
@@ -7960,7 +8004,8 @@
             "end": "2019-01-29",
             "peak_demand": null,
             "start": "2018-12-29",
-            "tariff": null,
+            "statement": "2019-01-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "24016.8700",
             "total_usage": "265200.00000",
             "line_items": [
@@ -8142,7 +8187,8 @@
             "end": "2019-02-26",
             "peak_demand": null,
             "start": "2019-01-30",
-            "tariff": null,
+            "statement": "2019-02-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "24102.6000",
             "total_usage": "252000.00000",
             "line_items": [
@@ -8298,7 +8344,8 @@
             "end": "2019-03-27",
             "peak_demand": null,
             "start": "2019-02-27",
-            "tariff": null,
+            "statement": "2019-03-28",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "24307.5700",
             "total_usage": "260800.00000",
             "line_items": [
@@ -8454,7 +8501,8 @@
             "end": "2019-04-28",
             "peak_demand": null,
             "start": "2019-03-28",
-            "tariff": null,
+            "statement": "2019-04-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "28666.8400",
             "total_usage": "297200.00000",
             "line_items": [
@@ -8610,7 +8658,8 @@
             "end": "2019-05-28",
             "peak_demand": null,
             "start": "2019-04-29",
-            "tariff": null,
+            "statement": "2019-05-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "30231.2200",
             "total_usage": "316800.00000",
             "line_items": [
@@ -8766,7 +8815,8 @@
             "end": "2019-06-26",
             "peak_demand": null,
             "start": "2019-05-29",
-            "tariff": null,
+            "statement": "2019-06-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "31403.2100",
             "total_usage": "332800.00000",
             "line_items": [
@@ -8922,7 +8972,8 @@
             "end": "2019-07-28",
             "peak_demand": null,
             "start": "2019-06-27",
-            "tariff": null,
+            "statement": "2019-07-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "32285.8100",
             "total_usage": "360000.00000",
             "line_items": [
@@ -9078,7 +9129,8 @@
             "end": "2019-08-28",
             "peak_demand": null,
             "start": "2019-07-29",
-            "tariff": null,
+            "statement": "2019-08-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "31218.6700",
             "total_usage": "338400.00000",
             "line_items": [
@@ -9208,7 +9260,8 @@
             "end": "2019-09-26",
             "peak_demand": null,
             "start": "2019-08-29",
-            "tariff": null,
+            "statement": "2019-09-27",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "28110.0400",
             "total_usage": "296800.00000",
             "line_items": [
@@ -9338,7 +9391,8 @@
             "end": "2019-10-29",
             "peak_demand": null,
             "start": "2019-09-27",
-            "tariff": null,
+            "statement": "2019-10-29",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "28049.9900",
             "total_usage": "310000.00000",
             "line_items": [
@@ -9468,7 +9522,8 @@
             "end": "2019-12-30",
             "peak_demand": null,
             "start": "2019-11-27",
-            "tariff": null,
+            "statement": "2019-12-30",
+            "tariff": "GSLDT-1 GENERAL SVC LRG DEMAND TIME OF USE",
             "total_charge": "23798.9000",
             "total_usage": "269200.00000",
             "line_items": [

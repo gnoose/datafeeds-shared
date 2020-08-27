@@ -5,7 +5,7 @@
             "peak_demand": "13.6000",
             "start": "2019-05-17",
             "statement": "2019-07-26",
-            "tariff": null,
+            "tariff": "TOU-GS-2-D",
             "total_charge": "599.4500",
             "total_usage": "8758.40000",
             "line_items": [
@@ -149,7 +149,7 @@
             "peak_demand": "27.2000",
             "start": "2019-06-18",
             "statement": "2019-07-26",
-            "tariff": null,
+            "tariff": "TOU-GS-2-D",
             "total_charge": "859.7000",
             "total_usage": "7969.10700",
             "line_items": [
@@ -237,11 +237,11 @@
             ]
         },
         {
-            "end": "2019-08-16",
+            "end": "2019-08-15",
             "peak_demand": "27.2000",
             "start": "2019-07-18",
             "statement": "2019-08-24",
-            "tariff": null,
+            "tariff": "TOU-GS-2-D",
             "total_charge": "863.5400",
             "total_usage": "8023.67600",
             "line_items": [

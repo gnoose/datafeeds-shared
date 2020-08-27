@@ -157,8 +157,7 @@ class DukeBillingScraper(BaseWebScraper):
             )
             raise errors.BillingScraperInvalidDateRangeException(err_msg)
 
-        page.download_pdfs()
-        self.billing_history = page.get_details(self.utility, self.account_id)
+        self.billing_history = page.download_pdfs(self.utility, self.account_id)
 
 
 def datafeed(

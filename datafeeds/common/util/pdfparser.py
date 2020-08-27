@@ -6,6 +6,7 @@ The code below is a slightly modified version of the pdf2txt.py script that ship
 capture most of the features we want to extract from bill pdfs. """
 
 from io import StringIO, BytesIO
+import logging
 import os
 from tempfile import NamedTemporaryFile
 from typing import List
@@ -21,6 +22,7 @@ from pdfminer.pdfpage import PDFPage
 
 
 pdfminer.settings.STRICT = False
+logging.getLogger("pdfminer").setLevel(logging.WARNING)
 
 
 def pdf_pages(pdf: BytesIO) -> List[str]:

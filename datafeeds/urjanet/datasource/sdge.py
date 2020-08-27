@@ -27,7 +27,9 @@ class SDGEDatasource(UrjanetPyMySqlDataSource):
             from Account
             where AccountNumber like %s and UtilityProvider = 'SDGAndE'
         """
-        result_set = self.fetch_all(query, "%{}%".format(self.account_number))
+        result_set = self.fetch_all(
+            query, "%{}%".format(self.account_number.replace(" ", ""))
+        )
         return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: int) -> List[Meter]:
@@ -38,7 +40,9 @@ class SDGEDatasource(UrjanetPyMySqlDataSource):
             where Meter.AccountFK=%s and Meter.ServiceType in ('electric', 'natural_gas')
                 and Meter.MeterNumber LIKE %s
         """
-        result_set = self.fetch_all(query, account_pk, "%{}%".format(self.said))
+        result_set = self.fetch_all(
+            query, account_pk, "%{}%".format(self.said.replace(" ", ""))
+        )
         return [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
 
 

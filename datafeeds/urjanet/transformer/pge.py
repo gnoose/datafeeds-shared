@@ -3,7 +3,7 @@ import re
 import logging
 from decimal import Decimal
 from collections import defaultdict
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from typing import List, Dict
 
 from intervaltree import Interval
@@ -350,6 +350,9 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
             if data_added:
                 cur_data.add_source_statement(urja_account)
 
+    def get_duration(self, start: datetime, end: datetime) -> int:
+        return (end - start).days
+
     def get_account_billing_periods(
         self, account: Account, max_duration: int = 45
     ) -> DateIntervalTree:
@@ -369,7 +372,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                 if usage.RateComponent == "[total]":
                     usage_start = usage.IntervalStart
                     usage_end = usage.IntervalEnd
-                    duration = (usage_end - usage_start).days
+                    duration = self.get_duration(usage_start, usage_end)
                     # if the total is a single day, use the Meter date range instead
                     if duration == 0:
                         log.debug(
@@ -377,6 +380,12 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                         )
                         usage_start = meter.IntervalStart
                         usage_end = meter.IntervalEnd
+                        if self.get_duration(usage_start, usage_end) == 0:
+                            log.info(
+                                "Unable to use meter data range for zero-length usage %s",
+                                usage.PK,
+                            )
+                            continue
                     if max_duration and duration > max_duration:
                         log.debug(
                             "Filtering long usage period: {} to {} ({} days)".format(

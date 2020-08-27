@@ -69,6 +69,7 @@ def create_meters() -> Tuple[SnapmeterAccount, List[Meter]]:
     db.session.add(account)
     # create two test meters
     us = UtilityService(service_id=datetime.now().strftime("%s%f"))
+    us.utility_account_id = datetime.now().strftime("%s%f")
     db.session.add(us)
     db.session.flush()
     meter1 = Meter(
@@ -80,6 +81,7 @@ def create_meters() -> Tuple[SnapmeterAccount, List[Meter]]:
     )
     db.session.add(meter1)
     us = UtilityService(service_id=datetime.now().strftime("%s%f"))
+    us.utility_account_id = datetime.now().strftime("%s%f")
     db.session.add(us)
     db.session.flush()
     meter2 = Meter(

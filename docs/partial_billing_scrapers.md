@@ -12,6 +12,20 @@ the `bill` table.  A daily webapps process will attempt to stitch `tnd-only` par
 
 ## Scraper Configuration
 
+### Creating a partial billing scraper 
+
+This should be designated at the scraper level.   Add a record to the `scraper` table, and set
+`source_types` to `{partial-billing}`.
+
+| Column        | Type                  |
+| --------------| ----------------------|
+| name          | character varying     |
+| label         | character varying     |
+| active        | boolean               |
+| source_types  | character varying[]   |
+| meta          | jsonb                 |
+
+
 ### scrape_partial_bills
 
 Importantly, the scraper Configuration needs to have `scrape_partial_bills` set to True.  If `scrape_partial_bills`
@@ -26,7 +40,7 @@ class SampleGenerationPartialBillingConfiguration(Configuration):
         self.gen_service_id = gen_service_id
 ```
 
-Sometimes, billing scraper code will get to perform double-duty and also be used for a partial-billing scraper.  
+Sometimes, billing scraper code will be able to perform double-duty and also be used for a partial-billing scraper.  
 For example, the `sce-react-energymanager-billing` scraper was originally written to be a typical billing scraper for SCE, 
 but we also use this underlying code in a partial-billing scraper `sce-react-energymanager-partial-billing`, 
 for scraping `tnd-only` charges, for SCE customers that are using a CCA for generation. 
@@ -44,15 +58,18 @@ configuration = SceReactEnergyManagerBillingConfiguration(
     )
 ```
 
-### service_id or gen_service_id
+### T&D-only bills or Generation-only partial bills.
+
+It is very important that your scraper produces the correct "type" of partial bill.  In the stitching process, `tnd-only` 
+partials will be matched to `generation-only` partial bills.
 
 For a meter where there are multiple SA's involved, `UtilityService.service_id` should be used to store the T&D SAID. The
 corresponding generation SAID should be stored in `UtilityService.gen_service_id`.  If you are building a T&D-only
-partial billing scraper, you should generally pass in the `service_id` to the Configuration. If you are building a generation-only
-partial-billing scraper, you should pass in the `gen_service_id` to the Configuration.  The `PartialBillProcessor`
-will be looking for the `service_id` or `gen_service_id` in the Configuration and attempt to match the value to the
-value on the meter's service to determine if this is a `tnd-only` partial bill or a `generation-only` partial bill.
-This will be set on `PartialBill.provider_type` for use in the stitching process later.
+partial billing scraper, you should generally pass in the `service_id` or `utility_account_id` to the Configuration. 
+If you are building a generation-only partial-billing scraper, you should use the generation service fields, and pass 
+in the `gen_service_id` or `gen_utility_account_id` to the Configuration. The scraper configuration should pass in 
+`partial_type` which will either be `tnd-only` or `generation-only`. This will be set on `PartialBill.provider_type` for 
+use in the stitching process later.
 
 ### Urjanet 
 
@@ -87,6 +104,31 @@ def datafeed(
         urja_partial_billing=True,
     )
 ```
+
+## Scraping Utility Codes
+We want to start extracting service configuration and storing on partial bills. When adding a partial billing scraper, 
+attempt to scrape the `utility_code` (the utility's version of the tariff), and pass into BillingDatum.  This will 
+be persisted to the PartialBill record in the `PartialBillProcessor`.
+
+```python
+if key not in raw_billing_data:
+    rate = None
+    if service_row:
+        rate = service_row.rate
+        
+    bill_data = BillingDatum(
+        start=current_bill_row.bill_start_date,
+        end=current_bill_row.bill_end_date - timedelta(days=1),
+        statement=current_bill_row.statement_date,
+        cost=current_bill_row.bill_amount,
+        used=current_bill_row.kwh,
+        peak=current_bill_row.kw,
+        items=None,
+        attachments=None,
+        utility_code=rate,
+    )
+```
+
 
 ## Running partial billing scrapers locally
 

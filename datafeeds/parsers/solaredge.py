@@ -1,18 +1,11 @@
 from collections import namedtuple
 from datetime import datetime
+import json
+
+from addict import Dict
 
 from datafeeds.parsers.base import validate, SchemaValidationFailure
 
-
-# site_details_schema = {
-#     "type": "object",
-#     "properties": {
-#         "meterEnergyDetails": {
-#             "type": "object",
-#
-#         }
-#     }
-# }
 
 site_details_schema = {
     "definitions": {
@@ -27,7 +20,7 @@ site_details_schema = {
                 "lastUpdateTime": {"type": "string", "format": "date"},
                 "currency": {"type": "string"},
                 "installationDate": {"type": "string", "format": "date"},
-                "ptoDate": {"type": "string", "format": "date"},
+                "ptoDate": {"type": ["string", "null"], "format": "date"},
                 "notes": {"type": "string"},
                 "type": {"type": "string"},
                 "location": {
@@ -158,4 +151,19 @@ def parse_intervals(text):
                     serial_number=meter.meterSerialNumber,
                 )
                 intervals.append(ivl)
+    return intervals
+
+
+def parse_site_intervals(text):
+    record = Dict(json.loads(text))
+    intervals = []
+    for reading in record.energy["values"]:
+        if not reading.value:
+            reading.value = float("nan")
+        ivl = Interval(
+            start=_parse_datetime(reading.date),
+            kwh=reading.value / 1000,
+            serial_number="None",
+        )
+        intervals.append(ivl)
     return intervals
