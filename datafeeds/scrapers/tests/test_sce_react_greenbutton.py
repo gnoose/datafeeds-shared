@@ -2,14 +2,15 @@ import argparse
 from unittest import mock
 from datetime import date
 import functools as ft
-from typing import List
 from unittest.mock import MagicMock
 
 from dateutil import parser as date_parser
 
 from datafeeds.common.support import Credentials, DateRange
-from datafeeds.scrapers.sce_react.energymanager_greenbutton import SceReactEnergyManagerGreenButtonConfiguration, \
-    SceReactEnergyManagerGreenButtonScraper
+from datafeeds.scrapers.sce_react.energymanager_greenbutton import (
+    SceReactEnergyManagerGreenButtonConfiguration,
+    SceReactEnergyManagerGreenButtonScraper,
+)
 
 """
     Run this to launch the SCE GreenButton scraper:
@@ -19,12 +20,19 @@ from datafeeds.scrapers.sce_react.energymanager_greenbutton import SceReactEnerg
 """
 
 
-def test_upload_readings(transforms, meter_oid: int, scraper: str, task_id: str, readings):
+def test_upload_readings(
+    transforms, meter_oid: int, scraper: str, task_id: str, readings
+):
     print("readings=\n", readings)
 
 
 def test_scraper(
-    service_id: str, address: str, start_date: date, end_date: date, username: str, password: str
+    service_id: str,
+    address: str,
+    start_date: date,
+    end_date: date,
+    username: str,
+    password: str,
 ):
     configuration = SceReactEnergyManagerGreenButtonConfiguration(
         service_id=service_id,
@@ -58,8 +66,8 @@ if __name__ == "__main__":
     test_scraper(
         args.service_id,
         args.address,
-        date_parser.parse(args.start),
-        date_parser.parse(args.end),
+        date_parser.parse(args.start).date(),
+        date_parser.parse(args.end).date(),
         args.username,
         args.password,
     )

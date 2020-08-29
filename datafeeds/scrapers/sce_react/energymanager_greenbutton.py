@@ -1,14 +1,15 @@
-import os
-import time
+import re
 import logging
-from urllib.parse import urlencode
 
 import requests
 
 import datafeeds.scrapers.sce_react.pages as sce_pages
-from datafeeds.scrapers.sce_react.energymanager_interval import SceReactEnergyManagerIntervalScraper
+from datafeeds.scrapers.sce_react.energymanager_interval import (
+    SceReactEnergyManagerIntervalScraper,
+)
 
-from typing import Optional
+from typing import Optional, Dict, Any
+from dateutil.parser import parse as parse_date
 
 from datafeeds.common.util.pagestate.pagestate import PageStateMachine
 
@@ -34,7 +35,7 @@ class SceReactEnergyManagerGreenButtonConfiguration(Configuration):
         meter: meter being scraped
     """
 
-    def __init__(self, service_id: str, meta: str, meter: Meter):
+    def __init__(self, service_id: str, meta: Dict[str, Any], meter: Meter):
         super().__init__(scrape_bills=False, scrape_readings=True)
         self.service_id = service_id
         self.meta = meta
@@ -42,7 +43,6 @@ class SceReactEnergyManagerGreenButtonConfiguration(Configuration):
 
 
 class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScraper):
-
     def define_state_machine(self):
         """Define the flow of this scraper as a state machine"""
 
@@ -81,7 +81,7 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
             name="landing_page",
             page=sce_pages.SceLandingPage(self._driver),
             action=self.landing_page_action,
-            transitions=[],
+            transitions=["done"],
         )
         # And that's the end
         state_machine.add_state("done")
@@ -91,16 +91,13 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
         return state_machine
 
     def landing_page_action(self, page: sce_pages.SceLandingPage):
-        pass
-        # TODO:
         service_account_num = self._configuration.service_id
+
+        service_account_num = service_account_num.replace("-", "")  # remove dashes
+        service_account_num = int(service_account_num[1:])  # remove leading digit
+
         timeline = Timeline(self.start_date, self.end_date)
-        """
-        - remove first digit
-        - remove -
-        - to int
-        example: service_id = 3-049-8417-81 to service_account_num = 49841602
-        """
+
         # address format is state address city zip
         # try to get from meta
         meta = self._configuration.meta
@@ -110,20 +107,40 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
             # if not available, build it from the meter
             building = self._configuration.meter.building
             if building.address2:
-                street_addr = f"{building.address1} {building.address2}"
+                street_addr = f"{building.street1} {building.street2}"
             else:
                 street_addr = building.street1
-            address = f"{building.state} {street_addr.upper()} {city.upper()} {zip}"
-        address = urlencode(address)
+
+            city = building.city
+            zipcode = building.zip
+            address = f"{building.state} {street_addr.upper()} {city.upper()} {zipcode}"
+
         # day-mon-year
         start_dt = self.start_date.strftime("%d-%m-%Y")
         end_dt = self.end_date.strftime("%d-%m-%Y")
-        url = f"https://prodms.dms.sce.com/myaccount/v1/downloadFile?serviceAccountNumber={service_account_num}" \
-              f"&serviceAccountAddress={address}&startDate={start_dt}&endDate={end_dt}&fileFormat=csv"
+
+        url = (
+            f"https://prodms.dms.sce.com/myaccount/v1/downloadFile?serviceAccountNumber={service_account_num}"
+            f"&serviceAccountAddress={address}&startDate={start_dt}&endDate={end_dt}&fileFormat=csv"
+        )
+
         log.debug("url = %s", url)
         log.debug("cookies = %s", self._driver.get_cookies())
+
+        cookies = {}
+        for cookie in self._driver.get_cookies():
+            cookies[cookie["name"]] = cookie["value"]
+
         # join with ; (ie name1=value1; name2=value2)
-        cookie_str = ""
+        cookie_str = ";".join([k + "=" + v for k, v in cookies.items()])
+
+        oktasessionid = self._driver.execute_script(
+            "return JSON.parse(window.localStorage.userInfo).profileData.oktaSessionId;"
+        )
+        oktauid = self._driver.execute_script(
+            "return JSON.parse(window.localStorage.userInfo).profileData.oktaUid;"
+        )
+
         headers = {
             # these are always the same
             "authority": "prodms.dms.sce.com",
@@ -137,34 +154,38 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
             "sec-fetch-dest": "empty",
             "referer": "https://www.sce.com/sma/ESCAA/EscGreenButtonData",
             "accept-language": "en-US,en;q=0.9",
-            # get these from localstorage
-            # see https://stackoverflow.com/questions/46361494/how-to-get-the-localstorage-with-python-and-selenium-webdriver
-            "oktasessionid": "1",  # profileData.oktaSessionId in localstorage
-            "oktauid": "",  # profileData.oktaUid in localstorage
-            "cookie": cookie_str
+            "oktasessionid": oktasessionid,  # profileData.oktaSessionId in localstorage
+            "oktauid": oktauid,  # profileData.oktaUid in localstorage
+            "cookie": cookie_str,
         }
+
         data = requests.get(url, headers=headers)
+
         # parse out fields starting with date; save start (1st) date and value
         # add to timeline: self.interval_data_timeline.insert(dt, val)
-        """
-Energy Usage Information
-"For location: CA 3111 N TUSTIN ST ORANGE 92865"
 
-Meter Reading Information
-"Type of readings: Electricity"
+        # regex to match line starting with: "date time
+        startswithdate_re = re.compile(r'^"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}')
 
-Summary of Electric Power Usage Information*
-"Your download will contain interval usage data that is currently available for your selected Service Account. Based on how our systems process and categorize usage data, your download may contain usage data of the following types: actual, estimated, validated or missing. "
+        for data_line in data.text.splitlines():
+            if not startswithdate_re.match(data_line):
+                continue
 
-Detailed Usage
-"Start date: 2020-08-14 23:00:00  for 11 days"
+            # data_line has a \xa0 space before, remove that
+            data_line = data_line.replace("\xa0", " ")
 
-"Data for period starting: 2020-08-15 00:00:00  for 24 hours"
-Energy consumption time period,Usage(Real energy in kilowatt-hours),Reading quality
-"2020-08-15 00:00:00 to 2020-08-15 00:15:00","2.800",""
-"2020-08-15 00:15:00 to 2020-08-15 00:30:00","2.800",""
-   ^^^ date                                  ^^^ value
-        """
+            #  "2020-08-15 00:00:00 to 2020-08-15 00:15:00","2.800",""
+            from_dt_string = data_line.split(" to ")[0].replace('"', "")
+            from_dt = parse_date(from_dt_string)
+
+            _value = data_line.split('"')[3].replace(
+                ",", ""
+            )  # not sure if there can be commas in the value but remove them if there are...
+            value = float(_value)
+
+            timeline.insert(from_dt, value)
+
+        self.interval_data_timeline = timeline
 
 
 def datafeed(
@@ -175,9 +196,7 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = SceReactEnergyManagerGreenButtonConfiguration(
-        service_id=meter.service_id,
-        meta=datasource.meta,
-        meter=meter,
+        service_id=meter.service_id, meta=datasource.meta, meter=meter,
     )
 
     return run_datafeed(
