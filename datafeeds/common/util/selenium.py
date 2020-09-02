@@ -233,6 +233,7 @@ def clear_downloads(download_dir):
             filename.endswith(".zip")
             or filename.endswith(".csv")
             or filename.endswith(".xlsx")
+            or filename.endswith(".pdf")
         ):
             to_remove.append(os.path.join(download_dir, filename))
 
