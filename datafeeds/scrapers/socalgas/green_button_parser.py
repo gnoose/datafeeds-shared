@@ -872,7 +872,7 @@ def _convert_reading(power_of_ten, uom, reading, interval=15):
     if uom == Units.WATT_HOURS:
         reading = _usage_to_demand(reading, interval)
 
-    return reading * (10 ** power_of_ten)
+    return reading / (10 ** abs(power_of_ten))
 
 
 def _usage_to_demand(reading, interval):

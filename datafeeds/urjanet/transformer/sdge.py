@@ -1,6 +1,7 @@
 import copy
 from datetime import timedelta
-from typing import List
+from decimal import Decimal
+from typing import List, Optional
 import logging
 
 from datafeeds.urjanet.transformer import (
@@ -21,6 +22,27 @@ class SDGEBillingPeriod(GenericBillingPeriod):
                     continue
                 total_charges += charges.ChargeAmount
         return total_charges
+
+    def get_peak_demand(self) -> Optional[Decimal]:
+        """Find the peak demand for this period
+
+        Get the max ChargeUnitsUsed for charges with UsageUnit kW, or None if there are no kW
+        charges.
+        Exclude Capacity Reservation Demand; this charge is based on kW, but is not a usage value.
+        """
+        peak = Decimal(-1)  # want to be able to tell if it was set; won't be for water
+        for meter in self.account.meters:
+            for charges in meter.charges:
+                if charges.ChargeActualName == "Capacity Reservation Demand":
+                    log.info(
+                        "skipping charge %s %s when calculating peak",
+                        charges.PK,
+                        charges.ChargeActualName,
+                    )
+                    continue
+                if charges.UsageUnit == "kW":
+                    peak = max(peak, charges.ChargeUnitsUsed)
+        return peak if peak >= 0.0 else None
 
 
 class SDGETransformer(UrjanetGridiumTransformer):

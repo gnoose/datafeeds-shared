@@ -102,6 +102,24 @@ class TestUrjanetSDGETransformer(test_util.UrjaFixtureText):
         """
         self.sdge_test("2000499001794_input.json", "2000499001794_expected.json")
 
+    def test_sdge_exclude_capacity_reservation(self):
+        """Verify that the peak is from actual usage, not the Capacity Reservation Demand value.
+
+        Peak should be 18, not 324 for this set of charges:
+
+        mysql> select PK, ChargeActualName, UsageUnit, ChargeUnitsUsed
+        from Charge
+        where MeterFK=21600266 and UsageUnit='kW';
+        +-----------+------------------------------+-----------+-----------------+
+        | PK        | ChargeActualName             | UsageUnit | ChargeUnitsUsed |
+        +-----------+------------------------------+-----------+-----------------+
+        | 253135587 | Summer Non-Coincident Demand | kW        |         18.0000 |
+        | 253135588 | Capacity Reservation Demand  | kW        |        324.0000 |
+        | 253135590 | Summer On-Peak Demand        | kW        |         18.0000 |
+        +-----------+------------------------------+-----------+-----------------+
+        """
+        self.sdge_test("1988859666449_input.json", "1988859666449_expected.json")
+
 
 if __name__ == "__main__":
     unittest.main()

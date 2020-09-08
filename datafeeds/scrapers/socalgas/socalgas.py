@@ -2,15 +2,15 @@ from datetime import timedelta, date
 from itertools import groupby
 import os
 import logging
-import re
+import time
 from typing import Optional, Tuple, List
 from zipfile import ZipFile
 
 from dateutil import parser as date_parser
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
-
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
@@ -21,6 +21,7 @@ from datafeeds.common.typing import (
     BillingData,
     assert_is_without_overlaps,
 )
+from datafeeds.common.util.selenium import file_exists_in_dir
 
 from datafeeds.models import (
     SnapmeterAccount,
@@ -32,13 +33,8 @@ from . import green_button_parser as gbparser
 
 log = logging.getLogger(__name__)
 
-
-IFRAME_ACCOUNT_RGX = re.compile(r"(?<=CustomerId=)[0-9]+")
-DOWNLOAD_FILENAME_RGX = re.compile(r"(?<=zip file titled: ).+")
-
 IFRAME_SEL = 'iframe[title="Ways To Save"]'
 
-GREEN_BUTTON_SEL = "#la-links-group #la-greenbutton-view-trigger"
 START_INPUT_SEL = "#la-greenbutton-container input#txtStartDate"
 END_INPUT_SEL = "#la-greenbutton-container input#txtEndDate"
 USERNAME_SEL = "#pt1\\:pli1\\:loginid\\:\\:content"
@@ -62,10 +58,7 @@ SEARCH_METER = '//div[contains(@id, "meterSearch")]'
 ACCOUNT_GO_INTERVALS_XPATH = '{}//button[text()="Go"]'.format(SEARCH_ACCOUNT)
 ACCOUNT_GO_BILLS_XPATH = '//button[text()="Go"]'
 
-TERMS_SEL = (
-    '//div[contains(@id, "content-disclaimer")]'
-    + '//span[contains(text(), "Terms and Conditions")]'
-)
+TERMS_SEL = "//span[contains(text(), 'Continue')]"
 
 
 class UsageViewUnavailableException(Exception):
@@ -118,7 +111,7 @@ class SocalGasScraper(BaseWebScraper):
         if self.scrape_readings:
             self._navigate_to_usage()
             self._accept_terms()
-            self._select_account_intervals()
+            self._select_account()
 
             interval_data = self._download_green_button()
 
@@ -192,21 +185,8 @@ class SocalGasScraper(BaseWebScraper):
             log.info("\tTerms have been accepted already, skipping")
             return
 
-        accept_sel = (
-            '//div[contains(@id, "content-disclaimer")]'
-            + '//button[contains(text(), "Accept")]'
-        )
-        log.info('\tClicking "Accept"')
-        self._driver.click(accept_sel, xpath=True)
-
-        # Accepting terms redirects back to "Ways to Save > Usage History",
-        # so now we need to navigate BACK to analyze usage
-        self._driver.wait().until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, IFRAME_SEL))
-        )
-        log.info("\tTerms accepted")
-        self.screenshot("after accepting terms")
-        self._navigate_to_usage()
+        log.info('\tClicking "Continue"')
+        self._driver.click(TERMS_SEL, xpath=True)
 
     def __select_account(self, go_btn_selector, option_query, shows_right_account):
         log.info("SELECTING ACCOUNT")
@@ -283,52 +263,6 @@ class SocalGasScraper(BaseWebScraper):
 
         log.info("\tAccount loaded")
 
-    def _select_account_intervals(self):
-        def option_query():
-            return self._driver.find(
-                '{}//option[contains(text(), "{}")]'.format(
-                    SEARCH_ACCOUNT, self.account_id
-                ),
-                xpath=True,
-            )
-
-        def shows_right_account(_):
-            # Iframe is always present on page, and the only thing that really helps is that the "src" attr
-            # has a CustomerId query param that is MOSTLY the account num (it might be a truncated version),
-            # so need to match it up by comparing its param against the account num itself
-            iframe = self._driver.find(IFRAME_SEL)
-            src = iframe.get_attribute("src") if iframe else ""
-
-            # "Stale element" iframe will have <src="javascript:..">
-            if not iframe or not src.startswith("http"):
-                return False
-
-            match = IFRAME_ACCOUNT_RGX.search(src)
-            if not match:
-                return False
-            return match.group() in str(self.account_id)
-
-        self.__select_account(
-            ACCOUNT_GO_INTERVALS_XPATH, option_query, shows_right_account
-        )
-
-        # Meter should be selected already - one meter per account?
-        # TODO Kevin: Sporadic stale element error on .find
-        meter_id = self._driver.find(
-            '{}//span[@class="af_selectOneChoice_content"]'.format(SEARCH_METER),
-            xpath=True,
-        ).text
-
-        if meter_id != str(self.meter_id):
-            log.info(
-                "\tMeter {} is selected instead of {}".format(meter_id, self.meter_id)
-            )
-            raise Exception(
-                "Meter {} is not selected, can not download data".format(self.meter_id)
-            )
-
-        log.info("\tMeter {} is already selected".format(meter_id))
-
     def _select_account_bills(self):
         def option_query():
             return self._driver.find(
@@ -344,84 +278,71 @@ class SocalGasScraper(BaseWebScraper):
             ACCOUNT_GO_BILLS_XPATH, option_query, shows_right_account
         )
 
+    def _select_account(self):
+        self._driver.wait().until(
+            EC.presence_of_element_located(
+                (By.ID, "mui-component-select-accountnumber")
+            )
+        )
+        self._driver.find_element_by_id("mui-component-select-accountnumber").click()
+        log.info("Selecting account %s", self.account_id)
+        account_xpath = "//li[contains(text(), '%s')]" % self.account_id
+        account = self._driver.find_element_by_xpath(account_xpath)
+        self._driver.execute_script("arguments[0].scrollIntoView();", account)
+        self._driver.wait().until(
+            EC.visibility_of_element_located((By.XPATH, account_xpath))
+        )
+        time.sleep(2)
+        account.click()
+
     def _download_green_button(self):
         log.info("DOWNLOADING GREEN BUTTON")
-        self._switch_to_iframe()
         self._open_modal()
 
-        start_date, end_date = self._available_history_range()
+        # start_date, end_date = self._available_history_range()
+        end_date = self._available_history_range()
+        start_date = self.start_date
         zip_files = []
 
-        # Download manager does not allow for longer than 367-day periods,
-        # so just download individual yearlong periods
+        # Download manager does not allow for longer than ~1 year periods
+        # and longer time periods seem to cause timeouts during the download.
+        # Compromising here with 90 day periods
+
         while start_date < end_date:
-            current_end = start_date + timedelta(days=364)
+            # Try ~3 month period to avoid timeouts on the download
+            current_end = start_date + timedelta(days=90)
 
             if end_date < current_end:
                 current_end = end_date
 
-            self._enter_dates(start_date, current_end)
-            self._prepare_export(start_date)
-            zip_files.append(self._download_zip_file())
+            zip_files.append(self._download_zip_file(start_date, current_end))
 
             start_date = current_end + timedelta(days=1)
+            self._open_modal()
 
         log.info("\tDownloaded {} zip files".format(len(zip_files)))
         return self._process_zip_files(zip_files)
 
-    def _switch_to_iframe(self):
-        # There are sporadic issues switching to the frame, but a simple sleep seems to help
-        log.info("\tWaiting 90 seconds for usage UI to load")
-        self._driver.sleep(90)
-        log.info("\tSwitching to iframe")
-        self._driver.switch_to.frame(self._driver.find(IFRAME_SEL))
-
-        # Wait for iframe contents to load
-        self._driver.wait().until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, GREEN_BUTTON_SEL))
-        )
-
-        # Wait for occasional overlay to disappear
-        self._driver.wait().until(
-            EC.invisibility_of_element_located(
-                (By.CSS_SELECTOR, "div.acl-hi-modal-overlay")
-            )
-        )
-        self.screenshot("after switching to frame")
-
     def _open_modal(self):
         log.info("\tOpening GreenButton modal")
-        self._driver.click(GREEN_BUTTON_SEL)
+        GREEN_BUTTON_XPATH = "//span[contains(text(), 'Green Button')]"
         self._driver.wait().until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, START_INPUT_SEL))
+            EC.element_to_be_clickable((By.XPATH, GREEN_BUTTON_XPATH))
         )
+        self._driver.find(GREEN_BUTTON_XPATH, xpath=True).click()
+
         self.screenshot("after opening modal")
 
     def _available_history_range(self):
-        # The GreenButton modal helpfully tells when the earliest and latest dates with
-        # readings are, so get those to compare against scraper start/end dates because
-        # scraper will fail if trying to use dates outside of that range.
-        # Dates will be at end of sentence, like "Meter history is available starting: 01/12/2016"
         def get_label_date(label_sel):
-            return date_parser.parse(
-                self._driver.find(label_sel).text.split(" ")[-1]
-            ).date()
+            date_element = self._driver.find(label_sel, xpath=True)
+            date_string = date_element.get_attribute("value")
+            log.info("Date string: %s", date_string)
+            return date_parser.parse(date_string).date()
 
         log.info("\tEntering dates")
 
-        history_start = get_label_date('label[for="lblHistory"]')
-        history_end = get_label_date('label[for="lblRecentAvaliableDataDate"]')
-
-        if history_start > self.start_date:
-            log.info(
-                "\tHistory begins after start date, scraping from date {}".format(
-                    history_start
-                )
-            )
-            start_date = history_start
-        else:
-            log.info("\tHistory includes start date")
-            start_date = self.start_date
+        history_end = get_label_date("//input[@id='ToDate']")
 
         if history_end < self.end_date:
             log.info(
@@ -434,38 +355,79 @@ class SocalGasScraper(BaseWebScraper):
             log.info("\tHistory includes end date")
             end_date = self.end_date
 
-        return (start_date, end_date)
+        # return (start_date, end_date)
+        return end_date
 
-    def _enter_dates(self, start_date, end_date):
-        # Cannot type dates into these input fields, so just use script to set value
-        # rather than opening a calendar and cycling through buttons and pages
-        def set_value(_id, dt):
-            self._driver.execute_script(
-                'document.getElementById("{}").value = "{}"'.format(_id, dt)
-            )
+    def _download_zip_file(self, start_date, end_date):
+        # These input fields come pre-filled and 'clear()' does not work
+        for i in range(10):
+            self._driver.find_element_by_id("FromDate").send_keys(Keys.BACKSPACE)
+        for i in range(10):
+            self._driver.find_element_by_id("ToDate").send_keys(Keys.BACKSPACE)
+        time.sleep(1)
 
-        set_value("txtStartDate", start_date)
-        set_value("txtEndDate", end_date)
-
-    def _prepare_export(self, start_date):
-        log.info("\tPreparing export starting {}".format(start_date))
-        self._driver.click("a#la-gb-export")
-        self._driver.wait(300).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, "a#lnkDownload"))
+        date_format = "%m/%d/%Y"
+        self._driver.find_element_by_id("FromDate").send_keys(
+            start_date.strftime(date_format)
+        )
+        self._driver.find_element_by_id("ToDate").send_keys(
+            end_date.strftime(date_format)
         )
 
-    def _download_zip_file(self):
-        # While downloading, grab the filename from the "download instructions" section
-        instructions = self._driver.find("p#downloadInstructions").text
-        download_name = DOWNLOAD_FILENAME_RGX.search(instructions).group()
-        path = self._zip_path(download_name)
+        # If the scraper tries to go farther back than allowed, an error message is displayed
+        # Clicking the calendar button will then set it to the earliest possible good date.
+        minimal_date_error_xpath = (
+            "//p[contains(text(), 'Date should not be before minimal date')]"
+        )
+        try:
+            minimal_date_error = self._driver.find_element_by_xpath(
+                minimal_date_error_xpath
+            )
 
-        log.info("\t\tDownloading file {}".format(download_name))
-        self._driver.click("a#lnkDownload")
-        self._driver.wait().until(lambda _: os.path.exists(path))
+            if minimal_date_error.is_displayed():
+                log.warning(
+                    "Attempted start date %s before data exists",
+                    start_date.strftime(date_format),
+                )
+                # The start and end calendar buttons have this same identifier,
+                # so we're assuming the 'before' is found first
+                calendar_button_xpath = "//button[@arialabel='change date']"
+                calendar_button = self._driver.find_element_by_xpath(
+                    calendar_button_xpath
+                )
+                calendar_button.click()
+        except NoSuchElementException:
+            pass
+
+        export_xpath = "//span[contains(text(), 'Export')]"
+        self._driver.find(export_xpath, xpath=True).click()
+        download_dir = self._driver.download_dir
+        # Filename example: SoCalGas_Gas_60_Minute_7-7-19_8-7-20.zip
+        # strftime pads with zeros, which doesn't work here
+        start_date_string = (
+            str(start_date.month)
+            + "-"
+            + str(start_date.day)
+            + "-"
+            + str(start_date.year)[2:]
+        )
+        end_date_string = (
+            str(end_date.month) + "-" + str(end_date.day) + "-" + str(end_date.year)[2:]
+        )
+        expected_filename = (
+            "SoCalGas_Gas_60_Minute_"
+            + start_date_string
+            + "_"
+            + end_date_string
+            + ".zip"
+        )
+        log.info("\t\tDownloading file {}".format(expected_filename))
+        download_name = self._driver.wait(300).until(
+            file_exists_in_dir(download_dir, expected_filename)
+        )
         log.info("\t\tFile downloaded")
-
-        return download_name
+        # Truncate file extension
+        return str(download_name)[:-4]
 
     def _process_zip_files(self, filenames):
         log.info("EXTRACTING READINGS FROM DOWNLOADS")
@@ -485,7 +447,6 @@ class SocalGasScraper(BaseWebScraper):
             parsed = gbparser.parse("{}/{}".format(self._driver.download_dir, filename))
 
             if "readings" in parsed:
-                log.info("\tReturned data {}".format(parsed))
                 interval_data.update(parsed["readings"])
             else:
                 log.info("\tNo data returned", level="warning")

@@ -92,21 +92,13 @@ class SiteStatusPage:
             "//div[contains(text(), 'Operating Since:')]"
         ).text
         install_date_string = string_contains_install_date.split(": ")[-1]
+        install_date_string = install_date_string.split(" ")[0]
         msg = "Installation of site: %s" % install_date_string
         log.info(msg)
         date_format = "%m/%d/%Y"
         install_date = self.string_to_date(install_date_string, date_format)
 
         return install_date
-
-    # def month_view_select(self):
-    #     month_xpath = "//div[contains(text(), 'Month')]"
-    #     month = self.driver.wait().until(
-    #         ec.element_to_be_clickable((By.XPATH,month_xpath))
-    #     )
-    #     # month = self.driver.find_element_by_xpath(month_xpath)
-    #     log.info("Selecting month view")
-    #     month.click()
 
     def three_day_view_select(self):
         three_day_xpath = "//div[contains(text(), '3 Day')]"
@@ -159,11 +151,12 @@ class SiteStatusPage:
         back_button.click()
 
     def get_earliest_shown(self) -> date:
-        displayed_date_range = self.driver.find_element_by_class_name(
-            "date-time-input-text"
-        ).text
-        # eg. "Jan 28, 2020 - Jan 30, 2020"
-        earliest_shown = displayed_date_range.split("-")[0][:-1]
+        # This returns 4 elements. The first 2 are empty and the second 2 are the date ranges shown
+        earliest_shown_candidates = self.driver.find_elements_by_xpath(
+            "//input[@type='text']"
+        )
+        earliest_shown = earliest_shown_candidates[2].get_attribute("value")
+        log.info("earliest shown: %s", earliest_shown)
         date_format = "%b %d, %Y"
         earliest_shown_dt = datetime.strptime(earliest_shown, date_format)
         return datetime.date(earliest_shown_dt)

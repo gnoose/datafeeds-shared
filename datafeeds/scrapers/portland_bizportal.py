@@ -1,67 +1,34 @@
-from collections import namedtuple
-import csv
 import logging
+import os
 import re
-from tempfile import NamedTemporaryFile
 import time
-from typing import Optional
+from typing import Optional, List
 
-from urllib.parse import urljoin, urlencode
 from datetime import timedelta, date
-from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse as parse_time
 from pdfminer.pdfparser import PDFSyntaxError
-import requests
+from selenium.common.exceptions import (
+    ElementClickInterceptedException,
+    TimeoutException,
+)
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
 
 from datafeeds import config
-from datafeeds.common import BillingDatum, Configuration, DateRange, Results
-from datafeeds.common.base import BaseApiScraper
+from datafeeds.common import BillingDatum, Configuration, Results
+from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.batch import run_datafeed
 
-from datafeeds.common.typing import show_bill_summary, Status
+from datafeeds.common.typing import Status
+from datafeeds.common.util.selenium import file_exists_in_dir, clear_downloads
 from datafeeds.models import SnapmeterAccount, SnapmeterMeterDataSource, Meter
 from datafeeds.parsers.pdfparser import pdf_to_str
 from datafeeds.common.upload import hash_bill, upload_bill_to_s3
 
 log = logging.getLogger(__name__)
-
-# After this date, CSV bill downloads are generally (but not necessarily) available.
-CSV_START_DATE = date(2018, 4, 15)
-
-API_HOST = "bizapi.portlandgeneral.com"
-API_HOST_PROTOCOL = "https://%s" % API_HOST
-
-
-"""
-Currently, a single record of bill metadata takes this form in the HTTP response.
-
-        {
-            "AccountNumber": "5454780000",
-            "BillingId": "545006900156",
-            "DownloadBillUrl": "<url>
-            "TotalKwh": 93507,
-            "AmountDue": 8498.11,
-            "DueDate": "2017-06-16T00:00:00",
-            "BillDate": "2017-05-31T00:00:00",
-            "Details": [
-                {
-                    "Amount": 8498.11,
-                    "Kwh": 93507,
-                    "ServiceAddress": "some address"
-                }
-            ]
-        },
-
-Each of these gets represented as a namedtuple.
-"""
-BillMetaData = namedtuple(
-    "BillMetaData",
-    ["AccountNumber", "BillingId", "DownloadBillUrl", "TotalKwh", "AmountDue"],
-)
-
-
-class WebsiteDownException(Exception):
-    pass
 
 
 class LoginException(Exception):
@@ -70,6 +37,78 @@ class LoginException(Exception):
 
 class NoRelevantBillsException(Exception):
     pass
+
+
+class PortlandBizPortalException(Exception):
+    pass
+
+
+def _format_number(n):
+    return n.replace("$", "").replace(",", "")
+
+
+def extract_bill_data(
+    pdf_filename, service_id, utility, utility_account_id
+) -> Optional[BillingDatum]:
+    # this function should upload the file to s3 to set attachments?
+    try:
+        text = pdf_to_str(pdf_filename)
+    except PDFSyntaxError:
+        log.exception("Downloaded bill file failed to parse as a PDF.")
+        return None
+
+    current_charges_pattern = "Current Charges.*\n.*\n.*\n.*\n\n.*\n(.*)\n"
+    current_charges = re.search(current_charges_pattern, text).groups()[0]
+
+    period_start, period_end = extract_bill_period(pdf_filename)
+
+    usage_pattern = r"Energy Charges \((\d*) kWh\)"
+    usage = re.search(usage_pattern, text).groups()[0]
+
+    on_peak_demand_pattern = r"On-Peak Demand \((\d+\.\d+)\ KW"
+    on_peak_demand = re.search(on_peak_demand_pattern, text).groups()[0]
+
+    offpeak_demand_pattern = r"Off-Peak Demand \((\d+\.\d+)\ KW"
+    offpeak_demand = re.search(offpeak_demand_pattern, text).groups()[0]
+
+    bill_attachment = []
+    if config.enabled("S3_BILL_UPLOAD"):
+        log.info("S3_BILL_UPLOAD is enabled")
+        with open(pdf_filename, "rb") as f:
+            key = hash_bill(
+                service_id,
+                period_start,
+                period_end,
+                _format_number(current_charges),
+                0,
+                _format_number(usage),
+            )
+            # no statement date; use end date
+            bill_attachment.append(
+                upload_bill_to_s3(
+                    f,
+                    key,
+                    source="portlandgeneral.com",
+                    statement=period_end,
+                    utility=utility,
+                    utility_account_id=utility_account_id,
+                )
+            )
+            log.info("Uploaded bill %s to s3", bill_attachment)
+
+    bill = BillingDatum(
+        start=period_start,
+        end=period_end,
+        statement=period_end,
+        cost=_format_number(current_charges),
+        used=_format_number(usage),
+        peak=max(float(on_peak_demand), float(offpeak_demand),),
+        items=[],
+        attachments=bill_attachment,
+        utility_code=None,
+    )
+
+    return bill
 
 
 def extract_bill_period(pdf_filename):
@@ -84,312 +123,11 @@ def extract_bill_period(pdf_filename):
     match = re.search(pattern, text)
 
     if match:
-        period_a = parse_time(match.group(1))
-        period_b = parse_time(match.group(2))
+        period_a = parse_time(match.group(1)).date()
+        period_b = parse_time(match.group(2)).date()
         return min(period_a, period_b), max(period_a, period_b)
 
     return None, None
-
-
-class Session:
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-        self.session = requests.Session()
-
-    def login(self):
-        self.session.headers.update(
-            {
-                "Accept": "application/json, text/plain, */*",
-                "Accept-Encoding": "gzip, deflate, br",
-                "Accept-Language": "en-US,en;q=0.9",
-                "ADRUM": "isAjax:true",
-                "Connection": "keep-alive",
-                "Host": API_HOST,
-                "Origin": API_HOST_PROTOCOL,
-                "Referer": urljoin(API_HOST_PROTOCOL, "/UserAccount"),
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4)"
-                + " AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36",
-            }
-        )
-
-        body = {
-            "AccountGroups": None,
-            "InvalidCredentials": False,
-            "Password": self.password,
-            "RememberMe": False,
-            "ReturnUrl": "",
-            "UserName": self.username,
-        }
-
-        url = urljoin(API_HOST_PROTOCOL, "/api/UserAccount/SignIn")
-        log.info("Logging in.")
-        response = self.session.post(
-            url, json=body, headers={"Content-Type": "application/json"}
-        )
-        log.info(
-            "\tPOST %s: %d (%f sec)"
-            % (url, response.status_code, response.elapsed.total_seconds())
-        )
-
-        if response.status_code != requests.codes.ok:
-            raise LoginException("Failed to log in as %s." % self.username)
-
-        resp_body = response.json()
-        if "SecurityToken" not in resp_body:
-            raise LoginException(
-                "Did not find expected security token in API response."
-            )
-
-        self.session.headers["Authorization"] = "Bearer " + resp_body["SecurityToken"]
-
-        return response
-
-    def logout(self):
-        """POST a logout message"""
-
-        log.info("Logging out.")
-        url = urljoin(API_HOST_PROTOCOL, "/api/UserAccount/SignOut")
-        response = self.session.post(url)
-        log.info(
-            "\tPOST %s: %d (%f sec)"
-            % (url, response.status_code, response.elapsed.total_seconds())
-        )
-        return response
-
-    def _request_bill_metadata(self, start_dt, end_dt, group_name):
-        """GET bill metadata JSON from the Bizportal backend."""
-
-        params = {
-            "StartDate": start_dt.strftime("%m/%d/%Y"),
-            "EndDate": end_dt.strftime("%m/%d/%Y"),
-            "SortedByDueDate": "true",
-            "EncryptedPersonId": "",
-            "IsCustomGroup": "true",
-            "CustomGroupName": group_name,
-        }
-
-        details_url = API_HOST_PROTOCOL + "/api/BillingAndPaymentHistory/Details"
-        response = self.session.get(
-            details_url, headers={"Accept": "application/json"}, params=params
-        )
-        log.info(
-            "\tGET %s: %d (%f sec)"
-            % (details_url, response.status_code, response.elapsed.total_seconds())
-        )
-
-        if response.status_code != requests.codes.ok:
-            log.info("Request for bill metadata failed.")
-            return None
-
-        try:
-            return response.json()
-        except ValueError as ve:
-            log.info(
-                "Request for bill metadata succeeded, but response did not parse as JSON."
-            )
-            log.info("\t%s" % ve)
-            return None
-
-    @staticmethod
-    def _parse_metadata_response(record):
-        if not isinstance(record.get("BillingSummaries"), list):
-            log.error("Bizportal server returned a record with an unexpected format.")
-            return []
-
-        summaries = []
-
-        for elt in record.get("BillingSummaries"):
-            try:
-                summaries.append(
-                    BillMetaData(
-                        elt["AccountNumber"],
-                        elt["BillingId"],
-                        elt["DownloadBillUrl"],
-                        elt["TotalKwh"],
-                        elt["AmountDue"],
-                    )
-                )
-            except KeyError:
-                log.error("Encountered a BillSummary with invalid format.")
-
-        return summaries
-
-    def acquire_bill_metadata(self, start_dt, end_dt, group_name):
-        """Acquire a list of all bill metadata in the input date range."""
-
-        date_range = DateRange(start_dt, end_dt)
-
-        metadata = []
-        for interval in date_range.split_iter(relativedelta(months=5)):
-            result = self._request_bill_metadata(
-                interval.start_date, interval.end_date, group_name
-            )
-            metadata += self._parse_metadata_response(result)
-
-        return metadata
-
-    def download_bill(self, bill_url, file_handle):
-        log.info("Requesting bill.")
-        try:
-            resp = self.session.get(bill_url, stream=True)
-
-            log.info(
-                "\tGET %s: %d (%f sec)"
-                % (bill_url, resp.status_code, resp.elapsed.total_seconds())
-            )
-
-            resp.raise_for_status()
-
-            for chunk in resp.iter_content(chunk_size=1024):
-                if chunk:
-                    file_handle.write(chunk)
-                    file_handle.flush()
-
-            return file_handle
-        except requests.exceptions.HTTPError:
-            log.info("Error requesting bill for download: %s" % bill_url)
-            file_handle.close()
-            return None
-
-    def _download_csv(self, account_group, start_date, end_date, tries=1):
-        """GET the billing data in CSV format, write it to a temporary file."""
-
-        params = {
-            "StartDate": start_date.strftime("%m/%d/%Y"),
-            "EndDate": end_date.strftime("%m/%d/%Y"),
-            "SortedByDueDate": False,
-            "IsCustomGroup": True,
-            "CustomGroupName": account_group,
-            "ReportType": 1,
-            "DelimiterType": 1,
-        }
-
-        param_str = urlencode(params)
-
-        path = "/api/BillingAndPaymentHistory/Download"
-        url = urljoin(API_HOST_PROTOCOL, path)
-
-        output = None
-        attempt = 0
-        while attempt < tries:
-            log.info(
-                "Attempting CSV fetch for range %s - %s ..." % (start_date, end_date)
-            )
-            attempt += 1
-            try:
-                response = self.session.get(url, params=param_str, stream=True)
-
-                if response.status_code == requests.codes.ok:
-                    output = NamedTemporaryFile()
-                    for chunk in response.iter_content(chunk_size=1024):
-                        if chunk:  # filter out keep-alive new chunks
-                            output.write(chunk)
-                log.info(
-                    "\tGET %s: %d (%f sec)"
-                    % (
-                        response.url,
-                        response.status_code,
-                        response.elapsed.total_seconds(),
-                    )
-                )
-                if output:
-                    output.flush()
-                    log.info("Download succeeded.")
-                    break
-
-                log.info("Download failed. Retrying in 10 seconds...")
-                time.sleep(10)
-            except ConnectionError:
-                log.info("Connection to Portland GE failed, aborting download.")
-
-        return output
-
-    def download_bill_csvs(self, account_group, start_date, end_date):
-        """GET the billing data in CSVs, accounting for API limits."""
-
-        # CSV download fails for start dates prior to 4/15.
-        start_date = max(start_date, CSV_START_DATE)
-
-        date_range = DateRange(start_date, end_date)
-        step = relativedelta(months=5)
-
-        files = []
-        for window in date_range.split_iter(step):
-            file_handle = self._download_csv(
-                account_group, window.start_date, window.end_date
-            )
-            if file_handle:
-                files.append(file_handle)
-
-        return files
-
-
-class CsvBillParser:
-    @staticmethod
-    def _parse_bill_lines(csv_reader, service_id):
-        # This utility seems to be inconsistent about whether the AB is a
-        # prefix or a suffix (they identify the same entity).
-        if service_id.startswith("AB") or service_id.endswith("AB"):
-            raw_service_id = service_id.replace("AB", "")
-            valid_service_ids = {
-                raw_service_id,
-                raw_service_id + "AB",
-                "AB" + raw_service_id,
-            }
-        else:
-            valid_service_ids = [service_id]
-
-        log.info(
-            "Seeking Service ID %s in the following forms: %s",
-            service_id,
-            valid_service_ids,
-        )
-
-        row_count = 0
-
-        def _format_number(n):
-            return n.replace("$", "").replace(",", "")
-
-        bills = []
-        for line in csv_reader:
-            row_count += 1
-
-            # CSV cells sometimes contain whitespace characters like \t.
-            meter_number = line["Meter Number"].strip()
-
-            if meter_number in valid_service_ids:
-                read_date = parse_time(line["Meter Read Date"]).date()
-                prev_read_date = parse_time(line["Previous Read Date"]).date()
-                end_date = read_date - timedelta(days=1)
-
-                bill = BillingDatum(
-                    start=prev_read_date,
-                    end=end_date,
-                    cost=_format_number(line["Current Charges"]),
-                    used=_format_number(line["kWh"]),
-                    peak=max(
-                        _format_number(line["Demand"]),
-                        _format_number(line["On Peak Demand (kW)"]),
-                        _format_number(line["Off Peak Demand (kW)"]),
-                    ),
-                    items=[],
-                    attachments=None,
-                    utility_code=None,
-                )
-
-                bills.append(bill)
-
-        log.info("Processed %d CSV rows." % row_count)
-        return bills
-
-    @staticmethod
-    def parse(filehandle, service_id):
-        log.info("Parsing file %s", filehandle.name)
-
-        with open(filehandle.name, "r") as f:
-            reader = csv.DictReader(f)
-            return CsvBillParser._parse_bill_lines(reader, service_id)
 
 
 def _overlap(a, b):
@@ -398,54 +136,16 @@ def _overlap(a, b):
     return max(c_end - c_start, timedelta())
 
 
-def _adjust_bill_dates(bills):
+def _adjust_bill_dates(bills: List[BillingDatum]) -> List[BillingDatum]:
     """Ensure that the input list of bills is sorted by date and no two bills have overlapping dates."""
     bills.sort(key=lambda x: x.start)
 
-    final_bills = []
+    final_bills: List[BillingDatum] = []
     for b in bills:
         for other in final_bills:
             if _overlap(b, other) > timedelta() or b.start == other.end:
                 b = b._replace(start=max(b.start, other.end + timedelta(days=1)))
         final_bills.append(b)
-
-    return final_bills
-
-
-"""
-Bill Unification Rules:
-0. PDF bills are a superset of CSV bills, due to how the bizportal site works.
-1. If CSV bill data is available, prefer that data but use attachments from the corresponding PDF.
-2. Bill time intervals must not overlap.
-3. We form the final timeline of bills by "zipper merging" two ordered lists of non-overlapping bills.
-"""
-
-
-def _unify_bill_history(pdf_bills, csv_bills):
-    pdf_bills = _adjust_bill_dates(pdf_bills)
-    final_bills = []
-
-    for pb in pdf_bills:
-        merged_bill = False
-
-        for cb in csv_bills:
-            ol = _overlap(cb, pb)
-            if ol > timedelta(days=20):
-                # It's likely these are the same bill, so merge them.
-                final_bills.append(
-                    cb._replace(
-                        start=pb.start,
-                        end=pb.end,
-                        statement=pb.statement,
-                        attachments=pb.attachments,
-                    )
-                )
-                csv_bills.remove(cb)
-                merged_bill = True
-                break
-
-        if not merged_bill:
-            final_bills.append(pb)
 
     return final_bills
 
@@ -469,9 +169,276 @@ class PortlandBizportalConfiguration(Configuration):
         self.utility_account_id = utility_account_id
 
 
-class Scraper(BaseApiScraper):
+class BillingPage:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def next_page(self) -> None:
+        next_page_button_xpath = "//button[@role='next-page-button']"
+        next_page_button = WebDriverWait(self.driver, 15).until(
+            ec.presence_of_element_located((By.XPATH, next_page_button_xpath))
+        )
+        self.driver.execute_script(
+            "window.scrollTo(0," + str(next_page_button.location["y"]) + ")"
+        )
+        time.sleep(2)
+        log.info("Going to next page")
+        next_page_button.click()
+        # Wait for the table to reappear
+        WebDriverWait(self.driver, 25).until(
+            ec.presence_of_element_located(
+                (By.XPATH, "//p[contains(text(), 'Amount due')]")
+            )
+        )
+
+    def page_numbers(self) -> int:
+        page_string_xpath = "//button[@role='prev-page-button']//following::div[1]"
+        page_string = (
+            WebDriverWait(self.driver, 15)
+            .until(ec.presence_of_element_located((By.XPATH, page_string_xpath)))
+            .text
+        )
+        # For example: "1 of 4"
+        return int(page_string.split()[2])
+
+    def choose_account(self, account_group, bizportal_account_number) -> bool:
+        account_group_button_xpath = (
+            "//p[contains(text(), 'Account group:')]//following::button[1]"
+        )
+        account_group_button = WebDriverWait(self.driver, 15).until(
+            ec.presence_of_element_located((By.XPATH, account_group_button_xpath))
+        )
+        account_group_button.click()
+        account_group_xpath = "//span[contains(text(), '%s')]" % account_group
+        ag_target = WebDriverWait(self.driver, 15).until(
+            ec.presence_of_element_located((By.XPATH, account_group_xpath))
+        )
+        ag_target.click()
+
+        # Choosing the account group causes account info to load.
+        # The capitalization on "Amount due" doesn't match what is shown in the UI
+        WebDriverWait(self.driver, 45).until(
+            ec.presence_of_element_located(
+                (By.XPATH, "//p[contains(text(), 'Amount due')]")
+            )
+        )
+
+        bizportal_account_number_xpath = (
+            "//p[contains(text(), 'Selected account:')]//following::button[1]"
+        )
+        ban_button = WebDriverWait(self.driver, 15).until(
+            ec.presence_of_element_located((By.XPATH, bizportal_account_number_xpath))
+        )
+        ban_button.click()
+        ban_target_xpath = "//span[contains(text(), '%s')]" % bizportal_account_number
+        ban_target = WebDriverWait(self.driver, 15).until(
+            ec.presence_of_element_located((By.XPATH, ban_target_xpath))
+        )
+        # For some reason, it is possible that selenium can select the wrong account number here.
+        # Adding an absolute time sleep step seems to help.
+        time.sleep(2)
+        ban_target.click()
+
+        try:
+            WebDriverWait(self.driver, 25).until(
+                ec.presence_of_element_located(
+                    (By.XPATH, "//p[contains(text(), 'Amount due')]")
+                )
+            )
+            return True
+        except TimeoutException:
+            return False
+
+    def handle_pdfs(
+        self,
+        service_id,
+        start: date,
+        end: date,
+        utility,
+        utility_account_id,
+        first_page=False,
+    ) -> List[BillingDatum]:
+        pdf_links_xpath = "//a[contains(text(), 'View Bill')]"
+
+        download_dir = self.driver.download_dir
+        bill_data: Optional[List[BillingDatum]]
+        bill_data = []
+        # The most recent bill link is a special case.
+        # It does not download directly but opens a new page with a download link.
+        first_link_found = False
+        if not first_page:
+            first_link_found = True
+
+        if not first_link_found:
+            pdf_link_1 = WebDriverWait(self.driver, 15).until(
+                ec.presence_of_element_located((By.XPATH, pdf_links_xpath))
+            )
+
+            log.info("Downloading most recent bill")
+            pdf_link_1.click()
+
+            if (
+                self.driver.current_url
+                == "https://new.portlandgeneral.com/secure/view-bill"
+            ):
+                download_bill_button_xpath = (
+                    "//span[contains(text(), 'Download bill (PDF)')]"
+                )
+                download_bill_button = WebDriverWait(self.driver, 25).until(
+                    ec.element_to_be_clickable((By.XPATH, download_bill_button_xpath))
+                )
+
+                self.driver.execute_script(
+                    "window.scrollTo(0, window.scrollY+(document.body.scrollHeight/2))"
+                )
+                time.sleep(2)
+
+                try:
+                    download_bill_button.click()
+                except ElementClickInterceptedException:
+                    log.error("Could not click")
+                    raise
+
+                filename = self.driver.wait(60).until(
+                    file_exists_in_dir(download_dir, r".*\.pdf$")
+                )
+
+                file_path = os.path.join(download_dir, filename)
+                log.info("Processing most recent bill")
+                single_bill = extract_bill_data(
+                    file_path, service_id, utility, utility_account_id
+                )
+                clear_downloads(self.driver.download_dir)
+
+                bill_data.append(single_bill)
+                log.info("appended a bill")
+
+                bill_history_button_xpath = (
+                    "//span[contains(text(), 'Billing and payment history')]"
+                )
+                bill_history_button = WebDriverWait(self.driver, 25).until(
+                    ec.element_to_be_clickable((By.XPATH, bill_history_button_xpath))
+                )
+                log.info("Returning to bill history page")
+                bill_history_button.click()
+
+        pdf_links = WebDriverWait(self.driver, 25).until(
+            ec.presence_of_all_elements_located((By.XPATH, pdf_links_xpath))
+        )
+        log.info("Found %s pdf's on page", len(pdf_links))
+
+        for link in pdf_links:
+            if not first_link_found:
+                first_link_found = True
+                continue
+            self.driver.execute_script(
+                "window.scrollTo(0," + str(link.location["y"]) + ")"
+            )
+            time.sleep(2)
+            link.click()
+
+            filename = self.driver.wait(90).until(
+                file_exists_in_dir(download_dir, r".*\.pdf$")
+            )
+            file_path = os.path.join(download_dir, filename)
+
+            period_start, period_end = extract_bill_period(file_path)
+
+            # If the bill starts after our end date, skip it
+            if period_start > end:
+                clear_downloads(self.driver.download_dir)
+                continue
+
+            # If the bill ends before our start date, break and return (finding where to end)
+            if period_end < start:
+                break
+
+            if not period_start or not period_end:
+                log.info(
+                    "Could not determine bill period for pdf %s. Skipping" % file_path
+                )
+                continue
+
+            single_bill = extract_bill_data(
+                file_path, service_id, utility, utility_account_id
+            )
+
+            clear_downloads(self.driver.download_dir)
+
+            bill_data.append(single_bill)
+            log.info("appended a bill")
+
+        non_overlapping_bills = _adjust_bill_dates(bill_data)
+        return non_overlapping_bills
+
+
+class AccountPage:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def goto_billing(self) -> BillingPage:
+
+        billing_link_xpath = "//span[contains(text(), 'Billing & Payment History')]"
+        billing_link = WebDriverWait(self.driver, 5).until(
+            ec.presence_of_element_located((By.XPATH, billing_link_xpath))
+        )
+
+        billing_link.click()
+
+        return BillingPage(self.driver)
+
+
+class LoginPage:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def _account_page_load_successful(self) -> bool:
+        try:
+            WebDriverWait(self.driver, 15).until(
+                ec.presence_of_element_located(
+                    (By.XPATH, "//span[contains(text(), 'My Accounts')]")
+                )
+            )
+            return True
+        except TimeoutException:
+            return False
+
+    def login(self, username: str, password: str) -> AccountPage:
+        self.driver.get("https://new.portlandgeneral.com/auth/sign-in")
+
+        # Press escape to close modal
+        ActionChains(self.driver).send_keys(Keys.ESCAPE).perform()
+
+        try:
+            username_box = WebDriverWait(self.driver, 15).until(
+                ec.presence_of_element_located((By.NAME, "email"))
+            )
+        except TimeoutException:
+            raise LoginException("Login page failed to load")
+
+        password_box = WebDriverWait(self.driver, 5).until(
+            ec.presence_of_element_located((By.NAME, "password"))
+        )
+
+        login_button = WebDriverWait(self.driver, 5).until(
+            ec.presence_of_element_located((By.ID, "sign-in-submit-btn"))
+        )
+
+        username_box.send_keys(username)
+        password_box.send_keys(password)
+        login_button.click()
+
+        if not self._account_page_load_successful():
+            raise LoginException("Login failed")
+
+        return AccountPage(self.driver)
+
+
+# class Scraper(BaseApiScraper):
+class Scraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.browser_name = "Chrome"
         self.name = "Portland Bizportal Scraper"
 
     @property
@@ -494,109 +461,6 @@ class Scraper(BaseApiScraper):
     def service_id(self):
         return self._configuration.service_id
 
-    def _pdf_bill_download(self):
-        """Download bills available via PDF --- these will not have demand data."""
-        bills = []
-        sess = Session(self.username, self.password)
-
-        sess.login()
-        metadata = sess.acquire_bill_metadata(
-            self.start_date, self.end_date, self.account_group
-        )
-        orig_metadata_count = len(metadata)
-        log.info("Recovered %d bill metadata records.", orig_metadata_count)
-        log.info(
-            "Found these distinct account numbers. %s",
-            set(md.AccountNumber for md in metadata),
-        )
-
-        metadata = [
-            md for md in metadata if md.AccountNumber == self.bizportal_account_number
-        ]
-        log.info("Found %d relevant bill metadata records.", len(metadata))
-
-        for md in metadata:
-            with NamedTemporaryFile(mode="wb") as pdf_handle:
-                sess.download_bill(API_HOST_PROTOCOL + md.DownloadBillUrl, pdf_handle)
-
-                if not pdf_handle:
-                    log.info("No PDF available for bill metadata %s. Skipping." % md)
-                    continue
-
-                period_start, period_end = extract_bill_period(pdf_handle.name)
-
-                if not period_start or not period_end:
-                    log.info(
-                        "Could not determine bill period for metadata %s. Skipping"
-                        % str(md)
-                    )
-                    continue
-
-                bill_attachment = None
-
-                if config.enabled("S3_BILL_UPLOAD"):
-                    with open(pdf_handle.name, "rb") as f:
-                        key = hash_bill(
-                            self.service_id,
-                            period_start.date(),
-                            period_end.date(),
-                            md.AmountDue,
-                            0,
-                            md.TotalKwh,
-                        )
-                        # no statement date; use end date
-                        bill_attachment = upload_bill_to_s3(
-                            f,
-                            key,
-                            source="portlandgeneral.com",
-                            statement=period_end.date(),
-                            utility=self.utility,
-                            utility_account_id=self.utility_account_id,
-                        )
-
-                bills.append(
-                    BillingDatum(
-                        start=period_start.date(),
-                        end=period_end.date(),
-                        statement=period_end.date(),
-                        cost=md.AmountDue,
-                        used=md.TotalKwh,
-                        peak=0,
-                        attachments=[bill_attachment] if bill_attachment else None,
-                        items=[],  # No line items
-                        utility_code=None,
-                    )
-                )
-
-        sess.logout()
-        bills.sort(key=lambda x: x.start)
-
-        if bills:
-            show_bill_summary(bills, "Bills Obtained via PDF Download Menu")
-        else:
-            msg = (
-                "Processed %s bill metadata records but did not locate a relevant bill."
-            )
-            raise NoRelevantBillsException(msg % orig_metadata_count)
-
-        return bills
-
-    def _csv_bill_download(self):
-        sess = Session(self.username, self.password)
-
-        sess.login()
-        files = sess.download_bill_csvs(
-            self.account_group, self.start_date, self.end_date
-        )
-
-        bills = [b for f in files for b in CsvBillParser.parse(f, self.service_id)]
-        sess.logout()
-
-        bills.sort(key=lambda x: x.start)
-
-        show_bill_summary(bills, title="Bills Obtained via CSV Download")
-        return bills
-
     def _execute(self):
         if self.end_date - self.start_date < timedelta(days=90):
             log.info("Widening bill window to increase odds of finding bill data.")
@@ -604,18 +468,56 @@ class Scraper(BaseApiScraper):
 
         log.info("Final date range: %s - %s", self.start_date, self.end_date)
 
+        login_page = LoginPage(self._driver)
         log.info("=" * 80)
-        log.info("Obtaining bills from PDF-download section of Bizportal site.")
+        log.info("Logging in")
         log.info("=" * 80)
-        pdf_bills = self._pdf_bill_download()
+        account_page = login_page.login(self.username, self.password)
 
-        log.info("=" * 80)
-        log.info("Obtaining bills from CSV-download section of Bizportal site.")
-        log.info("=" * 80)
-        csv_bills = self._csv_bill_download()
+        billing_page = account_page.goto_billing()
 
-        bills = _unify_bill_history(pdf_bills, csv_bills)
-        return Results(bills=bills)
+        found_account = billing_page.choose_account(
+            self.account_group, self.bizportal_account_number
+        )
+        if found_account:
+            log.info(
+                "Loading bills for account group %s and account number %s",
+                self.account_group,
+                self.bizportal_account_number,
+            )
+        else:
+            log.error(
+                "Could not load bills for account group %s and account number %s",
+                self.account_group,
+                self.bizportal_account_number,
+            )
+            raise PortlandBizPortalException
+
+        total_pages = billing_page.page_numbers()
+        log.info("Detected %s pages of bills", total_pages)
+
+        bills: List[BillingDatum] = []
+        first_page = True
+        for page in range(total_pages):
+            more_bills = billing_page.handle_pdfs(
+                self.service_id,
+                self.start_date,
+                self.end_date,
+                self.utility,
+                self.utility_account_id,
+                first_page=first_page,
+            )
+            log.info("more_bills is %s", more_bills)
+            if more_bills:
+                bills.append(more_bills)
+                billing_page.next_page()
+                first_page = False
+            # if handle_pdfs returns None the date range has been covered
+            else:
+                break
+
+        log.info("bills are %s", bills)
+        return Results(bills=bills[0])
 
 
 def datafeed(
