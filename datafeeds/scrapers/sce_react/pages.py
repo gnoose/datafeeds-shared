@@ -1,6 +1,6 @@
 import time
 import collections
-from datetime import date
+from datetime import date, timedelta
 import logging
 from typing import Optional, List, Tuple
 
@@ -444,6 +444,7 @@ class SceServiceAccountDetailModal(PageState):
             current_year = self.driver.find_element(*self.DatePopupYearLocator).text
             for start, end in self._get_visible_date_ranges():
                 results.append((start, end))
+                log.debug(f"billing range {start}-{end}")
 
             prev_button = date_popup.find_element_by_xpath(
                 "// button[@aria-label='Previous year']"
@@ -551,10 +552,7 @@ class SceServiceAccountDetailModal(PageState):
         )
 
     def get_usage_info(self, start_date: date, end_date: date) -> List[SimpleUsageInfo]:
-        """Scrape basic usage data for all billing periods that start in the range specified by the arguments
-
-        Specifically all billing periods such that: start_date <= billing_period_start <= end_date
-        """
+        """Scrape basic usage data for all billing periods that overlap the range specified by the arguments."""
 
         # Ensure we are looking at usage data
         self.select_usage_report()
@@ -574,7 +572,13 @@ class SceServiceAccountDetailModal(PageState):
         # Scrape usage info for applicable billing periods
         results = []
         for start, end in date_ranges:
-            if start_date <= start <= end_date:
+            overlap_days = (
+                min(end_date, (end - timedelta(days=1))) - max(start_date, start)
+            ).days + 1
+            if overlap_days > 0:
+                log.debug(
+                    f"requested dates {start_date} - {end_date} overlap {overlap_days} days with bill {start} - {end}"
+                )
                 self.select_date_range(start, end)
                 usage, cost = self._get_visible_usage_info()
                 results.append(
