@@ -4,6 +4,7 @@ from typing import Optional, Dict, Any
 
 from dateutil.parser import parse as parse_date
 import requests
+from urllib.parse import urlencode
 
 from datafeeds.common.exceptions import ApiError, DataSourceConfigurationError
 from datafeeds.common.util.pagestate.pagestate import PageStateMachine
@@ -133,9 +134,15 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
         start_dt = self.start_date.strftime("%d-%m-%Y")
         end_dt = self.end_date.strftime("%d-%m-%Y")
 
+        params = {
+            "serviceAccountNumber": service_account_num,
+            "serviceAccountAddress": address,
+            "startDate": start_dt,
+            "endDate": end_dt,
+            "fileFormat": "csv",
+        }
         url = (
-            f"https://prodms.dms.sce.com/myaccount/v1/downloadFile?serviceAccountNumber={service_account_num}"
-            f"&serviceAccountAddress={address}&startDate={start_dt}&endDate={end_dt}&fileFormat=csv"
+            f"https://prodms.dms.sce.com/myaccount/v1/downloadFile?{urlencode(params)}"
         )
         log.info(f"getting data from {url}")
         cookies = {}
@@ -172,7 +179,7 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
 
         resp = requests.get(url, headers=headers)
         if resp.status_code >= 400:
-            raise ApiError("error downloading data: returned {resp.status_code}")
+            raise ApiError(f"error downloading data: returned {resp.status_code}")
         data = resp.text
         filename = f"{config.WORKING_DIRECTORY}/download.csv"
         with open(filename, "w") as f:
