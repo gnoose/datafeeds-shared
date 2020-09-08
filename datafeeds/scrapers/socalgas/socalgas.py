@@ -10,7 +10,7 @@ from dateutil import parser as date_parser
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
@@ -32,7 +32,6 @@ from . import green_button_parser as gbparser
 
 
 log = logging.getLogger(__name__)
-
 
 IFRAME_SEL = 'iframe[title="Ways To Save"]'
 
@@ -186,11 +185,6 @@ class SocalGasScraper(BaseWebScraper):
             log.info("\tTerms have been accepted already, skipping")
             return
 
-        # accept_sel = (
-        #     '//div[contains(@id, "content-disclaimer")]'
-        #     + '//button[contains(text(), "Accept")]'
-        # )
-        # log.info('\tClicking "Accept"')
         log.info('\tClicking "Continue"')
         self._driver.click(TERMS_SEL, xpath=True)
 
@@ -305,13 +299,18 @@ class SocalGasScraper(BaseWebScraper):
         log.info("DOWNLOADING GREEN BUTTON")
         self._open_modal()
 
-        start_date, end_date = self._available_history_range()
+        # start_date, end_date = self._available_history_range()
+        end_date = self._available_history_range()
+        start_date = self.start_date
         zip_files = []
 
-        # Download manager does not allow for longer than 367-day periods,
-        # so just download individual yearlong periods
+        # Download manager does not allow for longer than ~1 year periods
+        # and longer time periods seem to cause timeouts during the download.
+        # Compromising here with 90 day periods
+
         while start_date < end_date:
-            current_end = start_date + timedelta(days=364)
+            # Try ~3 month period to avoid timeouts on the download
+            current_end = start_date + timedelta(days=90)
 
             if end_date < current_end:
                 current_end = end_date
@@ -319,6 +318,7 @@ class SocalGasScraper(BaseWebScraper):
             zip_files.append(self._download_zip_file(start_date, current_end))
 
             start_date = current_end + timedelta(days=1)
+            self._open_modal()
 
         log.info("\tDownloaded {} zip files".format(len(zip_files)))
         return self._process_zip_files(zip_files)
@@ -342,19 +342,7 @@ class SocalGasScraper(BaseWebScraper):
 
         log.info("\tEntering dates")
 
-        history_start = get_label_date("//input[@id='FromDate']")
         history_end = get_label_date("//input[@id='ToDate']")
-
-        if history_start > self.start_date:
-            log.info(
-                "\tHistory begins after start date, scraping from date {}".format(
-                    history_start
-                )
-            )
-            start_date = history_start
-        else:
-            log.info("\tHistory includes start date")
-            start_date = self.start_date
 
         if history_end < self.end_date:
             log.info(
@@ -367,7 +355,8 @@ class SocalGasScraper(BaseWebScraper):
             log.info("\tHistory includes end date")
             end_date = self.end_date
 
-        return (start_date, end_date)
+        # return (start_date, end_date)
+        return end_date
 
     def _download_zip_file(self, start_date, end_date):
         # These input fields come pre-filled and 'clear()' does not work
@@ -375,6 +364,7 @@ class SocalGasScraper(BaseWebScraper):
             self._driver.find_element_by_id("FromDate").send_keys(Keys.BACKSPACE)
         for i in range(10):
             self._driver.find_element_by_id("ToDate").send_keys(Keys.BACKSPACE)
+        time.sleep(1)
 
         date_format = "%m/%d/%Y"
         self._driver.find_element_by_id("FromDate").send_keys(
@@ -383,6 +373,31 @@ class SocalGasScraper(BaseWebScraper):
         self._driver.find_element_by_id("ToDate").send_keys(
             end_date.strftime(date_format)
         )
+
+        # If the scraper tries to go farther back than allowed, an error message is displayed
+        # Clicking the calendar button will then set it to the earliest possible good date.
+        minimal_date_error_xpath = (
+            "//p[contains(text(), 'Date should not be before minimal date')]"
+        )
+        try:
+            minimal_date_error = self._driver.find_element_by_xpath(
+                minimal_date_error_xpath
+            )
+
+            if minimal_date_error.is_displayed():
+                log.warning(
+                    "Attempted start date %s before data exists",
+                    start_date.strftime(date_format),
+                )
+                # The start and end calendar buttons have this same identifier,
+                # so we're assuming the 'before' is found first
+                calendar_button_xpath = "//button[@arialabel='change date']"
+                calendar_button = self._driver.find_element_by_xpath(
+                    calendar_button_xpath
+                )
+                calendar_button.click()
+        except NoSuchElementException:
+            pass
 
         export_xpath = "//span[contains(text(), 'Export')]"
         self._driver.find(export_xpath, xpath=True).click()
@@ -407,7 +422,7 @@ class SocalGasScraper(BaseWebScraper):
             + ".zip"
         )
         log.info("\t\tDownloading file {}".format(expected_filename))
-        download_name = self._driver.wait(180).until(
+        download_name = self._driver.wait(300).until(
             file_exists_in_dir(download_dir, expected_filename)
         )
         log.info("\t\tFile downloaded")
@@ -432,7 +447,6 @@ class SocalGasScraper(BaseWebScraper):
             parsed = gbparser.parse("{}/{}".format(self._driver.download_dir, filename))
 
             if "readings" in parsed:
-                log.info("\tReturned data {}".format(parsed))
                 interval_data.update(parsed["readings"])
             else:
                 log.info("\tNo data returned", level="warning")
