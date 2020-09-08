@@ -1,26 +1,26 @@
 import re
 import logging
+from typing import Optional, Dict, Any
 
+from dateutil.parser import parse as parse_date
 import requests
 
-import datafeeds.scrapers.sce_react.pages as sce_pages
-from datafeeds.scrapers.sce_react.energymanager_interval import (
-    SceReactEnergyManagerIntervalScraper,
-)
-
-from typing import Optional, Dict, Any
-from dateutil.parser import parse as parse_date
-
+from datafeeds.common.exceptions import ApiError, DataSourceConfigurationError
 from datafeeds.common.util.pagestate.pagestate import PageStateMachine
 
 from datafeeds.common.timeline import Timeline
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common.support import Configuration
+from datafeeds.common.support import Configuration, Results
 from datafeeds.common.typing import Status
+from datafeeds import config
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
+)
+import datafeeds.scrapers.sce_react.pages as sce_pages
+from datafeeds.scrapers.sce_react.energymanager_interval import (
+    SceReactEnergyManagerIntervalScraper,
 )
 
 log = logging.getLogger(__name__)
@@ -43,6 +43,20 @@ class SceReactEnergyManagerGreenButtonConfiguration(Configuration):
 
 
 class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScraper):
+    def _execute(self):
+        self.interval_data_timeline = None
+        state_machine = self.define_state_machine()
+        final_state = state_machine.run()
+        if final_state == "done":
+            if self.interval_data_timeline:
+                serialized = self.interval_data_timeline.serialize()
+                self.log_readings(serialized)
+                return Results(readings=serialized)
+            return Results(readings={})
+        raise Exception(
+            "The scraper did not reach a finished state. This will require developer attention."
+        )
+
     def define_state_machine(self):
         """Define the flow of this scraper as a state machine"""
 
@@ -106,7 +120,7 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
         else:
             # if not available, build it from the meter
             building = self._configuration.meter.building
-            if building.address2:
+            if building.street2:
                 street_addr = f"{building.street1} {building.street2}"
             else:
                 street_addr = building.street1
@@ -123,10 +137,7 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
             f"https://prodms.dms.sce.com/myaccount/v1/downloadFile?serviceAccountNumber={service_account_num}"
             f"&serviceAccountAddress={address}&startDate={start_dt}&endDate={end_dt}&fileFormat=csv"
         )
-
-        log.debug("url = %s", url)
-        log.debug("cookies = %s", self._driver.get_cookies())
-
+        log.info(f"getting data from {url}")
         cookies = {}
         for cookie in self._driver.get_cookies():
             cookies[cookie["name"]] = cookie["value"]
@@ -159,30 +170,40 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
             "cookie": cookie_str,
         }
 
-        data = requests.get(url, headers=headers)
+        resp = requests.get(url, headers=headers)
+        if resp.status_code >= 400:
+            raise ApiError("error downloading data: returned {resp.status_code}")
+        data = resp.text
+        filename = f"{config.WORKING_DIRECTORY}/download.csv"
+        with open(filename, "w") as f:
+            f.write(data)
+        log.debug(f"wrote downloaded data to {filename}")
 
         # parse out fields starting with date; save start (1st) date and value
         # add to timeline: self.interval_data_timeline.insert(dt, val)
-
         # regex to match line starting with: "date time
-        startswithdate_re = re.compile(r'^"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}')
+        starts_with_date_re = re.compile(r'^"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}')
 
-        for data_line in data.text.splitlines():
-            if not startswithdate_re.match(data_line):
+        lines = data.splitlines()
+        log.info(f"downloaded {len(lines)} lines")
+        if not lines:
+            raise DataSourceConfigurationError(
+                "no data downloaded; may need to set serviceAddress metadata"
+            )
+
+        for data_line in lines:
+            if not starts_with_date_re.match(data_line):
                 continue
 
-            # data_line has a \xa0 space before, remove that
+            # data_line has a \xa0 space before; remove that
             data_line = data_line.replace("\xa0", " ")
-
             #  "2020-08-15 00:00:00 to 2020-08-15 00:15:00","2.800",""
             from_dt_string = data_line.split(" to ")[0].replace('"', "")
             from_dt = parse_date(from_dt_string)
-
             _value = data_line.split('"')[3].replace(
                 ",", ""
             )  # not sure if there can be commas in the value but remove them if there are...
             value = float(_value)
-
             timeline.insert(from_dt, value)
 
         self.interval_data_timeline = timeline

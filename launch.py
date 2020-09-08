@@ -69,6 +69,9 @@ from datafeeds.scrapers.sce_react.basic_billing import (
 from datafeeds.scrapers.sce_react.energymanager_billing import (
     datafeed as sce_react_energymanager_billing,
 )
+from datafeeds.scrapers.sce_react.energymanager_greenbutton import (
+    datafeed as sce_react_energymanager_greenbutton,
+)
 from datafeeds.scrapers.sce_react.energymanager_interval import (
     datafeed as sce_react_energymanager_interval,
 )
@@ -174,8 +177,9 @@ scraper_functions = {
     "sce-green-button": sce_greenbutton,
     "sce-clean-power-alliance-urjanet": cleanpoweralliance,
     "sce-react-basic-billing": sce_react_basic_billing,
-    "sce-react-energymanager-interval": sce_react_energymanager_interval,
     "sce-react-energymanager-billing": sce_react_energymanager_billing,
+    "sce-react-energymanager-greenbutton": sce_react_energymanager_greenbutton,
+    "sce-react-energymanager-interval": sce_react_energymanager_interval,
     "sce-react-energymanager-partial-billing": sce_react_energymanager_billing,
     "scl-meterwatch": scl_meterwatch,
     "sj-water-urjanet": sjwater,
