@@ -1,6 +1,7 @@
 import unittest
+from collections import defaultdict
 from unittest.mock import patch, ANY
-import datetime
+from datetime import datetime, date
 
 import datafeeds.scrapers.sdge_myaccount
 from datafeeds import db
@@ -8,7 +9,11 @@ from datafeeds.common import test_utils
 from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
 from datafeeds.models.account import SnapmeterAccount
 from datafeeds.models.datasource import SnapmeterMeterDataSource
-from datafeeds.scrapers.sdge_myaccount import adjust_for_dst
+from datafeeds.scrapers.sdge_myaccount import (
+    adjust_for_dst,
+    extract_csv_rows,
+    to_raw_reading,
+)
 from datafeeds.models.meter import Meter
 
 
@@ -207,16 +212,63 @@ class SDGEMyAccountTests(unittest.TestCase):
 
         date_fmt = "%m/%d/%Y"
 
-        spring_dst = datetime.datetime.strptime("3/8/2020", date_fmt).date()
+        spring_dst = datetime.strptime("3/8/2020", date_fmt).date()
         spring_dst_readings = adjust_for_dst(spring_dst, readings.copy())
         self.assertEqual([None, None, None, None, 10.24], spring_dst_readings[8:13])
 
-        summer_day = datetime.datetime.strptime("7/20/2020", date_fmt).date()
+        summer_day = datetime.strptime("7/20/2020", date_fmt).date()
         summer_dst_readings = adjust_for_dst(summer_day, readings.copy())
         self.assertEqual(readings[0:13], summer_dst_readings[0:13])
 
-        fall_dst = datetime.datetime.strptime("11/1/2020", date_fmt).date()
+        fall_dst = datetime.strptime("11/1/2020", date_fmt).date()
         fall_dst_readings = adjust_for_dst(fall_dst, readings.copy())
         self.assertEqual(
             [4.8, 5.12, 4.8, 5.12, 0.0, 0.0, 0.0, 0.0, 10.24], fall_dst_readings[4:13]
         )
+
+
+class SDGECSVParsingTests(unittest.TestCase):
+    def test_parse_daily_gas(self):
+        raw_readings = defaultdict(list)
+        for row in extract_csv_rows(
+            "datafeeds/scrapers/tests/fixtures/sdge_daily_gas.zip"
+        ):
+            raw_reading = to_raw_reading(row, "forward", 1)
+            raw_readings[raw_reading.date].append(raw_reading)
+        expected = {
+            1: 78,
+            2: 86,
+            3: 35,
+        }
+        for day in range(1, 13):
+            dt = date(2020, 9, day)
+            self.assertAlmostEqual(
+                expected.get(day, 0), sum([r.value for r in raw_readings[dt]]), 1
+            )
+
+    def test_parse_15_min_electric(self):
+        raw_readings = defaultdict(list)
+        for row in extract_csv_rows(
+            "datafeeds/scrapers/tests/fixtures/sdge_15_min_electric.zip"
+        ):
+            raw_reading = to_raw_reading(row, "forward", 4)
+            raw_readings[raw_reading.date].append(raw_reading)
+        expected = {
+            1: 3438.4,
+            2: 3316.8,
+            3: 3414.4,
+            4: 3750.4,
+            5: 4257.6,
+            6: 5318.4,
+            7: 4486.4,
+            8: 3913.6,
+            9: 3582.4,
+            10: 3683.2,
+            11: 3723.2,
+            12: 4337.6,
+        }
+        for day in range(1, 13):
+            dt = date(2020, 9, day)
+            self.assertAlmostEqual(
+                expected[day], sum([r.value for r in raw_readings[dt]]), 1
+            )

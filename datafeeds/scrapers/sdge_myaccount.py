@@ -11,7 +11,7 @@ from collections import defaultdict, namedtuple
 import logging
 import os
 import re
-from datetime import datetime
+from datetime import datetime, time
 from typing import Optional
 from zipfile import ZipFile
 
@@ -134,11 +134,22 @@ class SdgeMyAccountConfiguration(Configuration):
         service_id (str): Identifies a specific meter
     """
 
-    def __init__(self, account_id: str, service_id: str, direction: str):
+    def __init__(
+        self,
+        account_id: str,
+        service_id: str,
+        direction: str,
+        interval: int,
+        commodity: str,
+    ):
         super().__init__(scrape_readings=True)
         self.account_id = account_id
         self.service_id = service_id
         self.direction = direction
+        if interval == 15 and commodity == "kw":
+            self.adjustment_factor = 4  # adjust 15-minute readings to kWh
+        else:
+            self.adjustment_factor = 1
 
 
 class ExportCsvDialog:
@@ -624,27 +635,31 @@ def extract_csv_rows(download_path):
                         yield CsvRow._make(row)
 
 
-def to_raw_reading(csv_row, direction: str):
-    """Convert a CSV row to an interval reading."""
+def to_raw_reading(csv_row, direction: str, adjustment_factor: int = 1):
+    """Convert a CSV row to an interval reading. Multiply be an adjustment factor if needed.
+
+    Set the adjustment_factor to 4 to convert 15 minute values to kWh
+    """
     reading_date = dateparser.parse(csv_row.Date).date()
-    reading_time = dateparser.parse(csv_row.StartTime).time()
-    kwh_value = float(csv_row.Value)
-    if (
-        direction == "forward"
-        and kwh_value < 0
-        or direction == "reverse"
-        and kwh_value > 0
-    ):
+    if csv_row.StartTime:
+        reading_time = dateparser.parse(csv_row.StartTime).time()
+    else:
+        # for daily meters, the StartTime field is blank
+        reading_time = time(0, 0)
+    value = float(csv_row.Value)
+    if direction == "forward" and value < 0 or direction == "reverse" and value > 0:
         log.info(
             "dropping reading for %s meter on %s %s: invalid sign %s",
             direction,
             reading_date,
             reading_time,
-            kwh_value,
+            value,
         )
         return RawReading(date=reading_date, time=reading_time, value=None)
-    # Multiply the KWH value by 4 to get KW
-    return RawReading(date=reading_date, time=reading_time, value=kwh_value * 4)
+    # For 15 minute electric meters, multiply the KWH value by 4 to get KW
+    return RawReading(
+        date=reading_date, time=reading_time, value=value * adjustment_factor
+    )
 
 
 DST_STARTS = set(
@@ -696,6 +711,10 @@ class SdgeMyAccountScraper(BaseWebScraper):
     @property
     def direction(self):
         return self._configuration.direction
+
+    @property
+    def adjustment_factor(self):
+        return self._configuration.adjustment_factor
 
     def _execute(self):
         try:
@@ -826,7 +845,9 @@ class SdgeMyAccountScraper(BaseWebScraper):
             log.info("Processing downloaded file: {0}".format(download_path))
             # ...then process the downloaded file.
             for row in extract_csv_rows(download_path):
-                raw_reading = to_raw_reading(row, self.direction)
+                raw_reading = to_raw_reading(
+                    row, self.direction, self.adjustment_factor
+                )
                 raw_readings[raw_reading.date].append(raw_reading)
 
             # Clean up any downloaded files
@@ -873,7 +894,11 @@ def datafeed(
     """
 
     configuration = SdgeMyAccountConfiguration(
-        meter.utility_account_id, meter.service_id, meter.direction
+        meter.utility_account_id,
+        meter.service_id,
+        meter.direction,
+        meter.commodity,
+        meter.interval,
     )
     return run_datafeed(
         SdgeMyAccountScraper,
