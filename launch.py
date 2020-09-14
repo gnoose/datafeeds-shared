@@ -11,7 +11,7 @@ from typing import Optional
 import uuid
 import tarfile
 
-import boto
+import boto3
 
 from datafeeds.common.index import index_logs
 
@@ -227,12 +227,13 @@ def archive_run(task_id: str):
         f.add(config.WORKING_DIRECTORY)
 
     try:
-        s3conn = boto.connect_s3()
-        bucket = s3conn.get_bucket(config.ARTIFACT_S3_BUCKET, validate=True)
-
-        s3key = bucket.new_key(task_id)
-        s3key.set_contents_from_filename(tarball)
-
+        client = boto3.client("s3")
+        client.upload_file(
+            tarball,
+            config.ARTIFACT_S3_BUCKET,
+            task_id,
+            ExtraArgs={"StorageClass": "STANDARD_IA"},
+        )
         log.info(
             "Successfully uploaded archive %s to S3 bucket %s.",
             task_id,

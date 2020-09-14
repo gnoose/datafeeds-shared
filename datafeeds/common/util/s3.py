@@ -76,6 +76,7 @@ def upload_file_to_s3(body, bucket, key, file_display_name=None, content_type=No
         ContentDisposition="inline; filename=%s" % file_display_name,
         ContentType=content_type,
         Key=key,
+        StorageClass="STANDARD_IA",
     )
 
     log.debug("Attempted S3 upload to %s %s: %s", bucket, key, resp)
