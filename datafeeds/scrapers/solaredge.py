@@ -215,7 +215,6 @@ class SolarEdgeScraper(BaseApiScraper):
             self.site_url, start_time, end_time, self.install_date
         )
 
-        log.info("meter_readings_available is %s", sess.meter_readings_available)
         if sess.meter_readings_available:
             # Site-level data is not separated by inverter
             meter_ivls = sess.meter_readings(ivls, self.meter_self)
@@ -239,16 +238,14 @@ class SolarEdgeScraper(BaseApiScraper):
 
         # Ops team has reported Solaredge readings are 15 minutes behind PG&E readings. Move readings up to account for this.
         for k, iv in enumerate(relative_ivls[1:]):
-            log.info("k : %s, iv: %s", k, iv)
             if iv.kwh is None or isnan(iv.kwh):
-                current_time = current_time + delta
-                continue
+                # SolarEdge does not report data overnight. The resulting null values crash analytics.
+                final_timeline.insert(current_time, 0.0)
             else:
                 #  Multiply by 4 to get the kW reading we store
                 kw = iv.kwh * 4
                 final_timeline.insert(current_time, kw)
-                # log.info("Approximate time of reading: %s, kW: %s", current_time, kw)
-                current_time = current_time + delta
+            current_time = current_time + delta
         return final_timeline
 
     def _execute(self) -> Results:
