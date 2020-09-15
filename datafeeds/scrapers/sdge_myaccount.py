@@ -92,8 +92,8 @@ CsvRow = namedtuple(
 )
 
 # An interval reading drawn from the SDGE CSV file. Has a date/time, and a
-# value (units, KW). The CSV has units of KWH, so the value here should
-# differ by a factor of 4.
+# value (units, KW). For 15 minute electric meters, the CSV has units of KWH, so the value here should
+# differ by a factor of 4. For daily gas mters, use the value as-is.
 RawReading = namedtuple("RawReading", ["date", "time", "value"])
 
 
@@ -146,6 +146,8 @@ class SdgeMyAccountConfiguration(Configuration):
         self.account_id = account_id
         self.service_id = service_id
         self.direction = direction
+        self.commodity = commodity
+        self.interval = interval
         if interval == 15 and commodity == "kw":
             self.adjustment_factor = 4  # adjust 15-minute readings to kWh
         else:
@@ -681,6 +683,8 @@ DST_ENDS = set(
 
 
 def adjust_for_dst(day, readings):
+    if len(readings) == 1:
+        return readings
     if day in DST_STARTS:
         for i in range(8, 12):
             readings[i] = None
@@ -869,7 +873,8 @@ class SdgeMyAccountScraper(BaseWebScraper):
         for key in sorted(raw_readings.keys()):
             iso_str = key.strftime("%Y-%m-%d")
             sorted_readings = sorted(raw_readings[key], key=lambda r: r.time)
-            if len(sorted_readings) == 96:
+            expected_readings = 1440 / self._configuration.interval
+            if len(sorted_readings) == expected_readings:
                 result[iso_str] = adjust_for_dst(
                     key, [x.value for x in sorted_readings]
                 )
@@ -897,8 +902,8 @@ def datafeed(
         meter.utility_account_id,
         meter.service_id,
         meter.direction,
-        meter.commodity,
         meter.interval,
+        meter.commodity,
     )
     return run_datafeed(
         SdgeMyAccountScraper,
