@@ -3,6 +3,7 @@ from .common import urja_to_json, json_to_urja
 from .constellation import ConstellationTransformer
 from .directenergy import DirectEnergyTransformer
 from .generic_water import GenericWaterBillingPeriod, GenericWaterTransformer
+from .fortworth import FortWorthWaterTransformer
 from .ladwp import LADWPTransformer
 from .ladwp_water import LosAngelesWaterTransformer
 from .nationalgrid import NationalGridTransformer
@@ -31,6 +32,7 @@ __all__ = [
     "AustinTXTransformer",
     "ConstellationTransformer",
     "DirectEnergyTransformer",
+    "FortWorthWaterTransformer",
     "FosterCityWaterTransformer",
     "HecoTransformer",
     "LADWPTransformer",
