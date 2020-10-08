@@ -468,6 +468,7 @@ CREATE TABLE public.partial_bill (
     peak double precision,
     used double precision,
     notes character varying,
+    tariff character varying,
     visible boolean DEFAULT true NOT NULL,
     created timestamp without time zone,
     provider_type public.partial_bill_provider_type_enum,
