@@ -212,7 +212,7 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
                 ",", ""
             )  # not sure if there can be commas in the value but remove them if there are...
             # values are kWh: Usage(Real energy in kilowatt-hours); convert to kW using the meter interval
-            value = float(_value) / to_kw
+            value = float(_value) * to_kw
             timeline.insert(from_dt, value)
 
         self.interval_data_timeline = timeline
