@@ -120,6 +120,32 @@ class TestUrjanetSDGETransformer(test_util.UrjaFixtureText):
         """
         self.sdge_test("1988859666449_input.json", "1988859666449_expected.json")
 
+    def test_sdge_rebill(self):
+        """Include only relevant meters in each billing period.
+
+        For a rebill, a single Account (statement) can include one Meter record for each rebilled period.
+        When creating billing periods from usages, copy over only the Meter record(s) with matching dates.
+
+        Example:
+
+        mysql> select Meter.PK MeterPK, Meter.IntervalStart, Meter.IntervalEnd, sum(ChargeAmount)
+        from Meter, Charge
+        where Meter.AccountFK=7475687 and Meter.PK=Charge.MeterFK
+        group by Meter.PK, Meter.IntervalStart, Meter.IntervalEnd order by IntervalStart;
+        +----------+---------------+-------------+-------------------+
+        | MeterPK  | IntervalStart | IntervalEnd | sum(ChargeAmount) |
+        +----------+---------------+-------------+-------------------+
+        | 24247925 | 2020-02-18    | 2020-03-15  |         1102.8500 |
+        | 24247924 | 2020-03-15    | 2020-04-13  |          575.2700 |
+        | 24247929 | 2020-04-13    | 2020-05-13  |          566.7900 |
+        | 24247928 | 2020-05-13    | 2020-06-14  |          545.5700 |
+        | 24247927 | 2020-06-14    | 2020-07-14  |          587.8700 |
+        | 24247926 | 2020-07-14    | 2020-08-13  |          599.0500 |
+        | 24247923 | 2020-08-13    | 2020-09-14  |          638.3700 |
+        +----------+---------------+-------------+-------------------+
+        """
+        self.sdge_test("2051256442882_input.json", "2051256442882_expected.json")
+
 
 if __name__ == "__main__":
     unittest.main()
