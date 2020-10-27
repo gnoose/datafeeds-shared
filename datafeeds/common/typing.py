@@ -57,7 +57,7 @@ class NoFutureBillsError(Exception):
 class BillingDatumItemsEntry(NamedTuple):
     description: str
     quantity: float
-    rate: float
+    rate: Optional[float]
     total: float
     kind: str  # usually "demand" or "use"
     unit: str  # usually "kW" or "kWh"

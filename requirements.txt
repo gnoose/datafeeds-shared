@@ -1,3 +1,4 @@
+attrs==19.3.0
 addict==2.1.2
 boto3==1.14.60
 deprecation==2.0.7
@@ -9,7 +10,7 @@ jsonschema==3.2.0
 pandas==0.22.0
 pdfminer.six==20181108
 Pillow==4.2.1
-psycopg2-binary==2.8.3
+psycopg2-binary==2.8.4
 pyaes==1.6.1
 python-dateutil==2.8.1
 PyMySQL==0.6.7

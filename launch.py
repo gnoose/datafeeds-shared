@@ -75,6 +75,9 @@ from datafeeds.scrapers.sce_react.energymanager_greenbutton import (
 from datafeeds.scrapers.sce_react.energymanager_interval import (
     datafeed as sce_react_energymanager_interval,
 )
+from datafeeds.scrapers.smd_partial_bills.synchronizer import (
+    datafeed as smd_tnd_partial_billing,
+)
 from datafeeds.smd.tasks import run_authorization_step, run_validation_step
 
 from datafeeds.urjanet.datasource.american import datafeed as american
@@ -184,6 +187,7 @@ scraper_functions = {
     "scl-meterwatch": scl_meterwatch,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
+    "smd-tnd-partial-billing": smd_tnd_partial_billing,
     "smud-energyprofiler-interval": smud_energyprofiler_interval,
     "smud-myaccount-billing": smud_myaccount_billing,
     "stem": stem,
