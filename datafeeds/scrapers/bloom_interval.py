@@ -1,4 +1,5 @@
 import logging
+import time
 from typing import Optional
 
 import xlrd
@@ -67,7 +68,7 @@ class DataExtractPage(CSSSelectorBasePageObject):
     SiteSelect = 'site-fleet-select[name="locations"] .c-btn'
     SiteList = 'site-fleet-select[name="locations"] .c-list'
     MetricSelect = 'angular2-multiselect[name="metrics"] .c-btn'
-    MetricList = 'angular2-multiselect[name="metrics"] .c-list'
+    MetricList = 'angular2-multiselect[name="metrics"] .c-btn'
     IntervalRadio = 'label[for="timeInterval-15min"]'
     CustomRadio = 'label[for="timescale-custom"]'
     FromDate = 'input[name="dpFromDate"]'
@@ -78,6 +79,8 @@ class DataExtractPage(CSSSelectorBasePageObject):
     def find_text_for_checkbox(self, text: str):
         label = self._driver.find("//*[contains(text(), '{}')]".format(text), True)
         if label:
+            time.sleep(3)
+            log.info("Clicking %s", text)
             label.click()
         else:
             raise ApiError("Label containing text '{}' not found".format(text))
@@ -93,9 +96,8 @@ class DataExtractPage(CSSSelectorBasePageObject):
     def handle_multiselect(self, select: str, select_list: str, text: str):
         self.find_element(self.CardHeader).click()
         self.find_element(select).click()
+        log.info("Select text %s", text)
         self.find_text_for_checkbox(text)
-        # Hide popover
-        self.find_element(select_list).click()
 
     def handle_radio_buttons(self, radio_button: str):
         self.find_element(radio_button).click()
@@ -116,7 +118,19 @@ class ExcelParser:
         self.xl_workbook = xlrd.open_workbook(self.file_path)
         self.xl_sheet = self.xl_workbook.sheet_by_index(sheet_index)
         self.date_col = 1
-        self.value_col = 2
+        self.value_col = 5
+        self.check_energy_column()
+
+    def check_energy_column(self):
+        log.info("Confirming energy output is column %s", self.value_col)
+        output_string = "text:'Electricity Out'"
+
+        for cell in range(len(self.xl_sheet.col(self.value_col))):
+            if str(self.xl_sheet.col(self.value_col)[cell]) == output_string:
+                log.info("Electricity output is column %s", self.value_col)
+                return
+        log.error("Did not find electricity output in column %s", self.value_col)
+        raise Exception
 
     def find_starting_date(self):
         # Find the first date row where interval dates start.
@@ -230,13 +244,18 @@ class BloomScraper(BaseWebScraper):
         extract_page.handle_multiselect(
             extract_page.SiteSelect, extract_page.SiteList, self.site_name
         )
+
         # Metric multi-select
+        # The site seems to have changed at some point - all options are now enabled
+        # However, the scraper fails without this step
         extract_page.handle_multiselect(
             extract_page.MetricSelect,
             extract_page.MetricList,
             "Fuel Cell Energy Generation",
         )
+
         extract_page.handle_radio_buttons(extract_page.IntervalRadio)
+
         extract_page.handle_radio_buttons(extract_page.CustomRadio)
 
         for sub_range in date_range.split_iter(delta=interval_size):
@@ -249,6 +268,7 @@ class BloomScraper(BaseWebScraper):
             excel_filename = self.download_file("xlsx")
 
             self._process_excel_file(excel_filename, sub_range.start_date)
+            time.sleep(3)
 
             log.info("Cleaning up download.")
             clear_downloads(self._driver.download_dir)
