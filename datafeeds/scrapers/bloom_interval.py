@@ -54,14 +54,14 @@ class LoginPage(CSSSelectorBasePageObject):
 
 class LandingPage(CSSSelectorBasePageObject):
     ReportTabSelector = ".sidenav ul li:nth-child(2) a.nav-dropdown-toggle"
-    DataTabSelector = ".sidenav li.open ul.nav-dropdown-items li:nth-child(2)"
+    DataTabSelectorXpath = "//span[text()='Data Extract']"
 
     def go_to_data_extract(self):
         self.find_element(self.ReportTabSelector).click()
         self._driver.wait().until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, self.DataTabSelector))
+            EC.element_to_be_clickable((By.XPATH, self.DataTabSelectorXpath))
         )
-        self.find_element(self.DataTabSelector).click()
+        self._driver.find_element_by_xpath(self.DataTabSelectorXpath).click()
 
 
 class DataExtractPage(CSSSelectorBasePageObject):
