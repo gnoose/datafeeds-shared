@@ -2,7 +2,7 @@ import logging
 import collections
 import time
 
-from typing import Optional
+from typing import Optional, List
 
 import datafeeds.scrapers.sce_react.pages as sce_pages
 import datafeeds.scrapers.sce_react.errors as sce_errors
@@ -22,6 +22,7 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+from datafeeds.models.utility_service import GENERATION_ONLY
 
 log = logging.getLogger(__name__)
 
@@ -33,9 +34,21 @@ MergedBillData = collections.namedtuple(
 
 
 class SceReactBasicBillingConfiguration(Configuration):
-    def __init__(self, service_id: str):
-        super().__init__(scrape_bills=True, scrape_readings=False)
+    def __init__(
+        self,
+        service_id: str,
+        gen_service_id: str,
+        scrape_bills: bool,
+        scrape_partial_bills: bool,
+    ):
+        super().__init__(
+            scrape_bills=scrape_bills,
+            scrape_partial_bills=scrape_partial_bills,
+            partial_type=GENERATION_ONLY,
+            scrape_readings=False,
+        )
         self.service_id = service_id
+        self.gen_service_id = gen_service_id
 
 
 class SceReactBasicBillingScraper(BaseWebScraper):
@@ -44,10 +57,19 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         self.browser_name = "Chrome"
         self.name = "SCE React Basic Billing"
         self.billing_history = []
+        self.partial_billing_history = []
 
     @property
     def service_id(self):
         return self._configuration.service_id
+
+    @property
+    def gen_service_id(self):
+        return self._configuration.gen_service_id
+
+    @property
+    def account_id(self):
+        return self._configuration.account_id
 
     def define_state_machine(self):
         """Define the flow of this scraper as a state machine"""
@@ -122,13 +144,54 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             transitions=["view_usage_dialog"],
         )
 
-        # This state is responsible for gathering billing data for the desired SAID.
-        state_machine.add_state(
-            name="view_usage_dialog",
-            page=sce_pages.SceServiceAccountDetailModal(self._driver),
-            action=self.view_usage_action,
-            transitions=["done"],
-        )
+        if self._configuration.scrape_partial_bills:
+            # This state is responsible for gathering billing data for the desired SAID.
+            state_machine.add_state(
+                name="view_usage_dialog",
+                page=sce_pages.SceServiceAccountDetailModal(self._driver),
+                action=self.view_usage_action,
+                transitions=["multi_account_landing"],
+            )
+            # Search for generation SAID
+            state_machine.add_state(
+                name="multi_account_landing",
+                page=sce_pages.SceMultiAccountLandingPage(
+                    self._drive, said=self.gen_service_id
+                ),
+                action=self.multi_account_landing_page_action,
+                transitions=["search_success", "search_failure"],
+            )
+
+            # If the search fails, we end up here, and the scraper fails.
+            state_machine.add_state(
+                name="search_failure",
+                page=sce_pages.SceAccountSearchFailure(self._driver),
+                action=self.search_failure_action,
+                transitions=[],
+            )
+
+            # If the search succeeds, we open the billing information for the found service id.
+            state_machine.add_state(
+                name="search_success",
+                page=sce_pages.SceAccountSearchSuccess(self._driver),
+                action=self.search_success_action,
+                transitions=["view_generation_cost_dialog"],
+            )
+            # Get generation costs and combine with data from other bill data.
+            state_machine.add_state(
+                name="view_generation_cost_dialog",
+                page=sce_pages.SceServiceAccountDetailModal(self._driver),
+                action=self.view_generation_usage_action,
+                transitions=["done"],
+            )
+        else:
+            # This state is responsible for gathering billing data for the desired SAID.
+            state_machine.add_state(
+                name="view_usage_dialog",
+                page=sce_pages.SceServiceAccountDetailModal(self._driver),
+                action=self.view_usage_action,
+                transitions=["done"],
+            )
 
         # And that's the end
         state_machine.add_state("done")
@@ -144,7 +207,10 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         state_machine = self.define_state_machine()
         final_state = state_machine.run()
         if final_state == "done":
-            return Results(bills=self.billing_history)
+            if self.scrape_partial_bills:
+                return Results(bills=self.partial_billing_history)
+            else:
+                return Results(bills=self.billing_history)
         raise Exception(
             "The scraper did not reach a finished state, this will require developer attention."
         )
@@ -171,10 +237,10 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         page.open_usage_info()
 
     def multi_account_landing_page_action(
-        self, page: sce_pages.SceMultiAccountLandingPage
+        self, page: sce_pages.SceMultiAccountLandingPage, said: Optional[str] = None
     ):
         sce_pages.detect_and_close_survey(self._driver)
-        page.search_by_service_id(self.service_id)
+        page.search_by_service_id(said or self.service_id)
         time.sleep(5)
         WebDriverWait(
             self._driver,
@@ -216,22 +282,40 @@ class SceReactBasicBillingScraper(BaseWebScraper):
 
         billing_objects = []
         for item in merged:
-            billing_objects.append(
-                BillingDatum(
-                    start=item.start_date,
-                    end=item.end_date - timedelta(days=1),
-                    # no separate statement date
-                    statement=item.end_date - timedelta(days=1),
-                    cost=item.usage_info.cost,
-                    used=item.usage_info.usage if item.usage_info else None,
-                    peak=item.demand_info.demand if item.demand_info else None,
-                    items=None,
-                    attachments=None,
-                    utility_code=None,
-                )
+            datum = BillingDatum(
+                start=item.start_date,
+                end=item.end_date - timedelta(days=1),
+                # no separate statement date
+                statement=item.end_date - timedelta(days=1),
+                cost=item.usage_info.cost,
+                used=item.usage_info.usage if item.usage_info else None,
+                peak=item.demand_info.demand if item.demand_info else None,
+                items=None,
+                attachments=None,
+                utility_code=None,
             )
-
+            log.debug("created %s", datum)
+            billing_objects.append(datum)
+        # TODO: close modal
+        # #graphHeader button with aria-label="close dialog"
         self.billing_history = billing_objects
+
+    def view_generation_usage_action(
+        self, page: sce_pages.SceServiceAccountDetailModal
+    ):
+        page.select_generation_usage_report()
+        billing_objects: List[BillingDatum] = []
+        """
+        # TODO:
+        - Extract from table MeterReadDate	Number of Days	Charges this period
+        - Save in a dict by MeterReadDate
+        - Close modal
+        - for each BillingDatum in self.billing_history
+          - find object with MeterReadDate = end - 1 day
+          - if found, add a new BillingDatum to billing_objects
+            - copy fields, but set cost to Charges this period
+        """
+        self.partial_billing_history = billing_objects
 
 
 def datafeed(
@@ -241,7 +325,12 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = SceReactBasicBillingConfiguration(service_id=meter.service_id)
+    configuration = SceReactBasicBillingConfiguration(
+        service_id=meter.service_id,
+        gen_service_id=meter.utility_service.gen_service_id,
+        scrape_bills="billing" in datasource.source_types,
+        scrape_partial_bills="partial-billing" in datasource.source_types,
+    )
 
     return run_datafeed(
         SceReactBasicBillingScraper,

@@ -282,6 +282,10 @@ class SceMultiAccountLandingPage(PageState):
         actions.send_keys_to_element(account_search_field, Keys.ENTER)
         actions.perform()
 
+    def search_by_account_id(self, account_id):
+        # TODO: enter the utility account id into the search box (similar to search_by_service_id)
+        pass
+
 
 class SceAccountSearchFailure(PageState):
     """Models the case where a SAID search fails"""
@@ -371,6 +375,10 @@ class SceServiceAccountDetailModal(PageState):
     def select_usage_report(self):
         self._select_report("View Usage", (By.ID, "ViewUsage"))
 
+    def select_generation_report(self):
+        # click link with text "Billed Generation Charge"
+        pass
+
     def select_demand_report(self):
         self._select_report("View Demand info", (By.ID, "ViewDemand"))
 
@@ -444,7 +452,6 @@ class SceServiceAccountDetailModal(PageState):
             current_year = self.driver.find_element(*self.DatePopupYearLocator).text
             for start, end in self._get_visible_date_ranges():
                 results.append((start, end))
-                log.debug(f"billing range {start}-{end}")
 
             prev_button = date_popup.find_element_by_xpath(
                 "// button[@aria-label='Previous year']"
