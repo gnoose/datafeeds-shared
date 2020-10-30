@@ -198,6 +198,7 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
                 "no data downloaded; may need to set serviceAddress metadata"
             )
 
+        to_kw = 60 / self._configuration.meter.interval
         for data_line in lines:
             if not starts_with_date_re.match(data_line):
                 continue
@@ -210,7 +211,8 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
             _value = data_line.split('"')[3].replace(
                 ",", ""
             )  # not sure if there can be commas in the value but remove them if there are...
-            value = float(_value)
+            # values are kWh: Usage(Real energy in kilowatt-hours); convert to kW using the meter interval
+            value = float(_value) * to_kw
             timeline.insert(from_dt, value)
 
         self.interval_data_timeline = timeline

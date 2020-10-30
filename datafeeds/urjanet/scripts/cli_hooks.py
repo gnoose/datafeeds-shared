@@ -84,6 +84,7 @@ from datafeeds.urjanet.transformer import (
     TriCountyTransformer,
 )
 from datafeeds.urjanet.transformer.directenergy import DirectEnergyTransformer
+from datafeeds.urjanet.transformer.fortworth import FortWorthWaterTransformer
 
 _cli_hook_registry = {}
 
@@ -498,10 +499,6 @@ class WataugaCli(DatasourceCli):
         return WataugaTransformer()
 
 
-def get_cli_hooks() -> Dict[str, Type[DatasourceCli]]:
-    return _cli_hook_registry
-
-
 class IrvineRanchWaterCli(DatasourceCli):
     __cli_key__ = "irvineranch_water"
 
@@ -612,3 +609,22 @@ class HecoCli(DatasourceCli):
 
     def make_transformer(self):
         return HecoTransformer()
+
+
+class ForthWorthCli(DatasourceCli):
+    __cli_key__ = "fort-worth"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+
+    def make_datasource(self, conn, args):
+        return self.setup_datasource(
+            FortWorthWaterDatasource(self.utility(), args.account_number), conn
+        )
+
+    def make_transformer(self):
+        return FortWorthWaterTransformer()
+
+
+def get_cli_hooks() -> Dict[str, Type[DatasourceCli]]:
+    return _cli_hook_registry

@@ -43,10 +43,6 @@ class CSVParser:
         self.filepath = filepath
 
     @staticmethod
-    def kwh_to_kw(energy: str) -> float:
-        return float(energy) * 4
-
-    @staticmethod
     def csv_str_to_date(datestr: str) -> datetime:
         date_format = "%Y-%m-%d %H:%M:%S"
         return datetime.strptime(datestr, date_format)
@@ -70,7 +66,7 @@ class CSVParser:
                     log.warning("Column 1 of row is empty: %s", row)
                     break
                 dt = self.csv_str_to_date(row[0])
-                kw = self.kwh_to_kw(row[1])
+                kw = float(row[1])
                 # at night this can give very small values < 0
                 if kw < 0:
                     kw = 0

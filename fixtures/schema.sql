@@ -2,11 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.4.21
--- Dumped by pg_dump version 11.4
+-- Dumped from database version 9.6.12
+-- Dumped by pg_dump version 12.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -14,8 +15,9 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 
+
 --
--- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner:
+-- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
 --
 
 CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
@@ -29,7 +31,7 @@ COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQ
 
 
 --
--- Name: postgis; Type: EXTENSION; Schema: -; Owner:
+-- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
 --
 
 CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
@@ -85,6 +87,49 @@ CREATE TYPE public.audit_verdict_enum AS ENUM (
 ALTER TYPE public.audit_verdict_enum OWNER TO gridium;
 
 --
+-- Name: aws_batch_job_state; Type: TYPE; Schema: public; Owner: gridium
+--
+
+CREATE TYPE public.aws_batch_job_state AS ENUM (
+    'lost',
+    'submitted',
+    'pending',
+    'runnable',
+    'starting',
+    'running',
+    'succeeded',
+    'failed'
+);
+
+
+ALTER TYPE public.aws_batch_job_state OWNER TO gridium;
+
+--
+-- Name: covid_baseline_prediction_type; Type: TYPE; Schema: public; Owner: gridium
+--
+
+CREATE TYPE public.covid_baseline_prediction_type AS ENUM (
+    'history',
+    'forecast'
+);
+
+
+ALTER TYPE public.covid_baseline_prediction_type OWNER TO gridium;
+
+--
+-- Name: datafeeds_feed_config_queue_enum; Type: TYPE; Schema: public; Owner: gridium
+--
+
+CREATE TYPE public.datafeeds_feed_config_queue_enum AS ENUM (
+    'datafeeds-high',
+    'datafeeds-medium',
+    'datafeeds-low'
+);
+
+
+ALTER TYPE public.datafeeds_feed_config_queue_enum OWNER TO gridium;
+
+--
 -- Name: decomp_parts; Type: TYPE; Schema: public; Owner: gridium
 --
 
@@ -124,12 +169,6 @@ CREATE TYPE public.flow_direction_enum AS ENUM (
 
 ALTER TYPE public.flow_direction_enum OWNER TO gridium;
 
-
-CREATE TYPE public.provider_type_enum AS ENUM (
-    'utility-bundled',
-    'tnd-only'
-);
-
 --
 -- Name: partial_bill_provider_type_enum; Type: TYPE; Schema: public; Owner: gridium
 --
@@ -140,6 +179,8 @@ CREATE TYPE public.partial_bill_provider_type_enum AS ENUM (
     'utility-bundled'
 );
 
+
+ALTER TYPE public.partial_bill_provider_type_enum OWNER TO gridium;
 
 --
 -- Name: provider_enum; Type: TYPE; Schema: public; Owner: gridium
@@ -152,6 +193,37 @@ CREATE TYPE public.provider_enum AS ENUM (
 
 
 ALTER TYPE public.provider_enum OWNER TO gridium;
+
+--
+-- Name: provider_type_enum; Type: TYPE; Schema: public; Owner: gridium
+--
+
+CREATE TYPE public.provider_type_enum AS ENUM (
+    'utility-bundled',
+    'tnd-only'
+);
+
+
+ALTER TYPE public.provider_type_enum OWNER TO gridium;
+
+--
+-- Name: screen_failure; Type: TYPE; Schema: public; Owner: gridium
+--
+
+CREATE TYPE public.screen_failure AS ENUM (
+    'submeter',
+    'no_comparison',
+    'low_neg_cost',
+    'low_neg_use',
+    'large_cost_diff',
+    'extreme_blended_rate',
+    'missing_cost',
+    'missing_use',
+    'interval_gap'
+);
+
+
+ALTER TYPE public.screen_failure OWNER TO gridium;
 
 --
 -- Name: snapmeter_provisioning_workflow_state; Type: TYPE; Schema: public; Owner: gridium
@@ -178,6 +250,20 @@ CREATE TYPE public.snapmeter_provisioning_workflow_state AS ENUM (
 ALTER TYPE public.snapmeter_provisioning_workflow_state OWNER TO gridium;
 
 --
+-- Name: variance_calc_method; Type: TYPE; Schema: public; Owner: gridium
+--
+
+CREATE TYPE public.variance_calc_method AS ENUM (
+    'full',
+    'non_rate_engine',
+    'total_use',
+    'cost_only'
+);
+
+
+ALTER TYPE public.variance_calc_method OWNER TO gridium;
+
+--
 -- Name: workflow_state_enum; Type: TYPE; Schema: public; Owner: gridium
 --
 
@@ -190,10 +276,6 @@ CREATE TYPE public.workflow_state_enum AS ENUM (
 
 
 ALTER TYPE public.workflow_state_enum OWNER TO gridium;
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
 
 --
 -- Name: access_token; Type: TABLE; Schema: public; Owner: gridium
@@ -274,6 +356,23 @@ CREATE TABLE public.analytic_run (
 
 
 ALTER TABLE public.analytic_run OWNER TO gridium;
+
+--
+-- Name: analytica_job; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.analytica_job (
+    uuid character varying NOT NULL,
+    kind character varying NOT NULL,
+    command character varying NOT NULL,
+    queue character varying NOT NULL,
+    status public.aws_batch_job_state NOT NULL,
+    created timestamp without time zone DEFAULT now() NOT NULL,
+    updated timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE public.analytica_job OWNER TO gridium;
 
 --
 -- Name: archive_fragment; Type: TABLE; Schema: public; Owner: gridium
@@ -435,11 +534,25 @@ CREATE TABLE public.balance_point_summary (
 ALTER TABLE public.balance_point_summary OWNER TO gridium;
 
 --
+-- Name: bill_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.bill_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bill_oid_seq OWNER TO gridium;
+
+--
 -- Name: bill; Type: TABLE; Schema: public; Owner: gridium
 --
 
 CREATE TABLE public.bill (
-    oid bigint NOT NULL,
+    oid bigint DEFAULT nextval('public.bill_oid_seq'::regclass) NOT NULL,
     attachments json,
     closing date,
     cost double precision,
@@ -451,44 +564,43 @@ CREATE TABLE public.bill (
     service bigint,
     used double precision,
     notes character varying,
-    visible boolean DEFAULT true NOT NULL
-);
-
-
-CREATE TABLE public.partial_bill (
-    oid bigint NOT NULL,
-    service bigint NOT NULL,
-    attachments json,
-    closing date,
-    cost double precision,
-    initial date,
-    items json,
-    manual boolean,
-    modified timestamp without time zone,
-    peak double precision,
-    used double precision,
-    notes character varying,
     visible boolean DEFAULT true NOT NULL,
+    has_all_charges boolean,
     created timestamp without time zone,
-    provider_type public.partial_bill_provider_type_enum,
-    superseded_by bigint,
-    service_id character varying(128),
-    utility_code character varying,
-    utility character varying(128),
-    utility_account_id character varying
+    source character varying
 );
 
---
--- Name: partial_bill; Type: TABLE; Schema: public; Owner: gridium
---
 
-ALTER TABLE public.partial_bill OWNER TO gridium;
+ALTER TABLE public.bill OWNER TO gridium;
 
 --
--- Name: partial_bill_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+-- Name: bill_accrual_calculation; Type: TABLE; Schema: public; Owner: gridium
 --
 
-CREATE SEQUENCE public.partial_bill_oid_seq
+CREATE TABLE public.bill_accrual_calculation (
+    oid bigint NOT NULL,
+    meter bigint,
+    initial date NOT NULL,
+    closing date NOT NULL,
+    total double precision NOT NULL,
+    peak double precision NOT NULL,
+    use double precision NOT NULL,
+    line_items jsonb,
+    comment character varying,
+    history_available double precision,
+    expected_use_available double precision,
+    projected_use_available double precision,
+    created timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.bill_accrual_calculation OWNER TO gridium;
+
+--
+-- Name: bill_accrual_calculation_new_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.bill_accrual_calculation_new_oid_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -496,16 +608,14 @@ CREATE SEQUENCE public.partial_bill_oid_seq
     CACHE 1;
 
 
-ALTER TABLE public.partial_bill_oid_seq OWNER TO gridium;
+ALTER TABLE public.bill_accrual_calculation_new_oid_seq OWNER TO gridium;
 
 --
--- Name: partial_bill_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+-- Name: bill_accrual_calculation_new_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
 --
 
-ALTER SEQUENCE public.partial_bill_oid_seq OWNED BY public.partial_bill.oid;
+ALTER SEQUENCE public.bill_accrual_calculation_new_oid_seq OWNED BY public.bill_accrual_calculation.oid;
 
-
-ALTER TABLE public.bill OWNER TO gridium;
 
 --
 -- Name: bill_audit; Type: TABLE; Schema: public; Owner: gridium
@@ -519,7 +629,13 @@ CREATE TABLE public.bill_audit (
     audit_errors json,
     bill bigint NOT NULL,
     latest_audit timestamp without time zone,
-    modified timestamp without time zone
+    modified timestamp without time zone,
+    account_hex character varying,
+    account_name character varying,
+    bill_initial date,
+    bill_service bigint,
+    building_name character varying,
+    utility character varying
 );
 
 
@@ -584,13 +700,97 @@ ALTER SEQUENCE public.bill_audit_oid_seq OWNED BY public.bill_audit.oid;
 
 
 --
+-- Name: bill_document; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.bill_document (
+    oid bigint NOT NULL,
+    s3_key character varying NOT NULL,
+    doc_format character varying NOT NULL,
+    utility character varying NOT NULL,
+    utility_account_id character varying NOT NULL,
+    gen_utility character varying,
+    gen_utility_account_id character varying,
+    statement_date date NOT NULL,
+    source character varying,
+    created timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.bill_document OWNER TO gridium;
+
+--
+-- Name: bill_document_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.bill_document_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bill_document_oid_seq OWNER TO gridium;
+
+--
+-- Name: bill_document_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.bill_document_oid_seq OWNED BY public.bill_document.oid;
+
+
+--
+-- Name: bill_old; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.bill_old (
+    oid bigint NOT NULL,
+    attachments json,
+    closing date,
+    cost double precision,
+    initial date,
+    items json,
+    manual boolean,
+    modified timestamp without time zone,
+    peak double precision,
+    service bigint,
+    used double precision,
+    audit_accepted boolean DEFAULT false NOT NULL,
+    audit_complete boolean DEFAULT false,
+    audit_notes json,
+    audit_successful boolean DEFAULT false,
+    audit_suppressed boolean,
+    audit_timestamp timestamp without time zone,
+    notes character varying
+);
+
+
+ALTER TABLE public.bill_old OWNER TO gridium;
+
+--
+-- Name: bill_summary_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.bill_summary_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bill_summary_oid_seq OWNER TO gridium;
+
+--
 -- Name: bill_summary; Type: TABLE; Schema: public; Owner: gridium
 --
 
 CREATE TABLE public.bill_summary (
-    oid bigint,
+    oid bigint DEFAULT nextval('public.bill_summary_oid_seq'::regclass) NOT NULL,
     meter bigint,
-    summary json
+    summary json,
+    created timestamp without time zone DEFAULT now()
 );
 
 
@@ -644,7 +844,8 @@ CREATE TABLE public.budget_aggregation (
     total_days integer,
     total_kwh double precision,
     total_data_points integer,
-    imputed_data_points integer
+    imputed_data_points integer,
+    bill_used double precision
 );
 
 
@@ -669,7 +870,8 @@ CREATE TABLE public.building (
     street2 character varying(128),
     city character varying(128),
     state character varying(2),
-    zip character varying(10)
+    zip character varying(10),
+    country character varying DEFAULT 'US'::character varying
 );
 
 
@@ -738,6 +940,20 @@ CREATE TABLE public.c3p0 (
 ALTER TABLE public.c3p0 OWNER TO gridium;
 
 --
+-- Name: calculated_billing_cycle; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.calculated_billing_cycle (
+    oid bigint NOT NULL,
+    closing date,
+    initial date,
+    meter bigint
+);
+
+
+ALTER TABLE public.calculated_billing_cycle OWNER TO gridium;
+
+--
 -- Name: ce_account; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -767,6 +983,36 @@ CREATE TABLE public.ce_orphan_meter_building (
 
 
 ALTER TABLE public.ce_orphan_meter_building OWNER TO gridium;
+
+--
+-- Name: celery_taskmeta; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.celery_taskmeta (
+    id integer NOT NULL,
+    task_id character varying(255),
+    status character varying(50),
+    result bytea,
+    date_done timestamp without time zone,
+    traceback text
+);
+
+
+ALTER TABLE public.celery_taskmeta OWNER TO gridium;
+
+--
+-- Name: celery_tasksetmeta; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.celery_tasksetmeta (
+    id integer NOT NULL,
+    taskset_id character varying(255),
+    result bytea,
+    date_done timestamp without time zone
+);
+
+
+ALTER TABLE public.celery_tasksetmeta OWNER TO gridium;
 
 --
 -- Name: cluster_data; Type: TABLE; Schema: public; Owner: gridium
@@ -836,6 +1082,43 @@ CREATE TABLE public.configuration_backup (
 ALTER TABLE public.configuration_backup OWNER TO gridium;
 
 --
+-- Name: covid_baseline_prediction; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.covid_baseline_prediction (
+    oid bigint NOT NULL,
+    meter bigint NOT NULL,
+    occurred date NOT NULL,
+    predictions json NOT NULL,
+    prediction_type public.covid_baseline_prediction_type NOT NULL,
+    created date DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE public.covid_baseline_prediction OWNER TO gridium;
+
+--
+-- Name: covid_baseline_prediction_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.covid_baseline_prediction_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.covid_baseline_prediction_oid_seq OWNER TO gridium;
+
+--
+-- Name: covid_baseline_prediction_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.covid_baseline_prediction_oid_seq OWNED BY public.covid_baseline_prediction.oid;
+
+
+--
 -- Name: curtailment_peak; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -865,6 +1148,122 @@ CREATE TABLE public.curtailment_recommendation (
 
 
 ALTER TABLE public.curtailment_recommendation OWNER TO gridium;
+
+--
+-- Name: curtailment_recommendation_v2; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.curtailment_recommendation_v2 (
+    oid bigint NOT NULL,
+    meter bigint NOT NULL,
+    demand_target double precision,
+    estimated_savings_dollars double precision,
+    start_time timestamp without time zone,
+    stop_time timestamp without time zone,
+    periods jsonb,
+    charge_optimized character varying,
+    other_charges character varying[],
+    expired boolean,
+    created timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.curtailment_recommendation_v2 OWNER TO gridium;
+
+--
+-- Name: curtailment_recommendation_v2_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.curtailment_recommendation_v2_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.curtailment_recommendation_v2_oid_seq OWNER TO gridium;
+
+--
+-- Name: curtailment_recommendation_v2_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.curtailment_recommendation_v2_oid_seq OWNED BY public.curtailment_recommendation_v2.oid;
+
+
+--
+-- Name: custom_utility_contract; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.custom_utility_contract (
+    oid bigint NOT NULL,
+    account bigint NOT NULL,
+    utility character varying NOT NULL,
+    template bigint NOT NULL,
+    name character varying NOT NULL,
+    description character varying,
+    start_date date NOT NULL,
+    end_date date NOT NULL,
+    rate_values jsonb NOT NULL
+);
+
+
+ALTER TABLE public.custom_utility_contract OWNER TO gridium;
+
+--
+-- Name: custom_utility_contract_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.custom_utility_contract_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.custom_utility_contract_oid_seq OWNER TO gridium;
+
+--
+-- Name: custom_utility_contract_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.custom_utility_contract_oid_seq OWNED BY public.custom_utility_contract.oid;
+
+
+--
+-- Name: custom_utility_contract_template; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.custom_utility_contract_template (
+    oid bigint NOT NULL,
+    name character varying NOT NULL,
+    template jsonb NOT NULL
+);
+
+
+ALTER TABLE public.custom_utility_contract_template OWNER TO gridium;
+
+--
+-- Name: custom_utility_contract_template_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.custom_utility_contract_template_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.custom_utility_contract_template_oid_seq OWNER TO gridium;
+
+--
+-- Name: custom_utility_contract_template_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.custom_utility_contract_template_oid_seq OWNED BY public.custom_utility_contract_template.oid;
+
 
 --
 -- Name: daily_budget_forecast; Type: TABLE; Schema: public; Owner: gridium
@@ -961,6 +1360,78 @@ CREATE TABLE public.database_archive (
 ALTER TABLE public.database_archive OWNER TO gridium;
 
 --
+-- Name: datafeeds_feed_config; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.datafeeds_feed_config (
+    name character varying NOT NULL,
+    enabled boolean NOT NULL,
+    sequential boolean DEFAULT false NOT NULL,
+    weekday integer,
+    utility_account_scope boolean NOT NULL,
+    queue public.datafeeds_feed_config_queue_enum DEFAULT 'datafeeds-medium'::public.datafeeds_feed_config_queue_enum NOT NULL,
+    CONSTRAINT weekdays CHECK (((weekday >= 0) AND (weekday <= 6)))
+);
+
+
+ALTER TABLE public.datafeeds_feed_config OWNER TO gridium;
+
+--
+-- Name: datafeeds_job; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.datafeeds_job (
+    uuid character varying NOT NULL,
+    source bigint,
+    command character varying NOT NULL,
+    queue character varying NOT NULL,
+    status public.aws_batch_job_state NOT NULL,
+    created timestamp without time zone DEFAULT now() NOT NULL,
+    updated timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE public.datafeeds_job OWNER TO gridium;
+
+--
+-- Name: datafeeds_pending_job; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.datafeeds_pending_job (
+    oid bigint NOT NULL,
+    meter_data_source bigint NOT NULL,
+    queue character varying NOT NULL,
+    job_start date NOT NULL,
+    job_end date NOT NULL,
+    created timestamp without time zone DEFAULT now(),
+    uuid character varying
+);
+
+
+ALTER TABLE public.datafeeds_pending_job OWNER TO gridium;
+
+--
+-- Name: datafeeds_pending_job_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.datafeeds_pending_job_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.datafeeds_pending_job_oid_seq OWNER TO gridium;
+
+--
+-- Name: datafeeds_pending_job_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.datafeeds_pending_job_oid_seq OWNED BY public.datafeeds_pending_job.oid;
+
+
+--
 -- Name: day_cluster_analytics; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -1053,6 +1524,43 @@ CREATE TABLE public.drift_report (
 ALTER TABLE public.drift_report OWNER TO gridium;
 
 --
+-- Name: dropped_channel_date; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.dropped_channel_date (
+    oid bigint NOT NULL,
+    meter bigint NOT NULL,
+    occurred date NOT NULL,
+    baseload_z double precision,
+    use_z double precision,
+    created timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.dropped_channel_date OWNER TO gridium;
+
+--
+-- Name: dropped_channel_date_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.dropped_channel_date_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dropped_channel_date_oid_seq OWNER TO gridium;
+
+--
+-- Name: dropped_channel_date_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.dropped_channel_date_oid_seq OWNED BY public.dropped_channel_date.oid;
+
+
+--
 -- Name: employee; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -1133,6 +1641,33 @@ CREATE TABLE public.event_status (
 
 
 ALTER TABLE public.event_status OWNER TO gridium;
+
+--
+-- Name: export_bills; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.export_bills (
+    oid bigint,
+    attachments json,
+    closing date,
+    cost double precision,
+    initial date,
+    items json,
+    manual boolean,
+    modified timestamp without time zone,
+    peak double precision,
+    service bigint,
+    used double precision,
+    audit_accepted boolean,
+    audit_complete boolean,
+    audit_notes json,
+    audit_successful boolean,
+    audit_suppressed boolean,
+    audit_timestamp timestamp without time zone
+);
+
+
+ALTER TABLE public.export_bills OWNER TO gridium;
 
 --
 -- Name: fit_dr_model_data; Type: TABLE; Schema: public; Owner: gridium
@@ -1234,6 +1769,552 @@ CREATE TABLE public.foreign_system_attribute (
 ALTER TABLE public.foreign_system_attribute OWNER TO gridium;
 
 --
+-- Name: green_button_customer; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_customer (
+    oid bigint NOT NULL,
+    identifier character varying(128),
+    name character varying(128),
+    retail bigint,
+    self character varying(256)
+);
+
+
+ALTER TABLE public.green_button_customer OWNER TO gridium;
+
+--
+-- Name: green_button_customer_account; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_customer_account (
+    oid bigint NOT NULL,
+    customer bigint,
+    identifier character varying(128),
+    name character varying(128),
+    self character varying(256)
+);
+
+
+ALTER TABLE public.green_button_customer_account OWNER TO gridium;
+
+--
+-- Name: green_button_customer_agreement; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_customer_agreement (
+    oid bigint NOT NULL,
+    account bigint,
+    address json,
+    identifier character varying(128),
+    name character varying(128),
+    tariff character varying(128),
+    self character varying(256),
+    meter_number character varying
+);
+
+
+ALTER TABLE public.green_button_customer_agreement OWNER TO gridium;
+
+--
+-- Name: green_button_gap_fill_job; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_gap_fill_job (
+    oid bigint NOT NULL,
+    point bigint NOT NULL,
+    start date NOT NULL,
+    "end" date NOT NULL,
+    tries integer NOT NULL,
+    latest_task character varying,
+    error character varying,
+    datatype character varying
+);
+
+
+ALTER TABLE public.green_button_gap_fill_job OWNER TO gridium;
+
+--
+-- Name: green_button_gap_fill_job_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.green_button_gap_fill_job_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.green_button_gap_fill_job_oid_seq OWNER TO gridium;
+
+--
+-- Name: green_button_gap_fill_job_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.green_button_gap_fill_job_oid_seq OWNED BY public.green_button_gap_fill_job.oid;
+
+
+--
+-- Name: green_button_interval_block; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_interval_block (
+    oid bigint NOT NULL,
+    identifier character varying(128),
+    interval_duration integer,
+    qualities json,
+    reading bigint,
+    readings json,
+    start bigint,
+    total_duration integer,
+    usagepoint character varying
+);
+
+
+ALTER TABLE public.green_button_interval_block OWNER TO gridium;
+
+--
+-- Name: green_button_meter_reading; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_meter_reading (
+    oid bigint NOT NULL,
+    identifier character varying(128),
+    point bigint,
+    reading_type bigint,
+    usagepoint character varying
+);
+
+
+ALTER TABLE public.green_button_meter_reading OWNER TO gridium;
+
+--
+-- Name: green_button_notification; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_notification (
+    oid integer NOT NULL,
+    provider_oid integer NOT NULL,
+    xml character varying NOT NULL,
+    notification_time timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.green_button_notification OWNER TO gridium;
+
+--
+-- Name: green_button_notification_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.green_button_notification_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.green_button_notification_oid_seq OWNER TO gridium;
+
+--
+-- Name: green_button_notification_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.green_button_notification_oid_seq OWNED BY public.green_button_notification.oid;
+
+
+--
+-- Name: green_button_notification_resource; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_notification_resource (
+    oid integer NOT NULL,
+    notification_oid integer NOT NULL,
+    resource_url character varying NOT NULL
+);
+
+
+ALTER TABLE public.green_button_notification_resource OWNER TO gridium;
+
+--
+-- Name: green_button_notification_resource_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.green_button_notification_resource_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.green_button_notification_resource_oid_seq OWNER TO gridium;
+
+--
+-- Name: green_button_notification_resource_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.green_button_notification_resource_oid_seq OWNED BY public.green_button_notification_resource.oid;
+
+
+--
+-- Name: green_button_notification_task; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_notification_task (
+    oid integer NOT NULL,
+    task_oid integer NOT NULL,
+    owner_oid integer NOT NULL
+);
+
+
+ALTER TABLE public.green_button_notification_task OWNER TO gridium;
+
+--
+-- Name: green_button_notification_task_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.green_button_notification_task_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.green_button_notification_task_oid_seq OWNER TO gridium;
+
+--
+-- Name: green_button_notification_task_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.green_button_notification_task_oid_seq OWNED BY public.green_button_notification_task.oid;
+
+
+--
+-- Name: green_button_provider; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_provider (
+    oid integer NOT NULL,
+    utility character varying NOT NULL,
+    identifier character varying NOT NULL
+);
+
+
+ALTER TABLE public.green_button_provider OWNER TO gridium;
+
+--
+-- Name: green_button_provider_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.green_button_provider_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.green_button_provider_oid_seq OWNER TO gridium;
+
+--
+-- Name: green_button_provider_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.green_button_provider_oid_seq OWNED BY public.green_button_provider.oid;
+
+
+--
+-- Name: green_button_reading_stats; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_reading_stats (
+    oid bigint NOT NULL,
+    reading bigint NOT NULL,
+    start timestamp without time zone,
+    "end" timestamp without time zone,
+    intervals_missing integer,
+    intervals_missing_tail integer,
+    intervals_total integer,
+    intervals_zero integer,
+    missing_first timestamp without time zone,
+    missing_last timestamp without time zone,
+    gap_count integer,
+    gap_length_max integer,
+    gap_length_avg integer,
+    gaps json,
+    last_analysis timestamp without time zone NOT NULL,
+    error character varying
+);
+
+
+ALTER TABLE public.green_button_reading_stats OWNER TO gridium;
+
+--
+-- Name: green_button_reading_stats_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.green_button_reading_stats_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.green_button_reading_stats_oid_seq OWNER TO gridium;
+
+--
+-- Name: green_button_reading_stats_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.green_button_reading_stats_oid_seq OWNED BY public.green_button_reading_stats.oid;
+
+
+--
+-- Name: green_button_reading_type; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_reading_type (
+    oid bigint NOT NULL,
+    accumulation_behaviour integer,
+    commodity integer,
+    currency integer,
+    data_qualifier integer,
+    default_quality integer,
+    flow_direction integer,
+    identifier character varying(128),
+    interval_length integer,
+    kind integer,
+    measuring_period integer,
+    phase integer,
+    power_of_ten_multiplier integer,
+    self character varying(256),
+    time_attribute integer,
+    uom integer
+);
+
+
+ALTER TABLE public.green_button_reading_type OWNER TO gridium;
+
+--
+-- Name: green_button_retail_customer; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_retail_customer (
+    oid bigint NOT NULL,
+    identifier character varying(128),
+    provider bigint,
+    self character varying(256)
+);
+
+
+ALTER TABLE public.green_button_retail_customer OWNER TO gridium;
+
+--
+-- Name: green_button_subscription_task; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_subscription_task (
+    oid integer NOT NULL,
+    task_oid integer NOT NULL,
+    subscription character varying NOT NULL,
+    url character varying NOT NULL
+);
+
+
+ALTER TABLE public.green_button_subscription_task OWNER TO gridium;
+
+--
+-- Name: green_button_subscription_task_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.green_button_subscription_task_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.green_button_subscription_task_oid_seq OWNER TO gridium;
+
+--
+-- Name: green_button_subscription_task_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.green_button_subscription_task_oid_seq OWNED BY public.green_button_subscription_task.oid;
+
+
+--
+-- Name: green_button_task; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_task (
+    oid integer NOT NULL,
+    celery_task character varying NOT NULL,
+    state character varying NOT NULL,
+    created timestamp without time zone NOT NULL,
+    updated timestamp without time zone NOT NULL,
+    error character varying,
+    key character varying,
+    provider_oid integer NOT NULL,
+    subscription character varying
+);
+
+
+ALTER TABLE public.green_button_task OWNER TO gridium;
+
+--
+-- Name: green_button_task_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.green_button_task_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.green_button_task_oid_seq OWNER TO gridium;
+
+--
+-- Name: green_button_task_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.green_button_task_oid_seq OWNED BY public.green_button_task.oid;
+
+
+--
+-- Name: green_button_time_parameters; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_time_parameters (
+    oid bigint NOT NULL,
+    dst_end_rule character varying(128),
+    dst_offset integer,
+    dst_start_rule character varying(128),
+    identifier character varying(128),
+    self character varying(256),
+    tz_offset integer
+);
+
+
+ALTER TABLE public.green_button_time_parameters OWNER TO gridium;
+
+--
+-- Name: green_button_usage_point; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_usage_point (
+    oid bigint NOT NULL,
+    identifier character varying(128),
+    kind character varying(128),
+    retail bigint,
+    self character varying(256),
+    time_parameters bigint
+);
+
+
+ALTER TABLE public.green_button_usage_point OWNER TO gridium;
+
+--
+-- Name: green_button_usage_summary; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.green_button_usage_summary (
+    oid bigint NOT NULL,
+    bill_last_period bigint,
+    commodity integer,
+    consumption json,
+    currency integer,
+    details json,
+    duration integer,
+    identifier character varying(128),
+    point bigint,
+    read_cycle character varying(128),
+    self character varying(256),
+    start bigint,
+    status_time_stamp bigint,
+    tariff_profile character varying(128),
+    usagepoint character varying
+);
+
+
+ALTER TABLE public.green_button_usage_summary OWNER TO gridium;
+
+--
+-- Name: meter; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.meter (
+    oid bigint NOT NULL,
+    billing character varying(128),
+    building bigint,
+    commodity character varying(128),
+    "interval" integer,
+    kind character varying(128),
+    name character varying(128),
+    number character varying(128),
+    parent bigint,
+    point character varying(128),
+    service bigint,
+    system bigint,
+    direction public.flow_direction_enum DEFAULT 'forward'::public.flow_direction_enum,
+    CONSTRAINT valid_meter_direction CHECK ((direction IS NOT NULL))
+);
+
+
+ALTER TABLE public.meter OWNER TO gridium;
+
+--
+-- Name: product_enrollment; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.product_enrollment (
+    oid bigint NOT NULL,
+    meter bigint,
+    product character varying(128),
+    status character varying(128)
+);
+
+
+ALTER TABLE public.product_enrollment OWNER TO gridium;
+
+--
+-- Name: snapmeter_user_subscription; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.snapmeter_user_subscription (
+    oid bigint NOT NULL,
+    "user" bigint NOT NULL,
+    subscription character varying,
+    meter bigint,
+    sent timestamp without time zone
+);
+
+
+ALTER TABLE public.snapmeter_user_subscription OWNER TO gridium;
+
+--
+-- Name: hodor_subscribed_meter; Type: VIEW; Schema: public; Owner: gridium
+--
+
+CREATE VIEW public.hodor_subscribed_meter AS
+ SELECT DISTINCT m.oid AS meter,
+    m.service
+   FROM public.meter m,
+    public.product_enrollment pe,
+    public.snapmeter_user_subscription sus
+  WHERE ((m.oid = pe.meter) AND ((pe.product)::text = 'hodor'::text) AND ((pe.status)::text <> 'notEnrolled'::text) AND (m.oid = sus.meter) AND ((sus.subscription)::text = 'snapmeter'::text));
+
+
+ALTER TABLE public.hodor_subscribed_meter OWNER TO gridium;
+
+--
 -- Name: hours_at_demand; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -1329,6 +2410,88 @@ CREATE TABLE public.latest_snapmeter (
 
 
 ALTER TABLE public.latest_snapmeter OWNER TO gridium;
+
+--
+-- Name: launchpad_audit_summary_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.launchpad_audit_summary_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.launchpad_audit_summary_oid_seq OWNER TO gridium;
+
+--
+-- Name: launchpad_audit_summary; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.launchpad_audit_summary (
+    oid bigint DEFAULT nextval('public.launchpad_audit_summary_oid_seq'::regclass) NOT NULL,
+    account bigint,
+    summary json
+);
+
+
+ALTER TABLE public.launchpad_audit_summary OWNER TO gridium;
+
+--
+-- Name: launchpad_data_summary_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.launchpad_data_summary_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.launchpad_data_summary_oid_seq OWNER TO gridium;
+
+--
+-- Name: launchpad_data_summary; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.launchpad_data_summary (
+    oid bigint DEFAULT nextval('public.launchpad_data_summary_oid_seq'::regclass) NOT NULL,
+    account bigint,
+    summary json
+);
+
+
+ALTER TABLE public.launchpad_data_summary OWNER TO gridium;
+
+--
+-- Name: launchpad_workbook_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.launchpad_workbook_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.launchpad_workbook_oid_seq OWNER TO gridium;
+
+--
+-- Name: launchpad_workbook; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.launchpad_workbook (
+    oid bigint DEFAULT nextval('public.launchpad_workbook_oid_seq'::regclass) NOT NULL,
+    account bigint,
+    encoded text,
+    filename character varying(128)
+);
+
+
+ALTER TABLE public.launchpad_workbook OWNER TO gridium;
 
 --
 -- Name: load_analytics; Type: TABLE; Schema: public; Owner: gridium
@@ -1662,30 +2825,6 @@ ALTER SEQUENCE public.messaging_sms_message_id_seq OWNED BY public.messaging_sms
 
 
 --
--- Name: meter; Type: TABLE; Schema: public; Owner: gridium
---
-
-CREATE TABLE public.meter (
-    oid bigint NOT NULL,
-    billing character varying(128),
-    building bigint,
-    commodity character varying(128),
-    "interval" integer,
-    kind character varying(128),
-    name character varying(128),
-    number character varying(128),
-    parent bigint,
-    point character varying(128),
-    service bigint,
-    system bigint,
-    direction public.flow_direction_enum DEFAULT 'forward'::public.flow_direction_enum,
-    CONSTRAINT valid_meter_direction CHECK ((direction IS NOT NULL))
-);
-
-
-ALTER TABLE public.meter OWNER TO gridium;
-
---
 -- Name: meter_analytics; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -1867,11 +3006,25 @@ ALTER SEQUENCE public.meter_message_oid_seq OWNED BY public.meter_message.oid;
 
 
 --
+-- Name: meter_reading_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.meter_reading_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.meter_reading_oid_seq OWNER TO gridium;
+
+--
 -- Name: meter_reading; Type: TABLE; Schema: public; Owner: gridium
 --
 
 CREATE TABLE public.meter_reading (
-    oid bigint NOT NULL,
+    oid bigint DEFAULT nextval('public.meter_reading_oid_seq'::regclass) NOT NULL,
     meter bigint,
     occurred date,
     readings json,
@@ -1881,6 +3034,20 @@ CREATE TABLE public.meter_reading (
 
 
 ALTER TABLE public.meter_reading OWNER TO gridium;
+
+--
+-- Name: meter_reading_dup; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.meter_reading_dup (
+    meter bigint,
+    occurred date,
+    records bigint,
+    versions integer
+);
+
+
+ALTER TABLE public.meter_reading_dup OWNER TO gridium;
 
 --
 -- Name: meter_reading_seq; Type: SEQUENCE; Schema: public; Owner: gridium
@@ -1904,6 +3071,69 @@ ALTER SEQUENCE public.meter_reading_seq OWNED BY public.meter_reading.oid;
 
 
 --
+-- Name: utility_service; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.utility_service (
+    oid bigint NOT NULL,
+    account bigint,
+    active boolean DEFAULT true NOT NULL,
+    "group" character varying(128),
+    options json,
+    service_id character varying(128),
+    tariff character varying(128),
+    utility character varying(128),
+    gen_service_id character varying(128),
+    gen_tariff character varying(128),
+    gen_utility character varying(128),
+    gen_utility_account_id character varying,
+    gen_options json,
+    utility_account_id character varying,
+    provider_type public.provider_type_enum DEFAULT 'utility-bundled'::public.provider_type_enum NOT NULL
+);
+
+
+ALTER TABLE public.utility_service OWNER TO gridium;
+
+--
+-- Name: meter_service_usage_point; Type: VIEW; Schema: public; Owner: gridium
+--
+
+CREATE VIEW public.meter_service_usage_point AS
+ SELECT DISTINCT m.oid,
+    m.oid AS meter,
+    us.service_id AS said,
+    agree.identifier AS usagepoint
+   FROM public.meter m,
+    public.utility_service us,
+    public.green_button_customer_agreement agree
+  WHERE ((m.service = us.oid) AND ((agree.name)::text = (us.service_id)::text) AND ((us.utility)::text = 'utility:pge'::text));
+
+
+ALTER TABLE public.meter_service_usage_point OWNER TO gridium;
+
+--
+-- Name: meter_state; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.meter_state (
+    oid bigint NOT NULL,
+    closing_cycle date,
+    closing_next_cycle date,
+    first_interval date,
+    first_weather date,
+    initial_cycle date,
+    initial_next_cycle date,
+    last_interval date,
+    last_weather date,
+    meter bigint,
+    updated timestamp without time zone
+);
+
+
+ALTER TABLE public.meter_state OWNER TO gridium;
+
+--
 -- Name: snapmeter_meter_data_source; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -1919,31 +3149,6 @@ CREATE TABLE public.snapmeter_meter_data_source (
 
 
 ALTER TABLE public.snapmeter_meter_data_source OWNER TO gridium;
-
---
--- Name: utility_service; Type: TABLE; Schema: public; Owner: gridium
---
-
-CREATE TABLE public.utility_service (
-    oid bigint NOT NULL,
-    account bigint,
-    active boolean DEFAULT true NOT NULL,
-    "group" character varying(128),
-    options json,
-    service_id character varying(128),
-    tariff character varying(128),
-    utility character varying(128),
-    utility_account_id character varying,
-    provider_type public.provider_type_enum DEFAULT 'utility-bundled'::public.provider_type_enum NOT NULL,
-    gen_service_id character varying(128),
-    gen_tariff character varying(128),
-    gen_utility character varying(128),
-    gen_utility_account_id character varying,
-    gen_options json
-);
-
-
-ALTER TABLE public.utility_service OWNER TO gridium;
 
 --
 -- Name: model_statistic; Type: TABLE; Schema: public; Owner: gridium
@@ -2018,7 +3223,8 @@ CREATE TABLE public.monthly_forecast (
     type character varying(128),
     use_closed double precision,
     use_open double precision,
-    use_temp double precision
+    use_temp double precision,
+    actual_cost double precision
 );
 
 
@@ -2048,12 +3254,13 @@ ALTER TABLE public.monthly_yoy_variance OWNER TO gridium;
 
 CREATE TABLE public.mv_assessment_timeseries (
     oid bigint NOT NULL,
-    program bigint NOT NULL,
-    meter bigint,
     occurred date NOT NULL,
     "interval" integer NOT NULL,
     predicted json NOT NULL,
-    baseload json NOT NULL
+    baseload json NOT NULL,
+    avoided json,
+    mv_meter_group bigint NOT NULL,
+    program_type bigint NOT NULL
 );
 
 
@@ -2099,16 +3306,53 @@ CREATE TABLE public.mv_baseline (
 ALTER TABLE public.mv_baseline OWNER TO gridium;
 
 --
+-- Name: mv_baseline_nonroutine_event; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.mv_baseline_nonroutine_event (
+    oid bigint NOT NULL,
+    mv_meter_group bigint NOT NULL,
+    program_type bigint NOT NULL,
+    event_start date NOT NULL,
+    event_end date NOT NULL,
+    description character varying
+);
+
+
+ALTER TABLE public.mv_baseline_nonroutine_event OWNER TO gridium;
+
+--
+-- Name: mv_baseline_nonroutine_event_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.mv_baseline_nonroutine_event_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mv_baseline_nonroutine_event_oid_seq OWNER TO gridium;
+
+--
+-- Name: mv_baseline_nonroutine_event_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.mv_baseline_nonroutine_event_oid_seq OWNED BY public.mv_baseline_nonroutine_event.oid;
+
+
+--
 -- Name: mv_baseline_timeseries; Type: TABLE; Schema: public; Owner: gridium
 --
 
 CREATE TABLE public.mv_baseline_timeseries (
     oid bigint NOT NULL,
-    program bigint NOT NULL,
-    meter bigint,
     occurred date NOT NULL,
     "interval" integer NOT NULL,
-    predicted json NOT NULL
+    predicted json NOT NULL,
+    mv_meter_group bigint NOT NULL,
+    program_type bigint NOT NULL
 );
 
 
@@ -2133,6 +3377,41 @@ ALTER TABLE public.mv_baseline_timeseries_oid_seq OWNER TO gridium;
 --
 
 ALTER SEQUENCE public.mv_baseline_timeseries_oid_seq OWNED BY public.mv_baseline_timeseries.oid;
+
+
+--
+-- Name: mv_deer_date_hour_specification; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.mv_deer_date_hour_specification (
+    oid bigint NOT NULL,
+    version character varying,
+    dates date[],
+    times integer[]
+);
+
+
+ALTER TABLE public.mv_deer_date_hour_specification OWNER TO gridium;
+
+--
+-- Name: mv_deer_date_hour_specification_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.mv_deer_date_hour_specification_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mv_deer_date_hour_specification_oid_seq OWNER TO gridium;
+
+--
+-- Name: mv_deer_date_hour_specification_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.mv_deer_date_hour_specification_oid_seq OWNED BY public.mv_deer_date_hour_specification.oid;
 
 
 --
@@ -2209,16 +3488,86 @@ ALTER SEQUENCE public.mv_exogenous_factor_timeseries_oid_seq OWNED BY public.mv_
 
 
 --
+-- Name: mv_meter_group; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.mv_meter_group (
+    oid bigint NOT NULL,
+    created timestamp without time zone DEFAULT now(),
+    updated timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.mv_meter_group OWNER TO gridium;
+
+--
+-- Name: mv_meter_group_item; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.mv_meter_group_item (
+    oid bigint NOT NULL,
+    mv_meter_group bigint NOT NULL,
+    meter bigint NOT NULL,
+    created timestamp without time zone DEFAULT now(),
+    updated timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.mv_meter_group_item OWNER TO gridium;
+
+--
+-- Name: mv_meter_group_item_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.mv_meter_group_item_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mv_meter_group_item_oid_seq OWNER TO gridium;
+
+--
+-- Name: mv_meter_group_item_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.mv_meter_group_item_oid_seq OWNED BY public.mv_meter_group_item.oid;
+
+
+--
+-- Name: mv_meter_group_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.mv_meter_group_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mv_meter_group_oid_seq OWNER TO gridium;
+
+--
+-- Name: mv_meter_group_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.mv_meter_group_oid_seq OWNED BY public.mv_meter_group.oid;
+
+
+--
 -- Name: mv_model_fit_statistic; Type: TABLE; Schema: public; Owner: gridium
 --
 
 CREATE TABLE public.mv_model_fit_statistic (
     oid bigint NOT NULL,
-    program bigint NOT NULL,
-    meter bigint,
     kind character varying NOT NULL,
     metric character varying NOT NULL,
-    value double precision NOT NULL
+    value double precision NOT NULL,
+    mv_meter_group bigint NOT NULL,
+    program_type bigint NOT NULL
 );
 
 
@@ -2251,11 +3600,11 @@ ALTER SEQUENCE public.mv_model_fit_statistic_oid_seq OWNED BY public.mv_model_fi
 
 CREATE TABLE public.mv_nonroutine_event (
     oid bigint NOT NULL,
-    program bigint NOT NULL,
-    meter bigint,
     occurred date NOT NULL,
     kind character varying NOT NULL,
-    pvalue double precision NOT NULL
+    pvalue double precision NOT NULL,
+    mv_meter_group bigint NOT NULL,
+    program_type bigint NOT NULL
 );
 
 
@@ -2393,11 +3742,17 @@ CREATE TABLE public.mv_project (
     customer bigint NOT NULL,
     building bigint,
     meter_group bigint,
-    weather_station bigint,
+    weather_station_info jsonb NOT NULL,
     description character varying,
     baseline_start date NOT NULL,
     baseline_end date NOT NULL,
-    assessment_start date
+    measurement_start date,
+    mv_meter_group bigint NOT NULL,
+    deer_specification bigint,
+    expected_savings integer,
+    override_sat_occupancy boolean,
+    override_sun_occupancy boolean,
+    sheet_id character varying
 );
 
 
@@ -2457,6 +3812,93 @@ ALTER TABLE public.obvius_meter_oid_seq OWNER TO gridium;
 --
 
 ALTER SEQUENCE public.obvius_meter_oid_seq OWNED BY public.obvius_meter.oid;
+
+
+--
+-- Name: partial_bill; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.partial_bill (
+    oid bigint NOT NULL,
+    service bigint NOT NULL,
+    attachments json,
+    closing date,
+    cost double precision,
+    initial date,
+    items json,
+    manual boolean,
+    modified timestamp without time zone,
+    peak double precision,
+    used double precision,
+    notes character varying,
+    visible boolean DEFAULT true NOT NULL,
+    created timestamp without time zone,
+    provider_type public.partial_bill_provider_type_enum,
+    superseded_by bigint,
+    service_id character varying(128),
+    utility character varying(128),
+    utility_account_id character varying,
+    utility_code character varying,
+    tariff character varying
+);
+
+
+ALTER TABLE public.partial_bill OWNER TO gridium;
+
+--
+-- Name: partial_bill_link; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.partial_bill_link (
+    oid bigint NOT NULL,
+    partial_bill bigint NOT NULL,
+    bill bigint NOT NULL,
+    created timestamp without time zone
+);
+
+
+ALTER TABLE public.partial_bill_link OWNER TO gridium;
+
+--
+-- Name: partial_bill_link_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.partial_bill_link_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.partial_bill_link_oid_seq OWNER TO gridium;
+
+--
+-- Name: partial_bill_link_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.partial_bill_link_oid_seq OWNED BY public.partial_bill_link.oid;
+
+
+--
+-- Name: partial_bill_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.partial_bill_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.partial_bill_oid_seq OWNER TO gridium;
+
+--
+-- Name: partial_bill_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.partial_bill_oid_seq OWNED BY public.partial_bill.oid;
 
 
 --
@@ -2594,6 +4036,28 @@ CREATE TABLE public.peak_history (
 ALTER TABLE public.peak_history OWNER TO gridium;
 
 --
+-- Name: peak_message; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.peak_message (
+    oid bigint NOT NULL,
+    billing character varying(128),
+    cost double precision,
+    cycle bigint,
+    daily character varying(128),
+    imputed boolean,
+    kw double precision,
+    meter bigint,
+    peak timestamp without time zone,
+    predicted_cost double precision,
+    predicted_kw double precision,
+    timing character varying(128)
+);
+
+
+ALTER TABLE public.peak_message OWNER TO gridium;
+
+--
 -- Name: peak_prediction; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -2616,11 +4080,48 @@ CREATE TABLE public.pge_account (
     account_number character varying(128),
     ce bigint,
     date date,
-    mailing_address character varying(128)
+    mailing_address character varying(128),
+    pge_account_pkey integer NOT NULL
 );
 
 
 ALTER TABLE public.pge_account OWNER TO gridium;
+
+--
+-- Name: pge_account_old; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.pge_account_old (
+    oid bigint NOT NULL,
+    account_number character varying(128),
+    ce bigint,
+    date date,
+    mailing_address character varying(128)
+);
+
+
+ALTER TABLE public.pge_account_old OWNER TO gridium;
+
+--
+-- Name: pge_account_pge_account_pkey_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.pge_account_pge_account_pkey_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pge_account_pge_account_pkey_seq OWNER TO gridium;
+
+--
+-- Name: pge_account_pge_account_pkey_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.pge_account_pge_account_pkey_seq OWNED BY public.pge_account.pge_account_pkey;
+
 
 --
 -- Name: pge_bill; Type: TABLE; Schema: public; Owner: gridium
@@ -2672,6 +4173,143 @@ ALTER SEQUENCE public.pge_credential_oid_seq OWNED BY public.pge_credential.oid;
 
 
 --
+-- Name: pge_meter; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.pge_meter (
+    oid bigint NOT NULL,
+    capacity_reservation_level double precision,
+    flat_rate boolean,
+    nem_status character varying(128),
+    service bigint,
+    standby_rate_codes character varying(128),
+    cca_status character varying(128),
+    versions json DEFAULT '[]'::json NOT NULL,
+    pge_meter_pkey integer NOT NULL
+);
+
+
+ALTER TABLE public.pge_meter OWNER TO gridium;
+
+--
+-- Name: pge_meter_old; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.pge_meter_old (
+    oid bigint NOT NULL,
+    caa_enrollment boolean,
+    caa_enrollment_date date,
+    capacity_reservation_level double precision,
+    flat_rate boolean,
+    nem_status character varying(128),
+    pdp_enrolled boolean,
+    service bigint,
+    standby_rate_codes character varying(128)
+);
+
+
+ALTER TABLE public.pge_meter_old OWNER TO gridium;
+
+--
+-- Name: pge_meter_pge_meter_pkey_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.pge_meter_pge_meter_pkey_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pge_meter_pge_meter_pkey_seq OWNER TO gridium;
+
+--
+-- Name: pge_meter_pge_meter_pkey_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.pge_meter_pge_meter_pkey_seq OWNED BY public.pge_meter.pge_meter_pkey;
+
+
+--
+-- Name: pge_pdp_service; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.pge_pdp_service (
+    oid bigint NOT NULL,
+    service bigint,
+    participation_label character varying(128),
+    enrollment_label character varying(128),
+    pdp_status_from_details character varying(128),
+    pdp_status_from_enrollment character varying(128),
+    versions json DEFAULT '[]'::json NOT NULL
+);
+
+
+ALTER TABLE public.pge_pdp_service OWNER TO gridium;
+
+--
+-- Name: pge_service; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.pge_service (
+    oid bigint NOT NULL,
+    account bigint,
+    commodity character varying(128),
+    meter_number character varying(128),
+    premise_type character varying(128),
+    said character varying(128),
+    service_address character varying(128),
+    tariff_label character varying(128),
+    voltage character varying(128),
+    versions json DEFAULT '[]'::json NOT NULL,
+    pge_service_pkey integer NOT NULL
+);
+
+
+ALTER TABLE public.pge_service OWNER TO gridium;
+
+--
+-- Name: pge_service_old; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.pge_service_old (
+    oid bigint NOT NULL,
+    account bigint,
+    commodity character varying(128),
+    meter_number character varying(128),
+    premise_type character varying(128),
+    said character varying(128),
+    service_address character varying(128),
+    tariff_label character varying(128),
+    voltage character varying(128)
+);
+
+
+ALTER TABLE public.pge_service_old OWNER TO gridium;
+
+--
+-- Name: pge_service_pge_service_pkey_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.pge_service_pge_service_pkey_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pge_service_pge_service_pkey_seq OWNER TO gridium;
+
+--
+-- Name: pge_service_pge_service_pkey_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.pge_service_pge_service_pkey_seq OWNED BY public.pge_service.pge_service_pkey;
+
+
+--
 -- Name: plotting_fact; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -2687,18 +4325,57 @@ CREATE TABLE public.plotting_fact (
 ALTER TABLE public.plotting_fact OWNER TO gridium;
 
 --
--- Name: product_enrollment; Type: TABLE; Schema: public; Owner: gridium
+-- Name: provision_assignment; Type: TABLE; Schema: public; Owner: gridium
 --
 
-CREATE TABLE public.product_enrollment (
+CREATE TABLE public.provision_assignment (
     oid bigint NOT NULL,
-    meter bigint,
-    product character varying(128),
-    status character varying(128)
+    completed timestamp without time zone,
+    origin bigint,
+    problem json,
+    status character varying(128),
+    provisioner character varying(128),
+    provision_assignment_pkey integer NOT NULL
 );
 
 
-ALTER TABLE public.product_enrollment OWNER TO gridium;
+ALTER TABLE public.provision_assignment OWNER TO gridium;
+
+--
+-- Name: provision_assignment_part; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.provision_assignment_part (
+    oid bigint NOT NULL,
+    assignment bigint,
+    reference character varying(256),
+    status character varying(128),
+    problem json
+);
+
+
+ALTER TABLE public.provision_assignment_part OWNER TO gridium;
+
+--
+-- Name: provision_assignment_provision_assignment_pkey_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.provision_assignment_provision_assignment_pkey_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.provision_assignment_provision_assignment_pkey_seq OWNER TO gridium;
+
+--
+-- Name: provision_assignment_provision_assignment_pkey_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.provision_assignment_provision_assignment_pkey_seq OWNED BY public.provision_assignment.provision_assignment_pkey;
+
 
 --
 -- Name: provision_entry; Type: TABLE; Schema: public; Owner: gridium
@@ -2747,6 +4424,187 @@ CREATE TABLE public.provision_origin (
 
 
 ALTER TABLE public.provision_origin OWNER TO gridium;
+
+--
+-- Name: provision_origin_old; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.provision_origin_old (
+    oid bigint NOT NULL,
+    pass character varying(128),
+    supplements json,
+    "user" character varying(128)
+);
+
+
+ALTER TABLE public.provision_origin_old OWNER TO gridium;
+
+--
+-- Name: quicksight_bill; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.quicksight_bill (
+    bill_id bigint NOT NULL,
+    meter_id bigint NOT NULL,
+    initial date NOT NULL,
+    closing date NOT NULL,
+    cost numeric,
+    used numeric,
+    peak numeric
+);
+
+
+ALTER TABLE public.quicksight_bill OWNER TO gridium;
+
+--
+-- Name: quicksight_interval; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.quicksight_interval (
+    meter_id bigint NOT NULL,
+    occurred date NOT NULL,
+    value numeric
+);
+
+
+ALTER TABLE public.quicksight_interval OWNER TO gridium;
+
+--
+-- Name: snapmeter_account; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.snapmeter_account (
+    oid bigint NOT NULL,
+    hex_id character varying,
+    account_type public.account_type_enum NOT NULL,
+    created timestamp without time zone NOT NULL,
+    domain character varying NOT NULL,
+    name character varying NOT NULL,
+    status public.account_status_enum NOT NULL,
+    token_login boolean NOT NULL
+);
+
+
+ALTER TABLE public.snapmeter_account OWNER TO gridium;
+
+--
+-- Name: snapmeter_account_meter; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.snapmeter_account_meter (
+    account bigint NOT NULL,
+    meter bigint NOT NULL,
+    estimated_changes jsonb,
+    created timestamp without time zone,
+    oid bigint NOT NULL,
+    snapmeter_delivery boolean DEFAULT true NOT NULL
+);
+
+
+ALTER TABLE public.snapmeter_account_meter OWNER TO gridium;
+
+--
+-- Name: snapmeter_building; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.snapmeter_building (
+    building bigint NOT NULL,
+    account bigint NOT NULL,
+    name character varying NOT NULL,
+    energy_star integer,
+    visible boolean DEFAULT false NOT NULL,
+    oid bigint NOT NULL
+);
+
+
+ALTER TABLE public.snapmeter_building OWNER TO gridium;
+
+--
+-- Name: quicksight_meter_meta; Type: MATERIALIZED VIEW; Schema: public; Owner: gridium
+--
+
+CREATE MATERIALIZED VIEW public.quicksight_meter_meta AS
+ SELECT DISTINCT m.oid AS meter_id,
+    m.name AS meter_name,
+    m.commodity,
+    m."interval",
+    m.kind,
+    m.direction,
+    us.utility_account_id,
+    us.oid AS service,
+    us.service_id AS said,
+    replace((us.utility)::text, 'utility:'::text, ''::text) AS utility,
+    us.tariff,
+    btrim((sb.name)::text) AS building_name,
+    btrim(concat(b.street1, b.street2)) AS address,
+    b.city,
+    b.state,
+    b.zip,
+    b.square_footage,
+    sa.name AS account_name,
+    sa.hex_id AS account_hex
+   FROM public.meter m,
+    public.building b,
+    public.snapmeter_building sb,
+    public.utility_service us,
+    public.product_enrollment pe,
+    public.snapmeter_account_meter sam,
+    public.snapmeter_account sa
+  WHERE ((m.building = b.oid) AND (m.building = sb.building) AND (sb.visible = true) AND (m.service = us.oid) AND (m.oid = pe.meter) AND ((pe.product)::text = 'hodor'::text) AND ((pe.status)::text <> 'notEnrolled'::text) AND (m.oid = sam.meter) AND (sam.account = sa.oid))
+  WITH NO DATA;
+
+
+ALTER TABLE public.quicksight_meter_meta OWNER TO gridium;
+
+--
+-- Name: quicksight_meter_month_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.quicksight_meter_month_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.quicksight_meter_month_oid_seq OWNER TO gridium;
+
+--
+-- Name: quicksight_meter_month; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.quicksight_meter_month (
+    oid bigint DEFAULT nextval('public.quicksight_meter_month_oid_seq'::regclass) NOT NULL,
+    meter_id bigint NOT NULL,
+    month date NOT NULL,
+    missing_readings double precision,
+    interval_use double precision,
+    interval_demand double precision,
+    cost_calendarized double precision,
+    billed_use_calendarized double precision
+);
+
+
+ALTER TABLE public.quicksight_meter_month OWNER TO gridium;
+
+--
+-- Name: r_message; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.r_message (
+    oid bigint NOT NULL,
+    dates json,
+    message_number integer,
+    message_result character varying(128),
+    message_type character varying(128),
+    meter bigint,
+    week_end date,
+    week_start date
+);
+
+
+ALTER TABLE public.r_message OWNER TO gridium;
 
 --
 -- Name: rate_analysis; Type: TABLE; Schema: public; Owner: gridium
@@ -2822,6 +4680,41 @@ CREATE TABLE public.rate_right_summary (
 
 
 ALTER TABLE public.rate_right_summary OWNER TO gridium;
+
+--
+-- Name: rate_summary; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.rate_summary (
+    oid bigint NOT NULL,
+    meter bigint,
+    summary json,
+    created timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.rate_summary OWNER TO gridium;
+
+--
+-- Name: rate_summary_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.rate_summary_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.rate_summary_oid_seq OWNER TO gridium;
+
+--
+-- Name: rate_summary_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.rate_summary_oid_seq OWNED BY public.rate_summary.oid;
+
 
 --
 -- Name: rcx_pattern_analytics; Type: TABLE; Schema: public; Owner: gridium
@@ -2938,7 +4831,9 @@ CREATE TABLE public.rtm_monitor (
     active boolean,
     last_state_change timestamp without time zone,
     last_state_check timestamp without time zone,
-    comment character varying
+    comment character varying,
+    note character varying,
+    muted boolean
 );
 
 
@@ -3146,6 +5041,172 @@ CREATE TABLE public.score_pattern_analytics (
 ALTER TABLE public.score_pattern_analytics OWNER TO gridium;
 
 --
+-- Name: scraper; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.scraper (
+    oid bigint NOT NULL,
+    name character varying,
+    label character varying,
+    active boolean DEFAULT true,
+    source_types character varying[],
+    meta jsonb
+);
+
+
+ALTER TABLE public.scraper OWNER TO gridium;
+
+--
+-- Name: scraper_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.scraper_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.scraper_oid_seq OWNER TO gridium;
+
+--
+-- Name: scraper_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.scraper_oid_seq OWNED BY public.scraper.oid;
+
+
+--
+-- Name: scrooge_bill_audit_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.scrooge_bill_audit_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.scrooge_bill_audit_oid_seq OWNER TO gridium;
+
+--
+-- Name: scrooge_bill_audit; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.scrooge_bill_audit (
+    oid bigint DEFAULT nextval('public.scrooge_bill_audit_oid_seq'::regclass) NOT NULL,
+    meter bigint,
+    summary json
+);
+
+
+ALTER TABLE public.scrooge_bill_audit OWNER TO gridium;
+
+--
+-- Name: scrooge_bill_audit_backup; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.scrooge_bill_audit_backup (
+    oid bigint,
+    meter bigint,
+    summary json
+);
+
+
+ALTER TABLE public.scrooge_bill_audit_backup OWNER TO gridium;
+
+--
+-- Name: scrooge_meter_summary_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.scrooge_meter_summary_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.scrooge_meter_summary_oid_seq OWNER TO gridium;
+
+--
+-- Name: scrooge_meter_summary; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.scrooge_meter_summary (
+    oid bigint DEFAULT nextval('public.scrooge_meter_summary_oid_seq'::regclass) NOT NULL,
+    meter bigint,
+    summary json
+);
+
+
+ALTER TABLE public.scrooge_meter_summary OWNER TO gridium;
+
+--
+-- Name: scrooge_miss_chart_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.scrooge_miss_chart_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.scrooge_miss_chart_oid_seq OWNER TO gridium;
+
+--
+-- Name: scrooge_miss_chart; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.scrooge_miss_chart (
+    oid bigint DEFAULT nextval('public.scrooge_miss_chart_oid_seq'::regclass) NOT NULL,
+    day character varying(128),
+    "from" date,
+    hour integer,
+    k_w double precision,
+    meter bigint,
+    missing boolean,
+    "to" date
+);
+
+
+ALTER TABLE public.scrooge_miss_chart OWNER TO gridium;
+
+--
+-- Name: scrooge_miss_sequence_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.scrooge_miss_sequence_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.scrooge_miss_sequence_oid_seq OWNER TO gridium;
+
+--
+-- Name: scrooge_miss_sequence; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.scrooge_miss_sequence (
+    oid bigint DEFAULT nextval('public.scrooge_miss_sequence_oid_seq'::regclass) NOT NULL,
+    billing_to date,
+    duration double precision,
+    "end" timestamp without time zone,
+    meter bigint,
+    start timestamp without time zone
+);
+
+
+ALTER TABLE public.scrooge_miss_sequence OWNER TO gridium;
+
+--
 -- Name: scrooge_ops_audit; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -3180,17 +5241,69 @@ ALTER SEQUENCE public.scrooge_ops_audit_oid_seq OWNED BY public.scrooge_ops_audi
 
 
 --
+-- Name: service_summary_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.service_summary_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.service_summary_oid_seq OWNER TO gridium;
+
+--
 -- Name: service_summary; Type: TABLE; Schema: public; Owner: gridium
 --
 
 CREATE TABLE public.service_summary (
-    oid bigint NOT NULL,
+    oid bigint DEFAULT nextval('public.service_summary_oid_seq'::regclass) NOT NULL,
     meter bigint,
-    summary json
+    summary json,
+    created timestamp without time zone DEFAULT now()
 );
 
 
 ALTER TABLE public.service_summary OWNER TO gridium;
+
+--
+-- Name: smd_artifact; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.smd_artifact (
+    oid bigint NOT NULL,
+    provider bigint NOT NULL,
+    filename character varying NOT NULL,
+    created timestamp without time zone NOT NULL,
+    published timestamp without time zone,
+    url character varying
+);
+
+
+ALTER TABLE public.smd_artifact OWNER TO gridium;
+
+--
+-- Name: smd_artifact_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.smd_artifact_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.smd_artifact_oid_seq OWNER TO gridium;
+
+--
+-- Name: smd_artifact_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.smd_artifact_oid_seq OWNED BY public.smd_artifact.oid;
+
 
 --
 -- Name: smd_authorization_audit; Type: TABLE; Schema: public; Owner: gridium
@@ -3265,6 +5378,188 @@ ALTER SEQUENCE public.smd_authorization_audit_point_oid_seq OWNED BY public.smd_
 
 
 --
+-- Name: smd_bill; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.smd_bill (
+    oid bigint NOT NULL,
+    identifier character varying,
+    subscription character varying NOT NULL,
+    usage_point character varying NOT NULL,
+    start timestamp without time zone,
+    duration interval,
+    used double precision,
+    used_unit character varying,
+    cost double precision,
+    cost_additional double precision,
+    line_items jsonb,
+    tariff character varying,
+    self_url character varying NOT NULL,
+    artifact bigint NOT NULL,
+    created timestamp without time zone NOT NULL,
+    published timestamp without time zone
+);
+
+
+ALTER TABLE public.smd_bill OWNER TO gridium;
+
+--
+-- Name: smd_bill_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.smd_bill_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.smd_bill_oid_seq OWNER TO gridium;
+
+--
+-- Name: smd_bill_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.smd_bill_oid_seq OWNED BY public.smd_bill.oid;
+
+
+--
+-- Name: smd_customer_info; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.smd_customer_info (
+    oid bigint NOT NULL,
+    artifact bigint NOT NULL,
+    subscription character varying NOT NULL,
+    customer_name character varying,
+    customer_account_id character varying,
+    usage_point character varying NOT NULL,
+    service_id character varying NOT NULL,
+    street1 character varying,
+    street2 character varying,
+    city character varying,
+    state character varying,
+    zipcode character varying,
+    service_start timestamp without time zone,
+    meter_serials jsonb,
+    status character varying,
+    self_url character varying NOT NULL,
+    created timestamp without time zone NOT NULL,
+    published timestamp without time zone
+);
+
+
+ALTER TABLE public.smd_customer_info OWNER TO gridium;
+
+--
+-- Name: smd_customer_info_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.smd_customer_info_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.smd_customer_info_oid_seq OWNER TO gridium;
+
+--
+-- Name: smd_customer_info_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.smd_customer_info_oid_seq OWNED BY public.smd_customer_info.oid;
+
+
+--
+-- Name: smd_interval_data; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.smd_interval_data (
+    oid bigint NOT NULL,
+    subscription character varying NOT NULL,
+    usage_point character varying NOT NULL,
+    start timestamp without time zone,
+    duration interval,
+    reading_type bigint NOT NULL,
+    readings jsonb,
+    self_url character varying NOT NULL,
+    artifact bigint NOT NULL,
+    created timestamp without time zone NOT NULL,
+    published timestamp without time zone
+);
+
+
+ALTER TABLE public.smd_interval_data OWNER TO gridium;
+
+--
+-- Name: smd_interval_data_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.smd_interval_data_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.smd_interval_data_oid_seq OWNER TO gridium;
+
+--
+-- Name: smd_interval_data_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.smd_interval_data_oid_seq OWNED BY public.smd_interval_data.oid;
+
+
+--
+-- Name: smd_reading_type; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.smd_reading_type (
+    oid bigint NOT NULL,
+    identifier character varying,
+    accumulation_behaviour character varying,
+    commodity character varying,
+    flow_direction character varying,
+    kind character varying,
+    unit_of_measure character varying,
+    interval_length integer,
+    power_of_ten_multiplier integer,
+    self_url character varying NOT NULL,
+    artifact bigint NOT NULL,
+    created timestamp without time zone NOT NULL,
+    published timestamp without time zone
+);
+
+
+ALTER TABLE public.smd_reading_type OWNER TO gridium;
+
+--
+-- Name: smd_reading_type_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.smd_reading_type_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.smd_reading_type_oid_seq OWNER TO gridium;
+
+--
+-- Name: smd_reading_type_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.smd_reading_type_oid_seq OWNED BY public.smd_reading_type.oid;
+
+
+--
 -- Name: smd_subscription_detail; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -3304,24 +5599,6 @@ ALTER SEQUENCE public.smd_subscription_detail_oid_seq OWNED BY public.smd_subscr
 
 
 --
--- Name: snapmeter_account; Type: TABLE; Schema: public; Owner: gridium
---
-
-CREATE TABLE public.snapmeter_account (
-    oid bigint NOT NULL,
-    hex_id character varying,
-    account_type public.account_type_enum NOT NULL,
-    created timestamp without time zone NOT NULL,
-    domain character varying NOT NULL,
-    name character varying NOT NULL,
-    status public.account_status_enum NOT NULL,
-    token_login boolean NOT NULL
-);
-
-
-ALTER TABLE public.snapmeter_account OWNER TO gridium;
-
---
 -- Name: snapmeter_account_data_source; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -3333,7 +5610,7 @@ CREATE TABLE public.snapmeter_account_data_source (
     name character varying NOT NULL,
     username_bytes bytea,
     password_bytes bytea,
-    enabled boolean DEFAULT true NOT NULL
+    enabled boolean NOT NULL
 );
 
 
@@ -3359,22 +5636,6 @@ ALTER TABLE public.snapmeter_account_data_source_oid_seq OWNER TO gridium;
 
 ALTER SEQUENCE public.snapmeter_account_data_source_oid_seq OWNED BY public.snapmeter_account_data_source.oid;
 
-
---
--- Name: snapmeter_account_meter; Type: TABLE; Schema: public; Owner: gridium
---
-
-CREATE TABLE public.snapmeter_account_meter (
-    account bigint NOT NULL,
-    meter bigint NOT NULL,
-    estimated_changes jsonb,
-    created timestamp without time zone,
-    oid bigint NOT NULL,
-    snapmeter_delivery boolean DEFAULT true NOT NULL
-);
-
-
-ALTER TABLE public.snapmeter_account_meter OWNER TO gridium;
 
 --
 -- Name: snapmeter_account_meter_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
@@ -3460,7 +5721,8 @@ CREATE TABLE public.snapmeter_announcement (
     oid bigint NOT NULL,
     headline character varying NOT NULL,
     body character varying NOT NULL,
-    expires date NOT NULL
+    expires date NOT NULL,
+    gridium_only boolean
 );
 
 
@@ -3488,19 +5750,51 @@ ALTER SEQUENCE public.snapmeter_announcement_oid_seq OWNED BY public.snapmeter_a
 
 
 --
--- Name: snapmeter_building; Type: TABLE; Schema: public; Owner: gridium
+-- Name: snapmeter_bill_view; Type: MATERIALIZED VIEW; Schema: public; Owner: gridium
 --
 
-CREATE TABLE public.snapmeter_building (
-    building bigint NOT NULL,
-    account bigint NOT NULL,
-    name character varying NOT NULL,
-    energy_star integer,
-    visible boolean DEFAULT false NOT NULL
-);
+CREATE MATERIALIZED VIEW public.snapmeter_bill_view AS
+ SELECT bill_old.oid,
+    bill_old.closing,
+    bill_old.cost,
+    bill_old.initial,
+    bill_old.peak,
+    bill_old.service,
+    bill_old.used,
+    bill_old.audit_accepted,
+    bill_old.audit_complete,
+    bill_old.audit_successful,
+    bill_old.audit_suppressed
+   FROM public.bill_old
+  WHERE (bill_old.service IN ( SELECT m.service
+           FROM public.meter m,
+            public.snapmeter_account_meter sam
+          WHERE (sam.meter = m.oid)))
+  WITH NO DATA;
 
 
-ALTER TABLE public.snapmeter_building OWNER TO gridium;
+ALTER TABLE public.snapmeter_bill_view OWNER TO gridium;
+
+--
+-- Name: snapmeter_building_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.snapmeter_building_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.snapmeter_building_oid_seq OWNER TO gridium;
+
+--
+-- Name: snapmeter_building_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.snapmeter_building_oid_seq OWNED BY public.snapmeter_building.oid;
+
 
 --
 -- Name: snapmeter_data_gap; Type: TABLE; Schema: public; Owner: gridium
@@ -3682,6 +5976,23 @@ ALTER SEQUENCE public.snapmeter_meter_data_source_oid_seq OWNED BY public.snapme
 
 
 --
+-- Name: snapmeter_meter_data_source_orphan; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.snapmeter_meter_data_source_orphan (
+    oid bigint,
+    hex_id character varying,
+    meter bigint,
+    name character varying,
+    account_data_source bigint,
+    meta jsonb,
+    source_types character varying[]
+);
+
+
+ALTER TABLE public.snapmeter_meter_data_source_orphan OWNER TO gridium;
+
+--
 -- Name: snapmeter_provisioning; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -3825,6 +6136,49 @@ ALTER SEQUENCE public.snapmeter_provisioning_workflow_oid_seq OWNED BY public.sn
 
 
 --
+-- Name: snapmeter_service_tmp; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.snapmeter_service_tmp (
+    oid bigint NOT NULL
+);
+
+
+ALTER TABLE public.snapmeter_service_tmp OWNER TO gridium;
+
+--
+-- Name: snapmeter_service_tmp_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.snapmeter_service_tmp_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.snapmeter_service_tmp_oid_seq OWNER TO gridium;
+
+--
+-- Name: snapmeter_service_tmp_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.snapmeter_service_tmp_oid_seq OWNED BY public.snapmeter_service_tmp.oid;
+
+
+--
+-- Name: snapmeter_service_tmp_test; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.snapmeter_service_tmp_test (
+    oid bigint NOT NULL
+);
+
+
+ALTER TABLE public.snapmeter_service_tmp_test OWNER TO gridium;
+
+--
 -- Name: snapmeter_user; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -3861,21 +6215,6 @@ ALTER TABLE public.snapmeter_user_oid_seq OWNER TO gridium;
 
 ALTER SEQUENCE public.snapmeter_user_oid_seq OWNED BY public.snapmeter_user.oid;
 
-
---
--- Name: snapmeter_user_subscription; Type: TABLE; Schema: public; Owner: gridium
---
-
-CREATE TABLE public.snapmeter_user_subscription (
-    oid bigint NOT NULL,
-    "user" bigint NOT NULL,
-    subscription character varying,
-    meter bigint,
-    sent timestamp without time zone
-);
-
-
-ALTER TABLE public.snapmeter_user_subscription OWNER TO gridium;
 
 --
 -- Name: snapmeter_user_subscription_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
@@ -3942,6 +6281,101 @@ CREATE TABLE public.stasis_transaction (
 
 
 ALTER TABLE public.stasis_transaction OWNER TO gridium;
+
+--
+-- Name: tariff_configuration; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.tariff_configuration (
+    oid bigint NOT NULL,
+    service bigint NOT NULL,
+    parameters jsonb NOT NULL,
+    modified timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tariff_configuration OWNER TO gridium;
+
+--
+-- Name: tariff_configuration_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.tariff_configuration_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tariff_configuration_oid_seq OWNER TO gridium;
+
+--
+-- Name: tariff_configuration_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.tariff_configuration_oid_seq OWNED BY public.tariff_configuration.oid;
+
+
+--
+-- Name: tariff_transition_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.tariff_transition_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tariff_transition_oid_seq OWNER TO gridium;
+
+--
+-- Name: tariff_transition; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.tariff_transition (
+    oid bigint DEFAULT nextval('public.tariff_transition_oid_seq'::regclass) NOT NULL,
+    occurred date,
+    service bigint,
+    "to" character varying,
+    created timestamp without time zone,
+    source character varying,
+    applied boolean,
+    utility_code character varying
+);
+
+
+ALTER TABLE public.tariff_transition OWNER TO gridium;
+
+--
+-- Name: task_id_sequence; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.task_id_sequence
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.task_id_sequence OWNER TO gridium;
+
+--
+-- Name: taskset_id_sequence; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.taskset_id_sequence
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.taskset_id_sequence OWNER TO gridium;
 
 --
 -- Name: temp_building; Type: TABLE; Schema: public; Owner: gridium
@@ -4025,6 +6459,42 @@ CREATE TABLE public.test_stored (
 ALTER TABLE public.test_stored OWNER TO gridium;
 
 --
+-- Name: timezone; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.timezone (
+    oid bigint NOT NULL,
+    boundary public.geometry(MultiPolygon,4326),
+    identity character varying(128)
+);
+
+
+ALTER TABLE public.timezone OWNER TO gridium;
+
+--
+-- Name: tmp_bill; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.tmp_bill (
+    oid bigint,
+    attachments json,
+    closing date,
+    cost double precision,
+    initial date,
+    items json,
+    manual boolean,
+    modified timestamp without time zone,
+    peak double precision,
+    service bigint,
+    used double precision,
+    notes character varying,
+    visible boolean
+);
+
+
+ALTER TABLE public.tmp_bill OWNER TO gridium;
+
+--
 -- Name: trailing_twelve_month_analytics; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -4087,6 +6557,40 @@ CREATE TABLE public.ttm_period (
 ALTER TABLE public.ttm_period OWNER TO gridium;
 
 --
+-- Name: tz_world; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.tz_world (
+    gid integer NOT NULL,
+    tzid character varying(30),
+    geom public.geometry(MultiPolygon,4326)
+);
+
+
+ALTER TABLE public.tz_world OWNER TO gridium;
+
+--
+-- Name: tz_world_gid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.tz_world_gid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tz_world_gid_seq OWNER TO gridium;
+
+--
+-- Name: tz_world_gid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.tz_world_gid_seq OWNED BY public.tz_world.gid;
+
+
+--
 -- Name: usage_history; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -4107,6 +6611,25 @@ CREATE TABLE public.usage_history (
 
 
 ALTER TABLE public.usage_history OWNER TO gridium;
+
+--
+-- Name: use_billing_fact; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.use_billing_fact (
+    oid bigint NOT NULL,
+    cost double precision,
+    cycle bigint,
+    kwh double precision,
+    meter bigint,
+    predicted_cost double precision,
+    predicted_kwh double precision,
+    use_cost double precision,
+    predicted_use_cost double precision
+);
+
+
+ALTER TABLE public.use_billing_fact OWNER TO gridium;
 
 --
 -- Name: use_prediction; Type: TABLE; Schema: public; Owner: gridium
@@ -4171,6 +6694,85 @@ ALTER SEQUENCE public.utility_oid_seq OWNED BY public.utility.oid;
 
 
 --
+-- Name: utility_service_contract; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.utility_service_contract (
+    oid bigint NOT NULL,
+    utility_service bigint NOT NULL,
+    contract bigint NOT NULL
+);
+
+
+ALTER TABLE public.utility_service_contract OWNER TO gridium;
+
+--
+-- Name: utility_service_contract_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.utility_service_contract_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.utility_service_contract_oid_seq OWNER TO gridium;
+
+--
+-- Name: utility_service_contract_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.utility_service_contract_oid_seq OWNED BY public.utility_service_contract.oid;
+
+
+--
+-- Name: utility_service_snapshot; Type: TABLE; Schema: public; Owner: gridium
+--
+
+CREATE TABLE public.utility_service_snapshot (
+    oid bigint NOT NULL,
+    service bigint NOT NULL,
+    provider_type public.provider_type_enum,
+    service_id character varying(128),
+    utility_account_id character varying,
+    tariff character varying(128),
+    utility character varying(128),
+    gen_service_id character varying(128),
+    gen_utility_account_id character varying,
+    gen_tariff character varying(128),
+    gen_utility character varying(128),
+    system_created timestamp without time zone NOT NULL,
+    system_modified timestamp without time zone NOT NULL,
+    service_modified timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.utility_service_snapshot OWNER TO gridium;
+
+--
+-- Name: utility_service_snapshot_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.utility_service_snapshot_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.utility_service_snapshot_oid_seq OWNER TO gridium;
+
+--
+-- Name: utility_service_snapshot_oid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: gridium
+--
+
+ALTER SEQUENCE public.utility_service_snapshot_oid_seq OWNED BY public.utility_service_snapshot.oid;
+
+
+--
 -- Name: utility_tariff; Type: TABLE; Schema: public; Owner: gridium
 --
 
@@ -4178,7 +6780,8 @@ CREATE TABLE public.utility_tariff (
     oid bigint NOT NULL,
     tariff character varying NOT NULL,
     description character varying NOT NULL,
-    utility character varying NOT NULL
+    utility character varying NOT NULL,
+    utility_codes character varying[]
 );
 
 
@@ -4241,7 +6844,9 @@ CREATE TABLE public.variance_clause (
     total double precision,
     total_adj double precision,
     tou_cost_adj double precision,
-    percent_imputed double precision
+    percent_imputed double precision,
+    failure_reason public.screen_failure,
+    calculation_method public.variance_calc_method
 );
 
 
@@ -4401,10 +7006,10 @@ ALTER TABLE ONLY public.auth_user ALTER COLUMN id SET DEFAULT nextval('public.au
 
 
 --
--- Name: bill oid; Type: DEFAULT; Schema: public; Owner: gridium
+-- Name: bill_accrual_calculation oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
-ALTER TABLE ONLY public.bill ALTER COLUMN oid SET DEFAULT nextval('public.bill_v2_oid_seq'::regclass);
+ALTER TABLE ONLY public.bill_accrual_calculation ALTER COLUMN oid SET DEFAULT nextval('public.bill_accrual_calculation_new_oid_seq'::regclass);
 
 
 --
@@ -4422,6 +7027,13 @@ ALTER TABLE ONLY public.bill_audit_event ALTER COLUMN oid SET DEFAULT nextval('p
 
 
 --
+-- Name: bill_document oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.bill_document ALTER COLUMN oid SET DEFAULT nextval('public.bill_document_oid_seq'::regclass);
+
+
+--
 -- Name: building_occupancy oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
@@ -4429,10 +7041,108 @@ ALTER TABLE ONLY public.building_occupancy ALTER COLUMN oid SET DEFAULT nextval(
 
 
 --
+-- Name: covid_baseline_prediction oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.covid_baseline_prediction ALTER COLUMN oid SET DEFAULT nextval('public.covid_baseline_prediction_oid_seq'::regclass);
+
+
+--
+-- Name: curtailment_recommendation_v2 oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.curtailment_recommendation_v2 ALTER COLUMN oid SET DEFAULT nextval('public.curtailment_recommendation_v2_oid_seq'::regclass);
+
+
+--
+-- Name: custom_utility_contract oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.custom_utility_contract ALTER COLUMN oid SET DEFAULT nextval('public.custom_utility_contract_oid_seq'::regclass);
+
+
+--
+-- Name: custom_utility_contract_template oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.custom_utility_contract_template ALTER COLUMN oid SET DEFAULT nextval('public.custom_utility_contract_template_oid_seq'::regclass);
+
+
+--
+-- Name: datafeeds_pending_job oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.datafeeds_pending_job ALTER COLUMN oid SET DEFAULT nextval('public.datafeeds_pending_job_oid_seq'::regclass);
+
+
+--
 -- Name: decomp_facts oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.decomp_facts ALTER COLUMN oid SET DEFAULT nextval('public.decomp_facts_oid_seq'::regclass);
+
+
+--
+-- Name: dropped_channel_date oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.dropped_channel_date ALTER COLUMN oid SET DEFAULT nextval('public.dropped_channel_date_oid_seq'::regclass);
+
+
+--
+-- Name: green_button_gap_fill_job oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_gap_fill_job ALTER COLUMN oid SET DEFAULT nextval('public.green_button_gap_fill_job_oid_seq'::regclass);
+
+
+--
+-- Name: green_button_notification oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification ALTER COLUMN oid SET DEFAULT nextval('public.green_button_notification_oid_seq'::regclass);
+
+
+--
+-- Name: green_button_notification_resource oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification_resource ALTER COLUMN oid SET DEFAULT nextval('public.green_button_notification_resource_oid_seq'::regclass);
+
+
+--
+-- Name: green_button_notification_task oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification_task ALTER COLUMN oid SET DEFAULT nextval('public.green_button_notification_task_oid_seq'::regclass);
+
+
+--
+-- Name: green_button_provider oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_provider ALTER COLUMN oid SET DEFAULT nextval('public.green_button_provider_oid_seq'::regclass);
+
+
+--
+-- Name: green_button_reading_stats oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_reading_stats ALTER COLUMN oid SET DEFAULT nextval('public.green_button_reading_stats_oid_seq'::regclass);
+
+
+--
+-- Name: green_button_subscription_task oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_subscription_task ALTER COLUMN oid SET DEFAULT nextval('public.green_button_subscription_task_oid_seq'::regclass);
+
+
+--
+-- Name: green_button_task oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_task ALTER COLUMN oid SET DEFAULT nextval('public.green_button_task_oid_seq'::regclass);
 
 
 --
@@ -4513,17 +7223,17 @@ ALTER TABLE ONLY public.meter_message ALTER COLUMN oid SET DEFAULT nextval('publ
 
 
 --
--- Name: meter_reading oid; Type: DEFAULT; Schema: public; Owner: gridium
---
-
-ALTER TABLE ONLY public.meter_reading ALTER COLUMN oid SET DEFAULT nextval('public.meter_reading_seq'::regclass);
-
-
---
 -- Name: mv_assessment_timeseries oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_assessment_timeseries ALTER COLUMN oid SET DEFAULT nextval('public.mv_assessment_timeseries_oid_seq'::regclass);
+
+
+--
+-- Name: mv_baseline_nonroutine_event oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_baseline_nonroutine_event ALTER COLUMN oid SET DEFAULT nextval('public.mv_baseline_nonroutine_event_oid_seq'::regclass);
 
 
 --
@@ -4534,10 +7244,31 @@ ALTER TABLE ONLY public.mv_baseline_timeseries ALTER COLUMN oid SET DEFAULT next
 
 
 --
+-- Name: mv_deer_date_hour_specification oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_deer_date_hour_specification ALTER COLUMN oid SET DEFAULT nextval('public.mv_deer_date_hour_specification_oid_seq'::regclass);
+
+
+--
 -- Name: mv_exogenous_factor_timeseries oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_exogenous_factor_timeseries ALTER COLUMN oid SET DEFAULT nextval('public.mv_exogenous_factor_timeseries_oid_seq'::regclass);
+
+
+--
+-- Name: mv_meter_group oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_meter_group ALTER COLUMN oid SET DEFAULT nextval('public.mv_meter_group_oid_seq'::regclass);
+
+
+--
+-- Name: mv_meter_group_item oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_meter_group_item ALTER COLUMN oid SET DEFAULT nextval('public.mv_meter_group_item_oid_seq'::regclass);
 
 
 --
@@ -4590,10 +7321,59 @@ ALTER TABLE ONLY public.obvius_meter ALTER COLUMN oid SET DEFAULT nextval('publi
 
 
 --
+-- Name: partial_bill oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill ALTER COLUMN oid SET DEFAULT nextval('public.partial_bill_oid_seq'::regclass);
+
+
+--
+-- Name: partial_bill_link oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill_link ALTER COLUMN oid SET DEFAULT nextval('public.partial_bill_link_oid_seq'::regclass);
+
+
+--
+-- Name: pge_account pge_account_pkey; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.pge_account ALTER COLUMN pge_account_pkey SET DEFAULT nextval('public.pge_account_pge_account_pkey_seq'::regclass);
+
+
+--
 -- Name: pge_credential oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.pge_credential ALTER COLUMN oid SET DEFAULT nextval('public.pge_credential_oid_seq'::regclass);
+
+
+--
+-- Name: pge_meter pge_meter_pkey; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.pge_meter ALTER COLUMN pge_meter_pkey SET DEFAULT nextval('public.pge_meter_pge_meter_pkey_seq'::regclass);
+
+
+--
+-- Name: pge_service pge_service_pkey; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.pge_service ALTER COLUMN pge_service_pkey SET DEFAULT nextval('public.pge_service_pge_service_pkey_seq'::regclass);
+
+
+--
+-- Name: provision_assignment provision_assignment_pkey; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.provision_assignment ALTER COLUMN provision_assignment_pkey SET DEFAULT nextval('public.provision_assignment_provision_assignment_pkey_seq'::regclass);
+
+
+--
+-- Name: rate_summary oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.rate_summary ALTER COLUMN oid SET DEFAULT nextval('public.rate_summary_oid_seq'::regclass);
 
 
 --
@@ -4639,10 +7419,24 @@ ALTER TABLE ONLY public.sce_gb_retail_customer ALTER COLUMN oid SET DEFAULT next
 
 
 --
+-- Name: scraper oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.scraper ALTER COLUMN oid SET DEFAULT nextval('public.scraper_oid_seq'::regclass);
+
+
+--
 -- Name: scrooge_ops_audit oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.scrooge_ops_audit ALTER COLUMN oid SET DEFAULT nextval('public.scrooge_ops_audit_oid_seq'::regclass);
+
+
+--
+-- Name: smd_artifact oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_artifact ALTER COLUMN oid SET DEFAULT nextval('public.smd_artifact_oid_seq'::regclass);
 
 
 --
@@ -4657,6 +7451,34 @@ ALTER TABLE ONLY public.smd_authorization_audit ALTER COLUMN oid SET DEFAULT nex
 --
 
 ALTER TABLE ONLY public.smd_authorization_audit_point ALTER COLUMN oid SET DEFAULT nextval('public.smd_authorization_audit_point_oid_seq'::regclass);
+
+
+--
+-- Name: smd_bill oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_bill ALTER COLUMN oid SET DEFAULT nextval('public.smd_bill_oid_seq'::regclass);
+
+
+--
+-- Name: smd_customer_info oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_customer_info ALTER COLUMN oid SET DEFAULT nextval('public.smd_customer_info_oid_seq'::regclass);
+
+
+--
+-- Name: smd_interval_data oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_interval_data ALTER COLUMN oid SET DEFAULT nextval('public.smd_interval_data_oid_seq'::regclass);
+
+
+--
+-- Name: smd_reading_type oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_reading_type ALTER COLUMN oid SET DEFAULT nextval('public.smd_reading_type_oid_seq'::regclass);
 
 
 --
@@ -4699,6 +7521,13 @@ ALTER TABLE ONLY public.snapmeter_account_user ALTER COLUMN oid SET DEFAULT next
 --
 
 ALTER TABLE ONLY public.snapmeter_announcement ALTER COLUMN oid SET DEFAULT nextval('public.snapmeter_announcement_oid_seq'::regclass);
+
+
+--
+-- Name: snapmeter_building oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.snapmeter_building ALTER COLUMN oid SET DEFAULT nextval('public.snapmeter_building_oid_seq'::regclass);
 
 
 --
@@ -4765,6 +7594,13 @@ ALTER TABLE ONLY public.snapmeter_provisioning_workflow ALTER COLUMN oid SET DEF
 
 
 --
+-- Name: snapmeter_service_tmp oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.snapmeter_service_tmp ALTER COLUMN oid SET DEFAULT nextval('public.snapmeter_service_tmp_oid_seq'::regclass);
+
+
+--
 -- Name: snapmeter_user oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
@@ -4779,10 +7615,38 @@ ALTER TABLE ONLY public.snapmeter_user_subscription ALTER COLUMN oid SET DEFAULT
 
 
 --
+-- Name: tariff_configuration oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.tariff_configuration ALTER COLUMN oid SET DEFAULT nextval('public.tariff_configuration_oid_seq'::regclass);
+
+
+--
+-- Name: tz_world gid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.tz_world ALTER COLUMN gid SET DEFAULT nextval('public.tz_world_gid_seq'::regclass);
+
+
+--
 -- Name: utility oid; Type: DEFAULT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.utility ALTER COLUMN oid SET DEFAULT nextval('public.utility_oid_seq'::regclass);
+
+
+--
+-- Name: utility_service_contract oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.utility_service_contract ALTER COLUMN oid SET DEFAULT nextval('public.utility_service_contract_oid_seq'::regclass);
+
+
+--
+-- Name: utility_service_snapshot oid; Type: DEFAULT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.utility_service_snapshot ALTER COLUMN oid SET DEFAULT nextval('public.utility_service_snapshot_oid_seq'::regclass);
 
 
 --
@@ -4833,6 +7697,14 @@ ALTER TABLE ONLY public.analytic_run
 
 
 --
+-- Name: analytica_job analytica_job_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.analytica_job
+    ADD CONSTRAINT analytica_job_pkey PRIMARY KEY (uuid);
+
+
+--
 -- Name: archive_fragment archive_fragment_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -4864,7 +7736,6 @@ ALTER TABLE ONLY public.average_load_analytics
     ADD CONSTRAINT average_load_analytics_pkey PRIMARY KEY (oid);
 
 
---
 -- Name: balance_point_analytics balance_point_analytics_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -4889,6 +7760,14 @@ ALTER TABLE ONLY public.balance_point_summary
 
 
 --
+-- Name: bill_accrual_calculation bill_accrual_calculation_new_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.bill_accrual_calculation
+    ADD CONSTRAINT bill_accrual_calculation_new_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: bill_audit_event bill_audit_event_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -4903,6 +7782,34 @@ ALTER TABLE ONLY public.bill_audit_event
 ALTER TABLE ONLY public.bill_audit
     ADD CONSTRAINT bill_audit_pkey PRIMARY KEY (oid);
 
+
+--
+-- Name: bill_document bill_document_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.bill_document
+    ADD CONSTRAINT bill_document_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: bill_old bill_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.bill_old
+    ADD CONSTRAINT bill_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: bill_summary bill_summary_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.bill_summary
+    ADD CONSTRAINT bill_summary_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: bill bill_v2_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
 
 ALTER TABLE ONLY public.bill
     ADD CONSTRAINT bill_v2_pkey PRIMARY KEY (oid);
@@ -4941,6 +7848,54 @@ ALTER TABLE ONLY public.building
 
 
 --
+-- Name: calculated_billing_cycle calculated_billing_cycle_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.calculated_billing_cycle
+    ADD CONSTRAINT calculated_billing_cycle_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: ce_account ce_account_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.ce_account
+    ADD CONSTRAINT ce_account_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: celery_taskmeta celery_taskmeta_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.celery_taskmeta
+    ADD CONSTRAINT celery_taskmeta_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: celery_taskmeta celery_taskmeta_task_id_key; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.celery_taskmeta
+    ADD CONSTRAINT celery_taskmeta_task_id_key UNIQUE (task_id);
+
+
+--
+-- Name: celery_tasksetmeta celery_tasksetmeta_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.celery_tasksetmeta
+    ADD CONSTRAINT celery_tasksetmeta_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: celery_tasksetmeta celery_tasksetmeta_taskset_id_key; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.celery_tasksetmeta
+    ADD CONSTRAINT celery_tasksetmeta_taskset_id_key UNIQUE (taskset_id);
+
+
+--
 -- Name: cluster_data cluster_data_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -4973,6 +7928,14 @@ ALTER TABLE ONLY public.configuration
 
 
 --
+-- Name: covid_baseline_prediction covid_baseline_prediction_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.covid_baseline_prediction
+    ADD CONSTRAINT covid_baseline_prediction_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: curtailment_peak curtailment_peak_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -4986,6 +7949,30 @@ ALTER TABLE ONLY public.curtailment_peak
 
 ALTER TABLE ONLY public.curtailment_recommendation
     ADD CONSTRAINT curtailment_recommendation_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: curtailment_recommendation_v2 curtailment_recommendation_v2_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.curtailment_recommendation_v2
+    ADD CONSTRAINT curtailment_recommendation_v2_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: custom_utility_contract custom_utility_contract_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.custom_utility_contract
+    ADD CONSTRAINT custom_utility_contract_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: custom_utility_contract_template custom_utility_contract_template_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.custom_utility_contract_template
+    ADD CONSTRAINT custom_utility_contract_template_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5018,6 +8005,30 @@ ALTER TABLE ONLY public.daily_trend
 
 ALTER TABLE ONLY public.database_archive
     ADD CONSTRAINT database_archive_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: datafeeds_feed_config datafeeds_feed_config_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.datafeeds_feed_config
+    ADD CONSTRAINT datafeeds_feed_config_pkey PRIMARY KEY (name);
+
+
+--
+-- Name: datafeeds_job datafeeds_job_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.datafeeds_job
+    ADD CONSTRAINT datafeeds_job_pkey PRIMARY KEY (uuid);
+
+
+--
+-- Name: datafeeds_pending_job datafeeds_pending_job_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.datafeeds_pending_job
+    ADD CONSTRAINT datafeeds_pending_job_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5066,6 +8077,14 @@ ALTER TABLE ONLY public.degree_day
 
 ALTER TABLE ONLY public.drift_report
     ADD CONSTRAINT drift_report_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: dropped_channel_date dropped_channel_date_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.dropped_channel_date
+    ADD CONSTRAINT dropped_channel_date_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5165,6 +8184,150 @@ ALTER TABLE ONLY public.foreign_system_attribute
 
 
 --
+-- Name: green_button_customer_account green_button_customer_account_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_customer_account
+    ADD CONSTRAINT green_button_customer_account_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_customer_agreement green_button_customer_agreement_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_customer_agreement
+    ADD CONSTRAINT green_button_customer_agreement_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_customer green_button_customer_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_customer
+    ADD CONSTRAINT green_button_customer_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_gap_fill_job green_button_gap_fill_job_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_gap_fill_job
+    ADD CONSTRAINT green_button_gap_fill_job_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_interval_block green_button_interval_block_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_interval_block
+    ADD CONSTRAINT green_button_interval_block_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_meter_reading green_button_meter_reading_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_meter_reading
+    ADD CONSTRAINT green_button_meter_reading_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_notification green_button_notification_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification
+    ADD CONSTRAINT green_button_notification_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_notification_resource green_button_notification_resource_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification_resource
+    ADD CONSTRAINT green_button_notification_resource_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_notification_task green_button_notification_task_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification_task
+    ADD CONSTRAINT green_button_notification_task_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_provider green_button_provider_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_provider
+    ADD CONSTRAINT green_button_provider_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_reading_stats green_button_reading_stats_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_reading_stats
+    ADD CONSTRAINT green_button_reading_stats_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_reading_type green_button_reading_type_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_reading_type
+    ADD CONSTRAINT green_button_reading_type_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_retail_customer green_button_retail_customer_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_retail_customer
+    ADD CONSTRAINT green_button_retail_customer_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_subscription_task green_button_subscription_task_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_subscription_task
+    ADD CONSTRAINT green_button_subscription_task_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_task green_button_task_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_task
+    ADD CONSTRAINT green_button_task_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_time_parameters green_button_time_parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_time_parameters
+    ADD CONSTRAINT green_button_time_parameters_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_usage_point green_button_usage_point_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_usage_point
+    ADD CONSTRAINT green_button_usage_point_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: green_button_usage_summary green_button_usage_summary_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_usage_summary
+    ADD CONSTRAINT green_button_usage_summary_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: hours_at_demand hours_at_demand_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5194,6 +8357,30 @@ ALTER TABLE ONLY public.interval_facts
 
 ALTER TABLE ONLY public.latest_snapmeter
     ADD CONSTRAINT latest_snapmeter_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: launchpad_audit_summary launchpad_audit_summary_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.launchpad_audit_summary
+    ADD CONSTRAINT launchpad_audit_summary_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: launchpad_data_summary launchpad_data_summary_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.launchpad_data_summary
+    ADD CONSTRAINT launchpad_data_summary_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: launchpad_workbook launchpad_workbook_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.launchpad_workbook
+    ADD CONSTRAINT launchpad_workbook_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5341,6 +8528,14 @@ ALTER TABLE ONLY public.meter_reading
 
 
 --
+-- Name: meter_state meter_state_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.meter_state
+    ADD CONSTRAINT meter_state_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: model_statistic model_statistic_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5389,6 +8584,14 @@ ALTER TABLE ONLY public.mv_assessment_timeseries
 
 
 --
+-- Name: mv_baseline_nonroutine_event mv_baseline_nonroutine_event_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_baseline_nonroutine_event
+    ADD CONSTRAINT mv_baseline_nonroutine_event_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: mv_baseline mv_baseline_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5402,6 +8605,14 @@ ALTER TABLE ONLY public.mv_baseline
 
 ALTER TABLE ONLY public.mv_baseline_timeseries
     ADD CONSTRAINT mv_baseline_timeseries_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: mv_deer_date_hour_specification mv_deer_date_hour_specification_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_deer_date_hour_specification
+    ADD CONSTRAINT mv_deer_date_hour_specification_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5426,6 +8637,22 @@ ALTER TABLE ONLY public.mv_drift_period
 
 ALTER TABLE ONLY public.mv_exogenous_factor_timeseries
     ADD CONSTRAINT mv_exogenous_factor_timeseries_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: mv_meter_group_item mv_meter_group_item_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_meter_group_item
+    ADD CONSTRAINT mv_meter_group_item_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: mv_meter_group mv_meter_group_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_meter_group
+    ADD CONSTRAINT mv_meter_group_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5485,6 +8712,22 @@ ALTER TABLE ONLY public.obvius_meter
 
 
 --
+-- Name: partial_bill_link partial_bill_link_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill_link
+    ADD CONSTRAINT partial_bill_link_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: partial_bill partial_bill_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill
+    ADD CONSTRAINT partial_bill_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: pdp_analytics pdp_analytics_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5541,6 +8784,14 @@ ALTER TABLE ONLY public.peak_history
 
 
 --
+-- Name: peak_message peak_message_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.peak_message
+    ADD CONSTRAINT peak_message_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: peak_prediction peak_prediction_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5549,11 +8800,51 @@ ALTER TABLE ONLY public.peak_prediction
 
 
 --
+-- Name: pge_account pge_account_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.pge_account
+    ADD CONSTRAINT pge_account_pkey PRIMARY KEY (pge_account_pkey);
+
+
+--
+-- Name: pge_bill pge_bill_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.pge_bill
+    ADD CONSTRAINT pge_bill_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: pge_credential pge_credential_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.pge_credential
     ADD CONSTRAINT pge_credential_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: pge_meter pge_meter_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.pge_meter
+    ADD CONSTRAINT pge_meter_pkey PRIMARY KEY (pge_meter_pkey);
+
+
+--
+-- Name: pge_pdp_service pge_pdp_service_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.pge_pdp_service
+    ADD CONSTRAINT pge_pdp_service_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: pge_service pge_service_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.pge_service
+    ADD CONSTRAINT pge_service_pkey PRIMARY KEY (pge_service_pkey);
 
 
 --
@@ -5573,6 +8864,22 @@ ALTER TABLE ONLY public.product_enrollment
 
 
 --
+-- Name: provision_assignment_part provision_assignment_part_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.provision_assignment_part
+    ADD CONSTRAINT provision_assignment_part_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: provision_assignment provision_assignment_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.provision_assignment
+    ADD CONSTRAINT provision_assignment_pkey PRIMARY KEY (provision_assignment_pkey);
+
+
+--
 -- Name: provision_entry provision_entry_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5586,6 +8893,38 @@ ALTER TABLE ONLY public.provision_entry
 
 ALTER TABLE ONLY public.provision_extract
     ADD CONSTRAINT provision_extract_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: provision_origin_old provision_origin_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.provision_origin_old
+    ADD CONSTRAINT provision_origin_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: provision_origin provision_origin_pkey1; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.provision_origin
+    ADD CONSTRAINT provision_origin_pkey1 PRIMARY KEY (oid);
+
+
+--
+-- Name: quicksight_meter_month quicksight_meter_month_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.quicksight_meter_month
+    ADD CONSTRAINT quicksight_meter_month_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: r_message r_message_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.r_message
+    ADD CONSTRAINT r_message_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5618,6 +8957,14 @@ ALTER TABLE ONLY public.rate_right
 
 ALTER TABLE ONLY public.rate_right_summary
     ADD CONSTRAINT rate_right_summary_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: rate_summary rate_summary_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.rate_summary
+    ADD CONSTRAINT rate_summary_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5709,11 +9056,67 @@ ALTER TABLE ONLY public.score_pattern_analytics
 
 
 --
+-- Name: scraper scraper_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.scraper
+    ADD CONSTRAINT scraper_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: scrooge_bill_audit scrooge_bill_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.scrooge_bill_audit
+    ADD CONSTRAINT scrooge_bill_audit_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: scrooge_meter_summary scrooge_meter_summary_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.scrooge_meter_summary
+    ADD CONSTRAINT scrooge_meter_summary_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: scrooge_miss_chart scrooge_miss_chart_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.scrooge_miss_chart
+    ADD CONSTRAINT scrooge_miss_chart_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: scrooge_miss_sequence scrooge_miss_sequence_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.scrooge_miss_sequence
+    ADD CONSTRAINT scrooge_miss_sequence_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: scrooge_ops_audit scrooge_ops_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.scrooge_ops_audit
     ADD CONSTRAINT scrooge_ops_audit_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: service_summary service_summary_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.service_summary
+    ADD CONSTRAINT service_summary_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: smd_artifact smd_artifact_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_artifact
+    ADD CONSTRAINT smd_artifact_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5733,6 +9136,38 @@ ALTER TABLE ONLY public.smd_authorization_audit_point
 
 
 --
+-- Name: smd_bill smd_bill_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_bill
+    ADD CONSTRAINT smd_bill_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: smd_customer_info smd_customer_info_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_customer_info
+    ADD CONSTRAINT smd_customer_info_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: smd_interval_data smd_interval_data_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_interval_data
+    ADD CONSTRAINT smd_interval_data_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: smd_reading_type smd_reading_type_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_reading_type
+    ADD CONSTRAINT smd_reading_type_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: smd_subscription_detail smd_subscription_detail_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5746,6 +9181,14 @@ ALTER TABLE ONLY public.smd_subscription_detail
 
 ALTER TABLE ONLY public.snapmeter_account_data_source
     ADD CONSTRAINT snapmeter_account_data_source_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: snapmeter_account_meter snapmeter_account_meter_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.snapmeter_account_meter
+    ADD CONSTRAINT snapmeter_account_meter_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5853,6 +9296,22 @@ ALTER TABLE ONLY public.snapmeter_provisioning_workflow
 
 
 --
+-- Name: snapmeter_service_tmp snapmeter_service_tmp_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.snapmeter_service_tmp
+    ADD CONSTRAINT snapmeter_service_tmp_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: snapmeter_service_tmp_test snapmeter_service_tmp_test_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.snapmeter_service_tmp_test
+    ADD CONSTRAINT snapmeter_service_tmp_test_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: snapmeter_user snapmeter_user_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5893,6 +9352,22 @@ ALTER TABLE ONLY public.stasis_transaction
 
 
 --
+-- Name: tariff_configuration tariff_configuration_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.tariff_configuration
+    ADD CONSTRAINT tariff_configuration_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: tariff_transition tariff_transition_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.tariff_transition
+    ADD CONSTRAINT tariff_transition_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: temperature_response temperature_response_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5906,6 +9381,14 @@ ALTER TABLE ONLY public.temperature_response
 
 ALTER TABLE ONLY public.test_stored
     ADD CONSTRAINT test_stored_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: timezone timezone_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.timezone
+    ADD CONSTRAINT timezone_pkey PRIMARY KEY (oid);
 
 
 --
@@ -5941,6 +9424,14 @@ ALTER TABLE ONLY public.ttm_period
 
 
 --
+-- Name: tz_world tz_world_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.tz_world
+    ADD CONSTRAINT tz_world_pkey PRIMARY KEY (gid);
+
+
+--
 -- Name: balance_point_summary unique_balance_point_summary_meter_model_type; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -5970,6 +9461,14 @@ ALTER TABLE ONLY public.daily_fact
 
 ALTER TABLE ONLY public.interval_facts
     ADD CONSTRAINT unique_interval_facts_daily_time UNIQUE (daily, "time");
+
+
+--
+-- Name: meter_state unique_meter_state_meter; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.meter_state
+    ADD CONSTRAINT unique_meter_state_meter UNIQUE (meter);
 
 
 --
@@ -6037,19 +9536,19 @@ ALTER TABLE ONLY public.variance_clause
 
 
 --
--- Name: variance_clause unique_variance_clause_baseline; Type: CONSTRAINT; Schema: public; Owner: gridium
---
-
-ALTER TABLE ONLY public.variance_clause
-    ADD CONSTRAINT unique_variance_clause_baseline UNIQUE (baseline);
-
-
---
 -- Name: usage_history usage_history_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.usage_history
     ADD CONSTRAINT usage_history_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: use_billing_fact use_billing_fact_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.use_billing_fact
+    ADD CONSTRAINT use_billing_fact_pkey PRIMARY KEY (oid);
 
 
 --
@@ -6077,11 +9576,27 @@ ALTER TABLE ONLY public.utility
 
 
 --
+-- Name: utility_service_contract utility_service_contract_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.utility_service_contract
+    ADD CONSTRAINT utility_service_contract_pkey PRIMARY KEY (oid);
+
+
+--
 -- Name: utility_service utility_service_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.utility_service
     ADD CONSTRAINT utility_service_pkey PRIMARY KEY (oid);
+
+
+--
+-- Name: utility_service_snapshot utility_service_snapshot_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.utility_service_snapshot
+    ADD CONSTRAINT utility_service_snapshot_pkey PRIMARY KEY (oid);
 
 
 --
@@ -6155,26 +9670,40 @@ ALTER TABLE ONLY public.workflow_task_run
 ALTER TABLE ONLY public.wsi_axis
     ADD CONSTRAINT wsi_axis_pkey PRIMARY KEY (oid);
 
---
--- Name: partial_bill partial_bill_pkey; Type: CONSTRAINT; Schema: public; Owner: gridium
---
-
-ALTER TABLE ONLY public.partial_bill
-    ADD CONSTRAINT partial_bill_pkey PRIMARY KEY (oid);
-
---
--- Name: partial_bill partial_bill_utility_service_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
---
-
-ALTER TABLE ONLY public.partial_bill
-    ADD CONSTRAINT partial_bill_utility_service_fkey FOREIGN KEY (service) REFERENCES public.utility_service(oid) ON DELETE CASCADE;
-
 
 --
 -- Name: account_user_unique; Type: INDEX; Schema: public; Owner: gridium
 --
 
 CREATE UNIQUE INDEX account_user_unique ON public.snapmeter_account_user USING btree ("user", account);
+
+
+--
+-- Name: analytic_identifier_analytic_source_stored; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX analytic_identifier_analytic_source_stored ON public.analytic_identifier USING btree (analytic, stored, source);
+
+
+--
+-- Name: analytic_identifier_source_stored; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX analytic_identifier_source_stored ON public.analytic_identifier USING btree (stored, source);
+
+
+--
+-- Name: analytic_run_identifier; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX analytic_run_identifier ON public.analytic_run USING btree (identifier);
+
+
+--
+-- Name: analytic_run_identifier_occurred; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX analytic_run_identifier_occurred ON public.analytic_run USING btree (identifier, occurred);
 
 
 --
@@ -6233,7 +9762,48 @@ CREATE INDEX balance_point_analytics_meter_day ON public.balance_point_analytics
 CREATE INDEX balance_point_summary_meter ON public.balance_point_summary USING btree (meter);
 
 
+--
+-- Name: bill_audit_account_name_bill_initial_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX bill_audit_account_name_bill_initial_idx ON public.bill_audit USING btree (account_name, bill_initial DESC);
+
+
+--
+-- Name: bill_audit_complete; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX bill_audit_complete ON public.bill_old USING btree (audit_complete);
+
+
+--
+-- Name: bill_failed_audits; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX bill_failed_audits ON public.bill_old USING btree (audit_complete, audit_successful, audit_suppressed, audit_accepted);
+
+
+--
+-- Name: bill_service_closing_initial; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX bill_service_closing_initial ON public.bill_old USING btree (service, closing, initial, cost, used);
+
+ALTER TABLE public.bill_old CLUSTER ON bill_service_closing_initial;
+
+
+--
+-- Name: bill_service_closing_initial_2; Type: INDEX; Schema: public; Owner: gridium
+--
+
 CREATE INDEX bill_service_closing_initial_2 ON public.bill USING btree (service, closing, initial, cost, used);
+
+
+--
+-- Name: bill_service_initial_closing; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX bill_service_initial_closing ON public.bill_old USING btree (service, initial, closing);
 
 
 --
@@ -6276,6 +9846,13 @@ CREATE INDEX building_coordinate_index ON public.building USING gist (coordinate
 --
 
 CREATE INDEX building_occupancy_building ON public.building_occupancy USING btree (building, month);
+
+
+--
+-- Name: calculated_billing_cycle_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX calculated_billing_cycle_meter ON public.calculated_billing_cycle USING btree (meter);
 
 
 --
@@ -6433,6 +10010,166 @@ CREATE INDEX forecast_location_coordinate_index ON public.forecast_location USIN
 
 
 --
+-- Name: green_button_customer_account_identifier_customer; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_account_identifier_customer ON public.green_button_customer_account USING btree (identifier, customer);
+
+
+--
+-- Name: green_button_customer_account_self; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_account_self ON public.green_button_customer_account USING btree (self);
+
+
+--
+-- Name: green_button_customer_agreement_account; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_agreement_account ON public.green_button_customer_agreement USING btree (account);
+
+
+--
+-- Name: green_button_customer_agreement_identifier_account; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_agreement_identifier_account ON public.green_button_customer_agreement USING btree (identifier, account);
+
+
+--
+-- Name: green_button_customer_agreement_name; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_agreement_name ON public.green_button_customer_agreement USING btree (name);
+
+
+--
+-- Name: green_button_customer_agreement_self; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_agreement_self ON public.green_button_customer_agreement USING btree (self);
+
+
+--
+-- Name: green_button_customer_identifier_retail; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_identifier_retail ON public.green_button_customer USING btree (identifier, retail);
+
+
+--
+-- Name: green_button_customer_retail; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_retail ON public.green_button_customer USING btree (retail);
+
+
+--
+-- Name: green_button_customer_self; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_customer_self ON public.green_button_customer USING btree (self);
+
+
+--
+-- Name: green_button_interval_block_identifier_reading; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_interval_block_identifier_reading ON public.green_button_interval_block USING btree (identifier, reading);
+
+
+--
+-- Name: green_button_interval_block_reading_start; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_interval_block_reading_start ON public.green_button_interval_block USING btree (reading, start);
+
+
+--
+-- Name: green_button_meter_reading_identifier_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_meter_reading_identifier_point ON public.green_button_meter_reading USING btree (identifier, point);
+
+
+--
+-- Name: green_button_meter_reading_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_meter_reading_point ON public.green_button_meter_reading USING btree (point);
+
+
+--
+-- Name: green_button_reading_type_self; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_reading_type_self ON public.green_button_reading_type USING btree (self);
+
+
+--
+-- Name: green_button_retail_customer_identifier_provider; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_retail_customer_identifier_provider ON public.green_button_retail_customer USING btree (identifier, provider);
+
+
+--
+-- Name: green_button_retail_customer_provider; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_retail_customer_provider ON public.green_button_retail_customer USING btree (provider);
+
+
+--
+-- Name: green_button_retail_customer_self; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_retail_customer_self ON public.green_button_retail_customer USING btree (self);
+
+
+--
+-- Name: green_button_time_parameters_self; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_time_parameters_self ON public.green_button_time_parameters USING btree (self);
+
+
+--
+-- Name: green_button_usage_point_identifier_retail; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_usage_point_identifier_retail ON public.green_button_usage_point USING btree (identifier, retail);
+
+
+--
+-- Name: green_button_usage_point_self; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_usage_point_self ON public.green_button_usage_point USING btree (self);
+
+
+--
+-- Name: green_button_usage_summary_identifier_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_usage_summary_identifier_point ON public.green_button_usage_summary USING btree (identifier, point);
+
+
+--
+-- Name: green_button_usage_summary_point_start; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_usage_summary_point_start ON public.green_button_usage_summary USING btree (point, start);
+
+
+--
+-- Name: green_button_usage_summary_self; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX green_button_usage_summary_self ON public.green_button_usage_summary USING btree (self);
+
+
 --
 -- Name: hours_at_demand_meter; Type: INDEX; Schema: public; Owner: gridium
 --
@@ -6483,10 +10220,94 @@ CREATE INDEX idx_account_name ON public.snapmeter_account USING btree (name);
 
 
 --
+-- Name: idx_analytica_job_kind_status_times; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_analytica_job_kind_status_times ON public.analytica_job USING btree (kind, status, updated, created);
+
+
+--
+-- Name: idx_analytica_job_updated; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_analytica_job_updated ON public.analytica_job USING btree (updated);
+
+
+--
+-- Name: idx_bill_accrual_meter_initial_closing; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_bill_accrual_meter_initial_closing ON public.bill_accrual_calculation USING btree (meter, initial, closing);
+
+
+--
+-- Name: idx_bill_modified; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_bill_modified ON public.bill USING btree (modified);
+
+
+--
 -- Name: idx_ce_account_oid; Type: INDEX; Schema: public; Owner: gridium
 --
 
 CREATE INDEX idx_ce_account_oid ON public.ce_account USING btree (oid);
+
+
+--
+-- Name: idx_contract; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_contract ON public.custom_utility_contract USING btree (account, name);
+
+
+--
+-- Name: idx_covid_baseline_prediction_created; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_covid_baseline_prediction_created ON public.covid_baseline_prediction USING btree (created);
+
+
+--
+-- Name: idx_covid_baseline_prediction_meter_occurred_type; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_covid_baseline_prediction_meter_occurred_type ON public.covid_baseline_prediction USING btree (meter, occurred);
+
+
+--
+-- Name: idx_curtailment_recommendation_v2_created; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_curtailment_recommendation_v2_created ON public.curtailment_recommendation_v2 USING btree (created);
+
+
+--
+-- Name: idx_curtailment_recommendation_v2_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_curtailment_recommendation_v2_meter ON public.curtailment_recommendation_v2 USING btree (meter, expired);
+
+
+--
+-- Name: idx_custom_utility_contract_template_unique; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_custom_utility_contract_template_unique ON public.custom_utility_contract_template USING btree (name);
+
+
+--
+-- Name: idx_data_quality_snapshot_times; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_data_quality_snapshot_times ON public.snapmeter_data_quality_snapshot USING btree (interval_time_stale, bill_time_stale, interval_data_exists, bill_data_exists);
+
+
+--
+-- Name: idx_datafeeds_job_kind_status_times; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_datafeeds_job_kind_status_times ON public.datafeeds_job USING btree (source, status, updated, created);
 
 
 --
@@ -6515,6 +10336,13 @@ CREATE INDEX idx_failed_analytics ON public.analytic_run USING btree (analytics,
 --
 
 CREATE INDEX idx_failed_login_email_dt ON public.snapmeter_failed_login USING btree (email, login_dt);
+
+
+--
+-- Name: idx_interval_block_usage_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_interval_block_usage_point ON public.green_button_interval_block USING btree (usagepoint);
 
 
 --
@@ -6560,6 +10388,20 @@ CREATE INDEX idx_meter_ds_meter ON public.snapmeter_meter_data_source USING btre
 
 
 --
+-- Name: idx_meter_dt; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_meter_dt ON public.meter_reading_dup USING btree (meter, occurred);
+
+
+--
+-- Name: idx_meter_gb_usage_point_retail; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_meter_gb_usage_point_retail ON public.green_button_usage_point USING btree (retail);
+
+
+--
 -- Name: idx_meter_message_account; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -6581,6 +10423,27 @@ CREATE INDEX idx_meter_message_report ON public.meter_message USING btree (repor
 
 
 --
+-- Name: idx_meter_reading_modified; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_meter_reading_modified ON public.meter_reading USING btree (modified);
+
+
+--
+-- Name: idx_meter_reading_reading_type; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_meter_reading_reading_type ON public.green_button_meter_reading USING btree (reading_type);
+
+
+--
+-- Name: idx_meter_reading_usage_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_meter_reading_usage_point ON public.green_button_meter_reading USING btree (usagepoint);
+
+
+--
 -- Name: idx_meter_uncommon_direction; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -6588,17 +10451,17 @@ CREATE INDEX idx_meter_uncommon_direction ON public.meter USING btree (direction
 
 
 --
--- Name: idx_mv_assessment_timeseries_program_meter_occurred; Type: INDEX; Schema: public; Owner: gridium
+-- Name: idx_mv_assessment_timeseries_group_program_unique; Type: INDEX; Schema: public; Owner: gridium
 --
 
-CREATE INDEX idx_mv_assessment_timeseries_program_meter_occurred ON public.mv_assessment_timeseries USING btree (program, meter, occurred);
+CREATE UNIQUE INDEX idx_mv_assessment_timeseries_group_program_unique ON public.mv_assessment_timeseries USING btree (mv_meter_group, program_type, occurred);
 
 
 --
--- Name: idx_mv_baseline_timeseries_program_meter_occurred; Type: INDEX; Schema: public; Owner: gridium
+-- Name: idx_mv_baseline_timeseries_group_program_unique; Type: INDEX; Schema: public; Owner: gridium
 --
 
-CREATE INDEX idx_mv_baseline_timeseries_program_meter_occurred ON public.mv_baseline_timeseries USING btree (program, meter, occurred);
+CREATE UNIQUE INDEX idx_mv_baseline_timeseries_group_program_unique ON public.mv_baseline_timeseries USING btree (mv_meter_group, program_type, occurred);
 
 
 --
@@ -6609,17 +10472,24 @@ CREATE INDEX idx_mv_exogenous_factor_timeseries_program_meter_occurred ON public
 
 
 --
--- Name: idx_mv_model_fit_statistic_program_meter; Type: INDEX; Schema: public; Owner: gridium
+-- Name: idx_mv_meter_group_item_unique; Type: INDEX; Schema: public; Owner: gridium
 --
 
-CREATE INDEX idx_mv_model_fit_statistic_program_meter ON public.mv_model_fit_statistic USING btree (program, meter);
+CREATE UNIQUE INDEX idx_mv_meter_group_item_unique ON public.mv_meter_group_item USING btree (mv_meter_group, meter);
 
 
 --
--- Name: idx_mv_nonroutine_event_program_meter_occurred; Type: INDEX; Schema: public; Owner: gridium
+-- Name: idx_mv_model_fit_statistic_group_program_unique; Type: INDEX; Schema: public; Owner: gridium
 --
 
-CREATE INDEX idx_mv_nonroutine_event_program_meter_occurred ON public.mv_nonroutine_event USING btree (program, meter, occurred);
+CREATE UNIQUE INDEX idx_mv_model_fit_statistic_group_program_unique ON public.mv_model_fit_statistic USING btree (mv_meter_group, program_type, kind, metric);
+
+
+--
+-- Name: idx_notification_task_task_oid; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_notification_task_task_oid ON public.green_button_notification_task USING btree (task_oid);
 
 
 --
@@ -6627,6 +10497,13 @@ CREATE INDEX idx_mv_nonroutine_event_program_meter_occurred ON public.mv_nonrout
 --
 
 CREATE UNIQUE INDEX idx_obvius_meter ON public.obvius_meter USING btree (das_serial, channel, meter);
+
+
+--
+-- Name: idx_partial_bill_link_uniq; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_partial_bill_link_uniq ON public.partial_bill_link USING btree (bill, partial_bill);
 
 
 --
@@ -6665,6 +10542,13 @@ CREATE INDEX idx_provision_origin_oid ON public.provision_origin USING btree (oi
 
 
 --
+-- Name: idx_quicksight_meter_month; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_quicksight_meter_month ON public.quicksight_meter_month USING btree (meter_id, month);
+
+
+--
 -- Name: idx_rt_attr_meter; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -6676,6 +10560,48 @@ CREATE UNIQUE INDEX idx_rt_attr_meter ON public.real_time_attribute USING btree 
 --
 
 CREATE INDEX idx_rt_attr_serial_channel ON public.real_time_attribute USING btree (das_serial, channel);
+
+
+--
+-- Name: idx_s3_key; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_s3_key ON public.bill_document USING btree (s3_key);
+
+
+--
+-- Name: idx_service_contract_contract; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_service_contract_contract ON public.utility_service_contract USING btree (contract);
+
+
+--
+-- Name: idx_service_contract_service; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_service_contract_service ON public.utility_service_contract USING btree (utility_service);
+
+
+--
+-- Name: idx_smd_artifact_created; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_artifact_created ON public.smd_artifact USING btree (created);
+
+
+--
+-- Name: idx_smd_artifact_filename; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_smd_artifact_filename ON public.smd_artifact USING btree (provider, filename);
+
+
+--
+-- Name: idx_smd_artifact_published; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_artifact_published ON public.smd_artifact USING btree (published);
 
 
 --
@@ -6707,6 +10633,118 @@ CREATE INDEX idx_smd_authorization_audit_point ON public.smd_authorization_audit
 
 
 --
+-- Name: idx_smd_bill_artifact; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_bill_artifact ON public.smd_bill USING btree (artifact);
+
+
+--
+-- Name: idx_smd_bill_self_url_artifact; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_smd_bill_self_url_artifact ON public.smd_bill USING btree (self_url, artifact);
+
+
+--
+-- Name: idx_smd_bill_usage_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_bill_usage_point ON public.smd_bill USING btree (usage_point);
+
+
+--
+-- Name: idx_smd_customer_address; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_customer_address ON public.smd_customer_info USING btree (street1, street2, city, state, zipcode);
+
+
+--
+-- Name: idx_smd_customer_created; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_customer_created ON public.smd_customer_info USING btree (created);
+
+
+--
+-- Name: idx_smd_customer_info_artifact; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_customer_info_artifact ON public.smd_customer_info USING btree (artifact);
+
+
+--
+-- Name: idx_smd_customer_info_self_url_artifact; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_smd_customer_info_self_url_artifact ON public.smd_customer_info USING btree (self_url, artifact);
+
+
+--
+-- Name: idx_smd_customer_published; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_customer_published ON public.smd_customer_info USING btree (published);
+
+
+--
+-- Name: idx_smd_customer_service_id; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_customer_service_id ON public.smd_customer_info USING btree (service_id);
+
+
+--
+-- Name: idx_smd_customer_subscription; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_customer_subscription ON public.smd_customer_info USING btree (subscription);
+
+
+--
+-- Name: idx_smd_customer_usage_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_customer_usage_point ON public.smd_customer_info USING btree (usage_point);
+
+
+--
+-- Name: idx_smd_interval_data_artifact; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_interval_data_artifact ON public.smd_interval_data USING btree (artifact);
+
+
+--
+-- Name: idx_smd_interval_data_reading_type; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_interval_data_reading_type ON public.smd_interval_data USING btree (reading_type);
+
+
+--
+-- Name: idx_smd_interval_data_self_url_artifact; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_smd_interval_data_self_url_artifact ON public.smd_interval_data USING btree (self_url, artifact);
+
+
+--
+-- Name: idx_smd_interval_data_usage_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_interval_data_usage_point ON public.smd_interval_data USING btree (usage_point);
+
+
+--
+-- Name: idx_smd_reading_type_artifact; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_smd_reading_type_artifact ON public.smd_reading_type USING btree (artifact);
+
+
+--
 -- Name: idx_snapmeter_data_gap_account; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -6721,6 +10759,13 @@ CREATE INDEX idx_snapmeter_data_gap_meter ON public.snapmeter_data_gap USING btr
 
 
 --
+-- Name: idx_snapmeter_data_gap_meter_from_dt_to_dt; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_snapmeter_data_gap_meter_from_dt_to_dt ON public.snapmeter_data_gap USING btree (meter, from_dt, to_dt);
+
+
+--
 -- Name: idx_snapmeter_image_run_date; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -6732,6 +10777,34 @@ CREATE INDEX idx_snapmeter_image_run_date ON public.snapmeter_image USING btree 
 --
 
 CREATE INDEX idx_snapmeter_provisioning_event_occurred ON public.snapmeter_provisioning_event USING btree (workflow, occurred);
+
+
+--
+-- Name: idx_tariff_configuration_unique; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX idx_tariff_configuration_unique ON public.tariff_configuration USING btree (service);
+
+
+--
+-- Name: idx_task_key; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_task_key ON public.green_button_task USING btree (key);
+
+
+--
+-- Name: idx_usage_summary_usage_point; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_usage_summary_usage_point ON public.green_button_usage_summary USING btree (usagepoint);
+
+
+--
+-- Name: idx_utility_account; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_utility_account ON public.bill_document USING btree (utility_account_id);
 
 
 --
@@ -6756,6 +10829,13 @@ CREATE UNIQUE INDEX idx_utility_unique ON public.utility USING btree (identifier
 
 
 --
+-- Name: idx_versions; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX idx_versions ON public.meter_reading_dup USING btree (versions);
+
+
+--
 -- Name: interval_facts_daily; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -6767,6 +10847,27 @@ CREATE INDEX interval_facts_daily ON public.interval_facts USING btree (daily);
 --
 
 CREATE INDEX latest_snapmeter_meter ON public.latest_snapmeter USING btree (meter);
+
+
+--
+-- Name: launchpad_audit_summary_account; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX launchpad_audit_summary_account ON public.launchpad_audit_summary USING btree (account);
+
+
+--
+-- Name: launchpad_data_summary_account; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX launchpad_data_summary_account ON public.launchpad_data_summary USING btree (account);
+
+
+--
+-- Name: launchpad_workbook_account; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX launchpad_workbook_account ON public.launchpad_workbook USING btree (account);
 
 
 --
@@ -6840,6 +10941,13 @@ CREATE INDEX meter_service ON public.meter USING btree (service);
 
 
 --
+-- Name: meter_state_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX meter_state_meter ON public.meter_state USING btree (meter);
+
+
+--
 -- Name: model_statistic_meter; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -6896,6 +11004,27 @@ CREATE INDEX mv_drift_period_meter_baseline_period_comparison_start ON public.mv
 
 
 --
+-- Name: partial_bill_link_bill_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX partial_bill_link_bill_idx ON public.partial_bill_link USING btree (bill);
+
+
+--
+-- Name: partial_bill_link_partial_bill_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX partial_bill_link_partial_bill_idx ON public.partial_bill_link USING btree (partial_bill);
+
+
+--
+-- Name: partial_bill_service_initial_closing_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX partial_bill_service_initial_closing_idx ON public.partial_bill USING btree (service, initial, closing);
+
+
+--
 -- Name: pdp_analytics_meter; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -6914,6 +11043,13 @@ CREATE INDEX pdp_event_has_interval_index ON public.pdp_event USING btree (event
 --
 
 CREATE INDEX pdp_event_has_weather_index ON public.pdp_event USING btree (event, has_weather);
+
+
+--
+-- Name: pdp_event_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX pdp_event_meter ON public.pdp_event USING btree (meter);
 
 
 --
@@ -6987,6 +11123,13 @@ CREATE INDEX peak_history_outliers ON public.peak_history USING btree (meter, in
 
 
 --
+-- Name: peak_message_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX peak_message_meter ON public.peak_message USING btree (meter);
+
+
+--
 -- Name: peak_prediction_meter; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -7012,6 +11155,20 @@ CREATE INDEX plotting_fact_meter_fact ON public.plotting_fact USING btree (meter
 --
 
 CREATE INDEX product_enrollment_meter_product ON public.product_enrollment USING btree (meter, product);
+
+
+--
+-- Name: qs_meter_meter_account; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX qs_meter_meter_account ON public.quicksight_meter_meta USING btree (meter_id, account_hex);
+
+
+--
+-- Name: r_message_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX r_message_meter ON public.r_message USING btree (meter);
 
 
 --
@@ -7099,10 +11256,122 @@ CREATE INDEX score_pattern_analytics_meter_period ON public.score_pattern_analyt
 
 
 --
+-- Name: scraper_name_unique; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX scraper_name_unique ON public.scraper USING btree (name);
+
+
+--
+-- Name: scrooge_bill_audit_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX scrooge_bill_audit_meter ON public.scrooge_bill_audit USING btree (meter);
+
+
+--
+-- Name: scrooge_meter_summary_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX scrooge_meter_summary_meter ON public.scrooge_meter_summary USING btree (meter);
+
+
+--
+-- Name: scrooge_miss_chart_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX scrooge_miss_chart_meter ON public.scrooge_miss_chart USING btree (meter);
+
+
+--
+-- Name: scrooge_miss_sequence_meter; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX scrooge_miss_sequence_meter ON public.scrooge_miss_sequence USING btree (meter);
+
+
+--
+-- Name: service_audit_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX service_audit_idx ON public.bill_old USING btree (service, audit_complete, audit_successful, audit_suppressed, audit_accepted) WHERE ((audit_complete = true) AND (closing >= '2016-01-01'::date));
+
+
+--
+-- Name: smd_bill_usage_point_created; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX smd_bill_usage_point_created ON public.smd_bill USING btree (usage_point, created) WHERE (created > '2020-08-04 00:00:00'::timestamp without time zone);
+
+
+--
+-- Name: smd_bill_usage_point_start; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX smd_bill_usage_point_start ON public.smd_bill USING btree (usage_point, start) WHERE (start > '2020-03-18 00:00:00'::timestamp without time zone);
+
+
+--
+-- Name: smd_interval_data_usage_point_created; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX smd_interval_data_usage_point_created ON public.smd_interval_data USING btree (usage_point, created) WHERE (created > '2020-08-04 00:00:00'::timestamp without time zone);
+
+
+--
+-- Name: smd_interval_data_usage_point_start; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX smd_interval_data_usage_point_start ON public.smd_interval_data USING btree (usage_point, start) WHERE (start > '2020-05-22 00:00:00'::timestamp without time zone);
+
+
+--
+-- Name: smd_reading_type_reverse; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX smd_reading_type_reverse ON public.smd_reading_type USING btree (flow_direction) WHERE ((flow_direction)::text = 'reverse'::text);
+
+
+--
+-- Name: snapmeter_account_meter_meter_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX snapmeter_account_meter_meter_idx ON public.snapmeter_account_meter USING btree (meter);
+
+
+--
+-- Name: snapmeter_bill_oid_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX snapmeter_bill_oid_idx ON public.snapmeter_bill_view USING btree (oid);
+
+
+--
+-- Name: snapmeter_bill_service_closing_initial_cost_used_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX snapmeter_bill_service_closing_initial_cost_used_idx ON public.snapmeter_bill_view USING btree (service, closing, initial, cost, used);
+
+
+--
+-- Name: snapmeter_bill_service_closing_initial_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX snapmeter_bill_service_closing_initial_idx ON public.snapmeter_bill_view USING btree (service, closing, initial, cost, used);
+
+
+--
 -- Name: standard_holiday_year_day; Type: INDEX; Schema: public; Owner: gridium
 --
 
 CREATE INDEX standard_holiday_year_day ON public.standard_holiday USING btree (year, day);
+
+
+--
+-- Name: stasis_transaction_created_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX stasis_transaction_created_idx ON public.stasis_transaction USING btree (created);
 
 
 --
@@ -7117,6 +11386,13 @@ CREATE INDEX stasis_transaction_target ON public.stasis_transaction USING btree 
 --
 
 CREATE UNIQUE INDEX subscription_unique ON public.snapmeter_user_subscription USING btree ("user", subscription, meter);
+
+
+--
+-- Name: tariff_transition_service; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX tariff_transition_service ON public.tariff_transition USING btree (service);
 
 
 --
@@ -7176,6 +11452,13 @@ CREATE INDEX usage_history_outliers ON public.usage_history USING btree (meter, 
 
 
 --
+-- Name: use_billing_fact_meter_cycle; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX use_billing_fact_meter_cycle ON public.use_billing_fact USING btree (meter, cycle);
+
+
+--
 -- Name: use_prediction_meter; Type: INDEX; Schema: public; Owner: gridium
 --
 
@@ -7190,10 +11473,31 @@ CREATE INDEX use_prediction_meter_date ON public.use_prediction USING btree (met
 
 
 --
+-- Name: utility_service_gen_service_id_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX utility_service_gen_service_id_idx ON public.utility_service USING btree (gen_service_id);
+
+
+--
+-- Name: utility_service_gen_tariff_utility_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE INDEX utility_service_gen_tariff_utility_idx ON public.utility_service USING btree (gen_tariff, gen_utility);
+
+
+--
 -- Name: utility_service_service_id; Type: INDEX; Schema: public; Owner: gridium
 --
 
 CREATE INDEX utility_service_service_id ON public.utility_service USING btree (service_id);
+
+
+--
+-- Name: utility_service_snapshot_service_service_modified_uniq_idx; Type: INDEX; Schema: public; Owner: gridium
+--
+
+CREATE UNIQUE INDEX utility_service_snapshot_service_service_modified_uniq_idx ON public.utility_service_snapshot USING btree (service, service_modified);
 
 
 --
@@ -7258,12 +11562,6 @@ CREATE INDEX weather_station_coordinate_index ON public.weather_station USING gi
 
 CREATE INDEX weather_station_wban ON public.weather_station USING btree (wban);
 
---
--- Name: partial_bill_service_initial_closing_idx; Type: INDEX; Schema: public; Owner: gridium
---
-
-CREATE INDEX partial_bill_service_initial_closing_idx ON public.partial_bill USING btree (service, initial, closing);
-
 
 --
 -- Name: smd_authorization_audit_point audit_point_audit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
@@ -7279,6 +11577,14 @@ ALTER TABLE ONLY public.smd_authorization_audit_point
 
 ALTER TABLE ONLY public.auth_session
     ADD CONSTRAINT auth_session_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.auth_user(id);
+
+
+--
+-- Name: bill_audit bill_audit_bill_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.bill_audit
+    ADD CONSTRAINT bill_audit_bill_fk FOREIGN KEY (bill) REFERENCES public.bill(oid) ON DELETE CASCADE;
 
 
 --
@@ -7298,11 +11604,131 @@ ALTER TABLE ONLY public.curtailment_peak
 
 
 --
+-- Name: custom_utility_contract custom_utility_contract_account_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.custom_utility_contract
+    ADD CONSTRAINT custom_utility_contract_account_fk FOREIGN KEY (account) REFERENCES public.snapmeter_account(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: custom_utility_contract custom_utility_contract_template_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.custom_utility_contract
+    ADD CONSTRAINT custom_utility_contract_template_fkey FOREIGN KEY (template) REFERENCES public.custom_utility_contract_template(oid);
+
+
+--
+-- Name: custom_utility_contract custom_utility_contract_utility_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.custom_utility_contract
+    ADD CONSTRAINT custom_utility_contract_utility_fk FOREIGN KEY (utility) REFERENCES public.utility(identifier) ON DELETE CASCADE;
+
+
+--
+-- Name: datafeeds_pending_job datafeeds_pending_job_datafeeds_job_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.datafeeds_pending_job
+    ADD CONSTRAINT datafeeds_pending_job_datafeeds_job_fkey FOREIGN KEY (uuid) REFERENCES public.datafeeds_job(uuid) ON DELETE CASCADE;
+
+
+--
+-- Name: datafeeds_pending_job datafeeds_pending_job_meter_data_source_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.datafeeds_pending_job
+    ADD CONSTRAINT datafeeds_pending_job_meter_data_source_fkey FOREIGN KEY (meter_data_source) REFERENCES public.snapmeter_meter_data_source(oid);
+
+
+--
+-- Name: datafeeds_pending_job datafeeds_pending_job_snapmeter_meter_data_source_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.datafeeds_pending_job
+    ADD CONSTRAINT datafeeds_pending_job_snapmeter_meter_data_source_fkey FOREIGN KEY (meter_data_source) REFERENCES public.snapmeter_meter_data_source(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: datafeeds_pending_job datafeeds_pending_job_uuid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.datafeeds_pending_job
+    ADD CONSTRAINT datafeeds_pending_job_uuid_fkey FOREIGN KEY (uuid) REFERENCES public.datafeeds_job(uuid);
+
+
+--
 -- Name: decomp_facts decomp_facts_meter_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.decomp_facts
     ADD CONSTRAINT decomp_facts_meter_fkey FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: dropped_channel_date dropped_channel_date_meter_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.dropped_channel_date
+    ADD CONSTRAINT dropped_channel_date_meter_fkey FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: green_button_notification green_button_notification_provider_oid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification
+    ADD CONSTRAINT green_button_notification_provider_oid_fkey FOREIGN KEY (provider_oid) REFERENCES public.green_button_provider(oid);
+
+
+--
+-- Name: green_button_notification_resource green_button_notification_resource_notification_oid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification_resource
+    ADD CONSTRAINT green_button_notification_resource_notification_oid_fkey FOREIGN KEY (notification_oid) REFERENCES public.green_button_notification(oid);
+
+
+--
+-- Name: green_button_notification_task green_button_notification_task_owner_oid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification_task
+    ADD CONSTRAINT green_button_notification_task_owner_oid_fkey FOREIGN KEY (owner_oid) REFERENCES public.green_button_notification_resource(oid);
+
+
+--
+-- Name: green_button_notification_task green_button_notification_task_task_oid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_notification_task
+    ADD CONSTRAINT green_button_notification_task_task_oid_fkey FOREIGN KEY (task_oid) REFERENCES public.green_button_task(oid);
+
+
+--
+-- Name: green_button_reading_stats green_button_reading_stats_reading_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_reading_stats
+    ADD CONSTRAINT green_button_reading_stats_reading_fkey FOREIGN KEY (reading) REFERENCES public.green_button_meter_reading(oid);
+
+
+--
+-- Name: green_button_subscription_task green_button_subscription_task_task_oid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_subscription_task
+    ADD CONSTRAINT green_button_subscription_task_task_oid_fkey FOREIGN KEY (task_oid) REFERENCES public.green_button_task(oid);
+
+
+--
+-- Name: green_button_task green_button_task_provider_oid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.green_button_task
+    ADD CONSTRAINT green_button_task_provider_oid_fkey FOREIGN KEY (provider_oid) REFERENCES public.green_button_provider(oid);
 
 
 --
@@ -7362,35 +11788,51 @@ ALTER TABLE ONLY public.meter_group_item
 
 
 --
--- Name: mv_assessment_timeseries mv_assessment_timeseries_meter_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_assessment_timeseries mv_assessment_timeseries_mv_meter_group_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_assessment_timeseries
-    ADD CONSTRAINT mv_assessment_timeseries_meter_fkey FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_assessment_timeseries_mv_meter_group_fkey FOREIGN KEY (mv_meter_group) REFERENCES public.mv_meter_group(oid);
 
 
 --
--- Name: mv_assessment_timeseries mv_assessment_timeseries_program_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_assessment_timeseries mv_assessment_timeseries_program_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_assessment_timeseries
-    ADD CONSTRAINT mv_assessment_timeseries_program_fkey FOREIGN KEY (program) REFERENCES public.mv_program_cross_type(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_assessment_timeseries_program_type_fkey FOREIGN KEY (program_type) REFERENCES public.mv_program_type(oid);
 
 
 --
--- Name: mv_baseline_timeseries mv_baseline_timeseries_meter_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_baseline_nonroutine_event mv_baseline_nonroutine_event_mv_meter_group_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_baseline_nonroutine_event
+    ADD CONSTRAINT mv_baseline_nonroutine_event_mv_meter_group_fkey FOREIGN KEY (mv_meter_group) REFERENCES public.mv_meter_group(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: mv_baseline_nonroutine_event mv_baseline_nonroutine_event_program_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_baseline_nonroutine_event
+    ADD CONSTRAINT mv_baseline_nonroutine_event_program_type_fkey FOREIGN KEY (program_type) REFERENCES public.mv_program_type(oid);
+
+
+--
+-- Name: mv_baseline_timeseries mv_baseline_timeseries_mv_meter_group_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_baseline_timeseries
-    ADD CONSTRAINT mv_baseline_timeseries_meter_fkey FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_baseline_timeseries_mv_meter_group_fkey FOREIGN KEY (mv_meter_group) REFERENCES public.mv_meter_group(oid);
 
 
 --
--- Name: mv_baseline_timeseries mv_baseline_timeseries_program_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_baseline_timeseries mv_baseline_timeseries_program_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_baseline_timeseries
-    ADD CONSTRAINT mv_baseline_timeseries_program_fkey FOREIGN KEY (program) REFERENCES public.mv_program_cross_type(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_baseline_timeseries_program_type_fkey FOREIGN KEY (program_type) REFERENCES public.mv_program_type(oid);
 
 
 --
@@ -7402,11 +11844,11 @@ ALTER TABLE ONLY public.mv_drift_data
 
 
 --
--- Name: mv_exogenous_factor_timeseries mv_exogenous_factor_timeseries_meter_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_exogenous_factor_timeseries mv_exogenous_factor_timeseries_meter_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_exogenous_factor_timeseries
-    ADD CONSTRAINT mv_exogenous_factor_timeseries_meter_fkey FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_exogenous_factor_timeseries_meter_fk FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
 
 
 --
@@ -7414,39 +11856,55 @@ ALTER TABLE ONLY public.mv_exogenous_factor_timeseries
 --
 
 ALTER TABLE ONLY public.mv_exogenous_factor_timeseries
-    ADD CONSTRAINT mv_exogenous_factor_timeseries_program_fkey FOREIGN KEY (program) REFERENCES public.mv_program_cross_type(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_exogenous_factor_timeseries_program_fkey FOREIGN KEY (program) REFERENCES public.mv_program(oid) ON DELETE CASCADE;
 
 
 --
--- Name: mv_model_fit_statistic mv_model_fit_statistic_meter_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_meter_group_item mv_meter_group_item_meter_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_meter_group_item
+    ADD CONSTRAINT mv_meter_group_item_meter_fk FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: mv_meter_group_item mv_meter_group_item_mv_meter_group_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_meter_group_item
+    ADD CONSTRAINT mv_meter_group_item_mv_meter_group_fkey FOREIGN KEY (mv_meter_group) REFERENCES public.mv_meter_group(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: mv_model_fit_statistic mv_model_fit_statistic_mv_meter_group_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_model_fit_statistic
-    ADD CONSTRAINT mv_model_fit_statistic_meter_fkey FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_model_fit_statistic_mv_meter_group_fkey FOREIGN KEY (mv_meter_group) REFERENCES public.mv_meter_group(oid);
 
 
 --
--- Name: mv_model_fit_statistic mv_model_fit_statistic_program_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_model_fit_statistic mv_model_fit_statistic_program_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_model_fit_statistic
-    ADD CONSTRAINT mv_model_fit_statistic_program_fkey FOREIGN KEY (program) REFERENCES public.mv_program_cross_type(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_model_fit_statistic_program_type_fkey FOREIGN KEY (program_type) REFERENCES public.mv_program_type(oid);
 
 
 --
--- Name: mv_nonroutine_event mv_nonroutine_event_meter_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
---
-
-ALTER TABLE ONLY public.mv_nonroutine_event
-    ADD CONSTRAINT mv_nonroutine_event_meter_fkey FOREIGN KEY (meter) REFERENCES public.meter(oid) ON DELETE CASCADE;
-
-
---
--- Name: mv_nonroutine_event mv_nonroutine_event_program_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_nonroutine_event mv_nonroutine_event_mv_meter_group_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_nonroutine_event
-    ADD CONSTRAINT mv_nonroutine_event_program_fkey FOREIGN KEY (program) REFERENCES public.mv_program_cross_type(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_nonroutine_event_mv_meter_group_fkey FOREIGN KEY (mv_meter_group) REFERENCES public.mv_meter_group(oid);
+
+
+--
+-- Name: mv_nonroutine_event mv_nonroutine_event_program_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_nonroutine_event
+    ADD CONSTRAINT mv_nonroutine_event_program_type_fkey FOREIGN KEY (program_type) REFERENCES public.mv_program_type(oid);
 
 
 --
@@ -7466,27 +11924,35 @@ ALTER TABLE ONLY public.mv_program_cross_type
 
 
 --
--- Name: mv_project mv_project_building_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_project mv_project_building_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_project
-    ADD CONSTRAINT mv_project_building_fkey FOREIGN KEY (building) REFERENCES public.building(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_project_building_fk FOREIGN KEY (building) REFERENCES public.building(oid) ON DELETE CASCADE;
 
 
 --
--- Name: mv_project mv_project_customer_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
---
-
-ALTER TABLE ONLY public.mv_project
-    ADD CONSTRAINT mv_project_customer_fkey FOREIGN KEY (customer) REFERENCES public.snapmeter_account(oid) ON DELETE CASCADE;
-
-
---
--- Name: mv_project mv_project_meter_group_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_project mv_project_deer_specification_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_project
-    ADD CONSTRAINT mv_project_meter_group_fkey FOREIGN KEY (meter_group) REFERENCES public.meter_group(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_project_deer_specification_fkey FOREIGN KEY (deer_specification) REFERENCES public.mv_deer_date_hour_specification(oid);
+
+
+--
+-- Name: mv_project mv_project_meter_group_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_project
+    ADD CONSTRAINT mv_project_meter_group_fk FOREIGN KEY (meter_group) REFERENCES public.meter_group(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: mv_project mv_project_mv_meter_group_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.mv_project
+    ADD CONSTRAINT mv_project_mv_meter_group_fkey FOREIGN KEY (mv_meter_group) REFERENCES public.mv_meter_group(oid);
 
 
 --
@@ -7498,11 +11964,43 @@ ALTER TABLE ONLY public.mv_project
 
 
 --
--- Name: mv_project mv_project_weather_station_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+-- Name: mv_project mv_project_snapmeter_account_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.mv_project
-    ADD CONSTRAINT mv_project_weather_station_fkey FOREIGN KEY (weather_station) REFERENCES public.weather_station(oid) ON DELETE CASCADE;
+    ADD CONSTRAINT mv_project_snapmeter_account_fk FOREIGN KEY (customer) REFERENCES public.snapmeter_account(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: partial_bill_link partial_bill_link_bill_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill_link
+    ADD CONSTRAINT partial_bill_link_bill_fkey FOREIGN KEY (bill) REFERENCES public.bill(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: partial_bill_link partial_bill_link_partial_bill_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill_link
+    ADD CONSTRAINT partial_bill_link_partial_bill_fkey FOREIGN KEY (partial_bill) REFERENCES public.partial_bill(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: partial_bill partial_bill_superseded_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill
+    ADD CONSTRAINT partial_bill_superseded_by_fkey FOREIGN KEY (superseded_by) REFERENCES public.partial_bill(oid);
+
+
+--
+-- Name: partial_bill partial_bill_utility_service_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.partial_bill
+    ADD CONSTRAINT partial_bill_utility_service_fkey FOREIGN KEY (service) REFERENCES public.utility_service(oid) ON DELETE CASCADE;
 
 
 --
@@ -7530,11 +12028,59 @@ ALTER TABLE ONLY public.sce_gb_customer_agreement
 
 
 --
+-- Name: smd_artifact smd_artifact_provider_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_artifact
+    ADD CONSTRAINT smd_artifact_provider_fkey FOREIGN KEY (provider) REFERENCES public.green_button_provider(oid);
+
+
+--
 -- Name: smd_authorization_audit_point smd_authorization_audit_point_audit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
 ALTER TABLE ONLY public.smd_authorization_audit_point
     ADD CONSTRAINT smd_authorization_audit_point_audit_fkey FOREIGN KEY (audit) REFERENCES public.smd_authorization_audit(oid);
+
+
+--
+-- Name: smd_bill smd_bill_artifact_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_bill
+    ADD CONSTRAINT smd_bill_artifact_fkey FOREIGN KEY (artifact) REFERENCES public.smd_artifact(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: smd_customer_info smd_customer_info_artifact_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_customer_info
+    ADD CONSTRAINT smd_customer_info_artifact_fkey FOREIGN KEY (artifact) REFERENCES public.smd_artifact(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: smd_interval_data smd_interval_data_artifact_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_interval_data
+    ADD CONSTRAINT smd_interval_data_artifact_fkey FOREIGN KEY (artifact) REFERENCES public.smd_artifact(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: smd_interval_data smd_interval_data_reading_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_interval_data
+    ADD CONSTRAINT smd_interval_data_reading_type_fkey FOREIGN KEY (reading_type) REFERENCES public.smd_reading_type(oid);
+
+
+--
+-- Name: smd_reading_type smd_reading_type_artifact_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.smd_reading_type
+    ADD CONSTRAINT smd_reading_type_artifact_fkey FOREIGN KEY (artifact) REFERENCES public.smd_artifact(oid) ON DELETE CASCADE;
 
 
 --
@@ -7642,6 +12188,14 @@ ALTER TABLE ONLY public.snapmeter_user_subscription
 
 
 --
+-- Name: tariff_configuration tariff_configuration_utility_service_fk; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.tariff_configuration
+    ADD CONSTRAINT tariff_configuration_utility_service_fk FOREIGN KEY (service) REFERENCES public.utility_service(oid) ON DELETE CASCADE;
+
+
+--
 -- Name: ttm_calculation ttm_calculation_period_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
 --
 
@@ -7655,6 +12209,22 @@ ALTER TABLE ONLY public.ttm_calculation
 
 ALTER TABLE ONLY public.ttm_fact
     ADD CONSTRAINT ttm_fact_period_fkey FOREIGN KEY (period) REFERENCES public.ttm_period(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: utility_service_contract utility_service_contract_contract_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.utility_service_contract
+    ADD CONSTRAINT utility_service_contract_contract_fkey FOREIGN KEY (contract) REFERENCES public.custom_utility_contract(oid) ON DELETE CASCADE;
+
+
+--
+-- Name: utility_service_snapshot utility_service_snapshot_utility_service_fkey; Type: FK CONSTRAINT; Schema: public; Owner: gridium
+--
+
+ALTER TABLE ONLY public.utility_service_snapshot
+    ADD CONSTRAINT utility_service_snapshot_utility_service_fkey FOREIGN KEY (service) REFERENCES public.utility_service(oid) ON DELETE CASCADE;
 
 
 --
@@ -7679,23 +12249,3 @@ ALTER TABLE ONLY public.variance_clause
 
 ALTER TABLE ONLY public.variance_clause
     ADD CONSTRAINT variance_clause_baseline_fkey FOREIGN KEY (baseline) REFERENCES public.budget_aggregation(oid) ON DELETE CASCADE;
-
-
---
--- Name: partial_bill oid; Type: DEFAULT; Schema: public; Owner: gridium
---
-
-ALTER TABLE ONLY public.partial_bill ALTER COLUMN oid SET DEFAULT nextval('public.partial_bill_oid_seq'::regclass);
-
-
---
--- Name: idx_bill_modified_meter; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX idx_bill_modified_meter ON public.bill USING btree (modified);
-
---
--- Name: idx_meter_reading_modified_meter; Type: INDEX; Schema: public; Owner: gridium
---
-
-CREATE INDEX idx_meter_reading_modified ON public.meter_reading USING btree (modified);

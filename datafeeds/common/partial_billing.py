@@ -89,13 +89,14 @@ class PartialBillProcessor:
         have the same provider type (generation-only or T&D only)
         as the newly scraped pending partial bills.
 
-        Only returns partial bills that have not been superseded by a later partial bill.
+        Only returns partial bills that have not been deleted or superseded by a later partial bill.
         """
         return (
             db.session.query(PartialBill)
             .filter(PartialBill.service == self.meter.service)
             .filter(PartialBill.provider_type == self.partial_bills_type)
             .filter(PartialBill.superseded_by.is_(None))
+            .filter(PartialBill.visible.is_(True))
             .order_by(PartialBill.initial.asc())
         )
 

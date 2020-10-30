@@ -26,12 +26,6 @@ class TestCSVParser(SetupBase):
         self.filepath = os.path.join(script_dir, "data/powertrack/example.csv")
         self.csv_parser = powertrack.CSVParser(self.filepath)
 
-    def test_kwh_to_kw(self):
-        """kwh_to_kw returns float using correct calculation for kwh -> kw"""
-        energy = "100"
-        kw = self.csv_parser.kwh_to_kw(energy)
-        self.assertEqual(kw, 400.0)
-
     def test_csv_str_to_date(self):
         """date strings are converted to datetimes"""
         date_string = "2020-01-31 09:09:00"
@@ -40,8 +34,8 @@ class TestCSVParser(SetupBase):
 
     def test_process_csv(self):
         results = self.csv_parser.process_csv()
-        self.assertEqual(len(results), 142)
-        self.assertEqual(results[0], (datetime(2020, 1, 28, 0, 0), 0.0))
+        self.assertEqual(len(results), 239)
+        self.assertEqual(results[0], (datetime(2020, 10, 13, 0, 0), 0.0))
 
 
 class TestSiteStatusPage(SetupBase):

@@ -66,6 +66,7 @@ class PartialBill(ModelMixin, Base):
     used = sa.Column(sa.Float)
     notes = sa.Column(sa.Unicode)
     visible = sa.Column(sa.Boolean, nullable=False, default=True)
+    tariff = sa.Column(sa.Unicode)
     # Date added to the db
     created = sa.Column(sa.DateTime, default=func.now())
     # Type of partial bill - is this a generation bill or a T&D bill?

@@ -17,9 +17,23 @@ class SDGEBillingPeriod(GenericBillingPeriod):
     def get_total_charge(self):
         total_charges = 0
         for meter in self.account.meters:
+            log.debug(
+                "charges for meter %s %s - %s\n",
+                meter.PK,
+                meter.IntervalStart,
+                meter.IntervalEnd,
+            )
             for charges in meter.charges:
                 if charges.ChargeId == "ch.late_fee":
                     continue
+                log.debug(
+                    "Adding charge %s: %s - %s %s %s",
+                    charges.PK,
+                    charges.IntervalStart,
+                    charges.IntervalEnd,
+                    charges.ChargeId,
+                    charges.ChargeAmount,
+                )
                 total_charges += charges.ChargeAmount
         return total_charges
 
@@ -139,19 +153,22 @@ class SDGETransformer(UrjanetGridiumTransformer):
                         account_copy = copy.copy(account)
                         start = usage.IntervalStart
                         end = usage.IntervalEnd
-                        meter_copy = [
-                            m for m in account_copy.meters if m.PK == meter.PK
-                        ][0]
-                        meter_copy.usages = [
-                            u
-                            for u in meter.usages
-                            if u.IntervalStart == start and u.IntervalEnd == end
-                        ]
-                        meter_copy.charges = [
-                            c
-                            for c in meter.charges
-                            if c.IntervalStart == start and c.IntervalEnd == end
-                        ]
+                        keep_meters = []
+                        for meter_copy in account_copy.meters:
+                            if meter_copy.PK != meter.PK:
+                                continue
+                            meter_copy.usages = [
+                                u
+                                for u in meter.usages
+                                if u.IntervalStart == start and u.IntervalEnd == end
+                            ]
+                            meter_copy.charges = [
+                                c
+                                for c in meter.charges
+                                if c.IntervalStart == start and c.IntervalEnd == end
+                            ]
+                            keep_meters.append(meter_copy)
+                        account_copy.meters = keep_meters
                         bill_history.add(
                             usage.IntervalStart
                             + timedelta(days=1),  # prevent overlapping

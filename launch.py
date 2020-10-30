@@ -11,7 +11,7 @@ from typing import Optional
 import uuid
 import tarfile
 
-import boto
+import boto3
 
 from datafeeds.common.index import index_logs
 
@@ -74,6 +74,9 @@ from datafeeds.scrapers.sce_react.energymanager_greenbutton import (
 )
 from datafeeds.scrapers.sce_react.energymanager_interval import (
     datafeed as sce_react_energymanager_interval,
+)
+from datafeeds.scrapers.smd_partial_bills.synchronizer import (
+    datafeed as smd_tnd_partial_billing,
 )
 from datafeeds.smd.tasks import run_authorization_step, run_validation_step
 
@@ -184,6 +187,7 @@ scraper_functions = {
     "scl-meterwatch": scl_meterwatch,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
+    "smd-tnd-partial-billing": smd_tnd_partial_billing,
     "smud-energyprofiler-interval": smud_energyprofiler_interval,
     "smud-myaccount-billing": smud_myaccount_billing,
     "stem": stem,
@@ -227,12 +231,13 @@ def archive_run(task_id: str):
         f.add(config.WORKING_DIRECTORY)
 
     try:
-        s3conn = boto.connect_s3()
-        bucket = s3conn.get_bucket(config.ARTIFACT_S3_BUCKET, validate=True)
-
-        s3key = bucket.new_key(task_id)
-        s3key.set_contents_from_filename(tarball)
-
+        client = boto3.client("s3")
+        client.upload_file(
+            tarball,
+            config.ARTIFACT_S3_BUCKET,
+            task_id,
+            ExtraArgs={"StorageClass": "STANDARD_IA"},
+        )
         log.info(
             "Successfully uploaded archive %s to S3 bucket %s.",
             task_id,

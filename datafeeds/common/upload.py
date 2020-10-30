@@ -98,7 +98,13 @@ def upload_readings(
 
     log.info("Final Interval Summary")
     for when, intervals in readings.items():
-        log.info("%s: %s intervals." % (when, len(intervals)))
+        none_count = sum(1 for x in intervals if x is None)
+        factor = (24 / len(intervals)) if len(intervals) > 0 else 1.0
+        kWh = sum(x for x in intervals if x is not None) * factor
+        log.info(
+            "%s: %s intervals. %s net kWh, %s null values."
+            % (when, len(intervals), kWh, none_count)
+        )
 
     path = os.path.join(config.WORKING_DIRECTORY, "readings.csv")
     with open(path, "w") as csvfile:

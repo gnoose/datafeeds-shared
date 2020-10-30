@@ -14,7 +14,6 @@ printf " ok\n"
 
 printf "Running tests ...\n"
 python -m unittest -v
-printf "\n\nDone! You're ready to commit!\n\n"
 
 printf "Running smoke test for launch.py...\n"
 if python launch.py --help > /dev/null; then
@@ -22,3 +21,5 @@ if python launch.py --help > /dev/null; then
 else
     echo "Smoke test failed."
 fi
+
+printf "\n\nDone! You're ready to commit!\n\n"
