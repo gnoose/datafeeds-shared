@@ -253,6 +253,7 @@ class Bill(ModelMixin, Base):
     def to_billing_datum(self) -> BillingDatum:
         line_items = [li.to_billing_datum_items_entry() for li in self.line_items]
 
+        # TODO store service_id and utility_account_id too
         return BillingDatum(
             start=self.initial,
             end=self.closing,
@@ -265,6 +266,7 @@ class Bill(ModelMixin, Base):
             items=[li for li in line_items if li is not None],
             attachments=None,
             utility_code=self.tariff,
+            utility="utility:pge",
         )
 
     @property

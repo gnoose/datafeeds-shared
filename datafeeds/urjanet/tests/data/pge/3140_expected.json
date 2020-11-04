@@ -3,10 +3,14 @@
         {
             "end": "2016-01-31",
             "peak_demand": "173.0000",
+            "service_id": "AnonPODid",
             "start": "2015-12-31",
-            "tariff": null,
+            "statement": "2016-02-04",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "10848.3000",
             "total_usage": "85505.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Energy Commission Tax",
@@ -171,12 +175,29 @@
         },
         {
             "end": "2016-03-01",
-            "peak_demand": "184.0000",
+            "peak_demand": "192.0000",
+            "service_id": "AnonPODid",
             "start": "2016-02-01",
-            "tariff": null,
-            "total_charge": "10352.9900",
+            "statement": "2016-03-02",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
+            "total_charge": "10751.5000",
             "total_usage": "81481.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.8400",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-03-01",
+                    "IntervalStart": "2016-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235205190,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
                 {
                     "ChargeActualName": "Energy Commission Tax",
                     "ChargeAmount": "22.7800",
@@ -187,6 +208,19 @@
                     "IntervalStart": "2016-02-01",
                     "IsAdjustmentCharge": true,
                     "PK": 235205191,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.77700",
+                    "ChargeAmount": "4.7800",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "4.7770",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-03-01",
+                    "IntervalStart": "2016-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235205192,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -202,6 +236,32 @@
                     "PK": 235205193,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Max Demand 192.000000 kW @ $17.33000",
+                    "ChargeAmount": "110.9100",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "17.3300",
+                    "ChargeUnitsUsed": "192.0000",
+                    "IntervalEnd": "2016-03-01",
+                    "IntervalStart": "2016-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235205194,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Max Part Peak 192.000000 kW @ $0.13000",
+                    "ChargeAmount": "0.8300",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.1300",
+                    "ChargeUnitsUsed": "192.0000",
+                    "IntervalEnd": "2016-03-01",
+                    "IntervalStart": "2016-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235205195,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
                 },
                 {
                     "ChargeActualName": "Max Demand 184.000000 kW @ $15.86000",
@@ -228,6 +288,32 @@
                     "PK": 235205197,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 1,033.000000 kWh @ $0.08717",
+                    "ChargeAmount": "90.0500",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0872",
+                    "ChargeUnitsUsed": "1033.0000",
+                    "IntervalEnd": "2016-03-01",
+                    "IntervalStart": "2016-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235205198,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 1,880.000000 kWh @ $0.10165",
+                    "ChargeAmount": "191.1000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.1017",
+                    "ChargeUnitsUsed": "1880.0000",
+                    "IntervalEnd": "2016-03-01",
+                    "IntervalStart": "2016-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235205199,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
                 },
                 {
                     "ChargeActualName": "Off Peak 41,786.000000 kWh @ $0.08674",
@@ -263,10 +349,14 @@
         {
             "end": "2016-03-30",
             "peak_demand": "196.0000",
+            "service_id": "AnonPODid",
             "start": "2016-03-02",
-            "tariff": null,
+            "statement": "2016-03-31",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "10628.9100",
             "total_usage": "76023.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Energy Commission Tax",
@@ -432,11 +522,28 @@
         {
             "end": "2016-05-01",
             "peak_demand": "239.0000",
+            "service_id": "AnonPODid",
             "start": "2016-03-31",
-            "tariff": null,
-            "total_charge": "12181.3100",
+            "statement": "2016-05-02",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
+            "total_charge": "12461.4000",
             "total_usage": "87086.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.7200",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-05-01",
+                    "IntervalStart": "2016-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235200645,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
                 {
                     "ChargeActualName": "Energy Commission Tax",
                     "ChargeAmount": "24.5300",
@@ -447,6 +554,19 @@
                     "IntervalStart": "2016-03-31",
                     "IsAdjustmentCharge": true,
                     "PK": 235200646,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.77700",
+                    "ChargeAmount": "4.7800",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "4.7770",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-05-01",
+                    "IntervalStart": "2016-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235200647,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -462,6 +582,19 @@
                     "PK": 235200648,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Max Demand 136.000000 kW @ $17.33000",
+                    "ChargeAmount": "73.6500",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "17.3300",
+                    "ChargeUnitsUsed": "136.0000",
+                    "IntervalEnd": "2016-05-01",
+                    "IntervalStart": "2016-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235200649,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
                 },
                 {
                     "ChargeActualName": "Max Demand 239.000000 kW @ $17.33000",
@@ -488,6 +621,19 @@
                     "PK": 235200651,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 2,494.000000 kWh @ $0.08057",
+                    "ChargeAmount": "200.9400",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0806",
+                    "ChargeUnitsUsed": "2494.0000",
+                    "IntervalEnd": "2016-05-01",
+                    "IntervalStart": "2016-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235200652,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
                 },
                 {
                     "ChargeActualName": "Off Peak 43,690.000000 kWh @ $0.08717",
@@ -523,10 +669,14 @@
         {
             "end": "2016-05-31",
             "peak_demand": "245.0000",
+            "service_id": "AnonPODid",
             "start": "2016-05-02",
-            "tariff": null,
+            "statement": "2016-06-02",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "19027.3300",
             "total_usage": "86031.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 245.000000 kW @ $17.33000",
@@ -640,10 +790,14 @@
         {
             "end": "2016-06-29",
             "peak_demand": "284.0000",
+            "service_id": "AnonPODid",
             "start": "2016-06-01",
-            "tariff": null,
+            "statement": "2016-07-05",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "21026.6300",
             "total_usage": "90553.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 284.000000 kW @ $17.33000",
@@ -757,10 +911,14 @@
         {
             "end": "2016-07-31",
             "peak_demand": "287.0000",
+            "service_id": "AnonPODid",
             "start": "2016-06-30",
-            "tariff": null,
+            "statement": "2016-08-01",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "22099.2900",
             "total_usage": "99913.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 287.000000 kW @ $17.33000",
@@ -874,10 +1032,14 @@
         {
             "end": "2016-08-30",
             "peak_demand": "239.0000",
+            "service_id": "AnonPODid",
             "start": "2016-08-01",
-            "tariff": null,
+            "statement": "2016-09-06",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "19905.6000",
             "total_usage": "94566.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 239.000000 kW @ $17.32000",
@@ -991,10 +1153,14 @@
         {
             "end": "2016-09-29",
             "peak_demand": "291.0000",
+            "service_id": "AnonPODid",
             "start": "2016-08-31",
-            "tariff": null,
+            "statement": "2016-10-05",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "21711.5500",
             "total_usage": "93969.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 291.000000 kW @ $17.32000",
@@ -1108,10 +1274,14 @@
         {
             "end": "2016-10-30",
             "peak_demand": "194.0000",
+            "service_id": "AnonPODid",
             "start": "2016-09-30",
-            "tariff": null,
+            "statement": "2017-03-07",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "17453.5200",
             "total_usage": "89019.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Energy Commission Tax",
@@ -1329,10 +1499,14 @@
         {
             "end": "2016-11-30",
             "peak_demand": "198.0000",
+            "service_id": "AnonPODid",
             "start": "2016-10-31",
-            "tariff": null,
+            "statement": "2017-03-07",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "12044.5800",
             "total_usage": "86181.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 198.000000 kW @ $16.53000",
@@ -1524,10 +1698,14 @@
         {
             "end": "2016-12-29",
             "peak_demand": "174.0000",
+            "service_id": "AnonPODid",
             "start": "2016-12-01",
-            "tariff": null,
+            "statement": "2017-03-07",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "10651.5200",
             "total_usage": "77672.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 174.000000 kW @ $16.53000",
@@ -1615,10 +1793,14 @@
         {
             "end": "2017-01-30",
             "peak_demand": "157.0000",
+            "service_id": "AnonPODid",
             "start": "2016-12-30",
-            "tariff": null,
+            "statement": "2017-03-07",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "11076.7700",
             "total_usage": "84368.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 157.000000 kW @ $16.08000",
@@ -1784,11 +1966,41 @@
         {
             "end": "2017-03-01",
             "peak_demand": "176.0000",
+            "service_id": "AnonPODid",
             "start": "2017-01-31",
-            "tariff": null,
-            "total_charge": "10761.5700",
+            "statement": "2017-08-15",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
+            "total_charge": "11164.5100",
             "total_usage": "81600.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
+                {
+                    "ChargeActualName": "Max Demand 169.000000 kW @ $17.56000",
+                    "ChargeAmount": "98.9200",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "17.5600",
+                    "ChargeUnitsUsed": "169.0000",
+                    "IntervalEnd": "2017-03-01",
+                    "IntervalStart": "2017-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201498,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Max Part Peak 169.000000 kW @ $0.12000",
+                    "ChargeAmount": "0.6800",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.1200",
+                    "ChargeUnitsUsed": "169.0000",
+                    "IntervalEnd": "2017-03-01",
+                    "IntervalStart": "2017-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201499,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
                 {
                     "ChargeActualName": "Max Demand 176.000000 kW @ $16.08000",
                     "ChargeAmount": "2735.7400",
@@ -1814,6 +2026,32 @@
                     "PK": 235201501,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 1,196.000000 kWh @ $0.09111",
+                    "ChargeAmount": "108.9700",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0911",
+                    "ChargeUnitsUsed": "1196.0000",
+                    "IntervalEnd": "2017-03-01",
+                    "IntervalStart": "2017-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201502,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 1,785.000000 kWh @ $0.10573",
+                    "ChargeAmount": "188.7300",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.1057",
+                    "ChargeUnitsUsed": "1785.0000",
+                    "IntervalEnd": "2017-03-01",
+                    "IntervalStart": "2017-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201503,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
                 },
                 {
                     "ChargeActualName": "Off Peak 43,110.000000 kWh @ $0.09317",
@@ -1843,6 +2081,19 @@
                 },
                 {
                     "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.8600",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-01",
+                    "IntervalStart": "2017-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201506,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
                     "ChargeAmount": "22.8000",
                     "ChargeId": null,
                     "ChargeRatePerUnit": "0.0000",
@@ -1851,6 +2102,19 @@
                     "IntervalStart": "2017-01-31",
                     "IsAdjustmentCharge": true,
                     "PK": 235201507,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.77700",
+                    "ChargeAmount": "4.7800",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "4.7770",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-03-01",
+                    "IntervalStart": "2017-03-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201508,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -1875,10 +2139,14 @@
         {
             "end": "2017-03-30",
             "peak_demand": "219.0000",
+            "service_id": "AnonPODid",
             "start": "2017-03-02",
-            "tariff": null,
+            "statement": "2017-08-15",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "11900.1500",
             "total_usage": "80142.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 219.000000 kW @ $17.56000",
@@ -1965,12 +2233,55 @@
         },
         {
             "end": "2017-05-01",
-            "peak_demand": "194.0000",
+            "peak_demand": "232.0000",
+            "service_id": "AnonPODid",
             "start": "2017-03-31",
-            "tariff": null,
-            "total_charge": "11893.5200",
+            "statement": "2017-08-15",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
+            "total_charge": "12607.7600",
             "total_usage": "89391.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
+                {
+                    "ChargeActualName": "Max Demand 232.000000 kW @ $17.56000",
+                    "ChargeAmount": "127.3100",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "17.5600",
+                    "ChargeUnitsUsed": "232.0000",
+                    "IntervalEnd": "2017-05-01",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201516,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Max Part Peak 199.000000 kW @ $5.18000",
+                    "ChargeAmount": "32.2100",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "5.1800",
+                    "ChargeUnitsUsed": "199.0000",
+                    "IntervalEnd": "2017-05-01",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201517,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Max Peak 232.000000 kW @ $18.64000",
+                    "ChargeAmount": "135.1400",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "18.6400",
+                    "ChargeUnitsUsed": "232.0000",
+                    "IntervalEnd": "2017-05-01",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201518,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
                 {
                     "ChargeActualName": "Max Demand 194.000000 kW @ $17.56000",
                     "ChargeAmount": "3300.1800",
@@ -1996,6 +2307,45 @@
                     "PK": 235201520,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 1,111.000000 kWh @ $0.08445",
+                    "ChargeAmount": "93.8200",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0845",
+                    "ChargeUnitsUsed": "1111.0000",
+                    "IntervalEnd": "2017-05-01",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201521,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 1,180.000000 kWh @ $0.11127",
+                    "ChargeAmount": "131.3000",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.1113",
+                    "ChargeUnitsUsed": "1180.0000",
+                    "IntervalEnd": "2017-05-01",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201522,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Peak 1,243.000000 kWh @ $0.15178",
+                    "ChargeAmount": "188.6600",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.1518",
+                    "ChargeUnitsUsed": "1243.0000",
+                    "IntervalEnd": "2017-05-01",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201523,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
                 },
                 {
                     "ChargeActualName": "Off Peak 46,502.000000 kWh @ $0.09111",
@@ -2025,6 +2375,19 @@
                 },
                 {
                     "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "1.0200",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-01",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201526,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
                     "ChargeAmount": "24.9000",
                     "ChargeId": null,
                     "ChargeRatePerUnit": "0.0000",
@@ -2033,6 +2396,19 @@
                     "IntervalStart": "2017-03-31",
                     "IsAdjustmentCharge": true,
                     "PK": 235201527,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.77700",
+                    "ChargeAmount": "4.7800",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "4.7770",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2017-05-01",
+                    "IntervalStart": "2017-05-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 235201528,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -2057,10 +2433,14 @@
         {
             "end": "2017-05-31",
             "peak_demand": "270.0000",
+            "service_id": "AnonPODid",
             "start": "2017-05-02",
-            "tariff": null,
+            "statement": "2017-08-15",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "21039.7600",
             "total_usage": "90262.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 270.000000 kW @ $17.56000",
@@ -2174,10 +2554,14 @@
         {
             "end": "2017-06-29",
             "peak_demand": "282.0000",
+            "service_id": "AnonPODid",
             "start": "2017-06-01",
-            "tariff": null,
+            "statement": "2017-08-15",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "22042.1200",
             "total_usage": "94348.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 282.000000 kW @ $17.56000",
@@ -2291,10 +2675,14 @@
         {
             "end": "2017-07-31",
             "peak_demand": "271.0000",
+            "service_id": "AnonPODid",
             "start": "2017-06-30",
-            "tariff": null,
+            "statement": "2017-09-06",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "22593.7500",
             "total_usage": "107718.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Energy Commission Tax",
@@ -2512,10 +2900,14 @@
         {
             "end": "2017-08-30",
             "peak_demand": "258.0000",
+            "service_id": "AnonPODid",
             "start": "2017-08-01",
-            "tariff": null,
+            "statement": "2017-10-04",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "21525.1700",
             "total_usage": "100523.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 258.000000 kW @ $17.56000",
@@ -2629,10 +3021,14 @@
         {
             "end": "2017-10-01",
             "peak_demand": "284.0000",
+            "service_id": "AnonPODid",
             "start": "2017-08-31",
-            "tariff": null,
+            "statement": "2017-11-02",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "23330.3800",
             "total_usage": "109296.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 284.000000 kW @ $17.56000",
@@ -2746,10 +3142,14 @@
         {
             "end": "2017-10-30",
             "peak_demand": "232.0000",
+            "service_id": "AnonPODid",
             "start": "2017-10-02",
-            "tariff": null,
+            "statement": "2017-12-04",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "19072.6300",
             "total_usage": "87817.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 232.000000 kW @ $17.56000",
@@ -2863,10 +3263,14 @@
         {
             "end": "2017-11-29",
             "peak_demand": "206.0000",
+            "service_id": "AnonPODid",
             "start": "2017-10-31",
-            "tariff": null,
+            "statement": "2018-01-03",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "12387.0700",
             "total_usage": "86276.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 206.000000 kW @ $17.56000",
@@ -3058,10 +3462,14 @@
         {
             "end": "2017-12-28",
             "peak_demand": "202.0000",
+            "service_id": "AnonPODid",
             "start": "2017-11-30",
-            "tariff": null,
+            "statement": "2018-02-01",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "12132.7300",
             "total_usage": "86118.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 202.000000 kW @ $17.56000",
@@ -3149,10 +3557,14 @@
         {
             "end": "2018-01-29",
             "peak_demand": "203.0000",
+            "service_id": "AnonPODid",
             "start": "2017-12-29",
-            "tariff": null,
+            "statement": "2018-03-05",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "13135.0500",
             "total_usage": "96546.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 203.000000 kW @ $17.57000",
@@ -3318,10 +3730,14 @@
         {
             "end": "2018-02-28",
             "peak_demand": "210.0000",
+            "service_id": "AnonPODid",
             "start": "2018-01-30",
-            "tariff": null,
+            "statement": "2018-04-03",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "12854.1000",
             "total_usage": "91233.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 210.000000 kW @ $17.57000",
@@ -3409,10 +3825,14 @@
         {
             "end": "2018-03-29",
             "peak_demand": "218.0000",
+            "service_id": "AnonPODid",
             "start": "2018-03-01",
-            "tariff": null,
+            "statement": "2018-05-04",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "12715.2500",
             "total_usage": "85397.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 218.000000 kW @ $17.74000",
@@ -3500,10 +3920,14 @@
         {
             "end": "2018-04-30",
             "peak_demand": "243.0000",
+            "service_id": "AnonPODid",
             "start": "2018-03-30",
-            "tariff": null,
+            "statement": "2018-06-05",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "14200.1800",
             "total_usage": "95578.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 243.000000 kW @ $17.74000",
@@ -3591,10 +4015,14 @@
         {
             "end": "2018-05-30",
             "peak_demand": "253.0000",
+            "service_id": "AnonPODid",
             "start": "2018-05-01",
-            "tariff": null,
+            "statement": "2018-07-13",
+            "tariff": "E19S Medium General Demand-Metered TOU Service",
             "total_charge": "21057.2700",
             "total_usage": "91563.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 253.000000 kW @ $17.74000",
@@ -3708,10 +4136,14 @@
         {
             "end": "2018-06-29",
             "peak_demand": "254.0000",
+            "service_id": "AnonPODid",
             "start": "2018-05-31",
-            "tariff": null,
+            "statement": "2018-08-03",
+            "tariff": "E19S",
             "total_charge": "21547.5600",
             "total_usage": "93817.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 254.000000 kW @ $17.74000",
@@ -3825,10 +4257,14 @@
         {
             "end": "2018-07-30",
             "peak_demand": "267.0000",
+            "service_id": "AnonPODid",
             "start": "2018-06-30",
-            "tariff": null,
+            "statement": "2018-09-05",
+            "tariff": "E19S",
             "total_charge": "23528.3600",
             "total_usage": "110217.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 267.000000 kW @ $17.74000",
@@ -4046,10 +4482,14 @@
         {
             "end": "2018-08-29",
             "peak_demand": "282.0000",
+            "service_id": "AnonPODid",
             "start": "2018-07-31",
-            "tariff": null,
+            "statement": "2018-10-04",
+            "tariff": "E19S",
             "total_charge": "24466.7200",
             "total_usage": "111989.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 282.000000 kW @ $17.74000",
@@ -4267,10 +4707,14 @@
         {
             "end": "2018-09-30",
             "peak_demand": "273.0000",
+            "service_id": "AnonPODid",
             "start": "2018-08-30",
-            "tariff": null,
+            "statement": "2018-11-05",
+            "tariff": "E19S",
             "total_charge": "23941.0200",
             "total_usage": "111949.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -4618,10 +5062,14 @@
         {
             "end": "2018-10-30",
             "peak_demand": "259.0000",
+            "service_id": "AnonPODid",
             "start": "2018-10-01",
-            "tariff": null,
+            "statement": "2018-12-05",
+            "tariff": "E19S",
             "total_charge": "23133.2200",
             "total_usage": "107337.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 259.000000 kW @ $18.26000",
@@ -4839,10 +5287,14 @@
         {
             "end": "2018-11-30",
             "peak_demand": "236.0000",
+            "service_id": "AnonPODid",
             "start": "2018-10-31",
-            "tariff": null,
+            "statement": "2019-01-05",
+            "tariff": "E19S",
             "total_charge": "14720.4800",
             "total_usage": "100543.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -5191,11 +5643,28 @@
         {
             "end": "2019-01-01",
             "peak_demand": "178.0000",
+            "service_id": "AnonPODid",
             "start": "2018-12-01",
-            "tariff": null,
-            "total_charge": "12892.9700",
+            "statement": "2019-02-05",
+            "tariff": "E19S",
+            "total_charge": "13117.2300",
             "total_usage": "97916.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "1.8900",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-01",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236618818,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "57.8400",
@@ -5206,6 +5675,19 @@
                     "IntervalStart": "2018-12-01",
                     "IsAdjustmentCharge": true,
                     "PK": 236618819,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "65.2700",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-01",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236618820,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -5224,6 +5706,19 @@
                 },
                 {
                     "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-220.6400",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-01",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236618822,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
                     "ChargeAmount": "-7336.9900",
                     "ChargeId": null,
                     "ChargeRatePerUnit": "0.0000",
@@ -5232,6 +5727,19 @@
                     "IntervalStart": "2018-12-01",
                     "IsAdjustmentCharge": true,
                     "PK": 236618823,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.77700",
+                    "ChargeAmount": "4.7800",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "4.7770",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2019-01-01",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236618824,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -5247,6 +5755,19 @@
                     "PK": 236618825,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Max Demand 151.000000 kW @ $17.54000",
+                    "ChargeAmount": "82.7700",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "17.5400",
+                    "ChargeUnitsUsed": "151.0000",
+                    "IntervalEnd": "2019-01-01",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236618826,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
                 },
                 {
                     "ChargeActualName": "Max Demand 178.000000 kW @ $18.26000",
@@ -5273,6 +5794,19 @@
                     "PK": 236618828,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Off Peak 3,102.000000 kWh @ $0.09355",
+                    "ChargeAmount": "290.1900",
+                    "ChargeId": null,
+                    "ChargeRatePerUnit": "0.0936",
+                    "ChargeUnitsUsed": "3102.0000",
+                    "IntervalEnd": "2019-01-01",
+                    "IntervalStart": "2019-01-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236618829,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
                 },
                 {
                     "ChargeActualName": "Off Peak 57,770.000000 kWh @ $0.09401",
@@ -5347,10 +5881,14 @@
         {
             "end": "2019-01-30",
             "peak_demand": "213.0000",
+            "service_id": "AnonPODid",
             "start": "2019-01-02",
-            "tariff": null,
+            "statement": "2019-03-07",
+            "tariff": "E19S",
             "total_charge": "13799.4600",
             "total_usage": "99237.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 213.000000 kW @ $17.54000",
@@ -5503,10 +6041,14 @@
         {
             "end": "2019-03-03",
             "peak_demand": "201.0000",
+            "service_id": "AnonPODid",
             "start": "2019-01-31",
-            "tariff": null,
+            "statement": "2019-04-05",
+            "tariff": "E19S",
             "total_charge": "15119.6600",
             "total_usage": "115464.0000",
+            "utility": "AnonProvider",
+            "utility_account_id": "AnonRawAccountNumber",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",

@@ -5,7 +5,7 @@ from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
 from datafeeds.common.typing import BillPdf
-from datafeeds.models.bill import GENERATION_ONLY, TND_ONLY
+from datafeeds.models.utility_service import GENERATION_ONLY, TND_ONLY
 
 
 class ScraperArgs:

@@ -1,0 +1,1346 @@
+{
+    "periods": [
+        {
+            "end": "2017-12-26",
+            "peak_demand": "0",
+            "service_id": "0003000000",
+            "start": "2017-11-28",
+            "statement": "2018-01-06",
+            "tariff": "E-19-S",
+            "total_charge": "275.4600000000000068478556159",
+            "total_usage": "5277.442000000000007275957614",
+            "utility": "utility:mce",
+            "utility_account_id": "3333333333-3",
+            "line_items": [
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 2,674.413000 kWh @ $0.04500",
+                    "ChargeAmount": "120.349999999999994315658113919198513031005859375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "2674.41300000000001091393642127513885498046875",
+                    "IntervalEnd": "2017-12-27",
+                    "IntervalStart": "2017-11-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 1326,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 2,603.029000 kWh @ $0.05900",
+                    "ChargeAmount": "153.580000000000012505552149377763271331787109375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "2603.02899999999999636202119290828704833984375",
+                    "IntervalEnd": "2017-12-27",
+                    "IntervalStart": "2017-11-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 1327,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.5300000000000000266453525910037569701671600341796875",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2017-12-27",
+                    "IntervalStart": "2017-11-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 1328,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e808a93-3569-dee0-9bf7-22000a29aae2"
+            ]
+        },
+        {
+            "end": "2018-01-25",
+            "peak_demand": "0",
+            "service_id": "3331135816",
+            "start": "2017-12-27",
+            "statement": "2018-02-06",
+            "tariff": "E-19-S",
+            "total_charge": "127.5599999999999962785324214",
+            "total_usage": "2469.640000000000100044417195",
+            "utility": "utility:mce",
+            "utility_account_id": "4414813884-8",
+            "line_items": [
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 1,347.712000 kWh @ $0.04500",
+                    "ChargeAmount": "60.64999999999999857891452847979962825775146484375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "1347.71199999999998908606357872486114501953125",
+                    "IntervalEnd": "2018-01-26",
+                    "IntervalStart": "2017-12-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 2308,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 1,121.928000 kWh @ $0.05900",
+                    "ChargeAmount": "66.18999999999999772626324556767940521240234375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "1121.928000000000110958353616297245025634765625",
+                    "IntervalEnd": "2018-01-26",
+                    "IntervalStart": "2017-12-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 2309,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "0.7199999999999999733546474089962430298328399658203125",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-01-26",
+                    "IntervalStart": "2017-12-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 2310,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e80cecc-9bea-d61a-a2a5-22000b9302aa"
+            ]
+        },
+        {
+            "end": "2018-02-26",
+            "peak_demand": "0",
+            "service_id": "5550015405",
+            "start": "2018-01-26",
+            "statement": "2018-03-08",
+            "tariff": "E-19-S",
+            "total_charge": "0.5400000000000000077715611723",
+            "total_usage": "10.81799999999999961630692269",
+            "utility": "utility:mce",
+            "utility_account_id": "7720727770-7",
+            "line_items": [
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 6.959000 kWh @ $0.04500",
+                    "ChargeAmount": "0.309999999999999997779553950749686919152736663818359375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "6.958999999999999630517777404747903347015380859375",
+                    "IntervalEnd": "2018-02-27",
+                    "IntervalStart": "2018-01-26",
+                    "IsAdjustmentCharge": null,
+                    "PK": 2934,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 3.859000 kWh @ $0.05900",
+                    "ChargeAmount": "0.2300000000000000099920072216264088638126850128173828125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "3.8589999999999999857891452847979962825775146484375",
+                    "IntervalEnd": "2018-02-27",
+                    "IntervalStart": "2018-01-26",
+                    "IsAdjustmentCharge": null,
+                    "PK": 2935,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "0",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-02-27",
+                    "IntervalStart": "2018-01-26",
+                    "IsAdjustmentCharge": null,
+                    "PK": 2936,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e824d72-a632-d862-8290-22000b72602a"
+            ]
+        },
+        {
+            "end": "2018-03-27",
+            "peak_demand": "0",
+            "service_id": "5116765315",
+            "start": "2018-02-27",
+            "statement": "2018-04-06",
+            "tariff": "E-19-S",
+            "total_charge": "0.5000000000000000277555756156",
+            "total_usage": "9.781999999999999584332499580",
+            "utility": "utility:mce",
+            "utility_account_id": "0008101128-1",
+            "line_items": [
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 5.922000 kWh @ $0.04500",
+                    "ChargeAmount": "0.270000000000000017763568394002504646778106689453125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "5.92199999999999970867747833835892379283905029296875",
+                    "IntervalEnd": "2018-03-28",
+                    "IntervalStart": "2018-02-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 3875,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 3.860000 kWh @ $0.05900",
+                    "ChargeAmount": "0.2300000000000000099920072216264088638126850128173828125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "3.859999999999999875655021241982467472553253173828125",
+                    "IntervalEnd": "2018-03-28",
+                    "IntervalStart": "2018-02-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 3876,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "0",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-03-28",
+                    "IntervalStart": "2018-02-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 3877,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e8494e0-9bc6-dbf4-ae89-22000bb9e238"
+            ]
+        },
+        {
+            "end": "2018-04-26",
+            "peak_demand": "0",
+            "service_id": "7688777227",
+            "start": "2018-03-28",
+            "statement": "2018-05-08",
+            "tariff": "E-19-S",
+            "total_charge": "10.51000000000000017541523789",
+            "total_usage": "206.4565000000000054569682106",
+            "utility": "utility:mce",
+            "utility_account_id": "5512616622-6",
+            "line_items": [
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 123.747000 kWh @ $0.04500",
+                    "ChargeAmount": "5.57000000000000028421709430404007434844970703125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "123.7469999999999998863131622783839702606201171875",
+                    "IntervalEnd": "2018-04-26",
+                    "IntervalStart": "2018-03-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 4466,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 82.709500 kWh @ $0.05900",
+                    "ChargeAmount": "4.87999999999999989341858963598497211933135986328125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "82.7095000000000055706550483591854572296142578125",
+                    "IntervalEnd": "2018-04-26",
+                    "IntervalStart": "2018-03-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 4467,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "0.059999999999999997779553950749686919152736663818359375",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-04-26",
+                    "IntervalStart": "2018-03-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 4468,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e854681-bf56-d939-a6f8-22000b3801f3"
+            ]
+        },
+        {
+            "end": "2018-05-28",
+            "peak_demand": "4.57449999999999956656893118633888661861419677734375",
+            "service_id": "0117010010",
+            "start": "2018-04-27",
+            "statement": "2018-06-07",
+            "tariff": "E-19-S",
+            "total_charge": "70.73000000000000082878148790",
+            "total_usage": "165.3810000000000020037305148",
+            "utility": "utility:mce",
+            "utility_account_id": "2268066028-0",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - Part Peak - Summer 4.574500 kW @ $3.10000",
+                    "ChargeAmount": "14.17999999999999971578290569595992565155029296875",
+                    "ChargeId": "demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "3.100000000000000088817841970012523233890533447265625",
+                    "ChargeUnitsUsed": "4.57449999999999956656893118633888661861419677734375",
+                    "IntervalEnd": "2018-05-28",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 5429,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - On Peak - Summer 3.633000 kW @ $12.60000",
+                    "ChargeAmount": "45.780000000000001136868377216160297393798828125",
+                    "ChargeId": "demand_charge_on_peak",
+                    "ChargeRatePerUnit": "12.5999999999999996447286321199499070644378662109375",
+                    "ChargeUnitsUsed": "3.63300000000000000710542735760100185871124267578125",
+                    "IntervalEnd": "2018-05-28",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 5430,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 35.879000 kWh @ $0.04000",
+                    "ChargeAmount": "1.439999999999999946709294817992486059665679931640625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.040000000000000000832667268468867405317723751068115234375",
+                    "ChargeUnitsUsed": "35.87899999999999778310666442848742008209228515625",
+                    "IntervalEnd": "2018-05-28",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 5431,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 11.868000 kWh @ $0.04500",
+                    "ChargeAmount": "0.5300000000000000266453525910037569701671600341796875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "11.8680000000000003268496584496460855007171630859375",
+                    "IntervalEnd": "2018-05-28",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 5432,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 27.701000 kWh @ $0.05900",
+                    "ChargeAmount": "1.62999999999999989341858963598497211933135986328125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "27.70100000000000051159076974727213382720947265625",
+                    "IntervalEnd": "2018-05-28",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 5433,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 58.258000 kWh @ $0.06500",
+                    "ChargeAmount": "3.79000000000000003552713678800500929355621337890625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.065000000000000002220446049250313080847263336181640625",
+                    "ChargeUnitsUsed": "58.25800000000000267164068645797669887542724609375",
+                    "IntervalEnd": "2018-05-28",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 5434,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 31.675000 kWh @ $0.10500",
+                    "ChargeAmount": "3.3300000000000000710542735760100185871124267578125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.10499999999999999611421941381195210851728916168212890625",
+                    "ChargeUnitsUsed": "31.675000000000000710542735760100185871124267578125",
+                    "IntervalEnd": "2018-05-28",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 5435,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "0.05000000000000000277555756156289135105907917022705078125",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-05-28",
+                    "IntervalStart": "2018-04-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 5436,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e86c3f6-296a-d7f9-9c79-22000a43dcad"
+            ]
+        },
+        {
+            "end": "2018-06-26",
+            "peak_demand": "6.92400000000000037658764995285309851169586181640625",
+            "service_id": "7327227277",
+            "start": "2018-05-29",
+            "statement": "2018-07-09",
+            "tariff": "E-19-S",
+            "total_charge": "153.6500000000000028532731733",
+            "total_usage": "704.5070000000000050022208597",
+            "utility": "utility:mce",
+            "utility_account_id": "2204205244-2",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - Part Peak - Summer 6.924000 kW @ $3.10000",
+                    "ChargeAmount": "21.46000000000000085265128291212022304534912109375",
+                    "ChargeId": "demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "3.100000000000000088817841970012523233890533447265625",
+                    "ChargeUnitsUsed": "6.92400000000000037658764995285309851169586181640625",
+                    "IntervalEnd": "2018-06-26",
+                    "IntervalStart": "2018-05-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 613,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - On Peak - Summer 6.872000 kW @ $12.60000",
+                    "ChargeAmount": "86.590000000000003410605131648480892181396484375",
+                    "ChargeId": "demand_charge_on_peak",
+                    "ChargeRatePerUnit": "12.5999999999999996447286321199499070644378662109375",
+                    "ChargeUnitsUsed": "6.8719999999999998863131622783839702606201171875",
+                    "IntervalEnd": "2018-06-26",
+                    "IntervalStart": "2018-05-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 614,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 307.314000 kWh @ $0.04000",
+                    "ChargeAmount": "12.28999999999999914734871708787977695465087890625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.040000000000000000832667268468867405317723751068115234375",
+                    "ChargeUnitsUsed": "307.31400000000002137312549166381359100341796875",
+                    "IntervalEnd": "2018-06-26",
+                    "IntervalStart": "2018-05-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 615,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 215.047000 kWh @ $0.06500",
+                    "ChargeAmount": "13.980000000000000426325641456060111522674560546875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.065000000000000002220446049250313080847263336181640625",
+                    "ChargeUnitsUsed": "215.046999999999997044142219237983226776123046875",
+                    "IntervalEnd": "2018-06-26",
+                    "IntervalStart": "2018-05-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 616,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 182.146000 kWh @ $0.10500",
+                    "ChargeAmount": "19.129999999999999005240169935859739780426025390625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.10499999999999999611421941381195210851728916168212890625",
+                    "ChargeUnitsUsed": "182.145999999999986584953148849308490753173828125",
+                    "IntervalEnd": "2018-06-26",
+                    "IntervalStart": "2018-05-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 617,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "0.200000000000000011102230246251565404236316680908203125",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-06-26",
+                    "IntervalStart": "2018-05-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 618,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e8cac23-d67f-d7a6-82e4-22000ab2eee0"
+            ]
+        },
+        {
+            "end": "2018-07-26",
+            "peak_demand": "11.6319999999999996731503415503539144992828369140625",
+            "service_id": "5654445145",
+            "start": "2018-06-27",
+            "statement": "2018-08-07",
+            "tariff": "E-19-S",
+            "total_charge": "301.5500000000000099253938401",
+            "total_usage": "2060.435000000000002273736754",
+            "utility": "utility:mce",
+            "utility_account_id": "0020626660-6",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - Part Peak - Summer 11.632000 kW @ $3.10000",
+                    "ChargeAmount": "36.06000000000000227373675443232059478759765625",
+                    "ChargeId": "demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "3.100000000000000088817841970012523233890533447265625",
+                    "ChargeUnitsUsed": "11.6319999999999996731503415503539144992828369140625",
+                    "IntervalEnd": "2018-07-26",
+                    "IntervalStart": "2018-06-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7068,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - On Peak - Summer 10.612000 kW @ $12.60000",
+                    "ChargeAmount": "133.710000000000007958078640513122081756591796875",
+                    "ChargeId": "demand_charge_on_peak",
+                    "ChargeRatePerUnit": "12.5999999999999996447286321199499070644378662109375",
+                    "ChargeUnitsUsed": "10.6120000000000000994759830064140260219573974609375",
+                    "IntervalEnd": "2018-07-26",
+                    "IntervalStart": "2018-06-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7069,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 924.062000 kWh @ $0.04000",
+                    "ChargeAmount": "36.96000000000000085265128291212022304534912109375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.040000000000000000832667268468867405317723751068115234375",
+                    "ChargeUnitsUsed": "924.0620000000000118234311230480670928955078125",
+                    "IntervalEnd": "2018-07-26",
+                    "IntervalStart": "2018-06-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7070,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 627.472000 kWh @ $0.06500",
+                    "ChargeAmount": "40.78999999999999914734871708787977695465087890625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.065000000000000002220446049250313080847263336181640625",
+                    "ChargeUnitsUsed": "627.471999999999979991116560995578765869140625",
+                    "IntervalEnd": "2018-07-26",
+                    "IntervalStart": "2018-06-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7071,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 508.901000 kWh @ $0.10500",
+                    "ChargeAmount": "53.42999999999999971578290569595992565155029296875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.10499999999999999611421941381195210851728916168212890625",
+                    "ChargeUnitsUsed": "508.90100000000001045918907038867473602294921875",
+                    "IntervalEnd": "2018-07-26",
+                    "IntervalStart": "2018-06-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7072,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "0.59999999999999997779553950749686919152736663818359375",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-07-26",
+                    "IntervalStart": "2018-06-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7073,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e89bb4b-0e5f-d8f4-bc5c-22000a92fee9"
+            ]
+        },
+        {
+            "end": "2018-08-27",
+            "peak_demand": "12.6199999999999992184029906638897955417633056640625",
+            "service_id": "2929992912",
+            "start": "2018-07-27",
+            "statement": "2018-09-07",
+            "tariff": "E-19-S",
+            "total_charge": "403.7299999999999881028500682",
+            "total_usage": "3166.458499999999958163243719",
+            "utility": "utility:mce",
+            "utility_account_id": "8800007000-0",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - Part Peak - Summer 11.580000 kW @ $3.10000",
+                    "ChargeAmount": "35.89999999999999857891452847979962825775146484375",
+                    "ChargeId": "demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "3.100000000000000088817841970012523233890533447265625",
+                    "ChargeUnitsUsed": "11.5800000000000000710542735760100185871124267578125",
+                    "IntervalEnd": "2018-08-27",
+                    "IntervalStart": "2018-07-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7857,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - On Peak - Summer 12.620000 kW @ $12.60000",
+                    "ChargeAmount": "159.009999999999990905052982270717620849609375",
+                    "ChargeId": "demand_charge_on_peak",
+                    "ChargeRatePerUnit": "12.5999999999999996447286321199499070644378662109375",
+                    "ChargeUnitsUsed": "12.6199999999999992184029906638897955417633056640625",
+                    "IntervalEnd": "2018-08-27",
+                    "IntervalStart": "2018-07-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7858,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 1,355.468500 kWh @ $0.04000",
+                    "ChargeAmount": "54.219999999999998863131622783839702606201171875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.040000000000000000832667268468867405317723751068115234375",
+                    "ChargeUnitsUsed": "1355.4684999999999490682967007160186767578125",
+                    "IntervalEnd": "2018-08-27",
+                    "IntervalStart": "2018-07-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7859,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 912.077000 kWh @ $0.06500",
+                    "ChargeAmount": "59.28999999999999914734871708787977695465087890625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.065000000000000002220446049250313080847263336181640625",
+                    "ChargeUnitsUsed": "912.076999999999998181010596454143524169921875",
+                    "IntervalEnd": "2018-08-27",
+                    "IntervalStart": "2018-07-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7860,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 898.913000 kWh @ $0.10500",
+                    "ChargeAmount": "94.3900000000000005684341886080801486968994140625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.10499999999999999611421941381195210851728916168212890625",
+                    "ChargeUnitsUsed": "898.91300000000001091393642127513885498046875",
+                    "IntervalEnd": "2018-08-27",
+                    "IntervalStart": "2018-07-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7861,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "0.92000000000000003996802888650563545525074005126953125",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-08-27",
+                    "IntervalStart": "2018-07-27",
+                    "IsAdjustmentCharge": null,
+                    "PK": 7862,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e8c88c4-5926-da8b-a32a-22000a3f9a04"
+            ]
+        },
+        {
+            "end": "2018-09-26",
+            "peak_demand": "12.43599999999999994315658113919198513031005859375",
+            "service_id": "3445843403",
+            "start": "2018-08-28",
+            "statement": "2018-10-08",
+            "tariff": "E-19-S",
+            "total_charge": "477.7200000000000141842093626",
+            "total_usage": "4204.517999999999801730155013",
+            "utility": "utility:mce",
+            "utility_account_id": "6641544511-5",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - Part Peak - Summer 12.436000 kW @ $3.10000",
+                    "ChargeAmount": "38.5499999999999971578290569595992565155029296875",
+                    "ChargeId": "demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "3.100000000000000088817841970012523233890533447265625",
+                    "ChargeUnitsUsed": "12.43599999999999994315658113919198513031005859375",
+                    "IntervalEnd": "2018-09-26",
+                    "IntervalStart": "2018-08-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 8868,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - On Peak - Summer 12.408000 kW @ $12.60000",
+                    "ChargeAmount": "156.340000000000003410605131648480892181396484375",
+                    "ChargeId": "demand_charge_on_peak",
+                    "ChargeRatePerUnit": "12.5999999999999996447286321199499070644378662109375",
+                    "ChargeUnitsUsed": "12.4079999999999994741983755375258624553680419921875",
+                    "IntervalEnd": "2018-09-26",
+                    "IntervalStart": "2018-08-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 8869,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 1,632.172500 kWh @ $0.04000",
+                    "ChargeAmount": "65.2900000000000062527760746888816356658935546875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.040000000000000000832667268468867405317723751068115234375",
+                    "ChargeUnitsUsed": "1632.172499999999899955582804977893829345703125",
+                    "IntervalEnd": "2018-09-26",
+                    "IntervalStart": "2018-08-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 8870,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 1,344.459500 kWh @ $0.06500",
+                    "ChargeAmount": "87.3900000000000005684341886080801486968994140625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.065000000000000002220446049250313080847263336181640625",
+                    "ChargeUnitsUsed": "1344.4594999999999345163814723491668701171875",
+                    "IntervalEnd": "2018-09-26",
+                    "IntervalStart": "2018-08-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 8871,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 1,227.886000 kWh @ $0.10500",
+                    "ChargeAmount": "128.93000000000000682121026329696178436279296875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.10499999999999999611421941381195210851728916168212890625",
+                    "ChargeUnitsUsed": "1227.88599999999996725819073617458343505859375",
+                    "IntervalEnd": "2018-09-26",
+                    "IntervalStart": "2018-08-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 8872,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.2199999999999999733546474089962430298328399658203125",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-09-26",
+                    "IntervalStart": "2018-08-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 8873,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e8cccf1-ca4a-d9a1-b333-22000aa9ee4d"
+            ]
+        },
+        {
+            "end": "2018-11-28",
+            "peak_demand": "1.1538999999999999257482841130695305764675140380859375",
+            "service_id": "5337645405",
+            "start": "2018-10-29",
+            "statement": "2018-12-07",
+            "tariff": "E-19-S",
+            "total_charge": "279.7900000000000022559731859",
+            "total_usage": "4757.777999999999963165464578",
+            "utility": "utility:mce",
+            "utility_account_id": "3363767763-7",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - Part Peak - Summer 1.140000 kW @ $3.10000",
+                    "ChargeAmount": "3.529999999999999804600747665972448885440826416015625",
+                    "ChargeId": "demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "3.100000000000000088817841970012523233890533447265625",
+                    "ChargeUnitsUsed": "1.1399999999999999023003738329862244427204132080078125",
+                    "IntervalEnd": "2018-11-28",
+                    "IntervalStart": "2018-10-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 10362,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - On Peak - Summer 1.153900 kW @ $12.60000",
+                    "ChargeAmount": "14.53999999999999914734871708787977695465087890625",
+                    "ChargeId": "demand_charge_on_peak",
+                    "ChargeRatePerUnit": "12.5999999999999996447286321199499070644378662109375",
+                    "ChargeUnitsUsed": "1.1538999999999999257482841130695305764675140380859375",
+                    "IntervalEnd": "2018-11-28",
+                    "IntervalStart": "2018-10-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 10363,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 211.618000 kWh @ $0.04000",
+                    "ChargeAmount": "8.46000000000000085265128291212022304534912109375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.040000000000000000832667268468867405317723751068115234375",
+                    "ChargeUnitsUsed": "211.61799999999999499777914024889469146728515625",
+                    "IntervalEnd": "2018-11-28",
+                    "IntervalStart": "2018-10-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 10364,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 1,864.581000 kWh @ $0.04500",
+                    "ChargeAmount": "83.909999999999996589394868351519107818603515625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "1864.580999999999903593561612069606781005859375",
+                    "IntervalEnd": "2018-11-28",
+                    "IntervalStart": "2018-10-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 10365,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 2,299.603000 kWh @ $0.05900",
+                    "ChargeAmount": "135.68000000000000682121026329696178436279296875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "2299.6030000000000654836185276508331298828125",
+                    "IntervalEnd": "2018-11-28",
+                    "IntervalStart": "2018-10-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 10366,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 195.390000 kWh @ $0.06500",
+                    "ChargeAmount": "12.699999999999999289457264239899814128875732421875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.065000000000000002220446049250313080847263336181640625",
+                    "ChargeUnitsUsed": "195.3899999999999863575794734060764312744140625",
+                    "IntervalEnd": "2018-11-28",
+                    "IntervalStart": "2018-10-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 10367,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 186.586000 kWh @ $0.10500",
+                    "ChargeAmount": "19.589999999999999857891452847979962825775146484375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.10499999999999999611421941381195210851728916168212890625",
+                    "ChargeUnitsUsed": "186.586000000000012732925824820995330810546875",
+                    "IntervalEnd": "2018-11-28",
+                    "IntervalStart": "2018-10-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 10368,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.37999999999999989341858963598497211933135986328125",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-11-28",
+                    "IntervalStart": "2018-10-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 10369,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e8ff332-309c-de21-b096-0e63fccb7a3a"
+            ]
+        },
+        {
+            "end": "2018-12-27",
+            "peak_demand": "0",
+            "service_id": "1154021051",
+            "start": "2018-11-29",
+            "statement": "2019-01-24",
+            "tariff": "E-19-S",
+            "total_charge": "224.9699999999999937561057095",
+            "total_usage": "4207.455999999999903593561612",
+            "utility": "utility:mce",
+            "utility_account_id": "3300003020-0",
+            "line_items": [
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 1,752.365000 kWh @ $0.04500",
+                    "ChargeAmount": "78.8599999999999994315658113919198513031005859375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "1752.365000000000009094947017729282379150390625",
+                    "IntervalEnd": "2018-12-27",
+                    "IntervalStart": "2018-11-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 11099,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 2,455.091000 kWh @ $0.05900",
+                    "ChargeAmount": "144.849999999999994315658113919198513031005859375",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "2455.09099999999989449861459434032440185546875",
+                    "IntervalEnd": "2018-12-27",
+                    "IntervalStart": "2018-11-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 11100,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.2600000000000000088817841970012523233890533447265625",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2018-12-27",
+                    "IntervalStart": "2018-11-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 11101,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e93f534-2632-d4fc-bd3a-0ee77cd6fe50"
+            ]
+        },
+        {
+            "end": "2019-02-27",
+            "peak_demand": "0",
+            "service_id": "6263806486",
+            "start": "2019-01-29",
+            "statement": "2019-03-07",
+            "tariff": "E-19-S",
+            "total_charge": "263.7800000000000073541173151",
+            "total_usage": "4877.127500000000054569682107",
+            "utility": "utility:mce",
+            "utility_account_id": "5548145158-1",
+            "line_items": [
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 1,816.870500 kWh @ $0.04500",
+                    "ChargeAmount": "81.7600000000000051159076974727213382720947265625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "1816.8704999999999927240423858165740966796875",
+                    "IntervalEnd": "2019-02-27",
+                    "IntervalStart": "2019-01-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 11813,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 3,060.257000 kWh @ $0.05900",
+                    "ChargeAmount": "180.56000000000000227373675443232059478759765625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "3060.25700000000006184563972055912017822265625",
+                    "IntervalEnd": "2019-02-27",
+                    "IntervalStart": "2019-01-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 11814,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.45999999999999996447286321199499070644378662109375",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2019-02-27",
+                    "IntervalStart": "2019-01-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 11815,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e9431e8-99f0-d2f1-889c-0e2cce7ae27c"
+            ]
+        },
+        {
+            "end": "2019-03-28",
+            "peak_demand": "0",
+            "service_id": "7214277757",
+            "start": "2019-02-28",
+            "statement": "2019-04-09",
+            "tariff": "E-19-S",
+            "total_charge": "270.0099999999999857980270690",
+            "total_usage": "5017.357500000000072759576142",
+            "utility": "utility:mce",
+            "utility_account_id": "3343842883-8",
+            "line_items": [
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 1,965.868500 kWh @ $0.04500",
+                    "ChargeAmount": "88.4599999999999937472239253111183643341064453125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "1965.86850000000004001776687800884246826171875",
+                    "IntervalEnd": "2019-03-28",
+                    "IntervalStart": "2019-02-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 12824,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 3,051.489000 kWh @ $0.05900",
+                    "ChargeAmount": "180.039999999999992041921359486877918243408203125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "3051.48900000000003274180926382541656494140625",
+                    "IntervalEnd": "2019-03-28",
+                    "IntervalStart": "2019-02-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 12825,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.5100000000000000088817841970012523233890533447265625",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2019-03-28",
+                    "IntervalStart": "2019-02-28",
+                    "IsAdjustmentCharge": null,
+                    "PK": 12826,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e96b515-d469-d3b7-9d53-0e324ee72044"
+            ]
+        },
+        {
+            "end": "2019-04-29",
+            "peak_demand": "0",
+            "service_id": "3014003123",
+            "start": "2019-03-29",
+            "statement": "2019-05-09",
+            "tariff": "E-19-S",
+            "total_charge": "283.5299999999999938093964147",
+            "total_usage": "5239.046499999999923602445051",
+            "utility": "utility:mce",
+            "utility_account_id": "2232332332-3",
+            "line_items": [
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.5700000000000000621724893790087662637233734130859375",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2019-04-29",
+                    "IntervalStart": "2019-03-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 13483,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 1,939.109000 kWh @ $0.04500",
+                    "ChargeAmount": "87.2600000000000051159076974727213382720947265625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "1939.10899999999992360244505107402801513671875",
+                    "IntervalEnd": "2019-04-29",
+                    "IntervalStart": "2019-03-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 13481,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 3,299.937500 kWh @ $0.05900",
+                    "ChargeAmount": "194.69999999999998863131622783839702606201171875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "3299.9375",
+                    "IntervalEnd": "2019-04-29",
+                    "IntervalStart": "2019-03-29",
+                    "IsAdjustmentCharge": null,
+                    "PK": 13482,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e992163-f9cb-d0e7-8460-0e6cf2f0e60c"
+            ]
+        },
+        {
+            "end": "2019-05-29",
+            "peak_demand": "15.38550000000000039790393202565610408782958984375",
+            "service_id": "1138101451",
+            "start": "2019-04-30",
+            "statement": "2019-06-10",
+            "tariff": "E-19-S",
+            "total_charge": "606.0799999999999909672254717",
+            "total_usage": "5538.341500000000280579115496",
+            "utility": "utility:mce",
+            "utility_account_id": "1141145101-1",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - Part Peak - Summer 15.385500 kW @ $3.10000",
+                    "ChargeAmount": "47.68999999999999772626324556767940521240234375",
+                    "ChargeId": "demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "3.100000000000000088817841970012523233890533447265625",
+                    "ChargeUnitsUsed": "15.38550000000000039790393202565610408782958984375",
+                    "IntervalEnd": "2019-05-29",
+                    "IntervalStart": "2019-04-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 14604,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - On Peak - Summer 15.095500 kW @ $12.60000",
+                    "ChargeAmount": "190.19999999999998863131622783839702606201171875",
+                    "ChargeId": "demand_charge_on_peak",
+                    "ChargeRatePerUnit": "12.5999999999999996447286321199499070644378662109375",
+                    "ChargeUnitsUsed": "15.0954999999999994741983755375258624553680419921875",
+                    "IntervalEnd": "2019-05-29",
+                    "IntervalStart": "2019-04-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 14605,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 2,096.780000 kWh @ $0.04000",
+                    "ChargeAmount": "83.8700000000000045474735088646411895751953125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.040000000000000000832667268468867405317723751068115234375",
+                    "ChargeUnitsUsed": "2096.78000000000020008883439004421234130859375",
+                    "IntervalEnd": "2019-05-29",
+                    "IntervalStart": "2019-04-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 14606,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Winter 72.374000 kWh @ $0.04500",
+                    "ChargeAmount": "3.2599999999999997868371792719699442386627197265625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.04499999999999999833466546306226518936455249786376953125",
+                    "ChargeUnitsUsed": "72.373999999999995225152815692126750946044921875",
+                    "IntervalEnd": "2019-05-29",
+                    "IntervalStart": "2019-04-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 14607,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Winter 163.109000 kWh @ $0.05900",
+                    "ChargeAmount": "9.6199999999999992184029906638897955417633056640625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.058999999999999996891375531049561686813831329345703125",
+                    "ChargeUnitsUsed": "163.109000000000008867573342286050319671630859375",
+                    "IntervalEnd": "2019-05-29",
+                    "IntervalStart": "2019-04-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 14608,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 1,671.507000 kWh @ $0.06500",
+                    "ChargeAmount": "108.650000000000005684341886080801486968994140625",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.065000000000000002220446049250313080847263336181640625",
+                    "ChargeUnitsUsed": "1671.50700000000006184563972055912017822265625",
+                    "IntervalEnd": "2019-05-29",
+                    "IntervalStart": "2019-04-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 14609,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 1,534.571500 kWh @ $0.10500",
+                    "ChargeAmount": "161.1299999999999954525264911353588104248046875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.10499999999999999611421941381195210851728916168212890625",
+                    "ChargeUnitsUsed": "1534.571500000000014551915228366851806640625",
+                    "IntervalEnd": "2019-05-29",
+                    "IntervalStart": "2019-04-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 14610,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.6599999999999999200639422269887290894985198974609375",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2019-05-29",
+                    "IntervalStart": "2019-04-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 14611,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e98d3be-2f67-d3e4-8236-0e9beee5a22e"
+            ]
+        },
+        {
+            "end": "2019-06-27",
+            "peak_demand": "16.1280000000000001136868377216160297393798828125",
+            "service_id": "3101033133",
+            "start": "2019-05-30",
+            "statement": "2019-07-09",
+            "tariff": "E-19-S",
+            "total_charge": "612.3300000000000027355895327",
+            "total_usage": "5429.363999999999805368133820",
+            "utility": "utility:mce",
+            "utility_account_id": "8816010066-0",
+            "line_items": [
+                {
+                    "ChargeActualName": "Demand - Part Peak - Summer 16.128000 kW @ $3.10000",
+                    "ChargeAmount": "50",
+                    "ChargeId": "demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "3.100000000000000088817841970012523233890533447265625",
+                    "ChargeUnitsUsed": "16.1280000000000001136868377216160297393798828125",
+                    "IntervalEnd": "2019-06-27",
+                    "IntervalStart": "2019-05-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 15436,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Demand - On Peak - Summer 15.304000 kW @ $12.60000",
+                    "ChargeAmount": "192.830000000000012505552149377763271331787109375",
+                    "ChargeId": "demand_charge_on_peak",
+                    "ChargeRatePerUnit": "12.5999999999999996447286321199499070644378662109375",
+                    "ChargeUnitsUsed": "15.3040000000000002700062395888380706310272216796875",
+                    "IntervalEnd": "2019-06-27",
+                    "IntervalStart": "2019-05-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 15437,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Generation - Off Peak - Summer 2,040.620000 kWh @ $0.04000",
+                    "ChargeAmount": "81.6200000000000045474735088646411895751953125",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.040000000000000000832667268468867405317723751068115234375",
+                    "ChargeUnitsUsed": "2040.6199999999998908606357872486114501953125",
+                    "IntervalEnd": "2019-06-27",
+                    "IntervalStart": "2019-05-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 15438,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - Part Peak - Summer 1,739.216000 kWh @ $0.06500",
+                    "ChargeAmount": "113.0499999999999971578290569595992565155029296875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.065000000000000002220446049250313080847263336181640625",
+                    "ChargeUnitsUsed": "1739.21599999999989449861459434032440185546875",
+                    "IntervalEnd": "2019-06-27",
+                    "IntervalStart": "2019-05-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 15439,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Generation - On Peak - Summer 1,649.528000 kWh @ $0.10500",
+                    "ChargeAmount": "173.19999999999998863131622783839702606201171875",
+                    "ChargeId": "generation_services",
+                    "ChargeRatePerUnit": "0.10499999999999999611421941381195210851728916168212890625",
+                    "ChargeUnitsUsed": "1649.528000000000020008883439004421234130859375",
+                    "IntervalEnd": "2019-06-27",
+                    "IntervalStart": "2019-05-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 15440,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Energy Surcharge",
+                    "ChargeAmount": "1.62999999999999989341858963598497211933135986328125",
+                    "ChargeId": "renewable_energy_surcharge",
+                    "ChargeRatePerUnit": null,
+                    "ChargeUnitsUsed": null,
+                    "IntervalEnd": "2019-06-27",
+                    "IntervalStart": "2019-05-30",
+                    "IsAdjustmentCharge": null,
+                    "PK": 15441,
+                    "ThirdPartyProvider": null,
+                    "UsageUnit": ""
+                }
+            ],
+            "source_urls": [
+                "https://sources.o2.urjanet.net/source?id=1e9a4487-6e10-d6f5-8fc7-0e6a8fce33f4"
+            ]
+        }
+    ]
+}

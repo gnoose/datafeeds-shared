@@ -52,6 +52,7 @@ from datafeeds.urjanet.datasource.mountainview import MountainViewDatasource
 from datafeeds.urjanet.datasource.nationalgrid import NationalGridDatasource
 from datafeeds.urjanet.datasource.nve import NVEnergyDatasource
 from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
+from datafeeds.urjanet.datasource.pge_generation import PacificGasElectricXMLDatasource
 from datafeeds.urjanet.datasource.pse import PseDatasource
 from datafeeds.urjanet.datasource.pleasanton import PleasantonDatasource
 from datafeeds.urjanet.datasource.sandiego import SanDiegoWaterDatasource
@@ -82,6 +83,7 @@ from datafeeds.urjanet.transformer import (
     AustinTXTransformer,
     HecoTransformer,
     TriCountyTransformer,
+    PacificGasElectricUrjaXMLTransformer,
 )
 from datafeeds.urjanet.transformer.directenergy import DirectEnergyTransformer
 from datafeeds.urjanet.transformer.fortworth import FortWorthWaterTransformer
@@ -266,13 +268,41 @@ class PgeCli(DatasourceCli):
     def make_datasource(self, conn, args):
         return self.setup_datasource(
             PacificGasElectricDatasource(
-                self.utility(), args.account_number, args.service_id, "utility:pge"
+                self.utility(),
+                args.account_number,
+                args.service_id,
+                "utility:pge",
+                args.account_number,
             ),
             conn,
         )
 
     def make_transformer(self):
         return PacificGasElectricTransformer()
+
+
+class PgeGenerationCli(DatasourceCli):
+    __cli_key__ = "pge_generation"
+
+    def add_datasource_args(self, parser):
+        parser.add_argument("account_number")
+        parser.add_argument("service_id")
+
+    def make_datasource(self, conn, args):
+
+        return self.setup_datasource(
+            PacificGasElectricXMLDatasource(
+                self.utility(),
+                args.account_number,
+                args.service_id,
+                self.utility(),
+                args.account_number,
+            ),
+            conn,
+        )
+
+    def make_transformer(self):
+        return PacificGasElectricUrjaXMLTransformer()
 
 
 class DirectEnergy(DatasourceCli):

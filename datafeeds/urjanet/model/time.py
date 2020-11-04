@@ -95,6 +95,7 @@ class DateIntervalTree:
         become
             (1/1/2000, 1/9/2000), (1/10/2000, 1/20/2000)
                          ^--A day was subtracted here to avoid matching exactly with the next interval
+        Loop earliest -> latest, adjusting end date.
         """
         adjusted = DateIntervalTree()
         work_list = deque(sorted(date_tree.intervals()))
@@ -121,6 +122,7 @@ class DateIntervalTree:
             (1/1/2000, 1/10/2000), (1/11/2000, 1/20/2000)
                                       ^--A day was added here to avoid matching exactly with
                                      the next interval
+        Loop latest -> earliest, adjusting start date.
         """
         adjusted = DateIntervalTree()
         work_list = deque(sorted(date_tree.intervals(), reverse=True))
@@ -137,5 +139,36 @@ class DateIntervalTree:
                     cur_ival = Interval(
                         cur_ival.begin + timedelta(days=1), cur_ival.end, cur_ival.data
                     )
+            adjusted.add(cur_ival.begin, cur_ival.end, cur_ival.data)
+        return adjusted
+
+    @staticmethod
+    def shift_endpoints_end(date_tree: "DateIntervalTree") -> "DateIntervalTree":
+        """Produce a new tree where adjacent intervals are guaranteed to not match at a boundary
+        by shifting the end dates of touching intervals
+        E.g., the intervals
+            (1/1/2000, 1/10/2000), (1/10/2000, 1/20/2000)
+        become
+            (1/1/2000, 1/9/2000), (1/10/2000, 1/20/2000)
+                         ^--A day was subtracted here to avoid matching exactly with the next interval
+        Loop latest -> earliest, adjusting end date.
+        """
+        adjusted = DateIntervalTree()
+        work_list = deque(sorted(date_tree.intervals(), reverse=True))
+        prev_ival = None
+        while work_list:
+            cur_ival = work_list.popleft()
+            if prev_ival:
+                while cur_ival.end >= prev_ival.begin:
+                    new_start, new_end = (
+                        cur_ival.begin,
+                        cur_ival.end - timedelta(days=1),
+                    )
+
+                    if new_start == new_end:
+                        # If new interval is one day long, shift start date back one day too.
+                        new_start = new_start - timedelta(days=1)
+                    cur_ival = Interval(new_start, new_end, cur_ival.data)
+            prev_ival = cur_ival
             adjusted.add(cur_ival.begin, cur_ival.end, cur_ival.data)
         return adjusted

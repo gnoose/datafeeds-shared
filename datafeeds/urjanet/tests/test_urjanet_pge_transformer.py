@@ -111,6 +111,13 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
         """
         self.pge_fixture_test("6262199406_input.json", "6262199406_expected.json")
 
+    def test_single_day_charges(self):
+        """This fixture is a real meter where bills had one day charges at the tail end.
+        Bill: 12/3/19 - 1/1/20, Charges divided into 12/3/19 - 12/31/19 and 1/1/20.  The 1/1/20 charges
+        were not getting accommodated.
+        """
+        self.pge_fixture_test("input_2672796038.json", "expected_2672796038.json")
+
 
 if __name__ == "__main__":
     unittest.main()

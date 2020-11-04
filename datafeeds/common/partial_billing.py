@@ -130,9 +130,9 @@ class PartialBillProcessor:
         """Save our results to the log for easy reference."""
 
         if title:
-            log.info("=" * 80)
+            log.info("=" * 130)
             log.info(title)
-            log.info("=" * 80)
+            log.info("=" * 130)
 
         fields = (
             "Start",
@@ -140,11 +140,14 @@ class PartialBillProcessor:
             "Cost",
             "Use",
             "Peak",
-            "Utility Code",
             "Has PDF",
             "Type",
+            "Utility Code",
+            "SAID",
+            "Account Number",
+            "Utility",
         )
-        fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s    %-10s  %-10s"
+        fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s  %-15s       %-20s  %-10s    %-15s      %-10s"
         log.info(fmt % fields)
         for pb in partial_bills:
             entries = [
@@ -153,9 +156,12 @@ class PartialBillProcessor:
                 str(pb.cost),
                 str(pb.used),
                 str(pb.peak),
-                str(pb.utility_code),
                 str(pb.attachments != []),
                 str(pb.provider_type),
+                str(pb.utility_code),
+                str(pb.service_id),
+                str(pb.utility_account_id),
+                str(pb.utility),
             ]
             log.info(fmt % tuple(entries))
         log.info("=" * 80)
@@ -279,10 +285,12 @@ class PartialBillProcessor:
         for debugging.
         """
         # Logs summary of all partial bills scraped, for debugging purposes
+        self.billing_data.reverse()
         show_bill_summary(self.billing_data, "Summary of all Scraped Partial Bills")
 
         # Logs summary of just the new partial bills that were written to the db.
         if self.staged_partial:
+            self.staged_partial.reverse()
             self._show_partial_bill_summary(
                 self.staged_partial, "New Partial Bills Written to DB"
             )
@@ -291,6 +299,7 @@ class PartialBillProcessor:
 
         # Logs summary of partial bills that were superseded during this scraper run.
         if self.superseded:
+            self.superseded.reverse()
             self._show_partial_bill_summary(self.superseded, "Superseded Partial Bills")
         else:
             log.info("No partial bills superseded.")

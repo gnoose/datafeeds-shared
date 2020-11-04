@@ -277,6 +277,15 @@ class GridiumBillingPeriod(JsonObject):
     # The list of charges for this period
     line_items = ListProperty(Charge)
 
+    # The service id (SAID) associated with this billing period
+    service_id = StringProperty()
+
+    # The utility account id (account number) associated with this billing period
+    utility_account_id = StringProperty()
+
+    # The utility associated with this billing period, may also be a third party provider
+    utility = StringProperty()
+
 
 class GridiumBillingPeriodCollection(JsonObject):
     """A top-level collection of billing periods."""

@@ -3,10 +3,14 @@
         {
             "end": "2015-12-23",
             "peak_demand": "19.4760",
+            "service_id": "0430113040",
             "start": "2015-12-04",
-            "tariff": null,
+            "statement": "2016-03-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "729.3400",
             "total_usage": "4573.4090",
+            "utility": "PacGAndE",
+            "utility_account_id": "8000300083-8",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 1 19.476000 kW @ $7.31000",
@@ -81,10 +85,14 @@
         {
             "end": "2016-01-25",
             "peak_demand": "19.5410",
+            "service_id": "0430113040",
             "start": "2015-12-24",
-            "tariff": null,
+            "statement": "2016-03-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1148.2700",
             "total_usage": "6800.4450",
+            "utility": "PacGAndE",
+            "utility_account_id": "8000300083-8",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 1 19.540800 kW @ $9.00000",
@@ -224,10 +232,14 @@
         {
             "end": "2016-02-24",
             "peak_demand": "20.0520",
+            "service_id": "0430113040",
             "start": "2016-01-26",
-            "tariff": null,
+            "statement": "2016-03-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1116.2000",
             "total_usage": "6402.2720",
+            "utility": "PacGAndE",
+            "utility_account_id": "8000300083-8",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 20.052000 kW @ $9.00000",
@@ -302,11 +314,28 @@
         {
             "end": "2016-03-24",
             "peak_demand": "19.3100",
+            "service_id": "8186108801",
             "start": "2016-02-25",
-            "tariff": null,
-            "total_charge": "1086.8300",
+            "statement": "2016-04-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
+            "total_charge": "1129.0900",
             "total_usage": "6423.8440",
+            "utility": "PacGAndE",
+            "utility_account_id": "7377327373-2",
             "line_items": [
+                {
+                    "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
+                    "ChargeAmount": "0.4200",
+                    "ChargeId": "ch.utility_tax",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-03-24",
+                    "IntervalStart": "2016-03-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234585081,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
                     "ChargeAmount": "9.0600",
@@ -330,6 +359,19 @@
                     "IntervalStart": "2016-02-25",
                     "IsAdjustmentCharge": true,
                     "PK": 234585083,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "0.0700",
+                    "ChargeId": "ch.tax_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-03-24",
+                    "IntervalStart": "2016-03-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234585084,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -360,6 +402,19 @@
                     "UsageUnit": ""
                 },
                 {
+                    "ChargeActualName": "Customer Charge 1 days @ $4.59959",
+                    "ChargeAmount": "4.6000",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-03-24",
+                    "IntervalStart": "2016-03-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234585087,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
                     "ChargeActualName": "Customer Charge 23 days @ $4.59959",
                     "ChargeAmount": "105.7900",
                     "ChargeId": "ch.customer_charge",
@@ -386,6 +441,19 @@
                     "UsageUnit": ""
                 },
                 {
+                    "ChargeActualName": "Demand Charge 1 17.964000 kW @ $10.47000",
+                    "ChargeAmount": "6.4900",
+                    "ChargeId": "ch.demand_charge",
+                    "ChargeRatePerUnit": "10.4700",
+                    "ChargeUnitsUsed": "17.9640",
+                    "IntervalEnd": "2016-03-24",
+                    "IntervalStart": "2016-03-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234585090,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
+                },
+                {
                     "ChargeActualName": "Demand Charge 1 19.310400 kW @ $10.47000",
                     "ChargeAmount": "160.3500",
                     "ChargeId": "ch.demand_charge",
@@ -410,6 +478,19 @@
                     "PK": 234585092,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kW"
+                },
+                {
+                    "ChargeActualName": "Energy Charges 249.411600 kWh @ $0.12302",
+                    "ChargeAmount": "30.6800",
+                    "ChargeId": "ch.energy_charge",
+                    "ChargeRatePerUnit": "0.1230",
+                    "ChargeUnitsUsed": "249.4120",
+                    "IntervalEnd": "2016-03-24",
+                    "IntervalStart": "2016-03-24",
+                    "IsAdjustmentCharge": true,
+                    "PK": 234585093,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
                 },
                 {
                     "ChargeActualName": "Energy Charges 5,205.276000 kWh @ $0.12302",
@@ -445,10 +526,14 @@
         {
             "end": "2016-04-25",
             "peak_demand": "20.4480",
+            "service_id": "2222022242",
             "start": "2016-03-25",
-            "tariff": null,
+            "statement": "2016-05-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1262.5500",
             "total_usage": "7207.7670",
+            "utility": "PacGAndE",
+            "utility_account_id": "7116211172-1",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 20.448000 kW @ $10.47000",
@@ -523,10 +608,14 @@
         {
             "end": "2016-05-24",
             "peak_demand": "20.0880",
+            "service_id": "8848004814",
             "start": "2016-04-26",
-            "tariff": null,
+            "statement": "2016-06-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1502.4700",
             "total_usage": "6671.9050",
+            "utility": "PacGAndE",
+            "utility_account_id": "0020002000-2",
             "line_items": [
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
@@ -666,10 +755,14 @@
         {
             "end": "2016-06-23",
             "peak_demand": "19.5340",
+            "service_id": "7634443752",
             "start": "2016-05-25",
-            "tariff": null,
+            "statement": "2016-07-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1638.1100",
             "total_usage": "7145.2530",
+            "utility": "PacGAndE",
+            "utility_account_id": "4004100741-7",
             "line_items": [
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
@@ -809,10 +902,14 @@
         {
             "end": "2016-07-25",
             "peak_demand": "18.2230",
+            "service_id": "3886388333",
             "start": "2016-06-24",
-            "tariff": null,
+            "statement": "2016-08-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1642.5800",
             "total_usage": "7206.0440",
+            "utility": "PacGAndE",
+            "utility_account_id": "9635133191-1",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 18.223200 kW @ $17.84000",
@@ -887,10 +984,14 @@
         {
             "end": "2016-08-24",
             "peak_demand": "18.7420",
+            "service_id": "6616111602",
             "start": "2016-07-26",
-            "tariff": null,
+            "statement": "2016-09-01",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1628.2200",
             "total_usage": "7307.1310",
+            "utility": "PacGAndE",
+            "utility_account_id": "8881858888-5",
             "line_items": [
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
@@ -1056,10 +1157,14 @@
         {
             "end": "2016-09-25",
             "peak_demand": "18.6120",
+            "service_id": "0636663044",
             "start": "2016-08-25",
-            "tariff": null,
+            "statement": "2016-10-14",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1601.5900",
             "total_usage": "7067.5450",
+            "utility": "PacGAndE",
+            "utility_account_id": "6665356363-5",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 18.612000 kW @ $17.83000",
@@ -1147,10 +1252,14 @@
         {
             "end": "2016-10-24",
             "peak_demand": "18.9860",
+            "service_id": "7623222712",
             "start": "2016-09-26",
-            "tariff": null,
+            "statement": "2016-11-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1504.2200",
             "total_usage": "6466.8600",
+            "utility": "PacGAndE",
+            "utility_account_id": "7671777277-7",
             "line_items": [
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
@@ -1316,10 +1425,14 @@
         {
             "end": "2016-11-22",
             "peak_demand": "20.0230",
+            "service_id": "4414111414",
             "start": "2016-10-25",
-            "tariff": null,
+            "statement": "2016-12-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1271.3600",
             "total_usage": "6997.7970",
+            "utility": "PacGAndE",
+            "utility_account_id": "5556265052-3",
             "line_items": [
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
@@ -1602,10 +1715,14 @@
         {
             "end": "2016-12-22",
             "peak_demand": "19.5910",
+            "service_id": "8555555853",
             "start": "2016-11-23",
-            "tariff": null,
+            "statement": "2017-01-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1135.1100",
             "total_usage": "6446.7790",
+            "utility": "PacGAndE",
+            "utility_account_id": "0420302403-1",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 19.591200 kW @ $9.67000",
@@ -1745,10 +1862,14 @@
         {
             "end": "2017-01-23",
             "peak_demand": "20.1600",
+            "service_id": "6076717671",
             "start": "2016-12-23",
-            "tariff": null,
+            "statement": "2017-02-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1135.0000",
             "total_usage": "6316.3310",
+            "utility": "PacGAndE",
+            "utility_account_id": "8744744487-4",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -1979,10 +2100,14 @@
         {
             "end": "2017-02-23",
             "peak_demand": "20.4410",
+            "service_id": "2877277277",
             "start": "2017-01-24",
-            "tariff": null,
+            "statement": "2017-03-06",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1261.9200",
             "total_usage": "7168.6310",
+            "utility": "PacGAndE",
+            "utility_account_id": "0666666606-6",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 20.440800 kW @ $9.45000",
@@ -2122,10 +2247,14 @@
         {
             "end": "2017-03-26",
             "peak_demand": "19.6340",
+            "service_id": "1122212172",
             "start": "2017-02-24",
-            "tariff": null,
+            "statement": "2017-04-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1225.0300",
             "total_usage": "6919.9240",
+            "utility": "PacGAndE",
+            "utility_account_id": "9151305193-9",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -2369,10 +2498,14 @@
         {
             "end": "2017-04-25",
             "peak_demand": "18.9940",
+            "service_id": "5545544555",
             "start": "2017-03-27",
-            "tariff": null,
+            "statement": "2017-05-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1186.3800",
             "total_usage": "6767.2420",
+            "utility": "PacGAndE",
+            "utility_account_id": "1502100111-5",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 18.993600 kW @ $10.93000",
@@ -2512,10 +2645,14 @@
         {
             "end": "2017-05-24",
             "peak_demand": "19.5700",
+            "service_id": "8644334844",
             "start": "2017-04-26",
-            "tariff": null,
+            "statement": "2017-06-02",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1442.2900",
             "total_usage": "6395.2430",
+            "utility": "PacGAndE",
+            "utility_account_id": "1356555315-7",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -2772,10 +2909,14 @@
         {
             "end": "2017-06-25",
             "peak_demand": "19.9940",
+            "service_id": "5756355576",
             "start": "2017-05-25",
-            "tariff": null,
+            "statement": "2017-07-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1612.7000",
             "total_usage": "7067.9610",
+            "utility": "PacGAndE",
+            "utility_account_id": "3444344133-2",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -2941,10 +3082,14 @@
         {
             "end": "2017-07-25",
             "peak_demand": "17.9800",
+            "service_id": "2266626224",
             "start": "2017-06-26",
-            "tariff": null,
+            "statement": "2017-08-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1461.6600",
             "total_usage": "6402.7680",
+            "utility": "PacGAndE",
+            "utility_account_id": "8113881188-0",
             "line_items": [
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
@@ -3214,10 +3359,14 @@
         {
             "end": "2017-08-24",
             "peak_demand": "19.0080",
+            "service_id": "4444414444",
             "start": "2017-07-26",
-            "tariff": null,
+            "statement": "2017-08-31",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1592.9400",
             "total_usage": "7120.6200",
+            "utility": "PacGAndE",
+            "utility_account_id": "5153335353-5",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -3383,10 +3532,14 @@
         {
             "end": "2017-09-25",
             "peak_demand": "19.8480",
+            "service_id": "3734333332",
             "start": "2017-08-25",
-            "tariff": null,
+            "statement": "2017-10-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1581.9600",
             "total_usage": "6892.0180",
+            "utility": "PacGAndE",
+            "utility_account_id": "0536333203-2",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -3552,10 +3705,14 @@
         {
             "end": "2017-10-24",
             "peak_demand": "19.1880",
+            "service_id": "0005210002",
             "start": "2017-09-26",
-            "tariff": null,
+            "statement": "2017-11-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1446.8600",
             "total_usage": "6190.2920",
+            "utility": "PacGAndE",
+            "utility_account_id": "6663066660-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -3721,10 +3878,14 @@
         {
             "end": "2017-11-21",
             "peak_demand": "19.8280",
+            "service_id": "6151155611",
             "start": "2017-10-25",
-            "tariff": null,
+            "statement": "2017-12-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1186.5300",
             "total_usage": "6248.9990",
+            "utility": "PacGAndE",
+            "utility_account_id": "5806500855-8",
             "line_items": [
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
@@ -4007,10 +4168,14 @@
         {
             "end": "2017-12-22",
             "peak_demand": "19.2680",
+            "service_id": "2217201270",
             "start": "2017-11-22",
-            "tariff": null,
+            "statement": "2018-01-02",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1146.7600",
             "total_usage": "6593.7720",
+            "utility": "PacGAndE",
+            "utility_account_id": "3515001030-1",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -4163,10 +4328,14 @@
         {
             "end": "2018-01-23",
             "peak_demand": "18.8760",
+            "service_id": "2511201214",
             "start": "2017-12-23",
-            "tariff": null,
+            "statement": "2018-01-31",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1109.4400",
             "total_usage": "6447.3120",
+            "utility": "PacGAndE",
+            "utility_account_id": "6055005260-5",
             "line_items": [
                 {
                     "ChargeActualName": "Menlo Park Utility Users' Tax (1.000%)",
@@ -4423,10 +4592,14 @@
         {
             "end": "2018-02-22",
             "peak_demand": "20.1120",
+            "service_id": "7041314730",
             "start": "2018-01-24",
-            "tariff": null,
+            "statement": "2018-03-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1170.3200",
             "total_usage": "6710.0310",
+            "utility": "PacGAndE",
+            "utility_account_id": "4444444044-4",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -4579,10 +4752,14 @@
         {
             "end": "2018-03-25",
             "peak_demand": "18.9440",
+            "service_id": "7243344744",
             "start": "2018-02-23",
-            "tariff": null,
+            "statement": "2018-04-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1180.0300",
             "total_usage": "6576.9140",
+            "utility": "PacGAndE",
+            "utility_account_id": "7625012270-5",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -4839,10 +5016,14 @@
         {
             "end": "2018-04-24",
             "peak_demand": "20.1400",
+            "service_id": "4801210408",
             "start": "2018-03-26",
-            "tariff": null,
+            "statement": "2018-05-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1217.4400",
             "total_usage": "6562.5410",
+            "utility": "PacGAndE",
+            "utility_account_id": "6225562165-5",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 20.140000 kW @ $11.76000",
@@ -4982,10 +5163,14 @@
         {
             "end": "2018-05-23",
             "peak_demand": "19.0800",
+            "service_id": "7544744731",
             "start": "2018-04-25",
-            "tariff": null,
+            "statement": "2018-06-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1428.3300",
             "total_usage": "6040.7420",
+            "utility": "PacGAndE",
+            "utility_account_id": "2243214222-2",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -5242,10 +5427,14 @@
         {
             "end": "2018-06-24",
             "peak_demand": "17.9280",
+            "service_id": "3335333333",
             "start": "2018-05-24",
-            "tariff": null,
+            "statement": "2018-07-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1541.1700",
             "total_usage": "6304.4810",
+            "utility": "PacGAndE",
+            "utility_account_id": "0004330203-2",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 17.928000 kW @ $19.52000",
@@ -5398,10 +5587,14 @@
         {
             "end": "2018-07-24",
             "peak_demand": "17.3360",
+            "service_id": "7532073713",
             "start": "2018-06-25",
-            "tariff": null,
+            "statement": "2018-08-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1470.3000",
             "total_usage": "6002.0330",
+            "utility": "PacGAndE",
+            "utility_account_id": "6666226262-2",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 17.336000 kW @ $19.52000",
@@ -5554,10 +5747,14 @@
         {
             "end": "2018-08-23",
             "peak_demand": "18.2040",
+            "service_id": "0832173071",
             "start": "2018-07-25",
-            "tariff": null,
+            "statement": "2018-09-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1530.0700",
             "total_usage": "6261.1420",
+            "utility": "PacGAndE",
+            "utility_account_id": "7517141771-4",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 18.204000 kW @ $19.52000",
@@ -5710,10 +5907,14 @@
         {
             "end": "2018-09-24",
             "peak_demand": "16.9400",
+            "service_id": "7771107734",
             "start": "2018-08-24",
-            "tariff": null,
+            "statement": "2018-10-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1513.8400",
             "total_usage": "6214.0800",
+            "utility": "PacGAndE",
+            "utility_account_id": "0136333303-1",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -5957,10 +6158,14 @@
         {
             "end": "2018-10-24",
             "peak_demand": "18.1040",
+            "service_id": "9773337971",
             "start": "2018-09-25",
-            "tariff": null,
+            "statement": "2018-11-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1535.2600",
             "total_usage": "6205.6170",
+            "utility": "PacGAndE",
+            "utility_account_id": "7000140171-1",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 18.104000 kW @ $19.85000",
@@ -6113,10 +6318,14 @@
         {
             "end": "2018-11-26",
             "peak_demand": "18.2680",
+            "service_id": "2322112221",
             "start": "2018-10-25",
-            "tariff": null,
+            "statement": "2018-12-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1354.5800",
             "total_usage": "6928.6090",
+            "utility": "PacGAndE",
+            "utility_account_id": "4244444444-6",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -6373,10 +6582,14 @@
         {
             "end": "2018-12-25",
             "peak_demand": "18.2880",
+            "service_id": "6343334664",
             "start": "2018-11-27",
-            "tariff": null,
+            "statement": "2019-01-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1151.5000",
             "total_usage": "6177.6520",
+            "utility": "PacGAndE",
+            "utility_account_id": "0715741707-4",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 18.288000 kW @ $11.96000",
@@ -6516,10 +6729,14 @@
         {
             "end": "2019-01-24",
             "peak_demand": "18.5760",
+            "service_id": "5155355555",
             "start": "2018-12-26",
-            "tariff": null,
+            "statement": "2019-02-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1108.8900",
             "total_usage": "5991.5210",
+            "utility": "PacGAndE",
+            "utility_account_id": "3603610036-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -6750,10 +6967,14 @@
         {
             "end": "2019-02-25",
             "peak_demand": "18.5960",
+            "service_id": "0005010030",
             "start": "2019-01-25",
-            "tariff": null,
+            "statement": "2019-03-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1237.2600",
             "total_usage": "6835.5510",
+            "utility": "PacGAndE",
+            "utility_account_id": "0000000000-6",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 18.596000 kW @ $11.24000",
@@ -6893,10 +7114,14 @@
         {
             "end": "2019-03-26",
             "peak_demand": "17.6240",
+            "service_id": "6666666664",
             "start": "2019-02-26",
-            "tariff": null,
+            "statement": "2019-04-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1151.8300",
             "total_usage": "6313.0340",
+            "utility": "PacGAndE",
+            "utility_account_id": "3816651836-5",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -7127,10 +7352,14 @@
         {
             "end": "2019-04-25",
             "peak_demand": "18.0480",
+            "service_id": "4203430431",
             "start": "2019-03-27",
-            "tariff": null,
+            "statement": "2019-05-07",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1244.8700",
             "total_usage": "6940.1820",
+            "utility": "PacGAndE",
+            "utility_account_id": "6003160061-1",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 18.048000 kW @ $10.63000",
@@ -7270,10 +7499,14 @@
         {
             "end": "2019-05-27",
             "peak_demand": "15.4440",
+            "service_id": "3433233352",
             "start": "2019-04-26",
-            "tariff": null,
+            "statement": "2019-06-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1430.4600",
             "total_usage": "6060.2150",
+            "utility": "PacGAndE",
+            "utility_account_id": "0832113101-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -7530,10 +7763,14 @@
         {
             "end": "2019-06-25",
             "peak_demand": "14.9880",
+            "service_id": "9225092921",
             "start": "2019-05-28",
-            "tariff": null,
+            "statement": "2019-07-08",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1397.5500",
             "total_usage": "5649.8900",
+            "utility": "PacGAndE",
+            "utility_account_id": "4746464744-7",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 14.988000 kW @ $20.05000",
@@ -7686,10 +7923,14 @@
         {
             "end": "2019-07-25",
             "peak_demand": "14.6520",
+            "service_id": "9935993962",
             "start": "2019-06-26",
-            "tariff": null,
+            "statement": "2019-08-06",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1486.2300",
             "total_usage": "6078.3760",
+            "utility": "PacGAndE",
+            "utility_account_id": "6444404064-7",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -7959,10 +8200,14 @@
         {
             "end": "2019-08-26",
             "peak_demand": "15.3800",
+            "service_id": "1831083138",
             "start": "2019-07-26",
-            "tariff": null,
+            "statement": "2019-09-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1582.8500",
             "total_usage": "6470.5470",
+            "utility": "PacGAndE",
+            "utility_account_id": "6051615666-6",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 15.380000 kW @ $19.99000",
@@ -8115,10 +8360,14 @@
         {
             "end": "2019-09-25",
             "peak_demand": "13.8680",
+            "service_id": "5315511522",
             "start": "2019-08-27",
-            "tariff": null,
+            "statement": "2019-10-07",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1427.9100",
             "total_usage": "5807.6220",
+            "utility": "PacGAndE",
+            "utility_account_id": "0555155001-4",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 13.868000 kW @ $19.99000",
@@ -8271,10 +8520,14 @@
         {
             "end": "2019-10-24",
             "peak_demand": "13.6600",
+            "service_id": "0133033022",
             "start": "2019-09-26",
-            "tariff": null,
+            "statement": "2019-11-05",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1412.3300",
             "total_usage": "5692.5330",
+            "utility": "PacGAndE",
+            "utility_account_id": "9530103291-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -8518,10 +8771,14 @@
         {
             "end": "2019-11-24",
             "peak_demand": "15.2560",
+            "service_id": "4116161441",
             "start": "2019-10-25",
-            "tariff": null,
+            "statement": "2019-12-04",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "1161.7900",
             "total_usage": "5547.6810",
+            "utility": "PacGAndE",
+            "utility_account_id": "5884418854-4",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -8778,10 +9035,14 @@
         {
             "end": "2019-12-25",
             "peak_demand": "10.6560",
+            "service_id": "2334033234",
             "start": "2019-11-25",
-            "tariff": null,
+            "statement": "2020-01-06",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "899.9000",
             "total_usage": "4592.2230",
+            "utility": "PacGAndE",
+            "utility_account_id": "2636133221-1",
             "line_items": [
                 {
                     "ChargeActualName": "Demand Charge 10.656000 kW @ $11.94000",
@@ -8921,10 +9182,14 @@
         {
             "end": "2020-01-26",
             "peak_demand": "12.0520",
+            "service_id": "1626322152",
             "start": "2019-12-26",
-            "tariff": null,
+            "statement": "2020-02-03",
+            "tariff": "A10S Medium General Demand-Metered Service",
             "total_charge": "513.8100",
             "total_usage": "1580.1910",
+            "utility": "PacGAndE",
+            "utility_account_id": "8788208882-6",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",

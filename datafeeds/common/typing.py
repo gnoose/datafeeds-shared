@@ -94,6 +94,9 @@ class BillingDatum(NamedTuple):
     items: Optional[List[BillingDatumItemsEntry]]
     attachments: Optional[List[AttachmentEntry]]
     utility_code: Optional[str]  # utility's version of the tariff
+    service_id: Optional[str] = None
+    utility_account_id: Optional[str] = None
+    utility: Optional[str] = None
 
 
 BillingData = List[BillingDatum]

@@ -3,10 +3,14 @@
         {
             "end": "2016-10-03",
             "peak_demand": "832.0000",
+            "service_id": "3131155113",
             "start": "2016-09-02",
-            "tariff": null,
+            "statement": "2016-10-08",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "74434.0600",
             "total_usage": "460748.4000",
+            "utility": "PacGAndE",
+            "utility_account_id": "0000577737-7",
             "line_items": [
                 {
                     "ChargeActualName": "Energy Commission Tax",
@@ -250,11 +254,28 @@
         {
             "end": "2016-11-01",
             "peak_demand": "937.6000",
+            "service_id": "2121155102",
             "start": "2016-10-04",
-            "tariff": null,
-            "total_charge": "77356.8300",
+            "statement": "2016-11-14",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
+            "total_charge": "79444.1800",
             "total_usage": "431458.4000",
+            "utility": "PacGAndE",
+            "utility_account_id": "2020266626-6",
             "line_items": [
+                {
+                    "ChargeActualName": "Energy Commission Tax",
+                    "ChargeAmount": "4.8300",
+                    "ChargeId": "ch.tax_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-11-01",
+                    "IntervalStart": "2016-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236983629,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
                 {
                     "ChargeActualName": "Energy Commission Tax",
                     "ChargeAmount": "120.3000",
@@ -265,6 +286,19 @@
                     "IntervalStart": "2016-10-04",
                     "IsAdjustmentCharge": true,
                     "PK": 236983630,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Factor Adjustment (@ 97.00% Power Factor)",
+                    "ChargeAmount": "-9.9800",
+                    "ChargeId": "ch.power_factor_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-11-01",
+                    "IntervalStart": "2016-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236983631,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -282,6 +316,19 @@
                     "UsageUnit": ""
                 },
                 {
+                    "ChargeActualName": "Customer Charge 1 days @ $39.42505",
+                    "ChargeAmount": "39.4300",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2016-11-01",
+                    "IntervalStart": "2016-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236983633,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
                     "ChargeActualName": "Customer Charge 28 days @ $39.42505",
                     "ChargeAmount": "1103.9000",
                     "ChargeId": "ch.customer_charge",
@@ -293,6 +340,19 @@
                     "PK": 236983634,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Max Part Peak 851.200000 kW @ $0.05000",
+                    "ChargeAmount": "1.4700",
+                    "ChargeId": "ch.demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "0.0500",
+                    "ChargeUnitsUsed": "851.2000",
+                    "IntervalEnd": "2016-11-01",
+                    "IntervalStart": "2016-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236983635,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
                 },
                 {
                     "ChargeActualName": "Max Demand 937.600000 kW @ $16.08000",
@@ -334,6 +394,32 @@
                     "UsageUnit": "kW"
                 },
                 {
+                    "ChargeActualName": "Off Peak 6,636.000000 kWh @ $0.08676",
+                    "ChargeAmount": "575.7400",
+                    "ChargeId": "ch.energy_charge_off_peak",
+                    "ChargeRatePerUnit": "0.0868",
+                    "ChargeUnitsUsed": "6636.0000",
+                    "IntervalEnd": "2016-11-01",
+                    "IntervalStart": "2016-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236983639,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 10,004.800000 kWh @ $0.10034",
+                    "ChargeAmount": "1003.8800",
+                    "ChargeId": "ch.energy_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "0.1003",
+                    "ChargeUnitsUsed": "10004.8000",
+                    "IntervalEnd": "2016-11-01",
+                    "IntervalStart": "2016-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236983640,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
                     "ChargeActualName": "Off Peak 238,301.600000 kWh @ $0.08058",
                     "ChargeAmount": "19202.3400",
                     "ChargeId": "ch.energy_charge_off_peak",
@@ -371,6 +457,19 @@
                     "PK": 236983643,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Max Demand 851.200000 kW @ $16.08000",
+                    "ChargeAmount": "471.9800",
+                    "ChargeId": "ch.demand_charge_off_peak",
+                    "ChargeRatePerUnit": "16.0800",
+                    "ChargeUnitsUsed": "851.2000",
+                    "IntervalEnd": "2016-11-01",
+                    "IntervalStart": "2016-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236983644,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
                 }
             ],
             "source_urls": [
@@ -380,10 +479,14 @@
         {
             "end": "2016-12-02",
             "peak_demand": "1052.8000",
+            "service_id": "6161111336",
             "start": "2016-11-02",
-            "tariff": null,
+            "statement": "2016-12-23",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "61735.6300",
             "total_usage": "473383.2000",
+            "utility": "PacGAndE",
+            "utility_account_id": "5454544444-4",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 1,052.800000 kW @ $16.08000",
@@ -484,10 +587,14 @@
         {
             "end": "2017-01-03",
             "peak_demand": "822.4000",
+            "service_id": "6060677066",
             "start": "2016-12-03",
-            "tariff": null,
+            "statement": "2017-01-25",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "54428.7400",
             "total_usage": "437944.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "0202322232-2",
             "line_items": [
                 {
                     "ChargeActualName": "Energy Commission Tax",
@@ -679,10 +786,14 @@
         {
             "end": "2017-02-01",
             "peak_demand": "796.8000",
+            "service_id": "1010100011",
             "start": "2017-01-04",
-            "tariff": null,
+            "statement": "2017-02-22",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "53352.8700",
             "total_usage": "422239.2000",
+            "utility": "PacGAndE",
+            "utility_account_id": "6666499959-9",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 796.800000 kW @ $15.67000",
@@ -783,10 +894,14 @@
         {
             "end": "2017-03-05",
             "peak_demand": "915.2000",
+            "service_id": "3333333333",
             "start": "2017-02-02",
-            "tariff": null,
+            "statement": "2017-03-21",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "60858.8400",
             "total_usage": "487222.4000",
+            "utility": "PacGAndE",
+            "utility_account_id": "6060100000-0",
             "line_items": [
                 {
                     "ChargeActualName": "Energy Commission Tax",
@@ -978,10 +1093,14 @@
         {
             "end": "2017-04-03",
             "peak_demand": "883.2000",
+            "service_id": "3030500223",
             "start": "2017-03-06",
-            "tariff": null,
+            "statement": "2017-04-14",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "57064.9400",
             "total_usage": "439768.8000",
+            "utility": "PacGAndE",
+            "utility_account_id": "4343133343-3",
             "line_items": [
                 {
                     "ChargeActualName": "Max Demand 883.200000 kW @ $17.44000",
@@ -1082,10 +1201,14 @@
         {
             "end": "2017-05-03",
             "peak_demand": "854.4000",
+            "service_id": "4040400004",
             "start": "2017-04-04",
-            "tariff": null,
+            "statement": "2017-05-26",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "57421.5400",
             "total_usage": "444566.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "0000044444-4",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -1473,10 +1596,14 @@
         {
             "end": "2017-06-04",
             "peak_demand": "1065.6000",
+            "service_id": "1414144211",
             "start": "2017-05-04",
-            "tariff": null,
+            "statement": "2017-06-13",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "51512.3200",
             "total_usage": "531245.6000",
+            "utility": "PacGAndE",
+            "utility_account_id": "4444666626-6",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -1721,10 +1848,14 @@
         {
             "end": "2017-07-04",
             "peak_demand": "1065.6000",
+            "service_id": "6363066366",
             "start": "2017-06-05",
-            "tariff": null,
+            "statement": "2017-07-20",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "49075.5200",
             "total_usage": "500228.8000",
+            "utility": "PacGAndE",
+            "utility_account_id": "5454444434-4",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -2112,10 +2243,14 @@
         {
             "end": "2017-08-02",
             "peak_demand": "1030.4000",
+            "service_id": "0202111100",
             "start": "2017-07-05",
-            "tariff": null,
+            "statement": "2017-08-15",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "47650.8200",
             "total_usage": "463647.2000",
+            "utility": "PacGAndE",
+            "utility_account_id": "4343333323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -2360,10 +2495,14 @@
         {
             "end": "2018-03-04",
             "peak_demand": "969.6000",
+            "service_id": "6666066666",
             "start": "2018-02-01",
-            "tariff": null,
+            "statement": "2018-03-14",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "38423.3800",
             "total_usage": "468782.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "5151033383-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -2660,10 +2799,14 @@
         {
             "end": "2018-04-02",
             "peak_demand": "844.8000",
+            "service_id": "3535577053",
             "start": "2018-03-05",
-            "tariff": null,
+            "statement": "2018-04-12",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "54722.1100",
             "total_usage": "427367.2000",
+            "utility": "PacGAndE",
+            "utility_account_id": "1414000040-0",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -2856,10 +2999,14 @@
         {
             "end": "2018-05-02",
             "peak_demand": "822.4000",
+            "service_id": "2121277072",
             "start": "2018-04-03",
-            "tariff": null,
+            "statement": "2018-05-14",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "58993.1100",
             "total_usage": "456036.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "6161444404-4",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -3234,10 +3381,14 @@
         {
             "end": "2018-06-03",
             "peak_demand": "784.0000",
+            "service_id": "3333311223",
             "start": "2018-05-03",
-            "tariff": null,
+            "statement": "2018-06-13",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "78087.3300",
             "total_usage": "478360.8000",
+            "utility": "PacGAndE",
+            "utility_account_id": "2222288808-8",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -3469,10 +3620,14 @@
         {
             "end": "2018-07-02",
             "peak_demand": "1036.8000",
+            "service_id": "5858844445",
             "start": "2018-06-04",
-            "tariff": null,
+            "statement": "2018-07-13",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "87648.6500",
             "total_usage": "454314.4000",
+            "utility": "PacGAndE",
+            "utility_account_id": "0000288838-8",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -3704,10 +3859,14 @@
         {
             "end": "2018-08-01",
             "peak_demand": "1040.0000",
+            "service_id": "6060222606",
             "start": "2018-07-03",
-            "tariff": null,
+            "statement": "2018-08-14",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "95252.1100",
             "total_usage": "477324.4000",
+            "utility": "PacGAndE",
+            "utility_account_id": "2121222222-2",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -3952,10 +4111,14 @@
         {
             "end": "2018-09-03",
             "peak_demand": "1030.4000",
+            "service_id": "2020100002",
             "start": "2018-08-02",
-            "tariff": null,
+            "statement": "2018-09-13",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "98152.6300",
             "total_usage": "528804.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "5555255535-5",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -4291,10 +4454,14 @@
         {
             "end": "2018-10-02",
             "peak_demand": "860.8000",
+            "service_id": "2323744332",
             "start": "2018-09-04",
-            "tariff": null,
+            "statement": "2018-10-15",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "82469.9000",
             "total_usage": "417896.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "1010166626-6",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -4538,12 +4705,29 @@
         },
         {
             "end": "2018-11-01",
-            "peak_demand": "1011.2000",
+            "peak_demand": "1052.8000",
+            "service_id": "3131999093",
             "start": "2018-10-03",
-            "tariff": null,
-            "total_charge": "91834.0800",
+            "statement": "2018-11-14",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
+            "total_charge": "93306.4500",
             "total_usage": "469297.6000",
+            "utility": "PacGAndE",
+            "utility_account_id": "4040000000-0",
             "line_items": [
+                {
+                    "ChargeActualName": "Franchise Fee Surcharge",
+                    "ChargeAmount": "10.7200",
+                    "ChargeId": "ch.franchise_charge",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349787,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
                     "ChargeAmount": "261.4700",
@@ -4554,6 +4738,19 @@
                     "IntervalStart": "2018-10-03",
                     "IsAdjustmentCharge": true,
                     "PK": 236349788,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Charge Indifference Adjustment",
+                    "ChargeAmount": "374.1000",
+                    "ChargeId": "ch.power_cost_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349789,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -4572,6 +4769,19 @@
                 },
                 {
                     "ChargeActualName": "Power Factor Adjustment (@ 96.00% Power Factor)",
+                    "ChargeAmount": "-10.1700",
+                    "ChargeId": "ch.power_factor_adjustment",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349791,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Power Factor Adjustment (@ 96.00% Power Factor)",
                     "ChargeAmount": "-247.9500",
                     "ChargeId": "ch.power_factor_adjustment",
                     "ChargeRatePerUnit": "0.0000",
@@ -4580,6 +4790,19 @@
                     "IntervalStart": "2018-10-03",
                     "IsAdjustmentCharge": true,
                     "PK": 236349792,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Generation Credit",
+                    "ChargeAmount": "-1392.7200",
+                    "ChargeId": "ch.generation_credit",
+                    "ChargeRatePerUnit": "0.0000",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349793,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
                 },
@@ -4597,6 +4820,19 @@
                     "UsageUnit": ""
                 },
                 {
+                    "ChargeActualName": "Customer Charge 1 days @ $39.42505",
+                    "ChargeAmount": "39.4300",
+                    "ChargeId": "ch.customer_charge",
+                    "ChargeRatePerUnit": "39.4251",
+                    "ChargeUnitsUsed": "0.0000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349795,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": ""
+                },
+                {
                     "ChargeActualName": "Customer Charge 29 days @ $39.42505",
                     "ChargeAmount": "1143.3300",
                     "ChargeId": "ch.customer_charge",
@@ -4608,6 +4844,19 @@
                     "PK": 236349796,
                     "ThirdPartyProvider": "",
                     "UsageUnit": ""
+                },
+                {
+                    "ChargeActualName": "Max Part Peak 1,052.800000 kW @ $0.05000",
+                    "ChargeAmount": "1.7500",
+                    "ChargeId": "ch.demand_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "0.0500",
+                    "ChargeUnitsUsed": "1052.8000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349797,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
                 },
                 {
                     "ChargeActualName": "Max Demand 1,011.200000 kW @ $18.34000",
@@ -4649,6 +4898,32 @@
                     "UsageUnit": "kW"
                 },
                 {
+                    "ChargeActualName": "Off Peak 7,701.600000 kWh @ $0.08893",
+                    "ChargeAmount": "684.9000",
+                    "ChargeId": "ch.energy_charge_off_peak",
+                    "ChargeRatePerUnit": "0.0889",
+                    "ChargeUnitsUsed": "7701.6000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349801,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Part Peak 10,781.600000 kWh @ $0.10395",
+                    "ChargeAmount": "1120.7500",
+                    "ChargeId": "ch.energy_charge_intermediate_peak",
+                    "ChargeRatePerUnit": "0.1040",
+                    "ChargeUnitsUsed": "10781.6000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349802,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kWh"
+                },
+                {
                     "ChargeActualName": "Off Peak 260,450.400000 kWh @ $0.08210",
                     "ChargeAmount": "21382.9800",
                     "ChargeId": "ch.energy_charge_off_peak",
@@ -4686,6 +4961,19 @@
                     "PK": 236349805,
                     "ThirdPartyProvider": "",
                     "UsageUnit": "kWh"
+                },
+                {
+                    "ChargeActualName": "Max Demand 1,052.800000 kW @ $18.34000",
+                    "ChargeAmount": "643.6100",
+                    "ChargeId": "ch.demand_charge_off_peak",
+                    "ChargeRatePerUnit": "18.3400",
+                    "ChargeUnitsUsed": "1052.8000",
+                    "IntervalEnd": "2018-11-01",
+                    "IntervalStart": "2018-11-01",
+                    "IsAdjustmentCharge": true,
+                    "PK": 236349806,
+                    "ThirdPartyProvider": "",
+                    "UsageUnit": "kW"
                 },
                 {
                     "ChargeActualName": "Generation - Part Peak - Summer 98,951.200000 kWh @ $0.06227",
@@ -4813,10 +5101,14 @@
         {
             "end": "2018-12-03",
             "peak_demand": "928.0000",
+            "service_id": "0000088200",
             "start": "2018-11-02",
-            "tariff": null,
+            "statement": "2019-12-02",
+            "tariff": "unknown_tariff",
             "total_charge": "65925.7500",
             "total_usage": "473123.6000",
+            "utility": "PacGAndE",
+            "utility_account_id": "4444166666-6",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -4997,10 +5289,14 @@
         {
             "end": "2019-01-03",
             "peak_demand": "780.8000",
+            "service_id": "6060066326",
             "start": "2018-12-04",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "58926.2400",
             "total_usage": "432168.8000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -5298,10 +5594,14 @@
         {
             "end": "2019-02-03",
             "peak_demand": "851.2000",
+            "service_id": "6060066326",
             "start": "2019-01-04",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "63363.7100",
             "total_usage": "468972.8000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -5482,10 +5782,14 @@
         {
             "end": "2019-03-05",
             "peak_demand": "729.6000",
+            "service_id": "6060066326",
             "start": "2019-02-04",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "57365.4100",
             "total_usage": "429400.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -5783,10 +6087,14 @@
         {
             "end": "2019-04-03",
             "peak_demand": "713.6000",
+            "service_id": "6060066326",
             "start": "2019-03-06",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "56554.8400",
             "total_usage": "415200.8000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -5967,10 +6275,14 @@
         {
             "end": "2019-05-05",
             "peak_demand": "803.2000",
+            "service_id": "6060066326",
             "start": "2019-04-04",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "64527.9000",
             "total_usage": "451263.2000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Customer Charge 27 days @ $39.42505",
@@ -6359,10 +6671,14 @@
         {
             "end": "2019-06-04",
             "peak_demand": "864.0000",
+            "service_id": "6060066326",
             "start": "2019-05-06",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "86243.4000",
             "total_usage": "432015.2000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Peak 83,621.600000 kWh @ $0.15448",
@@ -6608,10 +6924,14 @@
         {
             "end": "2019-07-04",
             "peak_demand": "1014.4000",
+            "service_id": "6060066326",
             "start": "2019-06-05",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "95943.2700",
             "total_usage": "471595.2000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -7078,10 +7398,14 @@
         {
             "end": "2019-08-04",
             "peak_demand": "694.4000",
+            "service_id": "6060066326",
             "start": "2019-07-05",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "78050.4700",
             "total_usage": "435608.4000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -7340,10 +7664,14 @@
         {
             "end": "2019-09-04",
             "peak_demand": "1027.2000",
+            "service_id": "6060066326",
             "start": "2019-08-05",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "98375.7600",
             "total_usage": "485845.2000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Peak 97,229.200000 kWh @ $0.15924",
@@ -7602,10 +7930,14 @@
         {
             "end": "2019-10-03",
             "peak_demand": "1017.6000",
+            "service_id": "6060066326",
             "start": "2019-09-05",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "96605.4800",
             "total_usage": "472708.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -8007,10 +8339,14 @@
         {
             "end": "2019-11-03",
             "peak_demand": "985.6000",
+            "service_id": "6060066326",
             "start": "2019-10-04",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "91050.0100",
             "total_usage": "455185.6000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -8425,10 +8761,14 @@
         {
             "end": "2019-12-04",
             "peak_demand": "748.8000",
+            "service_id": "6060066326",
             "start": "2019-11-04",
-            "tariff": null,
+            "statement": "2019-12-13",
+            "tariff": "unknown_tariff",
             "total_charge": "60424.9300",
             "total_usage": "431896.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "3333133323-3",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -8621,10 +8961,14 @@
         {
             "end": "2020-01-03",
             "peak_demand": "902.4000",
+            "service_id": "9999999239",
             "start": "2019-12-05",
-            "tariff": null,
+            "statement": "2020-01-27",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "59731.3700",
             "total_usage": "400400.0000",
+            "utility": "PacGAndE",
+            "utility_account_id": "9191399919-9",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -8934,10 +9278,14 @@
         {
             "end": "2020-02-03",
             "peak_demand": "812.8000",
+            "service_id": "2121055012",
             "start": "2020-01-04",
-            "tariff": null,
+            "statement": "2020-02-12",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "60129.4900",
             "total_usage": "406991.6000",
+            "utility": "PacGAndE",
+            "utility_account_id": "7171177737-7",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
@@ -9129,10 +9477,14 @@
         {
             "end": "2020-03-04",
             "peak_demand": "899.2000",
+            "service_id": "6666666666",
             "start": "2020-02-04",
-            "tariff": null,
+            "statement": "2020-03-16",
+            "tariff": "E20S Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "64681.6600",
             "total_usage": "433990.4000",
+            "utility": "PacGAndE",
+            "utility_account_id": "5454444444-4",
             "line_items": [
                 {
                     "ChargeActualName": "Franchise Fee Surcharge",
