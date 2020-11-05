@@ -91,6 +91,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                     .filter(
                         UtilityServiceSnapshot.service == self.utility_service.oid,
                         UtilityServiceSnapshot.utility_account_id.isnot(None),
+                        UtilityServiceSnapshot.utility_account_id != "",
                     )
                     .all()
                 )
@@ -108,13 +109,14 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                     .filter(
                         UtilityServiceSnapshot.service == self.utility_service.oid,
                         UtilityServiceSnapshot.gen_utility_account_id.isnot(None),
+                        UtilityServiceSnapshot.gen_utility_account_id != "",
                     )
                     .all()
                 )
             ]
 
             for account_id in historical_gen_account_ids:
-                stripped_historical_ids.append(_remove_check_digit(account_id[0]))
+                stripped_historical_ids.append(_remove_check_digit(account_id))
 
             # Combining historical ids with values passed into scraper, and the current service config.
             # The history *should* contain all of these items, but we want to cover our bases.
@@ -140,7 +142,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
             )
 
         log.info(
-            "Searching across these account numbers: {}".format(
+            "Searching across these PG&E account number variations: {}".format(
                 [num for num in utility_account_ids]
             )
         )
@@ -161,6 +163,11 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
         ]
         account_pks = [account.PK for account in accounts]
         self.service_ids = self.get_all_service_ids(account_pks)
+        log.info(
+            "Searching for third party charges across these PG&E service_ids: {}".format(
+                [num for num in self.service_ids]
+            )
+        )
         return accounts
 
     def get_historical_service_ids(self) -> List[str]:
@@ -182,6 +189,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                     .filter(
                         UtilityServiceSnapshot.service == self.utility_service.oid,
                         UtilityServiceSnapshot.service_id.isnot(None),
+                        UtilityServiceSnapshot.service_id != "",
                     )
                     .all()
                 )
@@ -194,6 +202,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                     .filter(
                         UtilityServiceSnapshot.service == self.utility_service.oid,
                         UtilityServiceSnapshot.gen_service_id.isnot(None),
+                        UtilityServiceSnapshot.gen_service_id != "",
                     )
                     .all()
                 )
@@ -304,9 +313,10 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
             esp_customer_numbers = [
                 result.get("PODid") for result in meter_pod_id_results
             ]
+
             log.info(
-                "Additional ESP Customer Numbers: {}".format(
-                    [num for num in esp_customer_numbers]
+                "Additional ESP Customer Numbers located: {}".format(
+                    [num for num in esp_customer_numbers if num not in service_ids]
                 )
             )
             # Temp table cleanup
@@ -315,7 +325,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
            """
             self.execute(query)
 
-            return service_ids + esp_customer_numbers
+            return list(set(service_ids + esp_customer_numbers))
         return service_ids
 
     def load_meters(self, account_pk: int) -> List[Meter]:
