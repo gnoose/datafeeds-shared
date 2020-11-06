@@ -1,3 +1,8 @@
+# This API scraper connects to the Smart Meter Texas REST API to extract interval data.
+#
+# Note: This API requires Gridium traffic to come from a fixed IP in production.
+
+
 import logging
 import time
 from datetime import date, datetime, timedelta
@@ -7,12 +12,13 @@ import requests
 from dateutil.relativedelta import relativedelta
 
 from datafeeds import config
-from datafeeds.common.batch import run_datafeed
-from datafeeds.common.exceptions import DataSourceConfigurationError
-from datafeeds.common.timeline import Timeline
 from datafeeds.common.base import BaseApiScraper
+from datafeeds.common.batch import run_datafeed
+from datafeeds.common.daylight_savings import DST_ENDS
+from datafeeds.common.exceptions import DataSourceConfigurationError
 from datafeeds.common.support import Configuration
 from datafeeds.common.support import Results
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status
 from datafeeds.common.util.s3 import read_file_from_s3
 from datafeeds.models import (
@@ -82,10 +88,23 @@ class SmartMeterTexasScraper(BaseApiScraper):
 
                 buffer.append(datum)
 
+            # Note: SMT only supports 15 minute interval data, so we don't need to handle other possible
+            # buffer lengths.
+            if day in DST_ENDS and len(buffer) == 100:
+                revised = buffer[0:4] + buffer[8:]
+                for ii in range(4, 8):
+                    # If both intervals are defined, use the average. Otherwise,
+                    # prefer the first hour's interval if defined, using the second hour's interval as the fallback.
+                    if buffer[ii] and buffer[ii + 4]:
+                        revised[ii] = (buffer[ii] + buffer[ii + 4]) / 2
+                    elif buffer[ii]:
+                        revised[ii] = buffer[ii]
+                buffer = revised
+
             if len(buffer) != 96:
                 raise ApiException(
-                    "Unexpected daily interval data received from SMT. Expected 96, found %s.",
-                    len(buffer),
+                    "Unexpected daily interval data received from SMT. Expected 96, found %s."
+                    % len(buffer),
                 )
 
             results[day] = buffer
