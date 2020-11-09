@@ -49,6 +49,12 @@ class LoginPage:
     def login(self, username, password):
         self.driver.get("https://sharemydata.pge.com/myAuthorization/login")
 
+        # Allow some delay for the AngularJS login page to load. If the username field is not present,
+        # soemthing is wrong and we will have to abort the provisioning run.
+        WebDriverWait(self.driver, 15).until(
+            ec.visibility_of_element_located((By.ID, "username"))
+        )
+
         username_textbox = self.driver.find_element_by_id("username")
         password_textbox = self.driver.find_element_by_id("password")
         sign_in_button = self.driver.find_element_by_id("smd-login-main")
@@ -203,6 +209,8 @@ class AuthorizationPage:
         return match.group(1), match.group(2), match.group(3)
 
     def scrape(self):
+        time.sleep(5)
+
         accounts = self.driver.find_elements_by_xpath('//*[@id="accordion"]/div[2]/div')
 
         def process(dom_element, xpath):
@@ -255,6 +263,10 @@ class AuthorizationPage:
 
     def authorize(self):
         """Press the 'submit' button to trigger authorization."""
+        WebDriverWait(self.driver, 15).until(
+            ec.visibility_of_element_located((By.ID, "smd-submit"))
+        )
+
         submit_button = self.driver.find_element_by_id("smd-submit")
         submit_button.click()
 
@@ -282,8 +294,8 @@ def with_selenium(fn):
     """Wrap the input procedure with code to manage selenium and virtual display lifecycles."""
 
     def run_under_selenium(*args, **kwargs):
-        display = VirtualDisplay()
         if config.USE_VIRTUAL_DISPLAY:
+            display = VirtualDisplay()
             display.start()
 
         driver = webdriver.Chrome()
