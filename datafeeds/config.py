@@ -169,6 +169,9 @@ SELENIUM_BROWSER = "Chrome"
 # Key for decrypting secrets stored in our database.
 AES_SECRET_KEY = os.environ.get("AES_SECRET_KEY", None)
 
+# API key for captcha solving service
+CAPTCHA_API_KEY = os.environ.get("CAPTCHA_API_KEY", None)
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,
