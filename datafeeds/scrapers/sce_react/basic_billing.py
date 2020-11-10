@@ -136,14 +136,6 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             transitions=[],
         )
 
-        # If the search succeeds, we open the billing information for the found service id.
-        state_machine.add_state(
-            name="search_success",
-            page=sce_pages.SceAccountSearchSuccess(self._driver),
-            action=self.search_success_action,
-            transitions=["view_usage_dialog"],
-        )
-
         if self._configuration.scrape_partial_bills:
             # This state is responsible for gathering billing data for the desired SAID.
             state_machine.add_state(
@@ -156,7 +148,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             state_machine.add_state(
                 name="multi_account_landing",
                 page=sce_pages.SceMultiAccountLandingPage(
-                    self._drive, said=self.gen_service_id
+                    self._driver, said=self.gen_service_id
                 ),
                 action=self.multi_account_landing_page_action,
                 transitions=["search_success", "search_failure"],
@@ -173,14 +165,16 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             # If the search succeeds, we open the billing information for the found service id.
             state_machine.add_state(
                 name="search_success",
-                page=sce_pages.SceAccountSearchSuccess(self._driver),
+                page=sce_pages.SceAccountSearchSuccess(
+                    self._driver, said=self.gen_service_id
+                ),
                 action=self.search_success_action,
                 transitions=["view_generation_cost_dialog"],
             )
             # Get generation costs and combine with data from other bill data.
             state_machine.add_state(
                 name="view_generation_cost_dialog",
-                page=sce_pages.SceServiceAccountDetailModal(self._driver),
+                page=sce_pages.SceBilledGenerationUsageModal(self._driver),
                 action=self.view_generation_usage_action,
                 transitions=["done"],
             )
@@ -191,6 +185,14 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                 page=sce_pages.SceServiceAccountDetailModal(self._driver),
                 action=self.view_usage_action,
                 transitions=["done"],
+            )
+
+            # If the search succeeds, we open the billing information for the found service id.
+            state_machine.add_state(
+                name="search_success",
+                page=sce_pages.SceAccountSearchSuccess(self._driver),
+                action=self.search_success_action,
+                transitions=["view_usage_dialog"],
             )
 
         # And that's the end
@@ -237,10 +239,13 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         page.open_usage_info()
 
     def multi_account_landing_page_action(
-        self, page: sce_pages.SceMultiAccountLandingPage, said: Optional[str] = None
+        self, page: sce_pages.SceMultiAccountLandingPage
     ):
         sce_pages.detect_and_close_survey(self._driver)
-        page.search_by_service_id(said or self.service_id)
+        if page.said:
+            page.search_by_account_id(page.said)
+        else:
+            page.search_by_service_id(self.service_id)
         time.sleep(5)
         WebDriverWait(
             self._driver,
@@ -254,7 +259,10 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         )
 
     def search_success_action(self, page: sce_pages.SceAccountSearchSuccess):
-        page.view_usage_for_search_result()
+        if page.said:
+            page.view_billed_generation_charge()
+        else:
+            page.view_usage_for_search_result()
 
     def view_usage_action(self, page: sce_pages.SceServiceAccountDetailModal):
         page.select_usage_report()
@@ -296,15 +304,16 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             )
             log.debug("created %s", datum)
             billing_objects.append(datum)
-        # TODO: close modal
-        # #graphHeader button with aria-label="close dialog"
+
+        sce_pages.detect_and_close_modal(self._driver)
         self.billing_history = billing_objects
 
     def view_generation_usage_action(
-        self, page: sce_pages.SceServiceAccountDetailModal
+        self, page: sce_pages.SceBilledGenerationUsageModal
     ):
-        page.select_generation_usage_report()
         billing_objects: List[BillingDatum] = []
+        generation_usage_data = page.parse_data()
+
         """
         # TODO:
         - Extract from table MeterReadDate	Number of Days	Charges this period
