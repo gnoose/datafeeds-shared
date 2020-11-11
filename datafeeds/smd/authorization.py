@@ -95,7 +95,7 @@ class HomeScreen:
 
     def wait_until_ready(self):
         # Unfortunately, there appears to be a JS race condition here. Have to wait for angular JS to run.
-        time.sleep(3)
+        time.sleep(15)
 
         # This next wait may not be necessary. It was added as an extra check that the page was fully loaded.
 
@@ -209,7 +209,7 @@ class AuthorizationPage:
         return match.group(1), match.group(2), match.group(3)
 
     def scrape(self):
-        time.sleep(5)
+        time.sleep(15)
 
         accounts = self.driver.find_elements_by_xpath('//*[@id="accordion"]/div[2]/div')
 
