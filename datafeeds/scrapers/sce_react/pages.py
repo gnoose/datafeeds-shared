@@ -1,8 +1,9 @@
+import re
 import time
 import collections
 from datetime import date, timedelta
 import logging
-from typing import Optional, List, Tuple
+from typing import Optional, List, Tuple, Dict
 
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
@@ -271,10 +272,6 @@ class SceMultiAccountLandingPage(PageState):
     page. This page has a search bar that can be used to locate a specific service agreement.
     """
 
-    def __init__(self, driver: BaseDriver, said: Optional[str] = None):
-        self.driver = driver
-        self.said = said
-
     AccountDataLocator = (
         By.XPATH,
         "//react-myaccount-container//div[contains(@class, 'accountsOverviewComponent')]",
@@ -313,34 +310,44 @@ class SceMultiAccountLandingPage(PageState):
                 )
                 continue
 
-    def search_by_account_id(self, said: str):
-        print("said: " + said)
+    def scroll_for_service_id(self, service_id: str):
+        """Click More link until service_id is visible.
+
+        Use this when scraping partial bills, since search by service id seems to  always return an error.
+        """
+        log.info("scroll for service_id %s", service_id)
+        # clear search box
+        clear_button_locator = (
+            By.XPATH,
+            "//button[contains(@class, 'accountsOverviewComponent__sceClearSearchIcon')]",
+        )
+        self.driver.find_element(*clear_button_locator).click()
+        WebDriverWait(self.driver, 10).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
         generation_charge_link_locator = (
             By.XPATH,
             # this is the div with the said text
-            f"//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo') and contains(text(), '{self.said}')]"
+            f"//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo') and contains(text(), '{service_id}')]"
             # we need its parent row to get to the "Billed Generation Charge" Link
             f"/parent::div[@class='row']"
             # this is the link that we're after (Billed Generation Charge)
             "/following-sibling::a[contains(@class, 'serviceAccOverviewComponent__sceViewUsageBtn') and contains(., 'Billed Generation Charge')]",
         )
-
         self.click_show_more_until_element_found(
             locator=generation_charge_link_locator,
         )
+        self.driver.find_element(*generation_charge_link_locator)
 
-        try:
-            self.driver.find_element(*generation_charge_link_locator)
-        except NoSuchElementException:
-            # TODO: don't raise exception, instead create a state for like search_failure
-            raise Exception("No account with the specified service_id found")
-
-    def search_by_service_id(self, service_id):
-
+    def search_by_service_id(self, service_id: str):
+        log.info("search_by_service_id: %s", service_id)
         account_search_field = self.driver.find_element(*self.AccountFilterLocator)
         actions = ActionChains(self.driver)
         actions.move_to_element(account_search_field)
         actions.click(account_search_field)
+        # clear existing values
+        for _ in range(20):
+            actions.send_keys_to_element(account_search_field, Keys.BACK_SPACE)
         actions.send_keys_to_element(account_search_field, service_id)
         actions.send_keys_to_element(account_search_field, Keys.ENTER)
         actions.perform()
@@ -361,19 +368,22 @@ class SceAccountSearchFailure(PageState):
 class SceAccountSearchSuccess(PageState):
     """Models the case where an SAID search succeeds"""
 
-    def __init__(self, driver: BaseDriver, said: str = None):
-        self.driver = driver
-        self.said = said
-
-        self.generation_charge_link_locator = (
-            By.XPATH,
-            # this is the div with the service_id text
-            f"//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo') and contains(text(), '{self.said}')]"
-            # we need its parent row to get to the "Billed Generation Charge" Link
-            f"/parent::div[@class='row']"
-            # this is the link that we're after (Billed Generation Charge)
-            "/following-sibling::a[contains(@class, 'serviceAccOverviewComponent__sceViewUsageBtn') and contains(., 'Billed Generation Charge')]",
-        )
+    def __init__(self, driver: BaseDriver, gen_service_id: str = None):
+        super().__init__(driver)
+        self.gen_service_id = gen_service_id
+        if gen_service_id:
+            self.generation_charge_link_locator = (
+                By.XPATH,
+                # this is the div with the service_id text
+                f"//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo') and contains(text(), "
+                f"'{self.gen_service_id}')]"
+                # we need its parent row to get to the "Billed Generation Charge" Link
+                f"/parent::div[@class='row']"
+                # this is the link that we're after (Billed Generation Charge)
+                "/following-sibling::a[contains(@class, 'serviceAccOverviewComponent__sceViewUsageBtn') and contains(., 'Billed Generation Charge')]",
+            )
+        else:
+            self.generation_charge_link_locator = None
 
     AccountDataLocator = (
         By.XPATH,
@@ -386,7 +396,8 @@ class SceAccountSearchSuccess(PageState):
     )
 
     def get_ready_condition(self):
-        if self.said:
+        log.debug("SceAccountSearchSuccess gen_service_id=%s", self.gen_service_id)
+        if self.gen_service_id:
             return EC.presence_of_element_located(self.generation_charge_link_locator)
 
         return ec_and(
@@ -419,16 +430,15 @@ class SceBilledGenerationUsageModal(PageState):
             EC.invisibility_of_element_located(GenericBusyIndicatorLocator),
         )
 
-    def parse_data(self):
+    def parse_data(self) -> Dict[date, float]:
         table_element = self.driver.find_element(*self.DataTableLocator)
         rows = table_element.find_elements_by_xpath("//tbody/tr")
-        table_data = {}
+        data: Dict[date, float] = {}
         for row in rows:
             cols = row.find_elements_by_tag_name("td")
-            meterReadDate = cols[0].text
-            chargesThisPeriod = cols[2].text
-            table_data[meterReadDate] = float(chargesThisPeriod.replace("$", ""))
-        return table_data
+            read_dt = parse_date(cols[0].text).date()
+            data[read_dt] = float(re.sub(r"[^\d\.-]", "", cols[2].text))
+        return data
 
 
 class SceServiceAccountDetailModal(PageState):

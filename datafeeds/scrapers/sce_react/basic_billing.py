@@ -67,10 +67,6 @@ class SceReactBasicBillingScraper(BaseWebScraper):
     def gen_service_id(self):
         return self._configuration.gen_service_id
 
-    @property
-    def account_id(self):
-        return self._configuration.account_id
-
     def define_state_machine(self):
         """Define the flow of this scraper as a state machine"""
 
@@ -146,6 +142,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
 
         if self._configuration.scrape_partial_bills:
             # This state is responsible for gathering billing data for the desired SAID.
+            # When scraping partial bills, go to the landing page again after this.
             state_machine.add_state(
                 name="view_usage_dialog",
                 page=sce_pages.SceServiceAccountDetailModal(self._driver),
@@ -156,28 +153,26 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             # ( this is required in order to view the Generation Billing Data )
             state_machine.add_state(
                 name="multi_account_homepage",
-                page=sce_pages.SceMultiAccountLandingPage(
-                    self._driver, said=self.gen_service_id
-                ),
+                page=sce_pages.SceMultiAccountLandingPage(self._driver),
                 action=self.find_generation_account_action,
                 transitions=["find_generation_account_success", "search_failure"],
             )
 
-            # If the search fails, we end up here, and the scraper fails.
+            # Search for generation SAID
             state_machine.add_state(
-                name="search_failure",
-                page=sce_pages.SceAccountSearchFailure(self._driver),
-                action=self.search_failure_action,
-                transitions=[],
+                name="multi_account_landing_generation",
+                page=sce_pages.SceMultiAccountLandingPage(self._driver),
+                action=self.multi_account_landing_page_generation_action,
+                transitions=["search_success_generation", "search_failure"],
             )
 
             # If the search succeeds, we open the billing information for the found service id.
             state_machine.add_state(
                 name="find_generation_account_success",
                 page=sce_pages.SceAccountSearchSuccess(
-                    self._driver, said=self.gen_service_id
+                    self._driver, self.gen_service_id
                 ),
-                action=self.search_success_action,
+                action=self.search_success_generation_action,
                 transitions=["view_generation_cost_dialog"],
             )
             # Get generation costs and combine with data from other bill data.
@@ -243,7 +238,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         self, page: sce_pages.SceMultiAccountLandingPage
     ):
         sce_pages.detect_and_close_survey(self._driver)
-        page.search_by_service_id(page.said)
+        page.scroll_for_service_id(self.gen_service_id)
         time.sleep(5)
         WebDriverWait(
             self._driver,
@@ -269,10 +264,10 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         )
 
     def search_success_action(self, page: sce_pages.SceAccountSearchSuccess):
-        if page.said:
-            page.view_billed_generation_charge()
-        else:
-            page.view_usage_for_search_result()
+        page.view_usage_for_search_result()
+
+    def search_success_generation_action(self, page: sce_pages.SceAccountSearchSuccess):
+        page.view_billed_generation_charge()
 
     def view_usage_action(self, page: sce_pages.SceServiceAccountDetailModal):
         page.select_usage_report()
@@ -316,6 +311,8 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             billing_objects.append(datum)
 
         sce_pages.detect_and_close_modal(self._driver)
+        log.info("created %s billing objects", len(billing_objects))
+        log.debug("billing_objects=%s", billing_objects)
         self.billing_history = billing_objects
 
         # Not sure if there is a better way to do this but,
@@ -325,30 +322,34 @@ class SceReactBasicBillingScraper(BaseWebScraper):
     def view_generation_usage_action(
         self, page: sce_pages.SceBilledGenerationUsageModal
     ):
-        billing_objects: List[BillingDatum] = []
-        generation_usage_data = page.parse_data()
-
-        for b in self.billing_history:
-            _end_date = (b.end + timedelta(days=1)).strftime("%m/%d/%Y")
-            try:
-                cost = generation_usage_data[_end_date]
-            except KeyError:
+        gen_billing_objects: List[BillingDatum] = []
+        gen_values = page.parse_data()
+        log.debug("generation values=%s", gen_values)
+        for item in self.billing_history:
+            # get generation cost for this bill date; try +- 1 day
+            for offset in [-1, 0, 1]:
+                value = gen_values.get(item.end - timedelta(days=offset))
+                if value is not None:
+                    break
+            if value is None:
+                log.debug("no generation data for %s; skipping", item.end)
                 continue
-
-            billing_objects.append(
+            gen_billing_objects.append(
                 BillingDatum(
-                    start=b.start,
-                    end=b.end,
-                    cost=cost,
-                    used=b.used,
-                    peak=b.peak,
-                    items=b.items,
-                    attachments=b.attachments,
-                    statement=b.statement,
-                    utility_code=b.utility_code,
+                    start=item.start,
+                    end=item.end,
+                    statement=item.statement,
+                    cost=value,
+                    used=item.used,
+                    peak=item.peak,
+                    items=item.items,
+                    attachments=item.attachments,
+                    utility_code=item.utility_code,
                 )
             )
-        self.partial_billing_history = billing_objects
+        log.info("created %s generation billing objects", len(gen_billing_objects))
+        log.debug("gen_billing_objects=%s", gen_billing_objects)
+        self.partial_billing_history = gen_billing_objects
 
 
 def datafeed(
