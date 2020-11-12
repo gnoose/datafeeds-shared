@@ -2,7 +2,7 @@
 This module contains models of data transmitted to us by PG&E via ShareMyData.
 Datafeeds should treat these models as read-only.
 """
-
+import logging
 from datetime import datetime, date, timedelta
 
 import attr
@@ -15,7 +15,10 @@ from typing import Dict, Any, Optional, List
 from datafeeds import db
 from datafeeds.common import BillingDatum
 from datafeeds.common.typing import BillingDatumItemsEntry
+from datafeeds.models import UtilityService
 from datafeeds.orm import ModelMixin, Base
+
+log = logging.getLogger(__name__)
 
 
 class GreenButtonProvider(ModelMixin, Base):
@@ -250,10 +253,90 @@ class Bill(ModelMixin, Base):
 
         return list(reversed(results))
 
-    def to_billing_datum(self) -> BillingDatum:
+    def customer_info(self) -> Optional["CustomerInfo"]:
+        """Returns the corresponding CustomerInfo record.
+
+        Attempts to find a Customer Info record whose "published date" directly precedes the Bill's start on the
+        same usage_point at the same address, with a buffer of 45 days.
+
+        If no match is found, returns the earliest Customer Info record for this usage point.
+        """
+        service_address = (
+            db.session.query(CustomerInfo.customer_name)
+            .filter(
+                CustomerInfo.usage_point == self.usage_point,
+                CustomerInfo.subscription == self.subscription,
+            )
+            .order_by(CustomerInfo.published.asc())
+            .first()
+        )
+
+        if self.start and service_address:
+            preceding_record = (
+                db.session.query(CustomerInfo)
+                .filter(
+                    CustomerInfo.usage_point == self.usage_point,
+                    CustomerInfo.customer_name == service_address[0],
+                    CustomerInfo.published <= self.start + timedelta(days=45),
+                )
+                .order_by(CustomerInfo.published.desc())
+                .limit(1)
+            ).first()
+            if preceding_record is None:
+                # return first record
+                first = (
+                    db.session.query(CustomerInfo)
+                    .filter(
+                        CustomerInfo.usage_point == self.usage_point,
+                        CustomerInfo.customer_name == service_address[0],
+                    )
+                    .order_by(CustomerInfo.published.asc())
+                    .limit(1)
+                    .first()
+                )
+                log.debug(
+                    "Returning first SMD Customer Info record: SAID %s, Published %s, Bill Start %s.",
+                    first.service_id,
+                    first.published,
+                    self.start,
+                )
+                return first
+            log.debug(
+                "Returning preceding SMD Customer Info record: SAID %s, Published %s, Bill Start %s.",
+                preceding_record.service_id,
+                preceding_record.published,
+                self.start,
+            )
+            return preceding_record
+        else:
+            log.debug(
+                "Cannot locate SMD Customer Info Record: Address %s, Bill Start %s.",
+                service_address,
+                self.start,
+            )
+        return None
+
+    def to_billing_datum(
+        self, service: Optional[UtilityService] = None
+    ) -> BillingDatum:
         line_items = [li.to_billing_datum_items_entry() for li in self.line_items]
 
-        # TODO store service_id and utility_account_id too
+        customer_info = self.customer_info()
+
+        utility_account_id = None
+        service_id = None
+
+        if customer_info:
+            service_id = customer_info.service_id
+
+            utility_account_id = customer_info.customer_account_id
+            if (
+                service
+                and utility_account_id
+                and utility_account_id in service.utility_account_id
+            ):
+                utility_account_id = service.utility_account_id
+
         return BillingDatum(
             start=self.initial,
             end=self.closing,
@@ -267,6 +350,8 @@ class Bill(ModelMixin, Base):
             attachments=None,
             utility_code=self.tariff,
             utility="utility:pge",
+            utility_account_id=utility_account_id,
+            service_id=service_id,
         )
 
     @property
