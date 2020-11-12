@@ -79,6 +79,11 @@ class SmdPartialBillingScraper(BaseApiScraper):
         super().__init__(*args, **kwargs)
         self.name = "SMD Partial Billing Synchronizer"
 
+    @property
+    def service(self):
+        meter = self._configuration.meter
+        return meter.utility_service
+
     def _execute(self):
         config: SmdPartialBillingScraperConfiguration = self._configuration
         meter = config.meter
@@ -102,7 +107,7 @@ class SmdPartialBillingScraper(BaseApiScraper):
         # The first thing we need to do is order the bills by publication date, so we can decide
         # which SmdBill record is the correct one for our chosen date.
         unified_bills: List[SmdBill] = SmdBill.unify_bills(query)
-        partial_bills = [b.to_billing_datum() for b in unified_bills]
+        partial_bills = [b.to_billing_datum(self.service) for b in unified_bills]
 
         if partial_bills:
             log.debug(

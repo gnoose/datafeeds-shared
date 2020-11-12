@@ -1,12 +1,60 @@
 from datetime import date, datetime, timedelta
 from unittest import TestCase
 
-from datafeeds.common import BillingDatum
+from datafeeds import db
+from datafeeds.common import BillingDatum, test_utils
 from datafeeds.common.typing import BillingDatumItemsEntry
-from datafeeds.scrapers.smd_partial_bills.models import Bill
+from datafeeds.models import UtilityService, Meter
+from datafeeds.scrapers.smd_partial_bills.models import (
+    Bill,
+    GreenButtonProvider,
+    Artifact,
+    CustomerInfo,
+)
 
 
 class TestBillModel(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        test_utils.init_test_db()
+
+    def setUp(self):
+        db.session.begin(subtransactions=True)
+
+        # Some developers will have this record already present as a default, so create one only if
+        # it isn't present (for example, in Circle CI).
+        provider = db.session.query(GreenButtonProvider).get(2)
+        if provider is None:
+            db.session.add(
+                GreenButtonProvider(oid=2, utility="utility:pge", identifier="gridium")
+            )
+            db.session.flush()
+
+        self.artifact = Artifact(
+            provider_oid=2,
+            filename="test.xml",
+            url="https://api.pge.com/GreenButtonConnect/espi/1_1/resource/Batch/Subscription/67890?correlationID=c54",
+        )
+        db.session.add(self.artifact)
+        db.session.flush()
+
+        us = UtilityService(
+            service_id="current_service_id", account_id="current_account_id"
+        )
+        us.tariff = "E-19-S"
+        us.utility = "utility:pge"
+
+        db.session.add(us)
+        db.session.flush()
+
+        self.meter = Meter("meter1", utility_service=us)
+        db.session.add(self.meter)
+        db.session.flush()
+
+    def tearDown(self):
+        db.session.rollback()
+        db.session.remove()
+
     def test_initial_closing(self):
         """An SMD bill can compute its initial and closing dates based on its start and duration."""
         b = Bill(start=datetime(2019, 1, 1, 7), duration=timedelta(days=30))
@@ -192,3 +240,110 @@ class TestBillModel(TestCase):
         self.assertEqual(expected.used, actual.used)
         self.assertEqual(expected.peak, actual.peak)
         self.assertEqual(expected.items, actual.items)
+
+    def add_customer_info(
+        self, service_id: str, usage_point: str, subscription: str, published: datetime
+    ):
+        """Initialize a dummy customer info record."""
+        ci = CustomerInfo(
+            artifact=self.artifact,
+            subscription=subscription,
+            service_id=service_id,
+            usage_point=usage_point,
+            self_url="dummy url %s %s" % (service_id, usage_point),
+            published=published,
+        )
+        db.session.add(ci)
+        return ci
+
+    def test_bill_service_config(self):
+        """Test utility account id and service id are pulled from smd_customer_info table and stored on billing datum
+        if corresponding records exist"""
+
+        usage_point = "test_usage_point"
+        subscription = "test_subscription"
+        service_id = "earlier_service_id"
+
+        self.add_customer_info(
+            "first_service_id", usage_point, subscription, datetime(2017, 1, 1)
+        )
+        # This customer info record should be selected - its published date is just before the new bill's published date
+        self.add_customer_info(
+            service_id, usage_point, subscription, datetime(2017, 4, 1)
+        )
+        self.add_customer_info(
+            "third_service_id", usage_point, subscription, datetime(2017, 7, 1)
+        )
+
+        b = Bill(
+            start=datetime(2017, 4, 25, 7),
+            duration=timedelta(days=29),
+            used_unit="Wh",
+            used=4400,
+            _line_items=[],
+            cost=1344.3,
+            published=datetime(2017, 5, 1),
+            usage_point=usage_point,
+            subscription=subscription,
+        )
+        actual = b.to_billing_datum(self.meter.utility_service)
+
+        expected = BillingDatum(
+            start=date(2017, 4, 26),
+            end=date(2017, 5, 24),
+            cost=1344.3,
+            used=4,
+            peak=None,
+            items=[],
+            statement=date(2017, 5, 24),
+            attachments=None,
+            utility_code=None,
+            utility_account_id=None,
+            utility="utility:pge",
+            service_id="earlier_service_id",
+        )
+        self.assertEqual(actual, expected)
+
+    def test_bill_published_before_smd_customer_info_record(self):
+        """Test earliest smd customer info record used if bill published before first smd customer info record"""
+
+        usage_point = "test_usage_point"
+        subscription = "test_subscription"
+
+        self.add_customer_info(
+            "first_service_id", usage_point, subscription, datetime(2018, 5, 5)
+        )
+        self.add_customer_info(
+            "updated_service_id", usage_point, subscription, datetime(2019, 1, 1)
+        )
+
+        b = Bill(
+            start=datetime(2017, 1, 1, 7),
+            duration=timedelta(days=29),
+            used_unit="Wh",
+            used=5400,
+            _line_items=[],
+            cost=3411.2,
+            published=datetime(2017, 2, 1),
+            usage_point=usage_point,
+            subscription=subscription,
+        )
+
+        actual = b.to_billing_datum(self.meter.utility_service)
+
+        expected = BillingDatum(
+            start=date(2017, 1, 2),
+            end=date(2017, 1, 30),
+            cost=3411.2,
+            used=5,
+            peak=None,
+            items=[],
+            statement=date(2017, 1, 30),
+            attachments=None,
+            utility_code=None,
+            utility_account_id=None,
+            utility="utility:pge",
+            service_id="first_service_id",
+        )
+
+        self.assertEqual(actual, expected)

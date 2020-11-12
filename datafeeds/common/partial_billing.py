@@ -290,9 +290,11 @@ class PartialBillProcessor:
 
         # Logs summary of just the new partial bills that were written to the db.
         if self.staged_partial:
-            self.staged_partial.reverse()
+            sorted_partials = sorted(
+                self.staged_partial, key=lambda b: b.initial, reverse=True
+            )
             self._show_partial_bill_summary(
-                self.staged_partial, "New Partial Bills Written to DB"
+                sorted_partials, "New Partial Bills Written to DB"
             )
         else:
             log.info("No new partial bills written to the db.")
