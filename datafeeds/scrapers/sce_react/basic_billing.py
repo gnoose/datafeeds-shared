@@ -158,14 +158,6 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                 transitions=["find_generation_account_success", "search_failure"],
             )
 
-            # Search for generation SAID
-            state_machine.add_state(
-                name="multi_account_landing_generation",
-                page=sce_pages.SceMultiAccountLandingPage(self._driver),
-                action=self.multi_account_landing_page_generation_action,
-                transitions=["search_success_generation", "search_failure"],
-            )
-
             # If the search succeeds, we open the billing information for the found service id.
             state_machine.add_state(
                 name="find_generation_account_success",

@@ -316,12 +316,6 @@ class SceMultiAccountLandingPage(PageState):
         Use this when scraping partial bills, since search by service id seems to  always return an error.
         """
         log.info("scroll for service_id %s", service_id)
-        # clear search box
-        clear_button_locator = (
-            By.XPATH,
-            "//button[contains(@class, 'accountsOverviewComponent__sceClearSearchIcon')]",
-        )
-        self.driver.find_element(*clear_button_locator).click()
         WebDriverWait(self.driver, 10).until(
             EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
         )
