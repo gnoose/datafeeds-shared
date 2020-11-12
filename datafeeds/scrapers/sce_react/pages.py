@@ -13,6 +13,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 from dateutil.parser import parse as parse_date
 
+from datafeeds.common.captcha import recaptcha_v2
 from datafeeds.common.util.selenium import (
     ec_and,
     ec_or,
@@ -1184,3 +1185,72 @@ class SceEnergyManagerBillingPage(PageState):
 
         # Any month can be selected for a given year, so the minimum selectable date is January
         return date(year=min(available_years), month=1, day=1)
+
+
+class SceEnergyManagerGreenButtonSelectAccounts(PageState):
+    """Page object for the account list page in the GreenButton download section of Energy Manager."""
+
+    def get_ready_condition(self):
+        return EC.presence_of_element_located((By.ID, "searchServiceAccounts"))
+
+    def select_account(self, service_id: str) -> bool:
+        """Search for SAID, and click the account. Return true if found."""
+        search = self.driver.find_element_by_id("searchServiceAccounts")
+        search.send_keys(service_id)
+        for el in self.driver.find_elements_by_css_selector('button[type="submit"]'):
+            if "uiSearchBar__sceSACTSearchButton" in el.get_attribute("class"):
+                el.click()
+        time.sleep(2)
+        detect_and_close_survey(self.driver)
+        for el in self.driver.find_element_by_tag_name(
+            "datadownload-content"
+        ).find_elements_by_tag_name("div"):
+            if (
+                "multiAccountDataDownload__sceDDServiceAccUpperContent"
+                in el.get_attribute("class")
+            ):
+                log.debug("clicking %s", el.get_attribute("class"))
+                el.click()
+                return True
+        return False
+
+
+class SceEnergyManagerGreenButtonDownload(PageState):
+    """Page object for the GreenButton download page in Energy Manager."""
+
+    def get_ready_condition(self):
+        return EC.presence_of_element_located((By.ID, "fromDateTextBox"))
+
+    def download(self, start_date: date, end_date: date):
+        """Set date range, select CSV, and solve captch to download data."""
+        # set from date
+        from_input = self.driver.find_element_by_id("fromDateTextBox")
+        actions = ActionChains(self.driver)
+        actions.click(from_input)
+        actions.pause(2)
+        actions.perform()
+        from_input.send_keys(start_date.strftime("%m/%d/%y"))
+
+        # set to date
+        to_input = self.driver.find_element_by_id("toDateTextBox")
+        actions = ActionChains(self.driver)
+        actions.click(to_input)
+        actions.pause(2)
+        actions.perform()
+        to_input.send_keys(end_date.strftime("%m/%d/%y"))
+
+        # select csv
+        csv_type = self.driver.find_element_by_css_selector(
+            'input[value="Comma Separated (.csv)"]'
+        )
+        csv_type.click()
+
+        recaptcha_v2(
+            self.driver,
+            self.driver.find_element_by_id("datadownload-content"),
+            "https://www.sce.com/sma/ESCAA/EscGreenButtonData#viewDDForParticularAccount",
+        )
+        self.driver.find_element_by_id("dataDownload").click()
+        # wait for download
+        log.debug("waiting for download")
+        time.sleep(10)

@@ -101,12 +101,38 @@ class PartialBill(ModelMixin, Base):
         if attachments and bill.attachments[0] is None:
             attachments = []
 
+        # If service_id was scraped, use this, otherwise, pull from the UtilityService record.
+        service_id = bill.service_id
+        if service_id is None:
+            service_id = (
+                service.gen_service_id
+                if provider_type == GENERATION_ONLY
+                else service.service_id
+            )
+
+        # If utility was scraped, use this, otherwise, pull from the UtilityService record.
+        utility = bill.utility
+        if utility is None:
+            utility = (
+                service.gen_utility
+                if provider_type == GENERATION_ONLY
+                else service.utility
+            )
+
+        # If utility account id was scraped, use this, otherwise, pull from the UtilityService record.
+        utility_account_id = bill.utility_account_id
+        if utility_account_id is None:
+            if provider_type == GENERATION_ONLY and service.gen_utility_account_id:
+                utility_account_id = service.gen_utility_account_id
+            else:
+                utility_account_id = service.utility_account_id
+
         partial_bill = PartialBill(
             initial=bill.start,
             closing=bill.end,
-            cost=bill.cost,
-            used=bill.used,
-            peak=bill.peak,
+            cost=round(bill.cost, 2),
+            used=round(bill.used, 4) if bill.used else bill.used,
+            peak=round(bill.peak, 4) if bill.peak else bill.peak,
             created=datetime.utcnow(),
             modified=datetime.utcnow(),
             manual=False,
@@ -114,15 +140,9 @@ class PartialBill(ModelMixin, Base):
             attachments=cls.map_attachments(attachments),
             service=service.oid,
             provider_type=provider_type,
-            service_id=service.gen_service_id
-            if provider_type == GENERATION_ONLY
-            else service.service_id,
-            utility_account_id=service.gen_utility_account_id
-            if provider_type == GENERATION_ONLY
-            else service.utility_account_id,
-            utility=service.gen_utility
-            if provider_type == GENERATION_ONLY
-            else service.utility,
+            service_id=service_id,
+            utility_account_id=utility_account_id,
+            utility=utility,
             utility_code=bill.utility_code or None,
         )
         db.session.add(partial_bill)
@@ -159,12 +179,14 @@ class PartialBill(ModelMixin, Base):
     def differs(self, other: BillingDatum) -> bool:
         """
         Compare a pending partial bill with the current partial bill
-        to see if the key fields differ.
+        to see if the key fields differ. Used to determine if the current partial bill should be replaced.
 
-        Used to determine if the current partial bill should be replaced.
-        Not considering service_id, utility_account_id, or utility in whether
-        to supersede the partial bill, because these attributes are not scraped,
-        but pulled from the current utility_service.
+        In some cases, we check to make sure an incoming attribute is being scraped,
+        before comparing the current value to existing value. For example, say we have a partial bill
+        where we can't scrape the service_id, so we just populate it with the UtilityService.service_id by default.
+        The next time this meter is scraped, the scraped service_id will still be None, but will differ
+        from the current service_id cached from the service. This  would cause us to keep superseding the
+        existing partial bill, even though the scraped information was not changing.
         """
         return (
             self.peak != other.peak
@@ -172,7 +194,16 @@ class PartialBill(ModelMixin, Base):
             or self.used != other.used
             or self.attachments != (self.map_attachments(other.attachments or []))
             or self.items != (self.map_line_items(other.items or []))
-            or self.utility_code != other.utility_code
+            or (
+                other.utility_code is not None
+                and self.utility_code != other.utility_code
+            )
+            or (other.service_id is not None and self.service_id != other.service_id)
+            or (other.utility is not None and self.utility != other.utility)
+            or (
+                other.utility_account_id is not None
+                and self.utility_account_id != other.utility_account_id
+            )
         )
 
     def matches(self, other: BillingDatum) -> bool:

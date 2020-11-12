@@ -155,7 +155,9 @@ LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 DEPENDENCY_LOG_LEVEL = os.environ.get("DEPENDENCY_LOG_LEVEL", "WARN")
 
 # Are we running the web scraper in headless mode?
-USE_VIRTUAL_DISPLAY = os.environ.get("USE_VIRTUAL_DISPLAY", False)
+USE_VIRTUAL_DISPLAY: bool = os.environ.get(
+    "USE_VIRTUAL_DISPLAY", "false"
+).lower() == "true"
 
 SLACK_TOKEN = os.environ.get("SLACK_TOKEN", None)
 
@@ -166,6 +168,9 @@ SELENIUM_BROWSER = "Chrome"
 
 # Key for decrypting secrets stored in our database.
 AES_SECRET_KEY = os.environ.get("AES_SECRET_KEY", None)
+
+# API key for captcha solving service
+CAPTCHA_API_KEY = os.environ.get("CAPTCHA_API_KEY", None)
 
 LOGGING = {
     "version": 1,

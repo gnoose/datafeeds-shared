@@ -102,7 +102,7 @@ def upload_readings(
         factor = (24 / len(intervals)) if len(intervals) > 0 else 1.0
         kWh = sum(x for x in intervals if x is not None) * factor
         log.info(
-            "%s: %s intervals. %s net kWh, %s null values."
+            "%s: %d intervals. %.1f net kWh, %d null values."
             % (when, len(intervals), kWh, none_count)
         )
 

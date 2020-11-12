@@ -4,7 +4,7 @@
             "end": "2017-11-30",
             "peak_demand": "2366.0000",
             "start": "2017-11-01",
-            "tariff": null,
+            "tariff": "E20P Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "146731.3000",
             "total_usage": "1094272.0000",
             "line_items": [
@@ -121,7 +121,7 @@
             "end": "2017-12-31",
             "peak_demand": "2260.0000",
             "start": "2017-12-01",
-            "tariff": null,
+            "tariff": "E20P Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "142799.8500",
             "total_usage": "1077852.0000",
             "line_items": [
@@ -238,7 +238,7 @@
             "end": "2018-01-31",
             "peak_demand": "2312.0000",
             "start": "2018-01-01",
-            "tariff": null,
+            "tariff": "E20P Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "147177.4000",
             "total_usage": "1102714.0000",
             "line_items": [
@@ -355,7 +355,7 @@
             "end": "2018-02-28",
             "peak_demand": "2491.0000",
             "start": "2018-02-01",
-            "tariff": null,
+            "tariff": "E20P Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "141084.8400",
             "total_usage": "1012821.0000",
             "line_items": [
@@ -472,7 +472,7 @@
             "end": "2018-03-31",
             "peak_demand": "2576.0000",
             "start": "2018-03-01",
-            "tariff": null,
+            "tariff": "E20P Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "160108.8100",
             "total_usage": "1143696.0000",
             "line_items": [
@@ -589,7 +589,7 @@
             "end": "2018-04-30",
             "peak_demand": "2479.0000",
             "start": "2018-04-01",
-            "tariff": null,
+            "tariff": "E20P Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "155885.7800",
             "total_usage": "1117525.0000",
             "line_items": [
@@ -706,7 +706,7 @@
             "end": "2018-05-31",
             "peak_demand": "2686.0000",
             "start": "2018-05-01",
-            "tariff": null,
+            "tariff": "E20P Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "250674.4300",
             "total_usage": "1170432.0000",
             "line_items": [
@@ -849,7 +849,7 @@
             "end": "2018-06-30",
             "peak_demand": "2706.0000",
             "start": "2018-06-01",
-            "tariff": null,
+            "tariff": "E20P Service to Custs with Max Demands of 1000 kW or More",
             "total_charge": "253834.6700",
             "total_usage": "1178975.0000",
             "line_items": [
@@ -992,7 +992,7 @@
             "end": "2018-07-31",
             "peak_demand": "2849.0000",
             "start": "2018-07-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "266080.1000",
             "total_usage": "1237387.0000",
             "line_items": [
@@ -1135,7 +1135,7 @@
             "end": "2018-08-31",
             "peak_demand": "2616.0000",
             "start": "2018-08-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "257073.8600",
             "total_usage": "1231506.0000",
             "line_items": [
@@ -1278,7 +1278,7 @@
             "end": "2018-09-30",
             "peak_demand": "2693.0000",
             "start": "2018-09-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "246929.5700",
             "total_usage": "1129948.0000",
             "line_items": [
@@ -1421,7 +1421,7 @@
             "end": "2018-10-31",
             "peak_demand": "2905.0000",
             "start": "2018-10-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "262066.4500",
             "total_usage": "1182920.0000",
             "line_items": [
@@ -1564,7 +1564,7 @@
             "end": "2018-11-30",
             "peak_demand": "2501.0000",
             "start": "2018-11-02",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "172332.0100",
             "total_usage": "1060548.0000",
             "line_items": [
@@ -1772,7 +1772,7 @@
             "end": "2018-12-31",
             "peak_demand": "2122.0000",
             "start": "2018-12-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "159508.9100",
             "total_usage": "1008415.0000",
             "line_items": [
@@ -1980,7 +1980,7 @@
             "end": "2019-01-31",
             "peak_demand": "2114.0000",
             "start": "2019-01-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "161752.4800",
             "total_usage": "1043959.0000",
             "line_items": [
@@ -2189,7 +2189,7 @@
             "end": "2019-02-28",
             "peak_demand": "2035.0000",
             "start": "2019-02-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "146216.7200",
             "total_usage": "932002.0000",
             "line_items": [
@@ -2398,7 +2398,7 @@
             "end": "2019-03-31",
             "peak_demand": "2342.0000",
             "start": "2019-03-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "169985.3300",
             "total_usage": "1054616.0000",
             "line_items": [
@@ -2607,7 +2607,7 @@
             "end": "2019-04-30",
             "peak_demand": "2422.0000",
             "start": "2019-04-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "172333.8800",
             "total_usage": "1055655.0000",
             "line_items": [
@@ -2815,7 +2815,7 @@
             "end": "2019-05-31",
             "peak_demand": "2221.0000",
             "start": "2019-05-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "251106.6800",
             "total_usage": "1059312.0000",
             "line_items": [
@@ -3088,7 +3088,7 @@
             "end": "2019-06-30",
             "peak_demand": "3011.0000",
             "start": "2019-06-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "286339.4400",
             "total_usage": "1055530.0000",
             "line_items": [
@@ -3361,7 +3361,7 @@
             "end": "2019-07-31",
             "peak_demand": "2394.0000",
             "start": "2019-07-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "267178.0300",
             "total_usage": "1075252.0000",
             "line_items": [
@@ -3868,7 +3868,7 @@
             "end": "2019-08-31",
             "peak_demand": "2578.0000",
             "start": "2019-08-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "279660.4800",
             "total_usage": "1110209.0000",
             "line_items": [
@@ -4141,7 +4141,7 @@
             "end": "2019-09-30",
             "peak_demand": "2788.0000",
             "start": "2019-09-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "283757.3900",
             "total_usage": "1069776.0000",
             "line_items": [
@@ -4414,7 +4414,7 @@
             "end": "2019-10-31",
             "peak_demand": "2598.0000",
             "start": "2019-10-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "283508.1800",
             "total_usage": "1122264.0000",
             "line_items": [
@@ -4713,7 +4713,7 @@
             "end": "2019-11-30",
             "peak_demand": "2516.0000",
             "start": "2019-11-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "168252.2200",
             "total_usage": "994483.0000",
             "line_items": [
@@ -4921,7 +4921,7 @@
             "end": "2019-12-31",
             "peak_demand": "2212.0000",
             "start": "2019-12-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "162755.5600",
             "total_usage": "990567.0000",
             "line_items": [
@@ -5129,7 +5129,7 @@
             "end": "2020-01-31",
             "peak_demand": "2251.0000",
             "start": "2020-01-01",
-            "tariff": null,
+            "tariff": "E20P",
             "total_charge": "167866.5500",
             "total_usage": "1000396.0000",
             "line_items": [

@@ -1,9 +1,14 @@
+import json
 import logging
 import unittest
 from unittest import mock
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
+
+from datafeeds.common import Timeline
+from datafeeds.common.support import Credentials, DateRange
 from datafeeds.scrapers import heco_interval as heco
+from datafeeds.scrapers.heco_interval import HECOGridConfiguration
 
 TEST_DATE_FORMAT = "%Y-%m-%d"
 TEST_TIME_FORMAT = "%H:%M"
@@ -90,43 +95,21 @@ class HECOScraperTest(SetupBase, unittest.TestCase):
         self.assertEqual(heco.HECOScraper._get_header_position(test_header, "kw"), 1)
         self.assertEqual(heco.HECOScraper._get_header_position(test_header, "date"), 0)
 
-    def test_remove_incomplete_demand_data(self):
-        time_array = self._build_time_array()
-        demand_array = self._build_demand_array()
-
-        all_present = "2019-01-01"
-        demands_missing = "2019-02-02"
-        time_incorrect = "2019-03-03"
-
-        response = {
-            all_present: {heco.TIME: time_array, heco.DEMAND: demand_array},
-            demands_missing: {heco.TIME: time_array, heco.DEMAND: [1001]},
-            time_incorrect: {heco.TIME: time_array.pop(), heco.DEMAND: demand_array},
-        }
-
-        heco.HECOScraper._remove_incomplete_demand_data(response, all_present)
-        self.assertIn(all_present, response)
-
-        heco.HECOScraper._remove_incomplete_demand_data(response, demands_missing)
-        self.assertNotIn(demands_missing, response)
-
-        heco.HECOScraper._remove_incomplete_demand_data(response, time_incorrect)
-        self.assertNotIn(time_incorrect, response)
-
     def test_format_time(self):
         current_time = datetime.strptime("1:15", TEST_TIME_FORMAT)
         self.assertEqual(heco.HECOScraper._format_time(current_time), "01:15")
 
-    def test_finalize_readings(self):
-        times = self._build_time_array()
-        demands = self._build_demand_array()
-
-        demand_date = "2019-01-01"
-
-        response = {demand_date: {heco.TIME: times, heco.DEMAND: demands}}
-
-        final_readings = heco.HECOScraper._finalize_readings(response)
-
-        self.assertIn(demand_date, final_readings)
-        self.assertEqual(len(final_readings[demand_date]), 96)
-        self.assertEqual(final_readings[demand_date][0], 500)
+    def test_dst_data(self):
+        date_range = DateRange(date(2020, 10, 31), date(2020, 11, 6))
+        timeline = Timeline(date_range.start_date, date_range.end_date, 15)
+        scraper = heco.HECOScraper(
+            Credentials(None, None),
+            date_range,
+            HECOGridConfiguration(meter_id=123, interval=15),
+        )
+        scraper._process_csv(
+            "datafeeds/scrapers/tests/fixtures/mvweb_dst.csv", timeline
+        )
+        with open("datafeeds/scrapers/tests/fixtures/mvweb_dst_expected.json") as f:
+            expected = json.loads(f.read())
+        self.assertEqual(expected, timeline.serialize())

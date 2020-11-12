@@ -4,7 +4,7 @@
             "end": "2019-07-23",
             "peak_demand": "0",
             "start": "2019-07-12",
-            "tariff": null,
+            "tariff": "GNR1 Gas Service to Small Commercial Customers",
             "total_charge": "1119.9900",
             "total_usage": "1007.0000",
             "line_items": [
@@ -69,7 +69,7 @@
             "end": "2019-08-22",
             "peak_demand": "0",
             "start": "2019-07-24",
-            "tariff": null,
+            "tariff": "GNR1 Gas Service to Small Commercial Customers",
             "total_charge": "2251.4600",
             "total_usage": "2047.0000",
             "line_items": [
@@ -212,7 +212,7 @@
             "end": "2019-09-21",
             "peak_demand": "0",
             "start": "2019-08-23",
-            "tariff": null,
+            "tariff": "GNR1 Gas Service to Small Commercial Customers",
             "total_charge": "1870.4000",
             "total_usage": "1757.0000",
             "line_items": [
@@ -355,7 +355,7 @@
             "end": "2019-10-22",
             "peak_demand": "0",
             "start": "2019-09-22",
-            "tariff": null,
+            "tariff": "GNR1 Gas Service to Small Commercial Customers",
             "total_charge": "2465.7600",
             "total_usage": "2301.0000",
             "line_items": [
@@ -498,7 +498,7 @@
             "end": "2019-11-20",
             "peak_demand": "0",
             "start": "2019-10-23",
-            "tariff": null,
+            "tariff": "GNR1 Gas Service to Small Commercial Customers",
             "total_charge": "3776.7400",
             "total_usage": "2924.0000",
             "line_items": [
@@ -732,7 +732,7 @@
             "end": "2019-12-20",
             "peak_demand": "0",
             "start": "2019-11-21",
-            "tariff": null,
+            "tariff": "GNR1 Gas Service to Small Commercial Customers",
             "total_charge": "5602.8400",
             "total_usage": "4296.0000",
             "line_items": [
@@ -992,7 +992,7 @@
             "end": "2020-01-21",
             "peak_demand": "0",
             "start": "2019-12-21",
-            "tariff": null,
+            "tariff": "GNR1 Gas Service to Small Commercial Customers",
             "total_charge": "6235.3500",
             "total_usage": "4817.0000",
             "line_items": [

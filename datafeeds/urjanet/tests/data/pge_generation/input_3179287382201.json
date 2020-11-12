@@ -1,0 +1,3657 @@
+{
+    "accounts": [
+        {
+            "AccountNumber": "19113111136",
+            "AmountDue": null,
+            "IntervalEnd": "2019-07-17",
+            "IntervalStart": "2019-06-27",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 70572,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1911311113-6",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b1cc5-32db-d5c1-9f53-0e690e33305c",
+            "StatementDate": "2019-07-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-07-17",
+                    "IntervalStart": "2019-06-27",
+                    "MeterNumber": null,
+                    "PK": 160859,
+                    "PODid": "3062636331",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 279.047600 kWh @ $0.09200",
+                            "ChargeAmount": "25.6700",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "279.0476",
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-27",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1303929,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,185.952400 kWh @ $0.10300",
+                            "ChargeAmount": "122.1500",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "1185.9524",
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-27",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1303930,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.4400",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-27",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1303931,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-27",
+                            "MeasurementType": "general_consumption",
+                            "PK": 556632,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1185.9524"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-07-17",
+                            "IntervalStart": "2019-06-27",
+                            "MeasurementType": "general_consumption",
+                            "PK": 556633,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "279.0476"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "89883388338",
+            "AmountDue": null,
+            "IntervalEnd": "2019-08-15",
+            "IntervalStart": "2019-07-18",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 73529,
+            "PreviousBalance": null,
+            "RawAccountNumber": "8988338833-8",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9ca4b0-e501-dd16-8855-0e7d36d7f738",
+            "StatementDate": "2019-08-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-08-15",
+                    "IntervalStart": "2019-07-18",
+                    "MeterNumber": null,
+                    "PK": 167340,
+                    "PODid": "5944451150",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,165.996700 kWh @ $0.10300",
+                            "ChargeAmount": "223.1000",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "2165.9967",
+                            "IntervalEnd": "2019-08-15",
+                            "IntervalStart": "2019-07-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1358500,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6500",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-08-15",
+                            "IntervalStart": "2019-07-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1358501,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-08-15",
+                            "IntervalStart": "2019-07-18",
+                            "MeasurementType": "general_consumption",
+                            "PK": 583657,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2165.9967"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "08880466406",
+            "AmountDue": null,
+            "IntervalEnd": "2019-09-16",
+            "IntervalStart": "2019-08-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 76973,
+            "PreviousBalance": null,
+            "RawAccountNumber": "0888046640-6",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1ea02314-ffdf-ddda-b492-0ee17d714ec3",
+            "StatementDate": "2019-09-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-09-16",
+                    "IntervalStart": "2019-08-16",
+                    "MeterNumber": null,
+                    "PK": 174166,
+                    "PODid": "1784814414",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,384.868800 kWh @ $0.10300",
+                            "ChargeAmount": "245.6400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "2384.8688",
+                            "IntervalEnd": "2019-09-16",
+                            "IntervalStart": "2019-08-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1409966,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7200",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-09-16",
+                            "IntervalStart": "2019-08-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1409967,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-09-16",
+                            "IntervalStart": "2019-08-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 606395,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2384.8688"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "06883388332",
+            "AmountDue": null,
+            "IntervalEnd": "2019-10-15",
+            "IntervalStart": "2019-09-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 80975,
+            "PreviousBalance": null,
+            "RawAccountNumber": "0688338833-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1ea02313-9edc-dcb3-b492-0ee17d714ec3",
+            "StatementDate": "2019-10-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-10-15",
+                    "IntervalStart": "2019-09-17",
+                    "MeterNumber": null,
+                    "PK": 180972,
+                    "PODid": "1616116611",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,787.211000 kWh @ $0.10300",
+                            "ChargeAmount": "184.0800",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "1787.2110",
+                            "IntervalEnd": "2019-10-15",
+                            "IntervalStart": "2019-09-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1465260,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.5400",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-10-15",
+                            "IntervalStart": "2019-09-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1465261,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-10-15",
+                            "IntervalStart": "2019-09-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 631663,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1787.2110"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "43444144144",
+            "AmountDue": null,
+            "IntervalEnd": "2019-11-14",
+            "IntervalStart": "2019-10-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 84462,
+            "PreviousBalance": null,
+            "RawAccountNumber": "4344414414-4",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1ea11105-93e3-d813-8844-0eabda42af19",
+            "StatementDate": "2019-11-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-11-14",
+                    "IntervalStart": "2019-10-16",
+                    "MeterNumber": null,
+                    "PK": 187470,
+                    "PODid": "0882800202",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 812.797500 kWh @ $0.06300",
+                            "ChargeAmount": "51.2100",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0630",
+                            "ChargeUnitsUsed": "812.7975",
+                            "IntervalEnd": "2019-11-14",
+                            "IntervalStart": "2019-10-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1524671,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 742.649500 kWh @ $0.10300",
+                            "ChargeAmount": "76.4900",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "742.6495",
+                            "IntervalEnd": "2019-11-14",
+                            "IntervalStart": "2019-10-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1524672,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.4700",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-11-14",
+                            "IntervalStart": "2019-10-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1524673,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-11-14",
+                            "IntervalStart": "2019-10-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 659234,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "812.7975"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-11-14",
+                            "IntervalStart": "2019-10-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 659235,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "742.6495"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "20330000004",
+            "AmountDue": null,
+            "IntervalEnd": "2019-12-15",
+            "IntervalStart": "2019-11-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 87168,
+            "PreviousBalance": null,
+            "RawAccountNumber": "2033000000-4",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1ea29e0a-d788-d05f-87c1-0e5d58be85f3",
+            "StatementDate": "2019-12-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-12-15",
+                    "IntervalStart": "2019-11-15",
+                    "MeterNumber": null,
+                    "PK": 192503,
+                    "PODid": "4444444444",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,862.356000 kWh @ $0.06300",
+                            "ChargeAmount": "117.3300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0630",
+                            "ChargeUnitsUsed": "1862.3560",
+                            "IntervalEnd": "2019-12-15",
+                            "IntervalStart": "2019-11-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1564989,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.5600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-12-15",
+                            "IntervalStart": "2019-11-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1564990,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-12-15",
+                            "IntervalStart": "2019-11-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 677200,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1862.3560"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "16888055081",
+            "AmountDue": null,
+            "IntervalEnd": "2020-01-14",
+            "IntervalStart": "2019-12-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 90013,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1688805508-1",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1ea42a26-87bc-dbbb-88d3-0e9253521751",
+            "StatementDate": "2020-01-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-01-14",
+                    "IntervalStart": "2019-12-16",
+                    "MeterNumber": null,
+                    "PK": 197839,
+                    "PODid": "1046410310",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,002.282500 kWh @ $0.06300",
+                            "ChargeAmount": "126.1400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0630",
+                            "ChargeUnitsUsed": "2002.2825",
+                            "IntervalEnd": "2020-01-14",
+                            "IntervalStart": "2019-12-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1604511,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6000",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2020-01-14",
+                            "IntervalStart": "2019-12-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1604512,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-01-14",
+                            "IntervalStart": "2019-12-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 692933,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2002.2825"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "20331333310",
+            "AmountDue": null,
+            "IntervalEnd": "2020-02-13",
+            "IntervalStart": "2020-01-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 93258,
+            "PreviousBalance": null,
+            "RawAccountNumber": "2033133331-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1ea7b36d-bf2e-d392-ba97-0eff8c53ec49",
+            "StatementDate": "2020-02-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-02-13",
+                    "IntervalStart": "2020-01-15",
+                    "MeterNumber": null,
+                    "PK": 204080,
+                    "PODid": "3333333030",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,914.444500 kWh @ $0.06300",
+                            "ChargeAmount": "120.6100",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0630",
+                            "ChargeUnitsUsed": "1914.4445",
+                            "IntervalEnd": "2020-02-13",
+                            "IntervalStart": "2020-01-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1652702,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.5700",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2020-02-13",
+                            "IntervalStart": "2020-01-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1652703,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-02-13",
+                            "IntervalStart": "2020-01-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 712647,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1914.4445"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "49774222247",
+            "AmountDue": null,
+            "IntervalEnd": "2020-03-16",
+            "IntervalStart": "2020-02-14",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 96678,
+            "PreviousBalance": null,
+            "RawAccountNumber": "4977422224-7",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1ea83b53-861e-d428-bf65-0e33913da7fb",
+            "StatementDate": "2020-03-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-03-16",
+                    "IntervalStart": "2020-02-14",
+                    "MeterNumber": null,
+                    "PK": 210664,
+                    "PODid": "7810177377",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,884.828000 kWh @ $0.06300",
+                            "ChargeAmount": "118.7400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0630",
+                            "ChargeUnitsUsed": "1884.8280",
+                            "IntervalEnd": "2020-03-16",
+                            "IntervalStart": "2020-02-14",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1704246,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.5700",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2020-03-16",
+                            "IntervalStart": "2020-02-14",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1704247,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-03-16",
+                            "IntervalStart": "2020-02-14",
+                            "MeasurementType": "general_consumption",
+                            "PK": 734001,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1884.8280"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "66886066068",
+            "AmountDue": null,
+            "IntervalEnd": "2020-04-15",
+            "IntervalStart": "2020-03-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 100203,
+            "PreviousBalance": null,
+            "RawAccountNumber": "6688606606-8",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1ea8a0ee-1ac1-de38-8d23-0e4e500e30b5",
+            "StatementDate": "2020-04-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-04-15",
+                    "IntervalStart": "2020-03-17",
+                    "MeterNumber": null,
+                    "PK": 217467,
+                    "PODid": "4440441044",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,267.069000 kWh @ $0.06300",
+                            "ChargeAmount": "79.8300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0630",
+                            "ChargeUnitsUsed": "1267.0690",
+                            "IntervalEnd": "2020-04-15",
+                            "IntervalStart": "2020-03-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1758255,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.3800",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2020-04-15",
+                            "IntervalStart": "2020-03-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1758256,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-04-15",
+                            "IntervalStart": "2020-03-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 755494,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1267.0690"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "14333055030",
+            "AmountDue": null,
+            "IntervalEnd": "2020-05-14",
+            "IntervalStart": "2020-04-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 103174,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1433305503-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1eaa1c87-a44c-d5c5-a2d3-0e4ac0129d61",
+            "StatementDate": "2020-05-27",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-05-14",
+                    "IntervalStart": "2020-04-16",
+                    "MeterNumber": null,
+                    "PK": 224535,
+                    "PODid": "4888848244",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 580.487500 kWh @ $0.06300",
+                            "ChargeAmount": "36.5700",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0630",
+                            "ChargeUnitsUsed": "580.4875",
+                            "IntervalEnd": "2020-05-14",
+                            "IntervalStart": "2020-04-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1821111,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 529.229000 kWh @ $0.10300",
+                            "ChargeAmount": "54.5100",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "529.2290",
+                            "IntervalEnd": "2020-05-14",
+                            "IntervalStart": "2020-04-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1821112,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.3300",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2020-05-14",
+                            "IntervalStart": "2020-04-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1821113,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-05-14",
+                            "IntervalStart": "2020-04-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 781167,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "580.4875"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-05-14",
+                            "IntervalStart": "2020-04-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 781168,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "529.2290"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "61663000030",
+            "AmountDue": null,
+            "IntervalEnd": "2020-06-15",
+            "IntervalStart": "2020-05-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 106774,
+            "PreviousBalance": null,
+            "RawAccountNumber": "6166300003-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1eaceec3-f5bb-d5a4-a690-0e01fe674f27",
+            "StatementDate": "2020-06-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-06-15",
+                    "IntervalStart": "2020-05-15",
+                    "MeterNumber": null,
+                    "PK": 231461,
+                    "PODid": "2221221121",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,335.394000 kWh @ $0.10300",
+                            "ChargeAmount": "137.5500",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "1335.3940",
+                            "IntervalEnd": "2020-06-15",
+                            "IntervalStart": "2020-05-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1884200,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.4000",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2020-06-15",
+                            "IntervalStart": "2020-05-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1884201,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-06-15",
+                            "IntervalStart": "2020-05-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 809266,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1335.3940"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "20002100122",
+            "AmountDue": null,
+            "IntervalEnd": "2020-07-14",
+            "IntervalStart": "2020-06-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 109527,
+            "PreviousBalance": null,
+            "RawAccountNumber": "2000210012-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1eaceec0-b218-d0be-a690-0e01fe674f27",
+            "StatementDate": "2020-07-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-07-14",
+                    "IntervalStart": "2020-06-16",
+                    "MeterNumber": null,
+                    "PK": 236864,
+                    "PODid": "3310133034",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,191.870000 kWh @ $0.10300",
+                            "ChargeAmount": "122.7600",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "1191.8700",
+                            "IntervalEnd": "2020-07-14",
+                            "IntervalStart": "2020-06-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1925151,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.3600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2020-07-14",
+                            "IntervalStart": "2020-06-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1925152,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-07-14",
+                            "IntervalStart": "2020-06-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 829070,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1191.8700"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "55771311312",
+            "AmountDue": null,
+            "IntervalEnd": "2020-08-13",
+            "IntervalStart": "2020-07-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 113299,
+            "PreviousBalance": null,
+            "RawAccountNumber": "5577131131-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1eae84cc-4c31-d834-8cd8-0e511ff3d683",
+            "StatementDate": "2020-08-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2020-08-13",
+                    "IntervalStart": "2020-07-15",
+                    "MeterNumber": null,
+                    "PK": 243508,
+                    "PODid": "2442424422",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,289.732000 kWh @ $0.10300",
+                            "ChargeAmount": "132.8400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.1030",
+                            "ChargeUnitsUsed": "1289.7320",
+                            "IntervalEnd": "2020-08-13",
+                            "IntervalStart": "2020-07-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1973595,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.3900",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2020-08-13",
+                            "IntervalStart": "2020-07-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 1973596,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2020-08-13",
+                            "IntervalStart": "2020-07-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 852144,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1289.7320"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "66662666362",
+            "AmountDue": null,
+            "IntervalEnd": "2016-07-16",
+            "IntervalStart": "2016-06-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 124420,
+            "PreviousBalance": null,
+            "RawAccountNumber": "6666266636-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8706d4-b352-d44d-ada8-22000abacfd9",
+            "StatementDate": "2016-07-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-07-16",
+                    "IntervalStart": "2016-06-16",
+                    "MeterNumber": "4008821808",
+                    "PK": 271865,
+                    "PODid": "7044447727",
+                    "ServiceType": "electric",
+                    "Tariff": "COM-1",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,622.000000 kWh @ $0.09800",
+                            "ChargeAmount": "256.9600",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0980",
+                            "ChargeUnitsUsed": "2622.0000",
+                            "IntervalEnd": "2016-07-16",
+                            "IntervalStart": "2016-06-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2227096,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2016-07-16",
+                            "IntervalStart": "2016-06-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2227097,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2016-07-16",
+                            "IntervalStart": "2016-06-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 962861,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2622.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "91770797990",
+            "AmountDue": null,
+            "IntervalEnd": "2018-05-15",
+            "IntervalStart": "2018-04-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134331,
+            "PreviousBalance": null,
+            "RawAccountNumber": "9177079799-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45e0-e1f0-d4e3-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-05-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-05-15",
+                    "IntervalStart": "2018-04-17",
+                    "MeterNumber": null,
+                    "PK": 294004,
+                    "PODid": "3377373307",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,204.000000 kWh @ $0.05700",
+                            "ChargeAmount": "68.6300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "1204.0000",
+                            "IntervalEnd": "2018-05-15",
+                            "IntervalStart": "2018-04-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2419977,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,290.000000 kWh @ $0.09200",
+                            "ChargeAmount": "118.6800",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "1290.0000",
+                            "IntervalEnd": "2018-05-15",
+                            "IntervalStart": "2018-04-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2419978,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7200",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-05-15",
+                            "IntervalStart": "2018-04-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2419979,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-05-15",
+                            "IntervalStart": "2018-04-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1050310,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1204.0000"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-05-15",
+                            "IntervalStart": "2018-04-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1050311,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1290.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "42220202240",
+            "AmountDue": null,
+            "IntervalEnd": "2016-09-16",
+            "IntervalStart": "2016-08-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134426,
+            "PreviousBalance": null,
+            "RawAccountNumber": "4222020224-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8706d4-9f06-df21-ada8-22000abacfd9",
+            "StatementDate": "2016-09-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-09-16",
+                    "IntervalStart": "2016-08-17",
+                    "MeterNumber": "8888888888",
+                    "PK": 294250,
+                    "PODid": "1111611146",
+                    "ServiceType": "electric",
+                    "Tariff": "COM-1",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,282.000000 kWh @ $0.09300",
+                            "ChargeAmount": "119.2300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0930",
+                            "ChargeUnitsUsed": "1282.0000",
+                            "IntervalEnd": "2016-09-16",
+                            "IntervalStart": "2016-08-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422162,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,283.000000 kWh @ $0.09800",
+                            "ChargeAmount": "125.7300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0980",
+                            "ChargeUnitsUsed": "1283.0000",
+                            "IntervalEnd": "2016-09-16",
+                            "IntervalStart": "2016-08-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422163,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7400",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2016-09-16",
+                            "IntervalStart": "2016-08-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422164,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2016-09-16",
+                            "IntervalStart": "2016-08-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051427,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1283.0000"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2016-09-16",
+                            "IntervalStart": "2016-08-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051428,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1282.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "84442484282",
+            "AmountDue": null,
+            "IntervalEnd": "2017-07-18",
+            "IntervalStart": "2017-06-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134443,
+            "PreviousBalance": null,
+            "RawAccountNumber": "8444248428-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8ebb6a-79ea-dfb6-a195-22000bf2d28a",
+            "StatementDate": "2017-07-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-07-18",
+                    "IntervalStart": "2017-06-16",
+                    "MeterNumber": "1117721711",
+                    "PK": 294284,
+                    "PODid": "9555555995",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,513.000000 kWh @ $0.09200",
+                            "ChargeAmount": "231.2000",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2513.0000",
+                            "IntervalEnd": "2017-07-18",
+                            "IntervalStart": "2017-06-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422467,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7300",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-07-18",
+                            "IntervalStart": "2017-06-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422468,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-07-18",
+                            "IntervalStart": "2017-06-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051573,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2513.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33220232330",
+            "AmountDue": null,
+            "IntervalEnd": "2017-04-18",
+            "IntervalStart": "2017-03-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134460,
+            "PreviousBalance": null,
+            "RawAccountNumber": "3322023233-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8ebb6a-6f32-dda3-a195-22000bf2d28a",
+            "StatementDate": "2017-04-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-04-18",
+                    "IntervalStart": "2017-03-17",
+                    "MeterNumber": "1777766777",
+                    "PK": 294318,
+                    "PODid": "6666666666",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,307.000000 kWh @ $0.05700",
+                            "ChargeAmount": "74.5000",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "1307.0000",
+                            "IntervalEnd": "2017-04-18",
+                            "IntervalStart": "2017-03-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422647,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,153.000000 kWh @ $0.06200",
+                            "ChargeAmount": "71.4900",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0620",
+                            "ChargeUnitsUsed": "1153.0000",
+                            "IntervalEnd": "2017-04-18",
+                            "IntervalStart": "2017-03-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422648,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7100",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-04-18",
+                            "IntervalStart": "2017-03-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422649,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-04-18",
+                            "IntervalStart": "2017-03-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051660,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1153.0000"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-04-18",
+                            "IntervalStart": "2017-03-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051661,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1307.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "55661656651",
+            "AmountDue": null,
+            "IntervalEnd": "2017-10-17",
+            "IntervalStart": "2017-09-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134477,
+            "PreviousBalance": null,
+            "RawAccountNumber": "5566165665-1",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45e5-a88f-d098-93cd-0ea8a3be0ab6",
+            "StatementDate": "2017-10-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-10-17",
+                    "IntervalStart": "2017-09-16",
+                    "MeterNumber": null,
+                    "PK": 294352,
+                    "PODid": "8133833838",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,626.000000 kWh @ $0.09200",
+                            "ChargeAmount": "241.5900",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2626.0000",
+                            "IntervalEnd": "2017-10-17",
+                            "IntervalStart": "2017-09-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422829,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-10-17",
+                            "IntervalStart": "2017-09-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2422830,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-10-17",
+                            "IntervalStart": "2017-09-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051753,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2626.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "77227222477",
+            "AmountDue": null,
+            "IntervalEnd": "2017-11-15",
+            "IntervalStart": "2017-10-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134494,
+            "PreviousBalance": null,
+            "RawAccountNumber": "7722722247-7",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45e6-c3e0-d4e0-93cd-0ea8a3be0ab6",
+            "StatementDate": "2017-11-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-11-15",
+                    "IntervalStart": "2017-10-17",
+                    "MeterNumber": null,
+                    "PK": 294387,
+                    "PODid": "3222122333",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,205.931000 kWh @ $0.05700",
+                            "ChargeAmount": "68.7400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "1205.9310",
+                            "IntervalEnd": "2017-11-15",
+                            "IntervalStart": "2017-10-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423112,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,292.069000 kWh @ $0.09200",
+                            "ChargeAmount": "118.8700",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "1292.0690",
+                            "IntervalEnd": "2017-11-15",
+                            "IntervalStart": "2017-10-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423113,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7200",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-11-15",
+                            "IntervalStart": "2017-10-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423114,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-11-15",
+                            "IntervalStart": "2017-10-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051874,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1205.9310"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-11-15",
+                            "IntervalStart": "2017-10-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051875,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1292.0690"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "90333323393",
+            "AmountDue": null,
+            "IntervalEnd": "2018-01-13",
+            "IntervalStart": "2017-12-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134511,
+            "PreviousBalance": null,
+            "RawAccountNumber": "9033332339-3",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45da-815a-d6e2-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-01-19",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-01-13",
+                    "IntervalStart": "2017-12-15",
+                    "MeterNumber": null,
+                    "PK": 294426,
+                    "PODid": "8100102881",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,417.000000 kWh @ $0.05700",
+                            "ChargeAmount": "137.7700",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2417.0000",
+                            "IntervalEnd": "2018-01-13",
+                            "IntervalStart": "2017-12-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423399,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7000",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-01-13",
+                            "IntervalStart": "2017-12-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423400,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-01-13",
+                            "IntervalStart": "2017-12-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1051995,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2417.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "88880888080",
+            "AmountDue": null,
+            "IntervalEnd": "2017-05-17",
+            "IntervalStart": "2017-04-18",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134528,
+            "PreviousBalance": null,
+            "RawAccountNumber": "8888088808-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8ebb6a-7136-d03c-a195-22000bf2d28a",
+            "StatementDate": "2017-05-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-05-17",
+                    "IntervalStart": "2017-04-18",
+                    "MeterNumber": "0008866800",
+                    "PK": 294461,
+                    "PODid": "9199299996",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,049.413800 kWh @ $0.05700",
+                            "ChargeAmount": "59.8200",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "1049.4138",
+                            "IntervalEnd": "2017-05-17",
+                            "IntervalStart": "2017-04-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423670,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,291.586200 kWh @ $0.09200",
+                            "ChargeAmount": "118.8300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "1291.5862",
+                            "IntervalEnd": "2017-05-17",
+                            "IntervalStart": "2017-04-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423671,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6800",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-05-17",
+                            "IntervalStart": "2017-04-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423672,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-05-17",
+                            "IntervalStart": "2017-04-18",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052106,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1049.4138"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-05-17",
+                            "IntervalStart": "2017-04-18",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052107,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1291.5862"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "72552525372",
+            "AmountDue": null,
+            "IntervalEnd": "2017-06-16",
+            "IntervalStart": "2017-05-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134545,
+            "PreviousBalance": null,
+            "RawAccountNumber": "7255252537-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8ebb6a-74ac-d308-a195-22000bf2d28a",
+            "StatementDate": "2017-06-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-06-16",
+                    "IntervalStart": "2017-05-17",
+                    "MeterNumber": "3228826820",
+                    "PK": 294500,
+                    "PODid": "3422122334",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,495.000000 kWh @ $0.09200",
+                            "ChargeAmount": "229.5400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2495.0000",
+                            "IntervalEnd": "2017-06-16",
+                            "IntervalStart": "2017-05-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423874,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7200",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-06-16",
+                            "IntervalStart": "2017-05-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2423875,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-06-16",
+                            "IntervalStart": "2017-05-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052212,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2495.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "32003030633",
+            "AmountDue": null,
+            "IntervalEnd": "2017-03-17",
+            "IntervalStart": "2017-02-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134562,
+            "PreviousBalance": null,
+            "RawAccountNumber": "3200303063-3",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8ebb6a-7d2b-d7f8-a195-22000bf2d28a",
+            "StatementDate": "2017-03-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-03-17",
+                    "IntervalStart": "2017-02-15",
+                    "MeterNumber": "1117717713",
+                    "PK": 294534,
+                    "PODid": "9555955955",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,412.000000 kWh @ $0.06200",
+                            "ChargeAmount": "149.5400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0620",
+                            "ChargeUnitsUsed": "2412.0000",
+                            "IntervalEnd": "2017-03-17",
+                            "IntervalStart": "2017-02-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424139,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7000",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-03-17",
+                            "IntervalStart": "2017-02-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424140,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-03-17",
+                            "IntervalStart": "2017-02-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052318,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2412.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "11111111311",
+            "AmountDue": null,
+            "IntervalEnd": "2018-03-16",
+            "IntervalStart": "2018-02-14",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134579,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1111111131-1",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45d6-e38b-d923-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-03-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-03-16",
+                    "IntervalStart": "2018-02-14",
+                    "MeterNumber": null,
+                    "PK": 294568,
+                    "PODid": "6477276663",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,741.000000 kWh @ $0.05700",
+                            "ChargeAmount": "156.2400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2741.0000",
+                            "IntervalEnd": "2018-03-16",
+                            "IntervalStart": "2018-02-14",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424384,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7900",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-03-16",
+                            "IntervalStart": "2018-02-14",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424385,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-03-16",
+                            "IntervalStart": "2018-02-14",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052414,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2741.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "07667676007",
+            "AmountDue": null,
+            "IntervalEnd": "2016-11-16",
+            "IntervalStart": "2016-10-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134596,
+            "PreviousBalance": null,
+            "RawAccountNumber": "0766767600-7",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8706d4-c304-dc74-ada8-22000abacfd9",
+            "StatementDate": "2016-11-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-11-16",
+                    "IntervalStart": "2016-10-15",
+                    "MeterNumber": "3555532552",
+                    "PK": 294605,
+                    "PODid": "1111011111",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,271.250000 kWh @ $0.06200",
+                            "ChargeAmount": "78.8200",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0620",
+                            "ChargeUnitsUsed": "1271.2500",
+                            "IntervalEnd": "2016-11-16",
+                            "IntervalStart": "2016-10-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424666,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,440.750000 kWh @ $0.09300",
+                            "ChargeAmount": "133.9900",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0930",
+                            "ChargeUnitsUsed": "1440.7500",
+                            "IntervalEnd": "2016-11-16",
+                            "IntervalStart": "2016-10-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424667,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7900",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2016-11-16",
+                            "IntervalStart": "2016-10-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424668,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2016-11-16",
+                            "IntervalStart": "2016-10-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052509,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1271.2500"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2016-11-16",
+                            "IntervalStart": "2016-10-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052510,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1440.7500"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "93550555590",
+            "AmountDue": null,
+            "IntervalEnd": "2016-12-15",
+            "IntervalStart": "2016-11-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134613,
+            "PreviousBalance": null,
+            "RawAccountNumber": "9355055559-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8706d4-c9ca-d2ee-ada8-22000abacfd9",
+            "StatementDate": "2016-12-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-12-15",
+                    "IntervalStart": "2016-11-16",
+                    "MeterNumber": "3334436435",
+                    "PK": 294647,
+                    "PODid": "3733333307",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,309.000000 kWh @ $0.06200",
+                            "ChargeAmount": "143.1600",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0620",
+                            "ChargeUnitsUsed": "2309.0000",
+                            "IntervalEnd": "2016-12-15",
+                            "IntervalStart": "2016-11-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424868,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6700",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2016-12-15",
+                            "IntervalStart": "2016-11-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2424869,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2016-12-15",
+                            "IntervalStart": "2016-11-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052599,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2309.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "04333323403",
+            "AmountDue": null,
+            "IntervalEnd": "2017-01-14",
+            "IntervalStart": "2016-12-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134630,
+            "PreviousBalance": null,
+            "RawAccountNumber": "0433332340-3",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8ebb6a-67e9-da01-a195-22000bf2d28a",
+            "StatementDate": "2017-01-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-01-14",
+                    "IntervalStart": "2016-12-15",
+                    "MeterNumber": "2663326362",
+                    "PK": 294682,
+                    "PODid": "7344047733",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,560.000000 kWh @ $0.06200",
+                            "ChargeAmount": "158.7200",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0620",
+                            "ChargeUnitsUsed": "2560.0000",
+                            "IntervalEnd": "2017-01-14",
+                            "IntervalStart": "2016-12-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425125,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7400",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-01-14",
+                            "IntervalStart": "2016-12-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425126,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-01-14",
+                            "IntervalStart": "2016-12-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052696,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2560.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "00224212204",
+            "AmountDue": null,
+            "IntervalEnd": "2017-08-17",
+            "IntervalStart": "2017-07-18",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134647,
+            "PreviousBalance": null,
+            "RawAccountNumber": "0022421220-4",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8ebb6a-6d6c-db78-a195-22000bf2d28a",
+            "StatementDate": "2017-08-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-08-17",
+                    "IntervalStart": "2017-07-18",
+                    "MeterNumber": "5555525555",
+                    "PK": 294716,
+                    "PODid": "3333133333",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,396.000000 kWh @ $0.09200",
+                            "ChargeAmount": "220.4300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2396.0000",
+                            "IntervalEnd": "2017-08-17",
+                            "IntervalStart": "2017-07-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425298,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6900",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-08-17",
+                            "IntervalStart": "2017-07-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425299,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-08-17",
+                            "IntervalStart": "2017-07-18",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052776,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2396.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33333373733",
+            "AmountDue": null,
+            "IntervalEnd": "2018-04-16",
+            "IntervalStart": "2018-03-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134664,
+            "PreviousBalance": null,
+            "RawAccountNumber": "3333337373-3",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45d8-df3b-dd45-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-04-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-04-16",
+                    "IntervalStart": "2018-03-16",
+                    "MeterNumber": null,
+                    "PK": 294750,
+                    "PODid": "0500505005",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,891.000000 kWh @ $0.05700",
+                            "ChargeAmount": "164.7900",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2891.0000",
+                            "IntervalEnd": "2018-04-16",
+                            "IntervalStart": "2018-03-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425460,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.8400",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-04-16",
+                            "IntervalStart": "2018-03-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425461,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-04-16",
+                            "IntervalStart": "2018-03-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052857,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2891.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "16110111610",
+            "AmountDue": null,
+            "IntervalEnd": "2017-09-16",
+            "IntervalStart": "2017-08-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134681,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1611011161-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45e2-b35c-d380-93cd-0ea8a3be0ab6",
+            "StatementDate": "2017-09-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-09-16",
+                    "IntervalStart": "2017-08-17",
+                    "MeterNumber": null,
+                    "PK": 294784,
+                    "PODid": "1555255111",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,482.000000 kWh @ $0.09200",
+                            "ChargeAmount": "228.3400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2482.0000",
+                            "IntervalEnd": "2017-09-16",
+                            "IntervalStart": "2017-08-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425627,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7200",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-09-16",
+                            "IntervalStart": "2017-08-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425628,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-09-16",
+                            "IntervalStart": "2017-08-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1052935,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2482.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "56666666656",
+            "AmountDue": null,
+            "IntervalEnd": "2016-10-15",
+            "IntervalStart": "2016-09-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134695,
+            "PreviousBalance": null,
+            "RawAccountNumber": "5666666665-6",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8706d4-dd6d-d115-ada8-22000abacfd9",
+            "StatementDate": "2016-10-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2016-10-15",
+                    "IntervalStart": "2016-09-16",
+                    "MeterNumber": "5553355355",
+                    "PK": 294815,
+                    "PODid": "8000202802",
+                    "ServiceType": "electric",
+                    "Tariff": "COM-1",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,581.000000 kWh @ $0.09300",
+                            "ChargeAmount": "240.0300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0930",
+                            "ChargeUnitsUsed": "2581.0000",
+                            "IntervalEnd": "2016-10-15",
+                            "IntervalStart": "2016-09-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425903,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7500",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2016-10-15",
+                            "IntervalStart": "2016-09-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2425904,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2016-10-15",
+                            "IntervalStart": "2016-09-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1053036,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2581.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "21112121722",
+            "AmountDue": null,
+            "IntervalEnd": "2017-12-15",
+            "IntervalStart": "2017-11-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134712,
+            "PreviousBalance": null,
+            "RawAccountNumber": "2111212172-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45eb-5afb-df47-93cd-0ea8a3be0ab6",
+            "StatementDate": "2017-12-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-12-15",
+                    "IntervalStart": "2017-11-15",
+                    "MeterNumber": null,
+                    "PK": 294849,
+                    "PODid": "7711415745",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,519.000000 kWh @ $0.05700",
+                            "ChargeAmount": "143.5800",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2519.0000",
+                            "IntervalEnd": "2017-12-15",
+                            "IntervalStart": "2017-11-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2426080,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7300",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-12-15",
+                            "IntervalStart": "2017-11-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2426081,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-12-15",
+                            "IntervalStart": "2017-11-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1053119,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2519.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "90559575299",
+            "AmountDue": null,
+            "IntervalEnd": "2018-02-14",
+            "IntervalStart": "2018-01-13",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134764,
+            "PreviousBalance": null,
+            "RawAccountNumber": "9055957529-9",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b9134-a09b-dd20-a4a1-0e1f5dd9b2ec",
+            "StatementDate": "2018-02-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-02-14",
+                    "IntervalStart": "2018-01-13",
+                    "MeterNumber": null,
+                    "PK": 294961,
+                    "PODid": "0755551057",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,833.000000 kWh @ $0.05700",
+                            "ChargeAmount": "161.4800",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2833.0000",
+                            "IntervalEnd": "2018-02-14",
+                            "IntervalStart": "2018-01-13",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2426919,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.8200",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-02-14",
+                            "IntervalStart": "2018-01-13",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2426920,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-02-14",
+                            "IntervalStart": "2018-01-13",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1053533,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2833.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "10440404110",
+            "AmountDue": null,
+            "IntervalEnd": "2017-02-15",
+            "IntervalStart": "2017-01-14",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134781,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1044040411-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e8ebb6a-6528-d097-a195-22000bf2d28a",
+            "StatementDate": "2017-02-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2017-02-15",
+                    "IntervalStart": "2017-01-14",
+                    "MeterNumber": "6556651651",
+                    "PK": 294996,
+                    "PODid": "0600300006",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,617.000000 kWh @ $0.06200",
+                            "ChargeAmount": "162.2500",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0620",
+                            "ChargeUnitsUsed": "2617.0000",
+                            "IntervalEnd": "2017-02-15",
+                            "IntervalStart": "2017-01-14",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2427086,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2017-02-15",
+                            "IntervalStart": "2017-01-14",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2427087,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2017-02-15",
+                            "IntervalStart": "2017-01-14",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1053607,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2617.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "55333333553",
+            "AmountDue": null,
+            "IntervalEnd": "2018-06-14",
+            "IntervalStart": "2018-05-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 134846,
+            "PreviousBalance": null,
+            "RawAccountNumber": "5533333355-3",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45e3-cde2-de03-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-06-21",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-06-14",
+                    "IntervalStart": "2018-05-16",
+                    "MeterNumber": null,
+                    "PK": 295098,
+                    "PODid": "7133030770",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,613.000000 kWh @ $0.09200",
+                            "ChargeAmount": "240.4000",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2613.0000",
+                            "IntervalEnd": "2018-06-14",
+                            "IntervalStart": "2018-05-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2427773,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-06-14",
+                            "IntervalStart": "2018-05-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2427774,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-06-14",
+                            "IntervalStart": "2018-05-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1053951,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2613.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "32662626032",
+            "AmountDue": null,
+            "IntervalEnd": "2018-07-16",
+            "IntervalStart": "2018-06-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 135458,
+            "PreviousBalance": null,
+            "RawAccountNumber": "3266262603-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45dd-bd5a-d270-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-07-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-07-16",
+                    "IntervalStart": "2018-06-15",
+                    "MeterNumber": null,
+                    "PK": 296220,
+                    "PODid": "3166366316",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,696.000000 kWh @ $0.09200",
+                            "ChargeAmount": "248.0300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2696.0000",
+                            "IntervalEnd": "2018-07-16",
+                            "IntervalStart": "2018-06-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2436564,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7800",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-07-16",
+                            "IntervalStart": "2018-06-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2436565,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-07-16",
+                            "IntervalStart": "2018-06-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1058398,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2696.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "92444444494",
+            "AmountDue": null,
+            "IntervalEnd": "2018-08-15",
+            "IntervalStart": "2018-07-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 136512,
+            "PreviousBalance": null,
+            "RawAccountNumber": "9244444449-4",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45df-ebed-dcd8-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-08-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-08-15",
+                    "IntervalStart": "2018-07-17",
+                    "MeterNumber": null,
+                    "PK": 297963,
+                    "PODid": "0033330033",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,539.000000 kWh @ $0.09200",
+                            "ChargeAmount": "233.5900",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2539.0000",
+                            "IntervalEnd": "2018-08-15",
+                            "IntervalStart": "2018-07-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2449112,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7400",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-08-15",
+                            "IntervalStart": "2018-07-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2449113,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-08-15",
+                            "IntervalStart": "2018-07-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1064725,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2539.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "00002000202",
+            "AmountDue": null,
+            "IntervalEnd": "2018-09-14",
+            "IntervalStart": "2018-08-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 137481,
+            "PreviousBalance": null,
+            "RawAccountNumber": "0000200020-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45e8-2106-d9c4-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-09-20",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-09-14",
+                    "IntervalStart": "2018-08-16",
+                    "MeterNumber": null,
+                    "PK": 312534,
+                    "PODid": "7000000700",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,449.000000 kWh @ $0.09200",
+                            "ChargeAmount": "225.3100",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2449.0000",
+                            "IntervalEnd": "2018-09-14",
+                            "IntervalStart": "2018-08-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2519474,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7100",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-09-14",
+                            "IntervalStart": "2018-08-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2519475,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-09-14",
+                            "IntervalStart": "2018-08-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1101061,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2449.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "22555525225",
+            "AmountDue": null,
+            "IntervalEnd": "2018-10-16",
+            "IntervalStart": "2018-09-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 139054,
+            "PreviousBalance": null,
+            "RawAccountNumber": "2255552522-5",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45e9-360a-d2e8-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-10-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-10-16",
+                    "IntervalStart": "2018-09-15",
+                    "MeterNumber": null,
+                    "PK": 318233,
+                    "PODid": "8888082822",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,490.000000 kWh @ $0.09200",
+                            "ChargeAmount": "229.0800",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2490.0000",
+                            "IntervalEnd": "2018-10-16",
+                            "IntervalStart": "2018-09-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2554363,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7200",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-10-16",
+                            "IntervalStart": "2018-09-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2554364,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-10-16",
+                            "IntervalStart": "2018-09-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1117964,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2490.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33111111431",
+            "AmountDue": null,
+            "IntervalEnd": "2018-11-15",
+            "IntervalStart": "2018-10-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 141380,
+            "PreviousBalance": null,
+            "RawAccountNumber": "3311111143-1",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45ea-34bc-dc61-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-11-26",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-11-15",
+                    "IntervalStart": "2018-10-17",
+                    "MeterNumber": null,
+                    "PK": 325433,
+                    "PODid": "5000300555",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 1,133.000000 kWh @ $0.05700",
+                            "ChargeAmount": "64.5800",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "1133.0000",
+                            "IntervalEnd": "2018-11-15",
+                            "IntervalStart": "2018-10-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2605527,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,133.000000 kWh @ $0.09200",
+                            "ChargeAmount": "104.2400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "1133.0000",
+                            "IntervalEnd": "2018-11-15",
+                            "IntervalStart": "2018-10-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2605528,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-11-15",
+                            "IntervalStart": "2018-10-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2605529,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-11-15",
+                            "IntervalStart": "2018-10-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1140899,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1133.0000"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-11-15",
+                            "IntervalStart": "2018-10-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1140900,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1133.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "10112111012",
+            "AmountDue": null,
+            "IntervalEnd": "2018-12-14",
+            "IntervalStart": "2018-11-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 142318,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1011211101-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b45e4-bee1-d3f3-93cd-0ea8a3be0ab6",
+            "StatementDate": "2018-12-20",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2018-12-14",
+                    "IntervalStart": "2018-11-16",
+                    "MeterNumber": null,
+                    "PK": 328373,
+                    "PODid": "9022022922",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,320.000000 kWh @ $0.05700",
+                            "ChargeAmount": "132.2400",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2320.0000",
+                            "IntervalEnd": "2018-12-14",
+                            "IntervalStart": "2018-11-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2623465,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6700",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2018-12-14",
+                            "IntervalStart": "2018-11-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2623466,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2018-12-14",
+                            "IntervalStart": "2018-11-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1149097,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2320.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "55660616150",
+            "AmountDue": null,
+            "IntervalEnd": "2019-01-15",
+            "IntervalStart": "2018-12-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 143364,
+            "PreviousBalance": null,
+            "RawAccountNumber": "5566061615-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e940478-a447-da9a-a4af-0e9030f71a24",
+            "StatementDate": "2019-01-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-01-15",
+                    "IntervalStart": "2018-12-15",
+                    "MeterNumber": null,
+                    "PK": 331724,
+                    "PODid": "3111212312",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,418.000000 kWh @ $0.05700",
+                            "ChargeAmount": "137.8300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2418.0000",
+                            "IntervalEnd": "2019-01-15",
+                            "IntervalStart": "2018-12-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2643790,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7300",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-01-15",
+                            "IntervalStart": "2018-12-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2643791,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-01-15",
+                            "IntervalStart": "2018-12-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1157552,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2418.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "61002000762",
+            "AmountDue": null,
+            "IntervalEnd": "2019-02-14",
+            "IntervalStart": "2019-01-16",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 143968,
+            "PreviousBalance": null,
+            "RawAccountNumber": "6100200076-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e940478-a4cd-df1a-a4af-0e9030f71a24",
+            "StatementDate": "2019-02-22",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-02-14",
+                    "IntervalStart": "2019-01-16",
+                    "MeterNumber": null,
+                    "PK": 333038,
+                    "PODid": "3111011331",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,769.000000 kWh @ $0.05700",
+                            "ChargeAmount": "157.8300",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2769.0000",
+                            "IntervalEnd": "2019-02-14",
+                            "IntervalStart": "2019-01-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2653307,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.8300",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-02-14",
+                            "IntervalStart": "2019-01-16",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2653308,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-02-14",
+                            "IntervalStart": "2019-01-16",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1161511,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2769.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "81000000880",
+            "AmountDue": null,
+            "IntervalEnd": "2019-03-18",
+            "IntervalStart": "2019-02-15",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 144808,
+            "PreviousBalance": null,
+            "RawAccountNumber": "8100000088-0",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e950b5a-8f59-d532-8d62-0eff94e1a328",
+            "StatementDate": "2019-03-25",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-03-18",
+                    "IntervalStart": "2019-02-15",
+                    "MeterNumber": null,
+                    "PK": 335919,
+                    "PODid": "2344342202",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,850.000000 kWh @ $0.05700",
+                            "ChargeAmount": "162.4500",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2850.0000",
+                            "IntervalEnd": "2019-03-18",
+                            "IntervalStart": "2019-02-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2668982,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.8600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-03-18",
+                            "IntervalStart": "2019-02-15",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2668983,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-03-18",
+                            "IntervalStart": "2019-02-15",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1168720,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2850.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "12552525612",
+            "AmountDue": null,
+            "IntervalEnd": "2019-04-17",
+            "IntervalStart": "2019-03-19",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 145375,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1255252561-2",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9686a4-0503-d18e-a1d5-0e27560dad00",
+            "StatementDate": "2019-04-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-04-17",
+                    "IntervalStart": "2019-03-19",
+                    "MeterNumber": null,
+                    "PK": 337240,
+                    "PODid": "1822821111",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 2,365.000000 kWh @ $0.05700",
+                            "ChargeAmount": "134.8000",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "2365.0000",
+                            "IntervalEnd": "2019-04-17",
+                            "IntervalStart": "2019-03-19",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2678136,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.7100",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-04-17",
+                            "IntervalStart": "2019-03-19",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2678137,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-04-17",
+                            "IntervalStart": "2019-03-19",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1172409,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2365.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "00333313103",
+            "AmountDue": null,
+            "IntervalEnd": "2019-05-16",
+            "IntervalStart": "2019-04-18",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 145955,
+            "PreviousBalance": null,
+            "RawAccountNumber": "0033331310-3",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e97f83c-5a48-de92-952a-0e415bbf7a8e",
+            "StatementDate": "2019-05-23",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-05-16",
+                    "IntervalStart": "2019-04-18",
+                    "MeterNumber": null,
+                    "PK": 338537,
+                    "PODid": "0111310035",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Winter 983.965500 kWh @ $0.05700",
+                            "ChargeAmount": "56.0900",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0570",
+                            "ChargeUnitsUsed": "983.9655",
+                            "IntervalEnd": "2019-05-16",
+                            "IntervalStart": "2019-04-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2689005,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 1,211.034500 kWh @ $0.09200",
+                            "ChargeAmount": "111.4200",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "1211.0345",
+                            "IntervalEnd": "2019-05-16",
+                            "IntervalStart": "2019-04-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2689006,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6600",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-05-16",
+                            "IntervalStart": "2019-04-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2689007,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-05-16",
+                            "IntervalStart": "2019-04-18",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1177443,
+                            "RateComponent": "[total, winter]",
+                            "UsageActualName": null,
+                            "UsageAmount": "983.9655"
+                        },
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-05-16",
+                            "IntervalStart": "2019-04-18",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1177444,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "1211.0345"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "33333333633",
+            "AmountDue": null,
+            "IntervalEnd": "2019-06-17",
+            "IntervalStart": "2019-05-17",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 146504,
+            "PreviousBalance": null,
+            "RawAccountNumber": "3333333363-3",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9985df-7841-d64d-a5f6-0e790282775e",
+            "StatementDate": "2019-06-24",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-06-17",
+                    "IntervalStart": "2019-05-17",
+                    "MeterNumber": null,
+                    "PK": 339717,
+                    "PODid": "2333333231",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 2,248.000000 kWh @ $0.09200",
+                            "ChargeAmount": "206.8200",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "2248.0000",
+                            "IntervalEnd": "2019-06-17",
+                            "IntervalStart": "2019-05-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2699170,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.6700",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-06-17",
+                            "IntervalStart": "2019-05-17",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2699171,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-06-17",
+                            "IntervalStart": "2019-05-17",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1182404,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "2248.0000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "AccountNumber": "12223242413",
+            "AmountDue": null,
+            "IntervalEnd": "2019-06-26",
+            "IntervalStart": "2019-06-18",
+            "NewCharges": null,
+            "OutstandingBalance": null,
+            "PK": 147171,
+            "PreviousBalance": null,
+            "RawAccountNumber": "1222324241-3",
+            "SourceLink": "https://sources.o2.urjanet.net/source?id=1e9b8550-c033-dba4-b5ea-0e879d612cd4",
+            "StatementDate": "2019-07-29",
+            "StatementType": "statement_type_bill",
+            "TotalBillAmount": null,
+            "UtilityProvider": "MCE",
+            "floating_charges": [],
+            "meters": [
+                {
+                    "IntervalEnd": "2019-06-26",
+                    "IntervalStart": "2019-06-18",
+                    "MeterNumber": null,
+                    "PK": 341367,
+                    "PODid": "6100000602",
+                    "ServiceType": "electric",
+                    "Tariff": "A-1-A",
+                    "charges": [
+                        {
+                            "ChargeActualName": "Generation - Total - Summer 688.000000 kWh @ $0.09200",
+                            "ChargeAmount": "63.3000",
+                            "ChargeId": "generation_services",
+                            "ChargeRatePerUnit": "0.0920",
+                            "ChargeUnitsUsed": "688.0000",
+                            "IntervalEnd": "2019-06-26",
+                            "IntervalStart": "2019-06-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2714552,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": "kWh"
+                        },
+                        {
+                            "ChargeActualName": "Energy Surcharge",
+                            "ChargeAmount": "0.2100",
+                            "ChargeId": "renewable_energy_surcharge",
+                            "ChargeRatePerUnit": null,
+                            "ChargeUnitsUsed": null,
+                            "IntervalEnd": "2019-06-26",
+                            "IntervalStart": "2019-06-18",
+                            "IsAdjustmentCharge": null,
+                            "PK": 2714553,
+                            "ThirdPartyProvider": null,
+                            "UsageUnit": ""
+                        }
+                    ],
+                    "usages": [
+                        {
+                            "EnergyUnit": "kWh",
+                            "IntervalEnd": "2019-06-26",
+                            "IntervalStart": "2019-06-18",
+                            "MeasurementType": "general_consumption",
+                            "PK": 1190139,
+                            "RateComponent": "[total, summer]",
+                            "UsageActualName": null,
+                            "UsageAmount": "688.0000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

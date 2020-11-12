@@ -6,12 +6,31 @@ This directory contains a library for building Urjanet scrapers.
 
 Urjanet data is available in a MySQL database, which we maintain in an
 AWS RDS instance. Urjanet regularly sends us updates for this database,
-which we apply. This database has four tables of interest:
+which we apply. Urjanet has multiple transforms of their data including XML, 
+SQL, and CSV data.  XML is their least-processed data; the CSV is their 
+most processed data.  We receive SQL files (.urj) extensions which we unpack 
+and store in the Account, Meter, Usage, and Charge tables. More recently, in Fall 2020, 
+we've started receiving XML files for PG&E, parsing these files ourselves, and storing 
+them in separate MySQL tables (xmlstatement, xmlaccount, xmlmeter, xmlcharge, and xmlusage). 
+The data overlaps somewhat between these two sets of tables, which is why we keep them separate.
+
+In short, the XML contains more detail than the SQL regarding Third Party Provider information. 
+For third party provider information, the XML delivery will create separate statement records, 
+which serves the purpose of breaking out this information.  Specifically, the ESP customer numbers 
+& service addresses are delivered on each particular meter record on the third party provider statements. 
+By creating a separate statement record for this info, Urjanet can able to deliver a lot more detail 
+compared to just the provider name and account number that would traditionally show up in the SQL delivery. 
+This is really useful for PG&E, but may be extendable to other providers in the future.
+
+ 
+This database has nine tables of interest:
+
+### Urjanet's SQL Transform: 
 
 1) The Account table includes high-level information about an account
 on a bill. This is where you will find important payment data such as
 the amount due. This table also houses address data, such as billing
-and payment addresses.
+and payment addresses. 
 
 2) The Meter table organizes usage information into specific “points” of
 service. Urjanet’s definition of a meter is not limited to physical
@@ -30,6 +49,28 @@ Urjanet will prorate the charge based on the usage amount.
 These descriptions are taken directly from the
 [Urjanet help site](https://urjanet.zendesk.com/hc/en-us/articles/360011538891-3-The-Urjanet-Data-Model),
 which you may need a login for (ask the operations team for help with that).
+
+### Urjanet's XML Transform (NEW)
+
+1.  The `xmlstatement` table tracks the statement `Uid` (Urja's unique statement identifier, 
+the Filename where we parsed the statement from, and the CreateDate. 
+
+2. The `xmlaccount` table has the same columns as the Account table, except we've
+parsed these accounts ourselves from their XML delivery.  The biggest difference with the `xmlaccount`
+table is that Third Party Accounts are present. For now, this data is just PG&E accounts and associated
+third party provider accounts, like MCE and CleanPowerSF.
+
+3.  The `xmlmeter` table corresponds to the Meter table, except we've parsed these meters from their XML delivery.
+The biggest difference with the xmlmeter table is that Third Party meters are present. 
+
+4. The `xmlusage` table corresponds to the Usage table, except we've parsed these usages from their XML delivery.
+The biggest difference with the xmlusage table, is that third party usages are attached to third party meters,
+instead of being attached to the primary utility meters like in the Usage table.
+
+5. The `xmlcharge` table corresponds to the Charge table, except we've parsed these charges from their XML delivery.
+The biggest difference with the xmlcharge table, is that third party charges are attached to third party meters,
+instead of being attached to the primary utility meters like in the Usage table.
+
 
 ## Library Overview
 
@@ -196,3 +237,12 @@ Tests can be found in [datafeeds/urjanet/tests](../datafeeds/urjanet/tests/).
 There are several examples for existing utilities.
 One approach is to generate some fixtures from the production database using `dump_urja_json.py`, then
 writing tests to ensure that your transformer works correctly.
+
+## Adding new xml* tables to the MySQL DB
+If the table doesn't already exist, open a MySQL shell in ops. 
+
+Run `SOURCE <sql file.sql>`.
+
+For example, the new xml-* tables where created with
+`SOURCE webapps/async/urjanet_xml/scripts/UrjanetXMLDataModel.sql`, but don't run this particular command 
+again - it will drop existing tables! 

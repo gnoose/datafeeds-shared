@@ -2,21 +2,24 @@ from datetime import timedelta, date
 import logging
 from typing import Optional
 
+from datafeeds import db
 from datafeeds.common.base import CSSSelectorBasePageObject
-from datafeeds.common.batch import run_datafeed
+from datafeeds.common.batch import run_datafeed, iso_to_dates
 from datafeeds.common.exceptions import LoginError
-from datafeeds.common.support import Configuration as BaseConfiguration
+from datafeeds.common.support import Configuration as BaseConfiguration, DateRange
 from datafeeds.common.typing import Status
 from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource
+from datafeeds.models.meter import MeterReading
 from datafeeds.scrapers.heco_interval import HECOScraper
 
 log = logging.getLogger(__name__)
 
 
 class Configuration(BaseConfiguration):
-    def __init__(self, mvweb_id: str):
+    def __init__(self, mvweb_id: str, interval: int):
         super().__init__(scrape_readings=True)
         self.mvweb_id = mvweb_id
+        self.interval = interval
 
 
 class LoginPage(CSSSelectorBasePageObject):
@@ -81,13 +84,37 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     meta = datasource.meta or {}
-    configuration = Configuration(mvweb_id=meta.get("mvWebId"),)
-    # reduce load on MVWeb servers: skip if meter has data from within the last 3 days
+    configuration = Configuration(mvweb_id=meta.get("mvWebId"), interval=meter.interval)
+    # reduce load on MVWeb servers: skip if meter has data from within the last 3 days and there are no gaps
     max_reading = meter.readings_range.max_date or date.today() - timedelta(days=365)
     interval_age = (date.today() - max_reading).days
-    if interval_age <= 3:
+    date_range = DateRange(
+        *iso_to_dates(params.get("data_start"), params.get("data_end"))
+    )
+    # freshest we can expect is 3 days old
+    date_range = DateRange(
+        date_range.start_date,
+        min(date_range.end_date, date.today() - timedelta(days=3)),
+    )
+    expected = (date_range.end_date - date_range.start_date).days + 1
+    days_with_data = (
+        db.session.query(MeterReading)
+        .filter(
+            MeterReading.meter == meter.oid,
+            MeterReading.occurred >= date_range.start_date,
+            MeterReading.occurred <= date_range.end_date,
+        )
+        .count()
+    )
+    log.info(
+        "days with data from %s - %s = %s",
+        date_range.start_date,
+        date_range.end_date,
+        days_with_data,
+    )
+    if interval_age <= 3 and days_with_data == expected:
         log.info(
-            "skipping MVWeb run: meter %s has recent interval data (%s)",
+            "skipping MVWeb run: meter %s has recent interval data (%s) and no gaps",
             meter.oid,
             max_reading,
         )

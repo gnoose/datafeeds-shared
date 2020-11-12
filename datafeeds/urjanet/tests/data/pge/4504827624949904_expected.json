@@ -4,7 +4,7 @@
             "end": "2017-02-24",
             "peak_demand": "0",
             "start": "2017-01-25",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "3223.8800",
             "total_usage": "16440.0000",
             "line_items": [
@@ -108,7 +108,7 @@
             "end": "2017-03-27",
             "peak_demand": "0",
             "start": "2017-02-25",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "3963.5600",
             "total_usage": "19920.0000",
             "line_items": [
@@ -303,7 +303,7 @@
             "end": "2017-04-26",
             "peak_demand": "0",
             "start": "2017-03-28",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "4002.1600",
             "total_usage": "20520.0000",
             "line_items": [
@@ -459,7 +459,7 @@
             "end": "2017-05-25",
             "peak_demand": "0",
             "start": "2017-04-27",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "6835.2200",
             "total_usage": "28440.0000",
             "line_items": [
@@ -641,7 +641,7 @@
             "end": "2017-06-26",
             "peak_demand": "0",
             "start": "2017-05-26",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "9093.4400",
             "total_usage": "36720.0000",
             "line_items": [
@@ -745,7 +745,7 @@
             "end": "2017-07-26",
             "peak_demand": "0",
             "start": "2017-06-27",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "9889.5000",
             "total_usage": "39960.0000",
             "line_items": [
@@ -914,7 +914,7 @@
             "end": "2017-08-25",
             "peak_demand": "0",
             "start": "2017-07-27",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "9592.6400",
             "total_usage": "38760.0000",
             "line_items": [
@@ -1018,7 +1018,7 @@
             "end": "2017-10-25",
             "peak_demand": "0",
             "start": "2017-09-27",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "8762.1700",
             "total_usage": "35400.0000",
             "line_items": [
@@ -1122,7 +1122,7 @@
             "end": "2017-11-22",
             "peak_demand": "0",
             "start": "2017-10-26",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "4983.2200",
             "total_usage": "24240.0000",
             "line_items": [
@@ -1304,7 +1304,7 @@
             "end": "2017-12-23",
             "peak_demand": "0",
             "start": "2017-11-23",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "4219.2800",
             "total_usage": "21720.0000",
             "line_items": [
@@ -1408,7 +1408,7 @@
             "end": "2018-01-24",
             "peak_demand": "0",
             "start": "2017-12-24",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "3977.4800",
             "total_usage": "20400.0000",
             "line_items": [
@@ -1577,7 +1577,7 @@
             "end": "2018-02-23",
             "peak_demand": "0",
             "start": "2018-01-25",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "5378.2400",
             "total_usage": "27600.0000",
             "line_items": [
@@ -1681,7 +1681,7 @@
             "end": "2018-03-26",
             "peak_demand": "0",
             "start": "2018-02-24",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "4528.3600",
             "total_usage": "23400.0000",
             "line_items": [
@@ -1850,7 +1850,7 @@
             "end": "2018-04-25",
             "peak_demand": "0",
             "start": "2018-03-27",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "3966.9200",
             "total_usage": "20520.0000",
             "line_items": [
@@ -1954,7 +1954,7 @@
             "end": "2018-05-24",
             "peak_demand": "0",
             "start": "2018-04-26",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "4468.5400",
             "total_usage": "18840.0000",
             "line_items": [
@@ -2136,7 +2136,7 @@
             "end": "2018-06-25",
             "peak_demand": "0",
             "start": "2018-05-25",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "6703.0100",
             "total_usage": "27240.0000",
             "line_items": [
@@ -2240,7 +2240,7 @@
             "end": "2018-07-25",
             "peak_demand": "0",
             "start": "2018-06-26",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "30089.2200",
             "total_usage": "24960.0000",
             "line_items": [
@@ -2422,7 +2422,7 @@
             "end": "2018-08-24",
             "peak_demand": "0",
             "start": "2018-07-26",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "6319.0300",
             "total_usage": "25680.0000",
             "line_items": [
@@ -2526,7 +2526,7 @@
             "end": "2018-09-25",
             "peak_demand": "0",
             "start": "2018-08-25",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "7417.4100",
             "total_usage": "29760.0000",
             "line_items": [
@@ -2695,7 +2695,7 @@
             "end": "2018-11-27",
             "peak_demand": "0",
             "start": "2018-10-26",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "1968.2700",
             "total_usage": "9480.0000",
             "line_items": [
@@ -2877,7 +2877,7 @@
             "end": "2018-12-26",
             "peak_demand": "0",
             "start": "2018-11-28",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "1403.5600",
             "total_usage": "7080.0000",
             "line_items": [
@@ -2981,7 +2981,7 @@
             "end": "2019-02-26",
             "peak_demand": "0",
             "start": "2019-01-26",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "1363.7400",
             "total_usage": "6960.0000",
             "line_items": [
@@ -3085,7 +3085,7 @@
             "end": "2019-03-27",
             "peak_demand": "0",
             "start": "2019-02-27",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "1268.7000",
             "total_usage": "6360.0000",
             "line_items": [
@@ -3254,7 +3254,7 @@
             "end": "2019-04-26",
             "peak_demand": "0",
             "start": "2019-03-28",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "1719.6300",
             "total_usage": "8640.0000",
             "line_items": [
@@ -3358,7 +3358,7 @@
             "end": "2019-05-28",
             "peak_demand": "0",
             "start": "2019-04-27",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "3045.8000",
             "total_usage": "12240.0000",
             "line_items": [
@@ -3540,7 +3540,7 @@
             "end": "2019-06-26",
             "peak_demand": "0",
             "start": "2019-05-29",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "5573.4100",
             "total_usage": "21840.0000",
             "line_items": [
@@ -3644,7 +3644,7 @@
             "end": "2019-07-26",
             "peak_demand": "0",
             "start": "2019-06-27",
-            "tariff": null,
+            "tariff": "A1 Small General Service",
             "total_charge": "4271.9600",
             "total_usage": "16200.0000",
             "line_items": [

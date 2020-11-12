@@ -177,6 +177,17 @@ class UrjanetPyMySqlDataSource(UrjanetDataSource):
             cursor.execute(query, tuple(argv))
             return cursor.fetchall()
 
+    def fetch_one(self, query: str, *argv) -> SqlRowDict:
+        """Helper function for executing a query and fetching a single result"""
+        with self.conn.cursor(DictCursor) as cursor:
+            cursor.execute(query, tuple(argv))
+            return cursor.fetchone()
+
+    def execute(self, query: str, *argv) -> SqlQueryResult:
+        """Helper function for executing a query"""
+        with self.conn.cursor(DictCursor) as cursor:
+            return cursor.execute(query, tuple(argv))
+
     @abstractmethod
     def load_accounts(self) -> List[Account]:
         """The query for fetching accounts must be provided by implementers"""

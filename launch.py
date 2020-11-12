@@ -98,6 +98,8 @@ from datafeeds.urjanet.datasource.mountainview import datafeed as mountainview
 from datafeeds.urjanet.datasource.nationalgrid import datafeed as nationalgrid
 from datafeeds.urjanet.datasource.nve import datafeed as nve
 from datafeeds.urjanet.datasource.pge import datafeed as pge
+from datafeeds.urjanet.datasource.pge_generation import datafeed as pge_generation
+
 from datafeeds.urjanet.datasource.pleasanton import datafeed as pleasanton
 from datafeeds.urjanet.datasource.pse import datafeed as pse
 from datafeeds.urjanet.datasource.sandiego import datafeed as sandiego
@@ -163,6 +165,7 @@ scraper_functions = {
     "pacific-power-billing": pacific_power_billing,
     "pacific-power-interval": pacific_power_interval,
     "pge-urjanet-v2": pge,
+    "pge-urjanet-generation": pge_generation,
     "pge-bill-pdf": pge_bill_pdf,
     "pge-energyexpert": pge_energyexpert,
     "pleasanton-urjanet": pleasanton,

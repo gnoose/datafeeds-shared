@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
 
-from datafeeds.common.exceptions import ApiError, LoginError
+from datafeeds.common.exceptions import ApiError
 from datafeeds.common.support import Configuration, DateRange, Results
 from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status
@@ -53,11 +53,15 @@ class LoginPage(CSSSelectorBasePageObject):
 
 
 class LandingPage(CSSSelectorBasePageObject):
-    ReportTabSelector = ".sidenav ul li:nth-child(2) a.nav-dropdown-toggle"
+    # ReportTabSelector = ".sidenav ul li:nth-child(2) a.nav-dropdown-toggle"
+    ReportTabSelectorXpath = "//span[text()='Reports']"
     DataTabSelectorXpath = "//span[text()='Data Extract']"
 
     def go_to_data_extract(self):
-        self.find_element(self.ReportTabSelector).click()
+        self._driver.wait().until(
+            EC.element_to_be_clickable((By.XPATH, self.ReportTabSelectorXpath))
+        )
+        self._driver.find_element_by_xpath(self.ReportTabSelectorXpath).click()
         self._driver.wait().until(
             EC.element_to_be_clickable((By.XPATH, self.DataTabSelectorXpath))
         )
@@ -223,12 +227,6 @@ class BloomScraper(BaseWebScraper):
         login_page.login(self.username, self.password)
 
         self.screenshot("after login")
-        landing_page.wait_until_ready(
-            landing_page.ReportTabSelector,
-            error_selector=login_page.ErrorMessage,
-            error_cls=LoginError,
-            error_msg="User ID and/or password not found.",
-        )
         landing_page.go_to_data_extract()
 
         log.info("Filling out data extract form")

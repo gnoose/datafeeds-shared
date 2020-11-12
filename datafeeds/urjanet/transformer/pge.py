@@ -4,7 +4,7 @@ import logging
 from decimal import Decimal
 from collections import defaultdict
 from datetime import date, timedelta, datetime
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from intervaltree import Interval
 
@@ -22,6 +22,7 @@ from datafeeds.urjanet.model import (
     UrjanetData,
     log_usage,
     log_charge,
+    Meter,
 )
 
 log = logging.getLogger(__name__)
@@ -78,6 +79,41 @@ class PacificGasElectricBillingPeriod(GenericBillingPeriod):
         charge_total += sum([c.ChargeAmount for c in self.utility_charges])
         charge_total += sum([c.ChargeAmount for c in self.third_party_charges])
         return charge_total
+
+    def get_service_id(self) -> Optional[str]:
+        """Return the service id (Meter.PODid) associated with the urja meter
+        Not yet persisted to bills, but persists to partial bills.
+        """
+        for meter in self.account.meters:
+            if meter.PODid:
+                return meter.PODid
+        return None
+
+    def get_utility(self) -> Optional[str]:
+        """Returns the UtilityProvider attached to the account.  If available,
+        returns the utility format in our db, otherwise returns the scraped version.
+
+        Not yet persisted to bills, but persists to partial bills.
+        """
+        mapping = {
+            "CleanPowerSF": "utility:cpsf",
+            "EastBayCommunityEnergyCA": "utility:ebce",
+            "MCE": "utility:mce",
+            "PeninsulaCleanEnergyCA": "utility:pce",
+            "SiliconValleyCleanEnergyCA": "utility:svce",
+            "ValleyCleanEnergyAllianceCA": "utility:vce",
+            "SanJoseCleanEnergy": "utility:sjce",
+            "PioneerCommunityEnergyCA": "utility:pio",
+            "MontereyBayCommunityPowerCA": "utility:mbcp",
+            "PacGAndE": "utility:pge",
+        }
+        return mapping.get(self.account.UtilityProvider, self.account.UtilityProvider)
+
+    def get_utility_account_id(self) -> Optional[str]:
+        """Return the RawAccountNumber attached to the account
+        Not yet persisted to bills, but persists to partial bills.
+        """
+        return self.account.RawAccountNumber
 
     def get_total_usage(self) -> Decimal:
         """Return the total usage for this period
@@ -151,7 +187,28 @@ class PacificGasElectricBillingPeriod(GenericBillingPeriod):
 
 
 class PacificGasElectricTransformer(UrjanetGridiumTransformer):
-    """This class supports transforming Urjanet data into Gridium billing periods."""
+    """This class supports transforming Urjanet data into Gridium billing periods.
+
+    This transformer attempts to sum PG&E charges with any third party provider charges if they exist,
+    into a complete bill.
+    """
+
+    billing_period_class = PacificGasElectricBillingPeriod
+
+    def shift_endpoints(self, history: DateIntervalTree):
+        """Fixes periods where the start and end are the same"""
+        return DateIntervalTree.shift_endpoints_start(history)
+
+    @staticmethod
+    def consider_usage(usage: Usage) -> bool:
+        """Returns True if we're going to use this usage to calculate a billing period."""
+        return usage.RateComponent == "[total]"
+
+    def fill_in_usage_gaps(self, meter: Meter, ival_tree: DateIntervalTree):
+        """Stub method to override if PG&E transformer should add an interval tree that
+        has the same dates as Meter.IntervalStart and Meter.IntervalEnd.
+        """
+        return
 
     def urja_to_gridium(self, urja_data: UrjanetData) -> GridiumBillingPeriodCollection:
         """Transform urjanet data into Gridium billing periods"""
@@ -177,10 +234,10 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                 else:
                     log.debug("Adding usage period: %s - %s", ival.begin, ival.end)
                     bill_history.add(
-                        ival.begin, ival.end, PacificGasElectricBillingPeriod(account)
+                        ival.begin, ival.end, self.billing_period_class(account)
                     )
         # fix periods where start/end are the same
-        bill_history = DateIntervalTree.shift_endpoints_start(bill_history)
+        bill_history = self.shift_endpoints(bill_history)
 
         # Next, we go through the accounts again and insert relevant charge/usage information into the computed
         # billing periods
@@ -203,7 +260,10 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                     line_items=(
                         period_data.utility_charges + period_data.third_party_charges
                     ),
-                    tariff=None,
+                    tariff=period_data.tariff(),
+                    service_id=period_data.get_service_id(),
+                    utility=period_data.get_utility(),
+                    utility_account_id=period_data.get_utility_account_id(),
                 )
             )
         return GridiumBillingPeriodCollection(periods=gridium_periods)
@@ -212,15 +272,22 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
         self, bill_history: DateIntervalTree, begin: date, end: date
     ) -> List[Interval]:
         """Find the best matches for a given date range in the given interval tree
-
         This is a little fuzzier than we might like, because PG&E tends to shift start/end dates by one day
         somewhat arbitrarily. We account for this by allowing a date range to match an interval in the bill
         history tree if the start/end dates are within one day of the tree interval.
         """
-        if begin == end:
-            end += timedelta(days=1)
-
         overlaps = bill_history.range_query(begin, end)
+
+        if not overlaps:
+            adjusted_end = end + timedelta(days=1)
+            # Try moving end date forward one day
+            overlaps = bill_history.range_query(begin, adjusted_end)
+
+        if not overlaps:
+            # try moving start date back one day
+            adjusted_start = begin - timedelta(days=1)
+            overlaps = bill_history.range_query(adjusted_start, end)
+
         if not overlaps:
             return []
 
@@ -252,7 +319,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
         # to PacificGasElectricBillingPeriod objects, which hold the billing data available in the current statement for that
         # period.
         statement_data: Dict[Interval, PacificGasElectricBillingPeriod] = defaultdict(
-            functools.partial(PacificGasElectricBillingPeriod, urja_account)
+            functools.partial(self.billing_period_class, urja_account)
         )
 
         # In a first pass, we iterate over all charges/usages associated with a meter, and try to insert them into the
@@ -369,7 +436,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
         ival_tree = DateIntervalTree()
         for meter in account.meters:
             for usage in meter.usages:
-                if usage.RateComponent == "[total]":
+                if self.consider_usage(usage):
                     usage_start = usage.IntervalStart
                     usage_end = usage.IntervalEnd
                     duration = self.get_duration(usage_start, usage_end)
@@ -393,6 +460,7 @@ class PacificGasElectricTransformer(UrjanetGridiumTransformer):
                             )
                         )
                     ival_tree.add(usage_start, usage_end)
+            self.fill_in_usage_gaps(meter, ival_tree)
         ival_tree.merge_overlaps()
         return ival_tree
 

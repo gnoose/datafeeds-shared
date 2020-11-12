@@ -3,6 +3,7 @@
 This module covers tables managed by webapps/platform that describe utility services.
 Except for unit tests, analytics should treat these tables as Read Only.
 """
+from datetime import datetime
 from typing import Optional
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
@@ -53,3 +54,39 @@ class UtilityService(ModelMixin, Base):
         self.service_id = service_id
         self.utility_account_id = account_id
         self.gen_service_id = gen_service_id
+
+
+class UtilityServiceSnapshot(ModelMixin, Base):
+    """utility_service_snapshot table
+    tracks updates to utility_services - each record is intended to be a "snapshot" of the
+    utility_service at that point in time.
+    """
+
+    __tablename__ = "utility_service_snapshot"
+
+    INITIAL_SNAPSHOT_DATETIME = datetime(1970, 1, 1)
+
+    oid = sa.Column(sa.BigInteger, primary_key=True)
+    service = sa.Column(
+        sa.BigInteger, sa.ForeignKey("utility_service.oid"), nullable=False
+    )
+    service_obj = relationship("UtilityService")
+    # Tracking updates for the "main" service - whether bundled or T&D
+    # Type of the "main" provider"
+    provider_type = sa.Column(sa.Enum(*PROVIDER_TYPES))
+    service_id = sa.Column(sa.Unicode)
+    utility_account_id = sa.Column(sa.Unicode)
+    tariff = sa.Column(sa.Unicode)
+    utility = sa.Column(sa.Unicode)
+    # Tracking updates for the "generation" service, if applicable
+    gen_service_id = sa.Column(sa.Unicode)
+    gen_utility_account_id = sa.Column(sa.Unicode)
+    gen_tariff = sa.Column(sa.Unicode)
+    gen_utility = sa.Column(sa.Unicode)
+    # When the snapshot was created in our system
+    system_created = sa.Column(sa.DateTime, nullable=False)
+    # When the snapshot was updated in our system
+    system_modified = sa.Column(sa.DateTime, nullable=False)
+    # The main date we care about - when the service agreement
+    # was modified on the utility's side.
+    service_modified = sa.Column(sa.DateTime, nullable=False)

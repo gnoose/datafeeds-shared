@@ -4,7 +4,7 @@
             "end": "2018-02-01",
             "peak_demand": "0",
             "start": "2018-01-01",
-            "tariff": null,
+            "tariff": "test_tariff",
             "total_charge": "100.0000",
             "total_usage": "16.0000",
             "line_items": [

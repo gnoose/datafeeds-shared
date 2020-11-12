@@ -93,7 +93,10 @@ class TestUrjanetScraper(unittest.TestCase):
                     ),
                 ],
                 attachments=None,
-                utility_code=None,
+                utility_code="test_tariff",
+                utility_account_id="1",
+                utility="test_provider",
+                service_id="test_podid",
             )
         ]
 

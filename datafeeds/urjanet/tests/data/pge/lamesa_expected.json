@@ -4,7 +4,7 @@
             "end": "2018-02-13",
             "peak_demand": "800.0000",
             "start": "2018-01-16",
-            "tariff": null,
+            "tariff": "E19P Medium General Demand-Metered TOU Service",
             "total_charge": "44162.2800",
             "total_usage": "349717.0000",
             "line_items": [
@@ -89,7 +89,7 @@
             "end": "2018-03-16",
             "peak_demand": "800.0000",
             "start": "2018-02-14",
-            "tariff": null,
+            "tariff": "E19P Medium General Demand-Metered TOU Service",
             "total_charge": "46065.3900",
             "total_usage": "369177.0000",
             "line_items": [
@@ -246,7 +246,7 @@
             "end": "2018-04-16",
             "peak_demand": "736.0000",
             "start": "2018-03-17",
-            "tariff": null,
+            "tariff": "E19P Medium General Demand-Metered TOU Service",
             "total_charge": "44818.5100",
             "total_usage": "356237.0000",
             "line_items": [
@@ -404,7 +404,7 @@
             "end": "2018-05-15",
             "peak_demand": "672.0000",
             "start": "2018-04-17",
-            "tariff": null,
+            "tariff": "E19P Medium General Demand-Metered TOU Service",
             "total_charge": "25463.2800",
             "total_usage": "303147.0000",
             "line_items": [
@@ -657,7 +657,7 @@
             "end": "2018-06-14",
             "peak_demand": "660.0000",
             "start": "2018-05-16",
-            "tariff": null,
+            "tariff": "E19P Medium General Demand-Metered TOU Service",
             "total_charge": "46203.6500",
             "total_usage": "270635.0000",
             "line_items": [
@@ -959,7 +959,7 @@
             "end": "2018-07-16",
             "peak_demand": "656.0000",
             "start": "2018-06-15",
-            "tariff": null,
+            "tariff": "E19P Medium General Demand-Metered TOU Service",
             "total_charge": "35746.4300",
             "total_usage": "197603.0000",
             "line_items": [
@@ -1177,7 +1177,7 @@
             "end": "2018-08-15",
             "peak_demand": "668.0000",
             "start": "2018-07-17",
-            "tariff": null,
+            "tariff": "E19P",
             "total_charge": "40234.7800",
             "total_usage": "199370.0000",
             "line_items": [
@@ -1395,7 +1395,7 @@
             "end": "2018-09-16",
             "peak_demand": "748.0000",
             "start": "2018-08-16",
-            "tariff": null,
+            "tariff": "E19P",
             "total_charge": "43874.9000",
             "total_usage": "232614.0000",
             "line_items": [
@@ -1744,7 +1744,7 @@
             "end": "2018-10-16",
             "peak_demand": "768.0000",
             "start": "2018-09-17",
-            "tariff": null,
+            "tariff": "E19P",
             "total_charge": "48011.0700",
             "total_usage": "233641.0000",
             "line_items": [
@@ -1961,7 +1961,7 @@
             "end": "2018-11-15",
             "peak_demand": "808.0000",
             "start": "2018-10-17",
-            "tariff": null,
+            "tariff": "E19P",
             "total_charge": "45136.7900",
             "total_usage": "263592.0000",
             "line_items": [
@@ -2311,7 +2311,7 @@
             "end": "2018-12-16",
             "peak_demand": "940.0000",
             "start": "2018-11-16",
-            "tariff": null,
+            "tariff": "E19P",
             "total_charge": "45809.8500",
             "total_usage": "363185.0000",
             "line_items": [
@@ -2480,7 +2480,7 @@
             "end": "2019-01-15",
             "peak_demand": "892.0000",
             "start": "2018-12-17",
-            "tariff": null,
+            "tariff": "E19P",
             "total_charge": "43231.9600",
             "total_usage": "323927.0000",
             "line_items": [
@@ -2757,7 +2757,7 @@
             "end": "2019-02-14",
             "peak_demand": "912.0000",
             "start": "2019-01-16",
-            "tariff": null,
+            "tariff": "E19P",
             "total_charge": "43036.4300",
             "total_usage": "314938.0000",
             "line_items": [
@@ -2915,7 +2915,7 @@
             "end": "2019-03-18",
             "peak_demand": "844.0000",
             "start": "2019-02-15",
-            "tariff": null,
+            "tariff": "E19P",
             "total_charge": "42243.3000",
             "total_usage": "313964.0000",
             "line_items": [
