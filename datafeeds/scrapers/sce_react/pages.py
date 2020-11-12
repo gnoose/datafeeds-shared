@@ -1,8 +1,9 @@
+import re
 import time
 import collections
 from datetime import date, timedelta
 import logging
-from typing import Optional, List, Tuple
+from typing import Optional, List, Tuple, Dict
 
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
@@ -20,6 +21,7 @@ from datafeeds.common.util.selenium import (
     element_text_doesnt_contain,
 )
 from datafeeds.common.util.pagestate.pagestate import PageState
+from datafeeds.common.webdriver.drivers.base import BaseDriver
 
 import datafeeds.scrapers.sce_react.errors as sce_errors
 
@@ -84,6 +86,18 @@ def detect_and_close_survey(driver, timeout=5):
             EC.presence_of_element_located(locator)
         ).click()
         log.info("popup closed")
+        driver.sleep(1)
+    except Exception:
+        pass
+
+
+def detect_and_close_modal(driver, timeout=5):
+    try:
+        locator = (By.CSS_SELECTOR, '#graphHeader button[aria-label="close dialog"]')
+        WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located(locator)
+        ).click()
+        log.info("modal closed")
         driver.sleep(1)
     except Exception:
         pass
@@ -268,17 +282,67 @@ class SceMultiAccountLandingPage(PageState):
         "//react-myaccount-container//input[@id='searchMyAccounts']",
     )
 
+    ShowMoreButtonXPATH = "(//a[contains(@class, 'customerAccountComponent__sceSmLink') and contains(text(), 'Show More')])[1]"
+
     def get_ready_condition(self):
         return ec_or(
             EC.presence_of_element_located(self.AccountDataLocator),
             EC.presence_of_element_located(self.AccountFilterLocator),
         )
 
-    def search_by_service_id(self, service_id):
+    def click_show_more_until_element_found(self, locator: Tuple[By, str]):
+        # this function just clicks the "Show More" link until the element located by `locator` is found
+        # or all "Show More" buttons are clicked
+        while True:
+            try:
+                e = self.driver.find_element(*locator)
+                return e
+            except NoSuchElementException:
+                show_more_button = self.driver.find(
+                    self.ShowMoreButtonXPATH, xpath=True
+                )
+
+                if not show_more_button:
+                    return None
+
+                show_more_button.click()
+                WebDriverWait(self.driver, 20).until(
+                    EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+                )
+                continue
+
+    def scroll_for_service_id(self, service_id: str):
+        """Click More link until service_id is visible.
+
+        Use this when scraping partial bills, since search by service id seems to  always return an error.
+        """
+        log.info("scroll for service_id %s", service_id)
+        WebDriverWait(self.driver, 10).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
+        generation_charge_link_locator = (
+            By.XPATH,
+            # this is the div with the said text
+            f"//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo') and contains(text(), '{service_id}')]"
+            # we need its parent row to get to the "Billed Generation Charge" Link
+            f"/parent::div[@class='row']"
+            # this is the link that we're after (Billed Generation Charge)
+            "/following-sibling::a[contains(@class, 'serviceAccOverviewComponent__sceViewUsageBtn') and contains(., 'Billed Generation Charge')]",
+        )
+        self.click_show_more_until_element_found(
+            locator=generation_charge_link_locator,
+        )
+        self.driver.find_element(*generation_charge_link_locator)
+
+    def search_by_service_id(self, service_id: str):
+        log.info("search_by_service_id: %s", service_id)
         account_search_field = self.driver.find_element(*self.AccountFilterLocator)
         actions = ActionChains(self.driver)
         actions.move_to_element(account_search_field)
         actions.click(account_search_field)
+        # clear existing values
+        for _ in range(20):
+            actions.send_keys_to_element(account_search_field, Keys.BACK_SPACE)
         actions.send_keys_to_element(account_search_field, service_id)
         actions.send_keys_to_element(account_search_field, Keys.ENTER)
         actions.perform()
@@ -299,6 +363,23 @@ class SceAccountSearchFailure(PageState):
 class SceAccountSearchSuccess(PageState):
     """Models the case where an SAID search succeeds"""
 
+    def __init__(self, driver: BaseDriver, gen_service_id: str = None):
+        super().__init__(driver)
+        self.gen_service_id = gen_service_id
+        if gen_service_id:
+            self.generation_charge_link_locator = (
+                By.XPATH,
+                # this is the div with the service_id text
+                f"//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo') and contains(text(), "
+                f"'{self.gen_service_id}')]"
+                # we need its parent row to get to the "Billed Generation Charge" Link
+                f"/parent::div[@class='row']"
+                # this is the link that we're after (Billed Generation Charge)
+                "/following-sibling::a[contains(@class, 'serviceAccOverviewComponent__sceViewUsageBtn') and contains(., 'Billed Generation Charge')]",
+            )
+        else:
+            self.generation_charge_link_locator = None
+
     AccountDataLocator = (
         By.XPATH,
         "//react-myaccount-container//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccSection')]",
@@ -310,10 +391,17 @@ class SceAccountSearchSuccess(PageState):
     )
 
     def get_ready_condition(self):
+        log.debug("SceAccountSearchSuccess gen_service_id=%s", self.gen_service_id)
+        if self.gen_service_id:
+            return EC.presence_of_element_located(self.generation_charge_link_locator)
+
         return ec_and(
             EC.presence_of_element_located(self.AccountDataLocator),
             EC.presence_of_element_located(self.ViewUsageLinkLocator),
         )
+
+    def view_billed_generation_charge(self):
+        self.driver.find_element(*self.generation_charge_link_locator).click()
 
     def view_usage_for_search_result(self):
         """Open the usage info dialog for the available service agreement.
@@ -321,6 +409,31 @@ class SceAccountSearchSuccess(PageState):
         This can be used to view billing data for the service account.
         """
         self.driver.find_element(*self.ViewUsageLinkLocator).click()
+
+
+class SceBilledGenerationUsageModal(PageState):
+    ReportWindow = (By.ID, "graphModal")
+    DataTableLocator = (
+        By.XPATH,
+        '//*[@id="graphModal"]//table/thead/tr/th[.="MeterReadDate"]/../../..',
+    )
+
+    def get_ready_condition(self):
+        return ec_and(
+            EC.presence_of_element_located(self.ReportWindow),
+            EC.presence_of_element_located(self.DataTableLocator),
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator),
+        )
+
+    def parse_data(self) -> Dict[date, float]:
+        table_element = self.driver.find_element(*self.DataTableLocator)
+        rows = table_element.find_elements_by_xpath("//tbody/tr")
+        data: Dict[date, float] = {}
+        for row in rows:
+            cols = row.find_elements_by_tag_name("td")
+            read_dt = parse_date(cols[0].text).date()
+            data[read_dt] = float(re.sub(r"[^\d\.-]", "", cols[2].text))
+        return data
 
 
 class SceServiceAccountDetailModal(PageState):
@@ -371,6 +484,10 @@ class SceServiceAccountDetailModal(PageState):
 
     def select_usage_report(self):
         self._select_report("View Usage", (By.ID, "ViewUsage"))
+
+    def select_generation_report(self):
+        # click link with text "Billed Generation Charge"
+        pass
 
     def select_demand_report(self):
         self._select_report("View Demand info", (By.ID, "ViewDemand"))
@@ -445,7 +562,6 @@ class SceServiceAccountDetailModal(PageState):
             current_year = self.driver.find_element(*self.DatePopupYearLocator).text
             for start, end in self._get_visible_date_ranges():
                 results.append((start, end))
-                log.debug(f"billing range {start}-{end}")
 
             prev_button = date_popup.find_element_by_xpath(
                 "// button[@aria-label='Previous year']"
