@@ -239,8 +239,10 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             )
         page.open_usage_info()
 
-    def find_generation_account_action(self, page: sce_pages.SceMultiAccountLandingPage):
-        sce_pages.detect_and_close_survey()
+    def find_generation_account_action(
+        self, page: sce_pages.SceMultiAccountLandingPage
+    ):
+        sce_pages.detect_and_close_survey(self._driver)
         page.search_by_service_id(page.said)
         time.sleep(5)
         WebDriverWait(
@@ -318,7 +320,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
 
         # Not sure if there is a better way to do this but,
         # Go back to home page in case a generation account is specified
-        self._driver.get('https://www.sce.com/mysce/myaccount')
+        self._driver.get("https://www.sce.com/mysce/myaccount")
 
     def view_generation_usage_action(
         self, page: sce_pages.SceBilledGenerationUsageModal
@@ -327,7 +329,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         generation_usage_data = page.parse_data()
 
         for b in self.billing_history:
-            _end_date = (b.end + timedelta(days=1)).strftime('%m/%d/%Y')
+            _end_date = (b.end + timedelta(days=1)).strftime("%m/%d/%Y")
             try:
                 cost = generation_usage_data[_end_date]
             except KeyError:

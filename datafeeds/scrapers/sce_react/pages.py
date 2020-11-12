@@ -426,7 +426,6 @@ class SceBilledGenerationUsageModal(PageState):
         for row in rows:
             cols = row.find_elements_by_tag_name("td")
             meterReadDate = cols[0].text
-            numberOfDays = cols[1].text
             chargesThisPeriod = cols[2].text
             table_data[meterReadDate] = float(chargesThisPeriod.replace("$", ""))
         return table_data
