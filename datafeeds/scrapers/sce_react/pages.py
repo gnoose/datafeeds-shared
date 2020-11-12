@@ -429,6 +429,7 @@ class SceBilledGenerationUsageModal(PageState):
             numberOfDays = cols[1].text
             chargesThisPeriod = cols[2].text
             table_data[meterReadDate] = float(chargesThisPeriod.replace("$", ""))
+        return table_data
 
 
 class SceServiceAccountDetailModal(PageState):
