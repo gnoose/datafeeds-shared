@@ -2,7 +2,7 @@ import csv
 import time
 import logging
 
-from typing import Optional, Tuple, List, Dict, Callable, Union
+from typing import Optional, Tuple, List, Callable, Union
 from datetime import timedelta, datetime, date, time as time_t
 from dateutil import parser as dateparser
 from dateutil.relativedelta import relativedelta
@@ -10,6 +10,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from retrying import retry
 
+from datafeeds.common import Timeline
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import DateRange
 from datafeeds.common.support import Results
@@ -17,7 +18,7 @@ from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration
 from datafeeds.common.typing import Status
-from datafeeds.common.util.selenium import IFrameSwitch, clear_downloads
+from datafeeds.common.util.selenium import IFrameSwitch
 from datafeeds.models import (
     SnapmeterAccount,
     Meter,
@@ -27,14 +28,11 @@ from datafeeds.models import (
 logger = None
 log = logging.getLogger(__name__)
 
-
 EXPECTED_CSV_LEN = 96
 MAX_INTERVAL_LENGTH = 60
 TIME = "time"
 DEMAND = "demand"
 DATE_FORMAT = "%m/%d/%Y"
-
-IntermediateReading = Dict[str, Dict[str, List[Union[float, str]]]]
 
 
 class MissingMeterIDConfigurationException(Exception):
@@ -115,12 +113,13 @@ class IFrameBasePageObject(CSSSelectorBasePageObject):
 
 
 class HECOGridConfiguration(Configuration):
-    def __init__(self, meter_id: str):
+    def __init__(self, meter_id: str, interval: int):
         super().__init__(scrape_readings=True)
 
         # This is the meter_id (not the meter number) associated
         # with the meter on Powertrax.
         self.meter_id = meter_id
+        self.interval = interval
 
 
 class LoginPage(CSSSelectorBasePageObject):
@@ -333,65 +332,8 @@ class HECOScraper(BaseWebScraper):
         raise Exception("Expected column header not found for {}".format(column_title))
 
     @staticmethod
-    def _remove_incomplete_demand_data(
-        response: IntermediateReading, date_to_check: str
-    ):
-        """
-        As we're iterating through the CSV, once all the demand data for a given
-        day (date_to_check) is populated, we verify that the amount of data is
-        what we expected.
-
-        If demand data length is incorrect, or demand start/stop times don't match
-        up, they are removed from the response.
-        """
-        to_delete = False
-        if len(response[date_to_check][DEMAND]) != EXPECTED_CSV_LEN:
-            log.info(
-                "Skipping partial day {}, unexpected CSV row length ({} != {}).".format(
-                    date_to_check, len(response[date_to_check]), EXPECTED_CSV_LEN
-                )
-            )
-            to_delete = True
-
-        # First demand value expected at midnight
-        if (
-            response[date_to_check][TIME]
-            and response[date_to_check][TIME][0] != "00:00"
-        ):
-            to_delete = True
-
-        # Final demand value for the day expected fifteen min before midnight
-        if (
-            response[date_to_check][TIME]
-            and response[date_to_check][TIME][-1] != "23:45"
-        ):
-            to_delete = True
-
-        if to_delete:
-            # Not including partial days in the response
-            del response[date_to_check]
-        return
-
-    @staticmethod
     def _format_time(time_to_format: time_t) -> str:
         return time_to_format.strftime("%H:%M")
-
-    @staticmethod
-    def _finalize_readings(
-        readings: IntermediateReading,
-    ) -> Dict[str, List[Union[float, str]]]:
-        """
-        Modifies the intermediate readings format to take the final desired format,
-        dates mapped to arrays of demand values
-        readings = {
-            'YYYY-MM-DD': [100.3, 432.0, ...],
-            'YYYY-MM-DD': ['104.3', '99.7', ...],
-        }
-        """
-        finalized = {}
-        for each_date in readings:
-            finalized[each_date] = readings[each_date][DEMAND]
-        return finalized
 
     @staticmethod
     def _convert_demand_type(demand: str) -> Union[float, str]:
@@ -400,13 +342,12 @@ class HECOScraper(BaseWebScraper):
         except ValueError:
             return demand
 
-    def _process_csv(self, file_path: str, response: IntermediateReading):
+    def _process_csv(self, file_path: str, timeline: Timeline):
         """
         Processes the demand download csv from Powertrax - lots of whitespace in
         the column headers and data.
 
-        Modifies the intermediate response dictionary, adding additional days
-        keyed to an dictionary with 'time' and 'demand' keys. There should be
+        Add values to timeline object. There should be
         96 demand values, at 15 minute increments, starting at midnight
         example: response = {
             'YYYY-MM-DD': {
@@ -416,7 +357,7 @@ class HECOScraper(BaseWebScraper):
         }
 
         :param file_path: path for the downloaded csv file
-        :param response: Demand dictionary in intermediate format
+        :param timeline: timeline containing demand data
         """
         with open(file_path) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=",")
@@ -426,32 +367,16 @@ class HECOScraper(BaseWebScraper):
             # Assumes there's only one kW column - this is channel 1
             demand_col = HECOScraper._get_header_position(header_row, "KW")
 
-            current_date = ""
             for row in csv_reader:
                 raw_datetime = dateparser.parse(row[date_time_col].strip())
-                raw_date = raw_datetime.date().strftime("%Y-%m-%d")
-                raw_time = HECOScraper._format_time(raw_datetime.time())
                 raw_demand = row[demand_col].strip()
-
-                if current_date and current_date != raw_date:
-                    # An entire day's worth of demand data has been populated
-                    HECOScraper._remove_incomplete_demand_data(response, current_date)
-
-                if raw_date not in response:
-                    response[raw_date] = {TIME: [], DEMAND: []}
-
-                # To cover gaps in csv data returned, some days may be pulled multiple times.
-                if len(response[raw_date][DEMAND]) < EXPECTED_CSV_LEN:
-                    response[raw_date][TIME].append(raw_time)
-                    response[raw_date][DEMAND].append(
-                        self._convert_demand_type(raw_demand)
-                    )
-
-                current_date = raw_date
-
-        # Verifies the last day's demand data is present
-        HECOScraper._remove_incomplete_demand_data(response, current_date)
-        return response
+                val = self._convert_demand_type(raw_demand)
+                # If we get two values for the same timestamp, average them.
+                # This is likely to happen on fall DST day, when we get two sets of readings for 1:00-1:45.
+                if timeline.lookup(raw_datetime):
+                    val = (timeline.lookup(raw_datetime) + val) / 2
+                timeline.insert(raw_datetime, val)
+        return timeline
 
     def login_to_mvweb(self):
         """
@@ -523,7 +448,7 @@ class HECOScraper(BaseWebScraper):
         date_range = DateRange(adjusted_start, adjusted_end)
         interval_size = relativedelta(days=MAX_INTERVAL_LENGTH)
 
-        readings = {}
+        timeline = Timeline(adjusted_start, adjusted_end, self._configuration.interval)
         # Breaks the date range into small, manageable chunks and downloads a csv
         # of demands for each one.
         for sub_range in date_range.split_iter(delta=interval_size):
@@ -536,16 +461,9 @@ class HECOScraper(BaseWebScraper):
             file_path = self.download_file("csv")
 
             # Extract intermediate info from csv
-            self._process_csv(file_path, readings)
+            self._process_csv(file_path, timeline)
 
-            # Clean up any downloaded files
-            log.info("Cleaning up downloads.")
-            clear_downloads(self._driver.download_dir)
-
-        # Transform readings dict into final desired format
-        transformed_readings = HECOScraper._finalize_readings(readings)
-
-        return Results(readings=transformed_readings)
+        return Results(readings=timeline.serialize(include_empty=False))
 
 
 def datafeed(
@@ -555,7 +473,9 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
-    configuration = HECOGridConfiguration(meter_id=meter.service_id)
+    configuration = HECOGridConfiguration(
+        meter_id=meter.service_id, interval=meter.interval
+    )
 
     return run_datafeed(
         HECOScraper,
