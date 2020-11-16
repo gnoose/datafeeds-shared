@@ -1,11 +1,18 @@
+import json
 from datetime import date, timedelta
 from unittest import TestCase
 
+from datafeeds.common import Timeline
+from datafeeds.common.support import Credentials, DateRange
 from datafeeds import db
 from datafeeds.common import test_utils
 from datafeeds.models import Meter
 from datafeeds.models.meter import MeterReading
-from datafeeds.scrapers.scl_meterwatch import MeterDataPage
+from datafeeds.scrapers.scl_meterwatch import (
+    MeterDataPage,
+    SCLMeterWatchConfiguration,
+    SCLMeterWatchScraper,
+)
 
 
 class SCLTestDates(TestCase):
@@ -59,48 +66,22 @@ class SCLTestDates(TestCase):
             "use requested start date when newer readings exist",
         )
 
+    def test_fall_daylight_savings(self):
+        """Test Fall DST values are not double counted"""
 
-# #
-#
-# """
-#     Run this to launch the scl-meterwatch scraper:
-#
-#     $ export PYTHONPATH=$(pwd)
-#     $ python datafeeds/scrapers/tests/test_scl_meterwatch.py service_id start end username
-#     password
-# """
-#
-#
-# def test_scraper(
-#     service_id: str, start_date: date, end_date: date, username: str, password: str
-# ):
-#     meter = db.session.query(Meter).first()
-#     configuration = SCLMeterWatchConfiguration(
-#         meter_numbers=[service_id], meter_oid=meter.oid
-#     )
-#     credentials = Credentials(username, password)
-#     scraper = SCLMeterWatchScraper(
-#         credentials, DateRange(start_date, end_date), configuration
-#     )
-#     scraper.start()
-#     scraper.scrape(
-#         readings_handler=print, bills_handler=None,
-#     )
-#     scraper.stop()
-#
-#
-# if __name__ == "__main__":
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument("service_id", type=str)
-#     parser.add_argument("start", type=str)
-#     parser.add_argument("end", type=str)
-#     parser.add_argument("username", type=str)
-#     parser.add_argument("password", type=str)
-#     args = parser.parse_args()
-#     test_scraper(
-#         args.service_id,
-#         date_parser.parse(args.start).date(),
-#         date_parser.parse(args.end).date(),
-#         args.username,
-#         args.password,
-#     )
+        date_range = DateRange(date(2020, 11, 1), date(2020, 11, 1))
+        timeline = Timeline(date_range.start_date, date_range.end_date, 15)
+        scraper = SCLMeterWatchScraper(
+            Credentials(None, None),
+            date_range,
+            SCLMeterWatchConfiguration(meter_numbers=["803441"], meter=self.meter),
+        )
+        scraper._process_csv(
+            "datafeeds/scrapers/tests/fixtures/scl_meterwatch_dst.csv", timeline
+        )
+        with open(
+            "datafeeds/scrapers/tests/fixtures/scl_meterwatch_dst_expected.json"
+        ) as f:
+            expected = json.loads(f.read())
+
+        self.assertEqual(expected, timeline.serialize())
