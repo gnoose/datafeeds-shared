@@ -5,7 +5,7 @@ import csv
 from dateutil.parser import parse as parse_date
 from dateutil.relativedelta import relativedelta
 from typing import NewType, Tuple, List, Optional
-from datetime import datetime, date, timedelta
+from datetime import datetime, date, timedelta, time
 
 from datafeeds import config, db
 from datafeeds.common import Timeline
@@ -16,6 +16,7 @@ from datafeeds.common.exceptions import (
     InvalidDateRangeError,
     DataSourceConfigurationError,
 )
+from datafeeds.common.daylight_savings import DST_ENDS
 from datafeeds.common.support import Configuration, DateRange, Results
 from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.common.typing import Status
@@ -30,11 +31,40 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
+
 log = logging.getLogger(__name__)
 
 
 MAX_DOWNLOAD_DAYS = 180
 IntervalReading = NewType("IntervalReading", Tuple[datetime, Optional[float]])
+
+"""
+# SCL Meter Watch Data is grouped into buckets that look like this:
+
+Starting Date	Ending Date	  Starting Time	Ending Time
+11/01/2020	    11/01/2020	  00:45:01	    01:00:00
+11/01/2020	    11/01/2020	  01:00:01	    01:15:00
+11/01/2020	    11/01/2020	  01:15:01	    01:30:00
+11/01/2020	    11/01/2020	  01:30:01	    01:45:00
+
+DST relevant hours fall into the 12:45 AM - 1:30 AM buckets
+"""
+DST_DOUBLE_COUNTED = [
+    time(0, 45, 0),
+    time(1, 0, 0),
+    time(1, 15, 0),
+    time(1, 30, 0),
+]
+
+
+def fall_dst_hours() -> List[datetime]:
+    """Returns datetimes where data is double counted due to Fall DST.
+    """
+    dst_double_count = []
+    for dst_date in DST_ENDS:
+        for dst_time in DST_DOUBLE_COUNTED:
+            dst_double_count.append(datetime.combine(dst_date, dst_time))
+    return dst_double_count
 
 
 def parse_usage_from_csv(csv_file_path) -> List[IntervalReading]:
@@ -313,6 +343,37 @@ class SCLMeterWatchScraper(BaseWebScraper):
         self.name = "SCL MeterWatch"
         self.url = "http://smw.seattle.gov"
 
+    @staticmethod
+    def _process_csv(csv_file_path: str, timeline: Timeline) -> None:
+        # read kWh Usage with csv into timeline
+        for reading in parse_usage_from_csv(csv_file_path):
+            reading_datetime = reading[0]
+            reading_value = reading[1]
+            # multiply by 4 because SCL returns 1/4 of an hour's worth
+            reading_value *= 4
+
+            # subtract a second from reading_datetime because the "Starting
+            # Time" in data always start at 1 second (e.g: 00:15:01 instead
+            # of 00:15:00), and Timeline initializes the index with zero
+            # seconds (e.g 00:15:00)
+            reading_datetime = reading_datetime - timedelta(seconds=1)
+            current_value = timeline.lookup(reading_datetime)
+
+            if reading_datetime in fall_dst_hours():
+                reading_value /= 2
+                log.info(
+                    "Adjusted for daylight savings %s: %s",
+                    reading_datetime,
+                    reading_value,
+                )
+
+            # if value already exists for datetime, add to it
+            if current_value:
+                log.info("Adding to current_value %s", current_value)
+                reading_value = current_value + reading_value
+
+            timeline.insert(reading_datetime, reading_value)
+
     def _execute(self):
         # Meterwatch immediately spawns a popup when loaded which is the actual
         # window we want. So we have to go and grab the main window handle and
@@ -362,25 +423,7 @@ class SCLMeterWatchScraper(BaseWebScraper):
 
                 log.info(f"parsing kWh usage from downloaded data for {meter_number}")
 
-                # read kWh Usage with csv into timeline
-                for reading in parse_usage_from_csv(csv_file_path):
-                    reading_datetime = reading[0]
-                    reading_value = reading[1]
-                    # multiply by 4 because SCL returns 1/4 of an hour's worth
-                    reading_value *= 4
-
-                    # subtract a second from reading_datetime because the "Starting
-                    # Time" in data always start at 1 second (e.g: 00:15:01 instead
-                    # of 00:15:00), and Timeline initializes the index with zero
-                    # seconds (e.g 00:15:00)
-                    reading_datetime = reading_datetime - timedelta(seconds=1)
-                    current_value = timeline.lookup(reading_datetime)
-
-                    # if value already exists for datetime, add to it
-                    if current_value:
-                        reading_value = current_value + reading_value
-
-                    timeline.insert(reading_datetime, reading_value)
+                self._process_csv(csv_file_path, timeline)
 
         return Results(readings=timeline.serialize(include_empty=False))
 
