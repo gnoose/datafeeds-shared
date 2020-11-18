@@ -42,7 +42,7 @@ PASSWORD_SEL = "#pt1\\:pwli\\:pwd\\:\\:content"
 MY_BILL_MENU_HEADER_SEL = (
     "#pt1\\\\:pt_dc2\\\\:desktopNav > ul:nth-child(1) > li:nth-child(2)"
 )
-BILL_HISTORY_LINK_SEL = "#pt1\\:pt_dc2\\:i1\\:1\\:i2\\:11\\:navChild"
+BILL_HISTORY_LINK_SEL = "#pt1\\:pt_dc2\\:i1\\:1\\:i2\\:13\\:navChild"
 BILL_HISTORY_TABLE_SEL = "#pt1\\:pgl5 > div > table"
 
 WAYS_TO_SAVE_MENU_HEADER_SEL = (
@@ -553,6 +553,7 @@ class SocalGasScraper(BaseWebScraper):
         self._driver.click(BILL_HISTORY_LINK_SEL)
 
         try:
+            log.info("clicking BILL_HISTORY_TABLE_SEL")
             (
                 self._driver.wait(20).until(
                     EC.visibility_of_element_located(
