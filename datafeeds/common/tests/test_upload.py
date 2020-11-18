@@ -22,7 +22,7 @@ from datafeeds.scrapers.sce_react.energymanager_billing import (
     SceReactEnergyManagerBillingConfiguration,
 )
 
-from datafeeds.models.bill import Bill, PartialBill
+from datafeeds.models.bill import Bill, PartialBill, PartialBillProviderType
 
 billing_data = [
     BillingDatum(
@@ -110,7 +110,7 @@ class TestPartialBillProcessor(unittest.TestCase):
 
         # Three new partial bills added for the given service
         status = upload.upload_partial_bills(
-            self.meter, self.configuration, None, billing_data
+            self.meter, None, billing_data, PartialBillProviderType.TND_ONLY
         )
         db.session.flush()
         self.assertEqual(status, Status.SUCCEEDED)
@@ -130,7 +130,9 @@ class TestPartialBillProcessor(unittest.TestCase):
         )
 
         # No new partial bills have arrived, so no changes made
-        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
+        upload.upload_partial_bills(
+            self.meter, None, billing_data, PartialBillProviderType.TND_ONLY
+        )
         db.session.flush()
         self.assertEqual(partial_bills.count(), 3)
         self.assertEqual([pb.modified for pb in partial_bills.all()], modified_dates)
@@ -150,7 +152,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
         # Existing bill superseded because new partial bill with new cost uploaded
         status = upload.upload_partial_bills(
-            self.meter, self.configuration, None, altered_cost
+            self.meter, None, altered_cost, PartialBillProviderType.TND_ONLY
         )
         db.session.flush()
         self.assertEqual(status, Status.SUCCEEDED)
@@ -180,7 +182,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
         # New bill overlaps dates with two existing partial bills
         upload.upload_partial_bills(
-            self.meter, self.configuration, None, overlapping_bill_datum
+            self.meter, None, overlapping_bill_datum, PartialBillProviderType.TND_ONLY
         )
         db.session.flush()
         overlapping_bill = self._get_partial_bill_from_billing_datum(
@@ -208,7 +210,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
         # Bad usage detected so we don't supersede the original bill
         upload.upload_partial_bills(
-            self.meter, self.configuration, None, bad_usage_detected
+            self.meter, None, bad_usage_detected, PartialBillProviderType.TND_ONLY
         )
         db.session.flush()
         self.assertEqual(partial_bills.count(), 5)
@@ -228,7 +230,9 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         # Zero usage okay as long as we're not overwriting existing zero usage
-        upload.upload_partial_bills(self.meter, self.configuration, None, bad_usage_new)
+        upload.upload_partial_bills(
+            self.meter, None, bad_usage_new, PartialBillProviderType.TND_ONLY
+        )
         db.session.flush()
         self.assertEqual(partial_bills.count(), 6)
         self.assertEqual(partial_bills.filter(PartialBill.used == 0.0).count(), 1)
@@ -248,7 +252,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
         # Snaps start date, because initial bill starts on the closing date of an existing bill
         upload.upload_partial_bills(
-            self.meter, self.configuration, None, overlaps_with_closing
+            self.meter, None, overlaps_with_closing, PartialBillProviderType.TND_ONLY
         )
         db.session.flush()
         self.assertEqual(partial_bills.count(), 7)
@@ -280,7 +284,7 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         upload.upload_partial_bills(
-            self.meter, self.configuration, None, new_bill_updating_manual
+            self.meter, None, new_bill_updating_manual, PartialBillProviderType.TND_ONLY
         )
         db.session.flush()
         self.assertEqual(partial_bills.count(), 7)
@@ -290,7 +294,9 @@ class TestPartialBillProcessor(unittest.TestCase):
         service = self.meter.utility_service
 
         # Three new partial bills added for the given service
-        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
+        upload.upload_partial_bills(
+            self.meter, None, billing_data, PartialBillProviderType.TND_ONLY
+        )
 
         partial_bills = (
             db.session.query(PartialBill)
@@ -329,7 +335,9 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
 
         # Partial coming in with new attachment
-        upload.upload_partial_bills(self.meter, self.configuration, None, new_partials)
+        upload.upload_partial_bills(
+            self.meter, None, new_partials, PartialBillProviderType.TND_ONLY
+        )
         self.assertEqual(partial_bills.count(), 4)
 
         superseded_partial = (
@@ -378,7 +386,9 @@ class TestPartialBillProcessor(unittest.TestCase):
             )
         ]
         # Partial coming in with updated attachment
-        upload.upload_partial_bills(self.meter, self.configuration, None, new_partials)
+        upload.upload_partial_bills(
+            self.meter, None, new_partials, PartialBillProviderType.TND_ONLY
+        )
         self.assertEqual(partial_bills.count(), 5)
 
         replacement = (
@@ -401,7 +411,9 @@ class TestPartialBillProcessor(unittest.TestCase):
         service = self.meter.utility_service
 
         # Three new partial bills added for the given service
-        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
+        upload.upload_partial_bills(
+            self.meter, None, billing_data, PartialBillProviderType.TND_ONLY
+        )
 
         partial_bills = (
             db.session.query(PartialBill)
@@ -437,7 +449,9 @@ class TestPartialBillProcessor(unittest.TestCase):
         ]
 
         # Partial coming in with new line items
-        upload.upload_partial_bills(self.meter, self.configuration, None, new_partials)
+        upload.upload_partial_bills(
+            self.meter, None, new_partials, PartialBillProviderType.TND_ONLY
+        )
         self.assertEqual(partial_bills.count(), 4)
 
         superseded_partial = (
@@ -469,14 +483,18 @@ class TestPartialBillProcessor(unittest.TestCase):
         )
 
         # No data changed, so no new partials created
-        upload.upload_partial_bills(self.meter, self.configuration, None, new_partials)
+        upload.upload_partial_bills(
+            self.meter, None, new_partials, PartialBillProviderType.TND_ONLY
+        )
         self.assertEqual(partial_bills.count(), 4)
 
     def test_scrape_utility_code(self):
         service = self.meter.utility_service
 
         # Three new partial bills added for the given service
-        upload.upload_partial_bills(self.meter, self.configuration, None, billing_data)
+        upload.upload_partial_bills(
+            self.meter, None, billing_data, PartialBillProviderType.TND_ONLY
+        )
 
         partial_bills = (
             db.session.query(PartialBill)
@@ -499,7 +517,9 @@ class TestPartialBillProcessor(unittest.TestCase):
             utility_code="A6",
         )
 
-        upload.upload_partial_bills(self.meter, self.configuration, None, [new_partial])
+        upload.upload_partial_bills(
+            self.meter, None, [new_partial], PartialBillProviderType.TND_ONLY
+        )
         self.assertEqual(partial_bills.count(), 4)
 
         superseded_partial = (
@@ -571,7 +591,7 @@ class TestPartialBillValidator(unittest.TestCase):
             validator.run_prevalidation()
 
         status = upload.upload_partial_bills(
-            self.meter, self.configuration, None, overlapping_bills
+            self.meter, None, overlapping_bills, PartialBillProviderType.TND_ONLY
         )
         self.assertEqual(status, Status.FAILED)
 
@@ -596,7 +616,7 @@ class TestPartialBillValidator(unittest.TestCase):
             validator.run_prevalidation()
 
         status = upload.upload_partial_bills(
-            self.meter, self.configuration, None, future_bill
+            self.meter, None, future_bill, PartialBillProviderType.TND_ONLY
         )
         self.assertEqual(status, Status.FAILED)
 

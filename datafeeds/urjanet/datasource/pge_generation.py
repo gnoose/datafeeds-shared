@@ -8,8 +8,8 @@ from datafeeds.models import (
     SnapmeterAccount,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+from datafeeds.models.bill import PartialBillProviderType
 from datafeeds.models.utility_service import (
-    GENERATION_ONLY,
     UtilityService,
     UtilityServiceSnapshot,
 )
@@ -396,6 +396,5 @@ def datafeed(
         ),
         PacificGasElectricUrjaXMLTransformer(),
         task_id=task_id,
-        urja_partial_billing=True,
-        partial_type=GENERATION_ONLY,
+        partial_type=PartialBillProviderType.GENERATION_ONLY,
     )

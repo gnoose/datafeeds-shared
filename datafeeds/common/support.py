@@ -1,11 +1,10 @@
 import argparse
-from typing import List
+from typing import List, Dict, Optional
 
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
-from datafeeds.common.typing import BillPdf
-from datafeeds.models.utility_service import GENERATION_ONLY, TND_ONLY
+from datafeeds.common.typing import BillPdf, BillingDatum
 
 
 class ScraperArgs:
@@ -53,9 +52,7 @@ class Configuration:
     configuration for specific scraper runs, such as options from datasource
     or account/service ID
 
-    When creating a partial billing scraper, pass in service_id and utility_account_id
-    for T&D scrapers, and pass in gen_service_id and gen_utility_account_id for
-    generation scrapers.
+    Partial billing scrapers should return Results with data in either tnd_bills or generation_bills.
     """
 
     def __init__(
@@ -64,15 +61,11 @@ class Configuration:
         scrape_readings: bool = False,
         scrape_pdfs: bool = False,
         scrape_partial_bills: bool = False,
-        partial_type: str = None,
     ):
         self.scrape_bills = scrape_bills
         self.scrape_readings = scrape_readings
         self.scrape_pdfs = scrape_pdfs
         self.scrape_partial_bills = scrape_partial_bills
-        self.partial_type = (
-            partial_type if partial_type in [TND_ONLY, GENERATION_ONLY] else None
-        )
 
 
 class Credentials:
@@ -135,10 +128,24 @@ class DateRange:
 
 
 class Results:
-    """Container for bill, interval, or pdf results"""
+    """Container for bill, interval, or pdf results
 
-    def __init__(self, bills=None, readings=None, pdfs: List[BillPdf] = None):
-        # Can be bills or partial bills
+    Readings should a dictionary like this:
+        {
+            '%Y-%m-%d' : [ N float or null ]
+        }
+    """
+
+    def __init__(
+        self,
+        bills: List[BillingDatum] = None,
+        readings: Dict[str, List[Optional[float]]] = None,
+        pdfs: List[BillPdf] = None,
+        generation_bills: List[BillingDatum] = None,
+        tnd_bills: List[BillingDatum] = None,
+    ):
         self.bills = bills
+        self.generation_bills = generation_bills
+        self.tnd_bills = tnd_bills
         self.readings = readings
         self.pdfs = pdfs

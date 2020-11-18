@@ -10,7 +10,6 @@ from datafeeds.models import (
     SnapmeterAccount,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.models.utility_service import TND_ONLY
 
 from datafeeds.scrapers.smd_partial_bills.models import Bill as SmdBill, CustomerInfo
 
@@ -66,10 +65,7 @@ def relevant_usage_points(m: Meter) -> Set[str]:
 class SmdPartialBillingScraperConfiguration(Configuration):
     def __init__(self, meter: Meter):
         super().__init__(
-            scrape_bills=False,
-            scrape_readings=False,
-            scrape_partial_bills=True,
-            partial_type=TND_ONLY,
+            scrape_bills=False, scrape_readings=False, scrape_partial_bills=True,
         )
         self.meter = meter
 
@@ -117,7 +113,7 @@ class SmdPartialBillingScraper(BaseApiScraper):
                 meter.oid,
             )
 
-        return Results(bills=partial_bills)
+        return Results(tnd_bills=partial_bills)
 
 
 def datafeed(

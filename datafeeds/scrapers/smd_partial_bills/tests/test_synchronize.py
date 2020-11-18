@@ -224,7 +224,7 @@ class TestSynchronizePrimitives(TestCase):
             configuration=config,
         )
         results = scraper._execute()
-        self.assertEqual(3, len(results.bills))
+        self.assertEqual(3, len(results.tnd_bills))
 
         # Perform a quick sanity check that we found the right bill dates.
         # Conversion from an SMD bill to a billing datum is tested elsewhere in depth.
@@ -237,5 +237,5 @@ class TestSynchronizePrimitives(TestCase):
             (date(2020, 3, 2), date(2020, 3, 31)),
         ]
 
-        actual = [(b.start, b.end) for b in results.bills]
+        actual = [(b.start, b.end) for b in results.tnd_bills]
         self.assertEqual(expected, actual)
