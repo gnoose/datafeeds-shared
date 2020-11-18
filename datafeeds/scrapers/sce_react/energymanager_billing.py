@@ -29,7 +29,6 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.models.bill import TND_ONLY
 
 
 log = logging.getLogger(__name__)
@@ -59,7 +58,6 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
             scrape_bills=scrape_bills,
             scrape_readings=False,
             scrape_partial_bills=scrape_partial_bills,
-            partial_type=TND_ONLY,
         )
         self.service_id = service_id
         self.utility = utility
@@ -162,7 +160,10 @@ class SceReactEnergyManagerBillingScraper(BaseWebScraper):
         final_state = state_machine.run()
         if final_state == "done":
             self.log_bills(self.billing_history)
-            return Results(bills=self.billing_history)
+            if self.scrape_partial_bills:
+                return Results(tnd_bills=self.billing_history)
+            else:
+                return Results(bills=self.billing_history)
         raise Exception(
             "The scraper did not reach a finished state, this will require developer attention."
         )

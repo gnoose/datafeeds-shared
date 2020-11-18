@@ -3,6 +3,7 @@
 This module covers tables managed by webapps/platform that describe utility services.
 Except for unit tests, analytics should treat these tables as Read Only.
 """
+from enum import Enum
 from typing import Dict, List, Union
 from datetime import datetime
 from sqlalchemy import JSON
@@ -19,14 +20,18 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
 from datafeeds import db
-from datafeeds.models.utility_service import (
-    TND_ONLY,
-    GENERATION_ONLY,
-    UTILITY_BUNDLED,
-    UtilityService,
-)
+from datafeeds.models.utility_service import UtilityService
 
-PARTIAL_BILL_PROVIDER_TYPES = [TND_ONLY, GENERATION_ONLY, UTILITY_BUNDLED]
+
+class PartialBillProviderType(Enum):
+    TND_ONLY = "tnd-only"
+    GENERATION_ONLY = "generation-only"
+
+    # Usually the Enum names are used in the database, but we already have values with dashes in the
+    # database. These can't be used as class member names.
+    @classmethod
+    def values(cls):
+        return [f.value for f in PartialBillProviderType]
 
 
 class Bill(ModelMixin, Base):
@@ -70,7 +75,7 @@ class PartialBill(ModelMixin, Base):
     # Date added to the db
     created = sa.Column(sa.DateTime, default=func.now())
     # Type of partial bill - is this a generation bill or a T&D bill?
-    provider_type = sa.Column(sa.Enum(*PARTIAL_BILL_PROVIDER_TYPES))
+    provider_type = sa.Column(sa.Enum(*PartialBillProviderType.values()))
     # If the partial bill has been superseded by a newer bill, store its oid here.
     superseded_by = sa.Column(
         sa.BigInteger, sa.ForeignKey("partial_bill.oid"), nullable=True
@@ -88,7 +93,10 @@ class PartialBill(ModelMixin, Base):
 
     @classmethod
     def generate(
-        cls, service: UtilityService, provider_type: str, bill: BillingDatum
+        cls,
+        service: UtilityService,
+        provider_type: PartialBillProviderType,
+        bill: BillingDatum,
     ) -> "PartialBill":
         """Generates a partial bill for the service from the BillingDatum.
 
@@ -106,7 +114,7 @@ class PartialBill(ModelMixin, Base):
         if service_id is None:
             service_id = (
                 service.gen_service_id
-                if provider_type == GENERATION_ONLY
+                if provider_type == PartialBillProviderType.GENERATION_ONLY
                 else service.service_id
             )
 
@@ -115,14 +123,17 @@ class PartialBill(ModelMixin, Base):
         if utility is None:
             utility = (
                 service.gen_utility
-                if provider_type == GENERATION_ONLY
+                if provider_type == PartialBillProviderType.GENERATION_ONLY
                 else service.utility
             )
 
         # If utility account id was scraped, use this, otherwise, pull from the UtilityService record.
         utility_account_id = bill.utility_account_id
         if utility_account_id is None:
-            if provider_type == GENERATION_ONLY and service.gen_utility_account_id:
+            if (
+                provider_type == PartialBillProviderType.GENERATION_ONLY
+                and service.gen_utility_account_id
+            ):
                 utility_account_id = service.gen_utility_account_id
             else:
                 utility_account_id = service.utility_account_id
@@ -139,7 +150,7 @@ class PartialBill(ModelMixin, Base):
             items=cls.map_line_items(bill.items),
             attachments=cls.map_attachments(attachments),
             service=service.oid,
-            provider_type=provider_type,
+            provider_type=provider_type.value,
             service_id=service_id,
             utility_account_id=utility_account_id,
             utility=utility,

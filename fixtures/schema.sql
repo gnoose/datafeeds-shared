@@ -175,8 +175,7 @@ ALTER TYPE public.flow_direction_enum OWNER TO gridium;
 
 CREATE TYPE public.partial_bill_provider_type_enum AS ENUM (
     'tnd-only',
-    'generation-only',
-    'utility-bundled'
+    'generation-only'
 );
 
 

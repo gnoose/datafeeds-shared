@@ -22,7 +22,6 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.models.utility_service import GENERATION_ONLY
 
 log = logging.getLogger(__name__)
 
@@ -44,7 +43,6 @@ class SceReactBasicBillingConfiguration(Configuration):
         super().__init__(
             scrape_bills=scrape_bills,
             scrape_partial_bills=scrape_partial_bills,
-            partial_type=GENERATION_ONLY,
             scrape_readings=False,
         )
         self.service_id = service_id
@@ -57,7 +55,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         self.browser_name = "Chrome"
         self.name = "SCE React Basic Billing"
         self.billing_history = []
-        self.partial_billing_history = []
+        self.gen_billing_history = []
 
     @property
     def service_id(self):
@@ -198,7 +196,11 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         final_state = state_machine.run()
         if final_state == "done":
             if self.scrape_partial_bills:
-                return Results(bills=self.partial_billing_history)
+                # T&D bills use the same pages/path as bundled bills
+                return Results(
+                    generation_bills=self.gen_billing_history,
+                    tnd_bills=self.billing_history,
+                )
             else:
                 return Results(bills=self.billing_history)
         raise Exception(
@@ -262,6 +264,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         page.view_billed_generation_charge()
 
     def view_usage_action(self, page: sce_pages.SceServiceAccountDetailModal):
+        """Scrape data for bundled or T&D bills."""
         page.select_usage_report()
 
         usage_info = page.get_usage_info(self.start_date, self.end_date)
@@ -307,13 +310,13 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         log.debug("billing_objects=%s", billing_objects)
         self.billing_history = billing_objects
 
-        # Not sure if there is a better way to do this but,
         # Go back to home page in case a generation account is specified
         self._driver.get("https://www.sce.com/mysce/myaccount")
 
     def view_generation_usage_action(
         self, page: sce_pages.SceBilledGenerationUsageModal
     ):
+        """Scrape generation bill data; these are displayed on a different modal than bundled/T&D bills."""
         gen_billing_objects: List[BillingDatum] = []
         gen_values = page.parse_data()
         log.debug("generation values=%s", gen_values)
@@ -341,7 +344,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             )
         log.info("created %s generation billing objects", len(gen_billing_objects))
         log.debug("gen_billing_objects=%s", gen_billing_objects)
-        self.partial_billing_history = gen_billing_objects
+        self.gen_billing_history = gen_billing_objects
 
 
 def datafeed(
@@ -351,11 +354,14 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
+    # If there's a generation service id for the meter, get generation partials (with gen_service_id)
+    # and T&D partials (with service_id). Otherwise, get bundled bills.
+    is_partial = meter.utility_service.gen_service_id is not None
     configuration = SceReactBasicBillingConfiguration(
         service_id=meter.service_id,
         gen_service_id=meter.utility_service.gen_service_id,
-        scrape_bills="billing" in datasource.source_types,
-        scrape_partial_bills="partial-billing" in datasource.source_types,
+        scrape_bills=not is_partial,
+        scrape_partial_bills=is_partial,
     )
 
     return run_datafeed(
