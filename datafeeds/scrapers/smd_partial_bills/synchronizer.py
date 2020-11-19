@@ -34,7 +34,7 @@ def relevant_usage_points(m: Meter) -> Set[str]:
         return set()
 
     records = db.session.query(CustomerInfo).filter(
-        CustomerInfo.service_id == us.service_id
+        CustomerInfo.service_id == us.service_id.strip()
     )
     usage_points = {rec.usage_point for rec in records}
 

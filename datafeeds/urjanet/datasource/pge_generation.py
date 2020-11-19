@@ -79,13 +79,13 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
         self.validate()
 
         # For testing, where you may not have a utility service.
-        utility_account_ids = [self.utility_account_number]
+        utility_account_ids = [self.utility_account_number.strip()]
         stripped_historical_ids = []
 
         if self.utility_service:
             # Fetching historical utility_account_ids and gen_account_ids from snapshot table
             historical_account_ids = [
-                account_id[0]
+                account_id[0].strip()
                 for account_id in (
                     db.session.query(UtilityServiceSnapshot.utility_account_id)
                     .filter(
@@ -103,7 +103,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                 stripped_historical_ids.append(_remove_check_digit(account_id))
 
             historical_gen_account_ids = [
-                account_id[0]
+                account_id[0].strip()
                 for account_id in (
                     db.session.query(UtilityServiceSnapshot.gen_utility_account_id)
                     .filter(
@@ -130,10 +130,15 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                             filter(
                                 None,
                                 [
-                                    self.utility_account_number,
-                                    self.account_number,
-                                    self.utility_service.utility_account_id,
-                                    self.utility_service.gen_utility_account_id,
+                                    (self.utility_account_number or "").strip(),
+                                    (self.account_number or "").strip(),
+                                    (
+                                        self.utility_service.utility_account_id or ""
+                                    ).strip(),
+                                    (
+                                        self.utility_service.gen_utility_account_id
+                                        or ""
+                                    ).strip(),
                                 ],
                             )
                         ),
@@ -179,11 +184,11 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
 
         """
         # For testing, where you may not have a utility service.
-        service_ids = [self.meter_id]
+        service_ids = [self.meter_id.strip()]
 
         if self.utility_service:
             historical_service_ids = [
-                result[0]
+                result[0].strip()
                 for result in (
                     db.session.query(UtilityServiceSnapshot.service_id)
                     .filter(
@@ -196,7 +201,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
             ]
 
             gen_historical_service_ids = [
-                result[0]
+                result[0].strip()
                 for result in (
                     db.session.query(UtilityServiceSnapshot.gen_service_id)
                     .filter(
@@ -219,9 +224,9 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                             filter(
                                 None,
                                 [
-                                    self.meter_id,
-                                    self.utility_service.service_id,
-                                    self.utility_service.gen_service_id,
+                                    (self.meter_id or "").strip(),
+                                    (self.utility_service.service_id or "").strip(),
+                                    (self.utility_service.gen_service_id or "").strip(),
                                 ],
                             )
                         ),
