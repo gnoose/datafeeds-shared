@@ -9,9 +9,11 @@ from dateutil.relativedelta import relativedelta
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
+from datafeeds.common.alert import post_slack_message
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
 
+from datafeeds import db
 from datafeeds.common.exceptions import ApiError
 from datafeeds.common.support import Configuration, DateRange, Results
 from datafeeds.common.timeline import Timeline
@@ -26,13 +28,17 @@ from datafeeds.models import (
 log = logging.getLogger(__name__)
 DATE_FORMAT = "%m-%d-%Y"
 MAX_DOWNLOAD_DAYS = 178  # Max days set by Bloom minus one to get full previous day
-INTERVAL = 15
+
+
+class NoIntervalDataException(Exception):
+    pass
 
 
 class BloomGridConfiguration(Configuration):
-    def __init__(self, site_name: str):
+    def __init__(self, site_name: str, meter_oid: int):
         super().__init__(scrape_readings=True)
         self.site_name = site_name
+        self.meter_oid = meter_oid
 
 
 class LoginPage(CSSSelectorBasePageObject):
@@ -53,7 +59,6 @@ class LoginPage(CSSSelectorBasePageObject):
 
 
 class LandingPage(CSSSelectorBasePageObject):
-    # ReportTabSelector = ".sidenav ul li:nth-child(2) a.nav-dropdown-toggle"
     ReportTabSelectorXpath = "//span[text()='Reports']"
     DataTabSelectorXpath = "//span[text()='Data Extract']"
 
@@ -97,7 +102,7 @@ class DataExtractPage(CSSSelectorBasePageObject):
 
         return int(from_year.find_elements_by_tag_name("option")[0].text)
 
-    def handle_multiselect(self, select: str, select_list: str, text: str):
+    def handle_multiselect(self, select: str, text: str):
         self.find_element(self.CardHeader).click()
         self.find_element(select).click()
         log.info("Select text %s", text)
@@ -153,15 +158,15 @@ class ExcelParser:
             )
         )
 
-    def parse_kwh(self, row_number: int):
+    def parse_kwh(self, row_number: int, interval: int):
         return self._convert_kwh_to_kw(
-            self.xl_sheet.cell(row_number, self.value_col).value
+            self.xl_sheet.cell(row_number, self.value_col).value, interval
         )
 
     @staticmethod
-    def _convert_kwh_to_kw(kwh: float):
-        # 15 minute intervals so multiply by 60 minutes and divide by interval
-        return (kwh * 60) / INTERVAL
+    def _convert_kwh_to_kw(kwh: float, interval: int):
+        # 15 minute intervals (or 1440 for 1st gen models) so multiply by 60 minutes and divide by interval
+        return (kwh * 60) / interval
 
 
 class BloomScraper(BaseWebScraper):
@@ -174,6 +179,10 @@ class BloomScraper(BaseWebScraper):
     @property
     def site_name(self):
         return self._configuration.site_name
+
+    @property
+    def meter_oid(self):
+        return self._configuration.meter_oid
 
     def adjust_start_and_end_dates(self, start_year: int):
         """
@@ -197,30 +206,57 @@ class BloomScraper(BaseWebScraper):
     def _format_date(date_to_format: datetime) -> str:
         return date_to_format.strftime(DATE_FORMAT)
 
-    def _process_excel_file(self, file_path: str, start_date: date):
+    def _process_excel_file(self, file_path: str, start_date: date, interval) -> bool:
         parser = ExcelParser(file_path)
         start_row = parser.find_starting_date()
-
         if start_row:
             # Create timeline when we find the first date
             if not self.timeline:
                 new_date = parser.parse_date(start_row).date()
                 if new_date < start_date:
                     new_date = start_date
-                self.timeline = Timeline(new_date, self.end_date)
+                self.timeline = Timeline(new_date, self.end_date, interval=interval)
 
             for row_number in range(start_row, parser.xl_sheet.nrows):
                 date_value = parser.parse_date(row_number)
 
-                raw_kwh = parser.parse_kwh(row_number)
+                raw_kwh = parser.parse_kwh(row_number, interval)
                 self.timeline.insert(date_value, raw_kwh)
+        return bool(start_row)
+
+    def _get_meter_interval(self):
+        meter = db.session.query(Meter).get(self.meter_oid)
+        return meter.interval
+
+    def _check_meter_interval(self, interval=1440):
+        meter_interval = self._get_meter_interval()
+        if meter_interval == interval:
+            log.info("Meter interval is already %s", interval)
+            return
+        log.error("Interval for meter %s is %s", self.meter_oid, interval)
+        post_slack_message(
+            "Bloom meter %s returned empty interval data. It may only have daily values"
+            % self.meter_oid,
+            "#scrapers",
+            ":exclamation:",
+            username="Scraper monitor",
+        )
+        # An engineer will need to check the Bloom UI
+        # and possibly change the meter interval in the database.
+        raise NoIntervalDataException
 
     def _execute(self):
         self._driver.get(self.site_url)
+        log.info(self._configuration.__dict__)
+        log.info(self._configuration.meter_oid)
+        interval = self._get_meter_interval()
+        log.info("meter interval is %s", interval)
 
         login_page = LoginPage(self._driver)
         landing_page = LandingPage(self._driver)
         extract_page = DataExtractPage(self._driver)
+        if interval == 1440:
+            extract_page.IntervalRadio = 'label[for="timeInterval-daily"]'
 
         login_page.wait_until_ready(login_page.SigninButtonSelector)
         self.screenshot("before login")
@@ -238,24 +274,30 @@ class BloomScraper(BaseWebScraper):
         date_range = DateRange(self.start_date, self.end_date)
         interval_size = relativedelta(days=MAX_DOWNLOAD_DAYS)
 
+        readings = []
+
+        self._export_data(extract_page, date_range, interval_size, interval=interval)
+
+        if self.timeline:
+            readings = self.timeline.serialize()
+
+        return Results(readings=readings)
+
+    def _export_data(self, extract_page, date_range, interval_size, interval):
         extract_page.wait_until_ready(extract_page.CustomRadio)
-        extract_page.handle_multiselect(
-            extract_page.SiteSelect, extract_page.SiteList, self.site_name
-        )
+        extract_page.handle_multiselect(extract_page.SiteSelect, self.site_name)
 
         # Metric multi-select
         # The site seems to have changed at some point - all options are now enabled
         # However, the scraper fails without this step
         extract_page.handle_multiselect(
-            extract_page.MetricSelect,
-            extract_page.MetricList,
-            "Fuel Cell Energy Generation",
+            extract_page.MetricSelect, "Fuel Cell Energy Generation",
         )
 
         extract_page.handle_radio_buttons(extract_page.IntervalRadio)
-
         extract_page.handle_radio_buttons(extract_page.CustomRadio)
 
+        found_fifteen_minute_data = False
         for sub_range in date_range.split_iter(delta=interval_size):
             extract_page.wait_until_ready(extract_page.FromDate)
             # Minus one day because it will be missing midnight value for that day
@@ -265,16 +307,17 @@ class BloomScraper(BaseWebScraper):
             )
             excel_filename = self.download_file("xlsx")
 
-            self._process_excel_file(excel_filename, sub_range.start_date)
-            time.sleep(3)
-
+            status = self._process_excel_file(
+                excel_filename, sub_range.start_date, interval
+            )
             log.info("Cleaning up download.")
             clear_downloads(self._driver.download_dir)
+            if status:
+                found_fifteen_minute_data = True
 
-        readings = []
-        if self.timeline:
-            readings = self.timeline.serialize()
-        return Results(readings=readings)
+            time.sleep(3)
+        if not found_fifteen_minute_data:
+            self._check_meter_interval(interval=1440)
 
 
 def datafeed(
@@ -285,7 +328,9 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
 
-    configuration = BloomGridConfiguration(site_name=datasource.meta.get("site_name"))
+    configuration = BloomGridConfiguration(
+        site_name=datasource.meta.get("site_name"), meter_oid=meter.oid
+    )
 
     return run_datafeed(
         BloomScraper,
