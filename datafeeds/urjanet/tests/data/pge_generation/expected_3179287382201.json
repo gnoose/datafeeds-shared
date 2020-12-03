@@ -51,7 +51,7 @@
             "statement": "2016-09-22",
             "tariff": "COM-1",
             "total_charge": "245.7000",
-            "total_usage": "1283.0000",
+            "total_usage": "2565.0000",
             "utility": "utility:mce",
             "utility_account_id": "4222020224-0",
             "line_items": [
@@ -150,7 +150,7 @@
             "statement": "2016-11-23",
             "tariff": "A-1-A",
             "total_charge": "213.6000",
-            "total_usage": "1271.2500",
+            "total_usage": "2712.0000",
             "utility": "utility:mce",
             "utility_account_id": "0766767600-7",
             "line_items": [
@@ -378,7 +378,7 @@
             "statement": "2017-04-25",
             "tariff": "A-1-A",
             "total_charge": "146.7000",
-            "total_usage": "1153.0000",
+            "total_usage": "2460.0000",
             "utility": "utility:mce",
             "utility_account_id": "3322023233-0",
             "line_items": [
@@ -434,7 +434,7 @@
             "statement": "2017-05-24",
             "tariff": "A-1-A",
             "total_charge": "179.3300",
-            "total_usage": "1049.4138",
+            "total_usage": "2341.0000",
             "utility": "utility:mce",
             "utility_account_id": "8888088808-0",
             "line_items": [
@@ -705,7 +705,7 @@
             "statement": "2017-11-21",
             "tariff": "A-1-A",
             "total_charge": "188.3300",
-            "total_usage": "1205.9310",
+            "total_usage": "2498.0000",
             "utility": "utility:mce",
             "utility_account_id": "7722722247-7",
             "line_items": [
@@ -976,7 +976,7 @@
             "statement": "2018-05-22",
             "tariff": "A-1-A",
             "total_charge": "188.0300",
-            "total_usage": "1204.0000",
+            "total_usage": "2494.0000",
             "utility": "utility:mce",
             "utility_account_id": "9177079799-0",
             "line_items": [
@@ -1247,7 +1247,7 @@
             "statement": "2018-11-26",
             "tariff": "A-1-A",
             "total_charge": "169.4800",
-            "total_usage": "1133.0000",
+            "total_usage": "2266.0000",
             "utility": "utility:mce",
             "utility_account_id": "3311111143-1",
             "line_items": [
@@ -1518,7 +1518,7 @@
             "statement": "2019-05-23",
             "tariff": "A-1-A",
             "total_charge": "168.1700",
-            "total_usage": "983.9655",
+            "total_usage": "2195.0000",
             "utility": "utility:mce",
             "utility_account_id": "0033331310-3",
             "line_items": [
@@ -1660,7 +1660,7 @@
             "statement": "2019-07-26",
             "tariff": "A-1-A",
             "total_charge": "148.2600",
-            "total_usage": "1185.9524",
+            "total_usage": "1465.0000",
             "utility": "utility:mce",
             "utility_account_id": "1911311113-6",
             "line_items": [
@@ -1845,7 +1845,7 @@
             "statement": "2019-11-25",
             "tariff": "A-1-A",
             "total_charge": "128.1700",
-            "total_usage": "812.7975",
+            "total_usage": "1555.4470",
             "utility": "utility:mce",
             "utility_account_id": "4344414414-4",
             "line_items": [
@@ -2116,7 +2116,7 @@
             "statement": "2020-05-27",
             "tariff": "A-1-A",
             "total_charge": "91.4100",
-            "total_usage": "580.4875",
+            "total_usage": "1109.7165",
             "utility": "utility:mce",
             "utility_account_id": "1433305503-0",
             "line_items": [
