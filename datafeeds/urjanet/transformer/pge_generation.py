@@ -43,9 +43,13 @@ class PacificGasElectricXMLBillingPeriod(PacificGasElectricBillingPeriod):
 
         for usage in self.usages:
             if usage.EnergyUnit in ["kWh", "therms"] and usage.RateComponent:
-                if "total" in usage.RateComponent:
+                if usage.RateComponent == "[total]":
                     return Decimal(usage.UsageAmount)
+                elif "total" in usage.RateComponent:
+                    # Ex. [total, winter]
+                    totalized.append(usage)
                 elif "peak" in usage.RateComponent:
+                    # Ex. [mid_peak, summer]
                     totalized.append(usage)
         return Decimal(sum([usage.UsageAmount for usage in totalized]))
 
