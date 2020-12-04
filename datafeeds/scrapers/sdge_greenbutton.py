@@ -134,6 +134,11 @@ class SdgeGreenButtonScraper(BaseApiScraper):
         start = max(self.start_date, date(2017, 1, 1))
         end = min(self.end_date, date.today())
 
+        # SDGE sometimes does not publish the most recent bill until several weeks after its close date.
+        # Ensure the time window is large enough to capture some bills.
+        if end - start < timedelta(days=90):
+            start = end - timedelta(days=90)
+
         date_range = DateRange(start, end)
 
         service_updates = []
