@@ -77,6 +77,7 @@ from datafeeds.urjanet.transformer import (
     FosterCityWaterTransformer,
     GenericWaterTransformer,
     SDGETransformer,
+    SanDiegoWaterTransformer,
     SouthlakeTransformer,
     WataugaTransformer,
     AmericanTransformer,
@@ -478,7 +479,7 @@ class SanDiegoWaterCli(DatasourceCli):
         )
 
     def make_transformer(self):
-        return GenericWaterTransformer()
+        return SanDiegoWaterTransformer()
 
 
 class SDGECli(DatasourceCli):

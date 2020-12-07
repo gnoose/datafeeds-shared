@@ -7,7 +7,7 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.urjanet.transformer import GenericWaterTransformer
+from datafeeds.urjanet.transformer import SanDiegoWaterTransformer
 
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import Account, Meter as UrjaMeter
@@ -55,6 +55,6 @@ def datafeed(
         SanDiegoWaterDatasource(
             meter.utility_service.utility, meter.utility_account_id
         ),
-        GenericWaterTransformer(),
+        SanDiegoWaterTransformer(),
         task_id,
     )
