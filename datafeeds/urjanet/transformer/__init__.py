@@ -10,6 +10,7 @@ from .nationalgrid import NationalGridTransformer
 from .nve import NVEnergyTransformer
 from .pge import PacificGasElectricTransformer
 from .pge_generation import PacificGasElectricUrjaXMLTransformer
+from .sandiego_water import SanDiegoWaterTransformer
 from .sdge import SDGETransformer
 from .sfpuc import SanFranciscoWaterTransformer
 from .southlake import SouthlakeTransformer
@@ -42,7 +43,7 @@ __all__ = [
     "NVEnergyTransformer",
     "PacificGasElectricTransformer",
     "PacificGasElectricUrjaXMLTransformer",
-    "SanFranciscoWaterTransformer",
+    "SanDiegoWaterTransformer",
     "SanFranciscoWaterTransformer",
     "SDGETransformer",
     "SouthlakeTransformer",
