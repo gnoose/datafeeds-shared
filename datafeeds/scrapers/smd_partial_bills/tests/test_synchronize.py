@@ -10,6 +10,7 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+from datafeeds.models.utility_service import UtilityServiceSnapshot
 
 from datafeeds.scrapers.smd_partial_bills.models import (
     Bill as SmdBill,
@@ -198,6 +199,26 @@ class TestSynchronizePrimitives(TestCase):
 
         db.session.flush()
         self.assertEqual("ABCDE", mds.meta["usage_point"])
+
+    def test_usage_point_selection_from_snapshot_table(self):
+        """Can select usage points across multiple historical service ids from UtilityServiceSnapshot table"""
+        snapshot = UtilityServiceSnapshot(
+            service=self.meter.service,
+            service_id="49392",
+            system_created=datetime.utcnow(),
+            system_modified=datetime.utcnow(),
+            service_modified=datetime.utcnow() - timedelta(weeks=2),
+        )
+        db.session.add(snapshot)
+        db.session.flush()
+
+        self.add_customer_info("12345", "ABCDE")
+        self.add_customer_info("49392", "EEEFJ")
+        self.add_customer_info("99101", "UFSSL")
+
+        actual = relevant_usage_points(self.meter)
+        expected = {"EEEFJ", "ABCDE"}
+        self.assertEqual(actual, expected)
 
     def test_bill_precedence(self):
         """When bills are selected from SMD tables they are presented in chronological order with no overlaps."""
