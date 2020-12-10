@@ -8,17 +8,14 @@ from datafeeds.common import DateRange
 from datafeeds.common.typing import (
     BillingDatum,
     BillingData,
-    InvalidPartialTypeError,
     show_bill_summary,
     assert_is_without_overlaps,
     NoFutureBillsError,
     OverlappedBillingDataDateRangeError,
     Status,
 )
-from datafeeds.common.support import Configuration
-from datafeeds.models.bill import GENERATION_ONLY, TND_ONLY
 from datafeeds.models.meter import Meter
-from datafeeds.models.bill import PartialBill
+from datafeeds.models.bill import PartialBill, PartialBillProviderType
 
 log = logging.getLogger(__name__)
 
@@ -44,7 +41,10 @@ def adjust_billing_datum_type(bill: BillingDatum):
 
 class PartialBillProcessor:
     def __init__(
-        self, meter: Meter, scraper_config: Configuration, billing_data: BillingData
+        self,
+        meter: Meter,
+        bill_type: PartialBillProviderType,
+        billing_data: BillingData,
     ):
         """
         Partial bills are "intermediate" bills that are assumed to contain only a subset of the
@@ -57,12 +57,12 @@ class PartialBillProcessor:
         Partial bills are written directly to the partial bills table.
 
         :param meter: Meter object
-        :param scraper_config: Original scraper Configuration
+        :param bill_type: T&D or generation
         :param billing_data: Pending partial bills.  Because partial bills/bill objects share core fields,
         this is a BillingData type.
         """
         self.meter = meter
-        self.configuration = scraper_config
+        self.bill_type = bill_type
         self.staged_partial: List[PartialBill] = []
         self.superseded: List[PartialBill] = []
 
@@ -70,17 +70,6 @@ class PartialBillProcessor:
         for i, bd in enumerate(billing_data):
             billing_data[i] = adjust_billing_datum_type(bd)
         self.billing_data = billing_data
-
-    @property
-    def partial_bills_type(self):
-        """
-        Retrieves the partial bills type from the scraper configuration.
-        """
-        partial_type = getattr(self.configuration, "partial_type", None)
-        if partial_type in (TND_ONLY, GENERATION_ONLY):
-            return partial_type
-        else:
-            raise InvalidPartialTypeError()
 
     @property
     def haves(self) -> List[PartialBill]:
@@ -94,7 +83,7 @@ class PartialBillProcessor:
         return (
             db.session.query(PartialBill)
             .filter(PartialBill.service == self.meter.service)
-            .filter(PartialBill.provider_type == self.partial_bills_type)
+            .filter(PartialBill.provider_type == self.bill_type.value)
             .filter(PartialBill.superseded_by.is_(None))
             .filter(PartialBill.visible.is_(True))
             .order_by(PartialBill.initial.asc())
@@ -190,7 +179,7 @@ class PartialBillProcessor:
         if not superseding:
             # Create a new partial bill, if one has not been created already
             superseding = PartialBill.generate(
-                self.meter.utility_service, self.partial_bills_type, pending_partial
+                self.meter.utility_service, self.bill_type, pending_partial
             )
             # Added for logging purposes
             self.staged_partial.append(superseding)
@@ -272,7 +261,7 @@ class PartialBillProcessor:
             if not found:
                 # Pending partial bill does not already exist, so we stage a new one
                 pb = PartialBill.generate(
-                    self.meter.utility_service, self.partial_bills_type, pending_partial
+                    self.meter.utility_service, self.bill_type, pending_partial
                 )
                 self.staged_partial.append(pb)
 
@@ -290,9 +279,11 @@ class PartialBillProcessor:
 
         # Logs summary of just the new partial bills that were written to the db.
         if self.staged_partial:
-            self.staged_partial.reverse()
+            sorted_partials = sorted(
+                self.staged_partial, key=lambda b: b.initial, reverse=True
+            )
             self._show_partial_bill_summary(
-                self.staged_partial, "New Partial Bills Written to DB"
+                sorted_partials, "New Partial Bills Written to DB"
             )
         else:
             log.info("No new partial bills written to the db.")

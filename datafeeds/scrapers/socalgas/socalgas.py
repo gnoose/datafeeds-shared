@@ -10,7 +10,11 @@ from dateutil import parser as date_parser
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import (
+    ElementNotInteractableException,
+    NoSuchElementException,
+    TimeoutException,
+)
 
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
@@ -42,7 +46,7 @@ PASSWORD_SEL = "#pt1\\:pwli\\:pwd\\:\\:content"
 MY_BILL_MENU_HEADER_SEL = (
     "#pt1\\\\:pt_dc2\\\\:desktopNav > ul:nth-child(1) > li:nth-child(2)"
 )
-BILL_HISTORY_LINK_SEL = "#pt1\\:pt_dc2\\:i1\\:1\\:i2\\:11\\:navChild"
+BILL_HISTORY_LINK_SEL = "#pt1\\:pt_dc2\\:i1\\:1\\:i2\\:13\\:navChild"
 BILL_HISTORY_TABLE_SEL = "#pt1\\:pgl5 > div > table"
 
 WAYS_TO_SAVE_MENU_HEADER_SEL = (
@@ -284,16 +288,22 @@ class SocalGasScraper(BaseWebScraper):
                 (By.ID, "mui-component-select-accountnumber")
             )
         )
-        self._driver.find_element_by_id("mui-component-select-accountnumber").click()
-        log.info("Selecting account %s", self.account_id)
-        account_xpath = "//li[contains(text(), '%s')]" % self.account_id
-        account = self._driver.find_element_by_xpath(account_xpath)
-        self._driver.execute_script("arguments[0].scrollIntoView();", account)
-        self._driver.wait().until(
-            EC.visibility_of_element_located((By.XPATH, account_xpath))
-        )
-        time.sleep(2)
-        account.click()
+        try:
+            self._driver.find_element_by_id(
+                "mui-component-select-accountnumber"
+            ).click()
+            log.info("Selecting account %s", self.account_id)
+
+            account_xpath = "//li[contains(text(), '%s')]" % self.account_id
+            account = self._driver.find_element_by_xpath(account_xpath)
+            self._driver.execute_script("arguments[0].scrollIntoView();", account)
+            self._driver.wait().until(
+                EC.visibility_of_element_located((By.XPATH, account_xpath))
+            )
+            time.sleep(2)
+            account.click()
+        except (ElementNotInteractableException, NoSuchElementException):
+            log.info("Could not select account. May only have 1")
 
     def _download_green_button(self):
         log.info("DOWNLOADING GREEN BUTTON")
@@ -553,6 +563,7 @@ class SocalGasScraper(BaseWebScraper):
         self._driver.click(BILL_HISTORY_LINK_SEL)
 
         try:
+            log.info("clicking BILL_HISTORY_TABLE_SEL")
             (
                 self._driver.wait(20).until(
                     EC.visibility_of_element_located(

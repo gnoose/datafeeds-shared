@@ -17,6 +17,18 @@ class Status(Enum):
     # COMPLETED means the scraper ran to completion but not did retrieve new data
     COMPLETED = 3
 
+    @classmethod
+    def ordered(cls) -> List["Status"]:
+        """Return status values in order from best (first) to worst (last)."""
+        return [Status.SUCCEEDED, Status.COMPLETED, Status.SKIPPED, Status.FAILED]
+
+    @classmethod
+    def best(cls, statuses: List[Optional["Status"]]) -> Optional["Status"]:
+        for status in Status.ordered():
+            if status in statuses:
+                return status
+        return None
+
 
 class IntervalRange(NamedTuple):
     start: datetime

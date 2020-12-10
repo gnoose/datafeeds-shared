@@ -18,6 +18,7 @@ from datafeeds.common.typing import BillingDatum, Status
 from datafeeds.common.support import Configuration
 from datafeeds.common.webdriver.virtualdisplay import VirtualDisplay
 from datafeeds.common.util.selenium import ec_or, file_exists_in_dir
+from datafeeds.models.bill import PartialBillProviderType
 
 log = logging.getLogger(__name__)
 
@@ -136,57 +137,53 @@ class BaseScraper(Abstract):
         try:
             results = self._execute()
 
+            bills_status = None
+            readings_status = None
+            pdfs_status = None
             if self.scrape_bills:
                 if results.bills:
                     bills_status = bills_handler(results.bills)
                 else:
                     log.error("Expected to find bills but none were returned.")
-                    bills_status = None
-            else:
-                bills_status = None
+
             if self.scrape_readings:
                 if results.readings:
                     readings_status = readings_handler(results.readings)
                 else:
                     log.error("Expected to find interval data but none was returned.")
-                    readings_status = None
-            else:
-                readings_status = None
 
             if self.scrape_pdfs and results.pdfs:
                 pdfs_status = pdfs_handler(results.pdfs)
-            else:
-                pdfs_status = None
 
-            if self.scrape_partial_bills and results.bills:
-                # Because billing scrapers might serve double-duty - the code may work for
-                # bundled bills, as well as be able to extract T&D bills for partial
-                # billing scrapers, we will just pass partial bills results under existing Result.bills
-                partial_bills_status = partial_bills_handler(results.bills)
-            else:
-                partial_bills_status = None
-
-        except Exception:
-            log.exception("Scraper run failed.")
+            partial_bills_tnd_status = None
+            partial_bills_gen_status = None
+            if self.scrape_partial_bills and results.tnd_bills:
+                partial_bills_tnd_status = partial_bills_handler(
+                    results.tnd_bills, PartialBillProviderType.TND_ONLY
+                )
+            if self.scrape_partial_bills and results.generation_bills:
+                partial_bills_gen_status = partial_bills_handler(
+                    results.generation_bills, PartialBillProviderType.GENERATION_ONLY
+                )
+        except Exception as exc:
+            log.exception("Scraper run failed: %s" % exc)
             raise
 
-        for status in (
-            bills_status,
-            readings_status,
-            pdfs_status,
-            partial_bills_status,
-        ):
-            if status == Status.SUCCEEDED:
-                return Status.SUCCEEDED
-        for status in (
-            bills_status,
-            readings_status,
-            pdfs_status,
-            partial_bills_status,
-        ):
-            if status == Status.COMPLETED:
-                return Status.COMPLETED
-        return Status.FAILED
+        # if we tried to get both types of partial bills but one failed, fail the run
+        if Status.FAILED in [partial_bills_tnd_status, partial_bills_gen_status]:
+            return Status.FAILED
+        return (
+            Status.best(
+                [
+                    bills_status,
+                    readings_status,
+                    pdfs_status,
+                    partial_bills_tnd_status,
+                    partial_bills_gen_status,
+                ]
+            )
+            or Status.COMPLETED
+        )  # COMPLETED if all status values are None, but scraper did not throw an exception
 
     @staticmethod
     def log_bills(bills: List[BillingDatum]):

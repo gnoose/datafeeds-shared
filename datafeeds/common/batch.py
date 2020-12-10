@@ -1,7 +1,7 @@
 from datetime import datetime, date, timedelta
 import functools as ft
 import logging
-from typing import Optional, List, Dict, Union
+from typing import Optional, List, Dict
 
 from dateutil import parser as dateparser
 
@@ -10,12 +10,12 @@ from datafeeds import db, config
 from datafeeds.common import alert, index
 from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
 from datafeeds.common.support import Credentials, DateRange
+from datafeeds.models.bill import PartialBillProviderType
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.transformer.base import UrjanetGridiumTransformer
 from datafeeds.urjanet.scraper import (
     BaseUrjanetScraper,
     BaseUrjanetConfiguration,
-    BasePartialBillUrjanetConfiguration,
 )
 from datafeeds.models import (
     Meter,
@@ -79,9 +79,7 @@ def run_datafeed(
         upload_readings, transforms, meter.oid, datasource.name, task_id
     )
     pdfs_handler = ft.partial(attach_bill_pdfs, meter.oid, task_id)
-    partial_bill_handler = ft.partial(
-        upload_partial_bills, meter, configuration, task_id
-    )
+    partial_bill_handler = ft.partial(upload_partial_bills, meter, task_id)
 
     date_range = DateRange(
         *iso_to_dates(params.get("data_start"), params.get("data_end"))
@@ -175,29 +173,19 @@ def run_urjanet_datafeed(
     urja_datasource: UrjanetPyMySqlDataSource,
     transformer: UrjanetGridiumTransformer,
     task_id: Optional[str] = None,
-    urja_partial_billing: Optional[bool] = False,
-    partial_type: Optional[str] = None,
+    partial_type: Optional[PartialBillProviderType] = None,
 ) -> Status:
     conn = db.urjanet_connection()
 
-    scraper_config: Union[BasePartialBillUrjanetConfiguration, BaseUrjanetConfiguration]
     try:
         urja_datasource.conn = conn
-        if urja_partial_billing:
-            scraper_config = BasePartialBillUrjanetConfiguration(
-                urja_datasource=urja_datasource,
-                urja_transformer=transformer,
-                utility_name=meter.utility_service.utility,
-                fetch_attachments=True,
-                partial_type=partial_type,
-            )
-        else:
-            scraper_config = BaseUrjanetConfiguration(
-                urja_datasource=urja_datasource,
-                urja_transformer=transformer,
-                utility_name=meter.utility_service.utility,
-                fetch_attachments=True,
-            )
+        scraper_config = BaseUrjanetConfiguration(
+            urja_datasource=urja_datasource,
+            urja_transformer=transformer,
+            utility_name=meter.utility_service.utility,
+            fetch_attachments=True,
+            partial_type=partial_type,
+        )
 
         return run_datafeed(
             BaseUrjanetScraper,

@@ -1,6 +1,8 @@
 import logging
 from typing import Optional, Set, List
 
+from sqlalchemy import distinct
+
 from datafeeds import db
 from datafeeds.common import Configuration, Results, BaseApiScraper
 from datafeeds.common.batch import run_datafeed
@@ -10,7 +12,7 @@ from datafeeds.models import (
     SnapmeterAccount,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.models.utility_service import TND_ONLY
+from datafeeds.models.utility_service import UtilityServiceSnapshot
 
 from datafeeds.scrapers.smd_partial_bills.models import Bill as SmdBill, CustomerInfo
 
@@ -34,9 +36,25 @@ def relevant_usage_points(m: Meter) -> Set[str]:
     if us is None:
         return set()
 
+    service_ids = [
+        said[0].strip()
+        for said in db.session.query(
+            distinct(UtilityServiceSnapshot.service_id)
+        ).filter(
+            UtilityServiceSnapshot.service == us.oid,
+            UtilityServiceSnapshot.service_id.isnot(None),
+        )
+    ]
+
+    if us.service_id not in service_ids:
+        # This *should* be in the snapshot table, but this is helpful for testing
+        # and covering our bases.
+        service_ids.append(us.service_id.strip())
+
     records = db.session.query(CustomerInfo).filter(
-        CustomerInfo.service_id == us.service_id
+        CustomerInfo.service_id.in_(service_ids)
     )
+
     usage_points = {rec.usage_point for rec in records}
 
     mds = (
@@ -66,10 +84,7 @@ def relevant_usage_points(m: Meter) -> Set[str]:
 class SmdPartialBillingScraperConfiguration(Configuration):
     def __init__(self, meter: Meter):
         super().__init__(
-            scrape_bills=False,
-            scrape_readings=False,
-            scrape_partial_bills=True,
-            partial_type=TND_ONLY,
+            scrape_bills=False, scrape_readings=False, scrape_partial_bills=True,
         )
         self.meter = meter
 
@@ -78,6 +93,11 @@ class SmdPartialBillingScraper(BaseApiScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = "SMD Partial Billing Synchronizer"
+
+    @property
+    def service(self):
+        meter = self._configuration.meter
+        return meter.utility_service
 
     def _execute(self):
         config: SmdPartialBillingScraperConfiguration = self._configuration
@@ -102,7 +122,7 @@ class SmdPartialBillingScraper(BaseApiScraper):
         # The first thing we need to do is order the bills by publication date, so we can decide
         # which SmdBill record is the correct one for our chosen date.
         unified_bills: List[SmdBill] = SmdBill.unify_bills(query)
-        partial_bills = [b.to_billing_datum() for b in unified_bills]
+        partial_bills = [b.to_billing_datum(self.service) for b in unified_bills]
 
         if partial_bills:
             log.debug(
@@ -112,7 +132,7 @@ class SmdPartialBillingScraper(BaseApiScraper):
                 meter.oid,
             )
 
-        return Results(bills=partial_bills)
+        return Results(tnd_bills=partial_bills)
 
 
 def datafeed(

@@ -9,6 +9,7 @@ import requests
 
 from datafeeds import config
 from datafeeds.common.util.s3 import s3_key_exists, upload_file_to_s3
+from datafeeds.models.bill import PartialBillProviderType
 from datafeeds.urjanet.model import Charge, GridiumBillingPeriod, order_json
 from datafeeds.urjanet.datasource.base import UrjanetDataSource
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
@@ -201,32 +202,22 @@ def make_billing_datum(
 
 class BaseUrjanetConfiguration(Configuration):
     def __init__(
-        self, urja_datasource, urja_transformer, utility_name, fetch_attachments
+        self,
+        urja_datasource,
+        urja_transformer,
+        utility_name,
+        fetch_attachments,
+        partial_type: PartialBillProviderType = None,
     ):
         super().__init__(scrape_bills=True)
         self.urja_datasource = urja_datasource
         self.urja_transformer = urja_transformer
         self.utility_name = utility_name
         self.fetch_attachments = fetch_attachments
-
-
-class BasePartialBillUrjanetConfiguration(Configuration):
-    def __init__(
-        self,
-        urja_datasource,
-        urja_transformer,
-        utility_name,
-        fetch_attachments,
-        partial_type,
-    ):
-        """For use where Urjanet is a partial billing datasource - the given scraper
-        pulls down T&D-only, or generation-only charges
-        """
-        super().__init__(scrape_partial_bills=True, partial_type=partial_type)
-        self.urja_datasource = urja_datasource
-        self.urja_transformer = urja_transformer
-        self.utility_name = utility_name
-        self.fetch_attachments = fetch_attachments
+        # if Urjanet is a partial billing datasource, set the type of partial it retrieves
+        self.partial_type = partial_type
+        self.scrape_bills = partial_type is None
+        self.scrape_partial_bills = partial_type is not None
 
 
 class BaseUrjanetScraper(BaseScraper):
@@ -253,6 +244,10 @@ class BaseUrjanetScraper(BaseScraper):
             )
             for bill in gridium_bills.periods
         ]
+        if self._configuration.partial_type == PartialBillProviderType.GENERATION_ONLY:
+            return Results(generation_bills=billing_data_final)
+        if self._configuration.partial_type == PartialBillProviderType.TND_ONLY:
+            return Results(tnd_bills=billing_data_final)
         return Results(bills=billing_data_final)
 
     @property

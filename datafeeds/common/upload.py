@@ -11,7 +11,6 @@ from sqlalchemy import func
 
 from datafeeds import config, db
 from datafeeds.common import index, platform
-from datafeeds.common.support import Configuration
 from datafeeds.common.partial_billing import PartialBillProcessor
 from datafeeds.common.typing import (
     BillingData,
@@ -28,7 +27,7 @@ from datafeeds.common.util.s3 import (
     s3_key_exists,
 )
 from datafeeds.models import UtilityService
-from datafeeds.models.bill import Bill
+from datafeeds.models.bill import Bill, PartialBillProviderType
 from datafeeds.models.meter import Meter, MeterReading
 from datafeeds.models.bill_document import BillDocument
 
@@ -84,7 +83,7 @@ def upload_readings(
     transforms, meter_oid: int, scraper: str, task_id: str, readings
 ) -> Status:
     updated: List[MeterReading] = []
-    if readings and config.enabled("PLATFORM_UPLOAD"):
+    if readings:
         readings = interval_transform.transform(
             transforms, task_id, scraper, meter_oid, readings
         )
@@ -195,7 +194,10 @@ def attach_bill_pdfs(meter_oid: int, task_id: str, pdfs: List[BillPdf],) -> Stat
 
 
 def upload_partial_bills(
-    meter: Meter, configuration: Configuration, task_id: str, billing_data: BillingData,
+    meter: Meter,
+    task_id: str,
+    billing_data: BillingData,
+    bill_type: PartialBillProviderType,
 ) -> Status:
     """
     Goes through billing_data and uploads new partial bills directly to the partial bills table.
@@ -205,7 +207,7 @@ def upload_partial_bills(
     New partial bills are written directly to the db; they do not go through platform.
     """
     log.info("Starting processing of partial bill scraper results.")
-    processor = PartialBillProcessor(meter, configuration, billing_data)
+    processor = PartialBillProcessor(meter, bill_type, billing_data)
     status = processor.process_partial_bills()
     processor.log_summary()
     if task_id and config.enabled("ES_INDEX_JOBS"):
