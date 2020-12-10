@@ -34,6 +34,7 @@ from datafeeds.scrapers.grovestreams import datafeed as grovestreams
 from datafeeds.scrapers.heco_interval import datafeed as heco_interval
 from datafeeds.scrapers.hudson import datafeed as hudson
 from datafeeds.scrapers.keller.keller import datafeed as keller
+from datafeeds.scrapers.ladwp_bill_pdf import datafeed as ladwp_bill_pdf
 from datafeeds.scrapers.ladwp_mvweb import datafeed as ladwp_mvweb
 from datafeeds.scrapers.nationalgrid_interval import datafeed as nationalgrid_interval
 from datafeeds.scrapers.nautilus import datafeed as nautilus
@@ -153,6 +154,7 @@ scraper_functions = {
     "hudson": hudson,
     "irvineranch-water-urjanet": irvineranch,
     "keller": keller,
+    "ladwp-bill-pdf": ladwp_bill_pdf,
     "ladwp-mvweb": ladwp_mvweb,
     "ladwp-water-urjanet": ladwp_water,
     "ladwp-urjanet-v2": ladwp,
