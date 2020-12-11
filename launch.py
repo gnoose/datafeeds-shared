@@ -76,6 +76,7 @@ from datafeeds.scrapers.sce_react.energymanager_greenbutton import (
 from datafeeds.scrapers.sce_react.energymanager_interval import (
     datafeed as sce_react_energymanager_interval,
 )
+from datafeeds.scrapers.sce_react.sce_website import datafeed as sce_website
 from datafeeds.scrapers.smd_partial_bills.synchronizer import (
     datafeed as smd_tnd_partial_billing,
 )
@@ -189,6 +190,7 @@ scraper_functions = {
     "sce-react-energymanager-greenbutton": sce_react_energymanager_greenbutton,
     "sce-react-energymanager-interval": sce_react_energymanager_interval,
     "sce-react-energymanager-partial-billing": sce_react_energymanager_billing,
+    "sce-website": sce_website,
     "scl-meterwatch": scl_meterwatch,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
