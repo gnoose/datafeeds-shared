@@ -21,7 +21,7 @@ EXCLUDE_LINE_ITEMS = [
     "Amount Due",
     "Late Payment Charge",
     "Previous Months Adjustment",
-    "See Next Page for Meter Reading and Billing Details"
+    "See Next Page for Meter Reading and Billing Details",
 ]
 
 
@@ -198,7 +198,9 @@ def old_extract_cost_items(text: str) -> List[BillingDatumItemsEntry]:
     # Sometimes there is not header at all. Check to see if line items include tax (Sales tax);
     # if not, this is probably the use vs previous block.
     if "tax" in cost_data.lower():
-        multiline_match = re.match(r"Electricity Usage.*?([,\d]+).*?([,\-\.\d]+)", cost_data, re.DOTALL)
+        multiline_match = re.match(
+            r"Electricity Usage.*?([,\d]+).*?([,\-\.\d]+)", cost_data, re.DOTALL
+        )
         for row in re.findall(r"(.*? [,\d\.-]+)", cost_data, re.DOTALL):
             match = re.search(r"(.*?)\s+([,\d\.-]+)", row.strip(), re.DOTALL)
             if not match:
@@ -210,9 +212,7 @@ def old_extract_cost_items(text: str) -> List[BillingDatumItemsEntry]:
                     val = multiline_match.group(2)
                 else:
                     val = match.group(2)
-                values[label] = float(
-                    re.sub(r"[,\$]", "", val)
-                )
+                values[label] = float(re.sub(r"[,\$]", "", val))
             except ValueError:
                 log.info("error parsing %s into a number", match.group(2))
     else:
@@ -221,15 +221,19 @@ def old_extract_cost_items(text: str) -> List[BillingDatumItemsEntry]:
             return extract_labels_then_values(match.group(1))
         match = re.search(r"AMOUNT(.*?)METER", text, re.DOTALL)
         # previous bill amount, payments, new charges, adjustments, amount due
-        values = [line for line in match.group(1).split() if re.match(r"\s*\$[\d,\-]+", line)]
-        return [BillingDatumItemsEntry(
-            description="New Charges",
-            quantity=None,
-            rate=None,
-            total=float(values[2].replace("$", "").replace(",", "")),
-            kind="use",
-            unit=None
-        )]
+        amounts: List[str] = [
+            line for line in match.group(1).split() if re.match(r"\s*\$[\d,\-]+", line)
+        ]
+        return [
+            BillingDatumItemsEntry(
+                description="New Charges",
+                quantity=None,
+                rate=None,
+                total=float(amounts[2].replace("$", "").replace(",", "")),
+                kind="use",
+                unit=None,
+            )
+        ]
 
     items = []
     for key in values:
@@ -260,7 +264,9 @@ def old_extract_use_and_demand(text: str) -> Tuple[float, float]:
             log.debug("starting demand: %s", line)
             in_demand = True
             continue
-        if "KWH" in line and ("Energy" in line or "Electricity Usage" in line or "Total KWH" in line):
+        if "KWH" in line and (
+            "Energy" in line or "Electricity Usage" in line or "Total KWH" in line
+        ):
             log.debug("starting use: %s", line)
             if "Total KWH":
                 seen_total = True
