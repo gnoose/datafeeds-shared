@@ -75,7 +75,7 @@ class SceWebsiteScraper(BaseWebScraper):
         return billing_scrapers, interval_scrapers
 
     def _execute(self):
-        scrapers = self._configuration.datasource.meta.get("sources", [])
+        scrapers = (self._configuration.datasource.meta or {}).get("sources", [])
         log.info("scrapers: %s", scrapers)
         account = self._configuration.account
         log.info("account: %s", account.name)
@@ -96,7 +96,9 @@ class SceWebsiteScraper(BaseWebScraper):
                 continue
 
             try:
-                df(account, meter, datasource, params, task_id)
+                status = df(account, meter, datasource, params, task_id)
+                log.info("billing scraper %s result=%s", scraper_type, status)
+                # keep going since basic_billing does not get PDFs and energymanager_billing does
             except LoginFailedException:
                 log.exception("Billing sub-scraper failed to login: %s", scraper_type)
                 raise
