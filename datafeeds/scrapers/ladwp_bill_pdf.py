@@ -90,7 +90,7 @@ def get_pdf_text(filename) -> str:
             lines.append(line)
 
     pdf_text = "\n".join(lines)
-    text_filename = filename.replace("pdf", "txt")
+    text_filename = filename.replace(r".pdf", r".txt")
     with open("%s" % text_filename, "w") as f:
         f.write(pdf_text)
         log.info("wrote text to %s" % text_filename)
