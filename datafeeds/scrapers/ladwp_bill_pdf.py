@@ -393,7 +393,7 @@ class LoginPage(CSSSelectorBasePageObject):
     SplashScreenSelector = ".af_document_splash-screen-cell"
 
     def wait_until_ready(self):
-        log.debug("Waiting for Login page to be ready")
+        log.info("Waiting for Login page to be ready")
         self._driver.wait().until(
             EC.presence_of_element_located(
                 (By.CSS_SELECTOR, self.UsernameFieldSelector)
@@ -504,6 +504,7 @@ class BillHistoryPage(CSSSelectorBasePageObject):
             except Exception:
                 # Probably not a date
                 continue
+            log.debug("found bill date %s", bill_date)
             if start <= bill_date <= end:
                 log.info(f"Downloading Bill for date: {bill_date_str}")
                 link.click()
@@ -532,7 +533,11 @@ class LADWPBillPdfScraper(BaseWebScraper):
         my_account_page = MyAccountPage(self._driver)
         bill_history_page = BillHistoryPage(self._driver)
 
-        login_page.wait_until_ready()
+        try:
+            login_page.wait_until_ready()
+        except Exception as exc:
+            self.screenshot("login")
+            raise exc
         login_page.login(self.username, self.password)
         self.screenshot("after login")
 

@@ -22,6 +22,20 @@ USE_BLOCK_E = re.compile(
     r"Service Period:\s*(\d\d/\d\d/\d{4})\s*To:\s*(\d\d/\d\d/\d{4})\s+Usage Month"
 )
 USE_BLOCK_F = re.compile(r"(\d+)\s+Total Usage")
+# AMOUNT, two cost values, then two sets of readings
+USE_BLOCK_G = re.compile(
+    r"AMOUNT\s+\d+\.\d+\s+\d+\.\d+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+Usage Month"
+)
+# BALANCE PRIOR TO LAST BILL, readings and diff, then ADJUSTMENTS
+USE_BLOCK_H = re.compile(
+    r"BALANCE PRIOR TO LAST BILL\s+(\d+)\s+(\d+)\s+(\d+)\s+ADJUSTMENTS"
+)
+# BALANCE PRIOR TO LAST BILL paired readings BALANCE FORWARD (DUE UPON RECEIPT)
+USE_BLOCK_I = re.compile(
+    r"BALANCE PRIOR TO LAST BILL\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+BALANCE FORWARD"
+)
+# PAYMENTS used ADJUSTMENTS
+USE_BLOCK_J = re.compile(r"PAYMENTS\s+(\d+)\s+ADJUSTMENTS")
 
 
 def determine_bill_amount(pdf_text: str) -> Optional[float]:
@@ -66,8 +80,10 @@ def determine_bill_period(pdf_text: str) -> Optional[Tuple[date, date]]:
 #      is always the third number in the first row of the use "table" in the bill. In this case,
 #      we don't try to confirm that the use matches the difference between readings.
 #
-
-
+# - G: AMOUNT, two decimal numbers, then two sets of readings, then Usage Month
+# - H: # BALANCE PRIOR TO LAST BILL, readings and diff, then ADJUSTMENTS
+# - I: BALANCE PRIOR TO LAST BILL paired readings BALANCE FORWARD (DUE UPON RECEIPT)
+# - J: PAYMENTS used ADJUSTMENTS
 def determine_use_a(pdf_text: str) -> Optional[float]:
     match = USE_BLOCK_A.search(pdf_text)
     if match is None:
@@ -159,6 +175,63 @@ def determine_use_f(pdf_text: str) -> Optional[float]:
         return None
 
 
+def determine_use_g(pdf_text: str) -> Optional[float]:
+    match = USE_BLOCK_G.search(pdf_text)
+    if match is None:
+        return None
+
+    try:
+        read_start = int(match.group(1)) + int(match.group(2))
+        read_end = int(match.group(3)) + int(match.group(4))
+    except ValueError:
+        return None
+
+    return float(read_end - read_start)
+
+
+def determine_use_h(pdf_text: str) -> Optional[float]:
+    match = USE_BLOCK_H.search(pdf_text)
+    if match is None:
+        return None
+
+    try:
+        read_start = int(match.group(1))
+        read_end = int(match.group(2))
+        delta = int(match.group(3))
+    except ValueError:
+        return None
+
+    if delta == read_end - read_start:
+        return float(delta)
+
+    return None
+
+
+def determine_use_i(pdf_text: str) -> Optional[float]:
+    match = USE_BLOCK_I.search(pdf_text)
+    if match is None:
+        return None
+
+    try:
+        read_start = int(match.group(1)) + int(match.group(2))
+        read_end = int(match.group(3)) + int(match.group(4))
+    except ValueError:
+        return None
+
+    return float(read_end - read_start)
+
+
+def determine_use_j(pdf_text: str) -> Optional[float]:
+    match = USE_BLOCK_J.search(pdf_text)
+    if match is None:
+        return None
+
+    try:
+        return int(match.group(1))
+    except ValueError:
+        return None
+
+
 def determine_use(pdf_text: str):
     cases = [
         determine_use_a,
@@ -167,6 +240,10 @@ def determine_use(pdf_text: str):
         determine_use_d,
         determine_use_e,
         determine_use_f,
+        determine_use_g,
+        determine_use_h,
+        determine_use_i,
+        determine_use_j,
     ]
     for case in cases:
         result = case(pdf_text)
@@ -192,9 +269,15 @@ def parse_bill_pdf(pdf: BytesIO) -> Optional[BillingDatum]:
     except Exception:
         return None
 
+    with open("/tmp/keller1.txt", "w") as f:
+        f.write(extraction1)
+    with open("/tmp/keller2.txt", "w") as f:
+        f.write(extraction2)
     amount = determine_bill_amount(extraction1)
     period = determine_bill_period(extraction1)
     use = determine_use(extraction2)
+    if use is None:
+        use = 0.0
 
     if amount is not None and period is not None and use is not None:
         return BillingDatum(
