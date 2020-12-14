@@ -10,7 +10,12 @@ import requests
 from datafeeds import config
 from datafeeds.common.util.s3 import s3_key_exists, upload_file_to_s3
 from datafeeds.models.bill import PartialBillProviderType
-from datafeeds.urjanet.model import Charge, GridiumBillingPeriod, order_json
+from datafeeds.urjanet.model import (
+    Charge,
+    GridiumBillingPeriod,
+    order_json,
+    GridiumBillingPeriodCollection,
+)
 from datafeeds.urjanet.datasource.base import UrjanetDataSource
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 from datafeeds.common.base import BaseScraper
@@ -228,6 +233,20 @@ class BaseUrjanetScraper(BaseScraper):
     def _execute(self):
         data = self.urja_datasource.load()
         gridium_bills = self.urja_transformer.urja_to_gridium(data)
+
+        if self._configuration.scrape_partial_bills:
+            restricted_billing_periods = []
+            for period in gridium_bills.periods:
+                if (
+                    period.start >= self._date_range.start_date
+                    and period.end <= self._date_range.end_date
+                ):
+                    restricted_billing_periods.append(period)
+            # Rather than scrape every bill we have, restrict *partial* urjanet scrapers to return data
+            # in the date range, so we can scrape the same amount of data for both partial scrapers on a meter.
+            gridium_bills = GridiumBillingPeriodCollection(
+                periods=restricted_billing_periods
+            )
 
         out_dir = config.WORKING_DIRECTORY
         if out_dir:
