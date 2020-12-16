@@ -79,7 +79,7 @@ class TestLADWPParser(TestCase):
             statement=date(2020, 10, 5),
             cost=882.04,
             used=3520,
-            peak=7.57,
+            peak=10.22,
             items=None,
             attachments=None,
             utility_code=None,
@@ -131,7 +131,7 @@ class TestLADWPParser(TestCase):
             statement=date(2020, 10, 5),
             cost=384.29,
             used=1062,
-            peak=2,
+            peak=2.03,
             items=None,
             attachments=None,
             utility_code=None,
@@ -189,6 +189,20 @@ class TestLADWPParser(TestCase):
             utility_code=None,
         )
         self.assertEqual([expected], parse_pdf(filename, "PMY00209-00014123", "kw"))
+        # uses peaks_2 pattern
+        filename = "datafeeds/scrapers/tests/fixtures/ladwp-202004.pdf"
+        expected = BillingDatum(
+            start=date(2020, 3, 6),
+            end=date(2020, 4, 6),
+            statement=date(2020, 4, 7),
+            cost=2566.24,
+            used=12505,
+            peak=37.72,
+            items=None,
+            attachments=None,
+            utility_code=None,
+        )
+        self.assertEqual([expected], parse_pdf(filename, "APMYD00209-00063954", "kw"))
 
     @patch("datafeeds.scrapers.ladwp_bill_pdf.notify_rebill")
     def test_rebill(self, notify):
@@ -298,6 +312,58 @@ class TestLADWPParser(TestCase):
         ]
         self.assertEqual(
             expected, parse_pdf(filename, "2463041281", "ccf"),
+        )
+
+    def test_alt_regexp(self):
+        """Parser can extract data from a bill with alternate set of regular expressions."""
+        pattern = "datafeeds/scrapers/tests/fixtures/ladwp-%s.pdf"
+        expected = [
+            BillingDatum(
+                start=date(2020, 9, 2),
+                end=date(2020, 10, 1),
+                statement=date(2020, 10, 5),
+                cost=386.52,
+                used=840,
+                peak=6,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected, parse_pdf(pattern % "202010", "PMY00219-00010473", "kw")
+        )
+        expected = [
+            BillingDatum(
+                start=date(2020, 6, 5),
+                end=date(2020, 7, 5),
+                statement=date(2020, 7, 7),
+                cost=357.98,
+                used=720,
+                peak=4.8,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected, parse_pdf(pattern % "202007", "PMY00219-00010473", "kw")
+        )
+        expected = [
+            BillingDatum(
+                start=date(2019, 12, 12),
+                end=date(2020, 1, 13),
+                statement=date(2020, 1, 14),
+                cost=47.48,
+                used=0,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected, parse_pdf(pattern % "202001", "00106-00095149", "kw")
         )
 
 

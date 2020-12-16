@@ -97,6 +97,248 @@ def get_pdf_text(filename) -> str:
     return pdf_text
 
 
+def kw_regexes(meter_number: str):
+    return {
+        "meter_number": fr"METER NUMBER  (.+)  \d+",
+        "billing_period": r"BILLING PERIOD  (\d+/\d+/\d+) - (\d+/\d+/\d+)",
+        "billing_section": (
+            r"(?:[\s\S]*)"  # This ensures that we only match the BILLING PERIOD occurrence that is closest to METER NUMBER
+            r"(BILLING PERIOD  (?:\d+\/\d+\/\d+) - (?:\d+\/\d+\/\d+)[\s\S]+"
+            fr"METER NUMBER  {meter_number}[\s\S]+?"
+            r"Total Electric Charges  \$ [\d,.]+"
+            r"\n.+)"  # Match an extra line ( this line sometimes contain bill usage data (see ladwp-multi.txt) )
+        ),
+        "sub_billing_period": (
+            r"BILLING PERIOD  (?:\d+\/\d+\/\d+) - (?:\d+\/\d+\/\d+)[\s\S]+?"
+            r"State Energy Surcharge - \d+ days\n(.+?kWh)[\s\S]+?"
+            r"Electric Charges (\d+/\d+/\d+) - (\d+/\d+/\d+) \(\d+ Days\)[\s\S]+?"
+            r"\$([\d,\.]+)[\s\S]+?"
+            r"\$([\d,\.]+)"
+        ),
+        "sub_bill_data": (
+            r"State Energy Surcharge - \d+ days\n(?P<used>.+?)kWh[\s\S]+?"
+            r"Electric Charges (?P<start_date>\d+/\d+/\d+) - (?P<end_date>\d+/\d+/\d+) \(\d+ Days\)[\s\S]+?"
+            r"\$(?:[\d,\.]+)[\s\S]+?"
+            r"\$(?P<cost>[\d,\.]+)"
+        ),
+        "peaks": (
+            r"(?:High Peak|Low Peak|Base) High Season Demand - .+days"
+            r"[\s\S]+?(?P<peak>[\d,\.]+) kW x \$[\d\.]+\/kW"
+        ),
+        "peaks_2": r"\n([\d\.]+) kW +([\d\.]+) kW +([\d\.]+) kW\n",
+        # Demand kW  Energy kWh
+        "usage_type_1": r"([\d\.]+) kW  ([\d\.]+) kWh",
+        # from box above line items; may have a variable number of kW / kWh fields
+        # 39.47 kW  38.28 kW  24.59 kW  1556 kWh  2064 kWh  5247 kWh
+        "usage_box_1": r"\n([\d\.]+ +kW .*? kWh)\n",
+        # usage box with kVarh
+        # 878.4 kW  0 kW  892.8 kW  0 kW  619.2 kW  0 kW  234720 kWh  270720 kWh  567360 kWh  145440 kVarh  165600 kVarh  348480 kVarh
+        # 0 kW  0 kW  0 kW  0 kWh  0 kWh  96 kWh  0 kVarh  96 kVarh  96 kVarh
+        "usage_box_2": r"\n([\d\.]+ +kW .*? kVarh)\n",
+        # usage box at the very end of the file
+        "usage_box_3": r"([\d\.]+ .*?kWh)$",
+        "bill_data": (
+            r"State Energy Surcharge[\s\S]+?"
+            r"(?P<used>.+?)kWh x \$([\d\.,]+)\/kWh[\s\S]+?"
+            r"Total Electric Charges  \$ (?P<cost>[\d,\.]+)"
+        ),
+        "cost": r"Total Electric Charges  \$ ([\d,.]+)",
+        # if billing_section not found, try these
+        "alt1_date_usage": r"Electric Charges\s+(\d+/\d+/\d+) - (\d+/\d+/\d+)\s+([\d\.,]+) kWh",
+        # dates but no usage
+        "alt2_date_usage": r"Electric Charges\s+(\d+/\d+/\d+) - (\d+/\d+/\d+)\s+",
+        "alt1_cost": r"Total New Charges\s+\$\s*([\d\.,]+)",
+        # requires re.DOTALL
+        "alt1_peak": r"Total kWh used.*?([\d\.,]+) kW\s+([\d\.,]+) kWh",
+    }
+
+
+def _alternate_section(
+    filename: str, bill_date: date, meter_number: str, pdf_text: str
+) -> List[BillingDatum]:
+    regexes = kw_regexes(meter_number)
+    # try another set of expressions
+    date_usage = re.search(regexes["alt1_date_usage"], pdf_text)
+    if date_usage:
+        used = str_to_float(date_usage.group(3))
+    else:
+        date_usage = re.search(regexes["alt2_date_usage"], pdf_text)
+        used = 0
+    cost = str_to_float(re.search(regexes["alt1_cost"], pdf_text).group(1))
+    peak_match = re.search(regexes["alt1_peak"], pdf_text, re.DOTALL)
+    if date_usage and cost:
+        datum = BillingDatum(
+            start=parse_date(date_usage.group(1)).date(),
+            end=parse_date(date_usage.group(2)).date() - timedelta(days=1),
+            statement=bill_date,
+            cost=cost,
+            used=used,
+            peak=str_to_float(peak_match.group(1)) if peak_match else None,
+            attachments=None,
+            utility_code=None,
+            items=None,
+        )
+        log.info("alternate regex 1: data=%s", datum)
+        return [datum]
+    raise Exception(
+        "Error parsing pdf %s for %s: no billing section found", filename, meter_number,
+    )
+
+
+def _multi_period(
+    bill_date: date, meter_number: str, bill_data_section: str
+) -> List[BillingDatum]:
+    bills: List[BillingDatum] = []
+    regexes = kw_regexes(meter_number)
+    # We're only interested in the "sub" billing periods; delete the first billing
+    # period line from the text, so that regexes["sub_billing_period"] doesn't match it.
+    bill_data_section = re.sub(
+        regexes["billing_period"], "", bill_data_section, count=1,
+    )
+    bill_data_subsections = re.finditer(
+        regexes["sub_billing_period"], bill_data_section
+    )
+
+    for bill_data_subsection_match in bill_data_subsections:
+        # Make a BillingDatum for each billing period
+        bill_data_subsection = bill_data_subsection_match.group()
+        bill_data_match = re.search(regexes["sub_bill_data"], bill_data_subsection)
+        peaks_match = re.findall(regexes["peaks"], bill_data_subsection)
+        log.debug("bill_data=%s peaks=%s", bill_data_match, peaks_match)
+        if bill_data_match:
+            datum = BillingDatum(
+                start=parse_date(bill_data_match.group("start_date")).date(),
+                end=parse_date(bill_data_match.group("end_date")).date()
+                - timedelta(days=1),
+                statement=bill_date,
+                cost=str_to_float(bill_data_match.group("cost")),
+                used=str_to_float(bill_data_match.group("used")),
+                peak=max([str_to_float(x) for x in peaks_match])
+                if peaks_match
+                else None,
+                attachments=None,
+                utility_code=None,
+                items=None,
+            )
+            log.info("multiple billing periods: data=%s", datum)
+            bills.append(datum)
+    return bills
+
+
+def _single_period(
+    bill_date: date,
+    filename: str,
+    meter_number: str,
+    billing_period_match: str,
+    bill_data_section: str,
+    pdf_text: str,
+) -> List[BillingDatum]:
+    """Parse a regular bill with only one billing period."""
+    regexes = kw_regexes(meter_number)
+    cost = used = peak = None
+    if re.search(regexes["cost"], bill_data_section):
+        cost = str_to_float(re.search(regexes["cost"], bill_data_section).group(1))
+    else:
+        raise Exception(
+            "Error parsing pdf %s for %s: couldn't extract cost",
+            filename,
+            meter_number,
+        )
+
+    # There are multiple different ways the bill data is represented in the pdf...
+    for idx in [1, 2, 3]:
+        usage_match = re.search(regexes["usage_box_%s" % idx], bill_data_section)
+        if usage_match:
+            break
+    log.debug("usage_match=%s" % usage_match)
+    if usage_match:
+        bill_data_match = re.search(regexes["bill_data"], bill_data_section)
+        if bill_data_match:
+            # used = str_to_float(bill_data_match.group("used"))
+            cost = str_to_float(bill_data_match.group("cost"))
+        else:
+            cost = str_to_float(re.search(regexes["alt1_cost"], pdf_text).group(1))
+        # ['878.4 kW  ', '0 kW  ', '892.8 kW  ', '0 kW  ', '619.2 kW  ', '0 kW  ', '234720 kWh  ', ...
+        used = 0.0
+        peak = None
+        # ['0 kW', '0 kW', '0 kW', '0 kWh', '0 kWh', '96 kWh']
+        for val in re.findall(r"([\d\.]+ +kWh?)", usage_match.group(1)):
+            float_val = str_to_float(val)
+            if "kWh" in val:
+                used += float_val
+            else:
+                peak = max(peak, float_val) if peak is not None else float_val
+    elif re.search(regexes["usage_type_1"], bill_data_section):
+        peak_str, used_str = re.search(
+            regexes["usage_type_1"], bill_data_section
+        ).group(1, 2)
+        peak = str_to_float(peak_str)
+        used = str_to_float(used_str)
+        log.debug("usage_type_1: peak=%s used=%s", peak, used)
+    else:
+        bill_data_match = re.search(regexes["bill_data"], bill_data_section)
+        used = str_to_float(bill_data_match.group("used"))
+        cost = str_to_float(bill_data_match.group("cost"))
+        peak_matches = re.findall(regexes["peaks"], bill_data_section)
+        peak = None
+        if peak_matches:
+            peak = max([str_to_float(x) for x in peak_matches])
+        else:
+            for exp in ["peaks_2", "usage_box_1"]:
+                match = re.search(regexes[exp], bill_data_section)
+                if match:
+                    peak = max([str_to_float(x) for x in match.groups()])
+                    break
+        log.debug("other: bill_data_match=%s", bill_data_match)
+
+    if cost is not None and used is not None:
+        datum = BillingDatum(
+            start=parse_date(billing_period_match[0]).date(),
+            end=parse_date(billing_period_match[1]).date() - timedelta(days=1),
+            statement=bill_date,
+            cost=cost,
+            used=used,
+            peak=peak,
+            attachments=None,
+            utility_code=None,
+            items=None,
+        )
+        log.info("single billing period: data=%s", datum)
+        return [datum]
+    return []
+
+
+def parse_kw_bill(
+    filename: str, bill_date: date, meter_number: str, pdf_text: str
+) -> List[BillingDatum]:
+    regexes = kw_regexes(meter_number)
+    bill_data_section_match = re.search(regexes["billing_section"], pdf_text)
+
+    if not bill_data_section_match:
+        return _alternate_section(filename, bill_date, meter_number, pdf_text)
+
+    bill_data_section: str = bill_data_section_match.group(1)
+    billing_periods = re.findall(regexes["billing_period"], bill_data_section)
+    if not billing_periods:
+        raise Exception(
+            "Error parsing pdf%s for %s: no Billing Periods found",
+            filename,
+            meter_number,
+        )
+    log.debug("billing_periods=%s", billing_periods)
+    # Check if we have multiple billing periods in a bill
+    if len(billing_periods) > 1:
+        return _multi_period(bill_date, meter_number, bill_data_section)
+    return _single_period(
+        bill_date,
+        filename,
+        meter_number,
+        billing_periods[0],
+        bill_data_section,
+        pdf_text,
+    )
+
+
 def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
     """Method for parsing Water and Fire Bills"""
     bills: List[BillingDatum] = []
@@ -143,8 +385,8 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
                     start=parse_date(fire_data_match.group("start_date")).date(),
                     end=parse_date(fire_data_match.group("end_date")).date(),
                     statement=bill_date,
-                    cost=float(fire_data_match.group("cost")),
-                    used=float(fire_data_match.group("used")),
+                    cost=str_to_float(fire_data_match.group("cost")),
+                    used=str_to_float(fire_data_match.group("used")),
                     peak=None,
                     attachments=None,
                     utility_code=None,
@@ -186,9 +428,17 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
                             end=parse_date(dates_match.group(2)).date(),
                             statement=bill_date,
                             cost=round(
-                                sum([float(x[0]) * float(x[1]) for x in cost_match]), 2
+                                sum(
+                                    [
+                                        str_to_float(x[0]) * str_to_float(x[1])
+                                        for x in cost_match
+                                    ]
+                                ),
+                                2,
                             ),
-                            used=round(sum([float(x[0]) for x in cost_match]), 5),
+                            used=round(
+                                sum([str_to_float(x[0]) for x in cost_match]), 5
+                            ),
                             peak=None,
                             attachments=None,
                             utility_code=None,
@@ -207,172 +457,30 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
     return bills
 
 
+def str_to_float(val: str) -> float:
+    """Convert a string to a float; remove characters other than digits . and ,"""
+    return float(re.sub(r"[^\d\.-]", "", val))
+
+
 def parse_pdf(filename: str, meter_number: str, commodity: str) -> List[BillingDatum]:
     """Parse a PDF and return a list of BillingDatum objects, sorted by start date."""
 
     pdf_text: str = get_pdf_text(filename)
-
-    bills: List[BillingDatum] = []
-
-    regexes = {
-        "bill_date": r"BILL DATE  (.+)",
-        "meter_number": fr"METER NUMBER  (.+)  \d+",
-        "billing_period": r"BILLING PERIOD  (\d+/\d+/\d+) - (\d+/\d+/\d+)",
-        "billing_section": (
-            r"(?:[\s\S]*)"  # This ensures that we only match the BILLING PERIOD occurrence that is closest to METER NUMBER
-            r"(BILLING PERIOD  (?:\d+\/\d+\/\d+) - (?:\d+\/\d+\/\d+)[\s\S]+"
-            fr"METER NUMBER  {meter_number}[\s\S]+?"
-            r"Total Electric Charges  \$ [\d,.]+"
-            r"\n.+)"  # Match an extra line ( this line sometimes contain bill usage data (see ladwp-multi.txt) )
-        ),
-        "sub_billing_period": (
-            r"BILLING PERIOD  (?:\d+\/\d+\/\d+) - (?:\d+\/\d+\/\d+)[\s\S]+?"
-            r"State Energy Surcharge - \d+ days\n(.+?kWh)[\s\S]+?"
-            r"Electric Charges (\d+/\d+/\d+) - (\d+/\d+/\d+) \(\d+ Days\)[\s\S]+?"
-            r"\$([\d,\.]+)[\s\S]+?"
-            r"\$([\d,\.]+)"
-        ),
-        "sub_bill_data": (
-            r"State Energy Surcharge - \d+ days\n(?P<used>.+?)kWh[\s\S]+?"
-            r"Electric Charges (?P<start_date>\d+/\d+/\d+) - (?P<end_date>\d+/\d+/\d+) \(\d+ Days\)[\s\S]+?"
-            r"\$(?:[\d,\.]+)[\s\S]+?"
-            r"\$(?P<cost>[\d,\.]+)"
-        ),
-        "peaks": (
-            r"(?:High Peak|Low Peak|Base) High Season Demand - .+days"
-            r"[\s\S]+?(?P<peak>[\d,\.]+) kW x \$[\d\.]+\/kW"
-        ),
-        # Demand kW  Energy kWh
-        "usage_type_1": r"([\d\.]+) kW  ([\d\.]+) kWh",
-        #  High Peak kW  , Low Peak kW  , Base kW  , High Peak kWh  , Low Peak kWh  , Base kWh
-        "usage_type_2": (
-            r"(?P<high_peak_kw>[\d\.]+) kW  (?P<low_peak_kw>[\d\.]+) kW  (?P<base_kw>[\d\.]+) kW  "
-            r"(?P<high_peak_kwh>[\d\.]+) kWh  (?P<low_peak_kwh>[\d\.]+) kWh  (?P<base_kwh>[\d\.]+) kWh"
-        ),
-        "bill_data": (
-            r"State Energy Surcharge[\s\S]+?"
-            r"(?P<used>.+?)kWh x \$([\d\.,]+)\/kWh[\s\S]+?"
-            r"Total Electric Charges  \$ (?P<cost>[\d,\.]+)"
-        ),
-        "cost": r"Total Electric Charges  \$ ([\d,.]+)",
-    }
-
     # "Bill Date:" is the same on every page of the pdf
-    bill_date_str = re.search(regexes["bill_date"], pdf_text).group(1)
-    bill_date = parse_date(bill_date_str).date()
+    match = re.search(r"BILL DATE  (.+)", pdf_text)
+    if not match and "Meter Reading Unit" in pdf_text:
+        log.warning("Meter reading notice; not a bill")
+        return []
+    bill_date = parse_date(match.group(1)).date()
+
+    if "Corrections" in pdf_text:
+        notify_rebill(meter_number, bill_date)
 
     if commodity == "ccf":
         # Water/Fire bills
         bills = parse_ccf_bill(meter_number, pdf_text)
     else:
-        bill_data_section_match = re.search(regexes["billing_section"], pdf_text)
-
-        if not bill_data_section_match:
-            raise Exception("Error parsing pdf: no billing section found")
-        else:
-            bill_data_section: str = bill_data_section_match.group(1)
-
-        billing_periods = re.findall(regexes["billing_period"], bill_data_section)
-        if not billing_periods:
-            raise Exception("Error parsing pdf: no Billing Periods found")
-        log.debug("billing_periods=%s", billing_periods)
-        # Check if we have multiple billing periods in a bill
-        if len(billing_periods) > 1:
-            # We're only interested in the "sub" billing periods; delete the first billing
-            # period line from the text, so that regexes["sub_billing_period"] doesn't match it.
-            bill_data_section = re.sub(
-                regexes["billing_period"], "", bill_data_section, count=1,
-            )
-
-            bill_data_subsections = re.finditer(
-                regexes["sub_billing_period"], bill_data_section
-            )
-
-            for bill_data_subsection_match in bill_data_subsections:
-                # Make a BillingDatum for each billing period
-                bill_data_subsection = bill_data_subsection_match.group()
-                bill_data_match = re.search(
-                    regexes["sub_bill_data"], bill_data_subsection
-                )
-                peaks_match = re.findall(regexes["peaks"], bill_data_subsection)
-                log.debug("bill_data=%s peaks=%s", bill_data_match, peaks_match)
-                if bill_data_match:
-                    datum = BillingDatum(
-                        start=parse_date(bill_data_match.group("start_date")).date(),
-                        end=parse_date(bill_data_match.group("end_date")).date()
-                        - timedelta(days=1),
-                        statement=bill_date,
-                        cost=float(bill_data_match.group("cost").replace(",", "")),
-                        used=float(bill_data_match.group("used").replace(",", "")),
-                        peak=max([float(x.replace(",", "")) for x in peaks_match])
-                        if peaks_match
-                        else None,
-                        attachments=None,
-                        utility_code=None,
-                        items=None,
-                    )
-                    log.info("multiple billing periods: data=%s", datum)
-                    bills.append(datum)
-        else:
-            # Parse a regular bill with only one billing period
-            billing_period_match = billing_periods[0]
-            cost = used = peak = None
-            if re.search(regexes["cost"], bill_data_section):
-                cost = float(
-                    re.search(regexes["cost"], bill_data_section)
-                    .group(1)
-                    .replace(",", "")
-                )
-            else:
-                raise Exception("Error parsing pdf: couldn't extract cost")
-
-            # There are multiple different ways the bill data is represented in the pdf...
-            if re.search(regexes["usage_type_2"], bill_data_section):
-                bill_data_match = re.search(regexes["bill_data"], bill_data_section)
-                used = float(bill_data_match.group("used").replace(",", ""))
-                cost = float(bill_data_match.group("cost").replace(",", ""))
-                bill_data = re.search(regexes["usage_type_2"], bill_data_section)
-                high_peak_kw = float(bill_data.group("high_peak_kw"))
-                low_peak_kw = float(bill_data.group("low_peak_kw"))
-                peak = max(high_peak_kw, low_peak_kw)
-                log.debug(
-                    "usage_type_2: bill_data_match=%s bill_data=%s",
-                    bill_data_match,
-                    bill_data,
-                )
-            elif re.search(regexes["usage_type_1"], bill_data_section):
-                peak_str, used_str = re.search(
-                    regexes["usage_type_1"], bill_data_section
-                ).group(1, 2)
-                peak = float(peak_str)
-                used = float(used_str)
-                log.debug("usage_type_1: peak=%s used=%s", peak, used)
-            else:
-                bill_data_match = re.search(regexes["bill_data"], bill_data_section)
-                used = float(bill_data_match.group("used").replace(",", ""))
-                cost = float(bill_data_match.group("cost").replace(",", ""))
-                peak_matches = re.findall(regexes["peaks"], bill_data_section)
-                peak = max([float(x.replace(",", "")) for x in peak_matches])
-                log.debug("other: bill_data_match=%s", bill_data_match)
-
-            if cost is not None and used is not None:
-                datum = BillingDatum(
-                    start=parse_date(billing_period_match[0]).date(),
-                    end=parse_date(billing_period_match[1]).date() - timedelta(days=1),
-                    statement=bill_date,
-                    cost=cost,
-                    used=used,
-                    peak=peak,
-                    attachments=None,
-                    utility_code=None,
-                    items=None,
-                )
-                log.info("single billing period: data=%s", datum)
-                bills.append(datum)
-
-    if "Corrections" in pdf_text:
-        notify_rebill(meter_number, bill_date)
-
+        bills = parse_kw_bill(filename, bill_date, meter_number, pdf_text)
     return sorted(bills, key=lambda b: b.start)
 
 
@@ -449,6 +557,15 @@ class BillHistoryPage(CSSSelectorBasePageObject):
     ReCaptchaIframeParentXpath = "//div[@class='g-recaptcha']//iframe[@height]/.."
     BillPdfsTableSelector = "table.paymentHistoryMidTitle.af_panelGroupLayout"
 
+    def too_many_sessions(self):
+        self._driver.wait().until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".rightPanelMyAcct"))
+        )
+        text = self._driver.find_element_by_css_selector(".rightPanelMyAcct").text
+        if "This web user has reached too many sessions" in text:
+            return True
+        return False
+
     def wait_until_ready(self):
         log.info("Waiting for Bill History Page to be ready")
         self._driver.wait().until(
@@ -484,20 +601,24 @@ class BillHistoryPage(CSSSelectorBasePageObject):
                 (By.CSS_SELECTOR, ".AFBlockingGlassPane")
             )
         )
+        time.sleep(5)
 
-    def solve_captcha(self):
+    def solve_captcha(self) -> bool:
         iframe_parent = self._driver.find_element_by_xpath(
             self.ReCaptchaIframeParentXpath
         )
-        # TODO: get page URL params from browser
         page_url = "https://www.ladwp.com/ladwp/faces/BillHistory?params_here"
-        recaptcha_v2(self._driver, iframe_parent, page_url)
+        if not recaptcha_v2(self._driver, iframe_parent, page_url):
+            log.info("failed captcha solving")
+            return False
 
         self.find_element('a[title="Next"]').click()
+        return True
 
     def download_bills(self, start: date, end: date):
         for link in self._driver.find_elements_by_css_selector(".af_commandImageLink"):
             bill_date_str = link.text.strip()
+            log.debug("found bill link %s", bill_date_str)
 
             try:
                 bill_date = parse_date(bill_date_str).date()
@@ -508,6 +629,10 @@ class BillHistoryPage(CSSSelectorBasePageObject):
             if start <= bill_date <= end:
                 log.info(f"Downloading Bill for date: {bill_date_str}")
                 link.click()
+
+    def logout(self):
+        # try to avoid This web user has reached too many sessions
+        self._driver.find_element_by_xpath("//a[contains(text(), 'Log out')]").click()
 
 
 class LADWPBillPdfScraper(BaseWebScraper):
@@ -535,9 +660,11 @@ class LADWPBillPdfScraper(BaseWebScraper):
 
         try:
             login_page.wait_until_ready()
-        except Exception as exc:
-            self.screenshot("login")
-            raise exc
+        except Exception:
+            self.screenshot("initial page load failed")
+            # try one more time
+            self._driver.get(self.login_url)
+            login_page.wait_until_ready()
         login_page.login(self.username, self.password)
         self.screenshot("after login")
 
@@ -545,14 +672,21 @@ class LADWPBillPdfScraper(BaseWebScraper):
         my_account_page.navigate_to_bill_history()
         self.screenshot("bill history")
 
+        if bill_history_page.too_many_sessions():
+            # waiting 5 minutes doesn't seem to help
+            bill_history_page.logout()
+            raise Exception("too many sessions")
         bill_history_page.wait_until_ready()
-        bill_history_page.solve_captcha()
         self.screenshot("after captcha")
+        if not bill_history_page.solve_captcha():
+            bill_history_page.logout()
+            raise Exception("captcha failed")
 
         bill_history_page.wait_until_bills_ready()
         bill_history_page.select_account(self._configuration.utility_account_id)
         bill_history_page.wait_until_bills_ready()
         bill_history_page.download_bills(self.start_date, self.end_date)
+        bill_history_page.logout()
         # get bills from download directory and parse
 
         bills: List[BillingDatum] = []
