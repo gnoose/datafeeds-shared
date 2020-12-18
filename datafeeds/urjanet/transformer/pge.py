@@ -106,6 +106,7 @@ class PacificGasElectricBillingPeriod(GenericBillingPeriod):
             "PioneerCommunityEnergyCA": "utility:pio",
             "MontereyBayCommunityPowerCA": "utility:mbcp",
             "PacGAndE": "utility:pge",
+            "SonomaCleanPowerCA": "utility:scp",
         }
         return mapping.get(self.account.UtilityProvider, self.account.UtilityProvider)
 
