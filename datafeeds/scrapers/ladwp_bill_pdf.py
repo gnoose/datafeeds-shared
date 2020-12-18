@@ -747,6 +747,12 @@ def datafeed(
         commodity=meter.commodity,
     )
 
+    # If meter has a recent bill, don't go to website since ladwp.com is fragile.
+    # last_closing is last element of tuple
+    latest_closing = meter.bills_range[-1]
+    if latest_closing and latest_closing >= date.today() - timedelta(days=21):
+        log.info("latest bill is fresh (%s); stopping now", latest_closing)
+        return Status.COMPLETED
     return run_datafeed(
         LADWPBillPdfScraper,
         account,
