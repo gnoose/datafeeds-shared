@@ -67,7 +67,7 @@ def extract_line_items(text) -> List[BillingDatumItemsEntry]:
         r"Meter Charge(?P<charge_total>[-\$\d,\.]+)"
         r"Energy(?P<energy_total>[-\$\d,\.]+)  (?P<energy_quantity>[\d,\.]+) kWh X (?P<energy_rate>[-\$\d,\.]+)\/kWh = .+"
         r"Demand(?P<demand_total>[-\$\d,\.]+)"
-        r"Power Factor Charge(?P<pfc_total>[-\$\d,\.]+)"
+        r"(Power Factor Charge(?P<pfc_total>[-\$\d,\.]+))?"
         r"Primary Voltage Discount(?P<pvd_total>[-\$\d,\.]+)"
         r"Public Benefit Charge(?P<pbc_total>[-\$\d,\.]+)"
         r"State Surcharge(?P<ss_total>[-\$\d,\.]+)"
@@ -87,7 +87,11 @@ def extract_line_items(text) -> List[BillingDatumItemsEntry]:
 
     demand_total = float(match.group("demand_total").replace(",", "").replace("$", ""))
 
-    pfc_total = float(match.group("pfc_total").replace(",", "").replace("$", ""))
+    # Bills may lack the Power Factor Charge
+    if match.groupdict()["pfc_total"]:
+        pfc_total = float(match.group("pfc_total").replace(",", "").replace("$", ""))
+    else:
+        pfc_total = None
     pvd_total = float(match.group("pvd_total").replace(",", "").replace("$", ""))
     pbc_total = float(match.group("pbc_total").replace(",", "").replace("$", ""))
     ss_total = float(match.group("ss_total").replace(",", "").replace("$", ""))
