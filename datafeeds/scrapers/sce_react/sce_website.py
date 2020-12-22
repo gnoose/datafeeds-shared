@@ -96,8 +96,8 @@ class SceWebsiteScraper(BaseWebScraper):
                 continue
 
             try:
-                status = df(account, meter, datasource, params, task_id)
-                log.info("billing scraper %s result=%s", scraper_type, status)
+                results.bills = df(account, meter, datasource, params, task_id)
+                log.info("billing scraper %s result=%s", scraper_type, results.bills)
                 # keep going since basic_billing does not get PDFs and energymanager_billing does
             except LoginFailedException:
                 log.exception("Billing sub-scraper failed to login: %s", scraper_type)
@@ -110,6 +110,9 @@ class SceWebsiteScraper(BaseWebScraper):
             df = scraper_functions[scraper_type]
             try:
                 results.readings = df(account, meter, datasource, params, task_id)
+                log.info(
+                    "interval scraper %s result=%s", scraper_type, results.readings
+                )
                 if results.readings:
                     break
             except LoginFailedException:
@@ -117,6 +120,9 @@ class SceWebsiteScraper(BaseWebScraper):
                 raise
             except:  # noqa: E722
                 log.exception("Interval subscraper failed: %s", scraper_type)
+        log.info("Status for bill scrapers: %s", results.bills)
+        log.info("Status for interval scrapers: %s", results.readings)
+        return results
 
 
 def datafeed(
