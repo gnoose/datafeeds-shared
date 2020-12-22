@@ -237,13 +237,10 @@ class BaseUrjanetScraper(BaseScraper):
         if self._configuration.scrape_partial_bills:
             restricted_billing_periods = []
             for period in gridium_bills.periods:
-                if (
-                    period.start >= self._date_range.start_date
-                    and period.end <= self._date_range.end_date
-                ):
+                if period.start >= self._date_range.start_date:
                     restricted_billing_periods.append(period)
             # Rather than scrape every bill we have, restrict *partial* urjanet scrapers to return data
-            # in the date range, so we can scrape the same amount of data for both partial scrapers on a meter.
+            # after the start date so we can return the same amount of data on both scrapers.
             gridium_bills = GridiumBillingPeriodCollection(
                 periods=restricted_billing_periods
             )
