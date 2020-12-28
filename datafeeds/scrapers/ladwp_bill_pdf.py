@@ -10,6 +10,7 @@ from dateutil.parser import parse as parse_date
 from datetime import date, timedelta
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
+from selenium.common.exceptions import NoSuchElementException
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -367,6 +368,10 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
             r"^(?P<used>[\d\.]+) HCF$[\s\S]+?"
             r"Total Fire Service Charges  \$ (?P<cost>[\d\.]+)"
         ),
+        "single_line_water": (
+            r"Water Charges +(?P<start_date>\d+\/\d+\/\d+) - (?P<end_date>\d+\/\d+\/\d+) +"
+            r"(?P<used>[\d,\.]+) HCF\n\$(?P<cost>[\d,\.]+)"
+        ),
     }
 
     bill_date_str = re.search(regexes["bill_date"], pdf_text).group(1)
@@ -399,6 +404,7 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
         # Parse water bill
         bill_data_section_text = bill_data_section_match.group()
         billing_periods = re.findall(regexes["billing_period"], bill_data_section_text)
+        single_line_match = re.search(regexes["single_line_water"], pdf_text)
         # Check if we have multiple billing periods in a bill
         if len(billing_periods) > 1:
             # We're only interested in the "sub" billing periods, delete the first billing
@@ -449,9 +455,20 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
                     log.warning(
                         "Couldn't extract cost or start/end dates from water bill"
                     )
-        else:
-            raise Exception(
-                "Multiple billing periods not yet implemented for ccf bills"
+        elif single_line_match:
+            bills.append(
+                BillingDatum(
+                    start=parse_date(single_line_match.group("start_date")).date(),
+                    end=parse_date(single_line_match.group("end_date")).date()
+                    - timedelta(days=1),
+                    statement=bill_date,
+                    cost=str_to_float(single_line_match.group("cost")),
+                    used=str_to_float(single_line_match.group("used")),
+                    peak=None,
+                    attachments=None,
+                    utility_code=None,
+                    items=None,
+                )
             )
 
     return bills
@@ -485,11 +502,18 @@ def parse_pdf(filename: str, meter_number: str, commodity: str) -> List[BillingD
 
 
 class LADWPBillPdfConfiguration(Configuration):
-    def __init__(self, meter_number: str, utility_account_id: str, commodity: str):
+    def __init__(
+        self,
+        meter_number: str,
+        utility_account_id: str,
+        commodity: str,
+        account_name: str,
+    ):
         super().__init__(scrape_bills=True)
         self.meter_number = meter_number
         self.utility_account_id = utility_account_id
         self.commodity = commodity
+        self.account_name = account_name
 
 
 class LoginPage(CSSSelectorBasePageObject):
@@ -587,12 +611,19 @@ class BillHistoryPage(CSSSelectorBasePageObject):
             )
         )
 
-    def select_account(self, account_id: str):
+    def select_account(self, account_id: str, account_name: str):
         log.info("selecting account %s" % account_id)
         select = Select(
             self._driver.find_element_by_css_selector(".rightPanelMyAcct select")
         )
-        select.select_by_visible_text(account_id)
+        try:
+            select.select_by_visible_text(account_id)
+        except NoSuchElementException as exc:
+            # try account name if there is one
+            if not account_name:
+                raise exc
+            log.debug("trying account name %s", account_name)
+            select.select_by_visible_text(account_name)
         log.debug("waiting for loading spinner to appear")
         self._driver.sleep(5)
         log.debug("waiting for loading spinner to disappear")
@@ -683,7 +714,9 @@ class LADWPBillPdfScraper(BaseWebScraper):
             raise Exception("captcha failed")
 
         bill_history_page.wait_until_bills_ready()
-        bill_history_page.select_account(self._configuration.utility_account_id)
+        bill_history_page.select_account(
+            self._configuration.utility_account_id, self._configuration.account_name
+        )
         bill_history_page.wait_until_bills_ready()
         bill_history_page.download_bills(self.start_date, self.end_date)
         bill_history_page.logout()
@@ -745,6 +778,7 @@ def datafeed(
         meter_number=meter.service_id,
         utility_account_id=meter.utility_service.utility_account_id,
         commodity=meter.commodity,
+        account_name=(datasource.meta or {}).get("accountName"),
     )
 
     # If meter has a recent bill, don't go to website since ladwp.com is fragile.

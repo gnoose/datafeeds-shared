@@ -366,6 +366,30 @@ class TestLADWPParser(TestCase):
             expected, parse_pdf(pattern % "202001", "00106-00095149", "kw")
         )
 
+    def test_water_sewer(self):
+        """Parser can extract water data from a bill with water and sewer data."""
+        expected = [
+            BillingDatum(
+                start=date(2020, 9, 28),
+                end=date(2020, 10, 28),
+                statement=date(2020, 10, 29),
+                cost=2523.12,
+                used=411,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-water-202010.pdf",
+                "9479723015",
+                "ccf",
+            ),
+        )
+
 
 def test_upload_bills(meter_oid, meter_number, task_id, bills):
     print("Bill results:\n")
@@ -389,7 +413,7 @@ def test_scraper(
         meter_number=meter_number,
         utility_account_id=meter_number,
         commodity="False",
-        # scrape_bills=True,
+        account_name=None,
     )
     credentials = Credentials(username, password)
     scraper = LADWPBillPdfScraper(
