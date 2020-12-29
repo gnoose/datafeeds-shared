@@ -207,6 +207,7 @@ class TestLADWPParser(TestCase):
     @patch("datafeeds.scrapers.ladwp_bill_pdf.notify_rebill")
     def test_rebill(self, notify):
         """Parser can extract data from a bill with corrections."""
+        self.maxDiff = None
         filename = "datafeeds/scrapers/tests/fixtures/ladwp-rebill.pdf"
         # electricity
         expected = [
@@ -283,7 +284,7 @@ class TestLADWPParser(TestCase):
             ),
             BillingDatum(
                 start=date(2020, 8, 21),
-                end=date(2020, 9, 21),
+                end=date(2020, 9, 20),
                 statement=date(2020, 9, 24),
                 cost=1031.67,
                 used=150,
@@ -300,7 +301,7 @@ class TestLADWPParser(TestCase):
         expected = [
             BillingDatum(
                 start=date(2020, 5, 26),
-                end=date(2020, 9, 21),
+                end=date(2020, 9, 20),
                 statement=date(2020, 9, 24),
                 cost=466.97,
                 used=0,
@@ -386,6 +387,30 @@ class TestLADWPParser(TestCase):
             parse_pdf(
                 "datafeeds/scrapers/tests/fixtures/ladwp-water-202010.pdf",
                 "9479723015",
+                "ccf",
+            ),
+        )
+
+    def test_fire_only(self):
+        """Parser can extract fire service data from a bill with only fire service data."""
+        expected = [
+            BillingDatum(
+                start=date(2020, 8, 28),
+                end=date(2020, 9, 28),
+                statement=date(2020, 9, 29),
+                cost=118.72,
+                used=0,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-fire-202009.pdf",
+                "3631146704",
                 "ccf",
             ),
         )

@@ -4,7 +4,7 @@ import os
 import logging
 
 from io import BytesIO
-from typing import Optional, List
+from typing import Optional, List, Set
 
 from dateutil.parser import parse as parse_date
 from datetime import date, timedelta
@@ -388,7 +388,8 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
             bills.append(
                 BillingDatum(
                     start=parse_date(fire_data_match.group("start_date")).date(),
-                    end=parse_date(fire_data_match.group("end_date")).date(),
+                    end=parse_date(fire_data_match.group("end_date")).date()
+                    - timedelta(days=1),
                     statement=bill_date,
                     cost=str_to_float(fire_data_match.group("cost")),
                     used=str_to_float(fire_data_match.group("used")),
@@ -431,7 +432,8 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
                     bills.append(
                         BillingDatum(
                             start=parse_date(dates_match.group(1)).date(),
-                            end=parse_date(dates_match.group(2)).date(),
+                            end=parse_date(dates_match.group(2)).date()
+                            - timedelta(days=1),
                             statement=bill_date,
                             cost=round(
                                 sum(
@@ -471,7 +473,16 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
                 )
             )
 
-    return bills
+    # close up one day gaps; sometimes bill end dates don't need to be adjusted
+    final_bills: List[BillingDatum] = []
+    sorted_bills = sorted(bills, key=lambda b: b.start)
+    for idx, bill in enumerate(sorted_bills):
+        curr_bill = bill
+        next_bill = sorted_bills[idx + 1] if idx + 1 < len(sorted_bills) else None
+        if next_bill and (next_bill.start - bill.end).days == 2:
+            curr_bill = bill._replace(end=bill.end + timedelta(days=1))
+        final_bills.append(curr_bill)
+    return final_bills
 
 
 def str_to_float(val: str) -> float:
@@ -731,6 +742,7 @@ class LADWPBillPdfScraper(BaseWebScraper):
             time.sleep(1)
             continue
 
+        start_dates: Set[date] = set()
         for filename in sorted(os.listdir(prefix)):
             if ".pdf" not in filename:
                 continue
@@ -762,7 +774,20 @@ class LADWPBillPdfScraper(BaseWebScraper):
                     utility_account_id=self._configuration.utility_account_id,
                 )
             for bill in parsed_bills:
-                bills.append(bill._replace(attachments=[attachment_entry]))
+                attachments = [attachment_entry]
+                if bill.start in start_dates:
+                    # if we already have a bill with this start date, replace it
+                    prev_bill = [b for b in bills if b.start == bill.start][0]
+                    log.info(
+                        "duplicate bill start: prev_bill = %s, bill = %s",
+                        prev_bill,
+                        bill,
+                    )
+                    bills.remove(prev_bill)
+                    # copy the attachment
+                    attachments += prev_bill.attachments
+                bills.append(bill._replace(attachments=attachments))
+                start_dates.add(bill.start)
 
         return Results(bills=bills)
 
