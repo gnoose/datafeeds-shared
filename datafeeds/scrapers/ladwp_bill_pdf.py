@@ -361,17 +361,37 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
             r"\$(?:[\d,\.]+)[\s\S]+?"
             r"\$(?P<cost>[\d,\.]+)"
         ),
-        "fire_service_data": (
+        "fire_service_data_1": (
             r"Fire Service Charges\n"
             rf"SA # : {meter_number}[\s\S]+?"
             r"BILLING PERIOD  (?P<start_date>[\d\/]+) - (?P<end_date>[\d\/]+)[\s\S]+?"
             r"^(?P<used>[\d\.]+) HCF$[\s\S]+?"
             r"Total Fire Service Charges  \$ (?P<cost>[\d\.]+)"
         ),
+        "fire_service_data_2": (
+            rf"SA # : {meter_number}.*?"
+            r"BILLING PERIOD +(?P<start_date>[\d\/]+) - (?P<end_date>[\d\/]+)[\s\S].*?"
+            r"\n(?P<used>[\d\.,]+) HCF.*?"
+            r"Total Fire Service Charges .*?(?P<cost>[\d\.,]+)"
+        ),
+        # without HCF value
+        "fire_service_data_3": (
+            rf"SA # : {meter_number}.*?"
+            r"BILLING PERIOD +(?P<start_date>[\d\/]+) - (?P<end_date>[\d\/]+)[\s\S].*?"
+            r"\n(?P<used>[\d\.,]+)\n.*?"
+            r"Total Fire Service Charges .*?(?P<cost>[\d\.,]+)"
+        ),
         "single_line_water": (
             r"Water Charges +(?P<start_date>\d+\/\d+\/\d+) - (?P<end_date>\d+\/\d+\/\d+) +"
             r"(?P<used>[\d,\.]+) HCF\n\$(?P<cost>[\d,\.]+)"
         ),
+        "multi_line_water": (
+            rf"SA # : {meter_number}.*?"
+            r"BILLING PERIOD +(?P<start_date>[\d\/]+) - (?P<end_date>[\d\/]+)[\s\S].*?"
+            r"\n(.*?)"
+            r"Total Water Charges .*?(?P<cost>[\d\.,]+)"
+        ),
+        "multi_line_water_use": r"([\d\.,]+) HCF x \$[\d\.,]+/HCF",
     }
 
     bill_date_str = re.search(regexes["bill_date"], pdf_text).group(1)
@@ -380,10 +400,12 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
 
     if not bill_data_section_match:
         # check if we have a Fire Service bill and parse that
-        fire_data_match = re.search(
-            regexes["fire_service_data"], pdf_text, re.MULTILINE
-        )
-
+        for idx in [1, 2, 3]:
+            fire_data_match = re.search(
+                regexes[f"fire_service_data_{idx}"], pdf_text, re.MULTILINE | re.DOTALL
+            )
+            if fire_data_match:
+                break
         if fire_data_match:
             bills.append(
                 BillingDatum(
@@ -405,7 +427,10 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
         # Parse water bill
         bill_data_section_text = bill_data_section_match.group()
         billing_periods = re.findall(regexes["billing_period"], bill_data_section_text)
-        single_line_match = re.search(regexes["single_line_water"], pdf_text)
+        water_match = re.search(regexes["single_line_water"], pdf_text)
+        if not water_match:
+            water_match = re.search(regexes["multi_line_water"], pdf_text, re.DOTALL)
+
         # Check if we have multiple billing periods in a bill
         if len(billing_periods) > 1:
             # We're only interested in the "sub" billing periods, delete the first billing
@@ -457,15 +482,26 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
                     log.warning(
                         "Couldn't extract cost or start/end dates from water bill"
                     )
-        elif single_line_match:
+        elif water_match:
+            if "used" in water_match.groupdict():
+                used = str_to_float(water_match.group("used"))
+            else:
+                used = sum(
+                    [
+                        str_to_float(u)
+                        for u in re.findall(
+                            regexes["multi_line_water_use"], water_match.group(3)
+                        )
+                    ]
+                )
             bills.append(
                 BillingDatum(
-                    start=parse_date(single_line_match.group("start_date")).date(),
-                    end=parse_date(single_line_match.group("end_date")).date()
+                    start=parse_date(water_match.group("start_date")).date(),
+                    end=parse_date(water_match.group("end_date")).date()
                     - timedelta(days=1),
                     statement=bill_date,
-                    cost=str_to_float(single_line_match.group("cost")),
-                    used=str_to_float(single_line_match.group("used")),
+                    cost=str_to_float(water_match.group("cost")),
+                    used=used,
                     peak=None,
                     attachments=None,
                     utility_code=None,
@@ -496,8 +532,8 @@ def parse_pdf(filename: str, meter_number: str, commodity: str) -> List[BillingD
     pdf_text: str = get_pdf_text(filename)
     # "Bill Date:" is the same on every page of the pdf
     match = re.search(r"BILL DATE  (.+)", pdf_text)
-    if not match and "Meter Reading Unit" in pdf_text:
-        log.warning("Meter reading notice; not a bill")
+    if not match:
+        log.warning("Not a bill")
         return []
     bill_date = parse_date(match.group(1)).date()
 
@@ -624,9 +660,13 @@ class BillHistoryPage(CSSSelectorBasePageObject):
 
     def select_account(self, account_id: str, account_name: str):
         log.info("selecting account %s" % account_id)
-        select = Select(
-            self._driver.find_element_by_css_selector(".rightPanelMyAcct select")
-        )
+        try:
+            select = Select(
+                self._driver.find_element_by_css_selector(".rightPanelMyAcct select")
+            )
+        except NoSuchElementException:
+            log.info("no account select; single account")
+            return
         try:
             select.select_by_visible_text(account_id)
         except NoSuchElementException as exc:

@@ -415,6 +415,89 @@ class TestLADWPParser(TestCase):
             ),
         )
 
+    def test_past_due(self):
+        """Parser doesn't crash on a statement with no usage data."""
+        self.assertEqual(
+            [],
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-past-due-202008.pdf",
+                "3770151783",
+                "ccf",
+            ),
+        )
+
+    def test_electric_and_fire(self):
+        """Parser can extract fire service data from a bill that also contains electricity usage."""
+        expected = [
+            BillingDatum(
+                start=date(2020, 10, 13),
+                end=date(2020, 11, 15),
+                statement=date(2020, 11, 16),
+                cost=118.72,
+                used=0,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-fire-202011.pdf",
+                "4770151943",
+                "ccf",
+            ),
+        )
+
+    def test_multi_service_fire(self):
+        """Parser can extract fire service data from a bill with multiple fire service sections."""
+        expected = [
+            BillingDatum(
+                start=date(2020, 9, 23),
+                end=date(2020, 10, 22),
+                statement=date(2020, 10, 23),
+                cost=118.72,
+                used=0,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-fire-202010.pdf",
+                "6293005254",
+                "ccf",
+            ),
+        )
+
+    def test_multiline_service_water(self):
+        """Parser can extract water service data from a bill with multiple lines."""
+        expected = [
+            BillingDatum(
+                start=date(2019, 12, 12),
+                end=date(2020, 1, 13),
+                statement=date(2020, 1, 15),
+                cost=836.08,
+                used=122,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-water-202001.pdf",
+                "2112228930",
+                "ccf",
+            ),
+        )
+
 
 def test_upload_bills(meter_oid, meter_number, task_id, bills):
     print("Bill results:\n")
