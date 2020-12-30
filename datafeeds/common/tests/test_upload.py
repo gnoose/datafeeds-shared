@@ -679,6 +679,35 @@ class TestBillUpload(unittest.TestCase):
     def tearDown(cls):
         db.session.rollback()
 
+    def test_update_zero_cost(self):
+        """Verify replacing zero-cost bills with cost from current bills."""
+        service = self.meter.utility_service
+        db.session.add(service)
+        # no current bills
+        bills_list[0] = bills_list[0]._replace(cost=0)
+        updated = upload.verify_bills(self.meter.oid, bills_list)
+        self.assertEqual(len(bills_list), len(updated))
+        for idx, bill in enumerate(bills_list):
+            self.assertEqual(bill, updated[idx])
+
+        # with current bill
+        billing_datum = bills_list[0]
+        bill = Bill(
+            service=self.meter.service,
+            initial=billing_datum.start,
+            closing=billing_datum.end,
+            cost=123.45,
+            used=billing_datum.used,
+            peak=billing_datum.peak,
+        )
+        db.session.add(bill)
+        db.session.flush()
+        updated = upload.verify_bills(self.meter.oid, bills_list)
+        self.assertEqual(len(bills_list), len(updated))
+        self.assertEqual(updated[0].cost, 123.45)
+        for idx, bill in enumerate(bills_list[1:]):
+            self.assertEqual(bill, updated[idx + 1])
+
     def test_upload_bills(self):
         service = self.meter.utility_service
         db.session.add(service)
@@ -689,8 +718,9 @@ class TestBillUpload(unittest.TestCase):
         db.session.add(bill_1)
         db.session.flush()
 
-        print("service_id is %s" % service.service_id)
-        status = upload.upload_bills(self.meter, service.service_id, None, bills_list)
+        status = upload.upload_bills(
+            self.meter.oid, service.service_id, None, bills_list
+        )
         # No bills newer bills have arrived
         self.assertEqual(status, Status.COMPLETED)
 
@@ -709,7 +739,7 @@ class TestBillUpload(unittest.TestCase):
         ]
 
         status = upload.upload_bills(
-            self.meter, service.service_id, None, new_bills_list
+            self.meter.oid, service.service_id, None, new_bills_list
         )
         # A more recent bill arrived
         self.assertEqual(status, Status.SUCCEEDED)
