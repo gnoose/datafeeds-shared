@@ -1,4 +1,5 @@
 import logging
+from datetime import timedelta, date
 from typing import Optional, Set, List
 
 from sqlalchemy import distinct
@@ -110,7 +111,12 @@ class SmdPartialBillingScraper(BaseApiScraper):
         query = db.session.query(SmdBill).filter(SmdBill.usage_point.in_(usage_points))
 
         if self.start_date:
-            query = query.filter(self.start_date <= SmdBill.start)
+            start = self.start_date
+            end = max(start, self.end_date or date.today())
+            if end - self.start_date <= timedelta(days=60):
+                start = start - timedelta(days=60)
+                log.info("Adjusting start date to %s.", start)
+            query = query.filter(start <= SmdBill.start)
 
         if self.end_date:
             query = query.filter(SmdBill.start <= self.end_date)

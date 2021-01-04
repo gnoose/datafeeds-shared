@@ -3,6 +3,7 @@ import json
 import logging
 import re
 import hashlib
+from datetime import timedelta, date
 from typing import Optional
 
 import requests
@@ -236,8 +237,13 @@ class BaseUrjanetScraper(BaseScraper):
 
         if self._configuration.scrape_partial_bills:
             restricted_billing_periods = []
+            start = self._date_range.start_date
+            end = max(start, self._date_range.end_date or date.today())
+            if end - start <= timedelta(days=60):
+                start = start - timedelta(days=60)
+                log.info("Adjusting start date to %s.", start)
             for period in gridium_bills.periods:
-                if period.start >= self._date_range.start_date:
+                if period.start >= start:
                     restricted_billing_periods.append(period)
             # Rather than scrape every bill we have, restrict *partial* urjanet scrapers to return data
             # after the start date so we can return the same amount of data on both scrapers.
