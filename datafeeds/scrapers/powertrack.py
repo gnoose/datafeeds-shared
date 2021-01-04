@@ -147,11 +147,9 @@ class SiteStatusPage:
         back_button.click()
 
     def get_earliest_shown(self) -> date:
-        # This returns 4 elements. The first 2 are empty and the second 2 are the date ranges shown
-        earliest_shown_candidates = self.driver.find_elements_by_xpath(
-            "//input[@type='text']"
-        )
-        earliest_shown = earliest_shown_candidates[2].get_attribute("value")
+        earliest_shown = self.driver.find_element_by_xpath(
+            "//p[@class='MuiTypography-root MuiTypography-body1']"
+        ).text.split(" - ")[0]
         log.info("earliest shown: %s", earliest_shown)
         date_format = "%b %d, %Y"
         earliest_shown_dt = datetime.strptime(earliest_shown, date_format)
