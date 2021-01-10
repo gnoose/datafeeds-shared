@@ -6,6 +6,7 @@ from dateutil import parser as date_parser
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from elasticsearch.exceptions import NotFoundError
 from elasticsearch.helpers import bulk
+from sqlalchemy.orm import joinedload
 
 from datafeeds import db, config
 from datafeeds.db import dbtask
@@ -169,6 +170,15 @@ def run_meta(meter_oid: int) -> Dict[str, Any]:
         "emailSubscribers": SnapmeterUserSubscription.email_subscriber_count(meter_oid),
         "accountUsers": SnapmeterAccountUser.account_user_count(meter_oid),
     }
+    meter = (
+        db.session.query(Meter)
+        .filter_by(oid=meter_oid)
+        .options(joinedload(Meter.utility_service))
+        .first()
+    )
+    if meter and meter.utility_service:
+        doc["service_id"] = meter.utility_service.service_id
+        doc["gen_service_id"] = meter.utility_service.gen_service_id
     return doc
 
 
