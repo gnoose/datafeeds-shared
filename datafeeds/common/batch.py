@@ -140,6 +140,9 @@ def run_datafeed(
                 retval = Status.SUCCEEDED
             else:
                 retval = Status.FAILED
+            # sce-metascraper needs to be able to get the completed status back
+            if scraper.metascraper:
+                retval = scraper_status
 
     except Exception as exc:
         log.exception("Scraper run failed.")

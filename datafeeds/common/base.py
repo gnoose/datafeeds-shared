@@ -100,6 +100,10 @@ class BaseScraper(Abstract):
     def scrape_partial_bills(self):
         return self._configuration.scrape_partial_bills
 
+    @property
+    def metascraper(self):
+        return self._configuration.metascraper
+
     def __enter__(self):
         self.start()
         return self
@@ -140,6 +144,7 @@ class BaseScraper(Abstract):
             bills_status = None
             readings_status = None
             pdfs_status = None
+            meta_status = None
             if self.scrape_bills:
                 if results.bills:
                     bills_status = bills_handler(results.bills)
@@ -165,6 +170,9 @@ class BaseScraper(Abstract):
                 partial_bills_gen_status = partial_bills_handler(
                     results.generation_bills, PartialBillProviderType.GENERATION_ONLY
                 )
+            if results.meta_status:
+                meta_status = results.meta_status
+
         except Exception as exc:
             log.exception("Scraper run failed: %s" % exc)
             raise
@@ -172,6 +180,15 @@ class BaseScraper(Abstract):
         # if we tried to get both types of partial bills but one failed, fail the run
         if Status.FAILED in [partial_bills_tnd_status, partial_bills_gen_status]:
             return Status.FAILED
+        log.info(
+            "all statuses: bills=%s readings=%s, pdfs=%s, tnd=%s, gen=%s, meta=%s",
+            bills_status,
+            readings_status,
+            pdfs_status,
+            partial_bills_tnd_status,
+            partial_bills_gen_status,
+            meta_status,
+        )
         return (
             Status.best(
                 [
@@ -180,6 +197,7 @@ class BaseScraper(Abstract):
                     pdfs_status,
                     partial_bills_tnd_status,
                     partial_bills_gen_status,
+                    meta_status,
                 ]
             )
             or Status.COMPLETED

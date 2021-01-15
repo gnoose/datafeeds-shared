@@ -38,7 +38,7 @@ scraper_functions = {
 
 class SceWebsiteConfiguration(Configuration):
     def __init__(self, account, meter, datasource, params, task_id):
-        super().__init__()
+        super().__init__(metascraper=True)
         self.account = account
         self.meter = meter
         self.datasource = datasource
@@ -88,6 +88,7 @@ class SceWebsiteScraper(BaseWebScraper):
         results = Results()
         billing_scrapers, interval_scrapers = self._sort_scrapers(scrapers)
 
+        bill_result_list = []
         for scraper_type in billing_scrapers:
             log.info("Starting billing sub-scraper %s", scraper_type)
             df = scraper_functions[scraper_type]
@@ -96,7 +97,8 @@ class SceWebsiteScraper(BaseWebScraper):
                 continue
 
             try:
-                results.bills = df(account, meter, datasource, params, task_id)
+                status = df(account, meter, datasource, params, task_id,)
+                bill_result_list.append(status)
                 log.info("billing scraper %s result=%s", scraper_type, results.bills)
                 # keep going since basic_billing does not get PDFs and energymanager_billing does
             except LoginFailedException:
@@ -104,12 +106,15 @@ class SceWebsiteScraper(BaseWebScraper):
                 raise
             except:  # noqa: E722
                 log.exception("Billing sub-scraper failed: %s", scraper_type)
+            results.bills = Status.best(bill_result_list)
 
         for scraper_type in interval_scrapers:
             log.info("Starting interval sub-scraper %s", scraper_type)
             df = scraper_functions[scraper_type]
             try:
-                results.readings = df(account, meter, datasource, params, task_id)
+                results.readings = df(
+                    account, meter, datasource, params, task_id, metascraper=True
+                )
                 log.info(
                     "interval scraper %s result=%s", scraper_type, results.readings
                 )
@@ -120,8 +125,11 @@ class SceWebsiteScraper(BaseWebScraper):
                 raise
             except:  # noqa: E722
                 log.exception("Interval subscraper failed: %s", scraper_type)
+
         log.info("Status for bill scrapers: %s", results.bills)
         log.info("Status for interval scrapers: %s", results.readings)
+        results.meta_status = Status.best([results.readings, results.bills])
+        log.info("meta_status %s", results.meta_status)
         return results
 
 

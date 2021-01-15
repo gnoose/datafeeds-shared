@@ -42,7 +42,9 @@ class SceReactEnergyManagerIntervalConfiguration(Configuration):
     """
 
     def __init__(self, service_id: str):
-        super().__init__(scrape_bills=False, scrape_readings=True)
+        super().__init__(
+            scrape_bills=False, scrape_readings=True,
+        )
         self.service_id = service_id
 
 
@@ -246,7 +248,7 @@ def datafeed(
     task_id: Optional[str] = None,
 ) -> Status:
     configuration = SceReactEnergyManagerIntervalConfiguration(
-        service_id=meter.service_id
+        service_id=meter.service_id,
     )
 
     return run_datafeed(

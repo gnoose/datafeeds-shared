@@ -38,8 +38,12 @@ class SceReactEnergyManagerGreenButtonConfiguration(Configuration):
         meter: meter being scraped
     """
 
-    def __init__(self, service_id: str, meta: Dict[str, Any], meter: Meter):
-        super().__init__(scrape_bills=False, scrape_readings=True)
+    def __init__(
+        self, service_id: str, meta: Dict[str, Any], meter: Meter,
+    ):
+        super().__init__(
+            scrape_bills=False, scrape_readings=True,
+        )
         self.service_id = service_id
         self.meta = meta
         self.meter = meter
