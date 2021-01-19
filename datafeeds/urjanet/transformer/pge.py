@@ -104,7 +104,8 @@ class PacificGasElectricBillingPeriod(GenericBillingPeriod):
             "ValleyCleanEnergyAllianceCA": "utility:vce",
             "SanJoseCleanEnergy": "utility:sjce",
             "PioneerCommunityEnergyCA": "utility:pio",
-            "MontereyBayCommunityPowerCA": "utility:mbcp",
+            "MontereyBayCommunityPowerCA": "utility:ccce",
+            "CentralCoastCommunityEnergyCA": "utility:ccce",
             "PacGAndE": "utility:pge",
             "SonomaCleanPowerCA": "utility:scp",
         }
