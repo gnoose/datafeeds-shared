@@ -4,7 +4,7 @@ import logging
 import re
 import hashlib
 from datetime import timedelta, date
-from typing import Optional
+from typing import Optional, List
 
 import requests
 
@@ -150,16 +150,16 @@ def make_line_items(bill: GridiumBillingPeriod):
 
 
 def make_attachments(
-    bill: GridiumBillingPeriod,
-    utility: str,
-    account_id: str,
+    source_urls: Optional[List[str]] = None,
+    statement: Optional[date] = None,
+    utility: Optional[str] = None,
+    account_id: Optional[str] = None,
     gen_utility: Optional[str] = None,
     gen_utility_account_id: Optional[str] = None,
 ):
     if not config.enabled("S3_BILL_UPLOAD"):
         return None
 
-    source_urls = bill.source_urls
     if not source_urls:
         return None
 
@@ -170,7 +170,7 @@ def make_attachments(
             kind="bill",
             format="PDF",
             source="urjanet",
-            statement=bill.statement.strftime("%Y-%m-%d"),
+            statement=statement.strftime("%Y-%m-%d"),
             utility=utility,
             utility_account_id=account_id,
             gen_utility=gen_utility,
@@ -196,7 +196,9 @@ def make_billing_datum(
         used=_try_parse_float(bill.total_usage),
         peak=_try_parse_float(bill.peak_demand),
         items=make_line_items(bill),
-        attachments=make_attachments(bill, utility, account_id)
+        attachments=make_attachments(
+            bill.source_urls, bill.statement, utility, account_id
+        )
         if fetch_attachments
         else None,
         utility_code=bill.tariff,

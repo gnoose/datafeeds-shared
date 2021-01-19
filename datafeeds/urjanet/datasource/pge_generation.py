@@ -16,15 +16,14 @@ from datafeeds.models.utility_service import (
 from datafeeds.urjanet.datasource.pge import PacificGasElectricDatasource
 from datafeeds.urjanet.model import Account, Meter, Charge, Usage
 from datafeeds.urjanet.transformer import PacificGasElectricUrjaXMLTransformer
-from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
+from datafeeds.urjanet.datasource.pymysql_adapter import (
+    UrjanetPyMySqlDataSource,
+    create_placeholders,
+)
 import logging
 
 
 log = logging.getLogger(__name__)
-
-
-def _create_placeholders(item_list):
-    return ",".join(["%s"] * len(item_list))
 
 
 def _remove_check_digit(account_id: str) -> str:
@@ -243,7 +242,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
             FROM xmlmeter
             WHERE PODid IN ({})
         """.format(
-            _create_placeholders(service_ids)
+            create_placeholders(service_ids)
         )
         result = self.fetch_one(query, *service_ids)
         return result.get("ServiceAddress") if result else None
@@ -255,7 +254,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
              FROM xmlmeter
              WHERE PODid IN ({})
         """.format(
-            _create_placeholders(service_ids)
+            create_placeholders(service_ids)
         )
         result = self.fetch_one(query, *service_ids)
         return result.get("ServiceType") if result else None
@@ -290,7 +289,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                    AND Account.UtilityProvider = 'PacGAndE'
                    AND Charge.ChargeUnitsUsed is not null;
             """.format(
-                _create_placeholders(service_ids)
+                create_placeholders(service_ids)
             )
 
             self.execute(query, *service_ids, service_address.upper(), service_type)
@@ -309,7 +308,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                    AND Charge.ChargeUnitsUsed = tnd_charges.ChargeUnitsUsed
                    AND UPPER(Meter.ServiceAddress) = %s
                """.format(
-                _create_placeholders(account_pks)
+                create_placeholders(account_pks)
             )
 
             meter_pod_id_results = self.fetch_all(
@@ -344,7 +343,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
                AND ServiceType in ('electric', 'natural_gas', 'lighting')
                AND PODid in ({})
         """.format(
-            _create_placeholders(self.service_ids)
+            create_placeholders(self.service_ids)
         )
         result_set = self.fetch_all(query, account_pk, *self.service_ids)
         results = [UrjanetPyMySqlDataSource.parse_meter_row(row) for row in result_set]
