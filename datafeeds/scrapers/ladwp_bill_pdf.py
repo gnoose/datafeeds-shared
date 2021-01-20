@@ -149,6 +149,7 @@ def kw_regexes(meter_number: str):
         # dates but no usage
         "alt2_date_usage": r"Electric Charges\s+(\d+/\d+/\d+) - (\d+/\d+/\d+)\s+",
         "alt1_cost": r"Total New Charges\s+\$\s*([\d\.,]+)",
+        "cost_subtotal": r"Subtotal Electric Charges\n.*?Total Electric Charges\s+\$\s+(?P<cost>[\d\.,]+)",
         # requires re.DOTALL
         "alt1_peak": r"Total kWh used.*?([\d\.,]+) kW\s+([\d\.,]+) kWh",
     }
@@ -245,15 +246,18 @@ def _single_period(
             filename,
             meter_number,
         )
-
     # There are multiple different ways the bill data is represented in the pdf...
     for idx in [1, 2, 3]:
         usage_match = re.search(regexes["usage_box_%s" % idx], bill_data_section)
         if usage_match:
             break
-    log.debug("usage_match=%s" % usage_match)
+    log.debug("usage_match=%s" % idx)
     if usage_match:
         bill_data_match = re.search(regexes["bill_data"], bill_data_section)
+        if not bill_data_match:
+            bill_data_match = re.search(
+                regexes["cost_subtotal"], bill_data_section, re.DOTALL
+            )
         if bill_data_match:
             # used = str_to_float(bill_data_match.group("used"))
             cost = str_to_float(bill_data_match.group("cost"))
