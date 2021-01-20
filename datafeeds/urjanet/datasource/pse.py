@@ -9,7 +9,7 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
+from datafeeds.urjanet.transformer import PseUrjanetTransformer
 from datafeeds.urjanet.datasource.pymysql_adapter import UrjanetPyMySqlDataSource
 from datafeeds.urjanet.model import Account
 
@@ -69,6 +69,6 @@ def datafeed(
             meter.utility_account_id,
             meter.utility_service.service_id,
         ),
-        UrjanetGridiumTransformer(),
+        PseUrjanetTransformer(),
         task_id=task_id,
     )
