@@ -39,11 +39,13 @@ class SceReactBasicBillingConfiguration(Configuration):
         gen_service_id: str,
         scrape_bills: bool,
         scrape_partial_bills: bool,
+        metascraper=False,
     ):
         super().__init__(
             scrape_bills=scrape_bills,
             scrape_partial_bills=scrape_partial_bills,
             scrape_readings=False,
+            metascraper=metascraper,
         )
         self.service_id = service_id
         self.gen_service_id = gen_service_id
@@ -362,6 +364,7 @@ def datafeed(
         gen_service_id=meter.utility_service.gen_service_id,
         scrape_bills=not is_partial,
         scrape_partial_bills=is_partial,
+        metascraper=False,
     )
 
     return run_datafeed(

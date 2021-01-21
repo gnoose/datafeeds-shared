@@ -53,11 +53,13 @@ class SceReactEnergyManagerBillingConfiguration(Configuration):
         service_id: str,
         scrape_bills=True,
         scrape_partial_bills=False,
+        metascraper=False,
     ):
         super().__init__(
             scrape_bills=scrape_bills,
             scrape_readings=not scrape_partial_bills,
             scrape_partial_bills=scrape_partial_bills,
+            metascraper=metascraper,
         )
         self.service_id = service_id
         self.utility = utility
@@ -387,6 +389,7 @@ def datafeed(
     datasource: MeterDataSource,
     params: dict,
     task_id: Optional[str] = None,
+    metascraper=False,
 ) -> Status:
     # if there's a generation service id, get partial bills instead of full bills
     is_partial = meter.utility_service.gen_service_id is not None
@@ -396,6 +399,7 @@ def datafeed(
         service_id=meter.service_id,
         scrape_bills=not is_partial,
         scrape_partial_bills=is_partial,
+        metascraper=metascraper,
     )
 
     return run_datafeed(

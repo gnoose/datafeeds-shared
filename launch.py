@@ -308,7 +308,7 @@ def _launch_meter_datasource(mds: MeterDataSource, start: date, end: date):
 
     cleanup_workdir()
     try:
-        status = scraper_fn(account, meter, mds, parameters, task_id=task_id)
+        status = scraper_fn(account, meter, mds, parameters, task_id=task_id)  # type: ignore[operator] # noqa
 
         if config.enabled("ES_INDEX_LOGS"):
             index_logs(task_id, account, meter, mds, status)
@@ -419,7 +419,7 @@ def launch_by_name(
 
     cleanup_workdir()
     try:
-        status = scraper_fn(account, meter, mds, parameters)
+        status = scraper_fn(account, meter, mds, parameters)  # type: ignore[operator] # noqa
     except:  # noqa=E722
         log.exception("The scraper run has failed due to an unhandled exception.")
         status = Status.FAILED

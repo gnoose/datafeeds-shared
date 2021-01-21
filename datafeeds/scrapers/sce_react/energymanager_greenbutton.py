@@ -39,10 +39,10 @@ class SceReactEnergyManagerGreenButtonConfiguration(Configuration):
     """
 
     def __init__(
-        self, service_id: str, meta: Dict[str, Any], meter: Meter,
+        self, service_id: str, meta: Dict[str, Any], meter: Meter, metascraper=False
     ):
         super().__init__(
-            scrape_bills=False, scrape_readings=True,
+            scrape_bills=False, scrape_readings=True, metascraper=metascraper
         )
         self.service_id = service_id
         self.meta = meta
@@ -196,9 +196,13 @@ def datafeed(
     datasource: MeterDataSource,
     params: dict,
     task_id: Optional[str] = None,
+    metascraper=False,
 ) -> Status:
     configuration = SceReactEnergyManagerGreenButtonConfiguration(
-        service_id=meter.service_id, meta=datasource.meta, meter=meter,
+        service_id=meter.service_id,
+        meta=datasource.meta,
+        meter=meter,
+        metascraper=metascraper,
     )
 
     return run_datafeed(
