@@ -112,9 +112,7 @@ class SceWebsiteScraper(BaseWebScraper):
             log.info("Starting interval sub-scraper %s", scraper_type)
             df = scraper_functions[scraper_type]
             try:
-                results.readings = df(
-                    account, meter, datasource, params, task_id, metascraper=True
-                )
+                results.readings = df(account, meter, datasource, params, task_id,)
                 log.info(
                     "interval scraper %s result=%s", scraper_type, results.readings
                 )
