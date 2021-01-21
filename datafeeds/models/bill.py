@@ -88,6 +88,7 @@ class PartialBill(ModelMixin, Base):
 
     # Utility's version of the tariff
     utility_code = sa.Column(sa.Unicode)
+    third_party_expected = sa.Column(sa.Boolean)
 
     utility_service = relationship("UtilityService")
 
@@ -155,6 +156,7 @@ class PartialBill(ModelMixin, Base):
             utility_account_id=utility_account_id,
             utility=utility,
             utility_code=bill.utility_code or None,
+            third_party_expected=bill.third_party_expected,
         )
         db.session.add(partial_bill)
         db.session.flush()
@@ -196,7 +198,7 @@ class PartialBill(ModelMixin, Base):
         before comparing the current value to existing value. For example, say we have a partial bill
         where we can't scrape the service_id, so we just populate it with the UtilityService.service_id by default.
         The next time this meter is scraped, the scraped service_id will still be None, but will differ
-        from the current service_id cached from the service. This  would cause us to keep superseding the
+        from the current service_id cached from the service. This would cause us to keep superseding the
         existing partial bill, even though the scraped information was not changing.
         """
         return (
@@ -215,6 +217,7 @@ class PartialBill(ModelMixin, Base):
                 other.utility_account_id is not None
                 and self.utility_account_id != other.utility_account_id
             )
+            or self.third_party_expected != other.third_party_expected
         )
 
     def matches(self, other: BillingDatum) -> bool:

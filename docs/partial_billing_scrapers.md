@@ -4,10 +4,10 @@ Partial Billing Scrapers are a billing scraper variant where we assume we're onl
 overall charges. If a customer has a third-party handling the generation of their power, we might connect two `partial-billing` scrapers to
 the meter, one for scraping `tnd-only` charges, and the other for scraping `generation-only` charges.
 
-The primary difference between a `billing` scraper run, and a `partial-billing` scraper run is that
-partial-bills will be written directly into the `partial-bill` table, instead of going through platform and then into
-the `bill` table.  A daily webapps process will attempt to stitch `tnd-only` partial bills with their corresponding
-`generation-only` partial bill components and created totalized `bills`.
+The primary difference between a `billing` scraper run, and a `partial-billing` scraper run is that `partial-billing`
+scrapers create *partial_bills* and `billing_scrapers` create *bills*. Partial-bills are written directly to the 
+`partial-bill` table, instead of going through platform.  A daily webapps process matches `tnd-only` 
+partial bills with their corresponding `generation-only` partial bill components and creates totalized `bills`.
 
 
 ## Scraper Configuration
@@ -45,11 +45,11 @@ For example, the `sce-react-energymanager-billing` scraper was originally writte
 but we also use this underlying code in a partial-billing scraper `sce-react-energymanager-partial-billing`,
 for scraping `tnd-only` charges, for SCE customers that are using a CCA for generation.
 
-Partial billing scrapers in the db should have scraper.source_types set to [`partial-billing`], so this can
-be a way to automatically determine if the scraper results should use the billing workflow or the partial billing workflow.
+Partial billing scrapers in the db should have scraper.source_types set to [`partial-billing`], so this might be 
+helpful in determining if scraper results should go through the billing workflow or partial billing workflow.
 
 ```python
-configuration = SceReactEnergyManagerBillingConfiguration(
+configuration = SampleBillingConfiguration(
         utility=meter.utility_service.utility,
         utility_account_id=meter.utility_account_id,
         service_id=meter.service_id,
@@ -64,10 +64,12 @@ It is very important that your scraper produces the correct "type" of partial bi
 partials will be matched to `generation-only` partial bills.
 
 For a meter where there are multiple SA's involved, `UtilityService.service_id` should be used to store the T&D SAID. The
-corresponding generation SAID should be stored in `UtilityService.gen_service_id`.  If you are building a T&D-only
+corresponding generation SAID should be stored in `UtilityService.gen_service_id` (if necessary).  If you are building a T&D-only
 partial billing scraper, you should generally pass in the `service_id` or `utility_account_id` to the Configuration.
-If you are building a generation-only partial-billing scraper, you should use the generation service fields, and pass
-in the `gen_service_id` or `gen_utility_account_id` to the Configuration.
+If you are building a generation-only partial-billing scraper, you might need to pass
+in the `gen_service_id` or `gen_utility_account_id` to the Configuration. For some utilities, these service ids are 
+the same.  You might also have your scraper search the `UtilityServiceSnapshot` table to get historical service ids
+and historical generation service ids.
 
 After collecting results, the scraper should return bills using the appropriate attribute in the `Results` class:
 
@@ -82,7 +84,7 @@ For example, to create T&D partial bills: `return Results(tnd_bills=self.billing
 Urjanet Partial Billing Scrapers should pass in the type of partial bill that they scrape via the `partial_type` parameter
 to `run_urjanet_datafeed`.
 
-Example: SCE CCA Scraper - Clean Power Alliance (generation-only)
+Example: PG&E Urjanet Generation Scraper (generation-only)
 ```python
 def datafeed(
     account: SnapmeterAccount,
@@ -91,19 +93,21 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
+    utility_service = meter.utility_service
     return run_urjanet_datafeed(
-        account=account,
-        meter=meter,
-        datasource=datasource,
-        params=params,
-        urja_datasource=SCECleanPowerAllianceDatasource(
-            utility=meter.utility_service.utility,
-            account_number=meter.utility_account_id,
-            gen_utility=meter.utility_service.utility,
-            gen_account_number=meter.utility_service.gen_utility_account_id,
-            gen_said=meter.utility_service.gen_service_id,
+        account,
+        meter,
+        datasource,
+        params,
+        PacificGasElectricXMLDatasource(
+            utility_service.utility,
+            utility_service.utility_account_id,
+            utility_service.service_id,
+            utility_service.gen_utility,
+            utility_service.gen_utility_account_id,
+            utility_service,
         ),
-        transformer=CleanPowerAllianceTransformer(),
+        PacificGasElectricUrjaXMLTransformer(),
         task_id=task_id,
         partial_type=PartialBillProviderType.GENERATION_ONLY,
     )
@@ -143,19 +147,56 @@ if key not in raw_billing_data:
     )
 ```
 
+## Scraping "third_party_expected"
+When building a T&D Partial Billing Scraper, if you can tell that the service is on a third-party 
+for the given billing period, set `third_party_expected` to True.  Alternatively, if you can verify
+that the service is bundled for that billing period, set `third_party_expected` to False.  This
+will help the `PartialBillStitcher` in webapps determine if we're missing generation charges, 
+or if no generation charges were expected that month.  We dictate this to the scraper level 
+to keep the Stitcher agnostic.
+
+```python
+BillingDatum(
+    start=date(2017, 1, 2),
+    end=date(2017, 1, 30),
+    cost=3411.2,
+    used=5,
+    peak=None,
+    items=[],
+    statement=date(2017, 1, 30),
+    attachments=None,
+    utility_code=None,
+    utility_account_id=None,
+    utility="utility:pge",
+    service_id="1234566",
+    third_party_expected=True,
+)
+
+```
+
 
 ## Running partial billing scrapers locally
 
-Running a generation-only partial-billing scraper.  Pass in the `gen_service_id` optional config.
+Running a generation-only partial-billing scraper.  Pass in the `gen_service_id` optional config if needed.
 ```bash
 python launch.py by-name 'sce-clean-power-alliance-urjanet' '2-41-422-5144' '3-049-1578-16' '2019-01-01' '2020-05-01' --gen_service_id '3-050-6585-98'
 
 ```
 
-Running a tnd-only partial billing scraper.  Passing in `--source_type='partial-billing` config, because
-the Configuration for this scraper looks at `source_types` to determine if this is a `billing` scraper or a
-`partial-billing` scraper.
+Running a generation-only partial-billing scraper where the service id is the same for the T&D/Gen provider:
 ```bash
-python launch.py by-name 'sce-react-energymanager-partial-billing' '2-41-422-5144' '3-049-1578-16' '2020-01-01' '2020-03-01' --source_type='partial-billing' --username **** --password ****
-
+python launch.py by-name pge-urjanet-generation 9166678644-6 9166678022 2018-1-22 2019-1-22
 ```
+
+Running a tnd-only partial billing scraper:
+```bash
+python launch.py by-name smd-tnd-partial-billing 9166678644-6 9166678022 2015-11-20 2021-1-15
+```
+
+## Adding New Fields to the Partial Bill Model
+
+If you add a new field to the PartialBill model, consider if changes to this field should cause existing partial bills 
+to be overridden.  Add this field to `PartialBill.differs` if necessary.
+
+
+

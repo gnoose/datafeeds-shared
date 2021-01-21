@@ -135,8 +135,9 @@ class PartialBillProcessor:
             "SAID",
             "Account Number",
             "Utility",
+            "Third Party Expected",
         )
-        fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s  %-15s       %-20s  %-10s    %-15s      %-10s"
+        fmt = "%-10s  %-10s  %-10s  %-10s  %-10s %-10s  %-15s       %-20s  %-10s    %-15s      %-10s  %-10s"
         log.info(fmt % fields)
         for pb in partial_bills:
             entries = [
@@ -151,6 +152,7 @@ class PartialBillProcessor:
                 str(pb.service_id),
                 str(pb.utility_account_id),
                 str(pb.utility),
+                str(pb.third_party_expected),
             ]
             log.info(fmt % tuple(entries))
         log.info("=" * 80)

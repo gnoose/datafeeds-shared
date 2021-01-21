@@ -3838,7 +3838,8 @@ CREATE TABLE public.partial_bill (
     utility character varying(128),
     utility_account_id character varying,
     utility_code character varying,
-    tariff character varying
+    tariff character varying,
+    third_party_expected boolean
 );
 
 
