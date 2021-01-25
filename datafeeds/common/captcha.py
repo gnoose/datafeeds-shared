@@ -75,10 +75,13 @@ def recaptcha_v2(driver: BaseDriver, iframe_parent: WebElement, page_url: str):
         # error messages look like CAPCHA_NOT_READY
         if not re.match(r"^[A-Z_]+$", answer):
             break
-        log.info("trying again in 10s")
-        time.sleep(10)
+        log.info("trying again in 12s")
+        time.sleep(12)
     log.info("setting captcha answer=%s", answer)
+    if answer == "CAPCHA_NOT_READY":
+        return False
     driver.execute_script(
         'document.getElementById("g-recaptcha-response").innerHTML="%s";' % answer
     )
     time.sleep(5)
+    return True

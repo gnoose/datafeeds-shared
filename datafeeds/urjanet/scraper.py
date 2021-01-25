@@ -3,14 +3,20 @@ import json
 import logging
 import re
 import hashlib
-from typing import Optional
+from datetime import timedelta, date
+from typing import Optional, List
 
 import requests
 
 from datafeeds import config
 from datafeeds.common.util.s3 import s3_key_exists, upload_file_to_s3
 from datafeeds.models.bill import PartialBillProviderType
-from datafeeds.urjanet.model import Charge, GridiumBillingPeriod, order_json
+from datafeeds.urjanet.model import (
+    Charge,
+    GridiumBillingPeriod,
+    order_json,
+    GridiumBillingPeriodCollection,
+)
 from datafeeds.urjanet.datasource.base import UrjanetDataSource
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
 from datafeeds.common.base import BaseScraper
@@ -144,16 +150,16 @@ def make_line_items(bill: GridiumBillingPeriod):
 
 
 def make_attachments(
-    bill: GridiumBillingPeriod,
-    utility: str,
-    account_id: str,
+    source_urls: Optional[List[str]] = None,
+    statement: Optional[date] = None,
+    utility: Optional[str] = None,
+    account_id: Optional[str] = None,
     gen_utility: Optional[str] = None,
     gen_utility_account_id: Optional[str] = None,
 ):
     if not config.enabled("S3_BILL_UPLOAD"):
         return None
 
-    source_urls = bill.source_urls
     if not source_urls:
         return None
 
@@ -164,7 +170,7 @@ def make_attachments(
             kind="bill",
             format="PDF",
             source="urjanet",
-            statement=bill.statement.strftime("%Y-%m-%d"),
+            statement=statement.strftime("%Y-%m-%d"),
             utility=utility,
             utility_account_id=account_id,
             gen_utility=gen_utility,
@@ -190,7 +196,9 @@ def make_billing_datum(
         used=_try_parse_float(bill.total_usage),
         peak=_try_parse_float(bill.peak_demand),
         items=make_line_items(bill),
-        attachments=make_attachments(bill, utility, account_id)
+        attachments=make_attachments(
+            bill.source_urls, bill.statement, utility, account_id
+        )
         if fetch_attachments
         else None,
         utility_code=bill.tariff,
@@ -228,6 +236,22 @@ class BaseUrjanetScraper(BaseScraper):
     def _execute(self):
         data = self.urja_datasource.load()
         gridium_bills = self.urja_transformer.urja_to_gridium(data)
+
+        if self._configuration.scrape_partial_bills:
+            restricted_billing_periods = []
+            start = self._date_range.start_date
+            end = max(start, self._date_range.end_date or date.today())
+            if end - start <= timedelta(days=60):
+                start = start - timedelta(days=60)
+                log.info("Adjusting start date to %s.", start)
+            for period in gridium_bills.periods:
+                if period.start >= start:
+                    restricted_billing_periods.append(period)
+            # Rather than scrape every bill we have, restrict *partial* urjanet scrapers to return data
+            # after the start date so we can return the same amount of data on both scrapers.
+            gridium_bills = GridiumBillingPeriodCollection(
+                periods=restricted_billing_periods
+            )
 
         out_dir = config.WORKING_DIRECTORY
         if out_dir:

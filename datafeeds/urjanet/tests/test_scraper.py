@@ -5,6 +5,8 @@ from datetime import date
 
 from datafeeds import config as project_config
 import datafeeds.urjanet.tests.util as test_util
+from datafeeds.common import DateRange
+from datafeeds.models.bill import PartialBillProviderType
 from datafeeds.urjanet.scraper import (
     BaseUrjanetScraper,
     BaseUrjanetConfiguration,
@@ -18,6 +20,40 @@ from datafeeds.common.typing import BillingDatum, BillingDatumItemsEntry
 
 TEST_DIR = os.path.split(__file__)[0]
 DATA_DIR = os.path.join(TEST_DIR, "data/pge")
+
+expected = [
+    BillingDatum(
+        start=date(2018, 1, 1),
+        end=date(2018, 2, 1),
+        statement=date(2018, 2, 8),
+        cost=100.0,
+        used=16.0,
+        peak=0.0,
+        items=[
+            BillingDatumItemsEntry(
+                description="test_charge1",
+                quantity=16.0,
+                rate=5.0,
+                total=80.0,
+                kind="use",
+                unit="kwh",
+            ),
+            BillingDatumItemsEntry(
+                description="test_charge2",
+                quantity=0.0,
+                rate=0.0,
+                total=20.0,
+                kind="other",
+                unit="other",
+            ),
+        ],
+        attachments=None,
+        utility_code="test_tariff",
+        utility_account_id="1",
+        utility="test_provider",
+        service_id="test_podid",
+    )
+]
 
 
 class TestUrjanetScraper(unittest.TestCase):
@@ -65,40 +101,6 @@ class TestUrjanetScraper(unittest.TestCase):
         self.assertEqual("Urjanet Scraper: pge", scraper.name)
 
         result = scraper._execute()
-
-        expected = [
-            BillingDatum(
-                start=date(2018, 1, 1),
-                end=date(2018, 2, 1),
-                statement=date(2018, 2, 8),
-                cost=100.0,
-                used=16.0,
-                peak=0.0,
-                items=[
-                    BillingDatumItemsEntry(
-                        description="test_charge1",
-                        quantity=16.0,
-                        rate=5.0,
-                        total=80.0,
-                        kind="use",
-                        unit="kwh",
-                    ),
-                    BillingDatumItemsEntry(
-                        description="test_charge2",
-                        quantity=0.0,
-                        rate=0.0,
-                        total=20.0,
-                        kind="other",
-                        unit="other",
-                    ),
-                ],
-                attachments=None,
-                utility_code="test_tariff",
-                utility_account_id="1",
-                utility="test_provider",
-                service_id="test_podid",
-            )
-        ]
 
         self.assertEqual(expected, result.bills)
 
@@ -154,3 +156,32 @@ class TestUrjanetScraper(unittest.TestCase):
             self.assertEqual(attachment.key, "test_key")
             self.assertEqual(attachment.kind, "bill")
             self.assertEqual(attachment.format, "PDF")
+
+    def test_restrict_urjanet_data_range_for_partial_scrapers(self):
+        datasource = test_util.FixtureDataSource(
+            os.path.join(DATA_DIR, "simple_fixture_input.json")
+        )
+        transformer = PacificGasElectricTransformer()
+        config = BaseUrjanetConfiguration(
+            datasource,
+            transformer,
+            "pge",
+            False,
+            partial_type=PartialBillProviderType.GENERATION_ONLY,
+        )
+
+        date_range = DateRange(date(2020, 1, 1), date(2020, 6, 1))
+        scraper = BaseUrjanetScraper(None, date_range, config)
+        result = scraper._execute()
+        self.assertEqual(
+            [], result.generation_bills, "partial urjanet bills outside of date range"
+        )
+
+        date_range = DateRange(date(2018, 1, 1), date(2020, 6, 1))
+        scraper = BaseUrjanetScraper(None, date_range, config)
+        result = scraper._execute()
+        self.assertEqual(
+            expected,
+            result.generation_bills,
+            "partial urjanet bills fall inside date range",
+        )

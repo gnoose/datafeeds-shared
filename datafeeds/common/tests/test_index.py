@@ -53,20 +53,22 @@ class IndexTests(unittest.TestCase):
 
     def test_run_meta(self):
         meter = self.meters[0]
+        expected = {
+            "service_id": meter.utility_service.service_id,
+            "gen_service_id": meter.utility_service.gen_service_id,
+            "emailSubscribers": 0,
+            "accountUsers": 0,
+        }
         # no users
-        self.assertEqual(
-            {"emailSubscribers": 0, "accountUsers": 0}, index.run_meta(meter.oid)
-        )
+        self.assertEqual(expected, index.run_meta(meter.oid))
         # with users, but user is internal
         self.add_internal_user()
-        self.assertEqual(
-            {"emailSubscribers": 0, "accountUsers": 0}, index.run_meta(meter.oid)
-        )
+        self.assertEqual(expected, index.run_meta(meter.oid))
         # with external user
         self.set_external_user()
-        self.assertEqual(
-            {"emailSubscribers": 1, "accountUsers": 1}, index.run_meta(meter.oid)
-        )
+        expected["emailSubscribers"] = 1
+        expected["accountUsers"] = 1
+        self.assertEqual(expected, index.run_meta(meter.oid))
 
     @mock.patch("datafeeds.common.index.index_etl_run")
     def test_update_billing_range(self, index_etl_run):

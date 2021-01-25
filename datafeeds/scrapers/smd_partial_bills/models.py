@@ -223,6 +223,15 @@ class Bill(ModelMixin, Base):
         line_items: List[LineItem] = [LineItem.from_json(x) for x in self._line_items]
         return [x for x in line_items if x is not None]
 
+    @property
+    def is_partial(self) -> bool:
+        """Line items have indicators that service is on a third party"""
+        return any(
+            l.get("note", "").lower()
+            in ("generation credit", "power cost incentive adjustment", "pcia")
+            for l in self._line_items or []
+        )
+
     def overlaps(self, other: "Bill") -> bool:
         if not isinstance(other, Bill):
             return False
@@ -352,6 +361,7 @@ class Bill(ModelMixin, Base):
             utility="utility:pge",
             utility_account_id=utility_account_id,
             service_id=service_id,
+            third_party_expected=self.is_partial,
         )
 
     @property

@@ -76,6 +76,7 @@ from datafeeds.scrapers.sce_react.energymanager_greenbutton import (
 from datafeeds.scrapers.sce_react.energymanager_interval import (
     datafeed as sce_react_energymanager_interval,
 )
+from datafeeds.scrapers.sce_react.sce_website import datafeed as sce_website
 from datafeeds.scrapers.smd_partial_bills.synchronizer import (
     datafeed as smd_tnd_partial_billing,
 )
@@ -189,6 +190,7 @@ scraper_functions = {
     "sce-react-energymanager-greenbutton": sce_react_energymanager_greenbutton,
     "sce-react-energymanager-interval": sce_react_energymanager_interval,
     "sce-react-energymanager-partial-billing": sce_react_energymanager_billing,
+    "sce-website": sce_website,
     "scl-meterwatch": scl_meterwatch,
     "sj-water-urjanet": sjwater,
     "smart-meter-texas": smart_meter_texas,
@@ -306,7 +308,7 @@ def _launch_meter_datasource(mds: MeterDataSource, start: date, end: date):
 
     cleanup_workdir()
     try:
-        status = scraper_fn(account, meter, mds, parameters, task_id=task_id)
+        status = scraper_fn(account, meter, mds, parameters, task_id=task_id)  # type: ignore[operator] # noqa
 
         if config.enabled("ES_INDEX_LOGS"):
             index_logs(task_id, account, meter, mds, status)
@@ -417,7 +419,7 @@ def launch_by_name(
 
     cleanup_workdir()
     try:
-        status = scraper_fn(account, meter, mds, parameters)
+        status = scraper_fn(account, meter, mds, parameters)  # type: ignore[operator] # noqa
     except:  # noqa=E722
         log.exception("The scraper run has failed due to an unhandled exception.")
         status = Status.FAILED

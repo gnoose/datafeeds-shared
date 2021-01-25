@@ -39,11 +39,13 @@ class SceReactBasicBillingConfiguration(Configuration):
         gen_service_id: str,
         scrape_bills: bool,
         scrape_partial_bills: bool,
+        metascraper=False,
     ):
         super().__init__(
             scrape_bills=scrape_bills,
             scrape_partial_bills=scrape_partial_bills,
             scrape_readings=False,
+            metascraper=metascraper,
         )
         self.service_id = service_id
         self.gen_service_id = gen_service_id
@@ -353,6 +355,7 @@ def datafeed(
     datasource: MeterDataSource,
     params: dict,
     task_id: Optional[str] = None,
+    metascraper=False,
 ) -> Status:
     # If there's a generation service id for the meter, get generation partials (with gen_service_id)
     # and T&D partials (with service_id). Otherwise, get bundled bills.
@@ -362,6 +365,7 @@ def datafeed(
         gen_service_id=meter.utility_service.gen_service_id,
         scrape_bills=not is_partial,
         scrape_partial_bills=is_partial,
+        metascraper=metascraper,
     )
 
     return run_datafeed(

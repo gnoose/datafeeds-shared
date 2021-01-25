@@ -79,7 +79,7 @@ class TestLADWPParser(TestCase):
             statement=date(2020, 10, 5),
             cost=882.04,
             used=3520,
-            peak=7.57,
+            peak=10.22,
             items=None,
             attachments=None,
             utility_code=None,
@@ -131,7 +131,7 @@ class TestLADWPParser(TestCase):
             statement=date(2020, 10, 5),
             cost=384.29,
             used=1062,
-            peak=2,
+            peak=2.03,
             items=None,
             attachments=None,
             utility_code=None,
@@ -189,10 +189,25 @@ class TestLADWPParser(TestCase):
             utility_code=None,
         )
         self.assertEqual([expected], parse_pdf(filename, "PMY00209-00014123", "kw"))
+        # uses peaks_2 pattern
+        filename = "datafeeds/scrapers/tests/fixtures/ladwp-202004.pdf"
+        expected = BillingDatum(
+            start=date(2020, 3, 6),
+            end=date(2020, 4, 6),
+            statement=date(2020, 4, 7),
+            cost=2566.24,
+            used=12505,
+            peak=37.72,
+            items=None,
+            attachments=None,
+            utility_code=None,
+        )
+        self.assertEqual([expected], parse_pdf(filename, "APMYD00209-00063954", "kw"))
 
     @patch("datafeeds.scrapers.ladwp_bill_pdf.notify_rebill")
     def test_rebill(self, notify):
         """Parser can extract data from a bill with corrections."""
+        self.maxDiff = None
         filename = "datafeeds/scrapers/tests/fixtures/ladwp-rebill.pdf"
         # electricity
         expected = [
@@ -269,7 +284,7 @@ class TestLADWPParser(TestCase):
             ),
             BillingDatum(
                 start=date(2020, 8, 21),
-                end=date(2020, 9, 21),
+                end=date(2020, 9, 20),
                 statement=date(2020, 9, 24),
                 cost=1031.67,
                 used=150,
@@ -286,7 +301,7 @@ class TestLADWPParser(TestCase):
         expected = [
             BillingDatum(
                 start=date(2020, 5, 26),
-                end=date(2020, 9, 21),
+                end=date(2020, 9, 20),
                 statement=date(2020, 9, 24),
                 cost=466.97,
                 used=0,
@@ -298,6 +313,189 @@ class TestLADWPParser(TestCase):
         ]
         self.assertEqual(
             expected, parse_pdf(filename, "2463041281", "ccf"),
+        )
+
+    def test_alt_regexp(self):
+        """Parser can extract data from a bill with alternate set of regular expressions."""
+        pattern = "datafeeds/scrapers/tests/fixtures/ladwp-%s.pdf"
+        expected = [
+            BillingDatum(
+                start=date(2020, 9, 2),
+                end=date(2020, 10, 1),
+                statement=date(2020, 10, 5),
+                cost=386.52,
+                used=840,
+                peak=6,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected, parse_pdf(pattern % "202010", "PMY00219-00010473", "kw")
+        )
+        expected = [
+            BillingDatum(
+                start=date(2020, 6, 5),
+                end=date(2020, 7, 5),
+                statement=date(2020, 7, 7),
+                cost=357.98,
+                used=720,
+                peak=4.8,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected, parse_pdf(pattern % "202007", "PMY00219-00010473", "kw")
+        )
+        expected = [
+            BillingDatum(
+                start=date(2019, 12, 12),
+                end=date(2020, 1, 13),
+                statement=date(2020, 1, 14),
+                cost=47.48,
+                used=0,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected, parse_pdf(pattern % "202001", "00106-00095149", "kw")
+        )
+
+    def test_water_sewer(self):
+        """Parser can extract water data from a bill with water and sewer data."""
+        expected = [
+            BillingDatum(
+                start=date(2020, 9, 28),
+                end=date(2020, 10, 28),
+                statement=date(2020, 10, 29),
+                cost=2523.12,
+                used=411,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-water-202010.pdf",
+                "9479723015",
+                "ccf",
+            ),
+        )
+
+    def test_fire_only(self):
+        """Parser can extract fire service data from a bill with only fire service data."""
+        expected = [
+            BillingDatum(
+                start=date(2020, 8, 28),
+                end=date(2020, 9, 28),
+                statement=date(2020, 9, 29),
+                cost=118.72,
+                used=0,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-fire-202009.pdf",
+                "3631146704",
+                "ccf",
+            ),
+        )
+
+    def test_past_due(self):
+        """Parser doesn't crash on a statement with no usage data."""
+        self.assertEqual(
+            [],
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-past-due-202008.pdf",
+                "3770151783",
+                "ccf",
+            ),
+        )
+
+    def test_electric_and_fire(self):
+        """Parser can extract fire service data from a bill that also contains electricity usage."""
+        expected = [
+            BillingDatum(
+                start=date(2020, 10, 13),
+                end=date(2020, 11, 15),
+                statement=date(2020, 11, 16),
+                cost=118.72,
+                used=0,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-fire-202011.pdf",
+                "4770151943",
+                "ccf",
+            ),
+        )
+
+    def test_multi_service_fire(self):
+        """Parser can extract fire service data from a bill with multiple fire service sections."""
+        expected = [
+            BillingDatum(
+                start=date(2020, 9, 23),
+                end=date(2020, 10, 22),
+                statement=date(2020, 10, 23),
+                cost=118.72,
+                used=0,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-fire-202010.pdf",
+                "6293005254",
+                "ccf",
+            ),
+        )
+
+    def test_multiline_service_water(self):
+        """Parser can extract water service data from a bill with multiple lines."""
+        expected = [
+            BillingDatum(
+                start=date(2019, 12, 12),
+                end=date(2020, 1, 13),
+                statement=date(2020, 1, 15),
+                cost=836.08,
+                used=122,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-water-202001.pdf",
+                "2112228930",
+                "ccf",
+            ),
         )
 
 
@@ -323,7 +521,7 @@ def test_scraper(
         meter_number=meter_number,
         utility_account_id=meter_number,
         commodity="False",
-        # scrape_bills=True,
+        account_name=None,
     )
     credentials = Credentials(username, password)
     scraper = LADWPBillPdfScraper(

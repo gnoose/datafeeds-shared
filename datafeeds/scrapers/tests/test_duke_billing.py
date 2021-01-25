@@ -78,6 +78,6 @@ class DukeBillTestCase(unittest.TestCase):
         data = pdf_parser.parse_old_pdf(text)
         self.assertEqual(date(2019, 11, 27), data.start)
         self.assertEqual(date(2019, 12, 30), data.end)
-        self.assertAlmostEqual(19.60, data.cost, 2)
+        self.assertAlmostEqual(19.7, data.cost, 2)
         self.assertAlmostEqual(156, data.used, 2)
         self.assertIsNone(data.peak)

@@ -57,8 +57,13 @@ def extract_bill_data(
         log.exception("Downloaded bill file failed to parse as a PDF.")
         return None
 
-    current_charges_pattern = "Current Charges.*\n.*\n.*\n.*\n\n.*\n(.*)\n"
-    current_charges = re.search(current_charges_pattern, text).groups()[0]
+    current_charges_pattern = "Current Charges(.*?)Cycle"
+    for line in (
+        re.search(current_charges_pattern, text, re.DOTALL).group(1).split("\n")
+    ):
+        # get the last number
+        if re.match(r"[\d,\.]", line.strip()):
+            current_charges = line.strip().replace(",", "")
 
     period_start, period_end = extract_bill_period(pdf_filename)
 

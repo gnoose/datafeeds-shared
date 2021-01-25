@@ -24,6 +24,10 @@ SqlQueryResult = List[SqlRowDict]
 Transform = Callable[[Any], Any]
 
 
+def create_placeholders(item_list):
+    return ",".join(["%s"] * len(item_list))
+
+
 def get_column(
     row: SqlRowDict,
     colname: str,

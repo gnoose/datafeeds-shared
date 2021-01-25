@@ -85,7 +85,7 @@ class TestIntervalScraper(BaseApiScraper):
 
     def _execute(self):
         timeline = Timeline(self.start_date, self.end_date)
-        dt = datetime(self.end_date.year, self.start_date.month, self.start_date.day)
+        dt = datetime(self.start_date.year, self.start_date.month, self.start_date.day)
         for idx in range(96):
             timeline.insert(dt + timedelta(minutes=15 * idx), 1.0)
         return Results(readings=timeline.serialize())

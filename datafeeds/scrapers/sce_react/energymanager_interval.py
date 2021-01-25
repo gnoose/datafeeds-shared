@@ -41,8 +41,10 @@ class SceReactEnergyManagerIntervalConfiguration(Configuration):
         service_id: The SCE service id to extract data for
     """
 
-    def __init__(self, service_id: str):
-        super().__init__(scrape_bills=False, scrape_readings=True)
+    def __init__(self, service_id: str, metascraper=False):
+        super().__init__(
+            scrape_bills=False, scrape_readings=True, metascraper=metascraper
+        )
         self.service_id = service_id
 
 
@@ -244,9 +246,10 @@ def datafeed(
     datasource: MeterDataSource,
     params: dict,
     task_id: Optional[str] = None,
+    metascraper=False,
 ) -> Status:
     configuration = SceReactEnergyManagerIntervalConfiguration(
-        service_id=meter.service_id
+        service_id=meter.service_id, metascraper=metascraper,
     )
 
     return run_datafeed(

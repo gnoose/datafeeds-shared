@@ -301,6 +301,7 @@ class TestBillModel(TestCase):
             utility_account_id=None,
             utility="utility:pge",
             service_id="earlier_service_id",
+            third_party_expected=False,
         )
         self.assertEqual(actual, expected)
 
@@ -344,6 +345,163 @@ class TestBillModel(TestCase):
             utility_account_id=None,
             utility="utility:pge",
             service_id="first_service_id",
+            third_party_expected=False,
         )
 
+        self.assertEqual(actual, expected)
+
+    def test_cca_indicators_in_line_items(self):
+        """Test partial_bill.third_party_expected is set to True if PCIA or generation
+        credits found in PG&E T&D line items
+        """
+        usage_point = "test_usage_point"
+        subscription = "test_subscription"
+
+        _line_items = [
+            {
+                "note": "Generation Credit",
+                "unit": "Wh",
+                "amount": -0.92,
+                "quantity": 0.0,
+            },
+            {
+                "note": "Franchise Fee Surcharge",
+                "unit": "Wh",
+                "amount": 0.01,
+                "quantity": 0.0,
+            },
+            {
+                "note": "Peak Energy Charge",
+                "unit": "Wh",
+                "amount": 0.02,
+                "quantity": 80.0,
+            },
+            {
+                "note": "Part Peak Energy Charge",
+                "unit": "Wh",
+                "amount": 0.06,
+                "quantity": 240.0,
+            },
+            {
+                "note": "Power Cost Incentive Adjustment",
+                "unit": "Wh",
+                "amount": 0.25,
+                "quantity": 0.0,
+            },
+            {
+                "note": "Utility Users' Tax",
+                "unit": "Wh",
+                "amount": 1.55,
+                "quantity": 0.0,
+            },
+            {
+                "note": "Off Peak Energy Charge",
+                "unit": "Wh",
+                "amount": 2.15,
+                "quantity": 9920.0,
+            },
+            {
+                "note": "Customer Charge",
+                "unit": "Wh",
+                "amount": 19.06,
+                "quantity": 29000.0,
+            },
+        ]
+
+        b = Bill(
+            start=datetime(2017, 1, 1, 7),
+            duration=timedelta(days=29),
+            used_unit="Wh",
+            used=5400,
+            _line_items=_line_items,
+            cost=3411.2,
+            published=datetime(2017, 2, 1),
+            usage_point=usage_point,
+            subscription=subscription,
+        )
+
+        actual = b.to_billing_datum(self.meter.utility_service)
+
+        expected_line_items = [
+            BillingDatumItemsEntry(
+                description="Generation Credit",
+                quantity=0.0,
+                rate=None,
+                total=-0.92,
+                kind="other",
+                unit="kWh",
+            ),
+            BillingDatumItemsEntry(
+                description="Franchise Fee Surcharge",
+                quantity=0.0,
+                rate=None,
+                total=0.01,
+                kind="other",
+                unit="kWh",
+            ),
+            BillingDatumItemsEntry(
+                description="Peak Energy Charge",
+                quantity=0.08,
+                rate=None,
+                total=0.02,
+                kind="use",
+                unit="kWh",
+            ),
+            BillingDatumItemsEntry(
+                description="Part Peak Energy Charge",
+                quantity=0.24,
+                rate=None,
+                total=0.06,
+                kind="use",
+                unit="kWh",
+            ),
+            BillingDatumItemsEntry(
+                description="Power Cost Incentive Adjustment",
+                quantity=0.0,
+                rate=None,
+                total=0.25,
+                kind="other",
+                unit="kWh",
+            ),
+            BillingDatumItemsEntry(
+                description="Utility Users' Tax",
+                quantity=0.0,
+                rate=None,
+                total=1.55,
+                kind="other",
+                unit="kWh",
+            ),
+            BillingDatumItemsEntry(
+                description="Off Peak Energy Charge",
+                quantity=9.92,
+                rate=None,
+                total=2.15,
+                kind="use",
+                unit="kWh",
+            ),
+            BillingDatumItemsEntry(
+                description="Customer Charge",
+                quantity=29.0,
+                rate=None,
+                total=19.06,
+                kind="other",
+                unit="kWh",
+            ),
+        ]
+
+        expected = BillingDatum(
+            start=date(2017, 1, 2),
+            end=date(2017, 1, 30),
+            cost=3411.2,
+            used=5,
+            peak=None,
+            items=expected_line_items,
+            statement=date(2017, 1, 30),
+            attachments=None,
+            utility_code=None,
+            utility_account_id=None,
+            utility="utility:pge",
+            service_id=None,
+            third_party_expected=True,
+        )
         self.assertEqual(actual, expected)

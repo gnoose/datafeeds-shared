@@ -61,11 +61,13 @@ class Configuration:
         scrape_readings: bool = False,
         scrape_pdfs: bool = False,
         scrape_partial_bills: bool = False,
+        metascraper: bool = False,
     ):
         self.scrape_bills = scrape_bills
         self.scrape_readings = scrape_readings
         self.scrape_pdfs = scrape_pdfs
         self.scrape_partial_bills = scrape_partial_bills
+        self.metascraper = metascraper
 
 
 class Credentials:
@@ -143,9 +145,11 @@ class Results:
         pdfs: List[BillPdf] = None,
         generation_bills: List[BillingDatum] = None,
         tnd_bills: List[BillingDatum] = None,
+        meta_status: bool = None,
     ):
         self.bills = bills
         self.generation_bills = generation_bills
         self.tnd_bills = tnd_bills
         self.readings = readings
         self.pdfs = pdfs
+        self.meta_status = meta_status

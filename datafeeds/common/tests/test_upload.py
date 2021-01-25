@@ -125,6 +125,7 @@ class TestPartialBillProcessor(unittest.TestCase):
         self.assertEqual(original_bill.closing, billing_data[0].end)
         self.assertEqual(original_bill.cost, float(billing_data[0].cost))
         self.assertEqual(original_bill.peak, float(billing_data[0].peak))
+        self.assertIsNone(original_bill.third_party_expected, "default value")
         self.assertEqual(
             original_bill.utility_code, None, "utility code is None if None scraped",
         )
@@ -289,6 +290,98 @@ class TestPartialBillProcessor(unittest.TestCase):
         db.session.flush()
         self.assertEqual(partial_bills.count(), 7)
         self.assertIsNone(most_recent_bill.superseded_by)
+
+    def test_third_party_expected_in_billing_datum(self):
+        """Test third_party_expected in billing datum will persist to the partial bill"""
+        partial_billing_datum = [
+            BillingDatum(
+                start=date(2019, 5, 5),
+                end=date(2019, 6, 3),
+                cost=500.5,
+                used=90.0,
+                peak=59.0,
+                items=None,
+                attachments=[],
+                statement=date(2019, 6, 3),
+                utility_code=None,
+                third_party_expected=True,
+            )
+        ]
+        upload.upload_partial_bills(
+            self.meter, None, partial_billing_datum, PartialBillProviderType.TND_ONLY
+        )
+        db.session.flush()
+        partial_bills = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.service == self.meter.utility_service.oid)
+            .order_by(PartialBill.initial)
+            .order_by(PartialBill.created)
+        )
+        self.assertEqual(partial_bills.count(), 1)
+        partial_bill = partial_bills[0]
+        self.assertEqual(partial_bill.cost, 500.5)
+        self.assertTrue(partial_bill.third_party_expected)
+
+    def test_superseding_third_party_expected(self):
+        """Test incoming partial bill with new value for "third_party_expected" will cause existing
+        partial bill to be superseded
+        """
+        partial_billing_datum = [
+            BillingDatum(
+                start=date(2019, 5, 5),
+                end=date(2019, 6, 3),
+                cost=500.5,
+                used=90.0,
+                peak=59.0,
+                items=None,
+                attachments=[],
+                statement=date(2019, 6, 3),
+                utility_code=None,  # Third party expected not sent in billing datum
+            )
+        ]
+        upload.upload_partial_bills(
+            self.meter, None, partial_billing_datum, PartialBillProviderType.TND_ONLY
+        )
+        db.session.flush()
+        partial_bills = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.service == self.meter.utility_service.oid)
+            .order_by(PartialBill.initial)
+            .order_by(PartialBill.created)
+        )
+        self.assertEqual(partial_bills.count(), 1)
+        partial_bill = partial_bills[0]
+        self.assertEqual(partial_bill.cost, 500.5)
+        self.assertIsNone(
+            partial_bill.third_party_expected, "No value set on billing datum."
+        )
+
+        new_partial_billing_datum = [
+            BillingDatum(
+                start=date(2019, 5, 5),
+                end=date(2019, 6, 3),
+                cost=500.5,
+                used=90.0,
+                peak=59.0,
+                items=None,
+                attachments=[],
+                statement=date(2019, 6, 3),
+                utility_code=None,
+                third_party_expected=False,
+            )
+        ]
+        upload.upload_partial_bills(
+            self.meter,
+            None,
+            new_partial_billing_datum,
+            PartialBillProviderType.TND_ONLY,
+        )
+        db.session.flush()
+        self.assertEqual(partial_bills.count(), 2)
+        original_partial = partial_bills[0]
+        new_partial = partial_bills[1]
+        self.assertFalse(new_partial.third_party_expected)
+        self.assertEqual(original_partial.superseded_by, new_partial.oid)
 
     def test_new_pdfs_override(self):
         service = self.meter.utility_service
@@ -679,6 +772,35 @@ class TestBillUpload(unittest.TestCase):
     def tearDown(cls):
         db.session.rollback()
 
+    def test_update_zero_cost(self):
+        """Verify replacing zero-cost bills with cost from current bills."""
+        service = self.meter.utility_service
+        db.session.add(service)
+        # no current bills
+        bills_list[0] = bills_list[0]._replace(cost=0)
+        updated = upload.verify_bills(self.meter.oid, bills_list)
+        self.assertEqual(len(bills_list), len(updated))
+        for idx, bill in enumerate(bills_list):
+            self.assertEqual(bill, updated[idx])
+
+        # with current bill
+        billing_datum = bills_list[0]
+        bill = Bill(
+            service=self.meter.service,
+            initial=billing_datum.start,
+            closing=billing_datum.end,
+            cost=123.45,
+            used=billing_datum.used,
+            peak=billing_datum.peak,
+        )
+        db.session.add(bill)
+        db.session.flush()
+        updated = upload.verify_bills(self.meter.oid, bills_list)
+        self.assertEqual(len(bills_list), len(updated))
+        self.assertEqual(updated[0].cost, 123.45)
+        for idx, bill in enumerate(bills_list[1:]):
+            self.assertEqual(bill, updated[idx + 1])
+
     def test_upload_bills(self):
         service = self.meter.utility_service
         db.session.add(service)
@@ -689,8 +811,9 @@ class TestBillUpload(unittest.TestCase):
         db.session.add(bill_1)
         db.session.flush()
 
-        print("service_id is %s" % service.service_id)
-        status = upload.upload_bills(self.meter, service.service_id, None, bills_list)
+        status = upload.upload_bills(
+            self.meter.oid, service.service_id, None, bills_list
+        )
         # No bills newer bills have arrived
         self.assertEqual(status, Status.COMPLETED)
 
@@ -709,7 +832,7 @@ class TestBillUpload(unittest.TestCase):
         ]
 
         status = upload.upload_bills(
-            self.meter, service.service_id, None, new_bills_list
+            self.meter.oid, service.service_id, None, new_bills_list
         )
         # A more recent bill arrived
         self.assertEqual(status, Status.SUCCEEDED)

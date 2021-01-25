@@ -1,4 +1,4 @@
-FROM selenium/standalone-chrome:3.141.59
+FROM selenium/standalone-chrome:3.141.59-20200525
 
 RUN sudo apt-get update && sudo apt-get install -y python3-pip
 RUN sudo mkdir -p /app/workdir

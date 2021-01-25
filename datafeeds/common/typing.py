@@ -109,6 +109,7 @@ class BillingDatum(NamedTuple):
     service_id: Optional[str] = None
     utility_account_id: Optional[str] = None
     utility: Optional[str] = None
+    third_party_expected: Optional[bool] = None  # Currently only on partials
 
 
 BillingData = List[BillingDatum]

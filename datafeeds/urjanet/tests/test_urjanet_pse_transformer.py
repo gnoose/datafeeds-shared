@@ -21,6 +21,7 @@ class TestUrjanetPseTransformer(test_util.UrjaFixtureText):
 
     def test_pse(self):
         self.pse_test("pse01_input.json", "pse01_expected.json")
+        self.pse_test("2105229312002_input.json", "2105229312002_expected.json")
 
 
 if __name__ == "__main__":

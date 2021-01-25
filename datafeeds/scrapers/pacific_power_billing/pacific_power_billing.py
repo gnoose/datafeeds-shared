@@ -152,6 +152,13 @@ class LoginPage:
         self.driver.find_element_by_xpath(
             "//input[@formcontrolname='password']"
         ).send_keys(password)
+
+        cookie_accept_button = self.driver.find_element_by_xpath(
+            "//span[text()='Accept']/.."
+        )
+        if cookie_accept_button:
+            cookie_accept_button.click()
+
         self.driver.find_element_by_xpath("//span[text()='Sign In']/..").click()
 
         try:

@@ -1,23 +1,48 @@
 import logging
+from datetime import timedelta, date
 from typing import Optional, Set, List
 
+from pymysql.cursors import DictCursor
 from sqlalchemy import distinct
 
-from datafeeds import db
+from datafeeds import db, config as datafeeds_config
 from datafeeds.common import Configuration, Results, BaseApiScraper
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common.typing import Status
+from datafeeds.common.typing import Status, BillingData
 from datafeeds.models import (
     Meter,
     SnapmeterAccount,
     SnapmeterMeterDataSource as MeterDataSource,
 )
-from datafeeds.models.utility_service import UtilityServiceSnapshot
+from datafeeds.models.utility_service import UtilityServiceSnapshot, UtilityService
 
 from datafeeds.scrapers.smd_partial_bills.models import Bill as SmdBill, CustomerInfo
-
+from datafeeds.urjanet.datasource.pymysql_adapter import (
+    create_placeholders,
+    SqlRowDict,
+)
+from datafeeds.urjanet.scraper import make_attachments
 
 log = logging.getLogger(__name__)
+
+
+def get_service_ids(us: UtilityService) -> List[str]:
+    """Return related service ids from UtilityServiceSnapshots
+    """
+    service_ids = [
+        said[0].strip()
+        for said in db.session.query(
+            distinct(UtilityServiceSnapshot.service_id)
+        ).filter(
+            UtilityServiceSnapshot.service == us.oid,
+            UtilityServiceSnapshot.service_id.isnot(None),
+        )
+    ]
+    if us.service_id not in service_ids:
+        # This *should* be in the snapshot table, but this is helpful for testing
+        # and covering our bases.
+        service_ids.append(us.service_id.strip())
+    return service_ids
 
 
 def relevant_usage_points(m: Meter) -> Set[str]:
@@ -36,20 +61,7 @@ def relevant_usage_points(m: Meter) -> Set[str]:
     if us is None:
         return set()
 
-    service_ids = [
-        said[0].strip()
-        for said in db.session.query(
-            distinct(UtilityServiceSnapshot.service_id)
-        ).filter(
-            UtilityServiceSnapshot.service == us.oid,
-            UtilityServiceSnapshot.service_id.isnot(None),
-        )
-    ]
-
-    if us.service_id not in service_ids:
-        # This *should* be in the snapshot table, but this is helpful for testing
-        # and covering our bases.
-        service_ids.append(us.service_id.strip())
+    service_ids = get_service_ids(us)
 
     records = db.session.query(CustomerInfo).filter(
         CustomerInfo.service_id.in_(service_ids)
@@ -93,11 +105,71 @@ class SmdPartialBillingScraper(BaseApiScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = "SMD Partial Billing Synchronizer"
+        self.conn = None
 
     @property
     def service(self):
         meter = self._configuration.meter
         return meter.utility_service
+
+    def fetch_one(self, query: str, *argv) -> SqlRowDict:
+        """Helper function for executing a query and fetching a single result"""
+        with self.conn.cursor(DictCursor) as cursor:
+            cursor.execute(query, tuple(argv))
+            return cursor.fetchone()
+
+    def attach_corresponding_urja_pdfs(self, partial_bills: BillingData) -> BillingData:
+        """Attempt to update each SMD Partial Bill with the latest statement from Urjanet.
+        """
+        self.conn = db.urjanet_connection()
+        utility_account_id = self.service.utility_account_id
+        service_ids = get_service_ids(self.service)
+        query = """
+            SELECT xmlaccount.SourceLink, xmlaccount.StatementDate
+            FROM xmlaccount, xmlmeter
+            WHERE xmlaccount.PK = xmlmeter.AccountFK
+                AND xmlaccount.UtilityProvider = 'PacGAndE'
+                AND RawAccountNumber = %s
+                AND PODid in ({})
+                AND xmlmeter.IntervalStart > %s
+                AND xmlmeter.IntervalStart < %s
+            ORDER BY xmlaccount.StatementDate DESC
+            LIMIT 1
+        """.format(
+            create_placeholders(service_ids)
+        )
+
+        updated_partials = []
+        for pb in partial_bills:
+            attachments = None
+
+            pdf = self.fetch_one(
+                query,
+                utility_account_id,
+                *service_ids,
+                pb.start - timedelta(days=1),
+                pb.start + timedelta(days=1)
+            )
+
+            if pdf:
+                source_url = pdf.get("SourceLink") if pdf else None
+                statement = pdf.get("StatementDate") if pdf else None
+
+                attachments = make_attachments(
+                    source_urls=[source_url],
+                    statement=statement,
+                    utility=self.service.utility,
+                    account_id=utility_account_id,
+                    gen_utility=self.service.gen_utility,
+                    gen_utility_account_id=self.service.gen_utility_account_id,
+                )
+
+            if attachments:
+                updated_partials.append(pb._replace(attachments=attachments))
+            else:
+                updated_partials.append(pb)
+        self.conn.close()
+        return updated_partials
 
     def _execute(self):
         config: SmdPartialBillingScraperConfiguration = self._configuration
@@ -110,7 +182,12 @@ class SmdPartialBillingScraper(BaseApiScraper):
         query = db.session.query(SmdBill).filter(SmdBill.usage_point.in_(usage_points))
 
         if self.start_date:
-            query = query.filter(self.start_date <= SmdBill.start)
+            start = self.start_date
+            end = max(start, self.end_date or date.today())
+            if end - self.start_date <= timedelta(days=60):
+                start = start - timedelta(days=60)
+                log.info("Adjusting start date to %s.", start)
+            query = query.filter(start <= SmdBill.start)
 
         if self.end_date:
             query = query.filter(SmdBill.start <= self.end_date)
@@ -131,6 +208,8 @@ class SmdPartialBillingScraper(BaseApiScraper):
                 meter.name,
                 meter.oid,
             )
+            if datafeeds_config.enabled("S3_BILL_UPLOAD"):
+                partial_bills = self.attach_corresponding_urja_pdfs(partial_bills)
 
         return Results(tnd_bills=partial_bills)
 

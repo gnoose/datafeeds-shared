@@ -4,7 +4,7 @@ from datetime import timedelta, date, datetime
 
 from deprecation import deprecated
 import os
-from typing import Optional, Union, BinaryIO, List
+from typing import Optional, Union, BinaryIO, List, Dict
 from io import BytesIO
 import hashlib
 from sqlalchemy import func
@@ -46,6 +46,35 @@ def _latest_closing(said) -> Optional[date]:
     return res.most_recent_closing if res else None
 
 
+def verify_bills(meter_oid: int, billing_data: BillingData) -> BillingData:
+    """If we retrieved a bills with 0 cost and non-zero use, see if we can get cost from a current bill."""
+    current_bills: Dict[date, Bill] = {}
+    for row in db.session.query(Bill).filter(
+        Bill.service == Meter.service, Meter.oid == meter_oid
+    ):
+        current_bills[row.closing] = row
+    data: BillingData = []
+    for bill in billing_data:
+        if not (bill.cost == 0 and bill.used > 0):
+            data.append(bill)
+            continue
+        log.warning("potential bad bill: cost is zero and use is not: %s", bill)
+        current = current_bills.get(bill.end)
+        if not current:
+            data.append(bill)
+            continue
+        if current.cost > 0:
+            log.info(
+                "replacing 0 cost with existing cost %s from bill %s",
+                current.cost,
+                current.oid,
+            )
+            data.append(bill._replace(cost=current.cost))
+        else:
+            data.append(bill)
+    return data
+
+
 def upload_bills(
     meter_oid: int, service_id: str, task_id: str, billing_data: BillingData,
 ) -> Status:
@@ -56,6 +85,7 @@ def upload_bills(
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
         index.update_billing_range(task_id, meter_oid, billing_data)
+    billing_data = verify_bills(meter_oid, billing_data)
 
     title = "Final Billing Summary"
     show_bill_summary(billing_data, title)
