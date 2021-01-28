@@ -581,6 +581,192 @@ class TestPartialBillProcessor(unittest.TestCase):
         )
         self.assertEqual(partial_bills.count(), 4)
 
+    @mock.patch("datafeeds.common.partial_billing.PartialBillProcessor.log_summary")
+    def test_partial_bill_line_items(self, _):
+        """Test identical but reordered line items don't cause the PB to be superseded"""
+
+        self.assertEqual(PartialBill.sort_items([]), [])
+        self.assertEqual(
+            PartialBill.sort_items([{"missing_key": "value"}]),
+            [{"missing_key": "value"}],
+        )
+        self.assertEqual(
+            PartialBill.sort_items(
+                [
+                    {"total": 11, "description": "Generation Credit"},
+                    {"total": 8, "description": "Generation Credit"},
+                ]
+            ),
+            [
+                {"total": 8, "description": "Generation Credit"},
+                {"total": 11, "description": "Generation Credit"},
+            ],
+        )
+
+        partial_bills = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.service == self.meter.service)
+            .order_by(PartialBill.initial)
+            .order_by(PartialBill.created)
+        )
+
+        self.assertEqual(partial_bills.count(), 0)
+
+        original = [
+            BillingDatum(
+                start=datetime(2019, 1, 6),
+                end=datetime(2019, 2, 3),
+                cost=987.76,
+                used=4585.0,
+                peak=25.0,
+                items=[
+                    BillingDatumItemsEntry(
+                        description="Generation Credit",
+                        quantity=0.0,
+                        rate=None,
+                        total=-65.61,
+                        kind="other",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Franchise Fee Surcharge",
+                        quantity=0.0,
+                        rate=None,
+                        total=0.39,
+                        kind="other",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Power Cost Incentive Adjustment",
+                        quantity=0.0,
+                        rate=None,
+                        total=15.94,
+                        kind="other",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Customer Charge",
+                        quantity=32.0,
+                        rate=None,
+                        total=26.28,
+                        kind="other",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Part Peak Energy Charge",
+                        quantity=221.9045,
+                        rate=None,
+                        total=54.5,
+                        kind="use",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Off Peak Energy Charge",
+                        quantity=368.695,
+                        rate=None,
+                        total=82.85,
+                        kind="use",
+                        unit="kWh",
+                    ),
+                ],
+                attachments=[],
+                statement=datetime(2019, 2, 3),
+                utility_code=None,
+            )
+        ]
+
+        status = upload.upload_partial_bills(
+            self.meter, None, original, PartialBillProviderType.TND_ONLY
+        )
+        db.session.flush()
+        self.assertEqual(status, Status.SUCCEEDED)
+        self.assertEqual(partial_bills.count(), 1)
+        original_partial = partial_bills[0]
+
+        status = upload.upload_partial_bills(
+            self.meter, None, original, PartialBillProviderType.TND_ONLY
+        )
+        db.session.flush()
+        self.assertEqual(status, Status.COMPLETED, "Partial doesn't have new data")
+        self.assertEqual(partial_bills.count(), 1)
+
+        reordered_line_items = [
+            BillingDatum(
+                start=datetime(2019, 1, 6),
+                end=datetime(2019, 2, 3),
+                cost=987.76,
+                used=4585.0,
+                peak=25.0,
+                items=[
+                    BillingDatumItemsEntry(
+                        description="Off Peak Energy Charge",
+                        quantity=368.695,
+                        rate=None,
+                        total=82.85,
+                        kind="use",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Generation Credit",
+                        quantity=0.0,
+                        rate=None,
+                        total=-65.61,
+                        kind="other",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Franchise Fee Surcharge",
+                        quantity=0.0,
+                        rate=None,
+                        total=0.39,
+                        kind="other",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Power Cost Incentive Adjustment",
+                        quantity=0.0,
+                        rate=None,
+                        total=15.94,
+                        kind="other",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Customer Charge",
+                        quantity=32.0,
+                        rate=None,
+                        total=26.28,
+                        kind="other",
+                        unit="kWh",
+                    ),
+                    BillingDatumItemsEntry(
+                        description="Part Peak Energy Charge",
+                        quantity=221.9045,
+                        rate=None,
+                        total=54.5,
+                        kind="use",
+                        unit="kWh",
+                    ),
+                ],
+                attachments=[],
+                statement=datetime(2019, 2, 3),
+                utility_code=None,
+            )
+        ]
+
+        status = upload.upload_partial_bills(
+            self.meter, None, reordered_line_items, PartialBillProviderType.TND_ONLY
+        )
+        db.session.flush()
+        self.assertEqual(
+            status,
+            Status.COMPLETED,
+            "Reordered identical line items don't cause pb to be superseded",
+        )
+        self.assertEqual(partial_bills.count(), 1)
+        self.assertIsNone(
+            db.session.query(PartialBill).get(original_partial.oid).superseded_by
+        )
+
     def test_scrape_utility_code(self):
         service = self.meter.utility_service
 

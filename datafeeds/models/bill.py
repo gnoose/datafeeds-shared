@@ -189,6 +189,16 @@ class PartialBill(ModelMixin, Base):
             for item in (items or [])
         ]
 
+    @staticmethod
+    def sort_items(
+        items: List[Dict[str, Union[str, float]]]
+    ) -> List[Dict[str, Union[str, float]]]:
+        """Sort line items by description and total for better comparison"""
+        try:
+            return sorted(items, key=lambda k: (k["description"], k["total"]))
+        except KeyError:
+            return items
+
     def differs(self, other: BillingDatum) -> bool:
         """
         Compare a pending partial bill with the current partial bill
@@ -206,7 +216,8 @@ class PartialBill(ModelMixin, Base):
             or self.cost != other.cost
             or self.used != other.used
             or self.attachments != (self.map_attachments(other.attachments or []))
-            or self.items != (self.map_line_items(other.items or []))
+            or self.sort_items(self.items or [])
+            != self.sort_items((self.map_line_items(other.items or [])))
             or (
                 other.utility_code is not None
                 and self.utility_code != other.utility_code
