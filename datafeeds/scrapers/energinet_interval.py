@@ -7,11 +7,11 @@ from typing import Optional
 from datetime import timedelta, date, datetime
 from dateutil.parser import parse as parse_date
 
-from datafeeds.common import Timeline
 from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration as BaseConfiguration, Results
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status
 from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource
 

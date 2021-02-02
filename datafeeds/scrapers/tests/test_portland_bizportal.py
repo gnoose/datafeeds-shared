@@ -3,7 +3,7 @@ import os
 
 from datetime import date
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.common.typing import make_billing_pdf_attachment
 from datafeeds.scrapers import portland_bizportal as pb
 

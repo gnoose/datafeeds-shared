@@ -2,7 +2,7 @@ from datetime import date
 import os
 from unittest import TestCase
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.scrapers.atmos.parsers import bill_data_from_pdf, bill_data_from_xls
 
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))

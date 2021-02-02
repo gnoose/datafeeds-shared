@@ -6,8 +6,9 @@ from pymysql.cursors import DictCursor
 from sqlalchemy import distinct
 
 from datafeeds import db, config as datafeeds_config
-from datafeeds.common import Configuration, Results, BaseApiScraper
+from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.batch import run_datafeed
+from datafeeds.common.support import Configuration, Results
 from datafeeds.common.typing import Status, BillingData
 from datafeeds.models import (
     Meter,

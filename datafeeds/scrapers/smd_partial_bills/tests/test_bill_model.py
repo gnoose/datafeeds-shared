@@ -2,7 +2,8 @@ from datetime import date, datetime, timedelta
 from unittest import TestCase
 
 from datafeeds import db
-from datafeeds.common import BillingDatum, test_utils
+from datafeeds.common import test_utils
+from datafeeds.common.typing import BillingDatum
 from datafeeds.common.typing import BillingDatumItemsEntry
 from datafeeds.models import UtilityService, Meter
 from datafeeds.scrapers.smd_partial_bills.models import (

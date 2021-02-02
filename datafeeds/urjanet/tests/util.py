@@ -1,8 +1,13 @@
+import csv
 import json
+import os
 import re
 import unittest
 from datetime import date
 from decimal import Decimal
+from typing import NamedTuple, Dict, List
+
+from dateutil import parser as date_parser
 
 from datafeeds.urjanet.model import (
     Account,
@@ -10,10 +15,11 @@ from datafeeds.urjanet.model import (
     Usage,
     Charge,
     GridiumBillingPeriodCollection,
+    GridiumBillingPeriod,
 )
 from datafeeds.urjanet.model import filter_by_date_range
 from datafeeds.urjanet.datasource.base import UrjanetDataSource
-from datafeeds.urjanet.transformer import json_to_urja
+from datafeeds.urjanet.transformer import json_to_urja, UrjanetGridiumTransformer
 
 
 class FixtureDataSource(UrjanetDataSource):
@@ -29,6 +35,94 @@ class FixtureDataSource(UrjanetDataSource):
         with open(self.fixture_path) as f:
             data = json.load(f)
             return json_to_urja(data)
+
+
+class FixtureRow(NamedTuple):
+    utility: str
+    utility_account_id: str
+    service_id: str
+    start: date
+    end: date
+    cost: float
+    used: float
+    peak: float
+
+
+class UrjaCsvFixtureTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.data_directory = os.path.join(os.path.split(__file__)[0], "data")
+
+    def load_fixture(self, utility: str) -> Dict[str, List[FixtureRow]]:
+        """Read expected results from datafeeds/urjanet/tests/data/utility.csv
+
+        Return a map from service_id or utility_account_id to a list of bills.
+        Use service_id if set, otherwise utility_account_id.
+        Electric meters usually do have a service_id, but water meters usually don't.
+        """
+        by_key: Dict[str, List[FixtureRow]] = {}
+        with open("%s/%s.csv" % (self.data_directory, utility)) as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                key = row["service_id"] or row["utility_account_id"]
+                by_key.setdefault(key, [])
+                by_key[key].append(
+                    FixtureRow(
+                        utility=row["utility"],
+                        utility_account_id=row["utility_account_id"],
+                        service_id=row["service_id"],
+                        start=date_parser.parse(row["start"]).date(),
+                        end=date_parser.parse(row["end"]).date(),
+                        cost=float(row["cost"]) if row.get("cost") != "" else None,
+                        used=float(row["used"]) if row.get("used") != "" else None,
+                        peak=float(row["peak"]) if row.get("peak") != "" else None,
+                    )
+                )
+        return by_key
+
+    def match_bill(
+        self, bills: List[GridiumBillingPeriod], bill: FixtureRow, label
+    ) -> None:
+        """Match a fixture bill to a bill in the list of billing periods created by the transformer."""
+        match: GridiumBillingPeriod = None
+        for billing_period in bills:
+            if bill.end == billing_period.end:
+                match = billing_period
+                break
+        self.assertTrue(match, "%s\tfound bill for %s" % (label, bill.end))
+        self.assertEqual(bill.start, match.start, "%s\tstart date match" % label)
+        self.assertAlmostEqual(
+            bill.cost, match.total_charge, 2, "%s\tcost match" % label
+        )
+        self.assertAlmostEqual(
+            bill.used, match.total_usage, 2, "%s\tused match" % label
+        )
+        if bill.peak is None:
+            self.assertIsNone(match.peak_demand, "%s\tno peak" % label)
+        else:
+            self.assertAlmostEqual(
+                bill.peak, match.peak_demandk, 2, "%s\tpeak match" % label
+            )
+
+    def verify_transform(self, transformer: UrjanetGridiumTransformer, utility: str):
+        """Verify a transformer by comparing against a csv fixture.
+
+        csv data should be datafeeds/urjanet/tests/data/utility.csv
+        with fields utility,utility_account_id,service_id,start,end,cost,used,peak
+        """
+        fixture = self.load_fixture(utility)
+        for key in fixture:
+            # read data from data/utility/key.json
+            input_data = FixtureDataSource(
+                "%s/%s/%s.json" % (self.data_directory, utility, key)
+            ).load()
+            # run transformer
+            output = transformer.urja_to_gridium(input_data)
+            for bill in fixture[key]:
+                self.match_bill(
+                    output.periods,
+                    bill,
+                    "%s %s" % (bill.utility_account_id, bill.service_id),
+                )
 
 
 class UrjaFixtureText(unittest.TestCase):

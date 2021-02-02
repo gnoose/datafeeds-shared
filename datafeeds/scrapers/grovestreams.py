@@ -8,12 +8,12 @@ from typing import Optional
 import requests
 
 from datafeeds.config import GROVESTREAMS_API_BASE as API_BASE
-from datafeeds.common import Timeline
 from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.battery import TimeSeriesType
 from datafeeds.common.exceptions import LoginError, ApiError
 from datafeeds.common.support import Configuration as BaseConfiguration, Results
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status
 from datafeeds.models import SnapmeterAccount, Meter, SnapmeterMeterDataSource
 from datafeeds.parsers.grovestreams import parse_login, parse_intervals

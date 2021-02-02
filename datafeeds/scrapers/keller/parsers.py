@@ -6,7 +6,7 @@ from typing import Optional, Tuple
 
 import PyPDF2
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.common.util.pdfparser import pdf_bytes_to_str
 
 BILL_AMOUNT = re.compile(r"TOTAL NEW CHARGES([\d,]*\.\d\d)")

@@ -4,7 +4,7 @@ import functools as ft
 from unittest import TestCase
 from unittest.mock import patch
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds.scrapers.ladwp_bill_pdf import (
     LADWPBillPdfConfiguration,

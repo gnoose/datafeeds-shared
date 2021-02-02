@@ -6,7 +6,7 @@ from typing import List
 from datetime import timedelta, date
 from dateutil.parser import parse as parse_date
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.common.typing import BillingDatumItemsEntry
 from datafeeds.common.upload import hash_bill, upload_bill_to_s3
 from datafeeds.parsers import pdfparser
