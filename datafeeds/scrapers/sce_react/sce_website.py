@@ -54,7 +54,7 @@ class SceWebsiteScraper(BaseWebScraper):
     @staticmethod
     def _sort_scrapers(scrapers: List[str]):
         # Each list is the order we want the scrapers to run in
-        billing_order = ["sce-react-basic-billing", "sce-react-energymanager-billing"]
+        billing_order = ["sce-react-energymanager-billing", "sce-react-basic-billing"]
         interval_order = [
             "sce-react-energymanager-interval",
             "sce-react-energymanager-greenbutton",
@@ -104,7 +104,6 @@ class SceWebsiteScraper(BaseWebScraper):
                 bill_result_list.append(status)
                 log.info("bill_result_list is %s", bill_result_list)
                 log.info("billing scraper %s result=%s", scraper_type, status)
-                # keep going since basic_billing does not get PDFs and energymanager_billing does
             except LoginFailedException:
                 log.exception("Billing sub-scraper failed to login: %s", scraper_type)
                 raise
@@ -112,6 +111,9 @@ class SceWebsiteScraper(BaseWebScraper):
                 log.exception("Billing sub-scraper failed: %s", scraper_type)
             results.bills = Status.best(bill_result_list)
             log.info("results.bills is %s", results.bills)
+            # If energymanager returned successfully, do not continue so pdf's do not disappear
+            if results.bills != Status.FAILED:
+                break
 
         for scraper_type in interval_scrapers:
             log.info("Starting interval sub-scraper %s", scraper_type)
@@ -123,7 +125,7 @@ class SceWebsiteScraper(BaseWebScraper):
                 log.info(
                     "interval scraper %s result=%s", scraper_type, results.readings
                 )
-                if results.readings:
+                if results.readings != Status.FAILED:
                     break
             except LoginFailedException:
                 log.exception("Interval sub-scraper failed to login: %s", scraper_type)
