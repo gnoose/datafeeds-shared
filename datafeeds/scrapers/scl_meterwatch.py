@@ -8,7 +8,6 @@ from typing import NewType, Tuple, List, Optional
 from datetime import datetime, date, timedelta, time
 
 from datafeeds import config, db
-from datafeeds.common import Timeline
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.exceptions import (
@@ -18,6 +17,7 @@ from datafeeds.common.exceptions import (
 )
 from datafeeds.common.daylight_savings import DST_ENDS
 from datafeeds.common.support import Configuration, DateRange, Results
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.common.typing import Status
 

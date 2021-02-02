@@ -10,13 +10,13 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from retrying import retry
 
-from datafeeds.common import Timeline
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import DateRange
 from datafeeds.common.support import Results
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status
 from datafeeds.common.util.selenium import IFrameSwitch
 from datafeeds.models import (

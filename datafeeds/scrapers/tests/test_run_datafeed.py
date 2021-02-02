@@ -5,16 +5,12 @@ import uuid
 from unittest import TestCase
 
 from datafeeds import db, config
-from datafeeds.common import (
-    Configuration,
-    BaseApiScraper,
-    test_utils,
-    Results,
-    BillingDatum,
-    Timeline,
-)
+from datafeeds.common import test_utils
+from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common.typing import Status
+from datafeeds.common.support import Configuration, Results
+from datafeeds.common.timeline import Timeline
+from datafeeds.common.typing import Status, BillingDatum
 from datafeeds.models import SnapmeterMeterDataSource
 from datafeeds.models.bill import PartialBill, PartialBillProviderType
 from datafeeds.models.meter import MeterReading

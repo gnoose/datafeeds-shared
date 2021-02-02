@@ -5,10 +5,10 @@ from unittest import mock
 
 from datetime import datetime, timedelta, date
 
-from datafeeds.common import Timeline
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds.scrapers import heco_interval as heco
 from datafeeds.scrapers.heco_interval import HECOGridConfiguration
+from datafeeds.common.timeline import Timeline
 
 TEST_DATE_FORMAT = "%Y-%m-%d"
 TEST_TIME_FORMAT = "%H:%M"

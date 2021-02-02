@@ -4,16 +4,14 @@ from typing import Optional
 
 import requests
 
+from datafeeds.common.base import BaseApiScraper
+from datafeeds.common.support import Results
 from datafeeds.config import ENGIE_API_BASE as API_BASE, ENGIE_API_KEY as API_KEY
 from datafeeds.common.batch import run_datafeed
-from datafeeds.common import (
-    Timeline,
-    Configuration as BaseConfiguration,
-    Results,
-    BaseApiScraper,
-)
 from datafeeds.common.battery import TimeSeriesType
 from datafeeds.common.exceptions import ApiError
+from datafeeds.common.support import Configuration as BaseConfiguration
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status
 from datafeeds.models import Meter, SnapmeterAccount, SnapmeterMeterDataSource
 from datafeeds.parsers.engie import parse_intervals

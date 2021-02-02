@@ -18,9 +18,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
 from datafeeds import config
-from datafeeds.common import BillingDatum, Configuration, Results
+from datafeeds.common.typing import BillingDatum
+from datafeeds.common.support import Configuration
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.batch import run_datafeed
+from datafeeds.common.support import Results
 
 from datafeeds.common.typing import Status
 from datafeeds.common.util.selenium import file_exists_in_dir, clear_downloads

@@ -13,7 +13,7 @@ from sqlalchemy import func, orm
 from typing import Dict, Any, Optional, List
 
 from datafeeds import db
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.common.typing import BillingDatumItemsEntry
 from datafeeds.models import UtilityService
 from datafeeds.orm import ModelMixin, Base

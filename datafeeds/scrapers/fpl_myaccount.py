@@ -6,11 +6,11 @@ from typing import Optional, List
 from dateutil.parser import parse as parse_date
 from datetime import datetime, date
 
-from datafeeds.common import Timeline
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.support import Configuration, Results
 from datafeeds.common.util.selenium import file_exists_in_dir
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status, IntervalReading
 from datafeeds.models import (
     SnapmeterAccount,

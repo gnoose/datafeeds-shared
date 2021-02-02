@@ -6,7 +6,7 @@ import re
 import pandas as pd
 import PyPDF2
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 
 
 class AtmosParseError(Exception):

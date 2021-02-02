@@ -5,7 +5,7 @@ from datetime import date
 
 from datafeeds import config as project_config
 import datafeeds.urjanet.tests.util as test_util
-from datafeeds.common import DateRange
+from datafeeds.common.support import DateRange
 from datafeeds.models.bill import PartialBillProviderType
 from datafeeds.urjanet.scraper import (
     BaseUrjanetScraper,

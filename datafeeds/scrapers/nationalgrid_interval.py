@@ -11,10 +11,11 @@ from selenium.common.exceptions import ElementNotVisibleException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
-from datafeeds.common import Configuration, DateRange, Results
 from datafeeds.common.base import BaseWebScraper
+from datafeeds.common.support import Configuration
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.exceptions import InvalidMeterDataException
+from datafeeds.common.support import DateRange, Results
 from datafeeds.common.typing import Status
 from datafeeds.models import (
     SnapmeterAccount,

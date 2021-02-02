@@ -3,7 +3,7 @@ import io
 import os
 from unittest import TestCase
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.common.test_utils import private_fixture
 from datafeeds.parsers import pacific_power
 

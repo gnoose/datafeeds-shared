@@ -7,7 +7,7 @@ from typing import Optional, Tuple
 from dateutil.parser import parse as parse_dt
 import PyPDF2
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.common.util.pdfparser import pdf_pages
 
 """

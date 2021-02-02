@@ -2,10 +2,10 @@ import json
 from datetime import date, timedelta
 from unittest import TestCase
 
-from datafeeds.common import Timeline
+from datafeeds.common import test_utils
 from datafeeds.common.support import Credentials, DateRange
 from datafeeds import db
-from datafeeds.common import test_utils
+from datafeeds.common.timeline import Timeline
 from datafeeds.models import Meter
 from datafeeds.models.meter import MeterReading
 from datafeeds.scrapers.scl_meterwatch import (

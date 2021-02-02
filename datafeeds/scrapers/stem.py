@@ -7,12 +7,12 @@ import requests
 from requests import codes
 
 from datafeeds import config
-from datafeeds.common import Timeline
 from datafeeds.common.base import BaseApiScraper
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.battery import TimeSeriesType
 from datafeeds.common.exceptions import ApiError
 from datafeeds.common.support import Configuration as BaseConfiguration, Results
+from datafeeds.common.timeline import Timeline
 
 from datafeeds.parsers import stem as parser
 from datafeeds.scrapers.support.time import date_to_datetime, dt_to_platform_pst

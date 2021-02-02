@@ -4,7 +4,7 @@ from datetime import timedelta, datetime
 from typing import List, Optional
 
 from datafeeds import db
-from datafeeds.common import DateRange
+from datafeeds.common.support import DateRange
 from datafeeds.common.typing import (
     BillingDatum,
     BillingData,

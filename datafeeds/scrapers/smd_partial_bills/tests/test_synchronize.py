@@ -3,8 +3,8 @@ from datetime import datetime, timedelta, date
 from typing import List
 
 from datafeeds import db
-from datafeeds.common import test_utils, DateRange
-from datafeeds.common.support import Credentials
+from datafeeds.common import test_utils
+from datafeeds.common.support import Credentials, DateRange
 from datafeeds.models import (
     UtilityService,
     Meter,

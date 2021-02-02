@@ -367,7 +367,9 @@ CREATE TABLE public.analytica_job (
     queue character varying NOT NULL,
     status public.aws_batch_job_state NOT NULL,
     created timestamp without time zone DEFAULT now() NOT NULL,
-    updated timestamp without time zone DEFAULT now() NOT NULL
+    updated timestamp without time zone DEFAULT now() NOT NULL,
+    started timestamp without time zone,
+    stopped timestamp without time zone
 );
 
 

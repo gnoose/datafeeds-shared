@@ -3,7 +3,7 @@ from datetime import date
 from unittest import TestCase
 import os
 
-from datafeeds.common import BillingDatum
+from datafeeds.common.typing import BillingDatum
 from datafeeds.scrapers.keller.parsers import parse_bill_pdf
 
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))
