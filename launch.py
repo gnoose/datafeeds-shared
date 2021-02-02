@@ -47,9 +47,7 @@ from datafeeds.scrapers.pge_energyexpert import datafeed as pge_energyexpert
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
 from datafeeds.scrapers.powertrack import datafeed as powertrack
 from datafeeds.scrapers.pse_interval import datafeed as pse_interval
-from datafeeds.scrapers.sce_greenbutton import datafeed as sce_greenbutton
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
-from datafeeds.scrapers.sdge_greenbutton import datafeed as sdge_greenbutton_sync
 from datafeeds.scrapers.scl_meterwatch import datafeed as scl_meterwatch
 from datafeeds.scrapers.solaredge import datafeed as solaredge
 from datafeeds.scrapers.solren import datafeed as solren
@@ -181,9 +179,7 @@ scraper_functions = {
     "sandiego-water-urjanet": sandiego,
     "sdge-myaccount": sdge_myaccount,
     "sdge-urjanet": sdge,
-    "sdge-green-button-sync": sdge_greenbutton_sync,
     "sfpuc-water-urjanet": sfpuc,
-    "sce-green-button": sce_greenbutton,
     "sce-clean-power-alliance-urjanet": cleanpoweralliance,
     "sce-react-basic-billing": sce_react_basic_billing,
     "sce-react-energymanager-billing": sce_react_energymanager_billing,
