@@ -1,5 +1,6 @@
 import csv
 import json
+import logging
 import os
 import re
 import unittest
@@ -20,6 +21,9 @@ from datafeeds.urjanet.model import (
 from datafeeds.urjanet.model import filter_by_date_range
 from datafeeds.urjanet.datasource.base import UrjanetDataSource
 from datafeeds.urjanet.transformer import json_to_urja, UrjanetGridiumTransformer
+
+
+log = logging.getLogger(__name__)
 
 
 class FixtureDataSource(UrjanetDataSource):
@@ -53,7 +57,7 @@ class UrjaCsvFixtureTest(unittest.TestCase):
         self.data_directory = os.path.join(os.path.split(__file__)[0], "data")
 
     def load_fixture(self, utility: str) -> Dict[str, List[FixtureRow]]:
-        """Read expected results from datafeeds/urjanet/tests/data/utility.csv
+        """Read expected results from datafeeds/urjanet/tests/data/utility_id.csv
 
         Return a map from service_id or utility_account_id to a list of bills.
         Use service_id if set, otherwise utility_account_id.
@@ -91,33 +95,49 @@ class UrjaCsvFixtureTest(unittest.TestCase):
         self.assertTrue(match, "%s\tfound bill for %s" % (label, bill.end))
         self.assertEqual(bill.start, match.start, "%s\tstart date match" % label)
         self.assertAlmostEqual(
-            bill.cost, match.total_charge, 2, "%s\tcost match" % label
+            bill.cost, float(match.total_charge), 2, "%s\tcost match" % label
         )
         self.assertAlmostEqual(
-            bill.used, match.total_usage, 2, "%s\tused match" % label
+            bill.used, float(match.total_usage), 2, "%s\tused match" % label
         )
         if bill.peak is None:
             self.assertIsNone(match.peak_demand, "%s\tno peak" % label)
         else:
             self.assertAlmostEqual(
-                bill.peak, match.peak_demandk, 2, "%s\tpeak match" % label
+                bill.peak, float(match.peak_demand), 2, "%s\tpeak match" % label
             )
 
     def verify_transform(self, transformer: UrjanetGridiumTransformer, utility: str):
         """Verify a transformer by comparing against a csv fixture.
 
-        csv data should be datafeeds/urjanet/tests/data/utility.csv
+        csv data should be datafeeds/urjanet/tests/data/utility-id.csv
         with fields utility,utility_account_id,service_id,start,end,cost,used,peak
         """
         fixture = self.load_fixture(utility)
         for key in fixture:
-            # read data from data/utility/key.json
+            # read data from data/utility_id/key.json
             input_data = FixtureDataSource(
-                "%s/%s/%s.json" % (self.data_directory, utility, key)
+                "%s/%s/%s.json" % (self.data_directory, utility.replace("-", "_"), key)
             ).load()
             # run transformer
             output = transformer.urja_to_gridium(input_data)
+            log.debug("created %s bills" % len(output.periods))
+            for period in output.periods:
+                log.debug(
+                    "%s - %s\t%.2f\t%.2f",
+                    period.start,
+                    period.end,
+                    period.total_charge,
+                    period.total_usage,
+                )
             for bill in fixture[key]:
+                log.debug(
+                    "looking for bill %s - %s\t%s\t%s",
+                    bill.start,
+                    bill.end,
+                    bill.cost,
+                    bill.used,
+                )
                 self.match_bill(
                     output.periods,
                     bill,

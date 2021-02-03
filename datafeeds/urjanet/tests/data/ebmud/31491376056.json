@@ -1,0 +1,862 @@
+{
+  "accounts": [
+    {
+      "PK": 7631564,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "50500553523",
+      "RawAccountNumber": "50500553523",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3e0e0-8f54-dcd8-8265-0e0bcebc926b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-06-05",
+      "IntervalStart": "2020-04-02",
+      "IntervalEnd": "2020-06-01",
+      "TotalBillAmount": "277.9500",
+      "AmountDue": "277.9500",
+      "NewCharges": "277.9500",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "272.3200",
+      "meters": [
+        {
+          "PK": 24690618,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-04-02",
+          "IntervalEnd": "2020-06-01",
+          "charges": [
+            {
+              "PK": 289822474,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "5.6300",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "1.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-02",
+              "IntervalEnd": "2020-06-01",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289822482,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "272.3200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-02",
+              "IntervalEnd": "2020-06-01",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88831979,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-04-02",
+              "IntervalEnd": "2020-06-01"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7631567,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "13303120250",
+      "RawAccountNumber": "13303120250",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3e0e0-9088-d6f0-8265-0e0bcebc926b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-04-08",
+      "IntervalStart": "2020-01-31",
+      "IntervalEnd": "2020-04-02",
+      "TotalBillAmount": "272.3200",
+      "AmountDue": "272.3200",
+      "NewCharges": "272.3200",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "272.3200",
+      "meters": [
+        {
+          "PK": 24690628,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-01-31",
+          "IntervalEnd": "2020-04-02",
+          "charges": [
+            {
+              "PK": 289822574,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "272.3200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-31",
+              "IntervalEnd": "2020-04-02",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88832051,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-01-31",
+              "IntervalEnd": "2020-04-02"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7631570,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "19399144144",
+      "RawAccountNumber": "19399144144",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3e0e0-90bb-db6c-8265-0e0bcebc926b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-10-05",
+      "IntervalStart": "2020-07-30",
+      "IntervalEnd": "2020-09-29",
+      "TotalBillAmount": "289.3400",
+      "AmountDue": "289.3400",
+      "NewCharges": "289.3400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "286.6000",
+      "meters": [
+        {
+          "PK": 24690638,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-07-30",
+          "IntervalEnd": "2020-09-29",
+          "charges": [
+            {
+              "PK": 289822660,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "289.3400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-30",
+              "IntervalEnd": "2020-09-29",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88832121,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-07-30",
+              "IntervalEnd": "2020-09-29"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7631571,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "33403313023",
+      "RawAccountNumber": "33403313023",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3e0e2-fd62-d693-877e-0e0bcebc926b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-12-05",
+      "IntervalStart": "2019-09-27",
+      "IntervalEnd": "2019-11-26",
+      "TotalBillAmount": "277.9500",
+      "AmountDue": "277.9500",
+      "NewCharges": "277.9500",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "272.3200",
+      "meters": [
+        {
+          "PK": 24690640,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-09-27",
+          "IntervalEnd": "2019-11-26",
+          "charges": [
+            {
+              "PK": 289822666,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "5.6300",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "1.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-27",
+              "IntervalEnd": "2019-11-26",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289822672,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "272.3200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-27",
+              "IntervalEnd": "2019-11-26",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88832127,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-09-27",
+              "IntervalEnd": "2019-11-26"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7631573,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "01101021101",
+      "RawAccountNumber": "01101021101",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3e0e0-90f6-d51e-8265-0e0bcebc926b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-08-05",
+      "IntervalStart": "2020-06-01",
+      "IntervalEnd": "2020-07-30",
+      "TotalBillAmount": "286.6000",
+      "AmountDue": "286.6000",
+      "NewCharges": "286.6000",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "277.9500",
+      "meters": [
+        {
+          "PK": 24690646,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-06-01",
+          "IntervalEnd": "2020-07-30",
+          "charges": [
+            {
+              "PK": 289822718,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "5.6300",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "1.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-01",
+              "IntervalEnd": "2020-06-30",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289822724,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "280.9700",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-01",
+              "IntervalEnd": "2020-07-30",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88832165,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-06-01",
+              "IntervalEnd": "2020-07-30"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7631576,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "33083330300",
+      "RawAccountNumber": "33083330300",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3e0e0-9116-d027-8265-0e0bcebc926b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-12-04",
+      "IntervalStart": "2020-09-29",
+      "IntervalEnd": "2020-11-30",
+      "TotalBillAmount": "289.3400",
+      "AmountDue": "289.3400",
+      "NewCharges": "289.3400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "289.3400",
+      "meters": [
+        {
+          "PK": 24690656,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-09-29",
+          "IntervalEnd": "2020-11-30",
+          "charges": [
+            {
+              "PK": 289822790,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "289.3400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-29",
+              "IntervalEnd": "2020-11-30",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88832219,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-29",
+              "IntervalEnd": "2020-11-30"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7631578,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "04284055445",
+      "RawAccountNumber": "04284055445",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3e0e0-9133-d519-8265-0e0bcebc926b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-02-06",
+      "IntervalStart": "2019-11-26",
+      "IntervalEnd": "2020-01-31",
+      "TotalBillAmount": "272.3200",
+      "AmountDue": "272.3200",
+      "NewCharges": "272.3200",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "277.9500",
+      "meters": [
+        {
+          "PK": 24690662,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-11-26",
+          "IntervalEnd": "2020-01-31",
+          "charges": [
+            {
+              "PK": 289822826,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "272.3200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-26",
+              "IntervalEnd": "2020-01-31",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88832249,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-11-26",
+              "IntervalEnd": "2020-01-31"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7631580,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "02322022522",
+      "RawAccountNumber": "02322022522",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3e0e0-914b-dbe5-8265-0e0bcebc926b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-10-03",
+      "IntervalStart": "2019-07-30",
+      "IntervalEnd": "2019-09-27",
+      "TotalBillAmount": "272.3200",
+      "AmountDue": "272.3200",
+      "NewCharges": "272.3200",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "263.8800",
+      "meters": [
+        {
+          "PK": 24690668,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-07-30",
+          "IntervalEnd": "2019-09-27",
+          "charges": [
+            {
+              "PK": 289822862,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "272.3200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-30",
+              "IntervalEnd": "2019-09-27",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88832279,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-07-30",
+              "IntervalEnd": "2019-09-27"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7631955,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "31881337087",
+      "RawAccountNumber": "31881337087",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3ebb7-32cb-dbfa-a454-0e49200853c5",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-06-06",
+      "IntervalStart": "2019-05-16",
+      "IntervalEnd": "2019-05-30",
+      "TotalBillAmount": "120.9500",
+      "AmountDue": "120.9500",
+      "NewCharges": "120.9500",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24692386,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-05-16",
+          "IntervalEnd": "2019-05-30",
+          "charges": [
+            {
+              "PK": 290185873,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "5.2900",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "748.0000",
+              "ChargeRatePerUnit": "0.0071",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 290185894,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "59.6600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88848261,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "748.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30"
+            },
+            {
+              "PK": 88932629,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "748.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30"
+            }
+          ]
+        },
+        {
+          "PK": 24701243,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-05-16",
+          "IntervalEnd": "2019-05-30",
+          "charges": [
+            {
+              "PK": 290185875,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "5.2900",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "748.0000",
+              "ChargeRatePerUnit": "0.0071",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 290185896,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "59.6600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88932631,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "748.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 290185861,
+          "ChargeActualName": "ACCOUNT ESTABLISHMENT FEE",
+          "ChargeAmount": "56.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-05-16",
+          "IntervalEnd": "2019-05-30",
+          "ChargeId": "ch.account_management_fee"
+        }
+      ]
+    },
+    {
+      "PK": 7631956,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "07167071171",
+      "RawAccountNumber": "07167071171",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3ebb7-338a-d316-a454-0e49200853c5",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-08-05",
+      "IntervalStart": "2019-05-30",
+      "IntervalEnd": "2019-07-30",
+      "TotalBillAmount": "263.8800",
+      "AmountDue": "263.8800",
+      "NewCharges": "263.8800",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "120.9500",
+      "meters": [
+        {
+          "PK": 24692388,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-05-30",
+          "IntervalEnd": "2019-07-30",
+          "charges": [
+            {
+              "PK": 290185915,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "263.8800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-30",
+              "IntervalEnd": "2019-07-30",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88848269,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-30",
+              "IntervalEnd": "2019-07-30"
+            },
+            {
+              "PK": 88932650,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-30",
+              "IntervalEnd": "2019-07-30"
+            }
+          ]
+        },
+        {
+          "PK": 24701246,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-05-30",
+          "IntervalEnd": "2019-07-30",
+          "charges": [
+            {
+              "PK": 290185917,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "263.8800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-30",
+              "IntervalEnd": "2019-07-30",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88932652,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-30",
+              "IntervalEnd": "2019-07-30"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7635398,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "35545355555",
+      "RawAccountNumber": "35545355555",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3ebb7-32cb-dbfa-a454-0e49200853c5",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-06-06",
+      "IntervalStart": "2019-05-16",
+      "IntervalEnd": "2019-05-30",
+      "TotalBillAmount": "120.9500",
+      "AmountDue": "120.9500",
+      "NewCharges": "120.9500",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24701244,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-05-16",
+          "IntervalEnd": "2019-05-30",
+          "charges": [
+            {
+              "PK": 290185883,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "5.2900",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "748.0000",
+              "ChargeRatePerUnit": "0.0071",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 290185904,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "59.6600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88932639,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "748.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-16",
+              "IntervalEnd": "2019-05-30"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 290185862,
+          "ChargeActualName": "ACCOUNT ESTABLISHMENT FEE",
+          "ChargeAmount": "56.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-05-16",
+          "IntervalEnd": "2019-05-30",
+          "ChargeId": "ch.account_management_fee"
+        }
+      ]
+    },
+    {
+      "PK": 7635399,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "30150301111",
+      "RawAccountNumber": "30150301111",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3ebb7-338a-d316-a454-0e49200853c5",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-08-05",
+      "IntervalStart": "2019-05-30",
+      "IntervalEnd": "2019-07-30",
+      "TotalBillAmount": "263.8800",
+      "AmountDue": "263.8800",
+      "NewCharges": "263.8800",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "120.9500",
+      "meters": [
+        {
+          "PK": 24701247,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-05-30",
+          "IntervalEnd": "2019-07-30",
+          "charges": [
+            {
+              "PK": 290185925,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "263.8800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-30",
+              "IntervalEnd": "2019-07-30",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88932660,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-30",
+              "IntervalEnd": "2019-07-30"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    }
+  ]
+}

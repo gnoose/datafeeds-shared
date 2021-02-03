@@ -5,7 +5,7 @@ import os
 from pydoc import locate
 import random
 import re
-from typing import Any, Dict
+from typing import Any, Dict, Tuple, Optional
 
 import pymysql
 
@@ -114,13 +114,13 @@ def generate_tests(utility_id: str, utility_name: str, utility_filename: str):
         print("wrote test to %s" % (test_filename))
 
     # read fixture csv
-    keys: Dict[str, Dict[Any]] = {}
+    keys: Dict[Tuple[str, Optional[str]], Dict[Any]] = {}
     filename = "../datafeeds/urjanet/tests/data/%s.csv" % utility_id
     print("reading fixture data from %s" % filename)
     with open(filename) as f:
         reader = csv.DictReader(f)
         for row in reader:
-            key = row["service_id"] if row["service_id"] else row["utility_account_id"]
+            key = (row["utility_account_id"], row["service_id"])
             keys[key] = row
 
     # dump data for each key (service_id or utility_account_id)
@@ -141,13 +141,13 @@ def generate_tests(utility_id: str, utility_name: str, utility_filename: str):
     except FileExistsError:
         pass
     for key in keys:
-        print("loading Urjanet data for %s" % key)
-        datasource.account_number = row["utility_account_id"]
-        datasource.service_id = row["service_id"]
+        print("loading Urjanet data for %s %s" % (key[0], key[1]))
+        datasource.account_number = key[0]
+        datasource.service_id = key[1]
         data = fetch_data(datasource)
         filename = "../datafeeds/urjanet/tests/data/%s/%s.json" % (
             utility_filename,
-            key,
+            key[0],
         )
         with open(filename, "w") as f:
             f.write(json.dumps(data, indent=2))

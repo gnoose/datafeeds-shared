@@ -1,0 +1,5349 @@
+{
+  "accounts": [
+    {
+      "PK": 7554149,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "33040333332",
+      "RawAccountNumber": "33040333332",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-2e50-dba0-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-03-20",
+      "IntervalStart": "2019-02-13",
+      "IntervalEnd": "2019-03-18",
+      "TotalBillAmount": "7722.9100",
+      "AmountDue": "7722.9100",
+      "NewCharges": "4022.4100",
+      "OutstandingBalance": "3700.5000",
+      "PreviousBalance": "3645.8100",
+      "meters": [
+        {
+          "PK": 24513351,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "22224212",
+          "IntervalStart": "2019-02-13",
+          "IntervalEnd": "2019-03-18",
+          "charges": [
+            {
+              "PK": 287624013,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1814.4700",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "343.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624014,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147760,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "319.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18"
+            },
+            {
+              "PK": 88147761,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "24.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18"
+            }
+          ]
+        },
+        {
+          "PK": 24513352,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "33836443",
+          "IntervalStart": "2019-02-13",
+          "IntervalEnd": "2019-03-18",
+          "charges": [
+            {
+              "PK": 287624015,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "939.8200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624016,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624017,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "942.5100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147762,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "319.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18"
+            },
+            {
+              "PK": 88147763,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "24.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-02-13",
+              "IntervalEnd": "2019-03-18"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554150,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "39939933333",
+      "RawAccountNumber": "39939933333",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-7d38-de91-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-04-19",
+      "IntervalStart": "2018-03-15",
+      "IntervalEnd": "2018-04-16",
+      "TotalBillAmount": "3439.8900",
+      "AmountDue": "3439.8900",
+      "NewCharges": "3439.8900",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3087.0900",
+      "meters": [
+        {
+          "PK": 24513353,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "44340444",
+          "IntervalStart": "2018-03-15",
+          "IntervalEnd": "2018-04-16",
+          "charges": [
+            {
+              "PK": 287624018,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1508.3500",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "311.0000",
+              "ChargeRatePerUnit": "4.8500",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624019,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "293.7000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147764,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "301.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16"
+            },
+            {
+              "PK": 88147765,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "10.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16"
+            }
+          ]
+        },
+        {
+          "PK": 24513354,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "10913501",
+          "IntervalStart": "2018-03-15",
+          "IntervalEnd": "2018-04-16",
+          "charges": [
+            {
+              "PK": 287624020,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "821.0400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624021,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624022,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "811.3200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147766,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "301.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16"
+            },
+            {
+              "PK": 88147767,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "10.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-03-15",
+              "IntervalEnd": "2018-04-16"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554151,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "40404040041",
+      "RawAccountNumber": "40404040041",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-3605-d6e3-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-02-19",
+      "IntervalStart": "2019-01-14",
+      "IntervalEnd": "2019-02-13",
+      "TotalBillAmount": "3645.8100",
+      "AmountDue": "3645.8100",
+      "NewCharges": "3645.8100",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "2889.8700",
+      "meters": [
+        {
+          "PK": 24513355,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "66667656",
+          "IntervalStart": "2019-01-14",
+          "IntervalEnd": "2019-02-13",
+          "charges": [
+            {
+              "PK": 287624023,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1629.3200",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "308.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624024,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147768,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "283.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13"
+            },
+            {
+              "PK": 88147769,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "25.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13"
+            }
+          ]
+        },
+        {
+          "PK": 24513356,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "15915251",
+          "IntervalStart": "2019-01-14",
+          "IntervalEnd": "2019-02-13",
+          "charges": [
+            {
+              "PK": 287624025,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "843.9200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624026,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624027,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "846.9600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147770,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "283.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13"
+            },
+            {
+              "PK": 88147771,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "25.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-01-14",
+              "IntervalEnd": "2019-02-13"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554152,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "03131303301",
+      "RawAccountNumber": "03131303301",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-8370-dbf8-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-03-20",
+      "IntervalStart": "2018-02-13",
+      "IntervalEnd": "2018-03-15",
+      "TotalBillAmount": "3087.0900",
+      "AmountDue": "3087.0900",
+      "NewCharges": "3087.0900",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3399.5700",
+      "meters": [
+        {
+          "PK": 24513357,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "20820552",
+          "IntervalStart": "2018-02-13",
+          "IntervalEnd": "2018-03-15",
+          "charges": [
+            {
+              "PK": 287624028,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1338.6000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "276.0000",
+              "ChargeRatePerUnit": "4.8500",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624029,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "293.7000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147772,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "268.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15"
+            },
+            {
+              "PK": 88147773,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "8.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15"
+            }
+          ]
+        },
+        {
+          "PK": 24513358,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "31930333",
+          "IntervalStart": "2018-02-13",
+          "IntervalEnd": "2018-03-15",
+          "charges": [
+            {
+              "PK": 287624030,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "728.6400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624031,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624032,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "720.6700",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147774,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "268.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15"
+            },
+            {
+              "PK": 88147775,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "8.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-02-13",
+              "IntervalEnd": "2018-03-15"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554153,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "12808218811",
+      "RawAccountNumber": "12808218811",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-3d42-d6fa-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-01-17",
+      "IntervalStart": "2018-12-13",
+      "IntervalEnd": "2019-01-14",
+      "TotalBillAmount": "2889.8700",
+      "AmountDue": "2889.8700",
+      "NewCharges": "2889.8700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3945.4700",
+      "meters": [
+        {
+          "PK": 24513359,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "44244044",
+          "IntervalStart": "2018-12-13",
+          "IntervalEnd": "2019-01-14",
+          "charges": [
+            {
+              "PK": 287624033,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1264.3100",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "239.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624034,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147776,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "229.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14"
+            },
+            {
+              "PK": 88147777,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "10.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14"
+            }
+          ]
+        },
+        {
+          "PK": 24513360,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "30035343",
+          "IntervalStart": "2018-12-13",
+          "IntervalEnd": "2019-01-14",
+          "charges": [
+            {
+              "PK": 287624035,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "641.3600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624036,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624037,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "658.5900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147778,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "229.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14"
+            },
+            {
+              "PK": 88147779,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "10.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-12-13",
+              "IntervalEnd": "2019-01-14"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554154,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "88818881186",
+      "RawAccountNumber": "88818881186",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-89c3-d60f-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-02-16",
+      "IntervalStart": "2018-01-11",
+      "IntervalEnd": "2018-02-13",
+      "TotalBillAmount": "3399.5700",
+      "AmountDue": "3399.5700",
+      "NewCharges": "3399.5700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "2442.6000",
+      "meters": [
+        {
+          "PK": 24513361,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "34433033",
+          "IntervalStart": "2018-01-11",
+          "IntervalEnd": "2018-02-13",
+          "charges": [
+            {
+              "PK": 287624038,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1488.9500",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "307.0000",
+              "ChargeRatePerUnit": "4.8500",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624039,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "293.7000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147780,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "298.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13"
+            },
+            {
+              "PK": 88147781,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "9.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13"
+            }
+          ]
+        },
+        {
+          "PK": 24513362,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "02201220",
+          "IntervalStart": "2018-01-11",
+          "IntervalEnd": "2018-02-13",
+          "charges": [
+            {
+              "PK": 287624040,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "810.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624041,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624042,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "800.9600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147782,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "298.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13"
+            },
+            {
+              "PK": 88147783,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "9.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-01-11",
+              "IntervalEnd": "2018-02-13"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554155,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "77717771174",
+      "RawAccountNumber": "77717771174",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-4473-d3c8-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-12-17",
+      "IntervalStart": "2018-11-09",
+      "IntervalEnd": "2018-12-13",
+      "TotalBillAmount": "3945.4700",
+      "AmountDue": "3945.4700",
+      "NewCharges": "3945.4700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3700.2900",
+      "meters": [
+        {
+          "PK": 24513363,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "33933373",
+          "IntervalStart": "2018-11-09",
+          "IntervalEnd": "2018-12-13",
+          "charges": [
+            {
+              "PK": 287624043,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1793.3100",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "339.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624044,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147784,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "327.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13"
+            },
+            {
+              "PK": 88147785,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "12.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13"
+            }
+          ]
+        },
+        {
+          "PK": 24513364,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "84384888",
+          "IntervalStart": "2018-11-09",
+          "IntervalEnd": "2018-12-13",
+          "charges": [
+            {
+              "PK": 287624045,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "894.9600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624046,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624047,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "931.5900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147786,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "327.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13"
+            },
+            {
+              "PK": 88147787,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "12.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-11-09",
+              "IntervalEnd": "2018-12-13"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554156,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "00666006602",
+      "RawAccountNumber": "00666006602",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-4b27-d95f-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-11-15",
+      "IntervalStart": "2018-10-15",
+      "IntervalEnd": "2018-11-09",
+      "TotalBillAmount": "3700.2900",
+      "AmountDue": "3700.2900",
+      "NewCharges": "3700.2900",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "4446.4900",
+      "meters": [
+        {
+          "PK": 24513365,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "73977337",
+          "IntervalStart": "2018-10-15",
+          "IntervalEnd": "2018-11-09",
+          "charges": [
+            {
+              "PK": 287624048,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1671.6400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "316.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624049,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147788,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "298.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09"
+            },
+            {
+              "PK": 88147789,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "18.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09"
+            }
+          ]
+        },
+        {
+          "PK": 24513366,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "44246444",
+          "IntervalStart": "2018-10-15",
+          "IntervalEnd": "2018-11-09",
+          "charges": [
+            {
+              "PK": 287624050,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "834.2400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624051,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624052,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "868.8000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147790,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "298.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09"
+            },
+            {
+              "PK": 88147791,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "18.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-10-15",
+              "IntervalEnd": "2018-11-09"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554157,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "24010422223",
+      "RawAccountNumber": "24010422223",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d8-eed6-dbf2-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-09-16",
+      "IntervalStart": "2019-08-12",
+      "IntervalEnd": "2019-09-11",
+      "TotalBillAmount": "5236.6400",
+      "AmountDue": "5236.6400",
+      "NewCharges": "5236.6400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "4676.6400",
+      "meters": [
+        {
+          "PK": 24513367,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "50155125",
+          "IntervalStart": "2019-08-12",
+          "IntervalEnd": "2019-09-11",
+          "charges": [
+            {
+              "PK": 287624053,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "2454.6800",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "436.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624054,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147792,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "405.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11"
+            },
+            {
+              "PK": 88147793,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "31.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11"
+            }
+          ]
+        },
+        {
+          "PK": 24513368,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "00000010",
+          "IntervalStart": "2019-08-12",
+          "IntervalEnd": "2019-09-11",
+          "charges": [
+            {
+              "PK": 287624055,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "1194.6400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624056,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624057,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "1240.9000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147794,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "405.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11"
+            },
+            {
+              "PK": 88147795,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "31.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-08-12",
+              "IntervalEnd": "2019-09-11"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554158,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "42404244444",
+      "RawAccountNumber": "42404244444",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-5233-dc44-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-10-17",
+      "IntervalStart": "2018-09-13",
+      "IntervalEnd": "2018-10-15",
+      "TotalBillAmount": "4446.4900",
+      "AmountDue": "4446.4900",
+      "NewCharges": "4446.4900",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "4457.1500",
+      "meters": [
+        {
+          "PK": 24513369,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "88881818",
+          "IntervalStart": "2018-09-13",
+          "IntervalEnd": "2018-10-15",
+          "charges": [
+            {
+              "PK": 287624058,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "2041.9400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "386.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624059,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147796,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "373.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15"
+            },
+            {
+              "PK": 88147797,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "13.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15"
+            }
+          ]
+        },
+        {
+          "PK": 24513370,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "21121142",
+          "IntervalStart": "2018-09-13",
+          "IntervalEnd": "2018-10-15",
+          "charges": [
+            {
+              "PK": 287624060,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "1019.0400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624061,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624062,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "1059.9000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147798,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "373.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15"
+            },
+            {
+              "PK": 88147799,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "13.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-09-13",
+              "IntervalEnd": "2018-10-15"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554159,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "20808024424",
+      "RawAccountNumber": "20808024424",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-052e-df52-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-08-15",
+      "IntervalStart": "2019-07-15",
+      "IntervalEnd": "2019-08-12",
+      "TotalBillAmount": "4676.6400",
+      "AmountDue": "4676.6400",
+      "NewCharges": "4676.6400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "4269.3900",
+      "meters": [
+        {
+          "PK": 24513371,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "31735253",
+          "IntervalStart": "2019-07-15",
+          "IntervalEnd": "2019-08-12",
+          "charges": [
+            {
+              "PK": 287624063,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "2173.1800",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "386.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624064,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147800,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "359.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12"
+            },
+            {
+              "PK": 88147801,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "27.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12"
+            }
+          ]
+        },
+        {
+          "PK": 24513372,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "11411111",
+          "IntervalStart": "2019-07-15",
+          "IntervalEnd": "2019-08-12",
+          "charges": [
+            {
+              "PK": 287624065,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "1057.6400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624066,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624067,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "1099.4000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147802,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "359.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12"
+            },
+            {
+              "PK": 88147803,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "27.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-07-15",
+              "IntervalEnd": "2019-08-12"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554160,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "31636130032",
+      "RawAccountNumber": "31636130032",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-592e-ddab-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-09-19",
+      "IntervalStart": "2018-08-09",
+      "IntervalEnd": "2018-09-13",
+      "TotalBillAmount": "4457.1500",
+      "AmountDue": "4457.1500",
+      "NewCharges": "4457.1500",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3894.6500",
+      "meters": [
+        {
+          "PK": 24513373,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "71075037",
+          "IntervalStart": "2018-08-09",
+          "IntervalEnd": "2018-09-13",
+          "charges": [
+            {
+              "PK": 287624068,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "2047.2300",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "387.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624069,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147804,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "370.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13"
+            },
+            {
+              "PK": 88147805,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "17.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13"
+            }
+          ]
+        },
+        {
+          "PK": 24513374,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "35132543",
+          "IntervalStart": "2018-08-09",
+          "IntervalEnd": "2018-09-13",
+          "charges": [
+            {
+              "PK": 287624070,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "1021.6800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624071,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624072,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "1062.6300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147806,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "370.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13"
+            },
+            {
+              "PK": 88147807,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "17.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-08-09",
+              "IntervalEnd": "2018-09-13"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554161,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "66868666666",
+      "RawAccountNumber": "66868666666",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-0e0d-d714-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-07-17",
+      "IntervalStart": "2019-06-13",
+      "IntervalEnd": "2019-07-15",
+      "TotalBillAmount": "4269.3900",
+      "AmountDue": "4269.3900",
+      "NewCharges": "4390.3500",
+      "OutstandingBalance": "-120.9600",
+      "PreviousBalance": "8241.7500",
+      "meters": [
+        {
+          "PK": 24513375,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "39939953",
+          "IntervalStart": "2019-06-13",
+          "IntervalEnd": "2019-07-15",
+          "charges": [
+            {
+              "PK": 287624074,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "957.1000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "170.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-01",
+              "IntervalEnd": "2019-07-15",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624075,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1026.2600",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "194.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-06-30",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624076,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "329.8900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-07-15",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147808,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "342.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-07-15"
+            },
+            {
+              "PK": 88147809,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "22.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-07-15"
+            }
+          ]
+        },
+        {
+          "PK": 24513376,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "12711111",
+          "IntervalStart": "2019-06-13",
+          "IntervalEnd": "2019-07-15",
+          "charges": [
+            {
+              "PK": 287624077,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "997.3600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-07-15",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624078,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-07-15",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624079,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "1017.2600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-07-15",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147810,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "342.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-07-15"
+            },
+            {
+              "PK": 88147811,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "22.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-06-13",
+              "IntervalEnd": "2019-07-15"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 287624073,
+          "ChargeActualName": "BACKFLOW ANNUAL ADMINISTRATION FEE",
+          "ChargeAmount": "57.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-06-13",
+          "IntervalEnd": "2019-07-15",
+          "ChargeId": "ch.administrative_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7554162,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "12313214413",
+      "RawAccountNumber": "12313214413",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-5fe5-da52-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-08-16",
+      "IntervalStart": "2018-07-13",
+      "IntervalEnd": "2018-08-09",
+      "TotalBillAmount": "3894.6500",
+      "AmountDue": "3894.6500",
+      "NewCharges": "3838.8700",
+      "OutstandingBalance": "55.7800",
+      "PreviousBalance": "7511.7400",
+      "meters": [
+        {
+          "PK": 24513377,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "22224442",
+          "IntervalStart": "2018-07-13",
+          "IntervalEnd": "2018-08-09",
+          "charges": [
+            {
+              "PK": 287624080,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1740.4100",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "329.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624081,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147812,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "314.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09"
+            },
+            {
+              "PK": 88147813,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "15.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09"
+            }
+          ]
+        },
+        {
+          "PK": 24513378,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "32932553",
+          "IntervalStart": "2018-07-13",
+          "IntervalEnd": "2018-08-09",
+          "charges": [
+            {
+              "PK": 287624082,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "868.5600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624083,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624084,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "904.2900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147814,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "314.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09"
+            },
+            {
+              "PK": 88147815,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "15.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-07-13",
+              "IntervalEnd": "2018-08-09"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554163,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "42777242240",
+      "RawAccountNumber": "42777242240",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-16bb-d2c7-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-06-18",
+      "IntervalStart": "2019-05-15",
+      "IntervalEnd": "2019-06-13",
+      "TotalBillAmount": "8241.7500",
+      "AmountDue": "8241.7500",
+      "NewCharges": "4000.8900",
+      "OutstandingBalance": "4240.8600",
+      "PreviousBalance": "7823.9900",
+      "meters": [
+        {
+          "PK": 24513379,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "55855285",
+          "IntervalStart": "2019-05-15",
+          "IntervalEnd": "2019-06-13",
+          "charges": [
+            {
+              "PK": 287624085,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1803.8900",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "341.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624086,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147816,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "312.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13"
+            },
+            {
+              "PK": 88147817,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "29.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13"
+            }
+          ]
+        },
+        {
+          "PK": 24513380,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "66966266",
+          "IntervalStart": "2019-05-15",
+          "IntervalEnd": "2019-06-13",
+          "charges": [
+            {
+              "PK": 287624087,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "934.3400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624088,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624089,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "937.0500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147818,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "312.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13"
+            },
+            {
+              "PK": 88147819,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "29.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-05-15",
+              "IntervalEnd": "2019-06-13"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554164,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "90999093393",
+      "RawAccountNumber": "90999093393",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-66fe-d09a-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-07-18",
+      "IntervalStart": "2018-06-14",
+      "IntervalEnd": "2018-07-13",
+      "TotalBillAmount": "7511.7400",
+      "AmountDue": "7511.7400",
+      "NewCharges": "3805.3900",
+      "OutstandingBalance": "3706.3500",
+      "PreviousBalance": "3651.5700",
+      "meters": [
+        {
+          "PK": 24513381,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "31136313",
+          "IntervalStart": "2018-06-14",
+          "IntervalEnd": "2018-07-13",
+          "charges": [
+            {
+              "PK": 287624091,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "782.9200",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "148.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-07-01",
+              "IntervalEnd": "2018-07-13",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624092,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "892.4000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "184.0000",
+              "ChargeRatePerUnit": "4.8500",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-06-30",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624093,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "305.5500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-07-13",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147820,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "316.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-07-13"
+            },
+            {
+              "PK": 88147821,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "16.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-07-13"
+            }
+          ]
+        },
+        {
+          "PK": 24513382,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "03302000",
+          "IntervalStart": "2018-06-14",
+          "IntervalEnd": "2018-07-13",
+          "charges": [
+            {
+              "PK": 287624094,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "876.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-07-13",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624095,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-07-13",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624096,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "886.5600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-07-13",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147822,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "316.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-07-13"
+            },
+            {
+              "PK": 88147823,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "16.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-06-14",
+              "IntervalEnd": "2018-07-13"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 287624090,
+          "ChargeActualName": "BACKFLOW ANNUAL ADMINISTRATION FEE",
+          "ChargeAmount": "56.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2018-06-14",
+          "IntervalEnd": "2018-07-13",
+          "ChargeId": "ch.administrative_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7554165,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "03000302200",
+      "RawAccountNumber": "03000302200",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-1eb9-d0ea-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-05-20",
+      "IntervalStart": "2019-04-16",
+      "IntervalEnd": "2019-05-15",
+      "TotalBillAmount": "7823.9900",
+      "AmountDue": "7823.9900",
+      "NewCharges": "4011.6500",
+      "OutstandingBalance": "3812.3400",
+      "PreviousBalance": "7681.5800",
+      "meters": [
+        {
+          "PK": 24513383,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "84984088",
+          "IntervalStart": "2019-04-16",
+          "IntervalEnd": "2019-05-15",
+          "charges": [
+            {
+              "PK": 287624097,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1809.1800",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "342.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624098,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147824,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "314.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15"
+            },
+            {
+              "PK": 88147825,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "28.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15"
+            }
+          ]
+        },
+        {
+          "PK": 24513384,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "51553385",
+          "IntervalStart": "2019-04-16",
+          "IntervalEnd": "2019-05-15",
+          "charges": [
+            {
+              "PK": 287624099,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "937.0800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624100,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624101,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "939.7800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147826,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "314.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15"
+            },
+            {
+              "PK": 88147827,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "28.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-04-16",
+              "IntervalEnd": "2019-05-15"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554166,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "78787878876",
+      "RawAccountNumber": "78787878876",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-6e07-dcb3-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-06-18",
+      "IntervalStart": "2018-05-15",
+      "IntervalEnd": "2018-06-14",
+      "TotalBillAmount": "3651.5700",
+      "AmountDue": "3651.5700",
+      "NewCharges": "3651.5700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3550.7700",
+      "meters": [
+        {
+          "PK": 24513385,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "02001130",
+          "IntervalStart": "2018-05-15",
+          "IntervalEnd": "2018-06-14",
+          "charges": [
+            {
+              "PK": 287624102,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1610.2000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "332.0000",
+              "ChargeRatePerUnit": "4.8500",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624103,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "293.7000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147828,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "319.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14"
+            },
+            {
+              "PK": 88147829,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "13.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14"
+            }
+          ]
+        },
+        {
+          "PK": 24513386,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "10610061",
+          "IntervalStart": "2018-05-15",
+          "IntervalEnd": "2018-06-14",
+          "charges": [
+            {
+              "PK": 287624104,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "876.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624105,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624106,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "865.7100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147830,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "319.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14"
+            },
+            {
+              "PK": 88147831,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "13.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-05-15",
+              "IntervalEnd": "2018-06-14"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554167,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "11111111112",
+      "RawAccountNumber": "11111111112",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-2733-d73d-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-04-19",
+      "IntervalStart": "2019-03-18",
+      "IntervalEnd": "2019-04-16",
+      "TotalBillAmount": "7681.5800",
+      "AmountDue": "7681.5800",
+      "NewCharges": "3925.5700",
+      "OutstandingBalance": "3756.0100",
+      "PreviousBalance": "7722.9100",
+      "meters": [
+        {
+          "PK": 24513387,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "32434253",
+          "IntervalStart": "2019-03-18",
+          "IntervalEnd": "2019-04-16",
+          "charges": [
+            {
+              "PK": 287624107,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1766.8600",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "334.0000",
+              "ChargeRatePerUnit": "5.2900",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624108,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "320.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147832,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "307.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16"
+            },
+            {
+              "PK": 88147833,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "27.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16"
+            }
+          ]
+        },
+        {
+          "PK": 24513388,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "00000060",
+          "IntervalStart": "2019-03-18",
+          "IntervalEnd": "2019-04-16",
+          "charges": [
+            {
+              "PK": 287624109,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "915.1600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624110,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624111,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "917.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147834,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "307.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16"
+            },
+            {
+              "PK": 88147835,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "27.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-03-18",
+              "IntervalEnd": "2019-04-16"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7554168,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "42000240040",
+      "RawAccountNumber": "42000240040",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9de8d9-76a4-d5ca-af7e-0e8dc4538840",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2018-05-18",
+      "IntervalStart": "2018-04-16",
+      "IntervalEnd": "2018-05-15",
+      "TotalBillAmount": "3550.7700",
+      "AmountDue": "3550.7700",
+      "NewCharges": "3550.7700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3439.8900",
+      "meters": [
+        {
+          "PK": 24513389,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "13211311",
+          "IntervalStart": "2018-04-16",
+          "IntervalEnd": "2018-05-15",
+          "charges": [
+            {
+              "PK": 287624112,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1561.7000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "322.0000",
+              "ChargeRatePerUnit": "4.8500",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287624113,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "293.7000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147836,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "308.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15"
+            },
+            {
+              "PK": 88147837,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "14.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15"
+            }
+          ]
+        },
+        {
+          "PK": 24513390,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "05806880",
+          "IntervalStart": "2018-04-16",
+          "IntervalEnd": "2018-05-15",
+          "charges": [
+            {
+              "PK": 287624114,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICE",
+              "ChargeAmount": "850.0800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287624115,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287624116,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "839.8100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88147838,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "308.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15"
+            },
+            {
+              "PK": 88147839,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "14.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2018-04-16",
+              "IntervalEnd": "2018-05-15"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7563132,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "23828328824",
+      "RawAccountNumber": "23828328824",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9f48c5-1395-d018-a851-0e3b1ca3b776",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-10-15",
+      "IntervalStart": "2019-09-11",
+      "IntervalEnd": "2019-10-09",
+      "TotalBillAmount": "10339.0300",
+      "AmountDue": "10339.0300",
+      "NewCharges": "10339.0300",
+      "OutstandingBalance": "5315.1900",
+      "PreviousBalance": "5236.6400",
+      "meters": [
+        {
+          "PK": 24529895,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "21921122",
+          "IntervalStart": "2019-09-11",
+          "IntervalEnd": "2019-10-09",
+          "charges": [
+            {
+              "PK": 287770444,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287770445,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "1142.5800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287770446,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "1187.1300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88198898,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "29.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09"
+            },
+            {
+              "PK": 88198899,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "388.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09"
+            }
+          ]
+        },
+        {
+          "PK": 24529896,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "08808800",
+          "IntervalStart": "2019-09-11",
+          "IntervalEnd": "2019-10-09",
+          "charges": [
+            {
+              "PK": 287770447,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "2347.7100",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "417.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287770448,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88198900,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "29.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09"
+            },
+            {
+              "PK": 88198901,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "388.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-09-11",
+              "IntervalEnd": "2019-10-09"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7566622,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "34606430030",
+      "RawAccountNumber": "34606430030",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea0ad5e-665e-d2e2-9cc8-0ea116319165",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-11-14",
+      "IntervalStart": "2019-10-09",
+      "IntervalEnd": "2019-11-08",
+      "TotalBillAmount": "4979.0400",
+      "AmountDue": "4979.0400",
+      "NewCharges": "4979.0400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "10339.0300",
+      "meters": [
+        {
+          "PK": 24538744,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "30333363",
+          "IntervalStart": "2019-10-09",
+          "IntervalEnd": "2019-11-08",
+          "charges": [
+            {
+              "PK": 287890742,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 287890743,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "1131.6200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 287890744,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "1175.8100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88230101,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "25.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08"
+            },
+            {
+              "PK": 88230102,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "388.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08"
+            }
+          ]
+        },
+        {
+          "PK": 24538745,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "60466066",
+          "IntervalStart": "2019-10-09",
+          "IntervalEnd": "2019-11-08",
+          "charges": [
+            {
+              "PK": 287890745,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "2325.1900",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "413.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 287890746,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88230103,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "25.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08"
+            },
+            {
+              "PK": 88230104,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "388.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-10-09",
+              "IntervalEnd": "2019-11-08"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7569718,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "07050700000",
+      "RawAccountNumber": "07050700000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea2229b-b42c-d4e6-9566-0ea0b47d28bd",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-12-16",
+      "IntervalStart": "2019-11-08",
+      "IntervalEnd": "2019-12-12",
+      "TotalBillAmount": "4105.4400",
+      "AmountDue": "4105.4400",
+      "NewCharges": "4105.4400",
+      "OutstandingBalance": "1381.1800",
+      "PreviousBalance": "4979.0400",
+      "meters": [
+        {
+          "PK": 24547015,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "34435553",
+          "IntervalStart": "2019-11-08",
+          "IntervalEnd": "2019-12-12",
+          "charges": [
+            {
+              "PK": 288000671,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 288000672,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "917.9000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 288000673,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "955.0700",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88263419,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "18.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12"
+            },
+            {
+              "PK": 88263420,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "317.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12"
+            }
+          ]
+        },
+        {
+          "PK": 24547016,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "39939003",
+          "IntervalStart": "2019-11-08",
+          "IntervalEnd": "2019-12-12",
+          "charges": [
+            {
+              "PK": 288000674,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1886.0500",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "335.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288000675,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88263421,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "18.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12"
+            },
+            {
+              "PK": 88263422,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "317.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-11-08",
+              "IntervalEnd": "2019-12-12"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288000670,
+          "ChargeActualName": "Transfer Adjustment",
+          "ChargeAmount": "-1381.1800",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-11-08",
+          "IntervalEnd": "2019-12-12",
+          "ChargeId": "ch.adjustments"
+        }
+      ]
+    },
+    {
+      "PK": 7572739,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "12555212212",
+      "RawAccountNumber": "12555212212",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea3c1a5-63d3-d72d-87b5-0e299c909baf",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-01-17",
+      "IntervalStart": "2019-12-12",
+      "IntervalEnd": "2020-01-14",
+      "TotalBillAmount": "7667.0800",
+      "AmountDue": "7667.0800",
+      "NewCharges": "7667.0800",
+      "OutstandingBalance": "4167.0200",
+      "PreviousBalance": "4105.4400",
+      "meters": [
+        {
+          "PK": 24555197,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "82282388",
+          "IntervalStart": "2019-12-12",
+          "IntervalEnd": "2020-01-14",
+          "charges": [
+            {
+              "PK": 288084138,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 288084139,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "777.8200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 288084140,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "799.4200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88291088,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "14.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14"
+            },
+            {
+              "PK": 88291089,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "266.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14"
+            }
+          ]
+        },
+        {
+          "PK": 24555198,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "06401620",
+          "IntervalStart": "2019-12-12",
+          "IntervalEnd": "2020-01-14",
+          "charges": [
+            {
+              "PK": 288084141,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1576.4000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "280.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288084142,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88291090,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "14.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14"
+            },
+            {
+              "PK": 88291091,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "266.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-12-12",
+              "IntervalEnd": "2020-01-14"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7578489,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "11616117715",
+      "RawAccountNumber": "11616117715",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea54a0c-ef0c-df0f-837a-064a2c7299f5",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-02-20",
+      "IntervalStart": "2020-01-14",
+      "IntervalEnd": "2020-02-13",
+      "TotalBillAmount": "4079.1400",
+      "AmountDue": "4079.1400",
+      "NewCharges": "4079.1400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "7667.0800",
+      "meters": [
+        {
+          "PK": 24566965,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "33930903",
+          "IntervalStart": "2020-01-14",
+          "IntervalEnd": "2020-02-13",
+          "charges": [
+            {
+              "PK": 288219549,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 288219550,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "933.9000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 288219551,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "940.9200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88333176,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "21.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13"
+            },
+            {
+              "PK": 88333177,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "309.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13"
+            }
+          ]
+        },
+        {
+          "PK": 24566966,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "77574047",
+          "IntervalStart": "2020-01-14",
+          "IntervalEnd": "2020-02-13",
+          "charges": [
+            {
+              "PK": 288219552,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1857.9000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "330.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288219553,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88333178,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "21.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13"
+            },
+            {
+              "PK": 88333179,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "309.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-01-14",
+              "IntervalEnd": "2020-02-13"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7584064,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "02707202201",
+      "RawAccountNumber": "02707202201",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea6e6c8-4f9f-db96-995e-06c61fda8265",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-03-19",
+      "IntervalStart": "2020-02-13",
+      "IntervalEnd": "2020-03-16",
+      "TotalBillAmount": "4530.7400",
+      "AmountDue": "4530.7400",
+      "NewCharges": "4530.7400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "4079.1400",
+      "meters": [
+        {
+          "PK": 24582254,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "50955085",
+          "IntervalStart": "2020-02-13",
+          "IntervalEnd": "2020-03-16",
+          "charges": [
+            {
+              "PK": 288386757,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 288386758,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "1047.1000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 288386759,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "1054.1200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88384036,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "21.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16"
+            },
+            {
+              "PK": 88384037,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "349.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16"
+            }
+          ]
+        },
+        {
+          "PK": 24582255,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "67267066",
+          "IntervalStart": "2020-02-13",
+          "IntervalEnd": "2020-03-16",
+          "charges": [
+            {
+              "PK": 288386760,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "2083.1000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "370.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288386761,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88384038,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "21.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16"
+            },
+            {
+              "PK": 88384039,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "349.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-02-13",
+              "IntervalEnd": "2020-03-16"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7588077,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "11313111111",
+      "RawAccountNumber": "11313111111",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea88688-3f10-daef-b28e-06231c218627",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-04-20",
+      "IntervalStart": "2020-03-16",
+      "IntervalEnd": "2020-04-15",
+      "TotalBillAmount": "2182.4200",
+      "AmountDue": "2182.4200",
+      "NewCharges": "2182.4200",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "4530.7400",
+      "meters": [
+        {
+          "PK": 24591406,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "35531253",
+          "IntervalStart": "2020-03-16",
+          "IntervalEnd": "2020-04-15",
+          "charges": [
+            {
+              "PK": 288495325,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 288495326,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "458.4600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 288495327,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "465.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88417203,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "3.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15"
+            },
+            {
+              "PK": 88417204,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "159.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15"
+            }
+          ]
+        },
+        {
+          "PK": 24591407,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "90994939",
+          "IntervalStart": "2020-03-16",
+          "IntervalEnd": "2020-04-15",
+          "charges": [
+            {
+              "PK": 288495328,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "912.0600",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "162.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288495329,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88417205,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "3.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15"
+            },
+            {
+              "PK": 88417206,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "159.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-03-16",
+              "IntervalEnd": "2020-04-15"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7591753,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "20828022221",
+      "RawAccountNumber": "20828022221",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea9f24e-8d5b-d528-aa5f-0e392fc96441",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-05-19",
+      "IntervalStart": "2020-04-15",
+      "IntervalEnd": "2020-05-14",
+      "TotalBillAmount": "3017.8800",
+      "AmountDue": "3017.8800",
+      "NewCharges": "3017.8800",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "2182.4200",
+      "meters": [
+        {
+          "PK": 24603740,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "33332553",
+          "IntervalStart": "2020-04-15",
+          "IntervalEnd": "2020-05-14",
+          "charges": [
+            {
+              "PK": 288639508,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 288639509,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "667.8800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 288639510,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "674.9000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88459469,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "4.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14"
+            },
+            {
+              "PK": 88459470,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "232.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14"
+            }
+          ]
+        },
+        {
+          "PK": 24603741,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "32330773",
+          "IntervalStart": "2020-04-15",
+          "IntervalEnd": "2020-05-14",
+          "charges": [
+            {
+              "PK": 288639511,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1328.6800",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "236.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288639512,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88459471,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "4.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14"
+            },
+            {
+              "PK": 88459472,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "232.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-04-15",
+              "IntervalEnd": "2020-05-14"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7598956,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "30333034432",
+      "RawAccountNumber": "30333034432",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eab621b-6ee2-de86-9465-0ea068bf2aff",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-06-17",
+      "IntervalStart": "2020-05-14",
+      "IntervalEnd": "2020-06-12",
+      "TotalBillAmount": "3379.1600",
+      "AmountDue": "3379.1600",
+      "NewCharges": "3379.1600",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3017.8800",
+      "meters": [
+        {
+          "PK": 24617182,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "25325062",
+          "IntervalStart": "2020-05-14",
+          "IntervalEnd": "2020-06-12",
+          "charges": [
+            {
+              "PK": 288813868,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 288813869,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "758.4400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 288813870,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "765.4600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88508672,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12"
+            },
+            {
+              "PK": 88508673,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "266.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12"
+            }
+          ]
+        },
+        {
+          "PK": 24617183,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "80588088",
+          "IntervalStart": "2020-05-14",
+          "IntervalEnd": "2020-06-12",
+          "charges": [
+            {
+              "PK": 288813871,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1508.8400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "268.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288813872,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "340.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88508674,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12"
+            },
+            {
+              "PK": 88508675,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "266.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-05-14",
+              "IntervalEnd": "2020-06-12"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7603568,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "24707424424",
+      "RawAccountNumber": "24707424424",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eaccf44-b08b-d63d-a539-0ee7aeb67b83",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-07-17",
+      "IntervalStart": "2020-06-12",
+      "IntervalEnd": "2020-07-15",
+      "TotalBillAmount": "3549.7200",
+      "AmountDue": "3549.7200",
+      "NewCharges": "3549.7200",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3379.1600",
+      "meters": [
+        {
+          "PK": 24627600,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "20220052",
+          "IntervalStart": "2020-06-12",
+          "IntervalEnd": "2020-07-15",
+          "charges": [
+            {
+              "PK": 288934075,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-07-15",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 288934076,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "769.7600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-07-15",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 288934077,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "790.4400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-07-15",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88549441,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "3.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-07-15"
+            },
+            {
+              "PK": 88549442,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "269.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-07-15"
+            }
+          ]
+        },
+        {
+          "PK": 24627601,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "00206280",
+          "IntervalStart": "2020-06-12",
+          "IntervalEnd": "2020-07-15",
+          "charges": [
+            {
+              "PK": 288934078,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "735.5400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "123.0000",
+              "ChargeRatePerUnit": "5.9800",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-01",
+              "IntervalEnd": "2020-07-15",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288934079,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "838.8700",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "149.0000",
+              "ChargeRatePerUnit": "5.6300",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-06-30",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 288934080,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "350.6300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-07-15",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88549443,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "3.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-07-15"
+            },
+            {
+              "PK": 88549444,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "269.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-06-12",
+              "IntervalEnd": "2020-07-15"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288934074,
+          "ChargeActualName": "BACKFLOW ANNUAL ADMINISTRATION FEE",
+          "ChargeAmount": "59.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-06-12",
+          "IntervalEnd": "2020-07-15",
+          "ChargeId": "ch.administrative_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7607526,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "33333333332",
+      "RawAccountNumber": "33333333332",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eae37b0-a326-da39-a3a2-0ed4140b9f8b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-08-17",
+      "IntervalStart": "2020-07-15",
+      "IntervalEnd": "2020-08-12",
+      "TotalBillAmount": "2619.2800",
+      "AmountDue": "2619.2800",
+      "NewCharges": "2619.2800",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "3549.7200",
+      "meters": [
+        {
+          "PK": 24636824,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "30632223",
+          "IntervalStart": "2020-07-15",
+          "IntervalEnd": "2020-08-12",
+          "charges": [
+            {
+              "PK": 289051139,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 289051140,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "540.5300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289051141,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "568.8400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88579959,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12"
+            },
+            {
+              "PK": 88579960,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "189.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12"
+            }
+          ]
+        },
+        {
+          "PK": 24636825,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "52854825",
+          "IntervalStart": "2020-07-15",
+          "IntervalEnd": "2020-08-12",
+          "charges": [
+            {
+              "PK": 289051142,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1142.1800",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "191.0000",
+              "ChargeRatePerUnit": "5.9800",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289051143,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "362.2500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88579961,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12"
+            },
+            {
+              "PK": 88579962,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "189.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-07-15",
+              "IntervalEnd": "2020-08-12"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7617017,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "55555556654",
+      "RawAccountNumber": "55555556654",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eafe4d4-86ab-d154-aaac-0e4e0bba2f61",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-09-16",
+      "IntervalStart": "2020-08-12",
+      "IntervalEnd": "2020-09-11",
+      "TotalBillAmount": "4111.5300",
+      "AmountDue": "4111.5300",
+      "NewCharges": "4111.5300",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "2619.2800",
+      "meters": [
+        {
+          "PK": 24654447,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "61666166",
+          "IntervalStart": "2020-08-12",
+          "IntervalEnd": "2020-09-11",
+          "charges": [
+            {
+              "PK": 289223563,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 289223564,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "899.9400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289223565,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "942.2200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88642320,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11"
+            },
+            {
+              "PK": 88642321,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "316.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11"
+            }
+          ]
+        },
+        {
+          "PK": 24654448,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "40441444",
+          "IntervalStart": "2020-08-12",
+          "IntervalEnd": "2020-09-11",
+          "charges": [
+            {
+              "PK": 289223566,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1901.6400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "318.0000",
+              "ChargeRatePerUnit": "5.9800",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289223567,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "362.2500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88642322,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11"
+            },
+            {
+              "PK": 88642323,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "316.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-08-12",
+              "IntervalEnd": "2020-09-11"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7623585,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "63414363360",
+      "RawAccountNumber": "63414363360",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb1629c-c15c-d14a-9a8a-0ec7d6ccd73f",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-10-15",
+      "IntervalStart": "2020-09-11",
+      "IntervalEnd": "2020-10-12",
+      "TotalBillAmount": "3841.2800",
+      "AmountDue": "3841.2800",
+      "NewCharges": "3841.2800",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "4111.5300",
+      "meters": [
+        {
+          "PK": 24668393,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "30830003",
+          "IntervalStart": "2020-09-11",
+          "IntervalEnd": "2020-10-12",
+          "charges": [
+            {
+              "PK": 289382079,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 289382080,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "834.8500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289382081,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "874.6000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88697472,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "5.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12"
+            },
+            {
+              "PK": 88697473,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "290.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12"
+            }
+          ]
+        },
+        {
+          "PK": 24668394,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "01100020",
+          "IntervalStart": "2020-09-11",
+          "IntervalEnd": "2020-10-12",
+          "charges": [
+            {
+              "PK": 289382082,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1764.1000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "295.0000",
+              "ChargeRatePerUnit": "5.9800",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289382083,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "362.2500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88697474,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "5.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12"
+            },
+            {
+              "PK": 88697475,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "290.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-11",
+              "IntervalEnd": "2020-10-12"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7628643,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "14121412211",
+      "RawAccountNumber": "14121412211",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb2e3e2-92d0-dc2d-8a94-0ebcf08132f7",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-11-13",
+      "IntervalStart": "2020-10-12",
+      "IntervalEnd": "2020-11-09",
+      "TotalBillAmount": "7375.9300",
+      "AmountDue": "7375.9300",
+      "NewCharges": "7375.9300",
+      "OutstandingBalance": "3898.9000",
+      "PreviousBalance": "3841.2800",
+      "meters": [
+        {
+          "PK": 24680593,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "22823322",
+          "IntervalStart": "2020-10-12",
+          "IntervalEnd": "2020-11-09",
+          "charges": [
+            {
+              "PK": 289538167,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 289538168,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "747.1200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289538169,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "783.4600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88744966,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "3.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09"
+            },
+            {
+              "PK": 88744967,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "261.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09"
+            }
+          ]
+        },
+        {
+          "PK": 24680594,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "33336663",
+          "IntervalStart": "2020-10-12",
+          "IntervalEnd": "2020-11-09",
+          "charges": [
+            {
+              "PK": 289538170,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1578.7200",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "264.0000",
+              "ChargeRatePerUnit": "5.9800",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289538171,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "362.2500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88744968,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "3.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09"
+            },
+            {
+              "PK": 88744969,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "261.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-12",
+              "IntervalEnd": "2020-11-09"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7632243,
+      "UtilityProvider": "EBMUD",
+      "AccountNumber": "21242127727",
+      "RawAccountNumber": "21242127727",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb404be-d0d0-d3f5-9e76-0e8bbaabe061",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-12-16",
+      "IntervalStart": "2020-11-09",
+      "IntervalEnd": "2020-12-11",
+      "TotalBillAmount": "2419.5300",
+      "AmountDue": "2419.5300",
+      "NewCharges": "2419.5300",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "7375.9300",
+      "meters": [
+        {
+          "PK": 24693856,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "22221662",
+          "IntervalStart": "2020-11-09",
+          "IntervalEnd": "2020-12-11",
+          "charges": [
+            {
+              "PK": 289949410,
+              "ChargeActualName": "SF BAY POLLUTION PREVENTION FEE",
+              "ChargeAmount": "5.4800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11",
+              "ChargeId": "ch.misc_charge"
+            },
+            {
+              "PK": 289949416,
+              "ChargeActualName": "CITY OF OAKLAND SEWER SERVICES",
+              "ChargeAmount": "492.4200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289949422,
+              "ChargeActualName": "WASTEWATER TREATMENT CHARGE",
+              "ChargeAmount": "518.8600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11",
+              "ChargeId": "ch.waste_water"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88868001,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11"
+            },
+            {
+              "PK": 88868007,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "173.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11"
+            }
+          ]
+        },
+        {
+          "PK": 24693858,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "10715001",
+          "IntervalStart": "2020-11-09",
+          "IntervalEnd": "2020-12-11",
+          "charges": [
+            {
+              "PK": 289949428,
+              "ChargeActualName": "WATER FLOW CHARGE",
+              "ChargeAmount": "1040.5200",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "174.0000",
+              "ChargeRatePerUnit": "5.9800",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289949434,
+              "ChargeActualName": "WATER SERVICE CHARGE",
+              "ChargeAmount": "362.2500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11",
+              "ChargeId": "ch.water_service_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88868013,
+              "UsageActualName": "LD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11"
+            },
+            {
+              "PK": 88868019,
+              "UsageActualName": "SD",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "173.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-11-09",
+              "IntervalEnd": "2020-12-11"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    }
+  ]
+}

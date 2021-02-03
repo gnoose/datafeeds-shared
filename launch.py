@@ -86,6 +86,7 @@ from datafeeds.urjanet.datasource.calwater import datafeed as calwater
 from datafeeds.urjanet.datasource.colleyville import datafeed as colleyville
 from datafeeds.urjanet.datasource.constellation import datafeed as constellation
 from datafeeds.urjanet.datasource.directenergy import datafeed as directenergy
+from datafeeds.urjanet.datasource.ebmud import datafeed as ebmud
 from datafeeds.urjanet.datasource.fortworth import datafeed as fortworth
 from datafeeds.urjanet.datasource.fostercity import datafeed as fostercity
 from datafeeds.urjanet.datasource.fpl import datafeed as fpl
@@ -140,6 +141,7 @@ scraper_functions = {
     "directenergy-urjanet": directenergy,
     "duke-energy-billing": duke_billing,
     "duke-energy-interval": duke_interval,
+    "ebmud-urjanet": ebmud,
     "energinet": energinet_interval,
     "engie": engie,
     "fortworth-water-urjanet": fortworth,
