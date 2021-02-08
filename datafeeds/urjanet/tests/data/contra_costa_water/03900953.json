@@ -1,0 +1,932 @@
+{
+  "accounts": [
+    {
+      "PK": 7630014,
+      "UtilityProvider": "ContraCostaWaterDistrictCA",
+      "AccountNumber": "01500561",
+      "RawAccountNumber": "01500561",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-274a-d244-b3f7-0ea286faa1cb",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-09-28",
+      "IntervalStart": "2020-07-24",
+      "IntervalEnd": "2020-09-23",
+      "TotalBillAmount": "981.1300",
+      "AmountDue": "981.1300",
+      "NewCharges": "981.1300",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "901.2200",
+      "meters": [
+        {
+          "PK": 24683690,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "34403333",
+          "IntervalStart": "2020-07-24",
+          "IntervalEnd": "2020-09-23",
+          "charges": [],
+          "usages": [
+            {
+              "PK": 88754216,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-07-24",
+              "IntervalEnd": "2020-09-23"
+            }
+          ]
+        },
+        {
+          "PK": 24683691,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "04430047",
+          "IntervalStart": "2020-07-24",
+          "IntervalEnd": "2020-09-23",
+          "charges": [
+            {
+              "PK": 289572893,
+              "ChargeActualName": "Backflow Prevention",
+              "ChargeAmount": "40.3000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.6606",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-24",
+              "IntervalEnd": "2020-09-23",
+              "ChargeId": "ch.backflow_device_charge"
+            },
+            {
+              "PK": 289572894,
+              "ChargeActualName": "Energy (Zone 01)",
+              "ChargeAmount": "4.4100",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "55.0000",
+              "ChargeRatePerUnit": "0.0801",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-24",
+              "IntervalEnd": "2020-09-23",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289572895,
+              "ChargeActualName": "\"Service (DUAL 2\"\" Meter)\"",
+              "ChargeAmount": "670.5100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "10.9920",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-24",
+              "IntervalEnd": "2020-09-23",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289572896,
+              "ChargeActualName": "Usage",
+              "ChargeAmount": "265.9100",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "55.0000",
+              "ChargeRatePerUnit": "4.8347",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-24",
+              "IntervalEnd": "2020-09-23",
+              "ChargeId": "ch.usage_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88754217,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "55.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-07-24",
+              "IntervalEnd": "2020-09-23"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7630030,
+      "UtilityProvider": "ContraCostaWaterDistrictCA",
+      "AccountNumber": "02200232",
+      "RawAccountNumber": "02200232",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-2776-d138-b3f7-0ea286faa1cb",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-11-24",
+      "IntervalStart": "2020-09-23",
+      "IntervalEnd": "2020-11-20",
+      "TotalBillAmount": "1014.9700",
+      "AmountDue": "1014.9700",
+      "NewCharges": "1014.9700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "981.1300",
+      "meters": [
+        {
+          "PK": 24683712,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "04440040",
+          "IntervalStart": "2020-09-23",
+          "IntervalEnd": "2020-11-20",
+          "charges": [],
+          "usages": [
+            {
+              "PK": 88754236,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-09-23",
+              "IntervalEnd": "2020-11-20"
+            }
+          ]
+        },
+        {
+          "PK": 24683713,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "96609999",
+          "IntervalStart": "2020-09-23",
+          "IntervalEnd": "2020-11-20",
+          "charges": [
+            {
+              "PK": 289572953,
+              "ChargeActualName": "Backflow Prevention",
+              "ChargeAmount": "38.3100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.6606",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-23",
+              "IntervalEnd": "2020-11-20",
+              "ChargeId": "ch.backflow_device_charge"
+            },
+            {
+              "PK": 289572954,
+              "ChargeActualName": "Energy (Zone 01)",
+              "ChargeAmount": "5.5300",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "69.0000",
+              "ChargeRatePerUnit": "0.0801",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-23",
+              "IntervalEnd": "2020-11-20",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289572955,
+              "ChargeActualName": "\"Service (DUAL 2\"\" Meter)\"",
+              "ChargeAmount": "637.5400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "10.9920",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-23",
+              "IntervalEnd": "2020-11-20",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289572956,
+              "ChargeActualName": "Usage",
+              "ChargeAmount": "333.5900",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "69.0000",
+              "ChargeRatePerUnit": "4.8347",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-23",
+              "IntervalEnd": "2020-11-20",
+              "ChargeId": "ch.usage_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88754237,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "69.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-09-23",
+              "IntervalEnd": "2020-11-20"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7630046,
+      "UtilityProvider": "ContraCostaWaterDistrictCA",
+      "AccountNumber": "43044033",
+      "RawAccountNumber": "43044033",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-279f-d91c-b3f7-0ea286faa1cb",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-05-27",
+      "IntervalStart": "2020-03-24",
+      "IntervalEnd": "2020-05-22",
+      "TotalBillAmount": "761.2300",
+      "AmountDue": "761.2300",
+      "NewCharges": "761.2300",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "950.5400",
+      "meters": [
+        {
+          "PK": 24683734,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "16631131",
+          "IntervalStart": "2020-03-24",
+          "IntervalEnd": "2020-05-22",
+          "charges": [],
+          "usages": [
+            {
+              "PK": 88754257,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-03-24",
+              "IntervalEnd": "2020-05-22"
+            }
+          ]
+        },
+        {
+          "PK": 24683735,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "72267752",
+          "IntervalStart": "2020-03-24",
+          "IntervalEnd": "2020-05-22",
+          "charges": [
+            {
+              "PK": 289573018,
+              "ChargeActualName": "Backflow Prevention",
+              "ChargeAmount": "38.9800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.6606",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-24",
+              "IntervalEnd": "2020-05-22",
+              "ChargeId": "ch.backflow_device_charge"
+            },
+            {
+              "PK": 289573019,
+              "ChargeActualName": "Energy (Zone 01)",
+              "ChargeAmount": "1.2000",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "15.0000",
+              "ChargeRatePerUnit": "0.0801",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-24",
+              "IntervalEnd": "2020-05-22",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289573020,
+              "ChargeActualName": "\"Service (DUAL 2\"\" Meter)\"",
+              "ChargeAmount": "648.5300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "10.9920",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-24",
+              "IntervalEnd": "2020-05-22",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289573021,
+              "ChargeActualName": "Usage",
+              "ChargeAmount": "72.5200",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "15.0000",
+              "ChargeRatePerUnit": "4.8347",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-24",
+              "IntervalEnd": "2020-05-22",
+              "ChargeId": "ch.usage_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88754258,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "15.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-03-24",
+              "IntervalEnd": "2020-05-22"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7630051,
+      "UtilityProvider": "ContraCostaWaterDistrictCA",
+      "AccountNumber": "11311311",
+      "RawAccountNumber": "11311311",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-26d2-d833-b3f7-0ea286faa1cb",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-09-26",
+      "IntervalStart": "2019-07-26",
+      "IntervalEnd": "2019-09-24",
+      "TotalBillAmount": "912.1300",
+      "AmountDue": "912.1300",
+      "NewCharges": "912.1300",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "966.4400",
+      "meters": [
+        {
+          "PK": 24683741,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "87778888",
+          "IntervalStart": "2019-07-26",
+          "IntervalEnd": "2019-09-24",
+          "charges": [],
+          "usages": [
+            {
+              "PK": 88754264,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2019-07-26",
+              "IntervalEnd": "2019-09-24"
+            }
+          ]
+        },
+        {
+          "PK": 24683742,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "44434433",
+          "IntervalStart": "2019-07-26",
+          "IntervalEnd": "2019-09-24",
+          "charges": [
+            {
+              "PK": 289573036,
+              "ChargeActualName": "Backflow Prevention",
+              "ChargeAmount": "37.2800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.6214",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-26",
+              "IntervalEnd": "2019-09-24",
+              "ChargeId": "ch.backflow_device_charge"
+            },
+            {
+              "PK": 289573037,
+              "ChargeActualName": "Energy (Zone 01)",
+              "ChargeAmount": "3.2500",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "51.0000",
+              "ChargeRatePerUnit": "0.0638",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-26",
+              "IntervalEnd": "2019-09-24",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289573038,
+              "ChargeActualName": "\"Service (DUAL 2\"\" Meter)\"",
+              "ChargeAmount": "637.6300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "10.6272",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-26",
+              "IntervalEnd": "2019-09-24",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289573039,
+              "ChargeActualName": "Usage",
+              "ChargeAmount": "233.9700",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "51.0000",
+              "ChargeRatePerUnit": "4.5877",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-07-26",
+              "IntervalEnd": "2019-09-24",
+              "ChargeId": "ch.usage_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88754265,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "51.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2019-07-26",
+              "IntervalEnd": "2019-09-24"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7630053,
+      "UtilityProvider": "ContraCostaWaterDistrictCA",
+      "AccountNumber": "40844840",
+      "RawAccountNumber": "40844840",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-27b8-d02f-b3f7-0ea286faa1cb",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-07-28",
+      "IntervalStart": "2020-05-22",
+      "IntervalEnd": "2020-07-24",
+      "TotalBillAmount": "901.2200",
+      "AmountDue": "901.2200",
+      "NewCharges": "901.2200",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "761.2300",
+      "meters": [
+        {
+          "PK": 24683745,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "50065565",
+          "IntervalStart": "2020-05-22",
+          "IntervalEnd": "2020-07-24",
+          "charges": [],
+          "usages": [
+            {
+              "PK": 88754268,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-05-22",
+              "IntervalEnd": "2020-07-24"
+            }
+          ]
+        },
+        {
+          "PK": 24683746,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "32233320",
+          "IntervalStart": "2020-05-22",
+          "IntervalEnd": "2020-07-24",
+          "charges": [
+            {
+              "PK": 289573048,
+              "ChargeActualName": "Backflow Prevention",
+              "ChargeAmount": "41.6200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.6606",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-22",
+              "IntervalEnd": "2020-07-24",
+              "ChargeId": "ch.backflow_device_charge"
+            },
+            {
+              "PK": 289573049,
+              "ChargeActualName": "Energy (Zone 01)",
+              "ChargeAmount": "2.7200",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "34.0000",
+              "ChargeRatePerUnit": "0.0801",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-22",
+              "IntervalEnd": "2020-07-24",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289573050,
+              "ChargeActualName": "\"Service (DUAL 2\"\" Meter)\"",
+              "ChargeAmount": "692.5000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "10.9920",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-22",
+              "IntervalEnd": "2020-07-24",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289573051,
+              "ChargeActualName": "Usage",
+              "ChargeAmount": "164.3800",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "34.0000",
+              "ChargeRatePerUnit": "4.8347",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-22",
+              "IntervalEnd": "2020-07-24",
+              "ChargeId": "ch.usage_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88754269,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "34.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-05-22",
+              "IntervalEnd": "2020-07-24"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7630060,
+      "UtilityProvider": "ContraCostaWaterDistrictCA",
+      "AccountNumber": "61966911",
+      "RawAccountNumber": "61966911",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-27cd-df32-b3f7-0ea286faa1cb",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-01-23",
+      "IntervalStart": "2019-11-20",
+      "IntervalEnd": "2020-01-21",
+      "TotalBillAmount": "916.0400",
+      "AmountDue": "916.0400",
+      "NewCharges": "916.0400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "855.1300",
+      "meters": [
+        {
+          "PK": 24683756,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "41114474",
+          "IntervalStart": "2019-11-20",
+          "IntervalEnd": "2020-01-21",
+          "charges": [],
+          "usages": [
+            {
+              "PK": 88754279,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2019-11-20",
+              "IntervalEnd": "2020-01-21"
+            }
+          ]
+        },
+        {
+          "PK": 24683757,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "76627747",
+          "IntervalStart": "2019-11-20",
+          "IntervalEnd": "2020-01-21",
+          "charges": [
+            {
+              "PK": 289573082,
+              "ChargeActualName": "Backflow Prevention",
+              "ChargeAmount": "38.5300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.6214",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-20",
+              "IntervalEnd": "2020-01-21",
+              "ChargeId": "ch.backflow_device_charge"
+            },
+            {
+              "PK": 289573083,
+              "ChargeActualName": "Energy (Zone 01)",
+              "ChargeAmount": "3.0000",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "47.0000",
+              "ChargeRatePerUnit": "0.0638",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-20",
+              "IntervalEnd": "2020-01-21",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289573084,
+              "ChargeActualName": "\"Service (DUAL 2\"\" Meter)\"",
+              "ChargeAmount": "658.8900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "10.6272",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-20",
+              "IntervalEnd": "2020-01-21",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289573085,
+              "ChargeActualName": "Usage",
+              "ChargeAmount": "215.6200",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "47.0000",
+              "ChargeRatePerUnit": "4.5877",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-20",
+              "IntervalEnd": "2020-01-21",
+              "ChargeId": "ch.usage_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88754280,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "47.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2019-11-20",
+              "IntervalEnd": "2020-01-21"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7630067,
+      "UtilityProvider": "ContraCostaWaterDistrictCA",
+      "AccountNumber": "66666666",
+      "RawAccountNumber": "66666666",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-27e6-d645-b3f7-0ea286faa1cb",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-03-26",
+      "IntervalStart": "2020-01-21",
+      "IntervalEnd": "2020-03-24",
+      "TotalBillAmount": "950.5400",
+      "AmountDue": "950.5400",
+      "NewCharges": "950.5400",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "916.0400",
+      "meters": [
+        {
+          "PK": 24683766,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "24412212",
+          "IntervalStart": "2020-01-21",
+          "IntervalEnd": "2020-03-24",
+          "charges": [],
+          "usages": [
+            {
+              "PK": 88754289,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-01-21",
+              "IntervalEnd": "2020-03-24"
+            }
+          ]
+        },
+        {
+          "PK": 24683767,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "23322235",
+          "IntervalStart": "2020-01-21",
+          "IntervalEnd": "2020-03-24",
+          "charges": [
+            {
+              "PK": 289573111,
+              "ChargeActualName": "Backflow Prevention",
+              "ChargeAmount": "39.1500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.6214",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-21",
+              "IntervalEnd": "2020-03-24",
+              "ChargeId": "ch.backflow_device_charge"
+            },
+            {
+              "PK": 289573112,
+              "ChargeActualName": "Energy (Zone 01)",
+              "ChargeAmount": "3.3200",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "52.0000",
+              "ChargeRatePerUnit": "0.0638",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-21",
+              "IntervalEnd": "2020-03-24",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289573113,
+              "ChargeActualName": "\"Service (DUAL 2\"\" Meter)\"",
+              "ChargeAmount": "669.5100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "10.6272",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-21",
+              "IntervalEnd": "2020-03-24",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289573114,
+              "ChargeActualName": "Usage",
+              "ChargeAmount": "238.5600",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "52.0000",
+              "ChargeRatePerUnit": "4.5877",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-21",
+              "IntervalEnd": "2020-03-24",
+              "ChargeId": "ch.usage_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88754290,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "52.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2020-01-21",
+              "IntervalEnd": "2020-03-24"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    },
+    {
+      "PK": 7630091,
+      "UtilityProvider": "ContraCostaWaterDistrictCA",
+      "AccountNumber": "11111111",
+      "RawAccountNumber": "11111111",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-266e-d5ec-b3f7-0ea286faa1cb",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-11-25",
+      "IntervalStart": "2019-09-24",
+      "IntervalEnd": "2019-11-20",
+      "TotalBillAmount": "855.1300",
+      "AmountDue": "855.1300",
+      "NewCharges": "855.1300",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "912.1300",
+      "meters": [
+        {
+          "PK": 24683795,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "14421101",
+          "IntervalStart": "2019-09-24",
+          "IntervalEnd": "2019-11-20",
+          "charges": [],
+          "usages": [
+            {
+              "PK": 88754317,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2019-09-24",
+              "IntervalEnd": "2019-11-20"
+            }
+          ]
+        },
+        {
+          "PK": 24683796,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "28802208",
+          "IntervalStart": "2019-09-24",
+          "IntervalEnd": "2019-11-20",
+          "charges": [
+            {
+              "PK": 289573196,
+              "ChargeActualName": "Backflow Prevention",
+              "ChargeAmount": "35.4200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.6214",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-24",
+              "IntervalEnd": "2019-11-20",
+              "ChargeId": "ch.backflow_device_charge"
+            },
+            {
+              "PK": 289573197,
+              "ChargeActualName": "Energy (Zone 01)",
+              "ChargeAmount": "2.9300",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "46.0000",
+              "ChargeRatePerUnit": "0.0638",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-24",
+              "IntervalEnd": "2019-11-20",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289573198,
+              "ChargeActualName": "\"Service (DUAL 2\"\" Meter)\"",
+              "ChargeAmount": "605.7500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "10.6272",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-24",
+              "IntervalEnd": "2019-11-20",
+              "ChargeId": "ch.service_charge"
+            },
+            {
+              "PK": 289573199,
+              "ChargeActualName": "Usage",
+              "ChargeAmount": "211.0300",
+              "UsageUnit": "HCF",
+              "ChargeUnitsUsed": "46.0000",
+              "ChargeRatePerUnit": "4.5877",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-24",
+              "IntervalEnd": "2019-11-20",
+              "ChargeId": "ch.usage_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88754318,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "46.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "HCF",
+              "IntervalStart": "2019-09-24",
+              "IntervalEnd": "2019-11-20"
+            }
+          ]
+        }
+      ],
+      "floating_charges": []
+    }
+  ]
+}

@@ -85,6 +85,9 @@ from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
 from datafeeds.urjanet.datasource.calwater import datafeed as calwater
 from datafeeds.urjanet.datasource.colleyville import datafeed as colleyville
 from datafeeds.urjanet.datasource.constellation import datafeed as constellation
+from datafeeds.urjanet.datasource.contra_costa_water import (
+    datafeed as contra_costa_water,
+)
 from datafeeds.urjanet.datasource.directenergy import datafeed as directenergy
 from datafeeds.urjanet.datasource.ebmud import datafeed as ebmud
 from datafeeds.urjanet.datasource.fortworth import datafeed as fortworth
@@ -138,6 +141,7 @@ scraper_functions = {
     "cal-water-urjanet": calwater,
     "colleyville-water-urjanet": colleyville,
     "constellation-urjanet": constellation,
+    "contra-costa-water-urjanet": contra_costa_water,
     "directenergy-urjanet": directenergy,
     "duke-energy-billing": duke_billing,
     "duke-energy-interval": duke_interval,

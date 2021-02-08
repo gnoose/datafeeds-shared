@@ -212,9 +212,11 @@ class BillingPage:
         account_group_button_xpath = (
             "//p[contains(text(), 'Account group:')]//following::button[1]"
         )
-        account_group_button = WebDriverWait(self.driver, 15).until(
+        account_group_button = WebDriverWait(self.driver, 25).until(
             ec.presence_of_element_located((By.XPATH, account_group_button_xpath))
         )
+        time.sleep(10)
+        # This click tends to throw a 'stale element reference' error
         account_group_button.click()
         account_group_xpath = "//span[contains(text(), '%s')]" % account_group
         ag_target = WebDriverWait(self.driver, 15).until(
@@ -273,6 +275,7 @@ class BillingPage:
         # The most recent bill link is a special case.
         # It does not download directly but opens a new page with a download link.
         first_link_found = False
+        log.info("first_page is %s", first_page)
         if not first_page:
             first_link_found = True
 
@@ -286,7 +289,7 @@ class BillingPage:
 
             if (
                 self.driver.current_url
-                == "https://new.portlandgeneral.com/secure/view-bill"
+                == "https://portlandgeneral.com/secure/view-bill"
             ):
                 download_bill_button_xpath = (
                     "//span[contains(text(), 'Download bill (PDF)')]"
@@ -500,12 +503,15 @@ class Scraper(BaseWebScraper):
             )
             raise PortlandBizPortalException
 
+        log.info("Detecting page numbers")
         total_pages = billing_page.page_numbers()
+        time.sleep(10)
         log.info("Detected %s pages of bills", total_pages)
 
         bills: List[BillingDatum] = []
         first_page = True
         for page in range(total_pages):
+            log.info("Handling page %s; first_page is %s", page, first_page)
             more_bills = billing_page.handle_pdfs(
                 self.service_id,
                 self.start_date,

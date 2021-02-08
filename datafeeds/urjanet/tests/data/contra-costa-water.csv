@@ -1,0 +1,4 @@
+utility,utility_account_id,service_id,start,end,cost,used,peak,url
+contra-costa-water,03900953,,9/23/2020,11/19/2020,1014.97,69,,https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-2776-d138-b3f7-0ea286faa1cb
+contra-costa-water,03901033,,9/23/2020,11/19/2020,2110.25,24,,https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-2145-d981-b3f7-0ea286faa1cb
+contra-costa-water,03901022,,9/23/2020,11/19/2020,12839.68,2177.985,,https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3565d-24a8-d536-b3f7-0ea286faa1cb

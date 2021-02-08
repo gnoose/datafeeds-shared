@@ -141,9 +141,10 @@ def generate_tests(utility_id: str, utility_name: str, utility_filename: str):
     except FileExistsError:
         pass
     for key in keys:
-        print("loading Urjanet data for %s %s" % (key[0], key[1]))
-        datasource.account_number = key[0]
-        datasource.service_id = key[1]
+        print("loading Urjanet data for %s" % key)
+        row = keys[key]
+        datasource.account_number = row["utility_account_id"]
+        datasource.service_id = row["service_id"]
         data = fetch_data(datasource)
         filename = "../datafeeds/urjanet/tests/data/%s/%s.json" % (
             utility_filename,

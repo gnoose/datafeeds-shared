@@ -116,9 +116,10 @@ class UrjaCsvFixtureTest(unittest.TestCase):
         fixture = self.load_fixture(utility)
         for key in fixture:
             # read data from data/utility_id/key.json
-            input_data = FixtureDataSource(
+            input_data_source = FixtureDataSource(
                 "%s/%s/%s.json" % (self.data_directory, utility.replace("-", "_"), key)
-            ).load()
+            )
+            input_data = input_data_source.load()
             # run transformer
             output = transformer.urja_to_gridium(input_data)
             log.debug("created %s bills" % len(output.periods))
