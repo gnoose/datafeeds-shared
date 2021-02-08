@@ -22,6 +22,9 @@ jobs:
           name: Setting up pipenv
           command: sudo pip install pipenv
       - run:
+          name: Update pip to the latest.
+          command: pip install -U pip
+      - run:
           name: Installing dependencies
           command: pipenv install -r requirements.txt
       - run:

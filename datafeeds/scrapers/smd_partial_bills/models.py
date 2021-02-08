@@ -224,13 +224,51 @@ class Bill(ModelMixin, Base):
         return [x for x in line_items if x is not None]
 
     @property
-    def is_partial(self) -> bool:
-        """Line items have indicators that service is on a third party"""
-        return any(
+    def is_nem(self) -> Optional[bool]:
+        """Returns True if we think the meter is an NEM meter.
+
+        Not guaranteed to get all NEM meters, but 95% of meters with a reverse flow channel
+        are also NEM. NEM tariffs are sometimes present as well.
+        """
+        has_nem_tariff = self.tariff and "NEM" in self.tariff
+        if has_nem_tariff:
+            return has_nem_tariff
+
+        has_reverse_flow_channel = (
+            db.session.query(IntervalData)
+            .filter(
+                IntervalData.usage_point == self.usage_point,
+                IntervalData.reading_type_oid == ReadingType.oid,
+                ReadingType.flow_direction == "reverse",
+                self.start <= IntervalData.start,
+                IntervalData.start <= self.start + self.duration,
+            )
+            .first()
+        )
+
+        return has_reverse_flow_channel
+
+    @property
+    def is_partial(self) -> Optional[bool]:
+        """Returns True if third party indicators found in line items.
+
+        Return None (unknown) for gas meters and NEM meters.
+        """
+        if self.used_unit == "therm":
+            return None
+
+        indicators_found = any(
             l.get("note", "").lower()
             in ("generation credit", "power cost incentive adjustment", "pcia")
             for l in self._line_items or []
         )
+
+        if self.is_nem and not indicators_found:
+            # NEM meters often have sparse line items.  An NEM meter with no third party indicators
+            # could still be on a CCA.
+            return None
+
+        return indicators_found
 
     def overlaps(self, other: "Bill") -> bool:
         if not isinstance(other, Bill):
@@ -473,4 +511,121 @@ class CustomerInfo(ModelMixin, Base):
             .filter(CustomerInfo.self_url == self_url)
             .order_by(sa.desc(CustomerInfo.created))
             .first()
+        )
+
+
+class IntervalData(ModelMixin, Base):
+    __tablename__ = "smd_interval_data"
+
+    oid = sa.Column(sa.BigInteger, primary_key=True, autoincrement=True)
+
+    subscription = sa.Column(sa.Unicode, nullable=False)
+    usage_point = sa.Column(sa.Unicode, nullable=False)
+
+    start = sa.Column(sa.DateTime)
+    duration = sa.Column(sa.Interval)  # Interval is the SQL equivalent of a timedelta.
+
+    reading_type_oid = sa.Column(
+        "reading_type",
+        sa.BigInteger,
+        sa.ForeignKey("smd_reading_type.oid"),
+        nullable=False,
+    )
+
+    reading_type = orm.relationship("ReadingType", lazy="joined")
+
+    readings = sa.Column(JSONB)
+
+    # This is the self URL for the interval block that generated this record.
+    self_url = sa.Column("self_url", sa.Unicode, nullable=False)
+
+    # These fields tell us which XML file generated this record.
+    artifact_oid = sa.Column(
+        "artifact",
+        sa.BigInteger,
+        sa.ForeignKey("smd_artifact.oid", ondelete="CASCADE"),
+        nullable=False,
+    )
+    artifact = orm.relationship("Artifact", lazy="joined")
+
+    created = sa.Column(
+        sa.DateTime, default=func.now()
+    )  # When was record was added to our system?
+    published = sa.Column(sa.DateTime)  # When did PG&E create this data?
+
+    @property
+    def safe_published(self) -> datetime:
+        """Return the time of publication, or the Unix epoch start if none is available.
+
+        This property is useful for sorting by publication time, where Nones cause issues.
+        """
+        if self.published is not None:
+            return self.published
+
+        return datetime(1970, 1, 1)
+
+    def as_dict(self) -> Dict[str, Any]:
+        return dict(
+            subscription=self.subscription,
+            usage_point=self.usage_point,
+            start=self.start,
+            duration=self.duration,
+            reading_type=self.reading_type.as_dict(),
+            readings=self.readings,
+            self_url=self.self_url,
+            published=self.published,
+        )
+
+
+class ReadingType(ModelMixin, Base):
+    __tablename__ = "smd_reading_type"
+
+    oid = sa.Column(sa.BigInteger, primary_key=True, autoincrement=True)
+
+    identifier = sa.Column(sa.Unicode)
+    accumulation_behaviour = sa.Column(sa.Unicode)
+    commodity = sa.Column(sa.Unicode)
+    flow_direction = sa.Column(sa.Unicode)
+    kind = sa.Column(sa.Unicode)
+    unit_of_measure = sa.Column(sa.Unicode)
+    interval_length = sa.Column(sa.Integer)
+    power_of_ten_multiplier = sa.Column(sa.Integer)
+
+    # These fields tell us which XML file generated this record.
+    artifact_oid = sa.Column(
+        "artifact",
+        sa.BigInteger,
+        sa.ForeignKey("smd_artifact.oid", ondelete="CASCADE"),
+        nullable=False,
+    )
+    artifact = orm.relationship("Artifact", lazy="joined")
+
+    # This is the self URL presented in the customer agreement that generated this record.
+    self_url = sa.Column("self_url", sa.Unicode, nullable=False)
+
+    created = sa.Column(
+        sa.DateTime, default=func.now()
+    )  # When was record was added to our system?
+    published = sa.Column(sa.DateTime)  # When did PG&E create this data?
+
+    def __str__(self):
+        return "<ReadingType id: %s, commodity: %s, flow: %s, interval: %s>" % (
+            self.identifier,
+            self.commodity,
+            self.flow_direction,
+            self.interval_length,
+        )
+
+    def as_dict(self) -> Dict[str, Any]:
+        return dict(
+            identifier=self.identifier,
+            accumulation_behaviour=self.accumulation_behaviour,
+            commodity=self.commodity,
+            flow_direction=self.flow_direction,
+            kind=self.kind,
+            unit_of_measure=self.unit_of_measure,
+            interval_length=self.interval_length,
+            power_of_ten_multiplier=self.power_of_ten_multiplier,
+            self_url=self.self_url,
+            published=self.published,
         )

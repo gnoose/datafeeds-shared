@@ -11,6 +11,8 @@ from datafeeds.scrapers.smd_partial_bills.models import (
     GreenButtonProvider,
     Artifact,
     CustomerInfo,
+    IntervalData,
+    ReadingType,
 )
 
 
@@ -504,5 +506,129 @@ class TestBillModel(TestCase):
             utility="utility:pge",
             service_id=None,
             third_party_expected=True,
+        )
+        self.assertEqual(actual, expected)
+
+    def test_third_party_expected_for_gas(self):
+        b = Bill(
+            start=datetime(2017, 1, 1, 7),
+            duration=timedelta(days=29),
+            used_unit="therm",
+            used=679.0,
+            _line_items=[],
+            cost=625.64,
+            published=datetime(2017, 2, 1),
+            usage_point="test_usage_point",
+            subscription="test",
+        )
+
+        actual = b.to_billing_datum(self.meter.utility_service)
+
+        expected = BillingDatum(
+            start=date(2017, 1, 2),
+            end=date(2017, 1, 30),
+            cost=625.64,
+            used=679.0,
+            peak=None,
+            items=[],
+            statement=date(2017, 1, 30),
+            attachments=None,
+            utility_code=None,
+            utility_account_id=None,
+            utility="utility:pge",
+            service_id=None,
+            third_party_expected=None,
+        )
+        self.assertEqual(actual, expected)
+
+    def test_third_party_expected_for_NEM_tariff(self):
+        b = Bill(
+            start=datetime(2019, 2, 28, 0),
+            duration=timedelta(days=27),
+            used_unit="Wh",
+            used=0,
+            _line_items=[],
+            cost=35.51,
+            published=datetime(2017, 2, 1),
+            usage_point="test_usage_point",
+            subscription="test",
+            tariff="NEM A-1-B",
+        )
+
+        actual = b.to_billing_datum(self.meter.utility_service)
+
+        expected = BillingDatum(
+            start=date(2019, 3, 1),
+            end=date(2019, 3, 27),
+            cost=35.51,
+            used=0,
+            peak=None,
+            items=[],
+            statement=date(2019, 3, 27),
+            attachments=None,
+            utility_code="NEM A-1-B",
+            utility_account_id=None,
+            utility="utility:pge",
+            service_id=None,
+            third_party_expected=None,
+        )
+        self.assertEqual(actual, expected)
+
+    def test_third_party_expected_for_NEM_reverse_flow_channel(self):
+        """Test that the presence of a reverse flow channel means we are unsure if a service is
+        bundled for a given billing period.
+        """
+        b = Bill(
+            start=datetime(2019, 2, 28, 0),
+            duration=timedelta(days=27),
+            used_unit="Wh",
+            used=0,
+            _line_items=[],
+            cost=35.51,
+            published=datetime(2017, 2, 1),
+            usage_point="test_usage_point",
+            subscription="test",
+            tariff="B10S",
+        )
+
+        reading_type = ReadingType(
+            kind="energy",
+            commodity="electricity SecondaryMetered",
+            unit_of_measure="Wh",
+            flow_direction="reverse",
+            self_url="https://api.pge.com/GreenButtonConnect/espi/1_1/resource/ReadingType/test='",
+            artifact=self.artifact,
+        )
+        db.session.add(reading_type)
+        db.session.flush()
+
+        interval_data = IntervalData(
+            usage_point="test_usage_point",
+            subscription="test",
+            readings=[1] * 96,
+            start=datetime(2019, 2, 28, 0),
+            duration=timedelta(days=1),
+            reading_type_oid=reading_type.oid,
+            artifact=self.artifact,
+            self_url="https://api.pge.com/GreenButtonConnect/espi/1_1/resource/Subscription/test/UsagePoint/"
+            "test_usage_point/MeterReading/test==/IntervalBlock/test",
+        )
+        db.session.add(interval_data)
+        actual = b.to_billing_datum(self.meter.utility_service)
+
+        expected = BillingDatum(
+            start=date(2019, 3, 1),
+            end=date(2019, 3, 27),
+            cost=35.51,
+            used=0,
+            peak=None,
+            items=[],
+            statement=date(2019, 3, 27),
+            attachments=None,
+            utility_code="B10S",
+            utility_account_id=None,
+            utility="utility:pge",
+            service_id=None,
+            third_party_expected=None,
         )
         self.assertEqual(actual, expected)
