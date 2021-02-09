@@ -1,9 +1,15 @@
+import argparse
 from datetime import date
+import functools as ft
 import logging
 import unittest
 
+from dateutil import parser as date_parser
+
+from datafeeds.common.support import Credentials, DateRange
 from datafeeds.scrapers.duke import pdf_parser
 from datafeeds.parsers import pdfparser
+from datafeeds.scrapers.duke.billing import DukeBillingConfiguration, DukeBillingScraper
 
 logging.getLogger("pdfminer").setLevel(logging.WARNING)
 
@@ -81,3 +87,71 @@ class DukeBillTestCase(unittest.TestCase):
         self.assertAlmostEqual(19.7, data.cost, 2)
         self.assertAlmostEqual(156, data.used, 2)
         self.assertIsNone(data.peak)
+
+
+def test_upload_bills(meter_oid, meter_number, task_id, bills):
+    print("Bill results:\n")
+    for bill in bills:
+        print(
+            "%s\t%s\t%.2f\t%.2f\t%s"
+            % (
+                bill.start.strftime("%Y-%m-%d"),
+                bill.end.strftime("%Y-%m-%d"),
+                bill.cost,
+                bill.used,
+                bill.peak,
+            )
+        )
+
+
+def test_scraper(
+    username: str, password: str, account_id: str, start_date: date, end_date: date
+):
+    configuration = DukeBillingConfiguration("utility:duke-carolinas-nc", account_id)
+    credentials = Credentials(username, password)
+    scraper = DukeBillingScraper(
+        credentials, DateRange(start_date, end_date), configuration
+    )
+    scraper.start()
+    scraper.scrape(
+        bills_handler=ft.partial(test_upload_bills, -1, account_id, None),
+        partial_bills_handler=None,
+        readings_handler=None,
+        pdfs_handler=None,
+    )
+    scraper.stop()
+
+
+"""
+    Run this to launch the Duke billing scraper:
+
+    $ export PYTHONPATH=$(pwd)
+    $ python datafeeds/scrapers/tests/test_duke_billing.py account_id start end username password
+"""
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("account_id", type=str)
+    parser.add_argument("start", type=str)
+    parser.add_argument("end", type=str)
+    parser.add_argument("username", type=str)
+    parser.add_argument("password", type=str)
+    args = parser.parse_args()
+    start_dt = date_parser.parse(args.start).date()
+    end_dt = date_parser.parse(args.end).date()
+    test_scraper(args.username, args.password, args.account_id, start_dt, end_dt)
+    """
+    expected values for date range 2020-11-01 2021-01-15
+
+account number 1781374757
+start       end         cost       used     peak
+2020-12-01  2020-12-31  325155.49  5410000  7944
+2020-11-01  2020-11-30  297289.73  3730000  7500
+2020-10-01  2020-10-31  294845.40  3406000  7500
+
+account number 1655779178
+start       end         cost    used  peak
+2020-12-04  2021-01-05  149.24  1020  30
+2020-11-04  2020-12-03   84.35   488  30
+2020-10-05  2020-11-04   70.20   304  30
+    """

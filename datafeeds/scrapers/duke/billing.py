@@ -97,7 +97,7 @@ class DukeBillingScraper(BaseWebScraper):
             transitions=["bill_history_page"],
         )
 
-        # download PDF and go to info page
+        # view and parse bills
         state_machine.add_state(
             name="bill_history_page",
             page=duke_pages.BillHistoryPage(
@@ -157,7 +157,7 @@ class DukeBillingScraper(BaseWebScraper):
             )
             raise errors.BillingScraperInvalidDateRangeException(err_msg)
 
-        self.billing_history = page.download_pdfs(self.utility, self.account_id)
+        self.billing_history = page.get_bills(self.utility, self.account_id)
 
 
 def datafeed(

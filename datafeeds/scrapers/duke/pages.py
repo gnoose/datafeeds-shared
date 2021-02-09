@@ -1,8 +1,11 @@
 """ Duke Page module """
 import logging
+import re
 import os
 
-from datetime import date
+from io import BytesIO
+
+from datetime import date, timedelta
 from typing import List, Tuple
 
 from dateutil.parser import parse as parse_date
@@ -10,14 +13,15 @@ from selenium.common.exceptions import NoSuchElementException
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+
 from datafeeds import config
+from datafeeds.common.upload import hash_bill, upload_bill_to_s3
 from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.common.typing import BillingDatum, BillingRange
 from datafeeds.common.util.selenium import ec_and
 from datafeeds.common.util.pagestate.pagestate import PageState
 from datafeeds.scrapers.duke import errors
 from datafeeds.scrapers.duke.errors import BillingScraperAccountUnavailable
-from datafeeds.scrapers.duke.pdf_parser import parse_pdf
 
 logger = None
 log = logging.getLogger(__name__)
@@ -87,7 +91,7 @@ class DukeLandingPage(PageState):
         self.link_to_accs_locator = None
 
     def get_ready_condition(self):
-        self.link_to_accs_locator = (By.CSS_SELECTOR, "button#btnViewnPayBill")
+        self.link_to_accs_locator = (By.CSS_SELECTOR, "button#btnBillView")
         return EC.element_to_be_clickable(self.link_to_accs_locator)
 
     def open_accounts_page(self):
@@ -97,7 +101,7 @@ class DukeLandingPage(PageState):
             *self.link_to_accs_locator
         )
         bills_page_for_meters_link.click()
-        self.driver.sleep(1)
+        self.driver.sleep(5)
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
     def open_profiler_page(self):
@@ -115,13 +119,16 @@ class AccountListPage(PageState):
         self.account_id = account_id
 
     def get_ready_condition(self):
-        return EC.visibility_of_element_located((By.CSS_SELECTOR, "div.NavGrid"))
+        return EC.visibility_of_element_located(
+            (By.CSS_SELECTOR, "table#billViewAccounts")
+        )
 
     def click_account(self):
         """Find and click account id."""
         try:
             account_link = self.driver.find_element(
-                By.XPATH, f"//a[contains(., '{self.account_id}')]"
+                By.XPATH,
+                f"//td[contains(., '{self.account_id}')]/following-sibling::td/a",
             )
         except NoSuchElementException:
             raise BillingScraperAccountUnavailable(
@@ -144,66 +151,173 @@ class BillHistoryPage(PageState):
         self.download_dir = f"{config.WORKING_DIRECTORY}/current"
 
     def get_ready_condition(self):
-        return EC.visibility_of_element_located((By.CSS_SELECTOR, "tr.GridHeader"))
+        return EC.visibility_of_element_located((By.CSS_SELECTOR, "div#account"))
 
-    def download_pdfs(
-        self, utility: str, utility_account_id: str
-    ) -> List[BillingDatum]:
-        """Download PDFs and collect billing date ranges.
-
-        For dates in start_date - end_date range
-          - build a list of start/end dates from the list of bills (end date in table, start date
-            is previous bill end date + 1 day)
-          - download PDFs for dates in range
-          - return billing date ranges and pdf filenames
-        """
+    def get_bills(self, utility: str, utility_account_id: str) -> List[BillingDatum]:
         billing_data = []
+
         available_dates = self.driver.find_elements(
-            By.CSS_SELECTOR, "tr > td:nth-child(2) > a"
+            By.CSS_SELECTOR, "table.table-alt a.bill-view-link"
         )
         available_dates = [parse_date(i.text).date() for i in available_dates]
         log.info(
             "available dates: %s", [dt.strftime("%Y-%m-%d") for dt in available_dates]
         )
 
+        xpath_locators = {
+            # Finds the last KWH reading under Total Usage column
+            "cost": "//table[contains(., 'NEW CHARGES')]/tbody/tr/td[3]",
+            "used": "(//table[contains(.,'USAGE')]//tr/td[contains(., 'KWH')])",
+            "usage_kw": "//table[contains(.,'USAGE')]//tr/td[contains(.,'KW') and not(contains(.,'KWH'))]",
+        }
+
         # loop through dates in table in ascending order
-        previous_date = None
         for pdf_date in reversed(available_dates):
-            if previous_date is None:
-                previous_date = pdf_date
             # skip if the date isn't in the specified range
             if not (self.start_date <= pdf_date <= self.end_date):
-                previous_date = pdf_date
                 log.debug("skipping date outside range: %s", pdf_date)
                 continue
 
-            view_pdf_link = self.driver.find_element_by_xpath(
-                f'//a[.="{pdf_date.strftime("%-m/%-d/%Y")}"]'
+            view_bill_link = self.driver.find_element_by_xpath(
+                '//a[.="%s"]' % pdf_date.strftime("%m/%d/%Y")
+            )
+            scroll_to(self.driver, view_bill_link)
+
+            self.driver.sleep(0.5)
+            view_bill_link.click()
+
+            self.driver.wait(30).until(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, "div.billImage"))
             )
 
-            scroll_to(self.driver, view_pdf_link)
-            self.driver.sleep(0.5)
-            view_pdf_link.click()
+            start_date = None
+            end_date = None
+            cost = None
+            used = None
+            peak = None
 
-            try:
-                self.driver.wait(30).until(
-                    file_exists_in_dir(
-                        directory=self.download_dir, pattern=r"^View.pdf$",
+            dates_line_text: str = self.driver.find_element_by_xpath(
+                "//td[contains(., 'Service From:')]"
+            ).text
+            dates_match = re.search(
+                r"Service From: (?P<from>\w+ \d\d) to (?P<to>\w+ \d\d) \(\d\d Days\)",
+                dates_line_text,
+            )
+
+            if dates_match:
+                start_date = parse_date(
+                    dates_match.group("from") + pdf_date.strftime(" %Y")
+                )
+                end_date = parse_date(
+                    dates_match.group("to") + pdf_date.strftime(" %Y")
+                )
+
+            cost_match = self.driver.find(xpath_locators["cost"], xpath=True)
+            if cost_match:
+                cost = cost_match.text
+                cost = float(cost.replace("$", "").replace(",", ""))
+
+            kwh_usages = []
+            for match in self.driver.find_all(xpath_locators["used"], xpath=True):
+                # include only if it has a reading values as siblings; exclude credit line items
+                parent = match.find_element_by_xpath("..")
+                # meter number, previous reading, current reading
+                readings_text = ""
+                for idx, child in enumerate(parent.find_elements_by_xpath(".//td")):
+                    log.debug("\t%s\t%s", idx, child.text.strip())
+                    readings_text += child.text.strip()
+                    if idx == 2:
+                        break
+                if not readings_text:
+                    log.info("skipping non-reading line item: %s", parent.text)
+                    continue
+                kwh_value = float(
+                    match.text.replace("KWH", "").replace(",", "").strip()
+                )
+                kwh_usages.append(kwh_value)
+
+            if kwh_usages:
+                used = sum(kwh_usages)
+
+            kw_usages = []
+            for usage_kw_match in self.driver.find_all(
+                xpath_locators["usage_kw"], xpath=True
+            ):
+                kw_usages.append(
+                    float(
+                        usage_kw_match.text.replace("KW", "").replace(",", "").strip()
                     )
                 )
-            except Exception:
-                raise Exception(f"Unable to download file for %s" % pdf_date)
 
-            curr_path = os.path.join(self.download_dir, f"View.pdf")
+            if kw_usages:
+                peak = max(kw_usages)
+
+            data = BillingDatum(
+                start=start_date,
+                end=end_date - timedelta(days=1),
+                statement=end_date - timedelta(days=1),
+                cost=cost,
+                peak=peak,
+                used=used,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            )
+
+            self.driver.find("a#billImageToPrint").click()
+            self.driver.sleep(1)
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+
+            # the filename of the printed pdf is f"{current page title}.pdf"
+            self.driver.execute_script("window.print();")
+
+            try:
+                file_exists_in_dir(
+                    directory=self.download_dir, pattern=r"^Bill View Bill Image.pdf$"
+                )
+            except Exception:
+                raise Exception("Unable to download file for %s" % pdf_date)
+
+            curr_path = os.path.join(self.download_dir, "Bill View Bill Image.pdf")
             new_path = os.path.join(
                 self.download_dir, f"bill_{pdf_date.strftime('%Y-%m-%d')}.pdf"
             )
             os.rename(curr_path, new_path)
 
-            datum = parse_pdf(new_path, utility, utility_account_id)
-            billing_data.append(datum)
-            log.info("parsed pdf for %s - %s", datum.start, datum.end)
-            previous_date = pdf_date
+            log.info("parsed bill for %s - %s", data.start, data.end)
+
+            self.driver.find("a#close").click()
+            self.driver.sleep(1)
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            self.driver.sleep(1)
+
+            # upload PDF:
+            key = hash_bill(
+                utility_account_id,
+                data.start,
+                data.end,
+                data.cost,
+                data.peak,
+                data.used,
+            )
+
+            with open(new_path, "rb") as pdf_data:
+                attachment_entry = upload_bill_to_s3(
+                    BytesIO(pdf_data.read()),
+                    key,
+                    source="www.duke-energy.com",
+                    statement=data.end,
+                    utility=utility,
+                    utility_account_id=utility_account_id,
+                )
+
+            if attachment_entry:
+                data = data._replace(attachments=[attachment_entry])
+
+            billing_data.append(data)
+
+            # Click Bill Information in breadcrumbs to go back to bills list page
+            self.driver.find("a#billInformation").click()
 
         return billing_data
 
