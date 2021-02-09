@@ -1,0 +1,112 @@
+{
+  "accounts": [
+    {
+      "PK": 7637415,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "08882852882",
+      "RawAccountNumber": "088-82852-882",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb52b38-30db-d7f2-98f5-0e29b4ca93e3",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2021-01-10",
+      "IntervalStart": "2020-12-10",
+      "IntervalEnd": "2021-01-10",
+      "TotalBillAmount": "479.7600",
+      "AmountDue": "479.7600",
+      "NewCharges": "239.8800",
+      "OutstandingBalance": "239.8800",
+      "PreviousBalance": "239.8800",
+      "meters": [
+        {
+          "PK": 24706839,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "charges": [
+            {
+              "PK": 290324119,
+              "ChargeActualName": "Water",
+              "ChargeAmount": "0.0000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-12-10",
+              "IntervalEnd": "2021-01-10",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 290324120,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "232.8900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-12-10",
+              "IntervalEnd": "2021-01-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88991868,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-12-10",
+              "IntervalEnd": "2021-01-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 290324116,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "6.9900",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 290324117,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 290324118,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    }
+  ]
+}

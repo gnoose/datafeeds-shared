@@ -150,8 +150,8 @@ def make_line_items(bill: GridiumBillingPeriod):
 
 
 def make_attachments(
-    source_urls: Optional[List[str]] = None,
-    statement: Optional[date] = None,
+    source_urls: List[str],
+    statement: date,
     utility: Optional[str] = None,
     account_id: Optional[str] = None,
     gen_utility: Optional[str] = None,
@@ -191,13 +191,13 @@ def make_billing_datum(
     return BillingDatum(
         start=bill.start,
         end=bill.end,
-        statement=bill.statement,
+        statement=bill.statement or bill.end,
         cost=_try_parse_float(bill.total_charge),
         used=_try_parse_float(bill.total_usage),
         peak=_try_parse_float(bill.peak_demand),
         items=make_line_items(bill),
         attachments=make_attachments(
-            bill.source_urls, bill.statement, utility, account_id
+            bill.source_urls, bill.statement or bill.end, utility, account_id
         )
         if fetch_attachments
         else None,

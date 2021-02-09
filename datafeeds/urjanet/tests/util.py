@@ -97,9 +97,11 @@ class UrjaCsvFixtureTest(unittest.TestCase):
         self.assertAlmostEqual(
             bill.cost, float(match.total_charge), 2, "%s\tcost match" % label
         )
-        self.assertAlmostEqual(
-            bill.used, float(match.total_usage), 2, "%s\tused match" % label
-        )
+        # skip if not available
+        if bill.used is not None:
+            self.assertAlmostEqual(
+                bill.used, float(match.total_usage), 2, "%s\tused match" % label
+            )
         if bill.peak is None:
             self.assertIsNone(match.peak_demand, "%s\tno peak" % label)
         else:

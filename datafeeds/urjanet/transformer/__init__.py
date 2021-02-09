@@ -1,5 +1,6 @@
 from .base import UrjanetGridiumTransformer, GenericBillingPeriod
 from .common import urja_to_json, json_to_urja
+from .city_of_el_segundo import CityOfElSegundoTransformer
 from .constellation import ConstellationTransformer
 from .contra_costa_water import ContraCostaWaterTransformer
 from .directenergy import DirectEnergyTransformer
@@ -35,6 +36,7 @@ __all__ = [
     # alphabetical from here
     "AmericanTransformer",
     "AustinTXTransformer",
+    "CityOfElSegundoTransformer",
     "ConstellationTransformer",
     "ContraCostaWaterTransformer",
     "DirectEnergyTransformer",

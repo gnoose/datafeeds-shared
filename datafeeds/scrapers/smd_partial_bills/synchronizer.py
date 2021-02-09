@@ -153,8 +153,8 @@ class SmdPartialBillingScraper(BaseApiScraper):
             )
 
             if pdf:
-                source_url = pdf.get("SourceLink") if pdf else None
-                statement = pdf.get("StatementDate") if pdf else None
+                source_url = pdf.get("SourceLink")
+                statement = pdf.get("StatementDate", pb.statement or pb.end)
 
                 attachments = make_attachments(
                     source_urls=[source_url],

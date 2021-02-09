@@ -83,6 +83,9 @@ from datafeeds.smd.tasks import run_authorization_step, run_validation_step
 from datafeeds.urjanet.datasource.american import datafeed as american
 from datafeeds.urjanet.datasource.austin_tx import datafeed as austin
 from datafeeds.urjanet.datasource.calwater import datafeed as calwater
+from datafeeds.urjanet.datasource.city_of_el_segundo import (
+    datafeed as city_of_el_segundo,
+)
 from datafeeds.urjanet.datasource.colleyville import datafeed as colleyville
 from datafeeds.urjanet.datasource.constellation import datafeed as constellation
 from datafeeds.urjanet.datasource.contra_costa_water import (
@@ -139,6 +142,7 @@ scraper_functions = {
     "austin-urjanet": austin,
     "bloom": bloom_interval,
     "cal-water-urjanet": calwater,
+    "city-of-el-segundo-urjanet": city_of_el_segundo,
     "colleyville-water-urjanet": colleyville,
     "constellation-urjanet": constellation,
     "contra-costa-water-urjanet": contra_costa_water,

@@ -1,0 +1,2100 @@
+{
+  "accounts": [
+    {
+      "PK": 7558079,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "11116111111",
+      "RawAccountNumber": "111-16111-111",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1e9e98eb-fded-d449-bacc-0ee3c7c11ece",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-10-08",
+      "IntervalStart": "2019-09-09",
+      "IntervalEnd": "2019-10-08",
+      "TotalBillAmount": "13830.9600",
+      "AmountDue": "13830.9600",
+      "NewCharges": "13830.9600",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24521945,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-09-09",
+          "IntervalEnd": "2019-10-08",
+          "charges": [
+            {
+              "PK": 287702182,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "10114.3900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-09",
+              "IntervalEnd": "2019-10-08",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88172474,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2076.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-09-09",
+              "IntervalEnd": "2019-10-08"
+            }
+          ]
+        },
+        {
+          "PK": 24521946,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-09-09",
+          "IntervalEnd": "2019-10-08",
+          "charges": [
+            {
+              "PK": 287702183,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "3413.1400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "2076.0000",
+              "ChargeRatePerUnit": "1.6441",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-09-09",
+              "IntervalEnd": "2019-10-08",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88172475,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2076.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-09-09",
+              "IntervalEnd": "2019-10-08"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 287702179,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-09-09",
+          "IntervalEnd": "2019-10-08",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 287702180,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "303.4300",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-09-09",
+          "IntervalEnd": "2019-10-08",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 287702181,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-09-09",
+          "IntervalEnd": "2019-10-08",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7565059,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "66664660666",
+      "RawAccountNumber": "666-64660-666",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea03300-b8e7-d426-9477-0ec573326f25",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-11-11",
+      "IntervalStart": "2019-10-08",
+      "IntervalEnd": "2019-11-11",
+      "TotalBillAmount": "17963.4200",
+      "AmountDue": "17963.4200",
+      "NewCharges": "17963.4200",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24535989,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-10-08",
+          "IntervalEnd": "2019-11-11",
+          "charges": [
+            {
+              "PK": 287856961,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "13411.6100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-10-08",
+              "IntervalEnd": "2019-11-11",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88219597,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2784.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-10-08",
+              "IntervalEnd": "2019-11-11"
+            }
+          ]
+        },
+        {
+          "PK": 24535990,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-10-08",
+          "IntervalEnd": "2019-11-11",
+          "charges": [
+            {
+              "PK": 287856962,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "4149.4600",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "2784.0000",
+              "ChargeRatePerUnit": "1.4905",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-10-08",
+              "IntervalEnd": "2019-11-11",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88219598,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "2784.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-10-08",
+              "IntervalEnd": "2019-11-11"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 287856958,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-10-08",
+          "IntervalEnd": "2019-11-11",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 287856959,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "402.3500",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-10-08",
+          "IntervalEnd": "2019-11-11",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 287856960,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-10-08",
+          "IntervalEnd": "2019-11-11",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7568772,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "33008300000",
+      "RawAccountNumber": "330-08300-000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea1b3d9-e731-daba-a57d-0e1962a031ff",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2019-12-10",
+      "IntervalStart": "2019-11-11",
+      "IntervalEnd": "2019-12-10",
+      "TotalBillAmount": "10614.8700",
+      "AmountDue": "10614.8700",
+      "NewCharges": "10614.8700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24544506,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-11-11",
+          "IntervalEnd": "2019-12-10",
+          "charges": [
+            {
+              "PK": 287958571,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "7548.3200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-11",
+              "IntervalEnd": "2019-12-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88252893,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1525.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-11-11",
+              "IntervalEnd": "2019-12-10"
+            }
+          ]
+        },
+        {
+          "PK": 24544507,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-11-11",
+          "IntervalEnd": "2019-12-10",
+          "charges": [
+            {
+              "PK": 287958572,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "2840.1000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "1525.0000",
+              "ChargeRatePerUnit": "1.8624",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-11-11",
+              "IntervalEnd": "2019-12-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88252894,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1525.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-11-11",
+              "IntervalEnd": "2019-12-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 287958568,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-11-11",
+          "IntervalEnd": "2019-12-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 287958569,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "226.4500",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-11-11",
+          "IntervalEnd": "2019-12-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 287958570,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-11-11",
+          "IntervalEnd": "2019-12-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7571598,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "22113313111",
+      "RawAccountNumber": "221-13313-111",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea32ff6-7fdb-d1fd-9ac6-0efc1bfbd643",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-01-10",
+      "IntervalStart": "2019-12-10",
+      "IntervalEnd": "2020-01-10",
+      "TotalBillAmount": "8636.2000",
+      "AmountDue": "8636.2000",
+      "NewCharges": "8636.2000",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24552526,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-12-10",
+          "IntervalEnd": "2020-01-10",
+          "charges": [
+            {
+              "PK": 288054323,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "5969.5700",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-12-10",
+              "IntervalEnd": "2020-01-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88280051,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1186.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-12-10",
+              "IntervalEnd": "2020-01-10"
+            }
+          ]
+        },
+        {
+          "PK": 24552527,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2019-12-10",
+          "IntervalEnd": "2020-01-10",
+          "charges": [
+            {
+              "PK": 288054324,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "2487.5400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "1186.0000",
+              "ChargeRatePerUnit": "2.0974",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2019-12-10",
+              "IntervalEnd": "2020-01-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88280052,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1186.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2019-12-10",
+              "IntervalEnd": "2020-01-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288054320,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-12-10",
+          "IntervalEnd": "2020-01-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 288054321,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "179.0900",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-12-10",
+          "IntervalEnd": "2020-01-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 288054322,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2019-12-10",
+          "IntervalEnd": "2020-01-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7575948,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "00002302000",
+      "RawAccountNumber": "000-02302-000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea4ac37-6316-dcaa-aa3e-0e9757be24e1",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-02-10",
+      "IntervalStart": "2020-01-10",
+      "IntervalEnd": "2020-02-10",
+      "TotalBillAmount": "8087.5300",
+      "AmountDue": "8087.5300",
+      "NewCharges": "8087.5300",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24562122,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-01-10",
+          "IntervalEnd": "2020-02-10",
+          "charges": [
+            {
+              "PK": 288177647,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "5531.8000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-10",
+              "IntervalEnd": "2020-02-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88318095,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1092.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-01-10",
+              "IntervalEnd": "2020-02-10"
+            }
+          ]
+        },
+        {
+          "PK": 24562123,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-01-10",
+          "IntervalEnd": "2020-02-10",
+          "charges": [
+            {
+              "PK": 288177648,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "2389.7800",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "1092.0000",
+              "ChargeRatePerUnit": "2.1884",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-01-10",
+              "IntervalEnd": "2020-02-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88318096,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1092.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-01-10",
+              "IntervalEnd": "2020-02-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288177644,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-01-10",
+          "IntervalEnd": "2020-02-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 288177645,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "165.9500",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-01-10",
+          "IntervalEnd": "2020-02-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 288177646,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-01-10",
+          "IntervalEnd": "2020-02-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7581985,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "00336831333",
+      "RawAccountNumber": "003-36831-333",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea5fd48-e68a-d7a2-a6e4-0e6a2971f74d",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-03-09",
+      "IntervalStart": "2020-02-10",
+      "IntervalEnd": "2020-03-09",
+      "TotalBillAmount": "10206.3000",
+      "AmountDue": "10206.3000",
+      "NewCharges": "10206.3000",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24576079,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-02-10",
+          "IntervalEnd": "2020-03-09",
+          "charges": [
+            {
+              "PK": 288318972,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "7222.3300",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-02-10",
+              "IntervalEnd": "2020-03-09",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88365041,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1455.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-02-10",
+              "IntervalEnd": "2020-03-09"
+            }
+          ]
+        },
+        {
+          "PK": 24576080,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-02-10",
+          "IntervalEnd": "2020-03-09",
+          "charges": [
+            {
+              "PK": 288318973,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "2767.3000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "1455.0000",
+              "ChargeRatePerUnit": "1.9019",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-02-10",
+              "IntervalEnd": "2020-03-09",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88365042,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "1455.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-02-10",
+              "IntervalEnd": "2020-03-09"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288318969,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-02-10",
+          "IntervalEnd": "2020-03-09",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 288318970,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "216.6700",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-02-10",
+          "IntervalEnd": "2020-03-09",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 288318971,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-02-10",
+          "IntervalEnd": "2020-03-09",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7586067,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "11000303000",
+      "RawAccountNumber": "110-00303-000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea7c70d-7852-d534-8052-0eec9039f735",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-04-10",
+      "IntervalStart": "2020-03-09",
+      "IntervalEnd": "2020-04-10",
+      "TotalBillAmount": "7077.7600",
+      "AmountDue": "7077.7600",
+      "NewCharges": "7077.7600",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24586973,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-03-09",
+          "IntervalEnd": "2020-04-10",
+          "charges": [
+            {
+              "PK": 288451287,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "4726.1200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-09",
+              "IntervalEnd": "2020-04-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88403350,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "919.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-03-09",
+              "IntervalEnd": "2020-04-10"
+            }
+          ]
+        },
+        {
+          "PK": 24586974,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-03-09",
+          "IntervalEnd": "2020-04-10",
+          "charges": [
+            {
+              "PK": 288451288,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "2209.8600",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "919.0000",
+              "ChargeRatePerUnit": "2.4046",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-03-09",
+              "IntervalEnd": "2020-04-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88403351,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "919.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-03-09",
+              "IntervalEnd": "2020-04-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288451284,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-03-09",
+          "IntervalEnd": "2020-04-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 288451285,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "141.7800",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-03-09",
+          "IntervalEnd": "2020-04-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 288451286,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-03-09",
+          "IntervalEnd": "2020-04-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7590679,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "00001000000",
+      "RawAccountNumber": "000-01000-000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ea94451-671e-da76-a32f-0ea0ab39288d",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-05-12",
+      "IntervalStart": "2020-04-10",
+      "IntervalEnd": "2020-05-12",
+      "TotalBillAmount": "4527.0800",
+      "AmountDue": "4527.0800",
+      "NewCharges": "4527.0800",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24600739,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-04-10",
+          "IntervalEnd": "2020-05-12",
+          "charges": [
+            {
+              "PK": 288598108,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "2690.9700",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-10",
+              "IntervalEnd": "2020-05-12",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88447439,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "482.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-04-10",
+              "IntervalEnd": "2020-05-12"
+            }
+          ]
+        },
+        {
+          "PK": 24600740,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-04-10",
+          "IntervalEnd": "2020-05-12",
+          "charges": [
+            {
+              "PK": 288598109,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1755.3800",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "482.0000",
+              "ChargeRatePerUnit": "3.6419",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-04-10",
+              "IntervalEnd": "2020-05-12",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88447440,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "482.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-04-10",
+              "IntervalEnd": "2020-05-12"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288598105,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-04-10",
+          "IntervalEnd": "2020-05-12",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 288598106,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "80.7300",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-04-10",
+          "IntervalEnd": "2020-05-12",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 288598107,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-04-10",
+          "IntervalEnd": "2020-05-12",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7595086,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "11112011111",
+      "RawAccountNumber": "111-12011-111",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eaabd3b-2b2c-d1b2-991f-0e0cec4014d9",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-06-11",
+      "IntervalStart": "2020-05-12",
+      "IntervalEnd": "2020-06-11",
+      "TotalBillAmount": "2390.8000",
+      "AmountDue": "2390.8000",
+      "NewCharges": "2390.8000",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24609937,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-05-12",
+          "IntervalEnd": "2020-06-11",
+          "charges": [
+            {
+              "PK": 288723150,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "986.4700",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-12",
+              "IntervalEnd": "2020-06-11",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88483789,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "116.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-05-12",
+              "IntervalEnd": "2020-06-11"
+            }
+          ]
+        },
+        {
+          "PK": 24609938,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-05-12",
+          "IntervalEnd": "2020-06-11",
+          "charges": [
+            {
+              "PK": 288723151,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1374.7400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "116.0000",
+              "ChargeRatePerUnit": "11.8512",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-05-12",
+              "IntervalEnd": "2020-06-11",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88483790,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "116.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-05-12",
+              "IntervalEnd": "2020-06-11"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288723147,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-05-12",
+          "IntervalEnd": "2020-06-11",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 288723148,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "29.5900",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-05-12",
+          "IntervalEnd": "2020-06-11",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 288723149,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-05-12",
+          "IntervalEnd": "2020-06-11",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7601136,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "00333931333",
+      "RawAccountNumber": "003-33931-333",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eac2b52-8aa9-db85-a791-0effbf625909",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-07-10",
+      "IntervalStart": "2020-06-11",
+      "IntervalEnd": "2020-07-10",
+      "TotalBillAmount": "4713.8600",
+      "AmountDue": "4713.8600",
+      "NewCharges": "4713.8600",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24622998,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-06-11",
+          "IntervalEnd": "2020-07-10",
+          "charges": [
+            {
+              "PK": 288888781,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1788.6600",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "514.0000",
+              "ChargeRatePerUnit": "3.4799",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-11",
+              "IntervalEnd": "2020-07-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88530927,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "514.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-06-11",
+              "IntervalEnd": "2020-07-10"
+            }
+          ]
+        },
+        {
+          "PK": 24622999,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-06-11",
+          "IntervalEnd": "2020-07-10",
+          "charges": [
+            {
+              "PK": 288888782,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "2840.0000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-06-11",
+              "IntervalEnd": "2020-07-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88530928,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "514.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-06-11",
+              "IntervalEnd": "2020-07-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 288888778,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "85.2000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-06-11",
+          "IntervalEnd": "2020-07-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 288888779,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-06-11",
+          "IntervalEnd": "2020-07-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 288888780,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-06-11",
+          "IntervalEnd": "2020-07-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7605963,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "22666962666",
+      "RawAccountNumber": "226-66962-666",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1ead9ef8-5a90-d8ab-b875-0e617f6ba1d9",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-08-10",
+      "IntervalStart": "2020-07-10",
+      "IntervalEnd": "2020-08-10",
+      "TotalBillAmount": "3669.0700",
+      "AmountDue": "3669.0700",
+      "NewCharges": "3669.0700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24633422,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-07-10",
+          "IntervalEnd": "2020-08-10",
+          "charges": [
+            {
+              "PK": 289013484,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1602.5000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "335.0000",
+              "ChargeRatePerUnit": "4.7836",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-10",
+              "IntervalEnd": "2020-08-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88569918,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "335.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-07-10",
+              "IntervalEnd": "2020-08-10"
+            }
+          ]
+        },
+        {
+          "PK": 24633423,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-07-10",
+          "IntervalEnd": "2020-08-10",
+          "charges": [
+            {
+              "PK": 289013485,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "2006.3800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-07-10",
+              "IntervalEnd": "2020-08-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88569919,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "335.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-07-10",
+              "IntervalEnd": "2020-08-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 289013481,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "60.1900",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-07-10",
+          "IntervalEnd": "2020-08-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 289013482,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-07-10",
+          "IntervalEnd": "2020-08-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 289013483,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-07-10",
+          "IntervalEnd": "2020-08-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7612014,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "88008508000",
+      "RawAccountNumber": "880-08508-000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eaf26a2-357e-d817-b8ea-0e2404519dc1",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-09-09",
+      "IntervalStart": "2020-08-10",
+      "IntervalEnd": "2020-09-09",
+      "TotalBillAmount": "5396.7700",
+      "AmountDue": "5396.7700",
+      "NewCharges": "5396.7700",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24645801,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-08-10",
+          "IntervalEnd": "2020-09-09",
+          "charges": [
+            {
+              "PK": 289147595,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1910.3400",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "631.0000",
+              "ChargeRatePerUnit": "3.0275",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-08-10",
+              "IntervalEnd": "2020-09-09",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88615338,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "631.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-08-10",
+              "IntervalEnd": "2020-09-09"
+            }
+          ]
+        },
+        {
+          "PK": 24645802,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-08-10",
+          "IntervalEnd": "2020-09-09",
+          "charges": [
+            {
+              "PK": 289147596,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "3384.8800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-08-10",
+              "IntervalEnd": "2020-09-09",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88615339,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "631.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-08-10",
+              "IntervalEnd": "2020-09-09"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 289147592,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "101.5500",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-08-10",
+          "IntervalEnd": "2020-09-09",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 289147593,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-08-10",
+          "IntervalEnd": "2020-09-09",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 289147594,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-08-10",
+          "IntervalEnd": "2020-09-09",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7621101,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "22448242444",
+      "RawAccountNumber": "224-48242-444",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb0ec76-be0a-dff5-a917-0e9b24d7f72f",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-10-14",
+      "IntervalStart": "2020-09-09",
+      "IntervalEnd": "2020-10-14",
+      "TotalBillAmount": "3890.8600",
+      "AmountDue": "3890.8600",
+      "NewCharges": "3890.8600",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24664747,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-09-09",
+          "IntervalEnd": "2020-10-14",
+          "charges": [
+            {
+              "PK": 289328828,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1642.0200",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "373.0000",
+              "ChargeRatePerUnit": "4.4022",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-09",
+              "IntervalEnd": "2020-10-14",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88680964,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "373.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-09",
+              "IntervalEnd": "2020-10-14"
+            }
+          ]
+        },
+        {
+          "PK": 24664748,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-09-09",
+          "IntervalEnd": "2020-10-14",
+          "charges": [
+            {
+              "PK": 289328829,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "2183.3400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-09",
+              "IntervalEnd": "2020-10-14",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88680965,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "373.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-09",
+              "IntervalEnd": "2020-10-14"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 289328825,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "65.5000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-09-09",
+          "IntervalEnd": "2020-10-14",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 289328826,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-09-09",
+          "IntervalEnd": "2020-10-14",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 289328827,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-09-09",
+          "IntervalEnd": "2020-10-14",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7626655,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "77336733333",
+      "RawAccountNumber": "773-36733-333",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb223c4-866f-d0d5-ab8d-0e4b84513911",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-11-10",
+      "IntervalStart": "2020-10-14",
+      "IntervalEnd": "2020-11-10",
+      "TotalBillAmount": "7151.3500",
+      "AmountDue": "7151.3500",
+      "NewCharges": "3260.4900",
+      "OutstandingBalance": "3890.8600",
+      "PreviousBalance": "3890.8600",
+      "meters": [
+        {
+          "PK": 24675709,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-10-14",
+          "IntervalEnd": "2020-11-10",
+          "charges": [
+            {
+              "PK": 289472858,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1529.7000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "265.0000",
+              "ChargeRatePerUnit": "5.7725",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-14",
+              "IntervalEnd": "2020-11-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88723826,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "265.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-14",
+              "IntervalEnd": "2020-11-10"
+            }
+          ]
+        },
+        {
+          "PK": 24675710,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-10-14",
+          "IntervalEnd": "2020-11-10",
+          "charges": [
+            {
+              "PK": 289472859,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "1680.3800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-14",
+              "IntervalEnd": "2020-11-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88723827,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "265.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-14",
+              "IntervalEnd": "2020-11-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 289472855,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "50.4100",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-10-14",
+          "IntervalEnd": "2020-11-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 289472856,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-10-14",
+          "IntervalEnd": "2020-11-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 289472857,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-10-14",
+          "IntervalEnd": "2020-11-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7631115,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "00003500000",
+      "RawAccountNumber": "000-03500-000",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3ac6d-f0b3-d085-ad93-0e1904fb80e3",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-12-10",
+      "IntervalStart": "2020-11-10",
+      "IntervalEnd": "2020-12-10",
+      "TotalBillAmount": "3453.1000",
+      "AmountDue": "3453.1000",
+      "NewCharges": "3453.1000",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24688284,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-11-10",
+          "IntervalEnd": "2020-12-10",
+          "charges": [
+            {
+              "PK": 289715444,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1564.0200",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "298.0000",
+              "ChargeRatePerUnit": "5.2484",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-11-10",
+              "IntervalEnd": "2020-12-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88805111,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "298.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-11-10",
+              "IntervalEnd": "2020-12-10"
+            }
+          ]
+        },
+        {
+          "PK": 24688286,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-11-10",
+          "IntervalEnd": "2020-12-10",
+          "charges": [
+            {
+              "PK": 289715450,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "1834.0600",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-11-10",
+              "IntervalEnd": "2020-12-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88805117,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "298.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-11-10",
+              "IntervalEnd": "2020-12-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 289715434,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "55.0200",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-11-10",
+          "IntervalEnd": "2020-12-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 289715436,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-11-10",
+          "IntervalEnd": "2020-12-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 289715438,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-11-10",
+          "IntervalEnd": "2020-12-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    },
+    {
+      "PK": 7637417,
+      "UtilityProvider": "CityOfElSegundoCA",
+      "AccountNumber": "00557651555",
+      "RawAccountNumber": "005-57651-555",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb52b3c-8dc5-db1a-98f5-0e29b4ca93e3",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2021-01-10",
+      "IntervalStart": "2020-12-10",
+      "IntervalEnd": "2021-01-10",
+      "TotalBillAmount": "3546.5000",
+      "AmountDue": "3546.5000",
+      "NewCharges": "3546.5000",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24706841,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "charges": [
+            {
+              "PK": 290324129,
+              "ChargeActualName": "Sewer",
+              "ChargeAmount": "1580.6600",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "314.0000",
+              "ChargeRatePerUnit": "5.0340",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-12-10",
+              "IntervalEnd": "2021-01-10",
+              "ChargeId": "ch.sewer_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88991870,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "314.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-12-10",
+              "IntervalEnd": "2021-01-10"
+            }
+          ]
+        },
+        {
+          "PK": 24706842,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "",
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "charges": [
+            {
+              "PK": 290324130,
+              "ChargeActualName": "Water Txbl",
+              "ChargeAmount": "1908.5800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-12-10",
+              "IntervalEnd": "2021-01-10",
+              "ChargeId": "ch.water_utility_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88991871,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "314.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-12-10",
+              "IntervalEnd": "2021-01-10"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 290324126,
+          "ChargeActualName": "Tax",
+          "ChargeAmount": "57.2600",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "ChargeId": "ch.tax_charge"
+        },
+        {
+          "PK": 290324127,
+          "ChargeActualName": "Deposit",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "ChargeId": "ch.deposit_refund"
+        },
+        {
+          "PK": 290324128,
+          "ChargeActualName": "Misc",
+          "ChargeAmount": "0.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-12-10",
+          "IntervalEnd": "2021-01-10",
+          "ChargeId": "ch.misc_charge"
+        }
+      ]
+    }
+  ]
+}
