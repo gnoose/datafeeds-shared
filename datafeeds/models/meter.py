@@ -440,7 +440,7 @@ class Meter(ModelMixin, Base):
     @property
     def build_log_extra(self) -> Dict[str, Any]:
         """Return meter oid, utility service id(s), and account, for use in logs."""
-        extra = {"meter": str(self.oid), "building": str(self.building)}
+        extra = {"meter": str(self.oid), "building": str(self._building)}
         account = self.account()
         if account:
             extra["account"] = account.hex_id
