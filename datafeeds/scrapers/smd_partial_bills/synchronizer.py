@@ -200,7 +200,8 @@ class SmdPartialBillingScraper(BaseApiScraper):
         # The first thing we need to do is order the bills by publication date, so we can decide
         # which SmdBill record is the correct one for our chosen date.
         unified_bills: List[SmdBill] = SmdBill.unify_bills(query)
-        partial_bills = [b.to_billing_datum(self.service) for b in unified_bills]
+        adjusted_bills: List[SmdBill] = SmdBill.adjust_single_day_bills(unified_bills)
+        partial_bills = [b.to_billing_datum(self.service) for b in adjusted_bills]
 
         if partial_bills:
             log.debug(

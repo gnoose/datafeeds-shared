@@ -291,6 +291,62 @@ class TestPartialBillProcessor(unittest.TestCase):
         self.assertEqual(partial_bills.count(), 7)
         self.assertIsNone(most_recent_bill.superseded_by)
 
+    def test_snap_start_date(self):
+        partial_billing_datum = [
+            BillingDatum(
+                start=date(2019, 5, 1),
+                end=date(2019, 5, 30),
+                cost=500.5,
+                used=90.0,
+                peak=59.0,
+                items=None,
+                attachments=[],
+                statement=date(2019, 6, 3),
+                utility_code=None,
+                third_party_expected=True,
+            )
+        ]
+        upload.upload_partial_bills(
+            self.meter, None, partial_billing_datum, PartialBillProviderType.TND_ONLY
+        )
+        db.session.flush()
+        partial_bills = (
+            db.session.query(PartialBill)
+            .filter(PartialBill.service == self.meter.utility_service.oid)
+            .order_by(PartialBill.initial)
+            .order_by(PartialBill.created)
+        )
+        self.assertEqual(partial_bills.count(), 1)
+        partial_bill = partial_bills[0]
+        self.assertEqual(partial_bill.cost, 500.5)
+
+        one_day_partial_billing_datum = [
+            BillingDatum(
+                start=date(2019, 5, 30),
+                end=date(2019, 5, 31),
+                cost=20.5,
+                used=9,
+                peak=18,
+                items=None,
+                attachments=[],
+                statement=date(2019, 7, 3),
+                utility_code=None,
+                third_party_expected=True,
+            )
+        ]
+
+        with self.assertRaises(Exception) as exc:
+            upload.upload_partial_bills(
+                self.meter,
+                None,
+                one_day_partial_billing_datum,
+                PartialBillProviderType.TND_ONLY,
+            )
+        self.assertIn(
+            "Snapping start date would create partial (2019-05-31 - 2019-05-31)",
+            str(exc.exception),
+        )
+
     def test_third_party_expected_in_billing_datum(self):
         """Test third_party_expected in billing datum will persist to the partial bill"""
         partial_billing_datum = [

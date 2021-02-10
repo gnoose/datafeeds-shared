@@ -62,6 +62,19 @@ FIXTURE_02 = """
  2019-03-15 07:00:00 | 32 days   | 4017.51 | 5424 | 2019-04-30 06:50:35.058   |E19S
 """
 
+FIXTURE_03 = """
+ 2018-04-18 07:00:00 | 29 days          | 12445.77 |  94108000 | 2019-02-07 17:41:48.356 | E19S
+ 2018-05-17 07:00:00 | 32 days          | 13922.82 |  98131000 | 2019-02-07 17:41:48.369 | E19S
+ 2018-04-18 07:00:00 | 29 days          | 12445.77 |  94108000 | 2019-02-07 17:42:17.69  | E19S
+ 2018-05-17 07:00:00 | 32 days          | 13922.82 |  98131000 | 2019-02-07 17:42:26.886 | E19S
+ 2018-04-17 07:00:00 | 1 day            |   330.82 |   3473000 | 2019-02-07 17:42:17.709 | E19S
+ 2018-04-18 07:00:00 | 29 days          | 12445.77 |  94108000 | 2019-02-07 18:11:30.611 | E19S
+ 2018-05-17 07:00:00 | 32 days          | 13922.82 |  98131000 | 2019-02-07 18:12:24.697 | E19S
+ 2018-04-17 07:00:00 | 1 day            |   330.82 |   3473000 | 2019-02-07 18:11:30.625 | E19S
+ 2018-04-18 07:00:00 | 29 days          | 12445.77 |  94108000 | 2019-02-07 18:13:50.79  | E19S
+ 2018-05-17 07:00:00 | 32 days          | 13922.82 |  98131000 | 2019-02-07 18:13:50.822 | E19S
+"""
+
 
 def from_fixture(fixture: str) -> List[SmdBill]:
     results = []
@@ -73,7 +86,9 @@ def from_fixture(fixture: str) -> List[SmdBill]:
         results.append(
             SmdBill(
                 start=datetime.strptime(tokens[0].strip(), "%Y-%m-%d %H:%M:%S"),
-                duration=timedelta(days=int(tokens[1].replace("days", "").strip())),
+                duration=timedelta(
+                    days=int(tokens[1].replace("day", "").replace("s", "").strip())
+                ),
                 cost=float(tokens[2]),
                 used=int(tokens[3]),
                 published=datetime.strptime(tokens[4].strip(), "%Y-%m-%d %H:%M:%S.%f"),
@@ -260,3 +275,27 @@ class TestSynchronizePrimitives(TestCase):
 
         actual = [(b.start, b.end) for b in results.tnd_bills]
         self.assertEqual(expected, actual)
+
+    def test_one_day_bills(self):
+        """
+        Test that one-day bills from SMD are adjusted by adding one day to the end date,
+        and adjusting the subsequent bill if necessary.
+        """
+        raw_bills = from_fixture(FIXTURE_03)
+        actual = SmdBill.unify_bills(raw_bills)
+        adjusted = SmdBill.adjust_single_day_bills(actual)
+        self.assertEqual(len(adjusted), 3)
+        self.assertEqual(adjusted[0].initial, date(2018, 4, 18))
+        self.assertEqual(
+            adjusted[0].closing, date(2018, 4, 19), "Was previously 4/18/18"
+        )
+
+        self.assertEqual(
+            adjusted[1].initial,
+            date(2018, 4, 20),
+            "Previously 4/19/18, had to be adjusted w/ 4/18 bill.",
+        )
+        self.assertEqual(adjusted[1].closing, date(2018, 5, 17))
+
+        self.assertEqual(adjusted[2].initial, date(2018, 5, 18))
+        self.assertEqual(adjusted[2].closing, date(2018, 6, 18))

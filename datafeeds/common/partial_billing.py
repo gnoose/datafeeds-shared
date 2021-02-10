@@ -202,14 +202,24 @@ class PartialBillProcessor:
             new_bill = self.billing_data[0]
             for existing_bill in self.haves:
                 if new_bill.start == existing_bill.closing:
-                    self.billing_data[0] = new_bill._replace(
-                        start=new_bill.start + timedelta(days=1)
-                    )
+                    new_bill_start = new_bill.start + timedelta(days=1)
+                    self.billing_data[0] = new_bill._replace(start=new_bill_start)
                     log.info(
                         "Snapped the start date of the first new bill to {}".format(
-                            self.billing_data[0].start
+                            new_bill_start
                         )
                     )
+
+                    if new_bill.end - new_bill_start < timedelta(days=1):
+                        raise Exception(
+                            "Snapping start date would create partial ({} - {}) because of existing "
+                            "bill ({} - {}).".format(
+                                new_bill_start,
+                                new_bill.end,
+                                existing_bill.initial,
+                                existing_bill.closing,
+                            )
+                        )
                     break
 
     def process_partial_bills(self):

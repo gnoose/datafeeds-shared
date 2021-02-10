@@ -300,6 +300,30 @@ class Bill(ModelMixin, Base):
 
         return list(reversed(results))
 
+    @staticmethod
+    def adjust_single_day_bills(data: List["Bill"]) -> List["Bill"]:
+        """Adjusts the list of chronological bills so there are no one-day bills.
+        We expect that the start and end dates are not the same.
+        """
+        # Sort by start, as incoming data is sorted by published
+        sort_by_start = sorted(data, key=lambda b: b.start)
+        results: List["Bill"] = []
+
+        prev = None
+        for b in sort_by_start:
+            if prev and prev.closing == b.initial:
+                b.start += timedelta(days=1)
+                b.duration -= timedelta(days=1)
+
+            if b.duration == timedelta(1):
+                # SMD bill initial will be shifted one day forward, so a one-day duration
+                # needs to be two days, so the start and end differ.
+                b.duration = timedelta(2)
+
+            prev = b
+            results.append(b)
+        return results
+
     def customer_info(self) -> Optional["CustomerInfo"]:
         """Returns the corresponding CustomerInfo record.
 
