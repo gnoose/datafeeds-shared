@@ -205,9 +205,13 @@ class BillHistoryPage(PageState):
             )
 
             if dates_match:
-                start_date = parse_date(
-                    dates_match.group("from") + pdf_date.strftime(" %Y")
+                # if from month is December, use previous year
+                year = (
+                    pdf_date.year - 1
+                    if "dec" in dates_match.group("from").lower()
+                    else pdf_date.year
                 )
+                start_date = parse_date("%s %s" % (dates_match.group("from"), year))
                 end_date = parse_date(
                     dates_match.group("to") + pdf_date.strftime(" %Y")
                 )
