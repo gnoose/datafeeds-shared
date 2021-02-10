@@ -5,7 +5,7 @@ import os
 from pydoc import locate
 import random
 import re
-from typing import Any, Dict, Tuple, Optional
+from typing import Any, Dict
 
 import pymysql
 
@@ -114,13 +114,13 @@ def generate_tests(utility_id: str, utility_name: str, utility_filename: str):
         print("wrote test to %s" % (test_filename))
 
     # read fixture csv
-    keys: Dict[Tuple[str, Optional[str]], Dict[Any]] = {}
+    keys: Dict[str, Dict[Any]] = {}
     filename = "../datafeeds/urjanet/tests/data/%s.csv" % utility_id
     print("reading fixture data from %s" % filename)
     with open(filename) as f:
         reader = csv.DictReader(f)
         for row in reader:
-            key = (row["utility_account_id"], row["service_id"])
+            key = row["service_id"] if row["service_id"] else row["utility_account_id"]
             keys[key] = row
 
     # dump data for each key (service_id or utility_account_id)
@@ -148,7 +148,7 @@ def generate_tests(utility_id: str, utility_name: str, utility_filename: str):
         data = fetch_data(datasource)
         filename = "../datafeeds/urjanet/tests/data/%s/%s.json" % (
             utility_filename,
-            key[0],
+            key,
         )
         with open(filename, "w") as f:
             f.write(json.dumps(data, indent=2))

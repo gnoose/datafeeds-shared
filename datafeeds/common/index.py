@@ -176,9 +176,10 @@ def run_meta(meter_oid: int) -> Dict[str, Any]:
         .options(joinedload(Meter.utility_service))
         .first()
     )
-    if meter and meter.utility_service:
-        doc["service_id"] = meter.utility_service.service_id
-        doc["gen_service_id"] = meter.utility_service.gen_service_id
+    if meter:
+        doc.update(meter.build_log_extra)
+        doc["meter_name"] = meter.name
+
     return doc
 
 

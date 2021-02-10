@@ -110,14 +110,15 @@ def run_datafeed(
             )
         doc.update(
             {
-                "started": datetime.now(),
+                "time": datetime.now(),
                 "status": "STARTED",
-                "accountId": acct_hex_id,
-                "accountName": acct_name,
-                "meterId": meter.oid,
-                "meterName": meter.name,
                 "scraper": datasource.name,
                 "origin": "datafeeds",
+                "started": datetime.now(),  # TODO: replaced by time; remove 2021-Q2
+                "accountId": acct_hex_id,  # TODO: replaced by account; remove 2021-Q2
+                "accountName": acct_name,  # TODO: replaced by account_name; remove 2021-Q2
+                "meterId": meter.oid,  # TODO: replaced by meter; remove 2021-Q2
+                "meterName": meter.name,  # TODO: replaced by meter_name; remove 2021-Q2
             },
         )
         index.index_etl_run(task_id, doc)

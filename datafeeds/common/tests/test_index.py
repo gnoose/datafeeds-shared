@@ -54,8 +54,11 @@ class IndexTests(unittest.TestCase):
     def test_run_meta(self):
         meter = self.meters[0]
         expected = {
+            "meter": str(meter.oid),
+            "meter_name": meter.name,
             "service_id": meter.utility_service.service_id,
-            "gen_service_id": meter.utility_service.gen_service_id,
+            "account": self.account.hex_id,
+            "building": str(meter.building),
             "emailSubscribers": 0,
             "accountUsers": 0,
         }

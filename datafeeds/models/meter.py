@@ -10,7 +10,7 @@ import logging
 import math
 from datetime import date, datetime, timedelta
 from enum import Enum
-from typing import List, Tuple, Optional, Dict, Set
+from typing import List, Tuple, Optional, Dict, Set, Any
 
 from dateutil import parser as date_parser
 from sqlalchemy import func
@@ -436,3 +436,17 @@ class Meter(ModelMixin, Base):
         if sam:
             return sam.account_obj
         return None
+
+    @property
+    def build_log_extra(self) -> Dict[str, Any]:
+        """Return meter oid, utility service id(s), and account, for use in logs."""
+        extra = {"meter": str(self.oid), "building": str(self.building)}
+        account = self.account()
+        if account:
+            extra["account"] = account.hex_id
+        us = self.utility_service
+        if us:
+            extra["service_id"] = us.service_id
+            if us.gen_service_id:
+                extra["gen_service_id"] = us.gen_service_id
+        return extra
