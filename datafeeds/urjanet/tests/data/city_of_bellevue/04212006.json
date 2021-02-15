@@ -1,0 +1,527 @@
+{
+  "accounts": [
+    {
+      "PK": 7631431,
+      "UtilityProvider": "CityOfBellevueWA",
+      "AccountNumber": "80888888",
+      "RawAccountNumber": "80888888",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb3b8e5-f73a-d0c7-8ae2-0ef375ac0995",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2020-11-03",
+      "IntervalStart": "2020-09-30",
+      "IntervalEnd": "2020-10-19",
+      "TotalBillAmount": "2690.6600",
+      "AmountDue": "2690.6600",
+      "NewCharges": "2690.6600",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24689298,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "irrigation",
+          "PODid": "",
+          "MeterNumber": "03128088",
+          "IntervalStart": "2020-09-30",
+          "IntervalEnd": "2020-10-19",
+          "charges": [
+            {
+              "PK": 289739842,
+              "ChargeActualName": "Irrigation Consumption",
+              "ChargeAmount": "148.4800",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "16.0000",
+              "ChargeRatePerUnit": "9.2800",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289739850,
+              "ChargeActualName": "Irrigation Base Charge",
+              "ChargeAmount": "73.6000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.basic_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88811213,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "16.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19"
+            }
+          ]
+        },
+        {
+          "PK": 24689300,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "01001101",
+          "IntervalStart": "2020-09-30",
+          "IntervalEnd": "2020-10-19",
+          "charges": [
+            {
+              "PK": 289739858,
+              "ChargeActualName": "Consumption - Winter Rate",
+              "ChargeAmount": "575.0000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "115.0000",
+              "ChargeRatePerUnit": "5.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289739866,
+              "ChargeActualName": "\"Water Base Charge - 4\"\" Meter\"",
+              "ChargeAmount": "236.8800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.basic_charge"
+            },
+            {
+              "PK": 289739874,
+              "ChargeActualName": "City Tax - Water",
+              "ChargeAmount": "99.8400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.city_tax"
+            },
+            {
+              "PK": 289739882,
+              "ChargeActualName": "City Tax - Water",
+              "ChargeAmount": "27.3100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.city_tax"
+            },
+            {
+              "PK": 289739890,
+              "ChargeActualName": "City Tax - Water",
+              "ChargeAmount": "13.4900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.city_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88811221,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "115.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19"
+            }
+          ]
+        },
+        {
+          "PK": 24689302,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "FIREDC/323",
+          "IntervalStart": "2020-09-30",
+          "IntervalEnd": "2020-10-19",
+          "charges": [
+            {
+              "PK": 289739898,
+              "ChargeActualName": "Fire Standby Base Charge",
+              "ChargeAmount": "109.6700",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.fire_protection"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88811229,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19"
+            }
+          ]
+        },
+        {
+          "PK": 24689304,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "JSJ7102",
+          "IntervalStart": "2020-09-30",
+          "IntervalEnd": "2020-10-19",
+          "charges": [
+            {
+              "PK": 289739906,
+              "ChargeActualName": "Wastewater - Consumption",
+              "ChargeAmount": "1196.0000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 289739914,
+              "ChargeActualName": "City Tax Wastewater - Bellevue",
+              "ChargeAmount": "65.6100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19",
+              "ChargeId": "ch.city_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88811237,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-09-30",
+              "IntervalEnd": "2020-10-19"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 289739832,
+          "ChargeActualName": "Drainage Charges",
+          "ChargeAmount": "137.4300",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-09-30",
+          "IntervalEnd": "2020-10-19",
+          "ChargeId": "ch.storm_water_charge"
+        },
+        {
+          "PK": 289739834,
+          "ChargeActualName": "City Tax Drainage - Bellevue",
+          "ChargeAmount": "7.3500",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-09-30",
+          "IntervalEnd": "2020-10-19",
+          "ChargeId": "ch.city_tax"
+        }
+      ]
+    },
+    {
+      "PK": 7637795,
+      "UtilityProvider": "CityOfBellevueWA",
+      "AccountNumber": "44252444",
+      "RawAccountNumber": "44252444",
+      "SourceLink": "https://sources.o2.urjanet.net/sourcewithhttpbasicauth?id=1eb54aae-d1b8-d85d-b4dd-0e8d7347c67b",
+      "StatementType": "statement_type_bill",
+      "StatementDate": "2021-01-12",
+      "IntervalStart": "2020-10-19",
+      "IntervalEnd": "2020-12-16",
+      "TotalBillAmount": "5197.9200",
+      "AmountDue": "5197.9200",
+      "NewCharges": "5197.9200",
+      "OutstandingBalance": "0.0000",
+      "PreviousBalance": "0.0000",
+      "meters": [
+        {
+          "PK": 24708113,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "irrigation",
+          "PODid": "",
+          "MeterNumber": "53445544",
+          "IntervalStart": "2020-10-19",
+          "IntervalEnd": "2020-12-16",
+          "charges": [
+            {
+              "PK": 290342537,
+              "ChargeActualName": "Irrigation Base Charge",
+              "ChargeAmount": "232.4200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.basic_charge"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88996982,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16"
+            }
+          ]
+        },
+        {
+          "PK": 24708114,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "46000600",
+          "IntervalStart": "2020-10-19",
+          "IntervalEnd": "2020-12-16",
+          "charges": [
+            {
+              "PK": 290342538,
+              "ChargeActualName": "Consumption - Winter Rate",
+              "ChargeAmount": "980.0000",
+              "UsageUnit": "ccf",
+              "ChargeUnitsUsed": "196.0000",
+              "ChargeRatePerUnit": "5.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.usage_charge"
+            },
+            {
+              "PK": 290342539,
+              "ChargeActualName": "\"Water Base Charge - 4\"\" Meter\"",
+              "ChargeAmount": "748.0500",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.basic_charge"
+            },
+            {
+              "PK": 290342540,
+              "ChargeActualName": "City Tax - Water",
+              "ChargeAmount": "28.5800",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.city_tax"
+            },
+            {
+              "PK": 290342541,
+              "ChargeActualName": "City Tax - Water",
+              "ChargeAmount": "42.5900",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.city_tax"
+            },
+            {
+              "PK": 290342542,
+              "ChargeActualName": "City Tax - Water",
+              "ChargeAmount": "212.5100",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.city_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88996983,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "196.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16"
+            }
+          ]
+        },
+        {
+          "PK": 24708115,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "water",
+          "PODid": "",
+          "MeterNumber": "FIREDC/030",
+          "IntervalStart": "2020-10-19",
+          "IntervalEnd": "2020-12-16",
+          "charges": [
+            {
+              "PK": 290342543,
+              "ChargeActualName": "Fire Standby Base Charge",
+              "ChargeAmount": "346.3400",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.fire_protection"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88996984,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16"
+            }
+          ]
+        },
+        {
+          "PK": 24708116,
+          "Tariff": "unknown_tariff",
+          "ServiceType": "sewer",
+          "PODid": "",
+          "MeterNumber": "JSJ0000",
+          "IntervalStart": "2020-10-19",
+          "IntervalEnd": "2020-12-16",
+          "charges": [
+            {
+              "PK": 290342544,
+              "ChargeActualName": "Wastewater - Consumption",
+              "ChargeAmount": "2038.4000",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.waste_water"
+            },
+            {
+              "PK": 290342545,
+              "ChargeActualName": "City Tax Wastewater - Bellevue",
+              "ChargeAmount": "111.8200",
+              "UsageUnit": "",
+              "ChargeUnitsUsed": "0.0000",
+              "ChargeRatePerUnit": "0.0000",
+              "ThirdPartyProvider": "",
+              "IsAdjustmentCharge": true,
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16",
+              "ChargeId": "ch.city_tax"
+            }
+          ],
+          "usages": [
+            {
+              "PK": 88996985,
+              "UsageActualName": "",
+              "MeasurementType": "general_consumption",
+              "UsageAmount": "0.0000",
+              "RateComponent": "[total]",
+              "EnergyUnit": "ccf",
+              "IntervalStart": "2020-10-19",
+              "IntervalEnd": "2020-12-16"
+            }
+          ]
+        }
+      ],
+      "floating_charges": [
+        {
+          "PK": 290342535,
+          "ChargeActualName": "Drainage Charges",
+          "ChargeAmount": "434.0000",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-10-19",
+          "IntervalEnd": "2020-12-16",
+          "ChargeId": "ch.storm_water_charge"
+        },
+        {
+          "PK": 290342536,
+          "ChargeActualName": "City Tax Drainage - Bellevue",
+          "ChargeAmount": "23.2100",
+          "UsageUnit": "",
+          "ChargeUnitsUsed": "0.0000",
+          "ChargeRatePerUnit": "0.0000",
+          "ThirdPartyProvider": "",
+          "IsAdjustmentCharge": true,
+          "IntervalStart": "2020-10-19",
+          "IntervalEnd": "2020-12-16",
+          "ChargeId": "ch.city_tax"
+        }
+      ]
+    }
+  ]
+}
