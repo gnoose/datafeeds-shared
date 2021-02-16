@@ -695,7 +695,7 @@ class BillHistoryPage(CSSSelectorBasePageObject):
         )
         page_url = "https://www.ladwp.com/ladwp/faces/BillHistory?params_here"
         if not recaptcha_v2(self._driver, iframe_parent, page_url):
-            log.info("failed captcha solving")
+            log.warning("failed captcha solving")
             return False
 
         self.find_element('a[title="Next"]').click()

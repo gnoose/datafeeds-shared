@@ -13,6 +13,10 @@ from datafeeds.common.webdriver.drivers.base import BaseDriver
 log = logging.getLogger(__name__)
 
 
+class CaptchaFailed(Exception):
+    pass
+
+
 def recaptcha_v2(driver: BaseDriver, iframe_parent: WebElement, page_url: str):
     """Use 2captcha.com (https://2captcha.com/2captcha-api) to solve captchas.
 
@@ -21,7 +25,7 @@ def recaptcha_v2(driver: BaseDriver, iframe_parent: WebElement, page_url: str):
     # try to get key from iframe src attribute
     iframe = driver.find_element_by_tag_name("iframe")
     iframe_url = iframe.get_attribute("src")
-    log.debug("captcha key: iframe.src=%s" % iframe.get_attribute("src"))
+    log.info("starting recaptcha_v2: iframe_url=%s", iframe_url)
     captcha_key = None
     if "?" in iframe_url:
         # should be https://www.google.com/recaptcha/api2/anchor?ar=1&..., but might be javascript:false
@@ -31,11 +35,11 @@ def recaptcha_v2(driver: BaseDriver, iframe_parent: WebElement, page_url: str):
             if key == "k":
                 captcha_key = value
     else:
-        log.debug("captcha key: trying innerHTML")
         html = iframe_parent.get_attribute("innerHTML")
         match = re.search(r'.*?iframe src=".*?k=(.*?)\&.*?"', html)
         if match:
             captcha_key = match.group(1)
+        log.info("captcha key: trying innerHTML: %s", html)
 
     if not captcha_key:
         raise ScraperPreconditionError("unable to find captcha key")
@@ -71,15 +75,18 @@ def recaptcha_v2(driver: BaseDriver, iframe_parent: WebElement, page_url: str):
         log.info("get captcha answer %s", idx + 1)
         text = requests.get("https://2captcha.com/res.php", params=params).text
         log.info("captcha response = %s", text)
-        answer = json.loads(text).get("request")
+        response = json.loads(text)
+        answer = response.get("request")
         # error messages look like CAPCHA_NOT_READY
         if not re.match(r"^[A-Z_]+$", answer):
             break
         log.info("trying again in 12s")
         time.sleep(12)
+    if answer == "CAPCHA_NOT_READY" or "error_text" in response:
+        error = "%s: %s" % (answer, response.get("error_text", ""))
+        log.warning("error solving captcha: %s", error)
+        raise CaptchaFailed(error)
     log.info("setting captcha answer=%s", answer)
-    if answer == "CAPCHA_NOT_READY":
-        return False
     driver.execute_script(
         'document.getElementById("g-recaptcha-response").innerHTML="%s";' % answer
     )
