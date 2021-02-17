@@ -693,7 +693,7 @@ class BillHistoryPage(CSSSelectorBasePageObject):
         iframe_parent = self._driver.find_element_by_xpath(
             self.ReCaptchaIframeParentXpath
         )
-        page_url = "https://www.ladwp.com/ladwp/faces/BillHistory?params_here"
+        page_url = self._driver.current_url
         if not recaptcha_v2(self._driver, iframe_parent, page_url):
             log.warning("failed captcha solving")
             return False

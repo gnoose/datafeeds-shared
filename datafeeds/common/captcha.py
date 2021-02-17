@@ -45,22 +45,17 @@ def recaptcha_v2(driver: BaseDriver, iframe_parent: WebElement, page_url: str):
         raise ScraperPreconditionError("unable to find captcha key")
 
     log.info("found captcha key %s", captcha_key)
-    # get cookies
-    cookies = {}
-    for cookie in driver.get_cookies():
-        cookies[cookie["name"]] = cookie["value"]
-    # join with ; (ie name1=value1; name2=value2)
-    cookie_str = "; ".join([k + "=" + v for k, v in cookies.items()])
+    # including cookies started returning ERROR_BAD_PARAMETERS; 2Captcha support said cookies aren't needed in most cases
     params = {
         "key": config.CAPTCHA_API_KEY,
         "method": "userrecaptcha",
         "googlekey": captcha_key,
         "pageurl": page_url,
-        "cookies": cookie_str,
         "json": 1,
     }
+    log.debug("POST to https://2captcha.com/in.php:\n%s", json.dumps(params, indent=2))
     resp = requests.post("https://2captcha.com/in.php", data=params)
-    log.debug("captcha response=%s", resp.text)
+    log.info("captcha response=%s", resp.text)
     req_id = json.loads(resp.text).get("request")
     log.info("waiting 30s for a human to solve the captcha")
     time.sleep(30)
@@ -73,6 +68,9 @@ def recaptcha_v2(driver: BaseDriver, iframe_parent: WebElement, page_url: str):
     answer = None
     for idx in range(5):
         log.info("get captcha answer %s", idx + 1)
+        log.debug(
+            "POST to https://2captcha.com/res.php:\n%s", json.dumps(params, indent=2)
+        )
         text = requests.get("https://2captcha.com/res.php", params=params).text
         log.info("captcha response = %s", text)
         response = json.loads(text)
