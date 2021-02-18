@@ -157,6 +157,47 @@ def _adjust_bill_dates(bills: List[BillingDatum]) -> List[BillingDatum]:
     return final_bills
 
 
+def close_survey(driver) -> bool:
+    try:
+        log.debug("looking for survey modal")
+        WebDriverWait(driver, 5).until(
+            ec.visibility_of_element_located(
+                (By.CSS_SELECTOR, "#kampyleInviteContainer")
+            )
+        )
+        log.debug("switching to survey iframe")
+        WebDriverWait(driver, 5).until(
+            ec.frame_to_be_available_and_switch_to_it(
+                (By.CSS_SELECTOR, "#kampyleInvite")
+            )
+        )
+        log.debug("closing survey")
+        WebDriverWait(driver, 5).until(
+            ec.element_to_be_clickable((By.CSS_SELECTOR, "#kplDeclineButton"))
+        )
+        driver.find_element_by_css_selector("#kplDeclineButton").click()
+        driver.switch_to.default_content()
+        time.sleep(2)
+        return True
+    except TimeoutException:
+        log.debug("survey not found")
+        pass
+    return False
+
+
+def close_modal(driver):
+    try:
+        log.debug("trying to close modal")
+        close_button = WebDriverWait(driver, 5).until(
+            ec.presence_of_element_located(
+                (By.CSS_SELECTOR, '.MuiDialog-container button[aria-label="close"]')
+            )
+        )
+        close_button.click()
+    except TimeoutException:
+        pass
+
+
 class PortlandBizportalConfiguration(Configuration):
     def __init__(
         self,
@@ -235,19 +276,20 @@ class BillingPage:
         bizportal_account_number_xpath = (
             "//p[contains(text(), 'Selected account:')]//following::button[1]"
         )
+        log.debug("looking for %s", bizportal_account_number_xpath)
         ban_button = WebDriverWait(self.driver, 15).until(
             ec.presence_of_element_located((By.XPATH, bizportal_account_number_xpath))
         )
         ban_button.click()
-        ban_target_xpath = "//span[contains(text(), '%s')]" % bizportal_account_number
-        ban_target = WebDriverWait(self.driver, 15).until(
-            ec.presence_of_element_located((By.XPATH, ban_target_xpath))
+        # type the account number into the search box, then enter
+        log.debug("selecting account %s", bizportal_account_number)
+        account_number_box = WebDriverWait(self.driver, 5).until(
+            ec.presence_of_element_located((By.CSS_SELECTOR, 'input[type="search"]'))
         )
-        # For some reason, it is possible that selenium can select the wrong account number here.
-        # Adding an absolute time sleep step seems to help.
-        time.sleep(2)
-        ban_target.click()
-
+        account_number_box.click()
+        account_number_box.send_keys(bizportal_account_number)
+        time.sleep(1)
+        account_number_box.send_keys(Keys.ENTER)
         try:
             WebDriverWait(self.driver, 25).until(
                 ec.presence_of_element_located(
@@ -280,6 +322,7 @@ class BillingPage:
             first_link_found = True
 
         if not first_link_found:
+            log.debug("looking for pdf_link_1 %s", pdf_links_xpath)
             pdf_link_1 = WebDriverWait(self.driver, 15).until(
                 ec.presence_of_element_located((By.XPATH, pdf_links_xpath))
             )
@@ -294,17 +337,22 @@ class BillingPage:
                 download_bill_button_xpath = (
                     "//span[contains(text(), 'Download bill (PDF)')]"
                 )
-                download_bill_button = WebDriverWait(self.driver, 25).until(
-                    ec.element_to_be_clickable((By.XPATH, download_bill_button_xpath))
-                )
-
                 self.driver.execute_script(
                     "window.scrollTo(0, window.scrollY+(document.body.scrollHeight/2))"
                 )
                 time.sleep(2)
+                log.debug("looking for download button %s", download_bill_button_xpath)
+                download_bill_button = WebDriverWait(self.driver, 25).until(
+                    ec.presence_of_element_located(
+                        (By.XPATH, download_bill_button_xpath)
+                    )
+                )
 
                 try:
+                    log.debug("clicking download")
                     download_bill_button.click()
+                    time.sleep(1)
+                    # div[role="alert"] with text  No bill found.
                 except ElementClickInterceptedException:
                     log.error("Could not click")
                     raise
@@ -314,7 +362,7 @@ class BillingPage:
                 )
 
                 file_path = os.path.join(download_dir, filename)
-                log.info("Processing most recent bill")
+                log.info("Processing most recent bill: %s", filename)
                 single_bill = extract_bill_data(
                     file_path, service_id, utility, utility_account_id
                 )
@@ -345,6 +393,10 @@ class BillingPage:
                 "window.scrollTo(0," + str(link.location["y"]) + ")"
             )
             time.sleep(2)
+            if not self.seen_survey and close_survey(self.driver):
+                self.seen_survey: bool = True
+
+            close_survey(self.driver)
             link.click()
 
             filename = self.driver.wait(90).until(
@@ -388,11 +440,13 @@ class AccountPage:
 
     def goto_billing(self) -> BillingPage:
 
-        billing_link_xpath = "//span[contains(text(), 'Billing & Payment History')]"
+        billing_link_xpath = (
+            "//span[contains(text(), 'Billing & Payment History')]/../.."
+        )
         billing_link = WebDriverWait(self.driver, 5).until(
             ec.presence_of_element_located((By.XPATH, billing_link_xpath))
         )
-
+        log.debug("clicking billing link")
         billing_link.click()
 
         return BillingPage(self.driver)
@@ -418,6 +472,7 @@ class LoginPage:
 
         # Press escape to close modal
         ActionChains(self.driver).send_keys(Keys.ESCAPE).perform()
+        close_modal(self.driver)
 
         try:
             username_box = WebDriverWait(self.driver, 15).until(
@@ -444,12 +499,12 @@ class LoginPage:
         return AccountPage(self.driver)
 
 
-# class Scraper(BaseApiScraper):
-class Scraper(BaseWebScraper):
+class PortlandBizportalScraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.browser_name = "Chrome"
         self.name = "Portland Bizportal Scraper"
+        self.seen_survey: bool = False
 
     @property
     def account_group(self):
@@ -549,7 +604,7 @@ def datafeed(
     )
 
     return run_datafeed(
-        Scraper,
+        PortlandBizportalScraper,
         account,
         meter,
         datasource,

@@ -1,14 +1,33 @@
-import unittest
+import argparse
+from datetime import date, timedelta
+import functools as ft
 import os
+import unittest
+from unittest import mock
 
-from datetime import date
+from dateutil import parser as date_parser
 
+from datafeeds.common.support import Credentials, DateRange
 from datafeeds.common.typing import BillingDatum
 from datafeeds.common.typing import make_billing_pdf_attachment
 from datafeeds.scrapers import portland_bizportal as pb
-
+from datafeeds.scrapers.portland_bizportal import (
+    PortlandBizportalConfiguration,
+    PortlandBizportalScraper,
+)
 
 TEST_DIR = os.path.split(__file__)[0]
+
+
+"""
+    Run this to launch the PGE bill PDF scraper:
+
+    $ export PYTHONPATH=$(pwd)
+    $ python datafeeds/scrapers/tests/test_portland_bizportal.py utility_account service_id \
+        account_group account_number username password --start 2020-11-01 --end 2021-02-10
+
+    --start and --end are optional; if not set, will get bills for previous 90 days
+"""
 
 
 class TestPortlandBizportalScraper(unittest.TestCase):
@@ -128,3 +147,82 @@ class TestPortlandBizportalScraper(unittest.TestCase):
         self.assertEqual(bill.cost, "4165.08")
         self.assertEqual(bill.used, "42438")
         self.assertEqual(bill.peak, 152.0)
+
+
+def test_upload_bills(meter_oid, service_id, task_id, bills):
+    print("Bill results:\n")
+    for bill in bills:
+        print(
+            "%s\t%s\t%.2f\t%.2f\t%s"
+            % (
+                bill.start.strftime("%Y-%m-%d"),
+                bill.end.strftime("%Y-%m-%d"),
+                bill.cost,
+                bill.used,
+                bill.peak,
+            )
+        )
+
+
+def test_scraper(
+    utility_account: str,
+    service_id: str,
+    account_group: str,
+    account_number: str,
+    start_date: date,
+    end_date: date,
+    username: str,
+    password: str,
+):
+    """Launch a Chrome browser to test the scraper."""
+    configuration = PortlandBizportalConfiguration(
+        utility="utility:portland-ge",
+        utility_account_id=utility_account,
+        account_group=account_group,
+        bizportal_account_number=account_number,
+        service_id=service_id,
+    )
+    credentials = Credentials(username, password)
+    scraper = PortlandBizportalScraper(
+        credentials, DateRange(start_date, end_date), configuration
+    )
+    scraper.start()
+    with mock.patch("datafeeds.scrapers.pge.bill_pdf.upload_bill_to_s3"):
+        scraper.scrape(
+            readings_handler=None,
+            bills_handler=ft.partial(test_upload_bills, -1, service_id, None),
+            partial_bills_handler=None,
+            pdfs_handler=None,
+        )
+    scraper.stop()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("utility_account", type=str)
+    parser.add_argument("service_id", type=str)
+    parser.add_argument("account_group", type=str)
+    parser.add_argument("account_number", type=str)
+    parser.add_argument("username", type=str)
+    parser.add_argument("password", type=str)
+    parser.add_argument("--start", type=str)
+    parser.add_argument("--end", type=str)
+    args = parser.parse_args()
+    if args.start:
+        start_dt = date_parser.parse(args.start).date()
+    else:
+        start_dt = date.today() - timedelta(days=90)
+    if args.end:
+        end_dt = date_parser.parse(args.end).date()
+    else:
+        end_dt = date.today()
+    test_scraper(
+        args.utility_account,
+        args.service_id,
+        args.account_group,
+        args.account_number,
+        start_dt,
+        end_dt,
+        args.username,
+        args.password,
+    )
