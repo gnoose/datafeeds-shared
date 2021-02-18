@@ -108,6 +108,8 @@ class PacificGasElectricBillingPeriod(GenericBillingPeriod):
             "CentralCoastCommunityEnergyCA": "utility:ccce",
             "PacGAndE": "utility:pge",
             "SonomaCleanPowerCA": "utility:scp",
+            "RedwoodCoastEnergyAuthorityCA": "utility:rcea",
+            "Redwood Coast Energy Authority, California": "utility:rcea",
         }
         return mapping.get(self.account.UtilityProvider, self.account.UtilityProvider)
 
