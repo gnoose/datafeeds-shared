@@ -59,15 +59,18 @@ def datafeed(
     params: dict,
     task_id: Optional[str] = None,
 ) -> Status:
+    # get meter number from meter data source if available, otherwise use service_id
+    if datasource.meta and datasource.meta.get("meterNumber"):
+        meter_number = datasource.meta.get("meterNumber")
+    else:
+        meter_number = meter.utility_service.service_id
     return run_urjanet_datafeed(
         account,
         meter,
         datasource,
         params,
         PseDatasource(
-            meter.utility_service.utility,
-            meter.utility_account_id,
-            meter.utility_service.service_id,
+            meter.utility_service.utility, meter.utility_account_id, meter_number,
         ),
         PseUrjanetTransformer(),
         task_id=task_id,
