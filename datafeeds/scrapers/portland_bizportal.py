@@ -220,6 +220,7 @@ class PortlandBizportalConfiguration(Configuration):
 class BillingPage:
     def __init__(self, driver):
         self.driver = driver
+        self.seen_survey = False
 
     def next_page(self) -> None:
         next_page_button_xpath = "//button[@role='next-page-button']"
@@ -249,6 +250,13 @@ class BillingPage:
         # For example: "1 of 4"
         return int(page_string.split()[2])
 
+    def click_close_modal(self, element):
+        try:
+            element.click()
+        except ElementClickInterceptedException:
+            close_modal(self.driver)
+            element.click()
+
     def choose_account(self, account_group, bizportal_account_number) -> bool:
         account_group_button_xpath = (
             "//p[contains(text(), 'Account group:')]//following::button[1]"
@@ -263,7 +271,7 @@ class BillingPage:
         ag_target = WebDriverWait(self.driver, 15).until(
             ec.presence_of_element_located((By.XPATH, account_group_xpath))
         )
-        ag_target.click()
+        self.click_close_modal(ag_target)
 
         # Choosing the account group causes account info to load.
         # The capitalization on "Amount due" doesn't match what is shown in the UI
@@ -280,7 +288,7 @@ class BillingPage:
         ban_button = WebDriverWait(self.driver, 15).until(
             ec.presence_of_element_located((By.XPATH, bizportal_account_number_xpath))
         )
-        ban_button.click()
+        self.click_close_modal(ban_button)
         # type the account number into the search box, then enter
         log.debug("selecting account %s", bizportal_account_number)
         account_number_box = WebDriverWait(self.driver, 5).until(
@@ -351,11 +359,12 @@ class BillingPage:
                 try:
                     log.debug("clicking download")
                     download_bill_button.click()
-                    time.sleep(1)
                     # div[role="alert"] with text  No bill found.
-                except ElementClickInterceptedException:
-                    log.error("Could not click")
-                    raise
+                except ElementClickInterceptedException as exc:
+                    log.debug("click intercepted: %s", exc)
+                    close_modal(self.driver)
+                    download_bill_button.click()
+                time.sleep(1)
 
                 filename = self.driver.wait(60).until(
                     file_exists_in_dir(download_dir, r".*\.pdf$")
@@ -394,7 +403,7 @@ class BillingPage:
             )
             time.sleep(2)
             if not self.seen_survey and close_survey(self.driver):
-                self.seen_survey: bool = True
+                self.seen_survey = True
 
             close_survey(self.driver)
             link.click()
@@ -504,7 +513,6 @@ class PortlandBizportalScraper(BaseWebScraper):
         super().__init__(*args, **kwargs)
         self.browser_name = "Chrome"
         self.name = "Portland Bizportal Scraper"
-        self.seen_survey: bool = False
 
     @property
     def account_group(self):
