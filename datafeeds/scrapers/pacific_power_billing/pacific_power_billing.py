@@ -172,6 +172,11 @@ class LoginPage:
         return HomePage(self.driver)
 
 
+# For Pacific Power our date window needs to be fairly large because the utility can run 2-3 months behind
+# publishing new bills.
+MINIMUM_BILL_DAYS = 180
+
+
 class PacificPowerScraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -192,16 +197,16 @@ class PacificPowerScraper(BaseWebScraper):
         return self._configuration.utility
 
     def _execute(self):
-        if self.end_date - self.start_date < timedelta(days=60):
-            log.info("Expanding date range to a minimum of 60 days.")
-            self.start_date = self.end_date - timedelta(days=60)
+        if self.end_date - self.start_date < timedelta(days=MINIMUM_BILL_DAYS):
+            log.info(f"Expanding date range to a minimum of {MINIMUM_BILL_DAYS} days.")
+            self.start_date = self.end_date - timedelta(days=MINIMUM_BILL_DAYS)
 
         start_date = max(
             self.start_date, (datetime.now() - relativedelta(years=10)).date()
         )
         end_date = min(self.end_date, (datetime.now().date()))
 
-        log.info("Final date range to %s - %s" % (start_date, end_date))
+        log.info("Final date range to search: %s - %s" % (start_date, end_date))
 
         login_page = LoginPage(self._driver)
         home_page = login_page.login(self.username, self.password)
