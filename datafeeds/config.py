@@ -169,6 +169,11 @@ AES_SECRET_KEY = os.environ.get("AES_SECRET_KEY", None)
 # API key for captcha solving service
 CAPTCHA_API_KEY = os.environ.get("CAPTCHA_API_KEY", None)
 
+# Save utility service changes to the database only if true; default to false during testing phase.
+PERSIST_UTILITY_SERVICE_UPDATES = (
+    "true" in os.environ.get("PERSIST_UTILITY_SERVICE_UPDATES", "false").lower()
+)
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,

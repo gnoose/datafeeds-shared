@@ -22,6 +22,7 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+from datafeeds.scrapers.sce_react.support import detect_and_close_modal
 
 log = logging.getLogger(__name__)
 
@@ -58,6 +59,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         self.name = "SCE React Basic Billing"
         self.billing_history = []
         self.gen_billing_history = []
+        self.utility_tariff_code = None
 
     @property
     def service_id(self):
@@ -246,6 +248,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         self, page: sce_pages.SceMultiAccountLandingPage
     ):
         sce_pages.detect_and_close_survey(self._driver)
+        self.utility_tariff_code = page.update_utility_service(self.utility_service)
         page.search_by_service_id(self.service_id)
         time.sleep(5)
         WebDriverWait(
@@ -276,6 +279,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         demand_dict = {(info.start_date, info.end_date): info for info in demand_info}
         usage_dates = set(usage_dict.keys())
         demand_dates = set(demand_dict.keys())
+        third_party_expected = self.gen_service_id is not None
 
         merged = []
         for date_range in sorted(usage_dates.union(demand_dates)):
@@ -302,12 +306,15 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                 peak=item.demand_info.demand if item.demand_info else None,
                 items=None,
                 attachments=None,
-                utility_code=None,
+                utility_code=self.utility_tariff_code,
+                third_party_expected=third_party_expected,
+                service_id=self.service_id,
+                utility="utility:sce",
             )
             log.debug("created %s", datum)
             billing_objects.append(datum)
 
-        sce_pages.detect_and_close_modal(self._driver)
+        detect_and_close_modal(self._driver)
         log.info("created %s billing objects", len(billing_objects))
         log.debug("billing_objects=%s", billing_objects)
         self.billing_history = billing_objects
@@ -341,7 +348,9 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                     peak=item.peak,
                     items=item.items,
                     attachments=item.attachments,
-                    utility_code=item.utility_code,
+                    utility_code=self.utility_tariff_code,
+                    service_id=self.gen_service_id,
+                    utility="utility:clean-power-alliance",
                 )
             )
         log.info("created %s generation billing objects", len(gen_billing_objects))

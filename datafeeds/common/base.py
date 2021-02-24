@@ -59,6 +59,7 @@ class BaseScraper(Abstract):
         self._credentials = credentials
         self._date_range = date_range
         self._configuration = configuration or Configuration()
+        self.utility_service = None
 
     @property
     def username(self):

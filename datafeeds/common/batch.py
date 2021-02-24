@@ -1,7 +1,7 @@
 from datetime import datetime, date, timedelta
 import functools as ft
 import logging
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Any
 
 from dateutil import parser as dateparser
 
@@ -22,6 +22,7 @@ from datafeeds.models import (
     SnapmeterAccount,
     SnapmeterMeterDataSource as MeterDataSource,
     SnapmeterAccountDataSource as AccountDataSource,
+    UtilityService,
 )
 from datafeeds.common.upload import (
     upload_bills,
@@ -54,6 +55,49 @@ def iso_to_dates(start_iso, end_iso):
         end = start + timedelta(days=1)
 
     return start, end
+
+
+def update_utility_service(
+    db_service: UtilityService, updated_service: UtilityService
+) -> Dict[str, Any]:
+    """Copy changes from updated_service to db_service and return updates."""
+    if db_service is None or updated_service is None:
+        return {}
+    log.debug(
+        "\n\nupdate_utility_service: start: persist=%s",
+        config.PERSIST_UTILITY_SERVICE_UPDATES,
+    )
+    updates: Dict[str, Any] = {}
+    messages = []
+    for col in db_service.__mapper__.columns:  # type: ignore
+        if col.name == "oid":
+            continue
+        db_val = getattr(db_service, col.name)
+        updated_val = getattr(updated_service, col.name)
+        if db_val != updated_val:
+            updates[col.name] = updated_val
+            updates["%s_prev" % col.name] = db_val
+            if updated_val and not db_val:
+                messages.append("%s: set %s (was unset)." % (col.name, updated_val))
+            elif db_val and not updated_val:
+                messages.append("%s: cleared %s." % (col.name, db_val))
+            else:
+                messages.append(
+                    "%s: updated to %s (was %s)." % (col.name, updated_val, db_val)
+                )
+        if config.PERSIST_UTILITY_SERVICE_UPDATES:
+            setattr(db_service, col.name, getattr(updated_service, col.name))
+    if not updates:
+        log.debug("update_utility_service: not modified")
+        return {}
+    updates = {
+        "utility_service_updates": {"fields": updates, "message": "\n".join(messages)}
+    }
+    if config.PERSIST_UTILITY_SERVICE_UPDATES:
+        db.session.add(db_service)
+    else:
+        log.warning("not applying changes to utility service: %s", updates)
+    return updates
 
 
 def run_datafeed(
@@ -124,8 +168,11 @@ def run_datafeed(
         index.index_etl_run(task_id, doc)
 
     index_doc: Dict[str, str] = {}
+    # create a non-persisted copy
+    utility_service = UtilityService.copy_from(meter.utility_service)
     try:
         with scraper_class(credentials, date_range, configuration) as scraper:
+            scraper.utility_service = utility_service
             scraper_status = scraper.scrape(
                 readings_handler=readings_handler,
                 bills_handler=bill_handler,
@@ -162,6 +209,7 @@ def run_datafeed(
             if notify_on_login_error:
                 alert.disable_logins(parent)
 
+    index_doc.update(update_utility_service(meter.utility_service, utility_service))
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading final task status to Elasticsearch.")
         index.index_etl_run(task_id, index_doc, update=True)

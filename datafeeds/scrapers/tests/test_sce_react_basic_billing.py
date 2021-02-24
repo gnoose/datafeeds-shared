@@ -1,10 +1,12 @@
 import argparse
 from datetime import date
 import functools as ft
+from unittest.mock import MagicMock
 
 from dateutil import parser as date_parser
 
 from datafeeds.common.support import Credentials, DateRange
+from datafeeds.models import UtilityService
 from datafeeds.scrapers.sce_react.basic_billing import (
     SceReactBasicBillingConfiguration,
     SceReactBasicBillingScraper,
@@ -52,6 +54,98 @@ def test_upload_partial_bills(meter, configuration, task_id, bills):
         )
 
 
+def setup_fixture():
+    data = {}
+    # no change
+    values = {
+        "tariff": "TD-TOU-GS-2-D",
+        "utility": "utility:sce",
+        "gen_tariff": "CPA-TOU-GS-2-D",
+        "gen_utility": "utility:clean-power-alliance",
+        "gen_utility_account_id": "2-38-849-8875",
+        "provider_type": "tnd-only",
+    }
+    initial = UtilityService(
+        service_id="3-045-3661-03",
+        account_id="2-38-849-8875",
+        gen_service_id="3-048-4172-81",
+    )
+    expected = UtilityService(
+        service_id="3-045-3661-03",
+        account_id="2-38-849-8875",
+        gen_service_id="3-048-4172-81",
+    )
+    for key in values:
+        setattr(initial, key, values[key])
+        setattr(expected, key, values[key])
+    data["3-045-3661-03"] = {"initial": initial, "expected": expected}
+
+    # add generation
+    values = {
+        "tariff": "TOU-GS-1-D",
+        "utility": "utility:sce",
+        "provider_type": "bundled",
+    }
+    initial = UtilityService(
+        service_id="3-045-3661-31", account_id="2-38-849-8875", gen_service_id=None
+    )
+    expected = UtilityService(
+        service_id="3-045-3661-31",
+        account_id="2-38-849-8875",
+        gen_service_id="3-048-4158-63",
+    )
+    for key in values:
+        setattr(initial, key, values[key])
+        setattr(expected, key, values[key])
+    values = {
+        "tariff": "TD-TOU-GS-1-D",
+        "gen_service_id": "3-048-4158-63",
+        "gen_tariff": "CPA-TOU-GS-1-D",
+        "gen_utility": "utility:clean-power-alliance",
+        "gen_utility_account_id": "2-38-849-8875",
+        "provider_type": "tnd-only",
+    }
+    for key in values:
+        setattr(expected, key, values[key])
+    data["3-045-3661-31"] = {"initial": initial, "expected": expected}
+
+    # remove generation
+    values = {
+        "tariff": "TD-TOU-GS-3D",
+        "utility": "utility:sce",
+        "provider_type": "tnd-only",
+        "gen_tariff": "CPA-TOU-GS-3D",
+        "gen_utility": "utility:clean-power-alliance",
+        "gen_utility_account_id": "2-03-240-2471",
+    }
+    initial = UtilityService(
+        service_id="3-010-5590-40",
+        account_id="2-03-240-2471",
+        gen_service_id="3-010-5590-00",
+    )
+    expected = UtilityService(
+        service_id="3-010-5590-40", account_id="2-03-240-2471", gen_service_id=None
+    )
+    for key in values:
+        setattr(initial, key, values[key])
+        setattr(expected, key, values[key])
+    values = {
+        "tariff": "TOU-GS-3D",
+        "gen_utility": None,
+        "gen_utility_account_id": None,
+        "provider_type": "bundled",
+    }
+    for key in values:
+        setattr(expected, key, values[key])
+    data["3-010-5590-40"] = {"initial": initial, "expected": expected}
+    return data
+
+
+def mock_set_tariff_from_utility_code(utility_tariff_code: str, provider_type: str):
+    prefix = {"bundled": "", "tnd-only": "TD-", "generation-only": "CPA-"}
+    return prefix[provider_type] + utility_tariff_code
+
+
 def test_scraper(
     service_id: str,
     gen_service_id: str,
@@ -71,6 +165,12 @@ def test_scraper(
     scraper = SceReactBasicBillingScraper(
         credentials, DateRange(start_date, end_date), configuration
     )
+    fixture = setup_fixture().get(service_id)
+    if fixture:
+        scraper.utility_service = fixture["initial"]
+        set_tariff_mock = MagicMock()
+        set_tariff_mock.return_value = mock_set_tariff_from_utility_code
+        scraper.utility_service.set_tariff_from_utility_code = set_tariff_mock
     scraper.start()
     scraper.scrape(
         bills_handler=ft.partial(test_upload_bills, -1, service_id, None),
@@ -79,6 +179,29 @@ def test_scraper(
         pdfs_handler=None,
     )
     scraper.stop()
+    if fixture:
+        print("field\tactual\texpected\tmatch?")
+        fields = [
+            "service_id",
+            "tariff",
+            "utility_account_id",
+            "gen_service_id",
+            "gen_tariff",
+            "gen_utility",
+            "gen_utility_account_id",
+            "provider_type",
+        ]
+        matches = []
+        for field in fields:
+            actual = getattr(scraper.utility_service, field)
+            expected = getattr(fixture["expected"], field)
+            print(f"{field}\t{actual}\t{expected}\t{actual == expected}")
+            if actual == expected:
+                matches.append(field)
+        if matches == fields:
+            print("\nOK")
+        else:
+            print(f"\nFAILED: mismatches = {set(fields) - set(matches)}")
 
 
 if __name__ == "__main__":

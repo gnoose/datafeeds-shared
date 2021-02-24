@@ -3075,8 +3075,20 @@ ALTER SEQUENCE public.meter_reading_seq OWNED BY public.meter_reading.oid;
 -- Name: utility_service; Type: TABLE; Schema: public; Owner: gridium
 --
 
+--
+-- Name: utility_service_oid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.utility_service_oid_seq
+    START WITH 1
+    INCREMENT BY 10
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
 CREATE TABLE public.utility_service (
-    oid bigint NOT NULL,
+    oid bigint DEFAULT nextval('public.utility_service_oid_seq'::regclass) NOT NULL,
     account bigint,
     active boolean DEFAULT true NOT NULL,
     "group" character varying(128),

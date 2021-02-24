@@ -25,6 +25,14 @@ from datafeeds.common.webdriver.drivers.base import BaseDriver
 
 import datafeeds.scrapers.sce_react.errors as sce_errors
 
+from datafeeds.scrapers.sce_react.support import (
+    detect_and_close_survey,
+    dismiss_overlay_click,
+)
+
+from datafeeds.models import UtilityService
+from datafeeds.models.utility_service import UTILITY_BUNDLED, TND_ONLY, GENERATION_ONLY
+
 log = logging.getLogger(__name__)
 
 # A model of the basic usage info exposed for service accounts from the landing page
@@ -77,30 +85,6 @@ GenericBusyIndicatorLocator = (
     By.XPATH,
     "//span[contains(@class, 'appSpinner__spinnerMessage')]",
 )
-
-
-def detect_and_close_survey(driver, timeout=5):
-    try:
-        locator = (By.CLASS_NAME, "fsrInvite__closeWrapper")
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located(locator)
-        ).click()
-        log.info("popup closed")
-        driver.sleep(1)
-    except Exception:
-        pass
-
-
-def detect_and_close_modal(driver, timeout=5):
-    try:
-        locator = (By.CSS_SELECTOR, '#graphHeader button[aria-label="close dialog"]')
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located(locator)
-        ).click()
-        log.info("modal closed")
-        driver.sleep(1)
-    except Exception:
-        pass
 
 
 class SceLoginPage(PageState):
@@ -295,17 +279,20 @@ class SceMultiAccountLandingPage(PageState):
         # or all "Show More" buttons are clicked
         while True:
             try:
-                e = self.driver.find_element(*locator)
-                return e
+                return self.driver.find_element(*locator)
             except NoSuchElementException:
                 show_more_button = self.driver.find(
                     self.ShowMoreButtonXPATH, xpath=True
                 )
 
                 if not show_more_button:
+                    log.warning(
+                        "locator and show more button not found on %s",
+                        self.driver.current_url,
+                    )
                     return None
 
-                show_more_button.click()
+                dismiss_overlay_click(self.driver, elem=show_more_button)
                 WebDriverWait(self.driver, 20).until(
                     EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
                 )
@@ -346,6 +333,110 @@ class SceMultiAccountLandingPage(PageState):
         actions.send_keys_to_element(account_search_field, service_id)
         actions.send_keys_to_element(account_search_field, Keys.ENTER)
         actions.perform()
+
+    def update_utility_service(self, utility_service: UtilityService) -> Optional[str]:
+        """Get tariff and service ids and set on the utility_service record.
+
+        Return utility tariff code if found.
+        """
+        if utility_service is None:
+            return None
+
+        service_id = utility_service.service_id
+        log.info("starting update_utility_service")
+
+        # find address for associated service_id
+        WebDriverWait(self.driver, 10).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
+        service_id_address_link_locator = (
+            By.XPATH,
+            f"//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo') \
+                and contains(text(), '{service_id}')]"
+            "/preceding-sibling::div[contains(@class, 'text-align-center') \
+                and contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo')]",
+        )
+        service_id_address_element = self.click_show_more_until_element_found(
+            locator=service_id_address_link_locator,
+        )
+        if not service_id_address_element:
+            log.warning(
+                "unable to find address panel with locator %s",
+                service_id_address_link_locator,
+            )
+            return None
+
+        service_id_address = (
+            service_id_address_element.text if service_id_address_element else None
+        )
+
+        # find tarrif code, relative to the 'service_id_address_element'
+        utility_tariff_code_link_locator = (
+            By.XPATH,
+            ".//parent::div[@class='row']"
+            "/following-sibling::div[contains(@class, 'serviceAccOverviewComponent__sceBudgetAssistantRateBar')]"
+            "/div[contains(@class, 'serviceAccOverviewComponent__rateInfo')]"
+            "/a[contains(@class, 'serviceAccOverviewComponent__sceSmLink')]",
+        )
+        # we shouldn't need to scroll so we use WebElement.find_element()
+        utility_tariff_code_link_element = service_id_address_element.find_element(
+            *utility_tariff_code_link_locator
+        )
+        utility_tariff_code = (
+            utility_tariff_code_link_element.text
+            if utility_tariff_code_link_element
+            else None
+        )
+        if utility_tariff_code:
+            log.info("utility tariff code = %s", utility_tariff_code)
+
+        # find gen_service_id for associated address
+        WebDriverWait(self.driver, 10).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
+        gen_service_id_link_locator = (
+            By.XPATH,
+            "//a[contains(@class, 'serviceAccOverviewComponent__sceViewUsageBtn') \
+                and contains(., 'Billed Generation Charge')]"
+            "/preceding-sibling::div[@class='row']"
+            f"/div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo') \
+                and contains(text(), '{service_id_address}')]"
+            "/following-sibling::div[contains(@class, 'text-align-right') \
+                and contains(@class, 'serviceAccOverviewComponent__sceServiceAccInfo')]",
+        )
+        gen_service_id_link_element = self.click_show_more_until_element_found(
+            locator=gen_service_id_link_locator,
+        )
+        gen_service_id = (
+            gen_service_id_link_element.text if gen_service_id_link_element else None
+        )
+
+        if gen_service_id:
+            log.info(
+                "Found generation service id %s for service_id %s",
+                gen_service_id,
+                utility_service.service_id,
+            )
+            utility_service.set_tariff_from_utility_code(utility_tariff_code, TND_ONLY)
+            utility_service.set_tariff_from_utility_code(
+                utility_tariff_code, GENERATION_ONLY
+            )
+            utility_service.gen_utility = "utility:clean-power-alliance"
+            utility_service.gen_utility_account_id = utility_service.utility_account_id
+            utility_service.provider_type = TND_ONLY
+        else:
+            log.info(
+                "No generation service id for service_id %s",
+                utility_service.service_id,
+            )
+            utility_service.set_tariff_from_utility_code(
+                utility_tariff_code, UTILITY_BUNDLED
+            )
+            utility_service.gen_utility = None
+            utility_service.gen_utility_account_id = None
+            utility_service.provider_type = UTILITY_BUNDLED
+        utility_service.gen_service_id = gen_service_id
+        return utility_tariff_code
 
 
 class SceAccountSearchFailure(PageState):
