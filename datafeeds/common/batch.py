@@ -1,4 +1,4 @@
-from datetime import datetime, date, timedelta
+from datetime import date, timedelta
 import functools as ft
 import logging
 from typing import Optional, List, Dict, Any
@@ -113,9 +113,6 @@ def run_datafeed(
     notify_on_login_error: Optional[bool] = True,
 ) -> Status:
     transforms = [] if transforms is None else transforms
-    acct_hex_id = account.hex_id if account else ""
-    acct_name = account.name if account else ""
-
     bill_handler = ft.partial(
         upload_bills, meter.oid, meter.utility_service.service_id, task_id
     )
@@ -143,7 +140,7 @@ def run_datafeed(
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading task information to Elasticsearch.")
-        doc = index.run_meta(meter.oid)
+        doc = index.starter_doc(meter.oid, datasource)
         if configuration:
             doc.update(
                 {
@@ -152,19 +149,6 @@ def run_datafeed(
                     "intervalScraper": configuration.scrape_readings,
                 }
             )
-        doc.update(
-            {
-                "time": datetime.now(),
-                "status": "STARTED",
-                "scraper": datasource.name,
-                "origin": "datafeeds",
-                "started": datetime.now(),  # TODO: replaced by time; remove 2021-Q2
-                "accountId": acct_hex_id,  # TODO: replaced by account; remove 2021-Q2
-                "accountName": acct_name,  # TODO: replaced by account_name; remove 2021-Q2
-                "meterId": meter.oid,  # TODO: replaced by meter; remove 2021-Q2
-                "meterName": meter.name,  # TODO: replaced by meter_name; remove 2021-Q2
-            },
-        )
         index.index_etl_run(task_id, doc)
 
     index_doc: Dict[str, str] = {}
@@ -212,7 +196,7 @@ def run_datafeed(
     index_doc.update(update_utility_service(meter.utility_service, utility_service))
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading final task status to Elasticsearch.")
-        index.index_etl_run(task_id, index_doc, update=True)
+        index.index_etl_run(task_id, index_doc)
 
     return retval
 

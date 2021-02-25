@@ -319,7 +319,7 @@ def _launch_meter_datasource(mds: MeterDataSource, start: date, end: date):
         status = scraper_fn(account, meter, mds, parameters, task_id=task_id)  # type: ignore[operator] # noqa
 
         if config.enabled("ES_INDEX_LOGS"):
-            index_logs(task_id, account, meter, mds, status)
+            index_logs(task_id, status)
         if config.enabled("S3_ARTIFACT_UPLOAD"):
             archive_run(task_id)
     except:  # noqa=E722

@@ -6,7 +6,6 @@ import uuid
 from datafeeds import db, config
 from datafeeds.common.index import (
     _get_es_connection,
-    INDEX,
     get_index_doc,
 )
 from datafeeds.common.typing import Status
@@ -31,7 +30,7 @@ def index_provisioning_operation(
 ):
     """Upload the logs for this task to elasticsearch for later analysis."""
     es = _get_es_connection()
-    doc = get_index_doc(TASK_ID)
+    doc, index = get_index_doc(TASK_ID)
     if not doc:
         # Make a document with fundamental information about the run.
         doc = dict(
@@ -44,7 +43,7 @@ def index_provisioning_operation(
         with open(config.LOGPATH, "r") as f:
             log_contents = f.read()
         doc["log"] = log_contents
-        es.index(INDEX, doc_type="_doc", id=TASK_ID, body=doc)
+        es.index(index, doc_type="_doc", id=TASK_ID, body=doc)
     except:  # noqa E722
         log.exception("Failed to upload run logs to elasticsearch.")
         return
