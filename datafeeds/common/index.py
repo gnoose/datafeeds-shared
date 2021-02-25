@@ -1,5 +1,5 @@
 from datetime import datetime, date
-from typing import List, Optional, Set, Dict, Any
+from typing import List, Set, Dict, Any, Tuple
 import logging
 
 from dateutil import parser as date_parser
@@ -9,7 +9,6 @@ from elasticsearch.helpers import bulk
 from sqlalchemy.orm import joinedload
 
 from datafeeds import db, config
-from datafeeds.db import dbtask
 from datafeeds.common.typing import (
     BillingData,
     BillingRange,
@@ -19,7 +18,6 @@ from datafeeds.common.typing import (
 )
 
 from datafeeds.models import (
-    SnapmeterAccount,
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
@@ -76,24 +74,10 @@ def _get_date(dt):
     return dt
 
 
-def get_index_doc(task_id: str) -> Dict[str, Any]:
+def get_index_doc(task_id: str) -> Tuple[Dict[str, Any], str]:
     es = _get_es_connection()
     # noinspection SpellCheckingInspection
     try:
-        """
-        TODO: Auto-rollover updates the is_write_index to false for the rolled-over index, but es.get fails with
-        Alias [etl-tasks] has more than one indices associated with it [[etl-tasks-000006, etl-tasks-000005]],
-        can't execute a single index op
-
-        es.get requires a single index name, not a pattern (etl-tasks-*); using a pattern fails with a permission error.
-        es.search works with an index pattern, but can return an out of date version of the the document.
-
-        Use es.get and disable auto-rollover until elastic.co explains how to do this.
-
-        https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html says
-        "This simplifies things by allowing for one alias to behave both as the write and read aliases for indices that
-        are being managed with Rollover." but that does not seem to be what's happening.
-        """
         results = es.search(
             index=INDEX_PATTERN,
             doc_type="_doc",
@@ -102,41 +86,18 @@ def get_index_doc(task_id: str) -> Dict[str, Any]:
         )["hits"]["hits"]
         if not results:
             log.error("update of task %s failed: not found", task_id)
-            return {}
-        return results[0]["_source"]
+            return {}, INDEX
+        result = results[0]
+        return result["_source"], result.get("_index", INDEX)
     except NotFoundError:
         log.error("update of task %s failed: not found", task_id)
-        return {}
+        return {}, INDEX
 
 
-def get_index_doc_unaliased(task_id: str) -> Dict[str, Any]:
+def index_etl_run(task_id: str, run: dict):
+    """Index an ETL run: get the existing doc and update with fields in run."""
     es = _get_es_connection()
-    try:
-        task = es.get(index=INDEX, doc_type="_doc", id=task_id, _source=True)
-        return task["_source"]
-    except NotFoundError:
-        log.error("update of task %s failed: not found", task_id)
-        return {}
-
-
-def index_etl_run(task_id: str, run: dict, update: bool = False):
-    """index an ETL run; get and update existing run if specified
-
-    Doc fields: started, status, error, accountId, accountName, meterId, meterName, scraper
-    Required for new record: started, status, meterId, scraper
-    Retry up to 5 times if there's an error reaching the index.
-    """
-    if not update:
-        for field in ["started", "status", "meterId", "scraper"]:
-            if field not in run:
-                log.error("missing field %s when indexing %s", field, task_id)
-                return
-    es = _get_es_connection()
-    doc = {}
-    if update:
-        doc = get_index_doc(task_id)
-        if not doc:
-            return
+    doc, index = get_index_doc(task_id)
     doc.update(run)
     doc["updated"] = datetime.now()
     doc["url"] = LOG_URL_PATTERN % task_id
@@ -156,10 +117,7 @@ def index_etl_run(task_id: str, run: dict, update: bool = False):
     if max_dt > min_dt:
         doc["maxFetched"] = max_dt
     log.debug(
-        "Transmitted to Elasticsearch: task_id=%s, update=%s, document=%s",
-        task_id,
-        update,
-        doc,
+        "Transmitted to Elasticsearch: task_id=%s, document=%s", task_id, doc,
     )
     es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc, refresh="wait_for")
 
@@ -183,7 +141,22 @@ def run_meta(meter_oid: int) -> Dict[str, Any]:
     return doc
 
 
-def update_billing_range(task_id: str, meter_oid: int, bills: BillingData):
+def starter_doc(meter_id: int, datasource: MeterDataSource) -> Dict[str, Any]:
+    """Create a starter doc for indexing."""
+    doc = run_meta(meter_id)
+    doc.update(
+        {
+            "time": datetime.now(),
+            "status": "STARTED",
+            "scraper": datasource.name,
+            "origin": "datafeeds",
+            "started": datetime.now(),  # TODO: replaced by time; remove 2021-Q2
+        }
+    )
+    return doc
+
+
+def update_billing_range(task_id: str, bills: BillingData):
     """Index info about the data retrieved in this run.
 
     dataType - bill
@@ -199,7 +172,7 @@ def update_billing_range(task_id: str, meter_oid: int, bills: BillingData):
         end=max([bill.end for bill in bills]),
     )
     doc.update({"billingFrom": billing.start, "billingTo": billing.end})
-    index_etl_run(task_id, doc, update=True)
+    index_etl_run(task_id, doc)
 
 
 def update_bill_pdf_range(task_id: str, meter_oid: int, pdfs: List[BillPdf]):
@@ -217,7 +190,7 @@ def update_bill_pdf_range(task_id: str, meter_oid: int, pdfs: List[BillPdf]):
         start=min([bill.start for bill in pdfs]), end=max([bill.end for bill in pdfs]),
     )
     doc.update({"billingFrom": billing.start, "billingTo": billing.end})
-    index_etl_run(task_id, doc, update=True)
+    index_etl_run(task_id, doc)
 
 
 def _meter_interval(meter_id):
@@ -226,8 +199,7 @@ def _meter_interval(meter_id):
     return result[0] if result else 15
 
 
-@dbtask
-def set_interval_fields(task_id: str, meter_oid: int, readings: List[MeterReading]):
+def set_interval_fields(task_id: str, readings: List[MeterReading]):
     """Index info about the interval data retrieved in this run.
 
     dataType - interval
@@ -252,7 +224,7 @@ def set_interval_fields(task_id: str, meter_oid: int, readings: List[MeterReadin
                 "age": (date.today() - max(dates)).days,
             }
         )
-    index_etl_run(task_id, doc, update=True)
+    index_etl_run(task_id, doc)
 
 
 def _interval_issues_docs(
@@ -312,35 +284,16 @@ def index_etl_interval_issues(
 
 
 def index_logs(
-    task_id: str,
-    acct: Optional[SnapmeterAccount],
-    meter: Meter,
-    ds: MeterDataSource,
-    status: Status,
+    task_id: str, status: Status,
 ):
     """Upload the logs for this task to elasticsearch for later analysis."""
-    es = _get_es_connection()
-
-    doc = get_index_doc(task_id)
-    if not doc:
-        # Make a document with fundamental information about the run.
-        doc = dict(
-            meterId=meter.oid,
-            meterName=meter.name,
-            uploaded=datetime.now(),
-            scraper=ds.name,
-            status=str(status.name),
-        )
-
-        if acct is not None:
-            doc["accountId"] = acct.hex_id
-            doc["accountName"] = acct.name
+    doc: Dict[str, Any] = {"status": str(status.name)}
 
     try:
         with open(config.LOGPATH, "r") as f:
             log_contents = f.read()
         doc["log"] = log_contents
-        es.index(INDEX, doc_type="_doc", id=task_id, body=doc)
+        index_etl_run(task_id, doc)
     except:  # noqa E722
         log.exception("Failed to upload run logs to elasticsearch.")
         return

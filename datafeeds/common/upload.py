@@ -84,7 +84,7 @@ def upload_bills(
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
-        index.update_billing_range(task_id, meter_oid, billing_data)
+        index.update_billing_range(task_id, billing_data)
     billing_data = verify_bills(meter_oid, billing_data)
 
     title = "Final Billing Summary"
@@ -123,7 +123,7 @@ def upload_readings(
         )
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
-        index.set_interval_fields(task_id, meter_oid, updated)
+        index.set_interval_fields(task_id, updated)
 
     log.info("Final Interval Summary")
     for when, intervals in readings.items():
@@ -242,7 +242,7 @@ def upload_partial_bills(
     processor.log_summary()
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
-        index.update_billing_range(task_id, meter.oid, billing_data)
+        index.update_billing_range(task_id, billing_data)
 
     return status
 

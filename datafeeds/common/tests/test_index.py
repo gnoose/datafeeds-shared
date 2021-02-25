@@ -75,11 +75,10 @@ class IndexTests(unittest.TestCase):
 
     @mock.patch("datafeeds.common.index.index_etl_run")
     def test_update_billing_range(self, index_etl_run):
-        meter = self.meters[0]
         # no bills
         bills: BillingData = []
         task_id = "abc123"
-        index.update_billing_range(task_id, meter.oid, bills)
+        index.update_billing_range(task_id, bills)
         self.assertEqual(0, index_etl_run.call_count)
         # with bills
         end = date.today() - timedelta(days=7)
@@ -99,7 +98,7 @@ class IndexTests(unittest.TestCase):
                 )
             )
             end = start - timedelta(days=1)
-        index.update_billing_range(task_id, meter.oid, bills)
+        index.update_billing_range(task_id, bills)
         expected = {
             "billingFrom": min(b.start for b in bills),
             "billingTo": max(b.end for b in bills),
@@ -142,7 +141,7 @@ class IndexTests(unittest.TestCase):
         meter = self.meters[0]
         # no readings
         task_id = "abc123"
-        index.set_interval_fields(task_id, meter.oid, [])
+        index.set_interval_fields(task_id, [])
         self.assertEqual(
             {"updatedDays": 0,}, index_etl_run.call_args[0][1],
         )
@@ -158,7 +157,7 @@ class IndexTests(unittest.TestCase):
             readings.append(
                 MeterReading(meter=meter.oid, occurred=dt, readings=[1.0] * 96)
             )
-        index.set_interval_fields(task_id, meter.oid, readings)
+        index.set_interval_fields(task_id, readings)
         expected = {
             "updatedDays": 3,
             "intervalFrom": dates[0],
