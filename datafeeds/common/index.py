@@ -85,12 +85,10 @@ def get_index_doc(task_id: str) -> Tuple[Dict[str, Any], str]:
             body={"query": {"match": {"_id": task_id}}},
         )["hits"]["hits"]
         if not results:
-            log.error("update of task %s failed: not found", task_id)
             return {}, INDEX
         result = results[0]
         return result["_source"], result.get("_index", INDEX)
     except NotFoundError:
-        log.error("update of task %s failed: not found", task_id)
         return {}, INDEX
 
 
