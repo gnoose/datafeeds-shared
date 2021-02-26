@@ -23,7 +23,7 @@ class CityOfElSegundoDatasource(UrjanetPyMySqlDataSource):
         query = """
             select *
             from Account
-            where AccountNumber=%s and UtilityProvider = 'CityOfElSegundoCA'
+            where RawAccountNumber=%s and UtilityProvider = 'CityOfElSegundoCA'
         """
         acct_no = self.account_number
         result_set = self.fetch_all(query, acct_no)
