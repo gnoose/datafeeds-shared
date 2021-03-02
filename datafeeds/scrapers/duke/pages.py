@@ -56,6 +56,7 @@ class DukeLoginPage(PageState):
 
         submit_button = self.driver.find_element(*self.SubmitButtonLocator)
         submit_button.click()
+        log.debug("done login")
 
 
 class DukeLoginFailedPage(PageState):
@@ -91,7 +92,7 @@ class DukeLandingPage(PageState):
         self.link_to_accs_locator = None
 
     def get_ready_condition(self):
-        self.link_to_accs_locator = (By.CSS_SELECTOR, "button#btnBillView")
+        self.link_to_accs_locator = (By.CSS_SELECTOR, "button#btnViewnPayBill")
         return EC.element_to_be_clickable(self.link_to_accs_locator)
 
     def open_accounts_page(self):
