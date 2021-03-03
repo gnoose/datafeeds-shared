@@ -276,10 +276,14 @@ class SmudBillComparePage(PageState):
                 traceback.print_exc()
                 raise UnexpectedBillDataException(msg) from e
 
+        log.debug("visible bill details %s\n\n", [(b.start, b.end) for b in results])
         return results
 
-    def select_bill(self, bill_period: BillPeriodSelector):
-        locator = "//option[@value='{}']".format(bill_period.value)
+    def select_bill(self, bill_period: BillPeriodSelector, period: int):
+        locator = '//select[@id="BillingPeriod{}_Value"]//option[@value="{}"]'.format(
+            period, bill_period.value
+        )
+        log.debug("selecting bill %s", locator)
         self.driver.find_element_by_xpath(locator).click()
 
     def toggle_usage_details(self):
@@ -334,6 +338,11 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
         if self.end_date < self.start_date:
             InvalidTimeRangeException("Final bill date must be after the start date.")
 
+        log.info(
+            "Getting bills for adjusted date range %s - %s",
+            self.start_date,
+            self.end_date,
+        )
         # We define the scraper flow below using a simple state machine.
         state_machine = PageStateMachine(self._driver)
 
@@ -425,7 +434,16 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
         """Extracting billing info from the 'bill comparison' page"""
         page.toggle_usage_details()
         periods = page.get_all_billing_periods()
+        periods.sort(key=lambda p: p.start)
         seen_bills: set = set()
+        log.info(
+            "%s bill periods: %s",
+            len(periods),
+            [
+                (p.start.strftime("%Y-%m-%d"), p.end.strftime("%Y-%m-%d"))
+                for p in periods
+            ],
+        )
 
         # The comparison UI requires selecting two bill periods, after which it displays details for both.
         # (along with percentage differences and other statistics). Therefore we process bills in pairs
@@ -439,16 +457,30 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
             else:
                 second = periods[idx + 1]
 
-            page.select_bill(first)
-            page.select_bill(second)
+            log.info(
+                "comparing bill period %s - %s and %s - %s",
+                first.start,
+                first.end,
+                second.start,
+                second.end,
+            )
+            page.select_bill(first, 1)
+            page.select_bill(second, 2)
 
             # This can probably be more intelligent, but keeping it for now to rate limit our requests
             time.sleep(10)
 
             for bill_detail in page.get_visible_bill_details():
                 bill_dates = (bill_detail.start, bill_detail.end)
-
+                log.info(
+                    "bill detail: start=%s end=%s seen=%s in range=%s",
+                    bill_detail.start.strftime("%Y-%m-%d"),
+                    bill_detail.end.strftime("%Y-%m-%d"),
+                    bill_dates in seen_bills,
+                    self.bill_in_range(bill_detail),
+                )
                 if bill_dates not in seen_bills and self.bill_in_range(bill_detail):
+                    log.info("creating bill for %s", bill_dates)
                     seen_bills.add(bill_dates)
                     bill_datum = self.make_billing_datum(bill_detail)
                     self.bill_history.append(bill_datum)
@@ -502,13 +534,22 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
 
     def bill_in_range(self, bill_detail: BillPeriodDetails) -> bool:
         """Determine whether a bill is in the scraper date range"""
-        if self.start_date:
-            if bill_detail.start < self.start_date:
-                return False
-        if self.end_date:
-            if bill_detail.start > self.end_date:
-                return False
-        return True
+        if not self.start_date or not self.end_date:
+            return True
+        # days of overlap with bill_detail and scraper range
+        days = (
+            min(bill_detail.end, (self.end_date - timedelta(days=1)))
+            - max(bill_detail.start, self.start_date)
+        ).days + 1
+        log.info(
+            "bill detail range %s - %s overlap with scraper range %s - %s = %s",
+            bill_detail.start,
+            bill_detail.end,
+            self.start_date,
+            self.end_date,
+            days,
+        )
+        return days != 0
 
     def download_pdf(self, bill_detail: BillPeriodDetails) -> Optional[bytes]:
         """Download the bill associated with a bill detail summary from the website"""
