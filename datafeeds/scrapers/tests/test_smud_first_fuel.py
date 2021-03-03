@@ -27,7 +27,7 @@ def test_scraper(
     password: str,
 ):
     configuration = SMUDFirstFuelConfiguration(
-        utility_account_id=utility_account_id, service_id=service_id
+        utility_account_id=utility_account_id, service_id=service_id, interval=15
     )
     credentials = Credentials(username, password)
     scraper = SMUDFirstFuelScraper(
