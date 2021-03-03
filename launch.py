@@ -52,6 +52,9 @@ from datafeeds.scrapers.scl_meterwatch import datafeed as scl_meterwatch
 from datafeeds.scrapers.solaredge import datafeed as solaredge
 from datafeeds.scrapers.solren import datafeed as solren
 from datafeeds.scrapers.smart_meter_texas import datafeed as smart_meter_texas
+from datafeeds.scrapers.smud_first_fuel_interval import (
+    datafeed as smud_first_fuel_interval,
+)
 from datafeeds.scrapers.smud_myaccount_billing import datafeed as smud_myaccount_billing
 from datafeeds.scrapers.socalgas.socalgas import datafeed as socalgas
 from datafeeds.scrapers.stem import datafeed as stem
@@ -204,6 +207,7 @@ scraper_functions = {
     "smart-meter-texas": smart_meter_texas,
     "smd-tnd-partial-billing": smd_tnd_partial_billing,
     "smud-energyprofiler-interval": smud_energyprofiler_interval,
+    "smud-first-fuel-interval": smud_first_fuel_interval,
     "smud-myaccount-billing": smud_myaccount_billing,
     "stem": stem,
     "socalgas": socalgas,
