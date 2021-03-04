@@ -25,7 +25,7 @@ from datafeeds.common.batch import run_datafeed
 from datafeeds.common.support import Results
 
 from datafeeds.common.typing import Status
-from datafeeds.common.util.selenium import file_exists_in_dir, clear_downloads
+from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.models import SnapmeterAccount, SnapmeterMeterDataSource, Meter
 from datafeeds.parsers.pdfparser import pdf_to_str
 from datafeeds.common.upload import hash_bill, upload_bill_to_s3
@@ -334,8 +334,16 @@ class BillingPage:
             pdf_link_1 = WebDriverWait(self.driver, 15).until(
                 ec.presence_of_element_located((By.XPATH, pdf_links_xpath))
             )
-
-            log.info("Downloading most recent bill")
+            log.info(
+                "Downloading most recent bill; scroll to %s", pdf_link_1.location["y"]
+            )
+            self.driver.execute_script(
+                "window.scrollTo(0," + str(pdf_link_1.location["y"]) + ")"
+            )
+            WebDriverWait(self.driver, 15).until(
+                ec.element_to_be_clickable((By.XPATH, pdf_links_xpath))
+            )
+            self.driver.screenshot(BaseWebScraper.screenshot_path("most recent bill"))
             pdf_link_1.click()
 
             if (
@@ -345,6 +353,7 @@ class BillingPage:
                 download_bill_button_xpath = (
                     "//span[contains(text(), 'Download bill (PDF)')]"
                 )
+                log.debug("scroll to scrollHeight/2")
                 self.driver.execute_script(
                     "window.scrollTo(0, window.scrollY+(document.body.scrollHeight/2))"
                 )
@@ -375,10 +384,14 @@ class BillingPage:
                 single_bill = extract_bill_data(
                     file_path, service_id, utility, utility_account_id
                 )
-                clear_downloads(self.driver.download_dir)
 
                 bill_data.append(single_bill)
-                log.info("appended a bill")
+                log.info(
+                    "first bill: %s - %s cost=%s",
+                    single_bill.start,
+                    single_bill.end,
+                    single_bill.cost,
+                )
 
                 bill_history_button_xpath = (
                     "//span[contains(text(), 'Billing and payment history')]"
@@ -392,8 +405,8 @@ class BillingPage:
         pdf_links = WebDriverWait(self.driver, 25).until(
             ec.presence_of_all_elements_located((By.XPATH, pdf_links_xpath))
         )
-        log.info("Found %s pdf's on page", len(pdf_links))
-
+        log.info("Found %s pdfs on page", len(pdf_links))
+        self.driver.screenshot(BaseWebScraper.screenshot_path("found pdfs"))
         for link in pdf_links:
             if not first_link_found:
                 first_link_found = True
@@ -406,18 +419,30 @@ class BillingPage:
                 self.seen_survey = True
 
             close_survey(self.driver)
+            # get sibling node for date range text: 12/10/2020 - 01/12/2021
+            match = re.match(
+                r"(\d+/\d+/\d+) - (\d+/\d+/\d+)",
+                link.find_element_by_xpath("../p").text,
+            )
+            from_dt = parse_time(match.group(1))
+            to_dt = parse_time((match.group(2)))
+            if to_dt < start:
+                log.info("stoppinng: %s bill is before start", to_dt)
+                break
+            # filename is View_Bill-Dec. 10, 2020_Jan. 12, 2021.pdf
+            filename = "View_Bill-%s_%s.pdf" % (
+                from_dt.strftime("%b. %d, %Y"),
+                to_dt.strftime("%b. %d, %Y"),
+            )
             link.click()
 
-            filename = self.driver.wait(90).until(
-                file_exists_in_dir(download_dir, r".*\.pdf$")
-            )
+            self.driver.wait(90).until(file_exists_in_dir(download_dir, filename))
             file_path = os.path.join(download_dir, filename)
 
             period_start, period_end = extract_bill_period(file_path)
 
             # If the bill starts after our end date, skip it
             if period_start > end:
-                clear_downloads(self.driver.download_dir)
                 continue
 
             # If the bill ends before our start date, break and return (finding where to end)
@@ -434,10 +459,13 @@ class BillingPage:
                 file_path, service_id, utility, utility_account_id
             )
 
-            clear_downloads(self.driver.download_dir)
-
             bill_data.append(single_bill)
-            log.info("appended a bill")
+            log.info(
+                "added bill: %s - %s cost=%s",
+                single_bill.start,
+                single_bill.end,
+                single_bill.cost,
+            )
 
         non_overlapping_bills = _adjust_bill_dates(bill_data)
         return non_overlapping_bills
@@ -448,15 +476,9 @@ class AccountPage:
         self.driver = driver
 
     def goto_billing(self) -> BillingPage:
-
-        billing_link_xpath = (
-            "//span[contains(text(), 'Billing & Payment History')]/../.."
+        self.driver.get(
+            "https://portlandgeneral.com/secure/payment/billing-payment-history"
         )
-        billing_link = WebDriverWait(self.driver, 5).until(
-            ec.presence_of_element_located((By.XPATH, billing_link_xpath))
-        )
-        log.debug("clicking billing link")
-        billing_link.click()
 
         return BillingPage(self.driver)
 
@@ -546,6 +568,7 @@ class PortlandBizportalScraper(BaseWebScraper):
         log.info("Logging in")
         log.info("=" * 80)
         account_page = login_page.login(self.username, self.password)
+        self._driver.screenshot(BaseWebScraper.screenshot_path("after login"))
 
         billing_page = account_page.goto_billing()
 
@@ -566,6 +589,7 @@ class PortlandBizportalScraper(BaseWebScraper):
             )
             raise PortlandBizPortalException
 
+        self._driver.screenshot(BaseWebScraper.screenshot_path("found account"))
         log.info("Detecting page numbers")
         total_pages = billing_page.page_numbers()
         time.sleep(10)

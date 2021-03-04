@@ -1,6 +1,6 @@
 from abc import ABC as Abstract, abstractmethod
 import csv
-from datetime import date
+from datetime import date, datetime
 import os
 import time
 from typing import List
@@ -312,13 +312,15 @@ class BaseWebScraper(BaseScraper):
 
         return status
 
-    def screenshot(self, filename, whole=True):
-        self._shot_number += 1
-        path = os.path.join(
+    @classmethod
+    def screenshot_path(cls, filename: str):
+        return os.path.join(
             config.WORKING_DIRECTORY,
-            "screenshot{:02} - {}.png".format(self._shot_number, filename),
+            "screenshot{} - {}.png".format(datetime.now().strftime("%M%S%f"), filename),
         )
-        self._driver.screenshot(path, whole=whole)
+
+    def screenshot(self, filename, whole=False):
+        self._driver.screenshot(BaseWebScraper.screenshot_path(filename), whole=whole)
 
     def download_file(self, extension: str, timeout: Optional[int] = 60):
         # Wait for csv to download

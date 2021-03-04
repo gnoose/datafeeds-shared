@@ -322,10 +322,10 @@ def _launch_meter_datasource(mds: MeterDataSource, start: date, end: date):
     try:
         status = scraper_fn(account, meter, mds, parameters, task_id=task_id)  # type: ignore[operator] # noqa
 
-        if config.enabled("ES_INDEX_LOGS"):
-            index_logs(task_id, status)
         if config.enabled("S3_ARTIFACT_UPLOAD"):
             archive_run(task_id)
+        if config.enabled("ES_INDEX_LOGS"):
+            index_logs(task_id, status)
     except:  # noqa=E722
         log.exception("The scraper run has failed due to an unhandled exception.")
         status = Status.FAILED
