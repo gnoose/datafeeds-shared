@@ -246,6 +246,7 @@ def archive_run(task_id: str):
         shutil.copy(config.LOGPATH, dest)
 
     tarball = "{0}.tar.gz".format(config.WORKING_DIRECTORY)
+    s3_key = "{0}.tar.gz".format(task_id)
     with tarfile.open(tarball, "w:gz") as f:
         f.add(config.WORKING_DIRECTORY)
 
@@ -254,12 +255,12 @@ def archive_run(task_id: str):
         client.upload_file(
             tarball,
             config.ARTIFACT_S3_BUCKET,
-            task_id,
-            ExtraArgs={"StorageClass": "STANDARD_IA"},
+            s3_key,
+            ExtraArgs={"StorageClass": "STANDARD_IA", "ContentEncoding": "gzip"},
         )
         log.info(
             "Successfully uploaded archive %s to S3 bucket %s.",
-            task_id,
+            s3_key,
             config.ARTIFACT_S3_BUCKET,
         )
     except:  # noqa E722

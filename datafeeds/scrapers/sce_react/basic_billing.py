@@ -38,6 +38,7 @@ class SceReactBasicBillingConfiguration(Configuration):
         self,
         service_id: str,
         gen_service_id: str,
+        utility_account_id: str,
         scrape_bills: bool,
         scrape_partial_bills: bool,
         metascraper=False,
@@ -50,6 +51,7 @@ class SceReactBasicBillingConfiguration(Configuration):
         )
         self.service_id = service_id
         self.gen_service_id = gen_service_id
+        self.utility_account_id = utility_account_id
 
 
 class SceReactBasicBillingScraper(BaseWebScraper):
@@ -68,6 +70,10 @@ class SceReactBasicBillingScraper(BaseWebScraper):
     @property
     def gen_service_id(self):
         return self._configuration.gen_service_id
+
+    @property
+    def utility_account_id(self):
+        return self._configuration.utility_account_id
 
     def define_state_machine(self):
         """Define the flow of this scraper as a state machine"""
@@ -249,13 +255,7 @@ class SceReactBasicBillingScraper(BaseWebScraper):
     ):
         sce_pages.detect_and_close_survey(self._driver)
         self.utility_tariff_code = page.update_utility_service(self.utility_service)
-        page.search_by_service_id(self.service_id)
-        time.sleep(5)
-        WebDriverWait(
-            self._driver,
-            10,
-            EC.invisibility_of_element_located(sce_pages.GenericBusyIndicatorLocator),
-        )
+        page.search_account(self.service_id, self.utility_account_id)
 
     def search_failure_action(self, page: sce_pages.SceAccountSearchFailure):
         raise sce_errors.ServiceIdException(
@@ -372,6 +372,7 @@ def datafeed(
     configuration = SceReactBasicBillingConfiguration(
         service_id=meter.service_id,
         gen_service_id=meter.utility_service.gen_service_id,
+        utility_account_id=meter.utility_service.utility_account_id,
         scrape_bills=not is_partial,
         scrape_partial_bills=is_partial,
         metascraper=metascraper,
