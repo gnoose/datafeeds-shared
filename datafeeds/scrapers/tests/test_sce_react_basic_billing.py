@@ -149,6 +149,7 @@ def mock_set_tariff_from_utility_code(utility_tariff_code: str, provider_type: s
 def test_scraper(
     service_id: str,
     gen_service_id: str,
+    utility_account_id: str,
     start_date: date,
     end_date: date,
     username: str,
@@ -158,6 +159,7 @@ def test_scraper(
     configuration = SceReactBasicBillingConfiguration(
         service_id=service_id,
         gen_service_id=gen_service_id,
+        utility_account_id=utility_account_id,
         scrape_partial_bills=is_partial,
         scrape_bills=not is_partial,
     )
@@ -207,6 +209,7 @@ def test_scraper(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("service_id", type=str)
+    parser.add_argument("utility_account_id", type=str)
     parser.add_argument("--gen_service_id", type=str)
     parser.add_argument("start", type=str)
     parser.add_argument("end", type=str)
@@ -216,6 +219,7 @@ if __name__ == "__main__":
     test_scraper(
         args.service_id,
         args.gen_service_id,
+        args.utility_account_id,
         date_parser.parse(args.start).date(),
         date_parser.parse(args.end).date(),
         args.username,

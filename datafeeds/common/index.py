@@ -114,9 +114,6 @@ def index_etl_run(task_id: str, run: dict):
         max_dt = max(max_dt, billing_to)
     if max_dt > min_dt:
         doc["maxFetched"] = max_dt
-    log.debug(
-        "Transmitted to Elasticsearch: task_id=%s, document=%s", task_id, doc,
-    )
     es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc, refresh="wait_for")
 
 

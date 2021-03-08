@@ -89,12 +89,13 @@ class BaseDriver(Abstract):
         """
         return self._driver.get(url)
 
-    def screenshot(self, outputpath, whole=True):
+    def screenshot(self, outputpath, whole=False):
         """
         Take a screenshot of the current page.
         If whole is indicated, driver will scroll through entire page.
         Otherwise, only the portion visible in display will be captured.
         """
+        log.info("creating screenshot %s (whole=%s)", outputpath, whole)
         if whole:
             return utils.whole_page_screenshot(self._driver, outputpath)
 

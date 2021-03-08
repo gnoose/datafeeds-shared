@@ -14,6 +14,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 from dateutil.parser import parse as parse_date
 
+from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.captcha import recaptcha_v2
 from datafeeds.common.util.selenium import (
     ec_and,
@@ -321,8 +322,7 @@ class SceMultiAccountLandingPage(PageState):
         )
         self.driver.find_element(*generation_charge_link_locator)
 
-    def search_by_service_id(self, service_id: str):
-        log.info("search_by_service_id: %s", service_id)
+    def _search(self, search_id: str):
         account_search_field = self.driver.find_element(*self.AccountFilterLocator)
         actions = ActionChains(self.driver)
         actions.move_to_element(account_search_field)
@@ -330,9 +330,27 @@ class SceMultiAccountLandingPage(PageState):
         # clear existing values
         for _ in range(20):
             actions.send_keys_to_element(account_search_field, Keys.BACK_SPACE)
-        actions.send_keys_to_element(account_search_field, service_id)
+        actions.send_keys_to_element(account_search_field, search_id)
         actions.send_keys_to_element(account_search_field, Keys.ENTER)
         actions.perform()
+        WebDriverWait(
+            self.driver,
+            10,
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator),
+        )
+        self.driver.screenshot(BaseWebScraper.screenshot_path("search"))
+
+    def search_account(self, service_id: str, utility_account_id: str):
+        log.info("search account for service_id: %s", service_id)
+        self._search(service_id)
+        # if searching by service_id doesn't work, try account id (UI says filter by account #)
+        try:
+            self.driver.find_element_by_xpath(
+                "//react-myaccount-container//div[contains(@class, 'sceErrorBox')]"
+            )
+        except NoSuchElementException:
+            return  # error message doesn't exist
+        self._search(utility_account_id)
 
     def update_utility_service(self, utility_service: UtilityService) -> Optional[str]:
         """Get tariff and service ids and set on the utility_service record.
