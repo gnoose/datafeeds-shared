@@ -33,6 +33,7 @@ from datafeeds.models import (
     UtilityService,
     SnapmeterAccountMeter,
 )
+from datafeeds.parsers.pacific_power import extract_pdf_text
 
 log = logging.getLogger(__name__)
 
@@ -152,6 +153,7 @@ def kw_regexes(meter_number: str):
         "cost_subtotal": r"Subtotal Electric Charges\n.*?Total Electric Charges\s+\$\s+(?P<cost>[\d\.,]+)",
         # requires re.DOTALL
         "alt1_peak": r"Total kWh used.*?([\d\.,]+) kW\s+([\d\.,]+) kWh",
+        "alt_3_multi": r"Electric Charges\s+(\d+/\d+/\d+) - (\d+/\d+/\d+)\s+\(\d+ Days\) \$([\d,]*\.\d\d)",
     }
 
 
@@ -159,32 +161,57 @@ def _alternate_section(
     filename: str, bill_date: date, meter_number: str, pdf_text: str
 ) -> List[BillingDatum]:
     regexes = kw_regexes(meter_number)
-    # try another set of expressions
-    date_usage = re.search(regexes["alt1_date_usage"], pdf_text)
-    if date_usage:
-        used = str_to_float(date_usage.group(3))
+    # try multiple bills option first:
+    with open(filename, "rb") as f:
+        pdf_data = f.read()
+    # Use PyPDF2 here to extract the individual bill costs beside their bill dates.
+    alt_pdf_text = extract_pdf_text(BytesIO(pdf_data))
+    sub_bills = re.findall(regexes["alt_3_multi"], alt_pdf_text)
+    if sub_bills:
+        billing_data = []
+        for bill in sub_bills:
+            datum = BillingDatum(
+                start=parse_date(bill[0]).date(),
+                end=parse_date(bill[1]).date() - timedelta(days=1),
+                statement=bill_date,
+                cost=str_to_float(bill[2]),
+                used=None,
+                peak=None,
+                attachments=None,
+                utility_code=None,
+                items=None,
+            )
+            billing_data.append(datum)
+            log.info("alternate regex 3: data=%s", datum)
+        return billing_data
     else:
-        date_usage = re.search(regexes["alt2_date_usage"], pdf_text)
-        used = 0
-    cost = str_to_float(re.search(regexes["alt1_cost"], pdf_text).group(1))
-    peak_match = re.search(regexes["alt1_peak"], pdf_text, re.DOTALL)
-    if date_usage and cost:
-        datum = BillingDatum(
-            start=parse_date(date_usage.group(1)).date(),
-            end=parse_date(date_usage.group(2)).date() - timedelta(days=1),
-            statement=bill_date,
-            cost=cost,
-            used=used,
-            peak=str_to_float(peak_match.group(1)) if peak_match else None,
-            attachments=None,
-            utility_code=None,
-            items=None,
+        date_usage = re.search(regexes["alt1_date_usage"], pdf_text)
+        if date_usage:
+            used = str_to_float(date_usage.group(3))
+        else:
+            date_usage = re.search(regexes["alt2_date_usage"], pdf_text)
+            used = 0
+        cost = str_to_float(re.search(regexes["alt1_cost"], pdf_text).group(1))
+        peak_match = re.search(regexes["alt1_peak"], pdf_text, re.DOTALL)
+        if date_usage and cost:
+            datum = BillingDatum(
+                start=parse_date(date_usage.group(1)).date(),
+                end=parse_date(date_usage.group(2)).date() - timedelta(days=1),
+                statement=bill_date,
+                cost=cost,
+                used=used,
+                peak=str_to_float(peak_match.group(1)) if peak_match else None,
+                attachments=None,
+                utility_code=None,
+                items=None,
+            )
+            log.info("alternate regex 1: data=%s", datum)
+            return [datum]
+        raise Exception(
+            "Error parsing pdf %s for %s: no billing section found",
+            filename,
+            meter_number,
         )
-        log.info("alternate regex 1: data=%s", datum)
-        return [datum]
-    raise Exception(
-        "Error parsing pdf %s for %s: no billing section found", filename, meter_number,
-    )
 
 
 def _multi_period(
