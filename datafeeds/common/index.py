@@ -44,13 +44,13 @@ def _get_es_connection():
 """
     ES instance: https://6e4cab9dd2954f47a4a69440dc0247c0.us-east-1.aws.found.io:9243
 
-    "started": {"type": "date"},
+    "time": {"type": "date"},
     "status": {"type": "keyword"},
     "error": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
-    "accountId": {"type": "keyword"},
-    "accountName": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
-    "meterId": {"type": "keyword"},
-    "meterName": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+    "accound": {"type": "keyword"},
+    "account_name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+    "meter": {"type": "keyword"},
+    "meter_name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
     "scraper": {"type": "keyword"},
     "url": {"type": "keyword"},
     "billingFrom": {"type": "date"},
@@ -131,7 +131,6 @@ def run_meta(meter_oid: int) -> Dict[str, Any]:
     )
     if meter:
         doc.update(meter.build_log_extra)
-        doc["meter_name"] = meter.name
 
     return doc
 
@@ -238,14 +237,14 @@ def _interval_issues_docs(
             "_id": "%s-%s-%s"
             % (task_id, meter_id, issue.interval_dt.strftime("%Y%m%d%H%M")),
             "_source": {
-                "updated": datetime.now(),
+                "time": datetime.now(),
                 "intervalDateTime": issue.interval_dt,
                 "error": issue.error,
                 "value": issue.value,
-                "accountId": account_hex,
-                "accountName": account_name,
-                "meterId": meter_id,
-                "meterName": meter_name,
+                "account": account_hex,
+                "account_name": account_name,
+                "meter": meter_id,
+                "meter_name": meter_name,
                 "scraper": scraper,
             },
         }
