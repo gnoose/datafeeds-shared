@@ -58,6 +58,7 @@ class IndexTests(unittest.TestCase):
             "meter_name": meter.name,
             "service_id": meter.utility_service.service_id,
             "account": self.account.hex_id,
+            "account_name": self.account.name,
             "building": str(meter.building),
             "emailSubscribers": 0,
             "accountUsers": 0,
