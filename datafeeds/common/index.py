@@ -29,7 +29,7 @@ log = logging.getLogger(__name__)
 INDEX = "etl-tasks"  # write alias
 INDEX_PATTERN = "etl-tasks-*"
 INTERVAL_ISSUE_INDEX = "etl-interval-issues"
-LOG_URL_PATTERN = "https://snapmeter.com/api/admin/etl-tasks/%s/log"
+LOG_URL_PATTERN = "https://snapmeter.com/api/v2/admin/scraper-archive?id=%s"
 
 
 def _get_es_connection():
