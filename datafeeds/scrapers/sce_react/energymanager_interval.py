@@ -172,10 +172,11 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
         page.configure_report()
 
         date_range = DateRange(self.start_date, self.end_date)
-        interval_size = relativedelta(days=30)
+        # the website seems to time out when trying to get more than this amount of data
+        interval_size = relativedelta(days=7)
         timeline = Timeline(self.start_date, self.end_date)
 
-        for subrange in date_range.split_iter(delta=interval_size):
+        for idx, subrange in enumerate(date_range.split_iter(delta=interval_size)):
             log.info("Requesting interval data for dates: %s", subrange)
             start = subrange.start_date
             end = subrange.end_date
@@ -191,6 +192,7 @@ class SceReactEnergyManagerIntervalScraper(BaseWebScraper):
                         sce_pages.GenericBusyIndicatorLocator
                     )
                 )
+                self.screenshot(f"interval{idx}")
             except Exception as e:
                 raise sce_errors.EnergyManagerReportException(
                     "Failed to load data from Energy Manager"
