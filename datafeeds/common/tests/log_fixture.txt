@@ -1,0 +1,6 @@
+2021-03-12 15:14:56,074 : INFO : Scraper Launch Settings:
+2021-03-12 15:14:56,074 : INFO : Enabled Features: {'ES_INDEX_JOBS', 'ES_INDEX_LOGS'}
+2021-03-12 15:14:56,075 : INFO : Meter Data Source OID: 1923
+2021-03-12 15:14:56,075 : INFO : Meter: Test #2 (2)
+2021-03-12 15:14:56,075 : INFO : Scraper: smd-tnd-partial-billing
+2021-03-12 15:14:56,075 : INFO : Date Range: 2021-01-01 - 2021-03-15
