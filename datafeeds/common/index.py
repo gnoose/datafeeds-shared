@@ -13,7 +13,6 @@ from datafeeds.common.typing import (
     BillingData,
     BillingRange,
     IntervalIssue,
-    Status,
     BillPdf,
 )
 
@@ -277,16 +276,12 @@ def index_etl_interval_issues(
     )
 
 
-def index_logs(
-    task_id: str, status: Status,
-):
+def index_logs(task_id: str):
     """Upload the logs for this task to elasticsearch for later analysis."""
-    doc: Dict[str, Any] = {"status": str(status.name)}
-
     try:
         with open(config.LOGPATH, "r") as f:
             log_contents = f.read()
-        doc["log"] = log_contents
+        doc = {"log": log_contents}
         index_etl_run(task_id, doc)
     except:  # noqa E722
         log.exception("Failed to upload run logs to elasticsearch.")

@@ -5,6 +5,7 @@ from unittest import mock
 
 from datafeeds import db
 from datafeeds.common import test_utils, index
+from datafeeds.common.index import index_logs
 from datafeeds.common.typing import BillingData, BillingDatum, BillPdf
 from datafeeds.models.meter import MeterReading
 from datafeeds.models.user import (
@@ -166,3 +167,12 @@ class IndexTests(unittest.TestCase):
             "age": 5,
         }
         self.assertEqual(expected, index_etl_run.call_args[0][1])
+
+    @mock.patch("datafeeds.common.index.index_etl_run")
+    def test_index_logs(self, index_etl_run):
+        log_fixture = "datafeeds/common/tests/log_fixture.txt"
+        with open(log_fixture, "r") as f:
+            log_data = f.read()
+        with mock.patch("datafeeds.common.index.config.LOGPATH", log_fixture):
+            index_logs("abc123")
+        index_etl_run.assert_called_once_with("abc123", {"log": log_data})
