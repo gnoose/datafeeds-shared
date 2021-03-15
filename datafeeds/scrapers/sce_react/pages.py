@@ -333,12 +333,13 @@ class SceMultiAccountLandingPage(PageState):
         actions.send_keys_to_element(account_search_field, search_id)
         actions.send_keys_to_element(account_search_field, Keys.ENTER)
         actions.perform()
+        time.sleep(1)
         WebDriverWait(
             self.driver,
             10,
             EC.invisibility_of_element_located(GenericBusyIndicatorLocator),
         )
-        self.driver.screenshot(BaseWebScraper.screenshot_path("search"))
+        self.driver.screenshot(BaseWebScraper.screenshot_path(f"search_{search_id}"))
 
     def search_account(self, service_id: str, utility_account_id: str):
         log.info("search account for service_id: %s", service_id)
@@ -350,6 +351,7 @@ class SceMultiAccountLandingPage(PageState):
             )
         except NoSuchElementException:
             return  # error message doesn't exist
+        log.info("search account for utility_account_id: %s", utility_account_id)
         self._search(utility_account_id)
 
     def update_utility_service(self, utility_service: UtilityService) -> Optional[str]:
