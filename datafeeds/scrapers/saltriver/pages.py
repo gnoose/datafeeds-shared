@@ -1,9 +1,15 @@
 """Page object definitions for Salt River Project scrapers"""
 
-from datetime import date
+import logging
+from datetime import date, timedelta
+from io import BytesIO
 from typing import List, NamedTuple
 
-from selenium.common.exceptions import NoSuchElementException
+from dateutil import parser as date_parser
+from selenium.common.exceptions import (
+    NoSuchElementException,
+    StaleElementReferenceException,
+)
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
@@ -13,16 +19,23 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support.select import Select
 from dateutil.parser import parse as parse_date
 
+from datafeeds import config
+from datafeeds.common.typing import BillingDatum
+from datafeeds.common.upload import hash_bill_datum, upload_bill_to_s3
 from datafeeds.common.util.selenium import (
     ec_and,
     ec_in_frame,
+    scroll_to,
     window_count_equals,
     IFrameSwitch,
     WindowSwitch,
+    file_exists_in_dir,
 )
 from datafeeds.common.util.pagestate.pagestate import PageState
 from datafeeds.common.exceptions import LoginError
 import datafeeds.scrapers.saltriver.errors as saltriver_errors
+
+log = logging.getLogger(__name__)
 
 ChannelInfo = NamedTuple(
     # Represents basic information about an individual channel for a meter
@@ -76,9 +89,9 @@ BillDetail = NamedTuple(
 
 
 class SaltRiverLoginPage(PageState):
-    UsernameInputLocator = (By.XPATH, "//input[@id='Text1']")
-    PasswordInputLocator = (By.XPATH, "//input[@id='Password1']")
-    SubmitButtonLocator = (By.XPATH, "//input[@id='Submit1']")
+    UsernameInputLocator = (By.XPATH, "//input[@name='username']")
+    PasswordInputLocator = (By.XPATH, "//input[@name='password']")
+    SubmitButtonLocator = (By.XPATH, "//button[@type='submit']")
 
     def get_ready_condition(self):
         return ec_and(
@@ -88,29 +101,19 @@ class SaltRiverLoginPage(PageState):
         )
 
     def login(self, username: str, password: str):
-        username_field = self.driver.find_element(*self.UsernameInputLocator)
-        username_field.send_keys(username)
-
-        password_field = self.driver.find_element(*self.PasswordInputLocator)
-        password_field.send_keys(password)
-
-        submit_button = self.driver.find_element(*self.SubmitButtonLocator)
-        submit_button.click()
+        actions = ActionChains(self.driver)
+        actions.send_keys(username)
+        actions.send_keys(Keys.TAB)
+        actions.send_keys(password)
+        actions.send_keys(Keys.ENTER)
+        actions.perform()
 
 
 class SaltRiverLoginFailedPage(PageState):
-    UsernameInputLocator = (By.XPATH, "//input[@id='Text1']")
-    PasswordInputLocator = (By.XPATH, "//input[@id='Password1']")
-    SubmitButtonLocator = (By.XPATH, "//input[@id='Submit1']")
-    ErrorMessageLocator = (By.XPATH, "//strong//font[@color='red']")
+    ErrorMessageLocator = (By.CSS_SELECTOR, "div.srp-alert-error.mb-2")
 
     def get_ready_condition(self):
-        return ec_and(
-            EC.presence_of_element_located(self.UsernameInputLocator),
-            EC.presence_of_element_located(self.PasswordInputLocator),
-            EC.presence_of_element_located(self.SubmitButtonLocator),
-            EC.presence_of_element_located(self.ErrorMessageLocator),
-        )
+        return EC.presence_of_element_located(self.ErrorMessageLocator)
 
     def raise_on_error(self):
         """Raise an exception describing the login error."""
@@ -120,13 +123,205 @@ class SaltRiverLoginFailedPage(PageState):
 
 
 class SaltRiverLandingPage(PageState):
-    ContentLocator = (By.XPATH, "//div[@id='mainbody']//div[@id='maincolumn']")
+    AccountDropdownLocator = (By.XPATH, "//div[@id='rw_1_input']")
+    AccountDropdownButtonLocator = (By.XPATH, "//button[@title='open dropdown']")
+    AccountOptionLocator = (By.XPATH, "//li[@class='rw-list-option']")
+    AccountActiveOptionLocator = (By.XPATH, "//li[@id='rw_1_listbox_active_option']")
+    MyBillButtonLocator = (By.XPATH, "//a[contains(text(), 'My bill')]")
+    NoBillsDisplayedLocator = (By.XPATH, "//div[contains(text(), '12')]")
+    NoBillsDisplayedOptionLocator = (
+        By.XPATH,
+        "//div[@id='menu-']" "/div" "/ul" "/li[contains(text(), '36')]",
+    )
+    UsageRadioButtonLocator = (By.XPATH, "//input[@type='radio' and @value='usage']")
+    UsageTableBodyLocator = (By.XPATH, "//*[@id='usagetable']/tbody")
+    UsageTableRowsLocator = (By.XPATH, "//*[@id='usagetable']/tbody/tr")
 
     def get_ready_condition(self):
-        return ec_and(
-            EC.title_contains("SPATIA"),
-            EC.presence_of_element_located(self.ContentLocator),
+        return EC.presence_of_element_located(self.AccountDropdownLocator)
+
+    def select_account(self, account_id: str):
+        """Select account from dropdown.
+
+        self.account_id does not have dashes (805555003) but option does (805-555-003)
+        In case account_id is in wrong format, strip for digits, and re-format
+        """
+        account_id = "".join(c for c in account_id if c.isdigit())
+        account_id = "{}-{}-{}".format(account_id[:3], account_id[3:6], account_id[6:9])
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.AccountDropdownButtonLocator)
         )
+
+        account_dropdown_button = self.driver.find_element(
+            *self.AccountDropdownButtonLocator
+        )
+        account_dropdown_button.click()
+        WebDriverWait(self.driver, 10).until(
+            ec_and(
+                EC.presence_of_element_located(self.AccountOptionLocator),
+                EC.presence_of_element_located(self.AccountActiveOptionLocator),
+            )
+        )
+
+        account_options = self.driver.find_elements(*self.AccountOptionLocator)
+        account_options.append(
+            self.driver.find_element(*self.AccountActiveOptionLocator)
+        )
+        found = False
+        try:
+            for option in account_options:
+                if account_id in option.text:
+                    option.click()
+                    found = True
+        except StaleElementReferenceException:
+            pass
+
+        if not found:
+            raise saltriver_errors.MeterNotFoundError.for_account(account_id)
+
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.MyBillButtonLocator)
+        )
+        my_bill_button = self.driver.find_element(*self.MyBillButtonLocator)
+        self.driver.execute_script("arguments[0].click()", my_bill_button)
+
+    def set_displayed_bills(self):
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.NoBillsDisplayedLocator)
+        )
+        no_bills_displayed_select = self.driver.find_element(
+            *self.NoBillsDisplayedLocator
+        )
+        scroll_to(self.driver, no_bills_displayed_select)
+        no_bills_displayed_select.click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.NoBillsDisplayedOptionLocator)
+        )
+        no_bills_displayed_option = self.driver.find_element(
+            *self.NoBillsDisplayedOptionLocator
+        )
+        no_bills_displayed_option.click()
+
+    def set_history_type(self):
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.UsageRadioButtonLocator)
+        )
+        usage_radio_button = self.driver.find_element(*self.UsageRadioButtonLocator)
+        scroll_to(self.driver, usage_radio_button)
+        usage_radio_button.click()
+
+    def _overlap(self, start: date, end: date, bill_start: date, bill_end: date):
+        c_start = max(start, bill_start)
+        c_end = min(end, bill_end)
+        return max(c_end - c_start, timedelta())
+
+    def get_bills(self, account_id: str, start: date, end: date) -> List[BillingDatum]:
+        """Get bills from the table.
+
+        for each row:
+          get end from Read date column (date)
+          get start date from end date - (Days column (date) - 1)
+          get statement date from Bill date column (date)
+          if not start - end overlaps passed in start / end, continue
+          get peak from On-peak Billed kW (float)
+          get used from (Off-peak kWh + Shoulder kWh + On-peak kWh) (float)
+          get cost from New charges (float)
+          click eye icon to download PDF; wait for download to complete to self.driver.download_dir
+        """
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.UsageTableBodyLocator)
+        )
+        usage_table_rows = self.driver.find_elements(*self.UsageTableRowsLocator)
+
+        bill_data: List[BillingDatum] = []
+        self.driver.screenshot("bill table")
+        for row in usage_table_rows:
+            cols = row.find_elements_by_tag_name("td")
+            cols = [c for c in cols if "display: none" not in c.get_attribute("style")]
+
+            col = lambda x: cols[x].text
+            to_num = lambda x: "".join(d for d in col(x) if d.isdigit() or d == ".")
+            to_float = lambda x: float(to_num(x)) if len(to_num(x)) > 0 else 0
+
+            log.debug(f"statement={col(1)} end={col(2)} days={col(7)}")
+            # statement date
+            statement_date = date_parser.parse(col(1)).date()
+
+            # bill end
+            period_year = statement_date.year
+            if statement_date.month == 1 and col(2).startswith("12"):
+                period_year = statement_date.year - 1
+            end_str = f"{col(2)}/{period_year}"
+            bill_end = date_parser.parse(end_str).date()
+
+            # bill start
+            bill_start = bill_end - timedelta(days=int(to_float(7)) - 1)
+            log.debug(f"start={bill_start} end={bill_end}")
+
+            if not self._overlap(start, end, bill_start, bill_end):
+                log.info(
+                    f"skipping bill {bill_start} - {bill_end}: does not overlap requested range {start} - {end}"
+                )
+                continue
+
+            # cost
+            new_charges = to_float(8)
+            # used
+            used = to_float(4) + to_float(5) + to_float(6)
+            # peak
+            peak = to_float(3)
+
+            bill_datum = BillingDatum(
+                start=bill_start,
+                end=bill_end,
+                statement=statement_date,
+                cost=new_charges,
+                used=used,
+                peak=peak,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            )
+
+            try:
+                bill_pdf_name = "SRPbill{}{}".format(
+                    statement_date.strftime("%B"), statement_date.year
+                )
+                pdf_download_link = cols[0].find_element_by_tag_name("a")
+                scroll_to(self.driver, pdf_download_link)
+                pdf_download_link.click()
+                self.driver.wait(60).until(
+                    file_exists_in_dir(self.driver.download_dir, bill_pdf_name)
+                )
+            except Exception as e:
+                raise Exception(
+                    f"Failed to download bill {bill_pdf_name} for statement date {statement_date}:\n {e}"
+                )
+            log.info(
+                f"Bill {bill_pdf_name} for statement date {statement_date} downloaded successfully"
+            )
+
+            attachment_entry = None
+            # open downloaded PDF and upload
+            if config.enabled("S3_BILL_UPLOAD"):
+                key = hash_bill_datum(account_id, bill_datum)
+                with open(
+                    f"{self.driver.download_dir}/{bill_pdf_name}", "rb"
+                ) as pdf_data:
+                    attachment_entry = upload_bill_to_s3(
+                        BytesIO(pdf_data.read()),
+                        key,
+                        source="myaccount.srpnet.com",
+                        statement=bill_datum.statement,
+                        utility="utility:salt-river-project",
+                        utility_account_id=account_id,
+                    )
+            if attachment_entry:
+                bill_data.append(bill_datum._replace(attachments=[attachment_entry]))
+            else:
+                bill_data.append(bill_datum)
+        return bill_data
 
 
 class MeterProfilesPage(PageState):
