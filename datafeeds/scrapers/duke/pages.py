@@ -92,12 +92,12 @@ class DukeLandingPage(PageState):
         self.link_to_accs_locator = None
 
     def get_ready_condition(self):
-        self.link_to_accs_locator = (By.CSS_SELECTOR, "button#btnViewnPayBill")
+        self.link_to_accs_locator = (By.CSS_SELECTOR, "button#btnBillView")
         return EC.element_to_be_clickable(self.link_to_accs_locator)
 
     def open_accounts_page(self):
         """Opens page with all the accounts """
-        log.info("In landing page")
+        log.info("In landing page: click bill view button")
         bills_page_for_meters_link = self.driver.find_element(
             *self.link_to_accs_locator
         )

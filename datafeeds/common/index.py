@@ -13,7 +13,6 @@ from datafeeds.common.typing import (
     BillingData,
     BillingRange,
     IntervalIssue,
-    Status,
     BillPdf,
 )
 
@@ -29,7 +28,7 @@ log = logging.getLogger(__name__)
 INDEX = "etl-tasks"  # write alias
 INDEX_PATTERN = "etl-tasks-*"
 INTERVAL_ISSUE_INDEX = "etl-interval-issues"
-LOG_URL_PATTERN = "https://snapmeter.com/api/admin/etl-tasks/%s/log"
+LOG_URL_PATTERN = "https://snapmeter.com/api/v2/admin/scraper-archive?id=%s"
 
 
 def _get_es_connection():
@@ -44,13 +43,13 @@ def _get_es_connection():
 """
     ES instance: https://6e4cab9dd2954f47a4a69440dc0247c0.us-east-1.aws.found.io:9243
 
-    "started": {"type": "date"},
+    "time": {"type": "date"},
     "status": {"type": "keyword"},
     "error": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
-    "accountId": {"type": "keyword"},
-    "accountName": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
-    "meterId": {"type": "keyword"},
-    "meterName": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+    "accound": {"type": "keyword"},
+    "account_name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+    "meter": {"type": "keyword"},
+    "meter_name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
     "scraper": {"type": "keyword"},
     "url": {"type": "keyword"},
     "billingFrom": {"type": "date"},
@@ -131,7 +130,6 @@ def run_meta(meter_oid: int) -> Dict[str, Any]:
     )
     if meter:
         doc.update(meter.build_log_extra)
-        doc["meter_name"] = meter.name
 
     return doc
 
@@ -238,14 +236,14 @@ def _interval_issues_docs(
             "_id": "%s-%s-%s"
             % (task_id, meter_id, issue.interval_dt.strftime("%Y%m%d%H%M")),
             "_source": {
-                "updated": datetime.now(),
+                "time": datetime.now(),
                 "intervalDateTime": issue.interval_dt,
                 "error": issue.error,
                 "value": issue.value,
-                "accountId": account_hex,
-                "accountName": account_name,
-                "meterId": meter_id,
-                "meterName": meter_name,
+                "account": account_hex,
+                "account_name": account_name,
+                "meter": meter_id,
+                "meter_name": meter_name,
                 "scraper": scraper,
             },
         }
@@ -278,16 +276,12 @@ def index_etl_interval_issues(
     )
 
 
-def index_logs(
-    task_id: str, status: Status,
-):
+def index_logs(task_id: str):
     """Upload the logs for this task to elasticsearch for later analysis."""
-    doc: Dict[str, Any] = {"status": str(status.name)}
-
     try:
         with open(config.LOGPATH, "r") as f:
             log_contents = f.read()
-        doc["log"] = log_contents
+        doc = {"log": log_contents}
         index_etl_run(task_id, doc)
     except:  # noqa E722
         log.exception("Failed to upload run logs to elasticsearch.")

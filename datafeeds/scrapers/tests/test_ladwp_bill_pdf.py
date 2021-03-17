@@ -498,6 +498,40 @@ class TestLADWPParser(TestCase):
             ),
         )
 
+    def test_multi_bill_electric_cost_only(self):
+        expected = [
+            BillingDatum(
+                start=date(2020, 12, 3),
+                end=date(2021, 1, 4),
+                statement=date(2021, 2, 18),
+                cost=132444.44,
+                used=None,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+            BillingDatum(
+                start=date(2021, 1, 5),
+                end=date(2021, 2, 2),
+                statement=date(2021, 2, 18),
+                cost=122005.01,
+                used=None,
+                peak=None,
+                items=None,
+                attachments=None,
+                utility_code=None,
+            ),
+        ]
+        self.assertEqual(
+            expected,
+            parse_pdf(
+                "datafeeds/scrapers/tests/fixtures/ladwp-2020-12-multi.pdf",
+                "1BPMYVL000231",
+                "kw",
+            ),
+        )
+
 
 def test_upload_bills(meter_oid, meter_number, task_id, bills):
     print("Bill results:\n")
