@@ -1,4 +1,3 @@
-import re
 import logging
 from datetime import date, datetime, timedelta
 from typing import List, Optional, Any, Dict
@@ -50,7 +49,7 @@ class DashboardPage(CSSSelectorBasePageObject):
         " a#href-view-24month-history"
     )
     PanelxSel = (
-        "div.billed_history_panel"
+        ".billed_history_panel"
         ".pge_coc-dashboard-viewPay_billed_summary_panel"
         ":not(.hide)"
     )
@@ -106,12 +105,15 @@ class DashboardPage(CSSSelectorBasePageObject):
         click(self._driver, css_selector="#arrowBillPaymentHistory")
 
         self.wait_until_ready(self.BillingHistoryTableSel)
+        self._driver.screenshot(BaseWebScraper.screenshot_path("bill history arrow"))
         wait_for_block_overlay(self._driver)
 
         log.info("Clicking 'view up to..' link")
 
         click(self._driver, css_selector=self.ViewMoreHistorySel)
         self.wait_until_ready(self.BillingHistoryTableSel)
+
+        self._driver.screenshot(BaseWebScraper.screenshot_path("panels"))
 
         panels_count = len(self._driver.find_elements_by_css_selector(self.PanelxSel))
         log.info(f"found {panels_count} panels in billing widget")
@@ -129,7 +131,7 @@ class DashboardPage(CSSSelectorBasePageObject):
                 # skip if is a payment panel
                 continue
 
-            log.debug(f"Processing panel {i} (bill)")
+            log.debug(f"Processing panel {i} (bill): {header_text}")
 
             link_elem = panel.find_element_by_css_selector(
                 "div.pge_coc-dashboard-viewPay_billed_history_panel_viewBill_para_block"
@@ -144,10 +146,13 @@ class DashboardPage(CSSSelectorBasePageObject):
             # bill issued about a week after end date; use this window to match dates
             approx_bill_end = bill_date - timedelta(days=7)
             approx_bill_start = approx_bill_end - timedelta(days=30)
+            log.debug(f"bill date={bill_date}")
 
-            cost = re.search(self.HeaderCostPattern, header_text).group(1)
+            # cost is in second column
+            cost_text = panel.find_element_by_css_selector("td.text-right").text
+            log.debug(f"cost text={cost_text}")
             # cost with $ and commas: $1,234.56 or -$1,234.56
-            cost = float(cost.replace("$", "").replace(",", ""))
+            cost = float(cost_text.replace("$", "").replace(",", ""))
 
             log.info(f"Found bill issued {bill_date} with cost ${cost}")
 
@@ -345,6 +350,7 @@ class PgeBillPdfScraper(BaseWebScraper):
 
         log.info("Visiting main dashboard")
         dashboard_page.visit_dashboard()
+        self.screenshot("dashboard")
 
         # select account
         log.info(f"Visiting account summary for {self._configuration.utility_account}")
