@@ -1,4 +1,5 @@
 import logging
+import traceback
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
@@ -57,6 +58,7 @@ def close_modal(driver) -> bool:
         return True
     except Exception as exc:
         log.info("error closing modal: %s", exc)
+        log.error(traceback.format_exc())
         return False
 
 
