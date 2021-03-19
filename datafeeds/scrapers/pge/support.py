@@ -1,10 +1,11 @@
 import logging
-import traceback
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementClickInterceptedException
+
+from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.util.selenium import scroll_to
 
 log = logging.getLogger(__name__)
@@ -58,7 +59,7 @@ def close_modal(driver) -> bool:
         return True
     except Exception as exc:
         log.info("error closing modal: %s", exc)
-        log.error(traceback.format_exc())
+        driver.screenshot(BaseWebScraper.screenshot_path("modal close failed"))
         return False
 
 

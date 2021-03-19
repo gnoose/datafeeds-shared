@@ -180,7 +180,7 @@ class DashboardPage(CSSSelectorBasePageObject):
             download_dir = "%s/current" % config.WORKING_DIRECTORY
 
             try:
-                self._driver.wait(30).until(
+                self._driver.wait(60).until(
                     file_exists_in_dir(
                         # end pattern with $ to prevent matching filename.crdownload
                         directory=download_dir,
