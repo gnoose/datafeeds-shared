@@ -5,6 +5,7 @@ from io import BytesIO
 from typing import List
 from datetime import timedelta, date
 from dateutil.parser import parse as parse_date
+from dateutil.relativedelta import relativedelta
 
 from datafeeds.common.typing import BillingDatum
 from datafeeds.common.typing import BillingDatumItemsEntry
@@ -53,6 +54,9 @@ def extract_dates(text):
 
     start_date = parse_date(eww_dates[0]).date()
     end_date = parse_date(eww_dates[-1]).date()
+    # dates don't have years; adjust year if needed
+    if start_date > end_date:
+        start_date = start_date - relativedelta(years=1)
     return start_date, end_date
 
 
@@ -69,10 +73,9 @@ def extract_line_items(text) -> List[BillingDatumItemsEntry]:
         r"Demand(?P<demand_total>[-\$\d,\.]+)"
         r"(Power Factor Charge(?P<pfc_total>[-\$\d,\.]+))?"
         r"Primary Voltage Discount(?P<pvd_total>[-\$\d,\.]+)"
-        r"Public Benefit Charge(?P<pbc_total>[-\$\d,\.]+)"
+        r"Public Benefit Charge(?P<pbc_total>[-\$\d,\.]+).*?"
         r"State Surcharge(?P<ss_total>[-\$\d,\.]+)"
     )
-
     match = re.search(line_items_regex, line_items_text)
 
     charge_total = float(match.group("charge_total").replace(",", "").replace("$", ""))

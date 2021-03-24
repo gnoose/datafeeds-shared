@@ -5,6 +5,7 @@ from typing import Optional, Tuple, List
 from datetime import date
 
 from dateutil.parser import parse as parse_date
+from selenium.common.exceptions import TimeoutException
 
 from datafeeds import config
 from datafeeds.common.batch import run_datafeed
@@ -36,6 +37,10 @@ class SVPBillingConfiguration(Configuration):
 class ViewBillPage:
     def __init__(self, driver):
         self.driver = driver
+
+    def switch_accounts(self):
+        self.driver.find_element_by_id("switchAccounts").click()
+        return SelectAccountPage(self.driver)
 
     def get_available_bill_dates(self) -> List[date]:
         """Get all bill dates available.in the "Bill Date" dropdown"""
@@ -83,7 +88,7 @@ class ViewBillPage:
 
         # wait for "View Bill" section to load
         self.driver.wait().until(
-            EC.presence_of_element_located((By.XPATH, '//div[text()="View Bill"]'))
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#billDate"))
         )
 
         # loop through dates available in the Bill Date dropdown
@@ -121,10 +126,42 @@ class LoginPage:
         form.find_element_by_xpath("//input[@name='password']").send_keys(password)
         form.find_element_by_id("submit").click()
 
-        self.driver.wait().until(
-            EC.presence_of_element_located((By.XPATH, '//a[text()="Sign out"]'))
-        )
+        try:
+            self.driver.wait(5).until(
+                EC.presence_of_element_located((By.XPATH, '//a[text()="Sign out"]'))
+            )
+        except TimeoutException:
+            log.info("login error; trying a reload")
+            self.driver.screenshot(BaseWebScraper.screenshot_path(f"login timeout"))
+            self.driver.navigate().refresh()
+            self.driver.wait(5).until(
+                EC.presence_of_element_located((By.XPATH, '//a[text()="Sign out"]'))
+            )
+        return ViewBillPage(self.driver)
 
+
+class SelectAccountPage:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def select_account(self, utility_account_id: str) -> ViewBillPage:
+        log.info("clicking account %s" % utility_account_id)
+        self.driver.wait().until(
+            EC.presence_of_element_located(
+                (By.XPATH, '//td[@title="%s"]/..' % utility_account_id)
+            )
+        )
+        row = self.driver.find_element_by_xpath(
+            '//td[@title="%s"]/..' % utility_account_id
+        )
+        row.find_element_by_css_selector('input[type="checkbox"]').click()
+        self.driver.find_element_by_id("switchTo").click()
+        self.driver.wait(10).until(
+            EC.invisibility_of_element_located((By.CSS_SELECTOR, ".ui-dialog"))
+        )
+        self.driver.get(
+            "https://mua.santaclaraca.gov/CC/connect/users/bill/views/ViewBill.xml"
+        )
         return ViewBillPage(self.driver)
 
 
@@ -152,6 +189,9 @@ class SVPBillingScraper(BaseWebScraper):
 
         log.info("Login successful. Loading bill history.")
         self.screenshot("post_login")
+        accounts_page = bill_page.switch_accounts()
+        accounts_page.select_account(self.utility_account_id)
+
         results = bill_page.download_bills(self.start_date, self.end_date)
         log.info("Obtained %s bill PDF files." % (len(results)))
 
