@@ -145,7 +145,10 @@ class IndexTests(unittest.TestCase):
         task_id = "abc123"
         index.set_interval_fields(task_id, [])
         self.assertEqual(
-            {"updatedDays": 0,}, index_etl_run.call_args[0][1],
+            {
+                "updatedDays": 0,
+            },
+            index_etl_run.call_args[0][1],
         )
         # with users and readings
         today = date.today()

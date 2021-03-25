@@ -76,7 +76,10 @@ def verify_bills(meter_oid: int, billing_data: BillingData) -> BillingData:
 
 
 def upload_bills(
-    meter_oid: int, service_id: str, task_id: str, billing_data: BillingData,
+    meter_oid: int,
+    service_id: str,
+    task_id: str,
+    billing_data: BillingData,
 ) -> Status:
     if config.enabled("PLATFORM_UPLOAD"):
         log.info("Uploading bills to platform via HTTP request.")
@@ -148,7 +151,11 @@ def upload_readings(
     return Status.COMPLETED
 
 
-def attach_bill_pdfs(meter_oid: int, task_id: str, pdfs: List[BillPdf],) -> Status:
+def attach_bill_pdfs(
+    meter_oid: int,
+    task_id: str,
+    pdfs: List[BillPdf],
+) -> Status:
     """Attach a list of bill PDF files uploaded to S3 to bill records."""
     if not pdfs:
         return Status.COMPLETED

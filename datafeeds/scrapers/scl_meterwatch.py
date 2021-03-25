@@ -58,8 +58,7 @@ DST_DOUBLE_COUNTED = [
 
 
 def fall_dst_hours() -> List[datetime]:
-    """Returns datetimes where data is double counted due to Fall DST.
-    """
+    """Returns datetimes where data is double counted due to Fall DST."""
     dst_double_count = []
     for dst_date in DST_ENDS:
         for dst_time in DST_DOUBLE_COUNTED:
@@ -246,8 +245,7 @@ class MeterDataPage(CSSSelectorBasePageObject):
         return start_date, end_date
 
     def enter_dates(self, start_date: date, end_date: date):
-        """Set dates in From Date, To Date (04/01/2020 format)
-        """
+        """Set dates in From Date, To Date (04/01/2020 format)"""
 
         # clear date fields first, in case there's residual text from previous account here
         self.find_element(self.DateAvailableFromInputSel).clear()
@@ -317,9 +315,9 @@ class MeterDataPage(CSSSelectorBasePageObject):
                 )
             )
         except Exception:
-            raise Exception(f"Unable to download file...")
+            raise Exception("Unable to download file...")
 
-        log.info("Download Complete")
+        log.info("Download complete")
 
         csv_file_path = os.path.join(download_dir, meter_number + ".csv")
 

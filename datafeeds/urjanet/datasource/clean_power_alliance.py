@@ -19,8 +19,7 @@ from datafeeds.urjanet.transformer.clean_power_alliance import (
 
 
 class SCECleanPowerAllianceDatasource(UrjanetPyMySqlDataSource):
-    """Load Clean Power Alliance CCA charges that were delivered on an SCE bill from an Urjanet database
-    """
+    """Load Clean Power Alliance CCA charges that were delivered on an SCE bill from an Urjanet database"""
 
     def __init__(
         self,
@@ -45,7 +44,7 @@ class SCECleanPowerAllianceDatasource(UrjanetPyMySqlDataSource):
         return account_number.replace("-", "")
 
     def load_accounts(self) -> List[Account]:
-        """ We are pulling Clean Power Alliance charges off of an SCE bill.
+        """We are pulling Clean Power Alliance charges off of an SCE bill.
 
         The AccountNumber in urjanet is the UtilityService.gen_service_id in our db.
         """
@@ -60,8 +59,7 @@ class SCECleanPowerAllianceDatasource(UrjanetPyMySqlDataSource):
         return [UrjanetPyMySqlDataSource.parse_account_row(row) for row in result_set]
 
     def load_meters(self, account_pk: int) -> List[UrjaMeter]:
-        """Load all electric meters for an account
-        """
+        """Load all electric meters for an account"""
 
         query = "SELECT * FROM Meter WHERE ServiceType in ('electric') AND AccountFK=%s"
         result_set = self.fetch_all(query, account_pk)

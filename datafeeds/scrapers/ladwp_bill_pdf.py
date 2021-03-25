@@ -101,7 +101,7 @@ def get_pdf_text(filename) -> str:
 
 def kw_regexes(meter_number: str):
     return {
-        "meter_number": fr"METER NUMBER  (.+)  \d+",
+        "meter_number": r"METER NUMBER  (.+)  \d+",
         "billing_period": r"BILLING PERIOD  (\d+/\d+/\d+) - (\d+/\d+/\d+)",
         "billing_section": (
             r"(?:[\s\S]*)"  # This ensures that we only match the BILLING PERIOD occurrence that is closest to METER NUMBER
@@ -222,7 +222,10 @@ def _multi_period(
     # We're only interested in the "sub" billing periods; delete the first billing
     # period line from the text, so that regexes["sub_billing_period"] doesn't match it.
     bill_data_section = re.sub(
-        regexes["billing_period"], "", bill_data_section, count=1,
+        regexes["billing_period"],
+        "",
+        bill_data_section,
+        count=1,
     )
     bill_data_subsections = re.finditer(
         regexes["sub_billing_period"], bill_data_section
@@ -376,7 +379,7 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
     bills: List[BillingDatum] = []
     regexes = {
         "bill_date": r"BILL DATE  (.+)",
-        "meter_number": fr"METER NUMBER  (.+)  \d+",
+        "meter_number": r"METER NUMBER  (.+)  \d+",
         "billing_period": r"BILLING PERIOD  (?:\d+/\d+/\d+) - (?:\d+/\d+/\d+)",
         "water_billing_section": fr"SA # : {meter_number}[\s\S]+?Total Water Charges",
         "sub_billing_period": (
@@ -467,7 +470,10 @@ def parse_ccf_bill(meter_number: str, pdf_text: str) -> List[BillingDatum]:
             # We're only interested in the "sub" billing periods, delete the first billing
             # period line from the text, so that regexes["billing_period"] doesn't match it.
             bill_data_section_text = re.sub(
-                regexes["billing_period"], "", bill_data_section_text, count=1,
+                regexes["billing_period"],
+                "",
+                bill_data_section_text,
+                count=1,
             )
             bill_data_subsections = re.split(
                 regexes["billing_period"], bill_data_section_text

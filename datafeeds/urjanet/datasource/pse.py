@@ -70,7 +70,9 @@ def datafeed(
         datasource,
         params,
         PseDatasource(
-            meter.utility_service.utility, meter.utility_account_id, meter_number,
+            meter.utility_service.utility,
+            meter.utility_account_id,
+            meter_number,
         ),
         PseUrjanetTransformer(),
         task_id=task_id,

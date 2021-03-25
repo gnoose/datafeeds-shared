@@ -291,7 +291,8 @@ class BloomScraper(BaseWebScraper):
         # The site seems to have changed at some point - all options are now enabled
         # However, the scraper fails without this step
         extract_page.handle_multiselect(
-            extract_page.MetricSelect, "Fuel Cell Energy Generation",
+            extract_page.MetricSelect,
+            "Fuel Cell Energy Generation",
         )
 
         extract_page.handle_radio_buttons(extract_page.IntervalRadio)

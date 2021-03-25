@@ -30,7 +30,7 @@ subparser keyed by `__cli_key__`. The `transform_urja_json.py` script will also 
 attribute, but currently does not add any additional arguments.
 """
 
-from typing import Dict, Type
+from typing import Dict, Type, Optional
 
 from datafeeds.urjanet.datasource.american import AmericanWaterDatasource
 from datafeeds.urjanet.datasource.austin_tx import AustinTXDatasource
@@ -112,7 +112,7 @@ class RegisteredCliHook(type):
 
 
 class DatasourceCli(metaclass=RegisteredCliHook):
-    __cli_key__ = None
+    __cli_key__: Optional[str] = None
 
     def add_subparser(self, subparsers):
         sub = subparsers.add_parser(self.__cli_key__)
@@ -219,7 +219,8 @@ class TriCountyCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            TriCountyDatasource(self.utility(), args.account_number, args.said), conn,
+            TriCountyDatasource(self.utility(), args.account_number, args.said),
+            conn,
         )
 
     def make_transformer(self):
@@ -400,7 +401,8 @@ class FosterCityWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            FosterCityWaterDatasource(self.utility(), args.account_number), conn,
+            FosterCityWaterDatasource(self.utility(), args.account_number),
+            conn,
         )
 
     def make_transformer(self):
@@ -415,7 +417,8 @@ class ColleyvilleWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            ColleyvilleWaterDatasource(self.utility(), args.account_number), conn,
+            ColleyvilleWaterDatasource(self.utility(), args.account_number),
+            conn,
         )
 
     def make_transformer(self):
@@ -445,7 +448,8 @@ class FortWorthWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            FortWorthWaterDatasource(self.utility(), args.account_number), conn,
+            FortWorthWaterDatasource(self.utility(), args.account_number),
+            conn,
         )
 
     def make_transformer(self):
@@ -538,7 +542,8 @@ class IrvineRanchWaterCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            IrvineRanchWaterDatasource(self.utility(), args.account_number), conn,
+            IrvineRanchWaterDatasource(self.utility(), args.account_number),
+            conn,
         )
 
     def make_transformer(self):
@@ -568,7 +573,8 @@ class MountainViewCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            MountainViewDatasource(self.utility(), args.account_number), conn,
+            MountainViewDatasource(self.utility(), args.account_number),
+            conn,
         )
 
     def make_transformer(self):
@@ -583,7 +589,8 @@ class PleasantonCli(DatasourceCli):
 
     def make_datasource(self, conn, args):
         return self.setup_datasource(
-            PleasantonDatasource(self.utility(), args.account_number), conn,
+            PleasantonDatasource(self.utility(), args.account_number),
+            conn,
         )
 
     def make_transformer(self):

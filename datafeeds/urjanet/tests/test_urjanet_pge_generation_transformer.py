@@ -37,7 +37,7 @@ class TestUrjanetPacGeGenerationTransformer(test_util.UrjaFixtureText):
 
     def test_pge_generation_esp_customer_mismatch(self):
         """This tests third party charges where the ESP customer number (where the generation charges are logged),
-         does not match the T&D SAID"""
+        does not match the T&D SAID"""
 
         self.pge_fixture_test("input_7639827457.json", "expected_7639827457.json")
 
@@ -48,15 +48,15 @@ class TestUrjanetPacGeGenerationTransformer(test_util.UrjaFixtureText):
 
     def test_pge_generation_missing_usages(self):
         """This tests a meter with a bill where the usage is not available in urja xml but the charge data
-         still exists. Because billing streams will default to using the T&D usage, it is not critical that usage
-         is returned on this partial. Returns the charge, rather than returning a billing gap.
-         """
+        still exists. Because billing streams will default to using the T&D usage, it is not critical that usage
+        is returned on this partial. Returns the charge, rather than returning a billing gap.
+        """
         self.pge_fixture_test(
             "input_4504982154174952.json", "expected_4504982154174952.json"
         )
 
     def test_pge_generation_one_day_cca_bills(self):
-        """ There is a one-day CCA bill in this data - original dates 11/1/2017 - 11/2/2017.
+        """There is a one-day CCA bill in this data - original dates 11/1/2017 - 11/2/2017.
         End date is backed up, because there's an overlap, which causes a one day IntervalTree.
         Start date must also be backed up, so final dates: 10-31 - 11/1.
 

@@ -245,7 +245,7 @@ class LoginPage(CSSSelectorBasePageObject):
             log.info("clicking Accept All Cookies")
             click(self._driver, css_selector="#onetrust-accept-btn-handler")
         except TimeoutException:
-            log.info(f"couldn't click accept cookies, continuing")
+            log.info("couldn't click accept cookies, continuing")
 
         self.wait_until_ready(self.UsernameFieldSelector)
 
@@ -258,7 +258,7 @@ class LoginPage(CSSSelectorBasePageObject):
             log.info("waiting for login to complete")
             wait_for_account(self._driver)
         except TimeoutException as exc:
-            log.info(f"error logging in...")
+            log.info("error logging in...")
             if self.shows_outage():
                 log.info("Shows outage page")
                 self.click_through_outage()
@@ -364,7 +364,9 @@ class PgeBillPdfScraper(BaseWebScraper):
         ).date()
         # download bills
         pdfs = dashboard_page.download_bills(
-            latest, self._configuration.utility_account, self._configuration.utility,
+            latest,
+            self._configuration.utility_account,
+            self._configuration.utility,
         )
         # set latest statement date
         if pdfs:

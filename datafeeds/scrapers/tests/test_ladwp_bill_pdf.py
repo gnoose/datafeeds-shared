@@ -295,7 +295,8 @@ class TestLADWPParser(TestCase):
             ),
         ]
         self.assertEqual(
-            expected, parse_pdf(filename, "2463041637", "ccf"),
+            expected,
+            parse_pdf(filename, "2463041637", "ccf"),
         )
         # fire
         expected = [
@@ -312,7 +313,8 @@ class TestLADWPParser(TestCase):
             ),
         ]
         self.assertEqual(
-            expected, parse_pdf(filename, "2463041281", "ccf"),
+            expected,
+            parse_pdf(filename, "2463041281", "ccf"),
         )
 
     def test_alt_regexp(self):
@@ -549,7 +551,11 @@ def test_upload_bills(meter_oid, meter_number, task_id, bills):
 
 
 def test_scraper(
-    meter_number: str, start_date: date, end_date: date, username: str, password: str,
+    meter_number: str,
+    start_date: date,
+    end_date: date,
+    username: str,
+    password: str,
 ):
     configuration = LADWPBillPdfConfiguration(
         meter_number=meter_number,

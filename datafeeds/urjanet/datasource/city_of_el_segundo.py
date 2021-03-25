@@ -54,7 +54,8 @@ def datafeed(
         datasource,
         params,
         CityOfElSegundoDatasource(
-            utility_service.utility, utility_service.utility_account_id,
+            utility_service.utility,
+            utility_service.utility_account_id,
         ),
         CityOfElSegundoTransformer(),
         task_id=task_id,

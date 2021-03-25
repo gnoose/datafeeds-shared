@@ -295,7 +295,9 @@ class LADWPTransformer(UrjanetGridiumTransformer):
             # but don't create single day periods
             if (end_date - start_date).days > 45:
                 log.debug(
-                    "Splitting long billing period: %s - %s", start_date, end_date,
+                    "Splitting long billing period: %s - %s",
+                    start_date,
+                    end_date,
                 )
                 for meter in account.meters:
                     seen: Set[Tuple] = set()
@@ -333,7 +335,10 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                         log.debug(
                             "Adding long billing period from charges: account={} meter={}, "
                             "start={}, end={}".format(
-                                account.PK, meter.PK, start_date, end_date,
+                                account.PK,
+                                meter.PK,
+                                start_date,
+                                end_date,
                             )
                         )
                         # copy the account and set the date range on the meter
@@ -352,7 +357,9 @@ class LADWPTransformer(UrjanetGridiumTransformer):
                     )
                 )
                 bill_history.add(
-                    start_date, end_date, self.billing_period(account),
+                    start_date,
+                    end_date,
+                    self.billing_period(account),
                 )
 
         # Adjust date endpoints to avoid 1-day overlaps

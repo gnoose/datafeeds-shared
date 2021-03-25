@@ -63,10 +63,13 @@ class ViewBillPage:
         download_dir = config.WORKING_DIRECTORY + "/current"
         try:
             filename = self.driver.wait(30).until(
-                file_exists_in_dir(directory=download_dir, pattern=r"^document.pdf$",)
+                file_exists_in_dir(
+                    directory=download_dir,
+                    pattern=r"^document.pdf$",
+                )
             )
         except Exception:
-            raise Exception(f"Unable to download file...")
+            raise Exception("Unable to download file...")
 
         curr_filepath = os.path.join(download_dir, filename)
 
@@ -107,7 +110,7 @@ class ViewBillPage:
             self.driver.get(download_url)
 
             file_path = self.wait_for_bill_download(trans_date)
-            log.info(f"Download Complete")
+            log.info(f"Download complete: {file_path}")
             bills.append((_date, file_path))
 
         return bills
@@ -132,7 +135,7 @@ class LoginPage:
             )
         except TimeoutException:
             log.info("login error; trying a reload")
-            self.driver.screenshot(BaseWebScraper.screenshot_path(f"login timeout"))
+            self.driver.screenshot(BaseWebScraper.screenshot_path("login timeout"))
             self.driver.navigate().refresh()
             self.driver.wait(5).until(
                 EC.presence_of_element_located((By.XPATH, '//a[text()="Sign out"]'))

@@ -476,10 +476,10 @@ class Workflow(ModelMixin, Base):
                 proposed == State.refresh_requested
                 or proposed == State.deprovisioning_requested
             )
-
         return (
             current == proposed
-            or current.value + 1 == proposed.value
+            # .value looks like a tuple to mypy
+            or current.value + 1 == proposed.value  # type: ignore
             or proposed == State.failed
         )
 
@@ -542,7 +542,7 @@ class IncompleteProvisioningException(Exception):
 
 class Provisioning(ModelMixin, Base):
     """A snapmeter account provisioning task consists of one or more workflows, one for each credential the user
-     supplied. The meters discovered in each workflow will get added to the same final Snapmeter account."""
+    supplied. The meters discovered in each workflow will get added to the same final Snapmeter account."""
 
     # Constants for interfacing with Elasticsearch
     es_index = "snapmeter-provisioning"

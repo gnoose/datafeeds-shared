@@ -333,8 +333,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
         return service_ids
 
     def load_meters(self, account_pk: int) -> List[Meter]:
-        """Load meters based on all SAID's we have on record, and any ESP Customer Numbers found.
-        """
+        """Load meters based on all SAID's we have on record, and any ESP Customer Numbers found."""
         query = """
            SELECT *
            FROM xmlmeter

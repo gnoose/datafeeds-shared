@@ -8,8 +8,8 @@ from jsonschema import validate as js_validate, ValidationError, FormatChecker
 from addict import Dict
 
 
-KwhInterval = namedtuple("Interval", "start, end, kwh")
-KwInterval = namedtuple("Interval", "start, end, kw")
+KwhInterval = namedtuple("KwhInterval", "start, end, kwh")
+KwInterval = namedtuple("KwInterval", "start, end, kw")
 
 
 class JsonParseFailure(Exception):

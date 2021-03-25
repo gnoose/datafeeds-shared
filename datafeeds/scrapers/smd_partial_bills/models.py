@@ -258,9 +258,9 @@ class Bill(ModelMixin, Base):
             return None
 
         indicators_found = any(
-            l.get("note", "").lower()
+            line.get("note", "").lower()
             in ("generation credit", "power cost incentive adjustment", "pcia")
-            for l in self._line_items or []
+            for line in self._line_items or []
         )
 
         if self.is_nem and not indicators_found:

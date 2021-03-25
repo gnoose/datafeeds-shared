@@ -54,7 +54,8 @@ def datafeed(
         datasource,
         params,
         _UtilityName_Datasource(
-            utility_service.utility, utility_service.utility_account_id,
+            utility_service.utility,
+            utility_service.utility_account_id,
         ),
         _UtilityName_Transformer(),
         task_id=task_id,

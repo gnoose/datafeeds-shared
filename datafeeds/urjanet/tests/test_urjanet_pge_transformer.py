@@ -49,7 +49,9 @@ class TestUrjanetPacGeTransformer(test_util.UrjaFixtureText):
     def test_3140_kearney_fixture(self):
         """3140 is a real meter that exhibits edge cases of CCA billing"""
         self.pge_fixture_test(
-            "3140_input.json", "3140_expected.json", start_date=date(2015, 1, 1),
+            "3140_input.json",
+            "3140_expected.json",
+            start_date=date(2015, 1, 1),
         )
 
     def test_lamesa_fixture(self):

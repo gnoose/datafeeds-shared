@@ -36,5 +36,7 @@ class SanFranciscoWaterBillingPeriod(GenericBillingPeriod):
 
 class SanFranciscoWaterTransformer(UrjanetGridiumTransformer):
     @staticmethod
-    def billing_period(account: Account,) -> SanFranciscoWaterBillingPeriod:
+    def billing_period(
+        account: Account,
+    ) -> SanFranciscoWaterBillingPeriod:
         return SanFranciscoWaterBillingPeriod(account)

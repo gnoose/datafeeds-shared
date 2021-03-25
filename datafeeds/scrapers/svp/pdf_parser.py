@@ -179,7 +179,14 @@ def process_pdf(
     # adjust end date because SVP bills overlap on start/end dates
     end_date = end_date - timedelta(days=1)
     line_items: List[BillingDatumItemsEntry] = extract_line_items(text)
-    key = hash_bill(service_id, start_date, end_date, cost, demand, used,)
+    key = hash_bill(
+        service_id,
+        start_date,
+        end_date,
+        cost,
+        demand,
+        used,
+    )
     with open(pdf_filename, "rb") as pdf_data:
         attachment_entry = upload_bill_to_s3(
             BytesIO(pdf_data.read()),

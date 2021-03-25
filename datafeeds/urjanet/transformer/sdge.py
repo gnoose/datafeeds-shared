@@ -182,7 +182,9 @@ class SDGETransformer(UrjanetGridiumTransformer):
                     )
                 )
                 bill_history.add(
-                    start, end, SDGEBillingPeriod(account),
+                    start,
+                    end,
+                    SDGEBillingPeriod(account),
                 )
 
         return bill_history

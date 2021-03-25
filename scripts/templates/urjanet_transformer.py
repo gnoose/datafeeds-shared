@@ -11,5 +11,7 @@ class _UtilityName_BillingPeriod(GenericBillingPeriod):
 
 class _UtilityName_Transformer(UrjanetGridiumTransformer):
     @staticmethod
-    def billing_period(account: Account,) -> _UtilityName_BillingPeriod:
+    def billing_period(
+        account: Account,
+    ) -> _UtilityName_BillingPeriod:
         return _UtilityName_BillingPeriod(account)

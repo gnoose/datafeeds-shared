@@ -148,7 +148,9 @@ def log_generic_billing_periods(bill_history: DateIntervalTree) -> None:
 
 class UrjanetGridiumTransformer:
     @staticmethod
-    def filtered_accounts(urja_data: UrjanetData,) -> List[Account]:
+    def filtered_accounts(
+        urja_data: UrjanetData,
+    ) -> List[Account]:
         return [
             account
             for account in urja_data.accounts

@@ -54,7 +54,8 @@ def datafeed(
         datasource,
         params,
         ContraCostaWaterDatasource(
-            utility_service.utility, utility_service.utility_account_id,
+            utility_service.utility,
+            utility_service.utility_account_id,
         ),
         ContraCostaWaterTransformer(),
         task_id=task_id,

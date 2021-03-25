@@ -180,7 +180,8 @@ def update_bill_pdf_range(task_id: str, meter_oid: int, pdfs: List[BillPdf]):
         return
     doc: Dict[str, Any] = {}
     billing = BillingRange(
-        start=min([bill.start for bill in pdfs]), end=max([bill.end for bill in pdfs]),
+        start=min([bill.start for bill in pdfs]),
+        end=max([bill.end for bill in pdfs]),
     )
     doc.update({"billingFrom": billing.start, "billingTo": billing.end})
     index_etl_run(task_id, doc)

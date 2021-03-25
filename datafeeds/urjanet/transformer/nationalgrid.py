@@ -26,7 +26,9 @@ class NationalGridBillingPeriod(GenericBillingPeriod):
 
 class NationalGridTransformer(UrjanetGridiumTransformer):
     @staticmethod
-    def billing_period(account: Account,) -> NationalGridBillingPeriod:
+    def billing_period(
+        account: Account,
+    ) -> NationalGridBillingPeriod:
         return NationalGridBillingPeriod(account)
 
     @staticmethod

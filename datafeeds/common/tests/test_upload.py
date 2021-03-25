@@ -127,7 +127,9 @@ class TestPartialBillProcessor(unittest.TestCase):
         self.assertEqual(original_bill.peak, float(billing_data[0].peak))
         self.assertIsNone(original_bill.third_party_expected, "default value")
         self.assertEqual(
-            original_bill.utility_code, None, "utility code is None if None scraped",
+            original_bill.utility_code,
+            None,
+            "utility code is None if None scraped",
         )
 
         # No new partial bills have arrived, so no changes made

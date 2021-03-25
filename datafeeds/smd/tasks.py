@@ -26,7 +26,9 @@ TASK_ID = os.environ.get("AWS_BATCH_JOB_ID", str(uuid.uuid4()))
 
 
 def index_provisioning_operation(
-    workflow_oid: int, operation: str, status: Status,
+    workflow_oid: int,
+    operation: str,
+    status: Status,
 ):
     """Upload the logs for this task to elasticsearch for later analysis."""
     es = _get_es_connection()

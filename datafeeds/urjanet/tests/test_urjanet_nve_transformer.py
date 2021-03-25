@@ -36,8 +36,7 @@ class TestUrjanetNVEnergyTransformer(test_util.UrjaFixtureText):
         )
 
     def test_nve_usages(self):
-        """Assert that kVarh values are not getting summed in with usages
-        """
+        """Assert that kVarh values are not getting summed in with usages"""
         self.nve_test(
             "input_1000153730007201599.json", "expected_1000153730007201599.json"
         )

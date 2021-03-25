@@ -115,7 +115,8 @@ class MeterReading(ModelMixin, Base):
         frozen: Set[date] = set()
         current: Dict[date, MeterReading] = {}
         query = db.session.query(MeterReading).filter(
-            MeterReading.meter == meter_id, MeterReading.occurred.in_(tuple(dates)),
+            MeterReading.meter == meter_id,
+            MeterReading.occurred.in_(tuple(dates)),
         )
         for row in query:
             if row.frozen:

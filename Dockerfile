@@ -1,4 +1,4 @@
-FROM selenium/standalone-chrome:3.141.59-20200525
+FROM selenium/standalone-chrome:3.141.59-20210311
 
 RUN sudo apt-get update && sudo apt-get install -y python3-pip
 RUN pip3 install -U pip

@@ -11,5 +11,7 @@ class DirectEnergyBillingPeriod(GenericBillingPeriod):
 
 class DirectEnergyTransformer(UrjanetGridiumTransformer):
     @staticmethod
-    def billing_period(account: Account,) -> DirectEnergyBillingPeriod:
+    def billing_period(
+        account: Account,
+    ) -> DirectEnergyBillingPeriod:
         return DirectEnergyBillingPeriod(account)
