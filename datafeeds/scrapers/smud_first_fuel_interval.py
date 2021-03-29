@@ -211,7 +211,9 @@ class SMUDFirstFuelScraper(BaseWebScraper):
         state_machine = PageStateMachine(self._driver)
 
         state_machine.add_state(
-            name="init", action=self.init_action, transitions=["login"],
+            name="init",
+            action=self.init_action,
+            transitions=["login"],
         )
 
         state_machine.add_state(

@@ -486,8 +486,7 @@ class CSSSelectorBasePageObject(object):
         error_cls=None,
         error_msg: Optional[str] = None,
     ):
-        """Convenience method for waiting until specific text is present in the element.
-        """
+        """Convenience method for waiting until specific text is present in the element."""
         log.info("Waiting for {} text to load.".format(self.__class__.__name__))
 
         condition = EC.text_to_be_present_in_element((By.CSS_SELECTOR, selector), text)

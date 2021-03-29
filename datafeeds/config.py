@@ -19,7 +19,7 @@ DATAFEEDS_ENVIRONMENT = os.environ.get("DATAFEEDS_ENVIRONMENT", "local").lower()
 
 # Is datafeeds running in a unit test framework?
 # (Used to simplify DB transaction management and rollback commits.)
-UNDER_TEST: bool = (os.environ.get("DATAFEEDS_UNDER_TEST", "True").lower() == "true")
+UNDER_TEST: bool = os.environ.get("DATAFEEDS_UNDER_TEST", "True").lower() == "true"
 
 # Should datafeeds use private fixtures downloaded from S3 to test? If so, where should they be downloaded to?
 #
@@ -55,7 +55,7 @@ POSTGRES_URL: str = os.environ.get(
 )
 
 # Should every SQL query run by datafeeds be echoed to the console?
-POSTGRES_ECHO: bool = (os.environ.get("POSTGRES_ECHO", "False").lower() == "true")
+POSTGRES_ECHO: bool = os.environ.get("POSTGRES_ECHO", "False").lower() == "true"
 
 # Which S3 bucket should store bill pdfs acquired during the scraper process?
 # (Webapps and datafeeds share access to this resource.)
@@ -132,9 +132,10 @@ VALID_FEATURE_FLAGS: Set[str] = {
     "ES_INDEX_JOBS",
     "ES_INDEX_LOGS",
 }
-FEATURE_FLAGS: Set[str] = set(
-    u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(",")
-) & VALID_FEATURE_FLAGS
+FEATURE_FLAGS: Set[str] = (
+    set(u.strip().upper() for u in os.environ.get("FEATURE_FLAGS", "").split(","))
+    & VALID_FEATURE_FLAGS
+)
 
 
 def enabled(feature: str) -> bool:
@@ -152,9 +153,9 @@ LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 DEPENDENCY_LOG_LEVEL = os.environ.get("DEPENDENCY_LOG_LEVEL", "WARN")
 
 # Are we running the web scraper in headless mode?
-USE_VIRTUAL_DISPLAY: bool = os.environ.get(
-    "USE_VIRTUAL_DISPLAY", "false"
-).lower() == "true"
+USE_VIRTUAL_DISPLAY: bool = (
+    os.environ.get("USE_VIRTUAL_DISPLAY", "false").lower() == "true"
+)
 
 SLACK_TOKEN = os.environ.get("SLACK_TOKEN", None)
 

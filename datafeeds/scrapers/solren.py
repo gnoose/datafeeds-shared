@@ -395,8 +395,10 @@ class SolrenScraper(BaseWebScraper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = "Solren"
-        self.site_url = "https://www.solrenview.com/SolrenView/mainFr.php?siteId={}".format(
-            self._configuration.site_id
+        self.site_url = (
+            "https://www.solrenview.com/SolrenView/mainFr.php?siteId={}".format(
+                self._configuration.site_id
+            )
         )
         self.install_date = None
         self.readings = {}

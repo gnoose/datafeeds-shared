@@ -23,5 +23,7 @@ class ConstellationBillingPeriod(GenericBillingPeriod):
 
 class ConstellationTransformer(UrjanetGridiumTransformer):
     @staticmethod
-    def billing_period(account: Account,) -> ConstellationBillingPeriod:
+    def billing_period(
+        account: Account,
+    ) -> ConstellationBillingPeriod:
         return ConstellationBillingPeriod(account)

@@ -251,7 +251,8 @@ def datafeed(
     metascraper=False,
 ) -> Status:
     configuration = SceReactEnergyManagerIntervalConfiguration(
-        service_id=meter.service_id, metascraper=metascraper,
+        service_id=meter.service_id,
+        metascraper=metascraper,
     )
 
     return run_datafeed(

@@ -18,7 +18,9 @@ class CityOfBellevueBillingPeriod(GenericWaterBillingPeriod):
 
 class CityOfBellevueTransformer(GenericWaterTransformer):
     @staticmethod
-    def billing_period(account: Account,) -> CityOfBellevueBillingPeriod:
+    def billing_period(
+        account: Account,
+    ) -> CityOfBellevueBillingPeriod:
         return CityOfBellevueBillingPeriod(account)
 
     def get_account_period(self, account: Account) -> Tuple[date, date]:

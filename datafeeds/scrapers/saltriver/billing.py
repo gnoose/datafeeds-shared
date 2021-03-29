@@ -14,7 +14,8 @@ from datafeeds.models import (
 
 class SaltRiverBillingConfiguration(Configuration):
     def __init__(
-        self, account_id: str,
+        self,
+        account_id: str,
     ):
         super().__init__(scrape_bills=True, scrape_readings=False)
 

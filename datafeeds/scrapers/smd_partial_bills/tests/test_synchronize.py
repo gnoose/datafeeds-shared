@@ -79,8 +79,8 @@ FIXTURE_03 = """
 def from_fixture(fixture: str) -> List[SmdBill]:
     results = []
     lines = fixture.split("\n")
-    for l in lines:
-        tokens = l.split("|")
+    for line in lines:
+        tokens = line.split("|")
         if len(tokens) != 6:
             continue
         results.append(
@@ -181,7 +181,9 @@ class TestSynchronizePrimitives(TestCase):
         """The synchronization task can select relevant usage points from customer info based on service ID."""
         db.session.add(
             MeterDataSource(
-                meter=self.meter, name="share-my-data", meta={"usage_point": "FGHIJ"},
+                meter=self.meter,
+                name="share-my-data",
+                meta={"usage_point": "FGHIJ"},
             )
         )
         db.session.flush()

@@ -19,3 +19,8 @@ class SetupBase(unittest.TestCase):
         text = pdfparser.pdf_to_str("private_fixtures/svp_bill_2.pdf")
         data = pdf_parser.extract_line_items(text)
         self.assertEqual(data[3][3], None)
+
+    def test_additional_line_items(self):
+        text = pdfparser.pdf_to_str("private_fixtures/svp_bill_3.pdf")
+        data = pdf_parser.extract_line_items(text)
+        self.assertEqual(data[0].total, 46.34)

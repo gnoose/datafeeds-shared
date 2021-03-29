@@ -47,10 +47,10 @@ def disable_logins(acct_ds: SnapmeterAccountDataSource):
         )
     if not meter_list:
         return
-    msg = (
-        'Login failed for <a href="https://snapmeter.com/admin/accounts/%s/utility-logins">%s'
-        "</a>; disabled scrapers for meters:\n%s"
-        % (acct_ds.account.hex_id, acct_ds.name, "\n".join(meter_list),)
+    msg = 'Login failed for <a href="https://snapmeter.com/admin/accounts/%s/utility-logins">%s' "</a>; disabled scrapers for meters:\n%s" % (
+        acct_ds.account.hex_id,
+        acct_ds.name,
+        "\n".join(meter_list),
     )
     post_slack_message(
         msg, "#scraper-logins", ":exclamation:", username="Scraper monitor"

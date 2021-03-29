@@ -39,13 +39,13 @@ log = logging.getLogger(__name__)
 # A model of the basic usage info exposed for service accounts from the landing page
 # of SCE's website
 SimpleUsageInfo = collections.namedtuple(
-    "UsageInfo", ["start_date", "end_date", "usage", "cost"]
+    "SimpleUsageInfo", ["start_date", "end_date", "usage", "cost"]
 )
 
 # A model of the basic demand info exposed for service accounts from the landing page
 # of SCE's website
 SimpleDemandInfo = collections.namedtuple(
-    "DemandInfo", ["start_date", "end_date", "demand", "cost"]
+    "SimpleDemandInfo", ["start_date", "end_date", "demand", "cost"]
 )
 
 # A simple model of a service descriptor in the SCE Energy Manager UI. This corresponds to a row in a table of

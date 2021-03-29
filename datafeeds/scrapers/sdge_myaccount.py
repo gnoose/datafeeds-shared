@@ -793,8 +793,10 @@ class SdgeMyAccountScraper(BaseWebScraper):
         log.info("Selecting meter with id: {0}".format(self.service_id))
         if not export_csv_dialog.select_meter(self.service_id):
             available_meters = set(export_csv_dialog.get_available_meters())
-            error_msg = "Unable to find meter with ID={0}. Available meters are: {1}".format(
-                self.service_id, available_meters
+            error_msg = (
+                "Unable to find meter with ID={0}. Available meters are: {1}".format(
+                    self.service_id, available_meters
+                )
             )
             raise InvalidMeterException(error_msg)
         self.screenshot("csv_export_dialog_meter_selected")

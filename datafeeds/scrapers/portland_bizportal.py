@@ -109,7 +109,10 @@ def extract_bill_data(
         statement=period_end,
         cost=_format_number(current_charges),
         used=_format_number(usage),
-        peak=max(float(on_peak_demand), float(offpeak_demand),),
+        peak=max(
+            float(on_peak_demand),
+            float(offpeak_demand),
+        ),
         items=[],
         attachments=bill_attachment,
         utility_code=None,

@@ -28,8 +28,7 @@ log = logging.getLogger(__name__)
 
 
 def get_service_ids(us: UtilityService) -> List[str]:
-    """Return related service ids from UtilityServiceSnapshots
-    """
+    """Return related service ids from UtilityServiceSnapshots"""
     service_ids = [
         said[0].strip()
         for said in db.session.query(
@@ -97,7 +96,9 @@ def relevant_usage_points(m: Meter) -> Set[str]:
 class SmdPartialBillingScraperConfiguration(Configuration):
     def __init__(self, meter: Meter):
         super().__init__(
-            scrape_bills=False, scrape_readings=False, scrape_partial_bills=True,
+            scrape_bills=False,
+            scrape_readings=False,
+            scrape_partial_bills=True,
         )
         self.meter = meter
 
@@ -120,8 +121,7 @@ class SmdPartialBillingScraper(BaseApiScraper):
             return cursor.fetchone()
 
     def attach_corresponding_urja_pdfs(self, partial_bills: BillingData) -> BillingData:
-        """Attempt to update each SMD Partial Bill with the latest statement from Urjanet.
-        """
+        """Attempt to update each SMD Partial Bill with the latest statement from Urjanet."""
         self.conn = db.urjanet_connection()
         utility_account_id = self.service.utility_account_id
         service_ids = get_service_ids(self.service)

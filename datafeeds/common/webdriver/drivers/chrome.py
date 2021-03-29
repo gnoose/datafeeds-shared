@@ -34,7 +34,11 @@ class ChromeDriver(BaseDriver):
         # https://stackoverflow.com/questions/56897041/how-to-save-opened-page-as-pdf-in-selenium-python/57090105#57090105
         settings = {
             "recentDestinations": [
-                {"id": "Save as PDF", "origin": "local", "account": "",}
+                {
+                    "id": "Save as PDF",
+                    "origin": "local",
+                    "account": "",
+                }
             ],
             "selectedDestinationId": "Save as PDF",
             "version": 2,

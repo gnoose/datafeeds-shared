@@ -26,7 +26,9 @@ def test_scraper(
     )
     scraper.start()
     scraper.scrape(
-        readings_handler=None, bills_handler=print, pdfs_handler=None,
+        readings_handler=None,
+        bills_handler=print,
+        pdfs_handler=None,
     )
     scraper.stop()
 

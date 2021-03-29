@@ -121,9 +121,9 @@ class EnergyDashboardPage(CSSSelectorBasePageObject):
                 )
             )
         except Exception:
-            raise Exception(f"Unable to download file...")
+            raise Exception("Unable to download file...")
 
-        log.info(f"Download Complete")
+        log.info(f"Download complete: {filename}")
 
         filepath = os.path.join(self._driver.download_dir, filename)
 
@@ -245,7 +245,7 @@ class EnergyManagerPage(CSSSelectorBasePageObject):
 
         self.view_energy_dashboard()
         if self._driver.find(
-            f'//div[text()="Your User ID or Password is incorrect.  Please try again."]',
+            '//div[text()="Your User ID or Password is incorrect.  Please try again."]',
             xpath=True,
         ):
             self._driver.refresh()
@@ -363,7 +363,7 @@ class LoginPage(CSSSelectorBasePageObject):
             not in self._driver.current_url
         ):
             log.info(
-                f"navigating to: https://www.fpl.com/my-account/account-landing.html"
+                "navigating to: https://www.fpl.com/my-account/account-landing.html"
             )
             self._driver.get("https://www.fpl.com/my-account/account-landing.html")
 

@@ -6,7 +6,9 @@ from datafeeds.urjanet.model import Account, UrjanetData
 
 class SouthlakeTransformer(GenericWaterTransformer):
     @staticmethod
-    def filtered_accounts(urja_data: UrjanetData,) -> List[Account]:
+    def filtered_accounts(
+        urja_data: UrjanetData,
+    ) -> List[Account]:
         """StatementDate is not set for Southlake"""
         return [
             account

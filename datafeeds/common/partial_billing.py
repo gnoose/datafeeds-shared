@@ -223,7 +223,7 @@ class PartialBillProcessor:
                     break
 
     def process_partial_bills(self):
-        """ Primary method.
+        """Primary method.
 
         Goes through billing_data and uploads new partial bills directly to the partial bills table.
         If a new partial bill differs from an existing partial bill,

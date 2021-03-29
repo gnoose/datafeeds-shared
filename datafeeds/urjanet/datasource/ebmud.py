@@ -53,7 +53,10 @@ def datafeed(
         meter,
         datasource,
         params,
-        EbmudDatasource(utility_service.utility, utility_service.utility_account_id,),
+        EbmudDatasource(
+            utility_service.utility,
+            utility_service.utility_account_id,
+        ),
         EbmudTransformer(),
         task_id=task_id,
     )

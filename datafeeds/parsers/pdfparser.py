@@ -12,9 +12,9 @@ import pdfminer.settings
 
 # Unfortunately, we have to set PDFMiner settings before further imports.
 pdfminer.settings.STRICT = False  # noqa:E402
-import pdfminer.high_level
-import pdfminer.layout
-from pdfminer.image import ImageWriter
+import pdfminer.high_level  # noqa:E402
+import pdfminer.layout  # noqa:E402
+from pdfminer.image import ImageWriter  # noqa:E402
 
 
 def extract_text(
