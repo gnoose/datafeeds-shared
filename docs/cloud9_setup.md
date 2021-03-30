@@ -55,6 +55,7 @@ Cut and paste `energy-dev-ops:/var/config-data/datafeeds/dev.env` into `~/enviro
 Install pyenv and python 3.8.5 virtualenv:
 
 ```
+yum install gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel
 curl https://pyenv.run | bash
 pyenv install -v 3.8.5
 pyenv virtualenv 3.8.5 datafeeds
