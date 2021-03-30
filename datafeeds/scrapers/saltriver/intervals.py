@@ -118,7 +118,7 @@ class SaltRiverIntervalScraper(BaseWebScraper):
 
         state_machine.add_state(
             name="login",
-            page=saltriver_pages.SaltRiverLoginPage(self._driver),
+            page=saltriver_pages.SpatiaLoginPage(self._driver),
             action=self.login_action,
             transitions=["login_failed", "landing_page"],
             wait_time=45,

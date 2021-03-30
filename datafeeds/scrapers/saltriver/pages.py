@@ -90,6 +90,28 @@ BillDetail = NamedTuple(
 
 
 class SaltRiverLoginPage(PageState):
+    UsernameInputLocator = (By.XPATH, "//input[@name='username']")
+    PasswordInputLocator = (By.XPATH, "//input[@name='password']")
+    SubmitButtonLocator = (By.XPATH, "//button[@type='submit']")
+
+    def get_ready_condition(self):
+        return ec_and(
+            EC.presence_of_element_located(self.UsernameInputLocator),
+            EC.presence_of_element_located(self.PasswordInputLocator),
+            EC.presence_of_element_located(self.SubmitButtonLocator),
+        )
+
+    def login(self, username: str, password: str):
+        actions = ActionChains(self.driver)
+        actions.send_keys(username)
+        actions.send_keys(Keys.TAB)
+        actions.send_keys(password)
+        actions.send_keys(Keys.ENTER)
+        actions.perform()
+        self.driver.screenshot(BaseWebScraper.screenshot_path("login"))
+
+
+class SpatiaLoginPage(PageState):
     UsernameInputLocator = (By.XPATH, "//input[@name='user']")
     PasswordInputLocator = (By.XPATH, "//input[@name='password']")
     SubmitButtonLocator = (By.XPATH, "//input[@type='submit']")
@@ -247,7 +269,7 @@ class SaltRiverLandingPage(PageState):
         usage_table_rows = self.driver.find_elements(*self.UsageTableRowsLocator)
 
         bill_data: List[BillingDatum] = []
-        self.driver.screenshot("bill table")
+        self.driver.screenshot(BaseWebScraper.screenshot_path("bill table"))
         for row in usage_table_rows:
             cols = row.find_elements_by_tag_name("td")
             cols = [c for c in cols if "display: none" not in c.get_attribute("style")]
@@ -303,6 +325,9 @@ class SaltRiverLandingPage(PageState):
                 pdf_download_link = cols[0].find_element_by_tag_name("a")
                 scroll_to(self.driver, pdf_download_link)
                 pdf_download_link.click()
+                log.info(
+                    "looking for %s in %s", bill_pdf_name, self.driver.download_dir
+                )
                 self.driver.wait(60).until(
                     file_exists_in_dir(self.driver.download_dir, bill_pdf_name)
                 )
