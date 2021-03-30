@@ -56,7 +56,7 @@ complexity of having to schedule an AWS batch job at the console.
 
 If you would have invoked `launch.py` via
 ```
-python3.6 launch.py by-oid 115769 2019-01-01 2019-12-31
+python3 launch.py by-oid 115769 2019-01-01 2019-12-31
 ```
 the equivalent `run.sh` command is:
 ```

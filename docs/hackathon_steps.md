@@ -189,7 +189,7 @@ The final step is to try to accomplish the same run in our dev environment, on A
     and use the latest job definition (to get standard configurations like DB credentials). The job queue should be
      `datafeeds-dev`. Update the command to: 
     ```
-    python3.6 launch.py by-oid <Your Snapmeter Meter Data Source OID> 2019-01-01 2019-12-31
+    python3 launch.py by-oid <Your Snapmeter Meter Data Source OID> 2019-01-01 2019-12-31
     ```
     You can obtain logs for your job by clicking the job ID link and looking under "attempts".
     

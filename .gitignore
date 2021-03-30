@@ -9,5 +9,6 @@ urjanet.sql
 .mypy_cache/
 workdir/*
 run.env
+dev.env
 .DS_Store
 private_fixtures/*

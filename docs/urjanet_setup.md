@@ -2,7 +2,7 @@
 
 This document explains how to obtain a local urjanet MySQL instance for development.
 
-# Steps
+## Steps
 
 0. Update your `/etc/hosts` to include the line `127.0.0.1 urjanet`.
 
@@ -20,7 +20,7 @@ This document explains how to obtain a local urjanet MySQL instance for developm
     ```
     The username/password for the local DB instance are `gridium/gridium`.
 
-# Other Notes
+## Other Notes
 - You may not have the mysql client installed on your development machine. On Mac, you can get this tool with homebrew
  via `brew install mysql-client`. (I had to follow the post install instructions that `brew` prints in order to add
   `mysql` to my `PATH`.)
@@ -29,3 +29,11 @@ deletes all of the local files associated with postgres/mysql for the project.
 - [SequelPro](https://www.sequelpro.com/) can be helpful for browsing your local database, if you prefer a GUI. 
 This can be especially helpful if you're not familiar MySQL-specific management commands (connect to database, list
  tables, etc.). and just want to write SQL queries.
+
+## restore on dev
+
+```
+zcat /tmp/urjanet.sql.gz | mysql -h dev-urjanet-serverless.cluster-cz1oabary77u.us-east-1.rds.amazonaws.com -u gridium -p urjanet
+```
+
+The -f will ignore the `Access denied` errors from running as a non-root user.
