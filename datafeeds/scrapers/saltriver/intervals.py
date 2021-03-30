@@ -1,5 +1,6 @@
 import os
 import csv
+import logging
 import re
 import time
 from typing import List, Optional
@@ -26,6 +27,8 @@ from datafeeds.models import (
     Meter,
     SnapmeterMeterDataSource as MeterDataSource,
 )
+
+log = logging.getLogger(__name__)
 
 # Headers with interval data look like this:
 # <unit>(ch : <channel number> set: <set number>)
@@ -130,7 +133,7 @@ class SaltRiverIntervalScraper(BaseWebScraper):
 
         state_machine.add_state(
             name="landing_page",
-            page=saltriver_pages.SaltRiverLandingPage(self._driver),
+            page=saltriver_pages.SpatiaLandingPage(self._driver),
             action=self.landing_page_action,
             transitions=["reports_page"],
         )
@@ -225,22 +228,29 @@ class SaltRiverIntervalScraper(BaseWebScraper):
             os.remove(path)
 
     def reports_page_action(self, reports_page: saltriver_pages.SaltRiverReportsPage):
+        log.info("goto_meter_profiles")
         reports_page.goto_meter_profiles()
-
         meter_page = saltriver_pages.MeterProfilesPage(self._driver)
         WebDriverWait(self._driver, 30).until(page_is_ready(meter_page))
+        self.screenshot("meter profiles")
+
+        log.info("get meters")
         meters = meter_page.get_meters()
         meter, channel = self.find_matching_meter_and_channel(
             meters, self.meter_id, self.channel_id
         )
+        self.screenshot("meter and channel")
 
+        log.info("goto reports")
         meter_page.goto_reports()
         WebDriverWait(self._driver, 30).until(page_is_ready(reports_page))
         time.sleep(10)
+        log.info("looking for interval download")
         reports_page.goto_interval_download()
-
         interval_download_page = saltriver_pages.IntervalDownloadPage(self._driver)
         WebDriverWait(self._driver, 30).until(page_is_ready(interval_download_page))
+        self.screenshot("interval download")
+        log.info("interval download page is ready")
         interval_download_page.basic_configuration()
         interval_download_page.select_meter_by_id(meter.meter_id)
 
@@ -263,11 +273,13 @@ class SaltRiverIntervalScraper(BaseWebScraper):
         interval_size = relativedelta(days=30)
         timeline = Timeline(start, end)
         for sub_range in date_range.split_iter(delta=interval_size):
+            log.info("downloading %s", sub_range)
             self.clear_csv_downloads()
             interval_download_page.set_date_range(
                 sub_range.start_date, sub_range.end_date
             )
             interval_download_page.download_interval_data()
+            self.screenshot("download %s" % sub_range.end_date.strftime("%Y%m%d"))
             try:
                 wait = WebDriverWait(self._driver, 180)
                 csv_file_name = wait.until(

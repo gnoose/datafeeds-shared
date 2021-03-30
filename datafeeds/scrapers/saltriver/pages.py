@@ -20,6 +20,7 @@ from selenium.webdriver.support.select import Select
 from dateutil.parser import parse as parse_date
 
 from datafeeds import config
+from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.typing import BillingDatum
 from datafeeds.common.upload import hash_bill_datum, upload_bill_to_s3
 from datafeeds.common.util.selenium import (
@@ -89,9 +90,9 @@ BillDetail = NamedTuple(
 
 
 class SaltRiverLoginPage(PageState):
-    UsernameInputLocator = (By.XPATH, "//input[@name='username']")
+    UsernameInputLocator = (By.XPATH, "//input[@name='user']")
     PasswordInputLocator = (By.XPATH, "//input[@name='password']")
-    SubmitButtonLocator = (By.XPATH, "//button[@type='submit']")
+    SubmitButtonLocator = (By.XPATH, "//input[@type='submit']")
 
     def get_ready_condition(self):
         return ec_and(
@@ -107,6 +108,7 @@ class SaltRiverLoginPage(PageState):
         actions.send_keys(password)
         actions.send_keys(Keys.ENTER)
         actions.perform()
+        self.driver.screenshot(BaseWebScraper.screenshot_path("login"))
 
 
 class SaltRiverLoginFailedPage(PageState):
@@ -120,6 +122,16 @@ class SaltRiverLoginFailedPage(PageState):
         error = self.driver.find_element(*self.ErrorMessageLocator)
         message = "Login failed. The website error is: '{}'".format(error.text)
         raise LoginError(message)
+
+
+class SpatiaLandingPage(PageState):
+    LinkLocator = (By.XPATH, '//a[text()="Billing & Special Reports"]')
+
+    def get_ready_condition(self):
+        return EC.presence_of_element_located(self.LinkLocator)
+
+    def select_billing(self):
+        self.driver.find_element(self.LinkLocator).click()
 
 
 class SaltRiverLandingPage(PageState):
@@ -539,6 +551,7 @@ class IntervalDownloadPage(PageState):
     SubmitSelector = (By.XPATH, "//input[@type='submit']")
 
     def get_ready_condition(self):
+        log.info("interval download page ready condition")
         return ec_in_frame(
             "mainFrame",
             ec_and(
@@ -552,11 +565,13 @@ class IntervalDownloadPage(PageState):
         )
 
     def basic_configuration(self):
+        log.info("basic_configuration")
         with IFrameSwitch(self.driver, "mainFrame"):
             self.driver.find_element(*self.FifteenMinuteOptionLocator).click()
             self.driver.find_element(*self.DemandDatatypeLocator).click()
 
     def select_meter_by_id(self, meter_id: str):
+        log.info("select meter by id")
         with IFrameSwitch(self.driver, "mainFrame"):
             selector = Select(self.driver.find_element(*self.MeterSelectLocator))
             selector.select_by_value(meter_id)
@@ -574,13 +589,14 @@ class IntervalDownloadPage(PageState):
 
     def download_interval_data(self):
         with IFrameSwitch(self.driver, "mainFrame"):
+            log.info("clicking submit")
             self.driver.find_element(*self.SubmitSelector).click()
 
 
 class SaltRiverReportsPage(PageState):
     """This page contains links for navigating to various report types."""
 
-    BillsByAccountLink = (By.LINK_TEXT, "Bills by account:")
+    BillsByAccountLink = (By.LINK_TEXT, "Bills by account")
     MeterProfilesLink = (By.LINK_TEXT, "All meters profiles:")
     IntervalDownloadLink = (By.LINK_TEXT, "Interval download:")
 
@@ -588,7 +604,6 @@ class SaltRiverReportsPage(PageState):
         return ec_in_frame(
             "mainFrame",
             ec_and(
-                EC.presence_of_element_located(self.BillsByAccountLink),
                 EC.presence_of_element_located(self.MeterProfilesLink),
                 EC.element_to_be_clickable(self.IntervalDownloadLink),
             ),
@@ -603,5 +618,6 @@ class SaltRiverReportsPage(PageState):
             self.driver.find_element(*self.MeterProfilesLink).click()
 
     def goto_interval_download(self):
+        log.info("click interval download")
         with IFrameSwitch(self.driver, "mainFrame"):
             self.driver.find_element(*self.IntervalDownloadLink).click()
