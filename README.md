@@ -12,6 +12,9 @@
 - [Deploying a new image](docs/deploy.md) explains how to select an image for use in production
 - [Captcha](docs/captcha.md) explains how to get past Captchas
 - [DST](docs/dst.md) issues related to daylight savings time
+- [Scraper fixing cookbook](docs/cookbook.md) best practices and tips
+- [Cloud9 setup](docs/cloud9_setup.md) - creating a new Cloud9 environment
+- [Using Cloud9](docs/cloud9_setup.md) - using a new Cloud9 environment
 
 ## Testing a scraper locally
 

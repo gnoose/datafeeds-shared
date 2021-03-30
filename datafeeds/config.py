@@ -21,6 +21,12 @@ DATAFEEDS_ENVIRONMENT = os.environ.get("DATAFEEDS_ENVIRONMENT", "local").lower()
 # (Used to simplify DB transaction management and rollback commits.)
 UNDER_TEST: bool = os.environ.get("DATAFEEDS_UNDER_TEST", "True").lower() == "true"
 
+# If set, connect to a running external Chrome driver instead of starting one
+# get container: docker pull selenium/standalone-chrome:3.141.59-20200525
+# run container: docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59-20200525
+# export REMOTE_DRIVER_URL="http://localhost:4444/wd/hub"
+REMOTE_DRIVER_URL: str = os.environ.get("REMOTE_DRIVER_URL", "")
+
 # Should datafeeds use private fixtures downloaded from S3 to test? If so, where should they be downloaded to?
 #
 # Note: If running on circle CI, we assume the AWS environment variables

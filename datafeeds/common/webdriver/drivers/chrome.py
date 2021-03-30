@@ -10,10 +10,16 @@ from datafeeds.common.webdriver.drivers.base import BaseDriver
 class ChromeDriver(BaseDriver):
     def __init__(self, outputpath):
         super().__init__(outputpath)
-        self._driver = webdriver.Chrome(
-            chrome_options=self._options(),
-            service_log_path=os.path.join(config.WORKING_DIRECTORY, "driver.log"),
-        )
+        if config.REMOTE_DRIVER_URL:
+            self._driver = webdriver.Remote(
+                command_executor=config.REMOTE_DRIVER_URL,
+                options=self._options(),
+            )
+        else:
+            self._driver = webdriver.Chrome(
+                chrome_options=self._options(),
+                service_log_path=os.path.join(config.WORKING_DIRECTORY, "driver.log"),
+            )
 
     def _options(self):
         options = webdriver.ChromeOptions()
