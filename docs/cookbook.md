@@ -10,6 +10,7 @@ In a scraper class (derived from `BaseWebScraper`):
 
 In a page object (derviced from `PageState`):
 
+    from datafeeds.common.base import BaseWebScraper
     self.driver.screenshot(BaseWebScraper.screenshot_path("description"))
 
 Screenshots are written to `png` files in `workdir`.

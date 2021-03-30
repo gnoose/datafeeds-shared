@@ -13,7 +13,7 @@ To run scrapers from a terminal, run this first:
 
 ```
 pyenv activate datafeeds
-cd datafeeds
+cd datafeeds-shared
 scripts/start_chrome.sh
 ```
 
