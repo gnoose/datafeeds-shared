@@ -319,7 +319,7 @@ class SaltRiverLandingPage(PageState):
             )
 
             try:
-                bill_pdf_name = "SRPbill{}{}".format(
+                bill_pdf_name = "SRPbill{}{}.pdf".format(
                     statement_date.strftime("%B"), statement_date.year
                 )
                 pdf_download_link = cols[0].find_element_by_tag_name("a")
