@@ -41,28 +41,18 @@ Open environment from [AWS Cloud9](https://console.aws.amazon.com/cloud9/home?re
 Set up git to use the ssh key for the `gridium-datafeeds` user. This user has outside collaborator access
 to the datafeeds-shared repo.
 
-Find the gridium-datafeeds entry in LastPass. Copy the ssh key to `~/.ssh/id_rsa` and set permissions: `chmod 0600 ~/.ssh/id_rsa`. Add the key to the agent:
+Find the gridium-datafeeds entry in LastPass. Copy the ssh key to `~/.ssh/id_ed25519` and set permissions: `chmod 0600 ~/.ssh/id_ed25519`. Add the key to the agent:
 
 ```
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_ed25519
 ```
 
 Clone the datafeeds-shared repo: `git clone git@github.com:Gridium/datafeeds-shared.git`
 
 Cut and paste `energy-dev-ops:/var/config-data/datafeeds/dev.env` into `~/environment/dev.env` in Cloud9.
 
-Install pyenv and python 3.8.5 virtualenv:
-
-```
-yum install gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel
-curl https://pyenv.run | bash
-pyenv install -v 3.8.5
-pyenv virtualenv 3.8.5 datafeeds
-pyenv activate datafeeds
-```
-
-Add these to `~/.bashrc` then `source ~/.bashrc`:
+Add these to `~/.bashrc`
 
 ```
 export PATH="/home/ec2-user/.pyenv/bin:$PATH"
@@ -70,6 +60,17 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PYTHONPATH=/home/ec2-user/environment/datafeeds-shared
 source /home/ec2-user/environment/dev.env
+```
+
+Install pyenv and python 3.8.5 virtualenv:
+
+```
+sudo yum install gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel
+curl https://pyenv.run | bash
+source ~/.bashrc
+pyenv install -v 3.8.5
+pyenv virtualenv 3.8.5 datafeeds
+pyenv activate datafeeds
 ```
 
 Install dependencies
