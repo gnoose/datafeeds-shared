@@ -79,6 +79,12 @@ def statement_to_s3(source_link, s3_key=None):
                 bill.headers.get("content-disposition"),
             )
             return None
+        if bill.headers.get("Content-Length", "0") == "0":
+            log.info(
+                "Content-Length is 0 for %s; skipping",
+                bill_link,
+            )
+            return None
     except Exception as e:
         log.info("bill download failed. url=%s, exception=%s", (bill_link, e))
         return None
