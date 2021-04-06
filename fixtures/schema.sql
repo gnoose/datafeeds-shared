@@ -568,7 +568,10 @@ CREATE TABLE public.bill (
     visible boolean DEFAULT true NOT NULL,
     has_all_charges boolean,
     created timestamp without time zone,
-    source character varying
+    source character varying,
+    tnd_cost double precision,
+    gen_cost double precision,
+    has_cost_curve boolean
 );
 
 
@@ -872,7 +875,8 @@ CREATE TABLE public.building (
     city character varying(128),
     state character varying(2),
     zip character varying(10),
-    country character varying DEFAULT 'US'::character varying
+    country character varying DEFAULT 'US'::character varying,
+    pm_property_id integer
 );
 
 
@@ -2272,11 +2276,26 @@ CREATE TABLE public.meter (
 ALTER TABLE public.meter OWNER TO gridium;
 
 --
+-- Name: product_enrollment_oid_seq; Type: SEQUENCE; Schema: public; Owner: gridium
+--
+
+CREATE SEQUENCE public.product_enrollment_oid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.product_enrollment_oid_seq OWNER TO gridium;
+
+
+--
 -- Name: product_enrollment; Type: TABLE; Schema: public; Owner: gridium
 --
 
 CREATE TABLE public.product_enrollment (
-    oid bigint NOT NULL,
+    oid bigint DEFAULT nextval('public.product_enrollment_oid_seq'::regclass) NOT NULL,
     meter bigint,
     product character varying(128),
     status character varying(128)

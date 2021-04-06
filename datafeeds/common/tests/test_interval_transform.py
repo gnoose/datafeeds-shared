@@ -14,7 +14,7 @@ class IntervalTransformTests(unittest.TestCase):
         test_utils.init_test_db()
 
     def setUp(self):
-        (account, meters) = test_utils.create_meters()
+        (self.account, meters) = test_utils.create_meters()
         self.meter_ids = [m.oid for m in meters]
 
     @classmethod
@@ -98,7 +98,15 @@ class IntervalTransformTests(unittest.TestCase):
         # no transforms; always run positive
         meter_id = self.meter_ids[0]
         meter = db.session.query(Meter).get(meter_id)
-        building = Building(oid=Building.get_new_oid(), timezone="America/Los_Angeles")
+        building_oid = 12345
+        building = Building(
+            oid=building_oid,
+            building=building_oid,
+            _timezone="America/Los_Angeles",
+            account=self.account.oid,
+            name="Test building name",
+            visible=True,
+        )
         db.session.add(building)
         db.session.flush()
         meter._building = building.oid

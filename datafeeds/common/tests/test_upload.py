@@ -17,12 +17,21 @@ from datafeeds.common.typing import (
     BillingDatumItemsEntry,
     Status,
 )
+from datafeeds.common.upload import _upload_bills_to_services
+from datafeeds.models.billaudit import BillAudit, WorkflowState
+from datafeeds.models.meter import ProductEnrollment, Building
+from datafeeds.models.utility_service import TND_ONLY
 
 from datafeeds.scrapers.sce_react.energymanager_billing import (
     SceReactEnergyManagerBillingConfiguration,
 )
 
-from datafeeds.models.bill import Bill, PartialBill, PartialBillProviderType
+from datafeeds.models.bill import (
+    Bill,
+    PartialBill,
+    PartialBillProviderType,
+    InvalidBillError,
+)
 
 billing_data = [
     BillingDatum(
@@ -345,7 +354,7 @@ class TestPartialBillProcessor(unittest.TestCase):
                 PartialBillProviderType.TND_ONLY,
             )
         self.assertIn(
-            "Snapping start date would create partial (2019-05-31 - 2019-05-31)",
+            "Snapping start date would create bill (2019-05-31 - 2019-05-31)",
             str(exc.exception),
         )
 
@@ -995,13 +1004,13 @@ bills_list = [
 ]
 
 
-class TestBillUpload(unittest.TestCase):
+class TestBillUploadPlatform(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         test_utils.init_test_db()
 
     def setUp(self):
-        (account, meters) = test_utils.create_meters()
+        account, meters = test_utils.create_meters()
         self.meter_ids = [m.oid for m in meters]
         self.meter = meters[0]
         self.configuration = SceReactEnergyManagerBillingConfiguration(
@@ -1050,13 +1059,14 @@ class TestBillUpload(unittest.TestCase):
         db.session.add(service)
 
         bill_1 = Bill()
+        bill_1.initial = date(2019, 3, 5)
         bill_1.closing = date(2019, 4, 2)
         bill_1.service = service.oid
         db.session.add(bill_1)
         db.session.flush()
 
         status = upload.upload_bills(
-            self.meter.oid, service.service_id, None, bills_list
+            None, self.meter.oid, service.service_id, None, bills_list
         )
         # No bills newer bills have arrived
         self.assertEqual(status, Status.COMPLETED)
@@ -1076,7 +1086,7 @@ class TestBillUpload(unittest.TestCase):
         ]
 
         status = upload.upload_bills(
-            self.meter.oid, service.service_id, None, new_bills_list
+            None, self.meter.oid, service.service_id, None, new_bills_list
         )
         # A more recent bill arrived
         self.assertEqual(status, Status.SUCCEEDED)
@@ -1094,6 +1104,578 @@ class TestBillUpload(unittest.TestCase):
 
         # _latest_closing returns the most recent closing
         self.assertEqual(most_recent, upload._latest_closing(service.service_id))
+
+
+class TestBillUploadDirectly(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        test_utils.init_test_db()
+
+    def setUp(self):
+        self.account, meters = test_utils.create_meters()
+        self.account.name = "test account"
+        self.meter_ids = [m.oid for m in meters]
+        self.meter = meters[0]
+        self.meter.utility_service.utility = "utility:pge"
+        self.meter_two = meters[1]
+        building_oid = 12345
+        building = Building(
+            oid=building_oid,
+            building=building_oid,
+            _timezone="America/Los_Angeles",
+            account=self.account.oid,
+            name="Test building name",
+            visible=True,
+        )
+        self.meter.building = building
+
+    @classmethod
+    def tearDown(cls):
+        db.session.rollback()
+
+    def test_bill_upload_attributes(self):
+        """Test incoming bill attributes persist as expected to final bill"""
+        att = [
+            AttachmentEntry(
+                key="123456789",
+                kind="bill",
+                format="PDF",
+                source="",
+                statement="2010-10-01",
+                utility="pge",
+                utility_account_id=self.meter.utility_service.utility_account_id,
+                gen_utility=self.meter.utility_service.gen_utility,
+                gen_utility_account_id=self.meter.utility_service.gen_utility_account_id,
+            )
+        ]
+
+        items = [
+            BillingDatumItemsEntry(
+                description="Generation Credit",
+                quantity=0.0,
+                rate=None,
+                total=-65.61,
+                kind="other",
+                unit="kWh",
+            )
+        ]
+        bill_data = BillingDatum(
+            start=datetime(2019, 1, 6),
+            end=datetime(2019, 2, 3),
+            cost=987.76,
+            used=4585.0,
+            peak=25.0,
+            items=items,
+            attachments=att,
+            statement=datetime(2019, 2, 3),
+            utility_code=None,
+        )
+
+        ret = _upload_bills_to_services(
+            self.meter.utility_service.service_id, [bill_data]
+        )
+        self.assertEqual(len(ret), 1)
+        bill = ret[0]
+        self.assertEqual(bill.service, self.meter.service)
+        self.assertEqual(bill.initial, datetime(2019, 1, 6).date())
+        self.assertEqual(bill.closing, datetime(2019, 2, 3).date())
+        self.assertEqual(bill.cost, 987.76)
+        self.assertEqual(bill.used, 4585.0)
+        self.assertEqual(bill.peak, 25)
+        self.assertEqual(bill.source, "datafeeds")
+        self.assertEqual(
+            bill.items,
+            [
+                {
+                    "description": "Generation Credit",
+                    "quantity": 0.0,
+                    "rate": None,
+                    "total": -65.61,
+                    "kind": "other",
+                    "unit": "kWh",
+                }
+            ],
+        )
+        self.assertEqual(
+            bill.attachments, [{"key": "123456789", "kind": "bill", "format": "PDF"}]
+        )
+        self.assertFalse(bill.manual)
+        self.assertTrue(bill.visible)
+        self.assertIsNotNone(bill.oid)
+        self.assertIsNone(bill.tnd_cost)
+        self.assertIsNone(bill.gen_cost)
+        self.assertIsNotNone(bill.created)
+        self.assertIsNotNone(bill.modified)
+
+        bill_audit_record = (
+            db.session.query(BillAudit).filter(BillAudit.bill == bill.oid).first()
+        )
+        self.assertIsNone(
+            bill_audit_record, "No bill audit record exists; meter not enrolled."
+        )
+
+    def test_snap_start_date(self):
+        # Create first bill
+        one_bill_list = [bills_list[0]]
+        _upload_bills_to_services(self.meter.utility_service.service_id, one_bill_list)
+
+        # Incoming bill overlaps last bill by one day.
+        new_bd = [
+            BillingDatum(
+                start=datetime(2019, 2, 3),
+                end=datetime(2019, 3, 4),
+                cost=882.39,
+                used=4787.0,
+                peak=54.0,
+                items=None,
+                attachments=[],
+                statement=datetime(2019, 3, 4),
+                utility_code=None,
+            )
+        ]
+
+        _upload_bills_to_services(self.meter.utility_service.service_id, new_bd)
+
+        bills = (
+            db.session.query(Bill)
+            .filter(Bill.service == self.meter.service)
+            .order_by(Bill.initial)
+        )
+        self.assertEqual(bills.count(), 2)
+
+        self.assertEqual(
+            bills[0].initial,
+            datetime(2019, 1, 6).date(),
+            "existing bill stayed the same",
+        )
+        self.assertEqual(
+            bills[0].closing,
+            datetime(2019, 2, 3).date(),
+            "existing bill stayed the same",
+        )
+
+        self.assertEqual(
+            bills[1].initial,
+            datetime(2019, 2, 4).date(),
+            "Incoming snapped to new start date.",
+        )
+        self.assertEqual(bills[1].closing, datetime(2019, 3, 4).date())
+
+    def test_write_bill_to_multiple_services(self):
+        """Test incoming bill data is written to all services with a matching service id"""
+        self.meter_two.utility_service.service_id = (
+            self.meter.utility_service.service_id
+        )
+        ret = _upload_bills_to_services(
+            self.meter.utility_service.service_id, [bills_list[0]]
+        )
+        self.assertEqual(len(ret), 2, "Same bill added to two services.")
+        self.assertNotEqual(ret[0].oid, ret[1].oid)
+        self.assertNotEqual(ret[0].service, ret[1].service)
+        self.assertEqual(
+            {ret[0].service, ret[1].service},
+            {self.meter.service, self.meter_two.service},
+        )
+
+        bill_one_dict = ret[0].__dict__
+        bill_two_dict = ret[1].__dict__
+
+        for record in [bill_one_dict, bill_two_dict]:
+            record.pop("_sa_instance_state")
+            record.pop("service")
+            record.pop("oid")
+
+        self.assertEqual(bill_one_dict, bill_two_dict, "both bills have same values.")
+
+    def test_bill_upload_paths(self):
+        """Sanity check for new/update/duplicate/skip/overlap bill creation paths."""
+        # New bill, created.
+        one_bill_list = [bills_list[0]]
+        ret = _upload_bills_to_services(
+            self.meter.utility_service.service_id, one_bill_list
+        )
+        self.assertEqual(len(ret), 1)
+
+        bills = db.session.query(Bill).filter(Bill.service == self.meter.service)
+        self.assertEqual(bills.count(), 1)
+        self.assertTrue(bills[0].visible)
+        modified = bills[0].modified
+        original_oid = bills[0].oid
+
+        # Duplicate bill, skipped.
+        ret = _upload_bills_to_services(
+            self.meter.utility_service.service_id, one_bill_list
+        )
+        self.assertEqual(len(ret), 0)
+        self.assertEqual(bills.count(), 1)
+        self.assertEqual(modified, bills[0].modified)
+        self.assertEqual(bills[0].oid, original_oid)
+
+        # Updating bill
+        one_bill_list[0] = one_bill_list[0]._replace(cost=333.12)
+        ret = _upload_bills_to_services(
+            self.meter.utility_service.service_id, one_bill_list
+        )
+        self.assertEqual(len(ret), 1)
+        self.assertEqual(bills.count(), 1)
+        self.assertEqual(bills[0].cost, 333.12)
+        self.assertNotEqual(modified, bills[0].modified)
+        self.assertEqual(bills[0].oid, original_oid)
+        db.session.flush()
+
+        # Overlaps bill - delete and recreate:
+        one_bill_list[0] = one_bill_list[0]._replace(start=datetime(2019, 1, 5))
+        ret = _upload_bills_to_services(
+            self.meter.utility_service.service_id, one_bill_list
+        )
+        self.assertEqual(len(ret), 1)
+        self.assertEqual(bills.count(), 1)
+        self.assertEqual(bills[0].initial, datetime(2019, 1, 5).date())
+        new_oid = bills[0].oid
+        self.assertNotEqual(bills[0].oid, original_oid)
+
+        # Existing is manual - skip.
+        bills[0].manual = True
+        db.session.add(bills[0])
+        db.session.flush()
+        new_modified = bills[0].modified
+        ret = _upload_bills_to_services(
+            self.meter.utility_service.service_id, one_bill_list
+        )
+        self.assertEqual(len(ret), 0)
+        self.assertEqual(bills.count(), 1)
+        self.assertEqual(bills[0].modified, new_modified)
+        self.assertEqual(new_oid, bills[0].oid)
+
+        bills[0].manual = False
+        db.session.add(bills[0])
+        db.session.flush()
+        new_modified = bills[0].modified
+
+        # Existing is stitched, not scraped. - skip
+        pb = PartialBill(
+            provider_type=TND_ONLY,
+            cost=333.12,
+            initial=datetime(2019, 1, 5),
+            closing=datetime(2019, 2, 3),
+            service=self.meter.utility_service.oid,
+        )
+        db.session.add(pb)
+        bills[0].partial_bills.append(pb)
+        db.session.flush()
+
+        one_bill_list[0] = one_bill_list[0]._replace(cost=233.12)
+        ret = _upload_bills_to_services(
+            self.meter.utility_service.service_id, one_bill_list
+        )
+        self.assertEqual(len(ret), 0)
+        self.assertEqual(bills.count(), 1)
+        self.assertEqual(bills[0].modified, new_modified)
+        self.assertEqual(new_oid, bills[0].oid)
+
+    def test_create_bill_audits_new_bills(self):
+        """Test bill audit creation workflow - new bills"""
+        pe = ProductEnrollment(
+            meter=self.meter.oid, product="opsbillaudit", status="active"
+        )
+        db.session.add(pe)
+        db.session.flush()
+
+        one_bill = [bills_list[0]]
+
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            one_bill,
+        )
+        bills = db.session.query(Bill).filter(Bill.service == self.meter.service).all()
+
+        self.assertEqual(len(bills), 1)
+        bill = bills[0]
+        self.assertFalse(bill.visible)
+
+        bill_audit_record = (
+            db.session.query(BillAudit).filter(BillAudit.bill == bill.oid).first()
+        )
+        self.assertEqual(bill_audit_record.workflow_state, WorkflowState.pending)
+        self.assertEqual(bill_audit_record.audit_verdict, None)
+        self.assertEqual(bill_audit_record.audit_issues, None)
+        self.assertEqual(bill_audit_record.audit_errors, None)
+        self.assertEqual(bill_audit_record.latest_audit, None)
+        self.assertEqual(bill_audit_record.bill, bill.oid)
+        self.assertEqual(bill_audit_record.bill_service, bill.service)
+        # Test attributes cached on bill audit record
+        self.assertEqual(bill_audit_record.bill_initial, bill.initial)
+        self.assertEqual(bill_audit_record.account_hex, self.account.hex_id)
+        self.assertEqual(bill_audit_record.account_name, "test account")
+        self.assertEqual(bill_audit_record.building_name, "Test building name")
+        self.assertEqual(bill_audit_record.utility, "utility:pge")
+        self.assertEqual(len(bill_audit_record.events), 1)
+        self.assertEqual(
+            bill_audit_record.events[0].description, "Initialized bill audit."
+        )
+
+        # Mock bill audit run through analytica - bill is now visible, and bill audit is in review.
+        bill.visible = True
+        bill_audit_record.workflow_state = WorkflowState.review
+        db.session.add(bill)
+        db.session.add(bill_audit_record)
+
+        one_bill[0] = one_bill[0]._replace(cost=333.12)
+
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            one_bill,
+        )
+
+        bills = db.session.query(Bill).filter(Bill.service == self.meter.service).all()
+
+        self.assertEqual(len(bills), 1)
+        bill = bills[0]
+        self.assertTrue(bill.visible, "Bill not marked as hidden")
+        bill_audit_records = db.session.query(BillAudit).filter(
+            BillAudit.bill == bill.oid
+        )
+        self.assertEqual(bill_audit_records.count(), 1)
+        self.assertEqual(
+            bill_audit_record,
+            bill_audit_records[0],
+            "No change to existing bill audit record.",
+        )
+
+    def test_bill_audit_update_bill(self):
+        """Test bill audit creation workflow - updating existing bills"""
+        one_bill = [bills_list[0]]
+
+        # Create bill
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            one_bill,
+        )
+        bills = db.session.query(Bill).filter(Bill.service == self.meter.service).all()
+
+        self.assertEqual(len(bills), 1)
+        bill = bills[0]
+        bill_oid = bill.oid
+        bill_modified = bill.modified
+        self.assertTrue(bill.visible)
+        bill_audit_records = db.session.query(BillAudit).filter(
+            BillAudit.bill == bill.oid
+        )
+        self.assertEqual(
+            bill_audit_records.count(), 0, "Meter not enrolled in bill audit."
+        )
+
+        # Enroll in bill audit
+        pe = ProductEnrollment(
+            meter=self.meter.oid, product="opsbillaudit", status="active"
+        )
+        db.session.add(pe)
+
+        # Update bill
+        one_bill[0] = one_bill[0]._replace(cost=333.12)
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            one_bill,
+        )
+        bills = db.session.query(Bill).filter(Bill.service == self.meter.service).all()
+        self.assertEqual(len(bills), 1)
+        bill = bills[0]
+        self.assertEqual(bill.oid, bill_oid)
+        self.assertNotEqual(bill.modified, bill_modified)
+        self.assertTrue(
+            bill.visible, "Even though bill was updated, we left the bill visible."
+        )
+        self.assertEqual(bill_audit_records.count(), 1)
+        self.assertEqual(bill_audit_records[0].workflow_state, WorkflowState.pending)
+
+    def test_bill_audit_bill_overlap(self):
+        """Test bill audit creation workflow - bill overlaps existing bills"""
+
+        # Enroll meter in bill audit, create bill.
+        pe = ProductEnrollment(
+            meter=self.meter.oid, product="opsbillaudit", status="active"
+        )
+        db.session.add(pe)
+        db.session.flush()
+
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            bills_list,
+        )
+        bills = (
+            db.session.query(Bill)
+            .filter(Bill.service == self.meter.service)
+            .order_by(Bill.initial)
+        )
+        self.assertEqual(bills.count(), 3)
+        bill = bills[0]
+        bill_modified = bill.modified
+
+        bill_oid = bill.oid
+        bill_audit_records = db.session.query(BillAudit).filter(
+            BillAudit.bill == bill.oid
+        )
+        self.assertEqual(bill_audit_records.count(), 1, "Meter enrolled in bill audit.")
+
+        # Mock bill audit being completed
+        bill.visible = True
+        bill_audit = bill_audit_records[0]
+        bill_audit.workflow_state = WorkflowState.done
+        db.session.add(bill)
+        db.session.add(bill_audit)
+
+        # Update bill with different date, so it will overlap two bills
+        bill_updates = [bills_list[0]]
+        bill_updates[0] = bill_updates[0]._replace(end=datetime(2019, 2, 4))
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            bill_updates,
+        )
+        db.session.flush()
+
+        self.assertEqual(bills.count(), 2, "Incoming bill replaced two bills")
+        bill = bills[0]
+        self.assertNotEqual(
+            bill.oid,
+            bill_oid,
+            "Bill overlapped existing, so existing bill was deleted and new created.",
+        )
+        self.assertEqual(bill.initial, datetime(2019, 1, 6).date())
+        self.assertEqual(bill.closing, datetime(2019, 2, 4).date())
+        self.assertNotEqual(bill.modified, bill_modified)
+
+        self.assertEqual(
+            bill_audit_records.count(),
+            0,
+            "No bill audits attached to existing deleted bill.",
+        )
+        bill_audit_records = db.session.query(BillAudit).filter(
+            BillAudit.bill == bill.oid
+        )
+        self.assertEqual(
+            bill_audit_records.count(),
+            1,
+            "No bill audits attached to existing deleted bill.",
+        )
+        self.assertEqual(
+            bill_audit_records[0].workflow_state,
+            WorkflowState.pending,
+            "New pending bill audit created.",
+        )
+        self.assertTrue(
+            bill.visible,
+            "bill kept visible, because we previously had overlapping bill.",
+        )
+
+    def test_bill_audit_bill_skipped(self):
+        """
+        Test bill audits not created if incoming bill skipped.
+        """
+        one_bill = [bills_list[0]]
+
+        # Create bill
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            one_bill,
+        )
+        bills = db.session.query(Bill).filter(Bill.service == self.meter.service).all()
+
+        self.assertEqual(len(bills), 1)
+        bill = bills[0]
+        self.assertTrue(bill.visible)
+        bill_audit_records = db.session.query(BillAudit).filter(
+            BillAudit.bill == bill.oid
+        )
+        self.assertEqual(
+            bill_audit_records.count(), 0, "Meter not enrolled in bill audit."
+        )
+
+        # Enroll in bill audit
+        pe = ProductEnrollment(
+            meter=self.meter.oid, product="opsbillaudit", status="active"
+        )
+        db.session.add(pe)
+
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            one_bill,
+        )
+
+        self.assertEqual(
+            bill_audit_records.count(),
+            0,
+            "No bill audits created; incoming duplicate bill was skipped.",
+        )
+
+    def test_bad_usage_override(self):
+        one_bill = [bills_list[0]]
+
+        # Create bill
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            one_bill,
+        )
+        bills = db.session.query(Bill).filter(Bill.service == self.meter.service)
+
+        self.assertEqual(bills.count(), 1)
+        bill = bills[0]
+        original_used = bill.used
+        original_modified = bill.modified
+
+        one_bill[0] = one_bill[0]._replace(used=0)
+        upload.upload_bills(
+            "sj-water-urjanet",
+            self.meter.oid,
+            self.meter.utility_service.service_id,
+            None,
+            one_bill,
+        )
+
+        self.assertEqual(bills.count(), 1)
+        self.assertEqual(bills[0].modified, original_modified)
+        self.assertEqual(
+            bills[0].used, original_used, "0 usage non-zero cost bill was discarded."
+        )
+
+    def test_upload_incoming_data_overlaps(self):
+        """Test that incoming billing data must not overlap."""
+        one_bill = [bills_list[0], bills_list[0]]
+
+        with self.assertRaises(InvalidBillError):
+            upload.upload_bills(
+                "sj-water-urjanet",
+                self.meter.oid,
+                self.meter.utility_service.service_id,
+                None,
+                one_bill,
+            )
 
 
 class TestReadingsUpload(unittest.TestCase):
