@@ -271,9 +271,14 @@ class SceReactBasicBillingScraper(BaseWebScraper):
     def log_multi_account_ids(self, page: sce_pages.SceMultiAccountLandingPage):
         """Get all new utility account ids and service ids and log to Elasticsearch."""
         docs = page.find_address_ids()
-        while page.next_page():
-            docs += page.find_address_ids()
-        log.info(f"found {len(docs)} address / id docs")
+        try:
+            while page.next_page():
+                docs += page.find_address_ids()
+        except Exception as exc:
+            log.warning(f"error getting address ids: {exc}")
+        log.info(
+            f"found {len(docs)} address / id docs for account_datasource {self._configuration.account_datasource_id}"
+        )
         bulk_docs: List[Dict] = []
         for doc in docs:
             doc["account_data_source"] = self._configuration.account_datasource_id
