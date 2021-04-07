@@ -1163,7 +1163,7 @@ class TestBillUploadDirectly(unittest.TestCase):
             start=datetime(2019, 1, 6),
             end=datetime(2019, 2, 3),
             cost=987.76,
-            used=4585.0,
+            used=4585.023423423,
             peak=25.0,
             items=items,
             attachments=att,
@@ -1180,9 +1180,12 @@ class TestBillUploadDirectly(unittest.TestCase):
         self.assertEqual(bill.initial, datetime(2019, 1, 6).date())
         self.assertEqual(bill.closing, datetime(2019, 2, 3).date())
         self.assertEqual(bill.cost, 987.76)
-        self.assertEqual(bill.used, 4585.0)
+        self.assertEqual(bill.used, 4585.0234, "Used is rounded.")
         self.assertEqual(bill.peak, 25)
         self.assertEqual(bill.source, "datafeeds")
+        self.assertTrue(bill.visible)
+        self.assertIsNotNone(bill.manual)
+        self.assertFalse(bill.manual)
         self.assertEqual(
             bill.items,
             [
@@ -1291,17 +1294,20 @@ class TestBillUploadDirectly(unittest.TestCase):
         """Sanity check for new/update/duplicate/skip/overlap bill creation paths."""
         # New bill, created.
         one_bill_list = [bills_list[0]]
+        one_bill_list[0] = one_bill_list[0]._replace(used=4585.0234)
+
         ret = _upload_bills_to_services(
             self.meter.utility_service.service_id, one_bill_list
         )
         self.assertEqual(len(ret), 1)
 
+        one_bill_list[0] = one_bill_list[0]._replace(used=4585.02343242342)
         bills = db.session.query(Bill).filter(Bill.service == self.meter.service)
         self.assertEqual(bills.count(), 1)
         self.assertTrue(bills[0].visible)
         modified = bills[0].modified
         original_oid = bills[0].oid
-
+        db.session.flush()
         # Duplicate bill, skipped.
         ret = _upload_bills_to_services(
             self.meter.utility_service.service_id, one_bill_list
@@ -1675,6 +1681,30 @@ class TestBillUploadDirectly(unittest.TestCase):
                 self.meter.utility_service.service_id,
                 None,
                 one_bill,
+            )
+
+    def test_incoming_future_bills(self):
+        """Test that incoming bills can't end in the future"""
+        today = datetime.today().date()
+        incoming = BillingDatum(
+            start=today,
+            end=today + timedelta(days=30),
+            cost=987.76,
+            used=4585.0,
+            peak=25.0,
+            items=None,
+            attachments=[],
+            statement=datetime(2019, 2, 3),
+            utility_code=None,
+        )
+
+        with self.assertRaises(NoFutureBillsError):
+            upload.upload_bills(
+                "sj-water-urjanet",
+                self.meter.oid,
+                self.meter.utility_service.service_id,
+                None,
+                [incoming],
             )
 
 

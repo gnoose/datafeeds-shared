@@ -305,8 +305,8 @@ def convert_billing_data_to_bills(
                 initial=initial,
                 closing=closing,
                 cost=billing_datum.cost,
-                used=billing_datum.used,
-                peak=billing_datum.peak,
+                used=round(billing_datum.used, 4) if billing_datum.used else 0,
+                peak=round(billing_datum.peak, 4) if billing_datum.peak else None,
                 items=[i._asdict() for i in (billing_datum.items or [])],
                 attachments=[
                     {
@@ -316,6 +316,7 @@ def convert_billing_data_to_bills(
                     }
                     for attachment in (billing_datum.attachments or [])
                 ],
+                manual=False,
             ),
         )
     return bills

@@ -23,6 +23,7 @@ from datafeeds.common.typing import (
     AttachmentEntry,
     BillingDatumItemsEntry,
     BillingData,
+    NoFutureBillsError,
 )
 
 import sqlalchemy as sa
@@ -41,6 +42,16 @@ if TYPE_CHECKING:
 
 class InvalidBillError(Exception):
     pass
+
+
+def check_no_future_bills(uncommitted: List["Bill"]):
+    """
+    Requirement: incoming bills cannot end in the future.
+    """
+    today = datetime.today().date()
+    for bill in uncommitted:
+        if bill.closing > today:
+            raise NoFutureBillsError()
 
 
 def validate_incoming_bills(
@@ -80,6 +91,7 @@ def process_incoming_bills(
 ) -> List["IncomingBillSummary"]:
     """Pre-processes incoming bills.  Called by Bill._add_service_bills."""
     incoming_bills = validate_incoming_bills(uncommitted, service)
+    check_no_future_bills(uncommitted)
 
     existing = (
         db.session.query(Bill)
