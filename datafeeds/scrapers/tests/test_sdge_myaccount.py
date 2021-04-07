@@ -7,6 +7,7 @@ import datafeeds.scrapers.sdge_myaccount
 from datafeeds import db
 from datafeeds.common import test_utils
 from datafeeds.common.exceptions import DataSourceConfigurationError, LoginError
+from datafeeds.common.timeline import Timeline
 from datafeeds.models.account import SnapmeterAccount
 from datafeeds.models.datasource import SnapmeterMeterDataSource
 from datafeeds.scrapers.sdge_myaccount import (
@@ -246,3 +247,40 @@ class SDGECSVParsingTests(unittest.TestCase):
             self.assertAlmostEqual(
                 expected[day], sum([r.value for r in raw_readings[dt]]), 1
             )
+
+    def test_parse_15_min_electric_dst(self):
+        timeline = Timeline(date(2021, 3, 12), date(2021, 3, 16), interval=15)
+        for row in extract_csv_rows(
+            "datafeeds/scrapers/tests/fixtures/sdge_15_min_electric_dst.csv"
+        ):
+            raw_reading = to_raw_reading(row, "forward", 4)
+            dt = datetime.combine(raw_reading.date, raw_reading.time)
+            val = timeline.lookup(dt)
+            if val:
+                timeline.insert(dt, (raw_reading.value + val) / 2)
+            else:
+                timeline.insert(dt, raw_reading.value)
+
+        # DST in this fixture is 2021-03-14
+        data = timeline.serialize()
+        dst_day = data["2021-03-14"]
+        self.assertEqual(
+            [
+                4.86,
+                4.9,
+                4.42,
+                2.14,
+                3.84,
+                4.9,
+                5.68,
+                5.08,
+                None,
+                None,
+                None,
+                None,
+                2.8,
+                2.22,
+                5.86,
+            ],
+            dst_day[:15],
+        )

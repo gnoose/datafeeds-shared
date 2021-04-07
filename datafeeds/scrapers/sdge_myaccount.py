@@ -6,7 +6,7 @@ and maintainability.
 """
 
 import csv
-from collections import defaultdict, namedtuple
+from collections import namedtuple
 import logging
 import os
 import re
@@ -31,6 +31,7 @@ from datafeeds.common.support import Results
 from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.exceptions import LoginError
 from datafeeds.common.support import Configuration
+from datafeeds.common.timeline import Timeline
 from datafeeds.common.typing import Status
 from datafeeds.common.util.selenium import (
     file_exists_in_dir,
@@ -579,7 +580,9 @@ class SdgeMyAccountScraper(BaseWebScraper):
         # size of 180 days.
         date_range = DateRange(self.start_date, self.end_date)
         interval_size = relativedelta(days=180)
-        raw_readings = defaultdict(list)
+        timeline = Timeline(
+            self.start_date, self.end_date, interval=self._configuration.interval
+        )
 
         for subrange in date_range.split_iter(delta=interval_size):
             log.info("Getting interval data for date range: {0}".format(subrange))
@@ -597,27 +600,17 @@ class SdgeMyAccountScraper(BaseWebScraper):
                 raw_reading = to_raw_reading(
                     row, self.direction, self.adjustment_factor
                 )
-                raw_readings[raw_reading.date].append(raw_reading)
+                dt = datetime.combine(raw_reading.date, raw_reading.time)
+                val = timeline.lookup(dt)
+                if val:
+                    timeline.insert(dt, (raw_reading.value + val) / 2)
+                else:
+                    timeline.insert(dt, raw_reading.value)
 
             # rename to keep files in archive, but prevent matching on filename
             os.rename(download_path, f"{download_path}.processed")
 
-        log.info("Processing raw interval data.")
-        # Convert the raw readings into the expected dictionary of results
-        result = {}
-        for key in sorted(raw_readings.keys()):
-            iso_str = key.strftime("%Y-%m-%d")
-            sorted_readings = sorted(raw_readings[key], key=lambda r: r.time)
-            expected_readings = 1440 / self._configuration.interval
-            if len(sorted_readings) == expected_readings:
-                result[iso_str] = adjust_for_dst(
-                    key, [x.value for x in sorted_readings]
-                )
-            else:
-                error_msg = "Incomplete interval data ({0}: {1} readings)"
-                error_msg = error_msg.format(iso_str, len(sorted_readings))
-                raise InvalidIntervalDataException(error_msg)
-        return Results(readings=result)
+        return Results(readings=timeline.serialize())
 
 
 def datafeed(
