@@ -228,47 +228,21 @@ class SDGEMyAccountTests(unittest.TestCase):
 
 
 class SDGECSVParsingTests(unittest.TestCase):
-    def test_parse_daily_gas(self):
-        raw_readings = defaultdict(list)
-        for row in extract_csv_rows(
-            "datafeeds/scrapers/tests/fixtures/sdge_daily_gas.zip"
-        ):
-            raw_reading = to_raw_reading(row, "forward", 1)
-            raw_readings[raw_reading.date].append(raw_reading)
-        expected = {
-            1: 78,
-            2: 86,
-            3: 35,
-        }
-        for day in range(1, 13):
-            dt = date(2020, 9, day)
-            self.assertAlmostEqual(
-                expected.get(day, 0), sum([r.value for r in raw_readings[dt]]), 1
-            )
-
     def test_parse_15_min_electric(self):
         raw_readings = defaultdict(list)
         for row in extract_csv_rows(
-            "datafeeds/scrapers/tests/fixtures/sdge_15_min_electric.zip"
+            "datafeeds/scrapers/tests/fixtures/sdge_15_min_electric.csv"
         ):
             raw_reading = to_raw_reading(row, "forward", 4)
             raw_readings[raw_reading.date].append(raw_reading)
+
         expected = {
-            1: 3438.4,
-            2: 3316.8,
-            3: 3414.4,
-            4: 3750.4,
-            5: 4257.6,
-            6: 5318.4,
-            7: 4486.4,
-            8: 3913.6,
-            9: 3582.4,
-            10: 3683.2,
-            11: 3723.2,
-            12: 4337.6,
+            14: 2071.68,  # 3/14
+            15: 2390.40,  # 3/15
+            16: 2460.80,  # 3/17
         }
-        for day in range(1, 13):
-            dt = date(2020, 9, day)
+        for day in range(14, 17):
+            dt = date(2021, 3, day)
             self.assertAlmostEqual(
                 expected[day], sum([r.value for r in raw_readings[dt]]), 1
             )
