@@ -1,9 +1,10 @@
 import re
 import time
 import collections
+import traceback
 from datetime import date, timedelta
 import logging
-from typing import Optional, List, Tuple, Dict
+from typing import Optional, List, Tuple, Dict, Any
 
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
@@ -353,6 +354,69 @@ class SceMultiAccountLandingPage(PageState):
             return  # error message doesn't exist
         log.info("search account for utility_account_id: %s", utility_account_id)
         self._search(utility_account_id)
+
+    def next_page(self) -> bool:
+        """If there's a Next button, click it."""
+        try:
+            log.debug("waiting for pagination")
+            WebDriverWait(self.driver, 10).until(
+                # !!! scePagination__buttonStyle__2mZlu
+                EC.presence_of_element_located(
+                    (By.XPATH, "//li[contains(@class, 'scePagination__buttonStyle')]")
+                )
+            )
+            log.info("going to next page")
+            self.driver.find_element_by_xpath(
+                "//li[contains(@class, 'scePagination__buttonStyle')]/a[contains(text(), 'Next')]"
+            ).click()
+            return True
+        except NoSuchElementException:
+            log.info("next button not found")
+            return False
+
+    def find_address_ids(self) -> List[Dict[str, Any]]:
+        WebDriverWait(self.driver, 10).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
+        # click Show more until there aren't any
+        self.click_show_more_until_element_found(
+            locator=(By.XPATH, "//div[contains(text(), 'click all more buttons')]"),
+        )
+        docs: List[Dict[str, Any]] = []
+        # for each account block
+        account_block_locator = "//div[contains(@class, 'customerAccountComponent__sceCustomerAccountSection')]"
+        for el in self.driver.find_elements_by_xpath(account_block_locator):
+            try:
+                header = el.find_element_by_xpath(
+                    "//div[contains(@class, 'customerAccountComponent__sceCustomerAccountHeading')]"
+                )
+                new_account_id = header.find_element_by_css_selector(".col-sm-4 p").text
+                log.info(f"found new account id {new_account_id}")
+                body = el.find_elements_by_xpath(
+                    "//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccSection')]"
+                )
+                for el in body:
+                    # 3 divs: empty, address, service id
+                    text = [
+                        div.text
+                        for div in el.find_elements_by_css_selector(
+                            ".serviceAccOverviewComponent__sceServiceAccSection__1nj_b .row div"
+                        )
+                    ]
+                    log.debug(f"text={text}")
+                    if len(text) >= 3:
+                        doc = {
+                            "address": text[1],
+                            "utility_account_id": new_account_id,
+                            "service_id": text[2],
+                            "tariff": text[4],
+                        }
+                        log.info(f"logging doc {doc}")
+                        docs.append(doc)
+            except Exception as exc:
+                log.warning(f"error getting new info: {exc}")
+                traceback.print_exc()
+        return docs
 
     def update_utility_service(self, utility_service: UtilityService) -> Optional[str]:
         """Get tariff and service ids and set on the utility_service record.
