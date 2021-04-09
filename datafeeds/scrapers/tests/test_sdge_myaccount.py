@@ -14,6 +14,7 @@ from datafeeds.scrapers.sdge_myaccount import (
     adjust_for_dst,
     extract_csv_rows,
     to_raw_reading,
+    parse_xlsx,
 )
 from datafeeds.models.meter import Meter
 
@@ -284,3 +285,38 @@ class SDGECSVParsingTests(unittest.TestCase):
             ],
             dst_day[:15],
         )
+
+    def test_parse_15_min_xlsx(self):
+        timeline = Timeline(date(2021, 3, 31), date(2021, 3, 31), interval=15)
+        parse_xlsx(timeline, "datafeeds/scrapers/tests/fixtures/sdge_15_min.xlsx", 4)
+        data = timeline.serialize()
+        self.assertEqual({"2021-03-31"}, set(data.keys()))
+        day = data["2021-03-31"]
+        self.assertEqual(96, len(day))
+        self.assertAlmostEqual(7.36 * 4, day[0], 2)
+        self.assertAlmostEqual(7.04 * 4, day[1], 2)
+        self.assertAlmostEqual(7.04 * 4, day[2], 2)
+
+    def test_parse_daily_xlsx(self):
+        timeline = Timeline(date(2021, 3, 30), date(2021, 4, 5), interval=1440)
+        parse_xlsx(timeline, "datafeeds/scrapers/tests/fixtures/sdge_daily_gas.xlsx", 1)
+        data = timeline.serialize()
+        self.assertEqual(
+            set(
+                [
+                    "2021-03-30",
+                    "2021-03-31",
+                    "2021-04-01",
+                    "2021-04-02",
+                    "2021-04-03",
+                    "2021-04-04",
+                    "2021-04-05",
+                ]
+            ),
+            set(data.keys()),
+        )
+        for key in data:
+            self.assertEqual(1, len(data[key]))
+        self.assertAlmostEqual(45.937, data["2021-03-30"][0], 2)
+        self.assertAlmostEqual(42.168, data["2021-03-31"][0], 2)
+        self.assertAlmostEqual(54.411, data["2021-04-01"][0], 2)

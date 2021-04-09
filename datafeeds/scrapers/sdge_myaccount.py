@@ -7,12 +7,15 @@ and maintainability.
 
 import csv
 from collections import namedtuple
+from glob import glob
 import logging
 import os
 import re
-from datetime import date, datetime, time
+from datetime import date, datetime, time, timedelta
+import time as time_
 from typing import Optional
 
+import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import ActionChains
@@ -191,16 +194,28 @@ class UsagePage:
     def __init__(self, driver):
         self._driver = driver
 
+    def is_enterprise(self):
+        """Enterprise version has a different URL and layout."""
+        return "-ent.sdge.com" in self._driver.current_url
+
     def navigate_to_usage_page(self):
-        self._driver.get("https://myaccount.sdge.com/portal/Usage/Index")
+        self._driver.wait(10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".AccountslctClass"))
+        )
+        if self.is_enterprise():
+            self._driver.get("https://myaccount-ent.sdge.com/Portal/Usage/Index")
+        else:
+            self._driver.get("https://myaccount.sdge.com/portal/Usage/Index")
 
     def wait_until_ready(self):
         """Wait until the page is ready to interact with."""
         log.debug("waiting for account list select")
+        if self.is_enterprise():
+            selector = "#multiple-selectAccount"
+        else:
+            selector = 'button[data-id="accountList"]'
         self._driver.wait().until(
-            EC.presence_of_element_located(
-                (By.CSS_SELECTOR, 'button[data-id="accountList"]')
-            )
+            EC.presence_of_element_located((By.CSS_SELECTOR, selector))
         )
 
     def _try_get_account_selector(self):
@@ -238,6 +253,108 @@ class UsagePage:
             # TODO: need example with single account
             yield None
 
+    def wait_for_loading_spinner(self):
+        # wait for loading spinner mdl-spinner
+        self._driver.wait(2).until(
+            EC.invisibility_of_element_located((By.CSS_SELECTOR, ".mdl-spinner"))
+        )
+
+    def switch_portfolio(self, index: int) -> int:
+        log.debug(f"switch to portfolio {index}")
+        # open dropdown
+        self._driver.find_element_by_css_selector(
+            'button[data-id="single-Select1"]'
+        ).click()
+        portfolio_text = [
+            el.text
+            for el in self._driver.find_elements_by_css_selector(".AccountslctClass li")
+            if el.text
+        ]
+        log.info(f"portfolio ids={portfolio_text}")
+        for idx, li in enumerate(
+            self._driver.find_elements_by_css_selector(".AccountslctClass li")
+        ):
+            if idx != index:
+                continue
+            log.debug(f"clicking portfolio {idx} {li.text}")
+            li.click()
+            self.wait_for_loading_spinner()
+            time_.sleep(3)
+            return len(portfolio_text)
+        return len(portfolio_text)
+
+    def select_enterprise_account(self, search_account: str) -> bool:
+        found = False
+        self.wait_for_loading_spinner()
+        log.debug(f"looking for account {search_account}")
+        # open accounts dropdown
+        self._driver.wait(20).until(
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "#multiple-selectAccount button")
+            )
+        )
+        self._driver.find_element_by_css_selector(
+            "#multiple-selectAccount button"
+        ).click()
+        time_.sleep(3)
+        for option in self._driver.find_elements_by_css_selector(
+            "#multiple-selectAccount .dropdown-menu li"
+        ):
+            log.debug(f"option text={option.text}")
+            if search_account in option.text or search_account[:-1] in option.text:
+                log.info(f"clicking option text={option.text}")
+                option.click()
+                self.wait_for_loading_spinner()
+                time_.sleep(3)
+                found = True
+                break
+        return found
+
+    def select_account_from_portfolio(self, account_id: str):
+        # Account numbers on the webpage don't have leading leading zeros, or the last digit
+        search_account = re.sub(r"^0+", "", account_id)
+        portfolios = self.switch_portfolio(0)
+        found = self.select_enterprise_account(search_account)
+        if not found:
+            for idx in range(portfolios - 1):
+                self.switch_portfolio(idx + 1)
+                found = self.select_enterprise_account(search_account)
+                if found:
+                    break
+        log.debug(f"found={found}")
+        self._driver.screenshot(
+            BaseWebScraper.screenshot_path("portfolio click account")
+        )
+        return found
+
+    def enterprise_select_usage(self, interval: int):
+        log.debug("select usage and resolution")
+        self._driver.find_element_by_css_selector("#usageView").click()
+        usage_type = "Min" if interval == 15 else "Day"
+        selector = f'li[type="{usage_type}"] a'
+        log.debug(f"waiting for {selector}")
+        self.wait_for_loading_spinner()
+        self._driver.wait(10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
+        )
+        self._driver.find_element_by_css_selector(selector).click()
+        self._driver.screenshot(
+            BaseWebScraper.screenshot_path("portfolio click account")
+        )
+
+    def enterprise_download(self, from_dt: date, to_dt: date, interval: int):
+        """Download data via script; 15 minute meters can only download one day at time."""
+        usage_type = "GetUsageByMin" if interval == 15 else "GetUsageByDay"
+        script = f"""
+        g_payload = usage.FormatRequestPayload();
+        g_payload["FromDate"] = new Date('{from_dt.isoformat()}');
+        g_payload["ToDate"] = new Date('{to_dt.isoformat()}');
+        usage.UsageOperation("ExportExcel", g_payload, "{usage_type}");
+        """
+        log.debug(f"download {from_dt} - {to_dt}: executing script {script}")
+        self._driver.execute_script(script)
+        time_.sleep(3)
+
     def select_account(self, account_id: str):
         """Select the desired account.
 
@@ -246,7 +363,7 @@ class UsagePage:
 
         # Account numbers on the webpage don't have leading leading zeros, or the last digit
         search_account = re.sub(r"^0+", "", account_id)
-
+        log.info(f"select_account {account_id} enterprise={self.is_enterprise()}")
         # If we have the ability to select accounts, try to do so, and if
         # successful, wait for the page to update with the new account info
         account_selector = self._try_get_account_selector()
@@ -289,11 +406,22 @@ class UsagePage:
 
     def select_meter(self, service_id: str) -> bool:
         # click meter dropdown
-        self._driver.find_element_by_css_selector("#meterDiv .md-select-icon").click()
+        self._driver.find_element_by_css_selector("#meterDiv .md-select-value").click()
         self._driver.wait(10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, ".md-clickable"))
         )
         self._driver.screenshot(BaseWebScraper.screenshot_path("click meter dropdown"))
+        # if there's more than one md-option, click one
+        options = [
+            el
+            for el in self._driver.find_elements_by_css_selector(
+                ".md-clickable md-select-menu md-option"
+            )
+        ]
+        if len(options) == 1:
+            log.debug("only one meter option; clicking")
+            self._driver.find_element_by_css_selector(".md-clickable md-option").click()
+            return True
         # remove leading 0s
         short_service_id = re.sub("^0+", "", service_id)
         log.info(f"service_id={service_id}; looking for {short_service_id}")
@@ -448,6 +576,32 @@ def to_raw_reading(csv_row, direction: str, adjustment_factor: int = 1):
     )
 
 
+def parse_xlsx(timeline: Timeline, filename: str, adjustment_factor: int = 1):
+    log.info(f"parsing {filename}")
+    df = pd.read_excel(filename, engine="openpyxl")
+    # Meter Number	Date	Start Time	Duration	Consumed
+    seen_header = False
+    for index, row in df.iterrows():
+        if row[0] == "Meter Number":
+            seen_header = True
+            log.info(f"header={' '.join(row)}")
+            continue
+        if not seen_header:
+            continue
+        if adjustment_factor == 1:  # daily
+            dt = dateparser.parse(row[1])
+        else:
+            # remove extra : from times like 12:00:am
+            time_str = row[2].replace(":am", " am").replace(":pm", " pm")
+            dt = dateparser.parse(f"{row[1]} {time_str}")
+        kw = float(row[4]) * adjustment_factor
+        val = timeline.lookup(dt)
+        if val:
+            timeline.insert(dt, (kw + val) / 2)
+        else:
+            timeline.insert(dt, kw)
+
+
 DST_STARTS = set(
     # Daylight savings time starts on the second Sunday in March
     dt.date()
@@ -551,16 +705,26 @@ class SdgeMyAccountScraper(BaseWebScraper):
         usage_page.wait_until_ready()
         self.screenshot("usage_page_initial")
 
-        log.info("Selecting account: {0}".format(self.account_id))
-        if not usage_page.select_account(self.account_id):
-            available_accounts = set(usage_page.get_available_accounts())
-            error_msg = "Unable to find account with ID={0}. Available accounts are: {1}".format(
-                self.account_id, available_accounts
-            )
-            log.info(error_msg)
-            raise InvalidAccountException(error_msg)
+        if usage_page.is_enterprise():
+            log.info("Enterprise: selecting account: {0}".format(self.account_id))
+            if not usage_page.select_account_from_portfolio(self.account_id):
+                error_msg = f"Unable to find account with ID={self.account_id}"
+                log.info(error_msg)
+                raise InvalidAccountException(error_msg)
+            self.screenshot("usage_account_selected")
 
-        self.screenshot("usage_account_selected")
+        else:
+            log.info("Selecting account: {0}".format(self.account_id))
+            if not usage_page.select_account(self.account_id):
+                available_accounts = set(usage_page.get_available_accounts())
+                error_msg = "Unable to find account with ID={0}. Available accounts are: {1}".format(
+                    self.account_id, available_accounts
+                )
+                log.info(error_msg)
+                raise InvalidAccountException(error_msg)
+
+            self.screenshot("usage_account_selected")
+
         # Select the desired meter
         log.info("Selecting meter with id: {0}".format(self.service_id))
         if not usage_page.select_meter(self.service_id):
@@ -572,43 +736,61 @@ class SdgeMyAccountScraper(BaseWebScraper):
             )
             raise InvalidMeterException(error_msg)
         self.screenshot("selected meter")
-        usage_page.open_green_button()
-        self.screenshot("opened green button")
 
-        # This page only allows you to download a certain amount of
-        # billing data at a time. We will use a conservative chunk
-        # size of 180 days.
         date_range = DateRange(self.start_date, self.end_date)
-        interval_size = relativedelta(days=180)
         timeline = Timeline(
             self.start_date, self.end_date, interval=self._configuration.interval
         )
 
-        for subrange in date_range.split_iter(delta=interval_size):
-            log.info("Getting interval data for date range: {0}".format(subrange))
-            start = subrange.start_date
-            end = subrange.end_date
+        if usage_page.is_enterprise():
+            usage_page.enterprise_select_usage(self._configuration.interval)
+            if self._configuration.interval == 14440:
+                for subrange in date_range.split_iter(delta=relativedelta(days=7)):
+                    usage_page.enterprise_download(
+                        subrange.start_date,
+                        subrange.end_date,
+                        self._configuration.interval,
+                    )
+            else:
+                dt = self.start_date
+                while dt < self.end_date:
+                    usage_page.enterprise_download(dt, dt, self._configuration.interval)
+                    dt += timedelta(days=1)
+            for filename in glob(f"{self._driver.download_dir}/*.xlsx"):
+                parse_xlsx(timeline, filename, self.adjustment_factor)
+        else:
+            usage_page.open_green_button()
+            self.screenshot("opened green button")
 
-            # Set the date range in the UI, then click "Export"
-            log.info("Setting date range.")
-            usage_page.download(start, end)
-            download_path = wait_for_download(self._driver)
+            # This page only allows you to download a certain amount of
+            # billing data at a time. We will use a conservative chunk
+            # size of 180 days.
+            interval_size = relativedelta(days=180)
+            for subrange in date_range.split_iter(delta=interval_size):
+                log.info("Getting interval data for date range: {0}".format(subrange))
+                start = subrange.start_date
+                end = subrange.end_date
 
-            log.info("Processing downloaded file: {0}".format(download_path))
-            # ...then process the downloaded file.
-            for row in extract_csv_rows(download_path):
-                raw_reading = to_raw_reading(
-                    row, self.direction, self.adjustment_factor
-                )
-                dt = datetime.combine(raw_reading.date, raw_reading.time)
-                val = timeline.lookup(dt)
-                if val:
-                    timeline.insert(dt, (raw_reading.value + val) / 2)
-                else:
-                    timeline.insert(dt, raw_reading.value)
+                # Set the date range in the UI, then click "Export"
+                log.info("Setting date range.")
+                usage_page.download(start, end)
+                download_path = wait_for_download(self._driver)
 
-            # rename to keep files in archive, but prevent matching on filename
-            os.rename(download_path, f"{download_path}.processed")
+                log.info("Processing downloaded file: {0}".format(download_path))
+                # ...then process the downloaded file.
+                for row in extract_csv_rows(download_path):
+                    raw_reading = to_raw_reading(
+                        row, self.direction, self.adjustment_factor
+                    )
+                    dt = datetime.combine(raw_reading.date, raw_reading.time)
+                    val = timeline.lookup(dt)
+                    if val:
+                        timeline.insert(dt, (raw_reading.value + val) / 2)
+                    else:
+                        timeline.insert(dt, raw_reading.value)
+
+                # rename to keep files in archive, but prevent matching on filename
+                os.rename(download_path, f"{download_path}.processed")
 
         return Results(readings=timeline.serialize())
 
