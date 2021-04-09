@@ -12,7 +12,6 @@ import logging
 import os
 import re
 from datetime import date, datetime, time, timedelta
-import time as time_
 from typing import Optional
 
 import pandas as pd
@@ -276,10 +275,10 @@ class UsagePage:
         ):
             if idx != index:
                 continue
-            log.debug(f"clicking portfolio {idx} {li.text}")
+            log.info(f"clicking portfolio {idx} {li.text}")
             li.click()
             self.wait_for_loading_spinner()
-            time_.sleep(3)
+            self._driver.sleep(3)
             return len(portfolio_text)
         return len(portfolio_text)
 
@@ -296,16 +295,16 @@ class UsagePage:
         self._driver.find_element_by_css_selector(
             "#multiple-selectAccount button"
         ).click()
-        time_.sleep(3)
+        self._driver.sleep(3)
         for option in self._driver.find_elements_by_css_selector(
             "#multiple-selectAccount .dropdown-menu li"
         ):
-            log.debug(f"option text={option.text}")
+            log.info(f"found account {option.text}")
             if search_account in option.text or search_account[:-1] in option.text:
                 log.info(f"clicking option text={option.text}")
                 option.click()
                 self.wait_for_loading_spinner()
-                time_.sleep(3)
+                self._driver.sleep(3)
                 found = True
                 break
         return found
@@ -353,7 +352,7 @@ class UsagePage:
         """
         log.debug(f"download {from_dt} - {to_dt}: executing script {script}")
         self._driver.execute_script(script)
-        time_.sleep(3)
+        self._driver.sleep(3)
 
     def select_account(self, account_id: str):
         """Select the desired account.
@@ -375,14 +374,20 @@ class UsagePage:
             self._driver.wait(10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "div.show"))
             )
+            self._driver.sleep(3)
+            found = False
             for option in self._driver.find_elements_by_css_selector(
                 ".AccountslctClass .dropdown li"
             ):
-                log.info(f"option text={option.text}")
                 if search_account in option.text or search_account[:-1] in option.text:
                     option.click()
+                    found = True
                     break
             self._driver.screenshot(BaseWebScraper.screenshot_path("click account"))
+            if not found:
+                raise InvalidAccountException(
+                    f"account {account_id} not found in dropdown"
+                )
         else:
             log.info("no account selector; single account")
         try:
@@ -455,8 +460,6 @@ class UsagePage:
 class HomePage:
     """Represents the SDGE MyAccount homepage, which appears post login."""
 
-    AccountsCss = "div.AccountslctClass"
-
     def __init__(self, driver):
         self._driver = driver
 
@@ -464,8 +467,13 @@ class HomePage:
         """Wait until the page is ready to interact with."""
 
         close_modal(self._driver)
+        self._driver.wait(10).until(
+            EC.invisibility_of_element_located((By.CSS_SELECTOR, ".mdl-spinner"))
+        )
         self._driver.wait(120).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, self.AccountsCss))
+            EC.invisibility_of_element_located(
+                (By.CSS_SELECTOR, 'input[id="usernamex"]')
+            )
         )
 
 
@@ -516,6 +524,7 @@ class LoginPage:
         scraper.screenshot("after credentials")
         self._driver.sleep(1)
         self.get_login_button().click()
+        self._driver.sleep(5)
         try:
             self._driver.wait(5).until(
                 EC.visibility_of_element_located(
