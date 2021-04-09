@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 from enum import Enum
 from typing import Optional, Dict, TYPE_CHECKING
@@ -15,6 +16,8 @@ if TYPE_CHECKING:
 
 NOT_ENROLLED = "notEnrolled"
 OPS_BILL_AUDIT = "opsbillaudit"
+
+log = logging.getLogger(__name__)
 
 
 class WorkflowState(Enum):
@@ -99,6 +102,13 @@ class BillAudit(ModelMixin, Base):
         if audit is None:
             audit = BillAudit.generate(b, meter)
             db.session.add(audit)
+            log.info(
+                "Initializing bill audit on service %s (%s - %s : $%s).",
+                b.service,
+                b.initial,
+                b.closing,
+                b.cost,
+            )
 
             event = BillAuditEvent.generate(audit, "Initialized bill audit.")
             audit.events = [event]

@@ -173,8 +173,15 @@ def create_bill_audit_records(
             # the bill as "visible" (meaning, visible to a customer). The current thinking is, we
             # don't want to hide an existing bill that got updated. Therefore, we want to only
             # hide newly created bills.
-            summary.bill.visible = False
-            db.session.add(summary.bill)
+            bill.visible = False
+            db.session.add(bill)
+            log.info(
+                "Hiding incoming bill on service %s (%s - %s : $%s).",
+                bill.service,
+                bill.initial,
+                bill.closing,
+                bill.cost,
+            )
 
 
 def extract_bill_attributes(bill: "Bill") -> Tuple:
