@@ -174,22 +174,6 @@ class MeterFlowDirection(Enum):
     reverse = "reverse"
 
 
-class Building(ModelMixin, Base):
-    """This is not a complete model of a building (building + snapmeter_building tables).
-
-    It's just enough so that a meter can get its address and timezone through the building relationship.
-    """
-
-    __tablename__ = "building"
-    oid = sa.Column(sa.BigInteger, primary_key=True)
-    timezone = sa.Column(sa.Unicode)
-    street1 = sa.Column(sa.Unicode)
-    street2 = sa.Column(sa.Unicode)
-    city = sa.Column(sa.Unicode)
-    state = sa.Column(sa.Unicode)
-    zip = sa.Column(sa.Unicode)
-
-
 class Meter(ModelMixin, Base):
     __tablename__ = "meter"
 
@@ -210,7 +194,7 @@ class Meter(ModelMixin, Base):
         sa.Enum(*[f.value for f in MeterFlowDirection]), default="forward"
     )
 
-    building = relationship("Building")
+    building = relationship("Building", back_populates="meters")
     utility_service = relationship("UtilityService")
     readings = relationship("MeterReading", back_populates="meter_obj")
 
@@ -227,6 +211,7 @@ class Meter(ModelMixin, Base):
         utility_service=None,
         parent=None,
     ):
+
         self.oid = Meter.get_new_oid()
 
         if building:
@@ -267,7 +252,7 @@ class Meter(ModelMixin, Base):
         default_tz = "America/Los_Angeles"
         if not self.building:
             return default_tz
-        return self.building.timezone or default_tz
+        return self.building._timezone or default_tz
 
     @property
     def bills_range(self):
@@ -290,6 +275,33 @@ class Meter(ModelMixin, Base):
             return None
 
         return number
+
+    @property
+    def first_snapmeter_account(self):
+        """
+        Returns the first account hex and the account name for a given meter.
+
+        Meters can occasionally belong to multiple accounts, so for bill audit purposes,
+        return a matching account that is not a ce-portal or ce-deactivated domain. If none found,
+        just return the first matching account.
+        """
+        base_account_query = (
+            db.session.query(SnapmeterAccount.hex_id, SnapmeterAccount.name)
+            .join(
+                SnapmeterAccountMeter,
+                SnapmeterAccountMeter.account == SnapmeterAccount.oid,
+            )
+            .filter(SnapmeterAccountMeter.meter == self.oid)
+        )
+
+        account_info = base_account_query.filter(
+            SnapmeterAccount.domain.notin_(["ce-portal", "ce-deactivated"])
+        ).first()
+
+        if account_info:
+            return account_info
+
+        return base_account_query.first()
 
     @classmethod
     def _readings_query(cls):
@@ -456,3 +468,82 @@ class Meter(ModelMixin, Base):
             if us.gen_service_id:
                 extra["gen_service_id"] = us.gen_service_id
         return extra
+
+
+class ProductEnrollment(ModelMixin, Base):
+    """product_enrollment table
+
+    current products = hodor, ce, pdp* (not used in webapps)
+    status values =  trial, active, notEnrolled
+    """
+
+    __tablename__ = "product_enrollment"
+
+    oid = sa.Column(sa.BigInteger, primary_key=True)
+    meter = sa.Column(sa.BigInteger)
+    product = sa.Column(sa.Unicode)
+    status = sa.Column(sa.Unicode)
+
+
+base_building = sa.Table(
+    "building",
+    Base.metadata,
+    sa.Column("oid", sa.BigInteger, primary_key=True, nullable=False),
+    sa.Column("cardinal", sa.BigInteger),
+    sa.Column("details", sa.JSON),
+    sa.Column("forecast", sa.BigInteger),
+    sa.Column("secondary", sa.BigInteger),
+    sa.Column("source", sa.Unicode),
+    sa.Column("backup", sa.Unicode),
+    sa.Column("square_footage", sa.BigInteger),
+    sa.Column("timezone", sa.Unicode),
+    sa.Column("street1", sa.Unicode),
+    sa.Column("street2", sa.Unicode),
+    sa.Column("city", sa.Unicode),
+    sa.Column("state", sa.Unicode),
+    sa.Column("zip", sa.Unicode),
+    sa.Column("country", sa.Unicode, default="US"),
+    sa.Column("pm_property_id", sa.Integer),
+)
+
+snapmeter_building = sa.Table(
+    "snapmeter_building",
+    Base.metadata,
+    sa.Column(
+        "building",
+        sa.BigInteger,
+        sa.ForeignKey("building.oid"),
+        primary_key=True,
+        nullable=False,
+    ),
+    sa.Column(
+        "account",
+        sa.BigInteger,
+        sa.ForeignKey("snapmeter_account.oid"),
+        primary_key=True,
+        nullable=False,
+    ),
+    sa.Column("name", sa.Unicode, nullable=False),
+    sa.Column("energy_star", sa.Integer, nullable=True),
+    sa.Column("visible", sa.Boolean, nullable=False),
+)
+
+building_join = sa.join(base_building, snapmeter_building)
+
+
+class Building(ModelMixin, Base):
+    """Composite model for building and snapmeter_building tables.
+
+    The contents of snapmeter_building are available/relevant only for Snapmeter customers.
+    """
+
+    __table__ = building_join
+
+    oid = base_building.c.oid
+    _timezone = base_building.c.timezone
+    name = snapmeter_building.c.name
+    visible = snapmeter_building.c.visible
+    account = snapmeter_building.c.account
+    square_footage = base_building.c.square_footage
+
+    meters = relationship("Meter", back_populates="building")

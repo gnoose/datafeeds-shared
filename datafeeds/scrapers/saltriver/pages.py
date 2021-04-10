@@ -1,6 +1,7 @@
 """Page object definitions for Salt River Project scrapers"""
 
 import logging
+import time
 from datetime import date, timedelta
 from io import BytesIO
 from typing import List, NamedTuple
@@ -162,8 +163,8 @@ class SaltRiverLandingPage(PageState):
     AccountOptionLocator = (By.XPATH, "//li[@class='rw-list-option']")
     AccountActiveOptionLocator = (By.XPATH, "//li[@id='rw_1_listbox_active_option']")
     MyBillButtonLocator = (By.XPATH, "//a[contains(text(), 'My bill')]")
-    NoBillsDisplayedLocator = (By.XPATH, "//div[contains(text(), '12')]")
-    NoBillsDisplayedOptionLocator = (
+    NumBillsDisplayedLocator = (By.XPATH, "//div[text()='12']")
+    NumBillsDisplayedOptionLocator = (
         By.XPATH,
         "//div[@id='menu-']" "/div" "/ul" "/li[contains(text(), '36')]",
     )
@@ -204,12 +205,15 @@ class SaltRiverLandingPage(PageState):
         found = False
         try:
             for option in account_options:
+                log.debug("account_id=%s option=%s", account_id, option.text)
                 if account_id in option.text:
+                    log.debug("clicking %s", option.text)
                     option.click()
                     found = True
+                    time.sleep(5)
+                    break
         except StaleElementReferenceException:
             pass
-
         if not found:
             raise saltriver_errors.MeterNotFoundError.for_account(account_id)
 
@@ -221,21 +225,21 @@ class SaltRiverLandingPage(PageState):
 
     def set_displayed_bills(self):
         WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(self.NoBillsDisplayedLocator)
+            EC.presence_of_element_located(self.NumBillsDisplayedLocator)
         )
-        no_bills_displayed_select = self.driver.find_element(
-            *self.NoBillsDisplayedLocator
+        num_bills_displayed_select = self.driver.find_element(
+            *self.NumBillsDisplayedLocator
         )
-        scroll_to(self.driver, no_bills_displayed_select)
-        no_bills_displayed_select.click()
+        scroll_to(self.driver, num_bills_displayed_select)
+        num_bills_displayed_select.click()
 
         WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(self.NoBillsDisplayedOptionLocator)
+            EC.presence_of_element_located(self.NumBillsDisplayedOptionLocator)
         )
-        no_bills_displayed_option = self.driver.find_element(
-            *self.NoBillsDisplayedOptionLocator
+        num_bills_displayed_option = self.driver.find_element(
+            *self.NumBillsDisplayedOptionLocator
         )
-        no_bills_displayed_option.click()
+        num_bills_displayed_option.click()
 
     def set_history_type(self):
         WebDriverWait(self.driver, 10).until(
@@ -319,7 +323,7 @@ class SaltRiverLandingPage(PageState):
             )
 
             try:
-                bill_pdf_name = "SRPbill{}{}".format(
+                bill_pdf_name = "SRPbill{}{}.pdf".format(
                     statement_date.strftime("%B"), statement_date.year
                 )
                 pdf_download_link = cols[0].find_element_by_tag_name("a")

@@ -215,6 +215,7 @@ class ConfigurationPage:
 
     def wait_until_ready(self):
         _log("Waiting for Configuration page to be ready")
+        self._driver.screenshot(BaseWebScraper.screenshot_path("configuration"))
         self._driver.wait().until(
             EC.presence_of_element_located((By.CSS_SELECTOR, self.DateRangeRadioButton))
         )
@@ -472,19 +473,22 @@ class EnergyProfilerScraper(BaseWebScraper):
             return 0
         return len(csv_kw_rows[0].interval_data)
 
+    def login(self):
+        login_page = LoginPage(self._driver, self.base_url)
+        # Authenticate
+        login_page.goto_page()
+        login_page.wait_until_ready()
+        self.screenshot("before login")
+        try:
+            login_page.login(self.username, self.password)
+        except LoginError as exc:
+            self.screenshot("login failed")
+            raise exc
+
     def _execute(self):
         # Create page helpers
         if self.log_in:
-            login_page = LoginPage(self._driver, self.base_url)
-            # Authenticate
-            login_page.goto_page()
-            login_page.wait_until_ready()
-            self.screenshot("before login")
-            try:
-                login_page.login(self.username, self.password)
-            except LoginError as exc:
-                self.screenshot("login failed")
-                raise exc
+            self.login()
 
         config_page = ConfigurationPage(self._driver)
         navigation = Navigation(self._driver)

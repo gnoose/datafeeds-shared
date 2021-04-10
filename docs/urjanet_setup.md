@@ -8,9 +8,9 @@ This document explains how to obtain a local urjanet MySQL instance for developm
 
 1. [Optional] To create a snapshot of the productin urjanet database. Log in to ops and run:
     ```
-    mysqldump -h urjanet-datastore.cu2ndqyknjku.us-west-1.rds.amazonaws.com \
+    mysqldump -h urjanet-datastore-v2.cu2ndqyknjku.us-west-1.rds.amazonaws.com \
        -u gridium -p --databases urjanet \
-       --compress --quick > /builds/urjanet_dumps/urjanet.sql
+       --compress --quick --set-gtid-purged=OFF > /builds/urjanet_dumps/urjanet.sql
     ```
 2. Or download a copy (warning: 1.1GB unzipped): `scp ops:/builds/urjanet_dumps/urjanet.sql.gz .`
 3. Start your local mysql instance via `docker-compose up -d`.

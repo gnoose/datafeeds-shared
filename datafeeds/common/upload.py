@@ -4,7 +4,7 @@ from datetime import timedelta, date, datetime
 
 from deprecation import deprecated
 import os
-from typing import Optional, Union, BinaryIO, List, Dict
+from typing import Optional, Union, BinaryIO, List, Dict, Set
 from io import BytesIO
 import hashlib
 from sqlalchemy import func
@@ -27,7 +27,7 @@ from datafeeds.common.util.s3 import (
     s3_key_exists,
 )
 from datafeeds.models import UtilityService
-from datafeeds.models.bill import Bill, PartialBillProviderType
+from datafeeds.models.bill import Bill, PartialBillProviderType, snap_first_start
 from datafeeds.models.meter import Meter, MeterReading
 from datafeeds.models.bill_document import BillDocument
 
@@ -76,12 +76,17 @@ def verify_bills(meter_oid: int, billing_data: BillingData) -> BillingData:
 
 
 def upload_bills(
+    scraper: str,
     meter_oid: int,
     service_id: str,
     task_id: str,
     billing_data: BillingData,
 ) -> Status:
-    if config.enabled("PLATFORM_UPLOAD"):
+    cur_most_recent = _latest_closing(service_id)
+
+    if scraper in config.DIRECT_BILL_UPLOAD:
+        _upload_bills_to_services(service_id, billing_data)
+    elif config.enabled("PLATFORM_UPLOAD"):
         log.info("Uploading bills to platform via HTTP request.")
         _upload_to_platform(service_id, billing_data)
 
@@ -90,7 +95,7 @@ def upload_bills(
         index.update_billing_range(task_id, billing_data)
     billing_data = verify_bills(meter_oid, billing_data)
 
-    title = "Final Billing Summary"
+    title = "Final Scraped Summary"
     show_bill_summary(billing_data, title)
 
     path = os.path.join(config.WORKING_DIRECTORY, "bills.csv")
@@ -106,7 +111,6 @@ def upload_bills(
                 if b.end > end:
                     end = b.end
     log.info("Wrote bill data to %s." % path)
-    cur_most_recent = _latest_closing(service_id)
     if cur_most_recent and (end > cur_most_recent):
         return Status.SUCCEEDED
     return Status.COMPLETED
@@ -252,6 +256,70 @@ def upload_partial_bills(
         index.update_billing_range(task_id, billing_data)
 
     return status
+
+
+def _upload_bills_to_services(service_id: str, billing_data: BillingData) -> List[Bill]:
+    """Reconciles incoming billing data with bills on every service with matching service_id."""
+    services = db.session.query(UtilityService.oid).filter(
+        UtilityService.service_id == service_id,
+        Meter.service == UtilityService.oid,
+    )
+
+    updated: Set[Bill] = set()
+    for service_oid in services:
+        existing = (
+            db.session.query(Bill)
+            .filter(service_oid[0] == Bill.service)
+            .order_by(Bill.initial.asc())
+            .all()
+        )
+
+        snapped_billing_data = snap_first_start(billing_data, existing)
+        uncommitted_bills = convert_billing_data_to_bills(
+            service_oid[0], snapped_billing_data
+        )
+
+        new_bills, _ = Bill.add_bills(uncommitted_bills, source="datafeeds")
+        updated = updated.union(new_bills)
+    return list(updated)
+
+
+def convert_billing_data_to_bills(
+    service_oid: int, billing_data: BillingData
+) -> List[Bill]:
+    bills: List = []
+    for billing_datum in billing_data:
+        if not billing_datum:
+            continue
+
+        initial = billing_datum.start
+        closing = billing_datum.end
+        if isinstance(billing_datum.start, datetime):
+            initial = billing_datum.start.date()
+        if isinstance(billing_datum.end, datetime):
+            closing = billing_datum.end.date()
+
+        bills.append(
+            Bill(
+                service=service_oid,
+                initial=initial,
+                closing=closing,
+                cost=billing_datum.cost,
+                used=round(billing_datum.used, 4) if billing_datum.used else 0,
+                peak=round(billing_datum.peak, 4) if billing_datum.peak else None,
+                items=[i._asdict() for i in (billing_datum.items or [])],
+                attachments=[
+                    {
+                        "key": attachment.key,
+                        "kind": attachment.kind,
+                        "format": attachment.format,
+                    }
+                    for attachment in (billing_datum.attachments or [])
+                ],
+                manual=False,
+            ),
+        )
+    return bills
 
 
 @deprecated(details="To be replaced by ORM module.")

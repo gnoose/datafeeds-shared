@@ -251,12 +251,35 @@ def receive_before_flush(session, flush_context, instances):
     Operations that are not supported within these mapper-level persistence events include:
     Session.add()
     """
-    for instance in session.dirty:
-        if not session.is_modified(
-            instance, include_collections=False
-        ) or not isinstance(instance, UtilityService):
+    from datafeeds.models.bill import Bill
+
+    for instance in session.new:
+        if not isinstance(instance, UtilityService):
             continue
-        # If a utility service has been modified, create a snapshot.
-        log.debug("generating utility service snapshot; %s updated", instance.oid)
-        service_modified = datetime.now()
-        UtilityServiceSnapshot.generate(instance, service_modified=service_modified)
+        """
+        When a UtilityService is created, generate a snapshot of that
+        UtilityService so we have a record of its initial state when the service is
+        later updated.
+        """
+        log.debug("generating initial utility service snapshot")
+        UtilityServiceSnapshot.generate(instance)
+
+    for instance in session.dirty:
+        if not session.is_modified(instance, include_collections=False):
+            continue
+
+        if isinstance(instance, Bill):
+            # If a bill has been modified, update its modified field.
+            instance.modified = datetime.utcnow()
+
+        if isinstance(instance, UtilityService):
+            # If a utility service has been modified, create a snapshot.
+            log.debug("generating utility service snapshot; %s updated", instance.oid)
+            # After tariff transitions are approved, we stash their occurred date on the UtilityService
+            # object for use here as the service_modified.  Updates to the utility service record
+            # by other means will just use the current datetime as their "service_modified" date.
+            service_modified = (
+                instance.occurred if hasattr(instance, "occurred") else datetime.now()
+            )
+            UtilityServiceSnapshot.generate(instance, service_modified=service_modified)
+            instance.occurred = None

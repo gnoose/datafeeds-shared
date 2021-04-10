@@ -1,6 +1,6 @@
 import logging
 
-from datetime import timedelta, datetime
+from datetime import datetime
 from typing import List, Optional
 
 from datafeeds import db
@@ -15,7 +15,7 @@ from datafeeds.common.typing import (
     Status,
 )
 from datafeeds.models.meter import Meter
-from datafeeds.models.bill import PartialBill, PartialBillProviderType
+from datafeeds.models.bill import PartialBill, PartialBillProviderType, snap_first_start
 
 log = logging.getLogger(__name__)
 
@@ -190,38 +190,6 @@ class PartialBillProcessor:
         # Added for logging purposes
         self.superseded.append(existing_partial)
 
-    def _snap_first_start_date(self):
-        """
-        Adjusts the start date of a new partial bill, such that its start date
-        is equal to the end date of an existing partial bill. This helps us
-        "snap" the start date into the existing bill timeline.
-
-        One day is added to the start date, if applicable.
-        """
-        if self.billing_data:
-            new_bill = self.billing_data[0]
-            for existing_bill in self.haves:
-                if new_bill.start == existing_bill.closing:
-                    new_bill_start = new_bill.start + timedelta(days=1)
-                    self.billing_data[0] = new_bill._replace(start=new_bill_start)
-                    log.info(
-                        "Snapped the start date of the first new bill to {}".format(
-                            new_bill_start
-                        )
-                    )
-
-                    if new_bill.end - new_bill_start < timedelta(days=1):
-                        raise Exception(
-                            "Snapping start date would create partial ({} - {}) because of existing "
-                            "bill ({} - {}).".format(
-                                new_bill_start,
-                                new_bill.end,
-                                existing_bill.initial,
-                                existing_bill.closing,
-                            )
-                        )
-                    break
-
     def process_partial_bills(self):
         """Primary method.
 
@@ -237,7 +205,7 @@ class PartialBillProcessor:
             return Status.FAILED
 
         # Snap the start date of the first new bill, if applicable
-        self._snap_first_start_date()
+        self.billing_data = snap_first_start(self.billing_data, self.haves)
 
         for pending_partial in self.billing_data:
             found = False

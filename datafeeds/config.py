@@ -152,6 +152,14 @@ def enabled(feature: str) -> bool:
     return feature in FEATURE_FLAGS
 
 
+# upload results for these scrapers directly to the database (instead of platform)
+DIRECT_BILL_UPLOAD = {
+    "atmos",
+    "austin-urjanet",
+    "svp-billing",
+    "sj-water-urjanet",
+}
+
 # What log level should datafeeds' logger use?
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 

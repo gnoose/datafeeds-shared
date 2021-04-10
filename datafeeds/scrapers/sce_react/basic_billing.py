@@ -1,8 +1,11 @@
 import logging
 import collections
 import time
+import uuid
 
-from typing import Optional, List
+from typing import Optional, List, Dict
+
+from elasticsearch.helpers import bulk
 
 import datafeeds.scrapers.sce_react.pages as sce_pages
 import datafeeds.scrapers.sce_react.errors as sce_errors
@@ -12,6 +15,7 @@ from datetime import timedelta
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from datafeeds.common.index import _get_es_connection
 from datafeeds.common.util.pagestate.pagestate import PageStateMachine
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.base import BaseWebScraper
@@ -41,7 +45,8 @@ class SceReactBasicBillingConfiguration(Configuration):
         utility_account_id: str,
         scrape_bills: bool,
         scrape_partial_bills: bool,
-        metascraper=False,
+        metascraper: bool = False,
+        account_datasource_id: Optional[int] = None,
     ):
         super().__init__(
             scrape_bills=scrape_bills,
@@ -52,6 +57,7 @@ class SceReactBasicBillingConfiguration(Configuration):
         self.service_id = service_id
         self.gen_service_id = gen_service_id
         self.utility_account_id = utility_account_id
+        self.account_datasource_id = account_datasource_id
 
 
 class SceReactBasicBillingScraper(BaseWebScraper):
@@ -227,11 +233,23 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         # Throw an exception on failure to login
         page.raise_on_error()
 
+    def log_single_account_ids(self, service_id: str):
+        """Create an Elasticsearch record mapping account data source to new service_id."""
+        doc = {
+            "account_data_source": self._configuration.account_datasource_id,
+            "service_id": service_id,
+        }
+        # TODO: can we get utility account id?
+        _get_es_connection().index(
+            index="sce-utility-service", id=uuid.uuid4().hex, body=doc
+        )
+
     def single_account_landing_page_action(
         self, page: sce_pages.SceSingleAccountLandingPage
     ):
         sce_pages.detect_and_close_survey(self._driver)
         service_id = page.get_service_account()
+        self.log_single_account_ids(service_id)
         if service_id != self.service_id:
             raise sce_errors.ServiceIdException(
                 "No service ID matching '{}' was found.".format(self.service_id)
@@ -250,11 +268,37 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             EC.invisibility_of_element_located(sce_pages.GenericBusyIndicatorLocator),
         )
 
+    def log_multi_account_ids(self, page: sce_pages.SceMultiAccountLandingPage):
+        """Get all new utility account ids and service ids and log to Elasticsearch."""
+        docs = page.find_address_ids()
+        try:
+            while page.next_page():
+                docs += page.find_address_ids()
+        except Exception as exc:
+            log.warning(f"error getting address ids: {exc}")
+        log.info(
+            f"found {len(docs)} address / id docs for account_datasource {self._configuration.account_datasource_id}"
+        )
+        bulk_docs: List[Dict] = []
+        for doc in docs:
+            doc["account_data_source"] = self._configuration.account_datasource_id
+            bulk_docs.append(
+                {
+                    "_index": "sce-utility-service",
+                    "_type": "_doc",
+                    "_id": uuid.uuid4().hex,
+                    "_source": doc,
+                }
+            )
+        bulk(_get_es_connection(), bulk_docs)
+        log.info(f"indexed {len(docs)} address / id docs")
+
     def multi_account_landing_page_action(
         self, page: sce_pages.SceMultiAccountLandingPage
     ):
         sce_pages.detect_and_close_survey(self._driver)
         self.utility_tariff_code = page.update_utility_service(self.utility_service)
+        self.log_multi_account_ids(page)
         page.search_account(self.service_id, self.utility_account_id)
 
     def search_failure_action(self, page: sce_pages.SceAccountSearchFailure):
@@ -376,6 +420,7 @@ def datafeed(
         scrape_bills=not is_partial,
         scrape_partial_bills=is_partial,
         metascraper=metascraper,
+        account_datasource_id=datasource._account_data_source,
     )
 
     return run_datafeed(

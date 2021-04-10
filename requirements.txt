@@ -8,6 +8,7 @@ javaobj-py3==0.4.2
 jsonobject==0.9.10
 jsonschema==3.2.0
 numpy==1.20.1
+openpyxl==3.0.7
 pandas==1.2.3
 pdfminer.six==20201018
 Pillow==8.1.2
