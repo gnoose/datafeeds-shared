@@ -46,7 +46,6 @@ def extract_demand(text):
 
 def extract_dates(text):
     date_text = re.search(r"CurrentEWW((\d\d/\d\d)+)", text).group(1)
-
     # split E,W,W dates into ['mm/dd','mm/dd','mm/dd','mm/dd','mm/dd','mm/dd']...
     # the first three elements are start dates (E,W,W) and the last three elements are end_dates
     # it doesn't matter which one we pick for start/end because the dates are same for E,W and W ?
@@ -54,6 +53,7 @@ def extract_dates(text):
 
     start_date = parse_date(eww_dates[0]).date()
     end_date = parse_date(eww_dates[-1]).date()
+
     # dates don't have years; adjust year if needed
     if start_date > end_date:
         start_date = start_date - relativedelta(years=1)
@@ -176,6 +176,15 @@ def process_pdf(
     used = extract_used(text)
     demand = extract_demand(text)
     start_date, end_date = extract_dates(text)
+
+    # if the start date is in the wrong year, replace year (start_date = 12/1, statement_dt=12/15/2020)
+    if start_date > statement_dt:
+        start_date = start_date.replace(year=statement_dt.year)
+        end_date = end_date.replace(year=statement_dt.year)
+    # end_date must be after start date (end_date = 1/5, start_date = 12/1)
+    if end_date < start_date:
+        end_date = end_date.replace(year=end_date.year + 1)
+
     # adjust end date because SVP bills overlap on start/end dates
     end_date = end_date - timedelta(days=1)
     line_items: List[BillingDatumItemsEntry] = extract_line_items(text)
