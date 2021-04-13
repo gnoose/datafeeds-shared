@@ -4,6 +4,7 @@ import re
 import sys
 import time
 import pprint
+from typing import Optional
 
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as ec
@@ -123,6 +124,19 @@ class HomeScreen:
             provider_display = "Commercial Energy of Montana"
 
         return provider_display in self.driver.page_source
+
+    def system_error_present(self) -> bool:
+        elements = self.driver.find_elements_by_xpath(
+            "//h2[@class='pge-label' and contains(text(), 'System Error')]"
+        )
+        return len(elements) > 0
+
+    def system_error_text(self) -> Optional[str]:
+        elements = self.driver.find_elements_by_xpath("//div[@class='error']")
+        if elements:
+            return ",".join(e.text for e in elements)
+
+        return None
 
     def browse_to_authorizations(self, provider):
         if provider == "gridium":
@@ -321,6 +335,13 @@ def _authorize(driver, username, password, provider, verify=False, dryrun=False)
 
     home = HomeScreen(driver)
     home.wait_until_ready()
+
+    if home.system_error_present():
+        message = "PG&E is experiencing a system error that prevents provisioning"
+        text = home.system_error_text()
+        if text:
+            message += ": " + text
+        raise SiteError(message)
 
     found_authorized = False
     if home.is_authorized(provider):
