@@ -220,7 +220,7 @@ class SMUDFirstFuelScraper(BaseWebScraper):
             name="login",
             page=LoginPage(self._driver),
             action=self.login_action,
-            transitions=["find_account", "login_failed"],
+            transitions=["find_account", "dashboard", "login_failed"],
         )
 
         state_machine.add_state(
