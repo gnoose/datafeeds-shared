@@ -55,6 +55,12 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
+          name: Skip containerize if not configured
+          command: |
+            if [[ -z $AWS_DEV_ECR_ACCOUNT_URL ]]; then
+              circleci-agent step halt
+            fi
+      - run: |
           name: Set DEPLOY_TAG if on master branch
           command: |
             if [[ $CIRCLE_BRANCH == 'master' ]]; then

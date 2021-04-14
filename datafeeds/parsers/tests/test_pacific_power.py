@@ -1,8 +1,10 @@
 from datetime import date
 import io
+import logging
 import os
 from unittest import TestCase
 
+from datafeeds import config
 from datafeeds.common.typing import BillingDatum
 from datafeeds.common.test_utils import private_fixture
 from datafeeds.parsers import pacific_power
@@ -10,18 +12,25 @@ from datafeeds.parsers import pacific_power
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
+log = logging.getLogger(__name__)
 # Tests 01-04 confirm that we can process current Pacific Power bills.
 # Tests 05-06 confirm that we can process historical Pacific Power bills.
 
 
 class TestPacificPowerParser(TestCase):
     def setUp(self) -> None:
+        if not config.TEST_WITH_PRIVATE_FIXTURES:
+            log.info("Skipping test, private fixtures not enabled.")
+            return
         files = ["pacific_power_test_%02d.pdf" % x for x in range(1, 7)]
         self.data = {}
         for filename in files:
             self.data[filename] = io.BytesIO(private_fixture(filename))
 
     def test_bill_parse_01(self):
+        if not config.TEST_WITH_PRIVATE_FIXTURES:
+            log.info("Skipping test, private fixtures not enabled.")
+            return
         actual = pacific_power.parse_bill_pdf(
             self.data["pacific_power_test_01.pdf"], "13714552"
         )
@@ -39,6 +48,9 @@ class TestPacificPowerParser(TestCase):
         self.assertEqual(expected, actual)
 
     def test_bill_parse_02(self):
+        if not config.TEST_WITH_PRIVATE_FIXTURES:
+            log.info("Skipping test, private fixtures not enabled.")
+            return
         actual = pacific_power.parse_bill_pdf(
             self.data["pacific_power_test_01.pdf"], "66887643"
         )
@@ -57,6 +69,9 @@ class TestPacificPowerParser(TestCase):
 
     def test_bill_parse_03(self):
         """If the statement date cannot be determined, default to the bill's end-date."""
+        if not config.TEST_WITH_PRIVATE_FIXTURES:
+            log.info("Skipping test, private fixtures not enabled.")
+            return
         actual = pacific_power.parse_bill_pdf(
             self.data["pacific_power_test_02.pdf"], "78534175"
         )
@@ -74,6 +89,9 @@ class TestPacificPowerParser(TestCase):
         self.assertEqual(expected, actual)
 
     def test_bill_parse_04(self):
+        if not config.TEST_WITH_PRIVATE_FIXTURES:
+            log.info("Skipping test, private fixtures not enabled.")
+            return
         actual = pacific_power.parse_bill_pdf(
             self.data["pacific_power_test_03.pdf"], "78585187"
         )
@@ -91,6 +109,9 @@ class TestPacificPowerParser(TestCase):
         self.assertEqual(expected, actual)
 
     def test_bill_parse_05(self):
+        if not config.TEST_WITH_PRIVATE_FIXTURES:
+            log.info("Skipping test, private fixtures not enabled.")
+            return
         actual = pacific_power.parse_bill_pdf(
             self.data["pacific_power_test_04.pdf"], "13714552"
         )
@@ -108,6 +129,9 @@ class TestPacificPowerParser(TestCase):
         self.assertEqual(expected, actual)
 
     def test_bill_parse_06(self):
+        if not config.TEST_WITH_PRIVATE_FIXTURES:
+            log.info("Skipping test, private fixtures not enabled.")
+            return
         actual = pacific_power.parse_bill_pdf(
             self.data["pacific_power_test_05.pdf"], "66887643"
         )
@@ -125,6 +149,9 @@ class TestPacificPowerParser(TestCase):
         self.assertEqual(expected, actual)
 
     def test_bill_parse_07(self):
+        if not config.TEST_WITH_PRIVATE_FIXTURES:
+            log.info("Skipping test, private fixtures not enabled.")
+            return
         actual = pacific_power.parse_bill_pdf(
             self.data["pacific_power_test_06.pdf"], "13714552"
         )
