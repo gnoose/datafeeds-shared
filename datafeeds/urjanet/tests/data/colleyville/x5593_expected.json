@@ -4,7 +4,7 @@
             "end": "2019-05-14",
             "peak_demand": null,
             "start": "2019-04-17",
-            "tariff": null,
+            "tariff": "unknown_tariff",
             "total_charge": "137.4100",
             "total_usage": "28.07280000",
             "line_items": [
@@ -77,7 +77,7 @@
             "end": "2019-06-16",
             "peak_demand": null,
             "start": "2019-05-15",
-            "tariff": null,
+            "tariff": "unknown_tariff",
             "total_charge": "183.7800",
             "total_usage": "43.04496000",
             "line_items": [
@@ -150,7 +150,7 @@
             "end": "2019-07-17",
             "peak_demand": null,
             "start": "2019-06-17",
-            "tariff": null,
+            "tariff": "unknown_tariff",
             "total_charge": "453.2900",
             "total_usage": "130.07064000",
             "line_items": [

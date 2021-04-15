@@ -4,7 +4,7 @@
             "end": "2019-08-15",
             "peak_demand": null,
             "start": "2019-07-11",
-            "tariff": null,
+            "tariff": "unknown_tariff",
             "total_charge": "1972.7300",
             "total_usage": "4810.00000",
             "line_items": [

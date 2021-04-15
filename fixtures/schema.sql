@@ -571,7 +571,9 @@ CREATE TABLE public.bill (
     source character varying,
     tnd_cost double precision,
     gen_cost double precision,
-    has_cost_curve boolean
+    has_cost_curve boolean,
+    utility_code character varying,
+    gen_utility_code character varying
 );
 
 
