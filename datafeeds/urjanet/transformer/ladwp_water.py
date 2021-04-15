@@ -139,7 +139,7 @@ class LosAngelesWaterTransformer(UrjanetGridiumTransformer):
                     total_usage=period_data.get_total_usage(),
                     source_urls=period_data.get_source_urls(),
                     line_items=period_data.utility_charges,
-                    tariff=None,
+                    tariff=period_data.tariff(),
                 )
             )
         return GridiumBillingPeriodCollection(periods=gridium_periods)

@@ -1168,7 +1168,7 @@ class TestBillUploadDirectly(unittest.TestCase):
             items=items,
             attachments=att,
             statement=datetime(2019, 2, 3),
-            utility_code=None,
+            utility_code="Utility-Code",
         )
 
         ret = _upload_bills_to_services(
@@ -1179,6 +1179,7 @@ class TestBillUploadDirectly(unittest.TestCase):
         self.assertEqual(bill.service, self.meter.service)
         self.assertEqual(bill.initial, datetime(2019, 1, 6).date())
         self.assertEqual(bill.closing, datetime(2019, 2, 3).date())
+        self.assertEqual(bill.utility_code, "Utility-Code")
         self.assertEqual(bill.cost, 987.76)
         self.assertEqual(bill.used, 4585.0234, "Used is rounded.")
         self.assertEqual(bill.peak, 25)

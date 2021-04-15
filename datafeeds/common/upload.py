@@ -308,6 +308,7 @@ def convert_billing_data_to_bills(
                 used=round(billing_datum.used, 4) if billing_datum.used else 0,
                 peak=round(billing_datum.peak, 4) if billing_datum.peak else None,
                 items=[i._asdict() for i in (billing_datum.items or [])],
+                utility_code=billing_datum.utility_code,
                 attachments=[
                     {
                         "key": attachment.key,
