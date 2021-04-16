@@ -7,6 +7,22 @@ Login to `gridium-dev` AWS account with IAM credentials, and go to the
 
 Click Open IDE to start the environment.
 
+## work with GitHub
+
+To get the code, checkout the branch specified in the PR:
+
+```
+git checkout master
+git pull
+git checkout branch-from-pr
+git config user.name "First Last"
+git config user.email you@email.com (or your private email from https://github.com/settings/emails)
+```
+
+When you run `git pull`, you'll be prompted for a username and password. Use your GitHub username for the username, and
+a personal access token for password. To create one, see 
+[Creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+
 ## terminal setup
 
 To run scrapers from a terminal, run this first:
@@ -30,3 +46,7 @@ To view screenshots, open them from the project sidebar.
 ## get credentials
 
     python scripts/get_credentials.py *datasource*
+
+## see also
+
+[Scraper fixing cookbook](cookbook.md)
