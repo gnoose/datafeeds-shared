@@ -36,7 +36,7 @@ def recaptcha_v2(driver: BaseDriver, iframe_parent: WebElement, page_url: str):
                 captcha_key = value
     else:
         html = iframe_parent.get_attribute("innerHTML")
-        match = re.search(r'.*?iframe src=".*?k=(.*?)\&.*?"', html)
+        match = re.search(r'.*?iframe.*?src=".*?k=(.*?)\&.*?"', html)
         if match:
             captcha_key = match.group(1)
         log.info("captcha key: trying innerHTML: %s", html)

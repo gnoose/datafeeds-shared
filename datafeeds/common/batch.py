@@ -145,6 +145,9 @@ def run_datafeed(
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Uploading task information to Elasticsearch.")
         doc = index.starter_doc(meter.oid, datasource)
+        doc["start_date"] = date_range.start_date
+        doc["end_date"] = date_range.end_date
+        doc["meter_data_source"] = datasource.oid
         if configuration:
             doc.update(
                 {

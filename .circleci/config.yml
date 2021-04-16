@@ -60,7 +60,7 @@ jobs:
             if [[ -z $AWS_DEV_ECR_ACCOUNT_URL ]]; then
               circleci-agent step halt
             fi
-      - run: |
+      - run:
           name: Set DEPLOY_TAG if on master branch
           command: |
             if [[ $CIRCLE_BRANCH == 'master' ]]; then
@@ -69,7 +69,7 @@ jobs:
             else
               echo "on feature branch $CIRCLE_BRANCH"
             fi
-          echo "DEPLOYED_TAG is: $DEPLOY_TAG"
+            echo "DEPLOYED_TAG is: $DEPLOY_TAG"
       - checkout
       # CircleCI does not allow orbs to take custom environment variables
       # Only Prod is setup for CD.
