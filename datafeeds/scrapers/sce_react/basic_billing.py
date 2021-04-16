@@ -15,6 +15,7 @@ from datetime import timedelta
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from datafeeds.common.exceptions import InvalidMeterDataException
 from datafeeds.common.index import _get_es_connection
 from datafeeds.common.util.pagestate.pagestate import PageStateMachine
 from datafeeds.common.batch import run_datafeed
@@ -169,7 +170,21 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                 name="multi_account_homepage",
                 page=sce_pages.SceMultiAccountLandingPage(self._driver),
                 action=self.find_generation_account_action,
-                transitions=["find_generation_account_success", "search_failure"],
+                transitions=[
+                    "find_generation_account_success",
+                    "find_generation_account_fail",
+                ],
+            )
+
+            # If the search fails, we're done: nothing to download, and we may already have bills
+            # that we want to persist.
+            state_machine.add_state(
+                name="find_generation_account_fail",
+                page=sce_pages.SceGenerationAccountSearchFail(
+                    self._driver, self.gen_service_id
+                ),
+                action=self.search_fail_generation_action,
+                transitions=["done"],
             )
 
             # If the search succeeds, we open the billing information for the found service id.
@@ -258,15 +273,19 @@ class SceReactBasicBillingScraper(BaseWebScraper):
 
     def find_generation_account_action(
         self, page: sce_pages.SceMultiAccountLandingPage
-    ):
+    ) -> bool:
         sce_pages.detect_and_close_survey(self._driver)
-        page.scroll_for_service_id(self.gen_service_id)
+        if not page.scroll_for_service_id(self.gen_service_id):
+            # if the generation service id can't be found, don't fail the entire scraper
+
+            return False
         time.sleep(5)
         WebDriverWait(
             self._driver,
             10,
             EC.invisibility_of_element_located(sce_pages.GenericBusyIndicatorLocator),
         )
+        return True
 
     def log_multi_account_ids(self, page: sce_pages.SceMultiAccountLandingPage):
         """Get all new utility account ids and service ids and log to Elasticsearch."""
@@ -307,7 +326,11 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         )
 
     def search_success_action(self, page: sce_pages.SceAccountSearchSuccess):
-        page.view_usage_for_search_result()
+        if not page.view_usage_for_search_result(self.service_id):
+            raise InvalidMeterDataException(f"{self.service_id} not found")
+
+    def search_fail_generation_action(self, page: sce_pages.SceAccountSearchFailure):
+        log.warning(f"generation service id not found: {self.gen_service_id}")
 
     def search_success_generation_action(self, page: sce_pages.SceAccountSearchSuccess):
         page.view_billed_generation_charge()

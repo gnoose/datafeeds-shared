@@ -299,7 +299,7 @@ class SceMultiAccountLandingPage(PageState):
                 )
                 continue
 
-    def scroll_for_service_id(self, service_id: str):
+    def scroll_for_service_id(self, service_id: str) -> bool:
         """Click More link until service_id is visible.
 
         Use this when scraping partial bills, since search by service id seems to  always return an error.
@@ -320,7 +320,11 @@ class SceMultiAccountLandingPage(PageState):
         self.click_show_more_until_element_found(
             locator=generation_charge_link_locator,
         )
-        self.driver.find_element(*generation_charge_link_locator)
+        try:
+            self.driver.find_element(*generation_charge_link_locator)
+            return True
+        except NoSuchElementException:
+            return False
 
     def _search(self, search_id: str):
         account_search_field = self.driver.find_element(*self.AccountFilterLocator)
@@ -359,7 +363,6 @@ class SceMultiAccountLandingPage(PageState):
         try:
             log.debug("waiting for pagination")
             WebDriverWait(self.driver, 10).until(
-                # !!! scePagination__buttonStyle__2mZlu
                 EC.presence_of_element_located(
                     (By.XPATH, "//li[contains(@class, 'scePagination__buttonStyle')]")
                 )
@@ -530,6 +533,25 @@ class SceAccountSearchFailure(PageState):
         return EC.presence_of_element_located(self.ErrorLocator)
 
 
+class SceGenerationAccountSearchFail(PageState):
+    """Models the case where the generation service_id search fails."""
+
+    def __init__(self, driver: BaseDriver, gen_service_id: str = None):
+        super().__init__(driver)
+        self.gen_service_id = gen_service_id
+
+    def get_ready_condition(self):
+        return ec_and(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator),
+            EC.invisibility_of_element_located(
+                (
+                    By.XPATH,
+                    f"//div[contains(@class, 'serviceAccOverviewComponent__sceServiceAccSection_') and contains(text(), '{self.gen_service_id}'",
+                )
+            ),
+        )
+
+
 class SceAccountSearchSuccess(PageState):
     """Models the case where an SAID search succeeds"""
 
@@ -561,7 +583,6 @@ class SceAccountSearchSuccess(PageState):
     )
 
     def get_ready_condition(self):
-        log.debug("SceAccountSearchSuccess gen_service_id=%s", self.gen_service_id)
         if self.gen_service_id:
             return EC.presence_of_element_located(self.generation_charge_link_locator)
 
@@ -573,12 +594,22 @@ class SceAccountSearchSuccess(PageState):
     def view_billed_generation_charge(self):
         self.driver.find_element(*self.generation_charge_link_locator).click()
 
-    def view_usage_for_search_result(self):
+    def view_usage_for_search_result(self, service_id: str) -> bool:
         """Open the usage info dialog for the available service agreement.
 
         This can be used to view billing data for the service account.
         """
-        self.driver.find_element(*self.ViewUsageLinkLocator).click()
+        # if there are multiple results, make sure we click the correct one
+        for el in self.driver.find_elements_by_css_selector(
+            ".serviceAccOverviewComponent__sceServiceAccSection__1nj_b"
+        ):
+            if service_id in el.text:
+                log.debug(f"{service_id} found in {el.text}; clicking")
+                el.find_element(*self.ViewUsageLinkLocator).click()
+                return True
+            else:
+                log.debug(f"{service_id} not found in {el.text}; skipping")
+        return False
 
 
 class SceBilledGenerationUsageModal(PageState):
