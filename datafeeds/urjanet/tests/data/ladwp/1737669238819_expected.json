@@ -4,7 +4,7 @@
             "end": "2015-01-29",
             "peak_demand": null,
             "start": "2014-12-31",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "34.7400",
             "total_usage": "7.0000",
             "line_items": [
@@ -29,7 +29,7 @@
             "end": "2015-03-02",
             "peak_demand": null,
             "start": "2015-01-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "44.6600",
             "total_usage": "9.0000",
             "line_items": [
@@ -54,7 +54,7 @@
             "end": "2015-03-30",
             "peak_demand": null,
             "start": "2015-03-03",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "44.6600",
             "total_usage": "9.0000",
             "line_items": [
@@ -79,7 +79,7 @@
             "end": "2015-04-28",
             "peak_demand": null,
             "start": "2015-03-31",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "34.5400",
             "total_usage": "7.0000",
             "line_items": [
@@ -104,7 +104,7 @@
             "end": "2015-05-28",
             "peak_demand": null,
             "start": "2015-04-29",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "49.3200",
             "total_usage": "10.0000",
             "line_items": [
@@ -129,7 +129,7 @@
             "end": "2015-06-28",
             "peak_demand": null,
             "start": "2015-05-29",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "34.5400",
             "total_usage": "7.0000",
             "line_items": [
@@ -154,7 +154,7 @@
             "end": "2015-07-29",
             "peak_demand": null,
             "start": "2015-06-29",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "35.7700",
             "total_usage": "7.0000",
             "line_items": [
@@ -179,7 +179,7 @@
             "end": "2015-08-26",
             "peak_demand": null,
             "start": "2015-07-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "35.8100",
             "total_usage": "7.0000",
             "line_items": [
@@ -204,7 +204,7 @@
             "end": "2015-09-27",
             "peak_demand": null,
             "start": "2015-08-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "35.8100",
             "total_usage": "7.0000",
             "line_items": [
@@ -229,7 +229,7 @@
             "end": "2015-10-27",
             "peak_demand": null,
             "start": "2015-09-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "32.8000",
             "total_usage": "7.0000",
             "line_items": [
@@ -254,7 +254,7 @@
             "end": "2015-11-30",
             "peak_demand": null,
             "start": "2015-10-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "32.5800",
             "total_usage": "7.0000",
             "line_items": [
@@ -279,7 +279,7 @@
             "end": "2015-12-30",
             "peak_demand": null,
             "start": "2015-12-01",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "18.6200",
             "total_usage": "4.0000",
             "line_items": [
@@ -304,7 +304,7 @@
             "end": "2016-01-31",
             "peak_demand": null,
             "start": "2015-12-31",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "33.2800",
             "total_usage": "7.0000",
             "line_items": [
@@ -329,7 +329,7 @@
             "end": "2016-02-29",
             "peak_demand": null,
             "start": "2016-02-01",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "33.2800",
             "total_usage": "7.0000",
             "line_items": [
@@ -354,7 +354,7 @@
             "end": "2016-03-29",
             "peak_demand": null,
             "start": "2016-03-01",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "33.2800",
             "total_usage": "7.0000",
             "line_items": [
@@ -379,7 +379,7 @@
             "end": "2016-04-27",
             "peak_demand": null,
             "start": "2016-03-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "35.9000",
             "total_usage": "7.0000",
             "line_items": [
@@ -416,7 +416,7 @@
             "end": "2016-05-26",
             "peak_demand": null,
             "start": "2016-04-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "38.8700",
             "total_usage": "7.0000",
             "line_items": [
@@ -441,7 +441,7 @@
             "end": "2016-06-28",
             "peak_demand": null,
             "start": "2016-05-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "44.4200",
             "total_usage": "8.0000",
             "line_items": [
@@ -466,7 +466,7 @@
             "end": "2016-07-27",
             "peak_demand": null,
             "start": "2016-06-29",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "32.5000",
             "total_usage": "7.0000",
             "line_items": [
@@ -503,7 +503,7 @@
             "end": "2016-08-25",
             "peak_demand": null,
             "start": "2016-07-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "32.2900",
             "total_usage": "7.0000",
             "line_items": [
@@ -528,7 +528,7 @@
             "end": "2016-09-26",
             "peak_demand": null,
             "start": "2016-08-26",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "41.5200",
             "total_usage": "9.0000",
             "line_items": [
@@ -553,7 +553,7 @@
             "end": "2016-10-26",
             "peak_demand": null,
             "start": "2016-09-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "66.9600",
             "total_usage": "12.0000",
             "line_items": [
@@ -590,7 +590,7 @@
             "end": "2016-11-29",
             "peak_demand": null,
             "start": "2016-10-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "32.2900",
             "total_usage": "7.0000",
             "line_items": [
@@ -615,7 +615,7 @@
             "end": "2016-12-29",
             "peak_demand": null,
             "start": "2016-11-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "32.2900",
             "total_usage": "7.0000",
             "line_items": [
@@ -640,7 +640,7 @@
             "end": "2017-01-30",
             "peak_demand": null,
             "start": "2016-12-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "40.0900",
             "total_usage": "7.0000",
             "line_items": [
@@ -665,7 +665,7 @@
             "end": "2017-02-28",
             "peak_demand": null,
             "start": "2017-01-31",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "40.3500",
             "total_usage": "7.0000",
             "line_items": [
@@ -690,7 +690,7 @@
             "end": "2017-03-29",
             "peak_demand": null,
             "start": "2017-03-01",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "40.3500",
             "total_usage": "7.0000",
             "line_items": [
@@ -715,7 +715,7 @@
             "end": "2017-04-27",
             "peak_demand": null,
             "start": "2017-03-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "34.5800",
             "total_usage": "6.0000",
             "line_items": [
@@ -740,7 +740,7 @@
             "end": "2017-05-29",
             "peak_demand": null,
             "start": "2017-04-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "40.3500",
             "total_usage": "7.0000",
             "line_items": [
@@ -765,7 +765,7 @@
             "end": "2017-06-27",
             "peak_demand": null,
             "start": "2017-05-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "46.1000",
             "total_usage": "8.0000",
             "line_items": [
@@ -790,7 +790,7 @@
             "end": "2017-07-27",
             "peak_demand": null,
             "start": "2017-06-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "38.8700",
             "total_usage": "7.0000",
             "line_items": [
@@ -827,7 +827,7 @@
             "end": "2017-08-27",
             "peak_demand": null,
             "start": "2017-07-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "67.0800",
             "total_usage": "11.0000",
             "line_items": [
@@ -864,7 +864,7 @@
             "end": "2017-09-26",
             "peak_demand": null,
             "start": "2017-08-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "33.2500",
             "total_usage": "6.0000",
             "line_items": [
@@ -889,7 +889,7 @@
             "end": "2017-10-26",
             "peak_demand": null,
             "start": "2017-09-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "207.9300",
             "total_usage": "27.0000",
             "line_items": [
@@ -926,7 +926,7 @@
             "end": "2017-11-28",
             "peak_demand": null,
             "start": "2017-10-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "38.7900",
             "total_usage": "7.0000",
             "line_items": [
@@ -951,7 +951,7 @@
             "end": "2018-01-01",
             "peak_demand": null,
             "start": "2017-11-29",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "44.2100",
             "total_usage": "8.0000",
             "line_items": [
@@ -976,7 +976,7 @@
             "end": "2018-01-29",
             "peak_demand": null,
             "start": "2018-01-02",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "52.1600",
             "total_usage": "9.0000",
             "line_items": [
@@ -1013,7 +1013,7 @@
             "end": "2018-02-27",
             "peak_demand": null,
             "start": "2018-01-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "37.0700",
             "total_usage": "7.0000",
             "line_items": [
@@ -1038,7 +1038,7 @@
             "end": "2018-03-28",
             "peak_demand": null,
             "start": "2018-02-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "42.3700",
             "total_usage": "8.0000",
             "line_items": [
@@ -1063,7 +1063,7 @@
             "end": "2018-04-26",
             "peak_demand": null,
             "start": "2018-03-29",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "221.2300",
             "total_usage": "28.0000",
             "line_items": [
@@ -1100,7 +1100,7 @@
             "end": "2018-05-28",
             "peak_demand": null,
             "start": "2018-04-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "66.0100",
             "total_usage": "11.0000",
             "line_items": [
@@ -1137,7 +1137,7 @@
             "end": "2018-06-26",
             "peak_demand": null,
             "start": "2018-05-29",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "49.7700",
             "total_usage": "9.0000",
             "line_items": [
@@ -1174,7 +1174,7 @@
             "end": "2018-07-26",
             "peak_demand": null,
             "start": "2018-06-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "49.4300",
             "total_usage": "9.0000",
             "line_items": [
@@ -1235,7 +1235,7 @@
             "end": "2018-08-27",
             "peak_demand": null,
             "start": "2018-07-27",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "21.6000",
             "total_usage": "4.0000",
             "line_items": [
@@ -1260,7 +1260,7 @@
             "end": "2018-09-25",
             "peak_demand": null,
             "start": "2018-08-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "10.8200",
             "total_usage": "2.0000",
             "line_items": [
@@ -1285,7 +1285,7 @@
             "end": "2018-10-25",
             "peak_demand": null,
             "start": "2018-09-26",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "27.0400",
             "total_usage": "5.0000",
             "line_items": [
@@ -1310,7 +1310,7 @@
             "end": "2018-11-28",
             "peak_demand": null,
             "start": "2018-10-26",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "27.0400",
             "total_usage": "5.0000",
             "line_items": [
@@ -1335,7 +1335,7 @@
             "end": "2018-12-30",
             "peak_demand": null,
             "start": "2018-11-29",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "16.2100",
             "total_usage": "3.0000",
             "line_items": [
@@ -1360,7 +1360,7 @@
             "end": "2019-01-29",
             "peak_demand": null,
             "start": "2018-12-31",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "15.7900",
             "total_usage": "3.0000",
             "line_items": [
@@ -1385,7 +1385,7 @@
             "end": "2019-02-27",
             "peak_demand": null,
             "start": "2019-01-30",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "21.0500",
             "total_usage": "4.0000",
             "line_items": [
@@ -1410,7 +1410,7 @@
             "end": "2019-03-29",
             "peak_demand": null,
             "start": "2019-02-28",
-            "tariff": null,
+            "tariff": "Water Schedule C - Comm, Ind, Govt and Temp Service",
             "total_charge": "15.7900",
             "total_usage": "3.0000",
             "line_items": [

@@ -421,6 +421,8 @@ class Bill(ModelMixin, Base):
     used = sa.Column(sa.Float)
     notes = sa.Column(sa.Unicode)
     visible = sa.Column(sa.Boolean, nullable=False, default=True)
+    utility_code = sa.Column(sa.Unicode, nullable=True)
+    gen_utility_code = sa.Column(sa.Unicode, nullable=True)
     # Used to indicate that we believe we've received all partial
     # bill components, where applicable.
     has_all_charges = sa.Column(sa.Boolean, nullable=True)
