@@ -569,9 +569,7 @@ def test_scraper(
     )
     scraper.start()
     scraper.scrape(
-        bills_handler=ft.partial(
-            test_upload_bills, "ladwp-bill-pdf", -1, meter_number, None
-        ),
+        bills_handler=ft.partial(test_upload_bills, -1, meter_number, None),
         partial_bills_handler=None,
         readings_handler=None,
         pdfs_handler=None,

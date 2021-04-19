@@ -115,7 +115,6 @@ def run_datafeed(
     transforms = [] if transforms is None else transforms
     bill_handler = ft.partial(
         upload_bills,
-        datasource.name,
         meter.oid,
         meter.utility_service.service_id,
         task_id,
