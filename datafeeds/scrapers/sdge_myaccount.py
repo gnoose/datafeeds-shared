@@ -341,7 +341,7 @@ class UsagePage:
             BaseWebScraper.screenshot_path("portfolio click account")
         )
 
-    def enterprise_download(self, from_dt: date, to_dt: date, interval: int):
+    def javascript_download(self, from_dt: date, to_dt: date, interval: int):
         """Download data via script; 15 minute meters can only download one day at time."""
         usage_type = "GetUsageByMin" if interval == 15 else "GetUsageByDay"
         script = f"""
@@ -437,6 +437,7 @@ class UsagePage:
             if service_id in option.text or short_service_id in option.text:
                 log.debug(f"click option {option} ({option.tag_name}")
                 option.click()
+                self._driver.sleep(2)
                 return True
         return False
 
@@ -444,6 +445,15 @@ class UsagePage:
         # click GreenButton Download
         self._driver.find_element_by_css_selector('a[data-target="#grButton"]').click()
         self._driver.screenshot(BaseWebScraper.screenshot_path("green button modal"))
+
+    def select_usage(self, interval: int):
+        # make sure we're on Usage (not Cost)
+        self._driver.find_element_by_css_selector("#usageView a").click()
+        if interval == 1440:
+            self._driver.find_element_by_css_selector("#dailyView a").click()
+        else:
+            self._driver.find_element_by_css_selector("li[type='Min'] a").click()
+        self._driver.sleep(2)
 
     def download(self, start: date, end: date):
         # set date range in JavaScript instead of trying to navigate date picker
@@ -753,54 +763,24 @@ class SdgeMyAccountScraper(BaseWebScraper):
 
         if usage_page.is_enterprise():
             usage_page.enterprise_select_usage(self._configuration.interval)
-            if self._configuration.interval == 14440:
-                for subrange in date_range.split_iter(delta=relativedelta(days=7)):
-                    usage_page.enterprise_download(
-                        subrange.start_date,
-                        subrange.end_date,
-                        self._configuration.interval,
-                    )
-            else:
-                dt = self.start_date
-                while dt < self.end_date:
-                    usage_page.enterprise_download(dt, dt, self._configuration.interval)
-                    dt += timedelta(days=1)
-            for filename in glob(f"{self._driver.download_dir}/*.xlsx"):
-                parse_xlsx(timeline, filename, self.adjustment_factor)
         else:
-            usage_page.open_green_button()
-            self.screenshot("opened green button")
+            usage_page.select_usage(self._configuration.interval)
 
-            # This page only allows you to download a certain amount of
-            # billing data at a time. We will use a conservative chunk
-            # size of 180 days.
-            interval_size = relativedelta(days=180)
-            for subrange in date_range.split_iter(delta=interval_size):
-                log.info("Getting interval data for date range: {0}".format(subrange))
-                start = subrange.start_date
-                end = subrange.end_date
-
-                # Set the date range in the UI, then click "Export"
-                log.info("Setting date range.")
-                usage_page.download(start, end)
-                download_path = wait_for_download(self._driver)
-
-                log.info("Processing downloaded file: {0}".format(download_path))
-                # ...then process the downloaded file.
-                for row in extract_csv_rows(download_path):
-                    raw_reading = to_raw_reading(
-                        row, self.direction, self.adjustment_factor
-                    )
-                    dt = datetime.combine(raw_reading.date, raw_reading.time)
-                    val = timeline.lookup(dt)
-                    if val:
-                        timeline.insert(dt, (raw_reading.value + val) / 2)
-                    else:
-                        timeline.insert(dt, raw_reading.value)
-
-                # rename to keep files in archive, but prevent matching on filename
-                os.rename(download_path, f"{download_path}.processed")
-
+        # use the same JavaScript download for both regular and enterprise
+        if self._configuration.interval == 1440:
+            for subrange in date_range.split_iter(delta=relativedelta(days=7)):
+                usage_page.javascript_download(
+                    subrange.start_date,
+                    subrange.end_date,
+                    self._configuration.interval,
+                )
+        else:
+            dt = self.start_date
+            while dt < self.end_date:
+                usage_page.javascript_download(dt, dt, self._configuration.interval)
+                dt += timedelta(days=1)
+        for filename in glob(f"{self._driver.download_dir}/*.xlsx"):
+            parse_xlsx(timeline, filename, self.adjustment_factor)
         return Results(readings=timeline.serialize())
 
 

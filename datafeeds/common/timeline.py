@@ -68,7 +68,7 @@ class Timeline:
         d = dt.date()
         t = dt.time()
         if self._start <= d <= self._end:
-            return self.index[d][t]
+            return self.index[d].get(t)
 
         return None
 
