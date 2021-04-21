@@ -94,9 +94,9 @@ class Scraper(BaseApiScraper):
         response = self.sess.get(API_BASE + "/feed", params=params)
 
         if response.status_code != requests.codes.ok:
+            log.error(response.text)
             raise ApiError(
-                "Failed to acquire data from the API. Status Code: %s."
-                % response.status_code
+                f"Failed to acquire data from the API. Status Code: {response.status_code} Message: {response.text}"
             )
 
         stream_id, intervals = parse_intervals(response.text)
