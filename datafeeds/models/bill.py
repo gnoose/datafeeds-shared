@@ -118,9 +118,11 @@ def process_incoming_bills(
         if same_date_index.size == 1:
             existing_bill = existing[same_date_index[0]]
             # Webapps does not have the bad_usage_override check.
-            skip = not existing_bill.safe_override(
-                bill
-            ) or existing_bill.bad_usage_override(bill)
+            skip = (
+                not existing_bill.safe_override(bill)
+                or existing_bill.bad_usage_override(bill)
+                or existing_bill.bad_peak_override(bill)
+            )
 
             if existing_bill.values_match(bill):
                 duplicate = existing_bill
@@ -563,12 +565,29 @@ class Bill(ModelMixin, Base):
         # copy attachments and items only if they add info
         for field in ["attachments", "items"]:
             if getattr(other, field):
+                log.info("copying field %s: %s", field, getattr(other, field))
                 setattr(self, field, getattr(other, field))
         db.session.add(self)
 
     def bad_usage_override(self, replacement: "Bill") -> bool:
         # Cost of incoming bill is non-zero but use is zero. Comparison bill should have the same dates.
-        return replacement.cost != 0 and replacement.used == 0 and self.used != 0
+        bad_usage = replacement.cost != 0 and replacement.used == 0 and self.used != 0
+        if bad_usage:
+            log.warning(
+                "incoming bill has non-zero cost and zero usage, but existing bill has usage (%s); skipping",
+                self.used,
+            )
+        return bad_usage
+
+    def bad_peak_override(self, replacement: "Bill") -> bool:
+        # Don't overwrite a non-null peak value with a null
+        bad_peak = replacement.peak is None and self.peak is not None
+        if bad_peak:
+            log.warning(
+                "incoming bill has no peak, but existing bill has peak (%s); skipping",
+                self.peak,
+            )
+        return bad_peak
 
     def safe_override(self, replacement: "Bill") -> bool:
         """Returns whether the current bill can be overridden with the replacement bill. The replacement is assumed

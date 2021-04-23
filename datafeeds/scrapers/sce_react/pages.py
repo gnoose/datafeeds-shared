@@ -784,6 +784,7 @@ class SceServiceAccountDetailModal(PageState):
 
     def _get_visible_usage_info(self):
         """Internal helper function to retrieve currently visible usage info from the modal dialog"""
+        self.driver.screenshot(BaseWebScraper.screenshot_path("usage info"))
         data_xpath = (
             "//div[contains(@class, 'GraphContentStyle__netUsageValues')]"
             "//span[contains(@class, 'GraphContentStyle__netSuperOffPeakKwh')]"
@@ -798,10 +799,12 @@ class SceServiceAccountDetailModal(PageState):
         # Skip the first data element (values[0]), which is average daily usage
         usage = self._parse_usage(values[1].text)
         cost = self._parse_cost(values[2].text)
+        log.debug("usage info: usage=%s cost=%s", usage, cost)
         return usage, cost
 
     def get_visible_demand_info(self):
         """Internal helper function to retrieve currently visible demand info from the modal dialog"""
+        self.driver.screenshot(BaseWebScraper.screenshot_path("demand info"))
         data_xpath = (
             "//div[contains(@class, 'GraphContentStyle__netUsageValues')]"
             "//span[contains(@class, 'GraphContentStyle__netSuperOffPeakKwh')]"
@@ -815,6 +818,7 @@ class SceServiceAccountDetailModal(PageState):
 
         demand = self._parse_demand(values[0].text)
         cost = self._parse_cost(values[1].text)
+        log.debug("demand info: usage=%s cost=%s", demand, cost)
         return demand, cost
 
     def select_date_range(self, target_start: date, target_end: date):
@@ -873,7 +877,9 @@ class SceServiceAccountDetailModal(PageState):
         """Scrape basic usage data for all billing periods that overlap the range specified by the arguments."""
 
         # Ensure we are looking at usage data
+        log.info("selecting usage report")
         self.select_usage_report()
+        self.driver.screenshot(BaseWebScraper.screenshot_path("select usage report"))
 
         # We need to open the "Billed Months" view, in order to view historical data
         WebDriverWait(self.driver, 10).until(
@@ -913,7 +919,9 @@ class SceServiceAccountDetailModal(PageState):
         """
 
         # Ensure we are looking at demand data
+        log.info("selecting demand report")
         self.select_demand_report()
+        self.driver.screenshot(BaseWebScraper.screenshot_path("select demand report"))
 
         # We need to open the "Billed Months" view, in order to view historical data
         WebDriverWait(self.driver, 10).until(
