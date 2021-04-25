@@ -6,6 +6,7 @@ import uuid
 from typing import Optional, List, Dict
 
 from elasticsearch.helpers import bulk
+from selenium.common.exceptions import NoSuchElementException
 
 import datafeeds.scrapers.sce_react.pages as sce_pages
 import datafeeds.scrapers.sce_react.errors as sce_errors
@@ -327,10 +328,12 @@ class SceReactBasicBillingScraper(BaseWebScraper):
 
     def search_success_action(self, page: sce_pages.SceAccountSearchSuccess):
         if not page.view_usage_for_search_result(self.service_id):
-            raise InvalidMeterDataException(f"{self.service_id} not found")
+            raise InvalidMeterDataException(
+                "service_id |%s| not found" % self.service_id
+            )
 
     def search_fail_generation_action(self, page: sce_pages.SceAccountSearchFailure):
-        log.warning(f"generation service id not found: {self.gen_service_id}")
+        log.warning("generation service id not found: |%s|", self.gen_service_id)
 
     def search_success_generation_action(self, page: sce_pages.SceAccountSearchSuccess):
         page.view_billed_generation_charge()
@@ -340,7 +343,11 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         page.select_usage_report()
 
         usage_info = page.get_usage_info(self.start_date, self.end_date)
-        demand_info = page.get_demand_info(self.start_date, self.end_date)
+        try:
+            demand_info = page.get_demand_info(self.start_date, self.end_date)
+        except NoSuchElementException:
+            log.warning("demand report not available")
+            demand_info = []
 
         usage_dict = {(info.start_date, info.end_date): info for info in usage_info}
         demand_dict = {(info.start_date, info.end_date): info for info in demand_info}
