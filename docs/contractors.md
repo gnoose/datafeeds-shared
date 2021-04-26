@@ -29,7 +29,7 @@ Create a test datasource for the scraper.
 
 Get credentials from ops
 
-    cd ~/projects/webapps:
+    cd ~/projects/webapps
     python scripts/credentials.py meterOid scraper-name
 
 From energy-dev-ops:/home/ubuntu/projects/datafeeds or one of the Cloud9 environments, create a datasource in the dev database:
@@ -52,7 +52,7 @@ Starter PR text:
 From https://aws.amazon.com/, click Sign In to the Console. Use `gridium-dev` as the account ID, and sign
 in with your IAM credentials. Go to the [Cloud9 home page](https://console.aws.amazon.com/cloud9/home).
 
-Click **Open IDE** to start the **gridium-datafeeds-1** environment.
+Click **Open IDE** to start the **gridium-datafeeds-1** environment. You can set up the environment preferences however you want.
 
 Get the environment set up:
 
