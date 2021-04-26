@@ -149,6 +149,7 @@ class SceReactEnergyManagerGreenButtonScraper(SceReactEnergyManagerIntervalScrap
         # get filename
         prefix = f"{config.WORKING_DIRECTORY}/current"
         # filename looks like SCE_Usage_3-049-8416-02_10-01-20_to_10-15-20.csv
+        log.info("downloaded files=%s", [fn for fn in os.listdir(prefix)])
         filenames = [fn for fn in os.listdir(prefix) if self.service_id in fn]
         if not filenames:
             raise InvalidMeterDataException(

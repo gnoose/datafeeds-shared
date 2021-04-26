@@ -11,7 +11,6 @@ from datafeeds import config, db
 from datafeeds.common.base import BaseWebScraper, CSSSelectorBasePageObject
 from datafeeds.common.batch import run_datafeed
 from datafeeds.common.exceptions import (
-    LoginError,
     InvalidDateRangeError,
     DataSourceConfigurationError,
 )
@@ -147,15 +146,7 @@ class LoginPage(CSSSelectorBasePageObject):
         self._driver.fill(self.PasswordFieldSelector, password)
 
         self.find_element(self.SigninButtonSelector).click()
-        try:
-            self.wait_until_ready('select[name="p_t04"]')
-
-        except Exception:
-            if self._driver.find(
-                '//li[text()="Security Information Invalid."', xpath=True
-            ):
-                raise LoginError("Unable to login, invalid credentials?")
-            raise LoginError("Unable to login")
+        self._driver.sleep(2)
 
 
 class MeterDataPage(CSSSelectorBasePageObject):
@@ -385,6 +376,13 @@ class SCLMeterWatchScraper(BaseWebScraper):
         self._driver.get(self.url)
         self.screenshot("initial_url")
 
+        log.debug("Driver title: " + self._driver.title)
+        assert "Seattle MeterWatch" in self._driver.title
+
+        login_page = LoginPage(self._driver)
+        meterdata_page = MeterDataPage(self._driver, self._configuration)
+
+        login_page.login(self.username, self.password)
         self._driver.wait().until(
             lambda driver: len(handles_before) != len(driver.window_handles),
             "Issues loading login page.",
@@ -395,15 +393,10 @@ class SCLMeterWatchScraper(BaseWebScraper):
                 login_window = handle
 
         # We have our popup, so lets do stuff with it.
+        log.info("switching to new window")
         self._driver.switch_to.window(login_window)
-
-        log.debug("Driver title: " + self._driver.title)
-        assert "Seattle MeterWatch" in self._driver.title
-
-        login_page = LoginPage(self._driver)
-        meterdata_page = MeterDataPage(self._driver, self._configuration)
-
-        login_page.login(self.username, self.password)
+        # resize: it opens as a tiny window
+        self._driver.set_window_size(1200, 800)
 
         for meter_number in self._configuration.meter_numbers:
             meterdata_page.select_account(meter_number)

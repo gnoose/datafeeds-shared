@@ -1,7 +1,7 @@
 import re
 import time
 import collections
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 import logging
 from typing import Optional, List, Tuple, Dict, Any
 
@@ -86,6 +86,23 @@ GenericBusyIndicatorLocator = (
     By.XPATH,
     "//span[contains(@class, 'appSpinner__spinnerMessage')]",
 )
+
+ShowMoreButtonXPATH = "(//a[contains(@class, 'customerAccountComponent__sceSmLink') and contains(text(), 'Show More')])[1]"
+
+
+def click_all_show_more(driver):
+    while True:
+        show_more_button = driver.find(ShowMoreButtonXPATH, xpath=True)
+        if not show_more_button:
+            log.warning(
+                "locator and show more button not found on %s",
+                driver.current_url,
+            )
+            return
+        dismiss_overlay_click(driver, elem=show_more_button)
+        WebDriverWait(driver, 30).until(
+            EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+        )
 
 
 class SceLoginPage(PageState):
@@ -267,8 +284,6 @@ class SceMultiAccountLandingPage(PageState):
         "//react-myaccount-container//input[@id='searchMyAccounts']",
     )
 
-    ShowMoreButtonXPATH = "(//a[contains(@class, 'customerAccountComponent__sceSmLink') and contains(text(), 'Show More')])[1]"
-
     def get_ready_condition(self):
         return ec_or(
             EC.presence_of_element_located(self.AccountDataLocator),
@@ -282,9 +297,7 @@ class SceMultiAccountLandingPage(PageState):
             try:
                 return self.driver.find_element(*locator)
             except NoSuchElementException:
-                show_more_button = self.driver.find(
-                    self.ShowMoreButtonXPATH, xpath=True
-                )
+                show_more_button = self.driver.find(ShowMoreButtonXPATH, xpath=True)
 
                 if not show_more_button:
                     log.warning(
@@ -349,12 +362,29 @@ class SceMultiAccountLandingPage(PageState):
         log.info("search account for service_id: %s", service_id)
         self._search(service_id)
         # if searching by service_id doesn't work, try account id (UI says filter by account #)
+        error = False
         try:
             self.driver.find_element_by_xpath(
                 "//react-myaccount-container//div[contains(@class, 'sceErrorBox')]"
             )
+            error = True
         except NoSuchElementException:
-            return  # error message doesn't exist
+            pass
+        try:
+            self.driver.find_element_by_css_selector(
+                "react-myaccount-container span[class*='Error']"
+            )
+            # reload page to get search box back
+            log.debug("reloading after bad search")
+            self.driver.refresh()
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+            )
+            error = True
+        except NoSuchElementException:
+            pass
+        if not error:
+            return
         log.info("search account for utility_account_id: %s", utility_account_id)
         self._search(utility_account_id)
 
@@ -407,6 +437,7 @@ class SceMultiAccountLandingPage(PageState):
                     break
             if account_id and service_id:
                 doc = {
+                    "time": datetime.now().isoformat(),
                     "address": address,
                     "utility_account_id": account_id,
                     "service_id": service_id,
@@ -599,13 +630,30 @@ class SceAccountSearchSuccess(PageState):
 
         This can be used to view billing data for the service account.
         """
+        click_all_show_more(self.driver)
         # if there are multiple results, make sure we click the correct one
         for el in self.driver.find_elements_by_css_selector(
             ".serviceAccOverviewComponent__sceServiceAccSection__1nj_b"
         ):
             if service_id in el.text:
                 log.debug(f"{service_id} found in {el.text}; clicking")
-                el.find_element(*self.ViewUsageLinkLocator).click()
+                el.find_element_by_css_selector(
+                    "a.serviceAccOverviewComponent__sceViewUsageBtn__ivII3"
+                ).click()
+                # make sure the usage report is for the correct service id
+                modal_text = self.driver.find_element_by_css_selector(
+                    "#graphModal"
+                ).text
+                if service_id not in modal_text:
+                    log.warning(
+                        "usage report does not match service_id %s: %s",
+                        service_id,
+                        modal_text,
+                    )
+                    self.driver.screenshot(
+                        BaseWebScraper.screenshot_path("usage modal")
+                    )
+                    return False
                 return True
             else:
                 log.debug(f"{service_id} not found in {el.text}; skipping")
@@ -784,6 +832,7 @@ class SceServiceAccountDetailModal(PageState):
 
     def _get_visible_usage_info(self):
         """Internal helper function to retrieve currently visible usage info from the modal dialog"""
+        self.driver.screenshot(BaseWebScraper.screenshot_path("usage info"))
         data_xpath = (
             "//div[contains(@class, 'GraphContentStyle__netUsageValues')]"
             "//span[contains(@class, 'GraphContentStyle__netSuperOffPeakKwh')]"
@@ -798,10 +847,12 @@ class SceServiceAccountDetailModal(PageState):
         # Skip the first data element (values[0]), which is average daily usage
         usage = self._parse_usage(values[1].text)
         cost = self._parse_cost(values[2].text)
+        log.info("usage info: usage=%s cost=%s", usage, cost)
         return usage, cost
 
     def get_visible_demand_info(self):
         """Internal helper function to retrieve currently visible demand info from the modal dialog"""
+        self.driver.screenshot(BaseWebScraper.screenshot_path("demand info"))
         data_xpath = (
             "//div[contains(@class, 'GraphContentStyle__netUsageValues')]"
             "//span[contains(@class, 'GraphContentStyle__netSuperOffPeakKwh')]"
@@ -815,6 +866,7 @@ class SceServiceAccountDetailModal(PageState):
 
         demand = self._parse_demand(values[0].text)
         cost = self._parse_cost(values[1].text)
+        log.info("demand info: usage=%s cost=%s", demand, cost)
         return demand, cost
 
     def select_date_range(self, target_start: date, target_end: date):
@@ -873,7 +925,9 @@ class SceServiceAccountDetailModal(PageState):
         """Scrape basic usage data for all billing periods that overlap the range specified by the arguments."""
 
         # Ensure we are looking at usage data
+        log.info("selecting usage report")
         self.select_usage_report()
+        self.driver.screenshot(BaseWebScraper.screenshot_path("select usage report"))
 
         # We need to open the "Billed Months" view, in order to view historical data
         WebDriverWait(self.driver, 10).until(
@@ -894,16 +948,29 @@ class SceServiceAccountDetailModal(PageState):
                 min(end_date, (end - timedelta(days=1))) - max(start_date, start)
             ).days + 1
             if overlap_days > 0:
-                log.debug(
+                log.info(
                     f"requested dates {start_date} - {end_date} overlap {overlap_days} days with bill {start} - {end}"
                 )
                 self.select_date_range(start, end)
-                usage, cost = self._get_visible_usage_info()
-                results.append(
-                    SimpleUsageInfo(
-                        start_date=start, end_date=end, usage=usage, cost=cost
+                try:
+                    usage, cost = self._get_visible_usage_info()
+                    results.append(
+                        SimpleUsageInfo(
+                            start_date=start, end_date=end, usage=usage, cost=cost
+                        )
                     )
-                )
+                except ValueError:
+                    log.warning("error getting usage data for %s - %s", start, end)
+                    self.driver.screenshot(
+                        BaseWebScraper.screenshot_path("usage error")
+                    )
+                    WebDriverWait(self.driver, 10).until(
+                        EC.presence_of_element_located((By.ID, "BilledMonths"))
+                    ).click()
+                    time.sleep(5)
+                    WebDriverWait(self.driver, 20).until(
+                        EC.invisibility_of_element_located(GenericBusyIndicatorLocator)
+                    )
         return results
 
     def get_demand_info(self, start_date, end_date) -> List[SimpleDemandInfo]:
@@ -913,7 +980,9 @@ class SceServiceAccountDetailModal(PageState):
         """
 
         # Ensure we are looking at demand data
+        log.info("selecting demand report")
         self.select_demand_report()
+        self.driver.screenshot(BaseWebScraper.screenshot_path("select demand report"))
 
         # We need to open the "Billed Months" view, in order to view historical data
         WebDriverWait(self.driver, 10).until(
@@ -1561,7 +1630,7 @@ class SceEnergyManagerGreenButtonDownload(PageState):
             'input[value="Comma Separated (.csv)"]'
         )
         csv_type.click()
-
+        self.driver.screenshot(BaseWebScraper.screenshot_path("gb download 1"))
         recaptcha_v2(
             self.driver,
             self.driver.find_element_by_id("datadownload-content"),
@@ -1569,5 +1638,6 @@ class SceEnergyManagerGreenButtonDownload(PageState):
         )
         self.driver.find_element_by_id("dataDownload").click()
         # wait for download
-        log.debug("waiting for download")
+        log.info("waiting for download")
+        self.driver.screenshot(BaseWebScraper.screenshot_path("gb download 2"))
         time.sleep(10)

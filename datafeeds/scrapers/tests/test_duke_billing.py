@@ -114,9 +114,7 @@ def test_scraper(
     )
     scraper.start()
     scraper.scrape(
-        bills_handler=ft.partial(
-            test_upload_bills, "duke-energy-billing", -1, account_id, None
-        ),
+        bills_handler=ft.partial(test_upload_bills, -1, account_id, None),
         partial_bills_handler=None,
         readings_handler=None,
         pdfs_handler=None,

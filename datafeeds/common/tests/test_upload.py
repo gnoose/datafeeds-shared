@@ -1004,13 +1004,13 @@ bills_list = [
 ]
 
 
-class TestBillUploadPlatform(unittest.TestCase):
+class TestBillUpload(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         test_utils.init_test_db()
 
     def setUp(self):
-        account, meters = test_utils.create_meters()
+        self.account, meters = test_utils.create_meters()
         self.meter_ids = [m.oid for m in meters]
         self.meter = meters[0]
         self.configuration = SceReactEnergyManagerBillingConfiguration(
@@ -1020,6 +1020,19 @@ class TestBillUploadPlatform(unittest.TestCase):
             scrape_bills=True,
             scrape_partial_bills=False,
         )
+        self.account.name = "test account"
+        self.meter.utility_service.utility = "utility:sce"
+        self.meter_two = meters[1]
+        building_oid = 12345
+        building = Building(
+            oid=building_oid,
+            building=building_oid,
+            _timezone="America/Los_Angeles",
+            account=self.account.oid,
+            name="Test building name",
+            visible=True,
+        )
+        self.meter.building = building
 
     @classmethod
     def tearDown(cls):
@@ -1066,7 +1079,7 @@ class TestBillUploadPlatform(unittest.TestCase):
         db.session.flush()
 
         status = upload.upload_bills(
-            None, self.meter.oid, service.service_id, None, bills_list
+            self.meter.oid, service.service_id, None, bills_list
         )
         # No bills newer bills have arrived
         self.assertEqual(status, Status.COMPLETED)
@@ -1086,7 +1099,7 @@ class TestBillUploadPlatform(unittest.TestCase):
         ]
 
         status = upload.upload_bills(
-            None, self.meter.oid, service.service_id, None, new_bills_list
+            self.meter.oid, service.service_id, None, new_bills_list
         )
         # A more recent bill arrived
         self.assertEqual(status, Status.SUCCEEDED)
@@ -1104,34 +1117,6 @@ class TestBillUploadPlatform(unittest.TestCase):
 
         # _latest_closing returns the most recent closing
         self.assertEqual(most_recent, upload._latest_closing(service.service_id))
-
-
-class TestBillUploadDirectly(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        test_utils.init_test_db()
-
-    def setUp(self):
-        self.account, meters = test_utils.create_meters()
-        self.account.name = "test account"
-        self.meter_ids = [m.oid for m in meters]
-        self.meter = meters[0]
-        self.meter.utility_service.utility = "utility:pge"
-        self.meter_two = meters[1]
-        building_oid = 12345
-        building = Building(
-            oid=building_oid,
-            building=building_oid,
-            _timezone="America/Los_Angeles",
-            account=self.account.oid,
-            name="Test building name",
-            visible=True,
-        )
-        self.meter.building = building
-
-    @classmethod
-    def tearDown(cls):
-        db.session.rollback()
 
     def test_bill_upload_attributes(self):
         """Test incoming bill attributes persist as expected to final bill"""
@@ -1391,7 +1376,6 @@ class TestBillUploadDirectly(unittest.TestCase):
         one_bill = [bills_list[0]]
 
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1418,7 +1402,7 @@ class TestBillUploadDirectly(unittest.TestCase):
         self.assertEqual(bill_audit_record.account_hex, self.account.hex_id)
         self.assertEqual(bill_audit_record.account_name, "test account")
         self.assertEqual(bill_audit_record.building_name, "Test building name")
-        self.assertEqual(bill_audit_record.utility, "utility:pge")
+        self.assertEqual(bill_audit_record.utility, "utility:sce")
         self.assertEqual(len(bill_audit_record.events), 1)
         self.assertEqual(
             bill_audit_record.events[0].description, "Initialized bill audit."
@@ -1433,7 +1417,6 @@ class TestBillUploadDirectly(unittest.TestCase):
         one_bill[0] = one_bill[0]._replace(cost=333.12)
 
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1461,7 +1444,6 @@ class TestBillUploadDirectly(unittest.TestCase):
 
         # Create bill
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1490,7 +1472,6 @@ class TestBillUploadDirectly(unittest.TestCase):
         # Update bill
         one_bill[0] = one_bill[0]._replace(cost=333.12)
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1518,7 +1499,6 @@ class TestBillUploadDirectly(unittest.TestCase):
         db.session.flush()
 
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1550,7 +1530,6 @@ class TestBillUploadDirectly(unittest.TestCase):
         bill_updates = [bills_list[0]]
         bill_updates[0] = bill_updates[0]._replace(end=datetime(2019, 2, 4))
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1600,7 +1579,6 @@ class TestBillUploadDirectly(unittest.TestCase):
 
         # Create bill
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1625,7 +1603,6 @@ class TestBillUploadDirectly(unittest.TestCase):
         db.session.add(pe)
 
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1643,7 +1620,6 @@ class TestBillUploadDirectly(unittest.TestCase):
 
         # Create bill
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1658,7 +1634,6 @@ class TestBillUploadDirectly(unittest.TestCase):
 
         one_bill[0] = one_bill[0]._replace(used=0)
         upload.upload_bills(
-            "sj-water-urjanet",
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
@@ -1677,7 +1652,6 @@ class TestBillUploadDirectly(unittest.TestCase):
 
         with self.assertRaises(InvalidBillError):
             upload.upload_bills(
-                "sj-water-urjanet",
                 self.meter.oid,
                 self.meter.utility_service.service_id,
                 None,
@@ -1701,7 +1675,6 @@ class TestBillUploadDirectly(unittest.TestCase):
 
         with self.assertRaises(NoFutureBillsError):
             upload.upload_bills(
-                "sj-water-urjanet",
                 self.meter.oid,
                 self.meter.utility_service.service_id,
                 None,

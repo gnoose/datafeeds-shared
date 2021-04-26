@@ -190,9 +190,7 @@ def test_scraper(
     with mock.patch("datafeeds.scrapers.pge.bill_pdf.upload_bill_to_s3"):
         scraper.scrape(
             readings_handler=None,
-            bills_handler=ft.partial(
-                test_upload_bills, "portland-bizportal", -1, service_id, None
-            ),
+            bills_handler=ft.partial(test_upload_bills, -1, service_id, None),
             partial_bills_handler=None,
             pdfs_handler=None,
         )

@@ -62,7 +62,11 @@ Get the environment set up:
     git checkout master
     git pull
     git checkout 3888-svp-billing
+    git config user.name "First Last"
+    git config user.email you@email.com
+```
 
+When you run `git pull`, you'll be prompted for a username and password. Use your GitHub username for the username, and a personal access token for password. To create one, see [Creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). On the `git config` step, if you have GitHub set to hide your email, use your private email from https://github.com/settings/emails.
 
 ## task description
 

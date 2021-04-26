@@ -9,6 +9,8 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementClickInterceptedException
 
+from datafeeds.common.base import BaseWebScraper
+
 log = logging.getLogger(__name__)
 
 
@@ -29,15 +31,15 @@ def detect_and_send_escape_to_close_survey(driver, timeout=5):
 
 def detect_and_close_survey(driver, timeout=5):
     try:
-        locator = (By.CLASS_NAME, "fsrInvite__closeWrapper")
+        locator = (By.CLASS_NAME, "fsrDeclineButton")
         WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located(locator)
         ).click()
-        log.info("popup closed")
-        driver.sleep(1)
+        log.info("click decline button")
+        driver.sleep(2)
         return True
-    except Exception:
-        pass
+    except Exception as exc:
+        log.info("exception closing survey: %s", exc)
 
 
 def detect_and_close_modal(driver, timeout=5):
@@ -69,7 +71,11 @@ def dismiss_overlay_click(
             elem.click()
             break
         except ElementClickInterceptedException:
-            log.info("blocked by overlay, attempting to close before clicking again")
+            log.info(
+                "blocked by overlay, attempting to close before clicking again (%s/%s)",
+                i,
+                retries,
+            )
             if detect_and_send_escape_to_close_survey(driver):
                 pass
             elif detect_and_close_survey(driver):
@@ -79,3 +85,4 @@ def dismiss_overlay_click(
             else:
                 log.info("unable to close overlay, raising")
                 raise
+    driver.screenshot(BaseWebScraper.screenshot_path("close overlay"))

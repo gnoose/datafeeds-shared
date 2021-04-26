@@ -279,7 +279,7 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
             # same address, on the same type of meter, associated with PODids we have on record.
             query = """
                CREATE TEMPORARY TABLE tnd_charges AS
-               SELECT Charge.ChargeUnitsUsed, Charge.IntervalStart
+               SELECT distinct(Charge.ChargeUnitsUsed), Charge.IntervalStart
                FROM xmlaccount Account, xmlmeter Meter, xmlcharge Charge
                WHERE Charge.MeterFK = Meter.PK
                    AND Account.PK = Meter.AccountFK
@@ -295,22 +295,24 @@ class PacificGasElectricXMLDatasource(PacificGasElectricDatasource):
             self.execute(query, *service_ids, service_address.upper(), service_type)
 
             # Look for missing Third Party PODids at the same address,
-            # same service type, and for the same month, that have "ChargeUnitsUsed" that correspond
+            # same service type, and for the same month, that have multiple "ChargeUnitsUsed" that correspond
             # to the T&D charges. For example, a T&D bill may have 80.000000 kWh charged at some rate,
             # and the corresponding third party bill will have 80.000000 kWh charged at a different rate.
             query = """
                SELECT distinct(Meter.PODid)
-               FROM xmlmeter Meter, xmlcharge Charge, tnd_charges
+               FROM xmlmeter Meter, xmlcharge Charge, tnd_charges, xmlaccount Account
                WHERE Meter.PK = Charge.MeterFK
                    AND Meter.AccountFK in ({})
                    AND Meter.ServiceType = %s
+                   AND Account.UtilityProvider != 'PacGAndE'
+                   AND Account.PK = Meter.AccountFK
                    AND Meter.IntervalStart = tnd_charges.IntervalStart
                    AND Charge.ChargeUnitsUsed = tnd_charges.ChargeUnitsUsed
                    AND UPPER(Meter.ServiceAddress) = %s
+                   GROUP BY Meter.PODid, Meter.IntervalStart having count(Charge.ChargeUnitsUsed) > 1;
                """.format(
                 create_placeholders(account_pks)
             )
-
             meter_pod_id_results = self.fetch_all(
                 query, *account_pks, service_type, service_address
             )

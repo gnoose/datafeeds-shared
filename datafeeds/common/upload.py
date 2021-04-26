@@ -76,7 +76,6 @@ def verify_bills(meter_oid: int, billing_data: BillingData) -> BillingData:
 
 
 def upload_bills(
-    scraper: str,
     meter_oid: int,
     service_id: str,
     task_id: str,
@@ -84,11 +83,7 @@ def upload_bills(
 ) -> Status:
     cur_most_recent = _latest_closing(service_id)
 
-    if scraper in config.DIRECT_BILL_UPLOAD:
-        _upload_bills_to_services(service_id, billing_data)
-    elif config.enabled("PLATFORM_UPLOAD"):
-        log.info("Uploading bills to platform via HTTP request.")
-        _upload_to_platform(service_id, billing_data)
+    _upload_bills_to_services(service_id, billing_data)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
