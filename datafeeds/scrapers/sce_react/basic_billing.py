@@ -353,7 +353,10 @@ class SceReactBasicBillingScraper(BaseWebScraper):
         demand_dict = {(info.start_date, info.end_date): info for info in demand_info}
         usage_dates = set(usage_dict.keys())
         demand_dates = set(demand_dict.keys())
+        log.debug("usage_dict=%s", usage_dict)
+        log.debug("demand_dict=%s", demand_dict)
         third_party_expected = self.gen_service_id is not None
+        log.debug("date ranges=%s", sorted(usage_dates.union(demand_dates)))
 
         merged = []
         for date_range in sorted(usage_dates.union(demand_dates)):
@@ -367,14 +370,13 @@ class SceReactBasicBillingScraper(BaseWebScraper):
                     demand_info=demand_dict.get(date_range),
                 )
             )
-
         billing_objects = []
         for item in merged:
             datum = BillingDatum(
                 start=item.start_date,
-                end=item.end_date - timedelta(days=1),
+                end=item.end_date,
                 # no separate statement date
-                statement=item.end_date - timedelta(days=1),
+                statement=item.end_date,
                 cost=item.usage_info.cost,
                 used=item.usage_info.usage if item.usage_info else None,
                 peak=item.demand_info.demand if item.demand_info else None,
