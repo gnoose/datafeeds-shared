@@ -1,11 +1,11 @@
 from datetime import datetime, date, timedelta
 import unittest
-from typing import List
+from typing import List, Dict
 from unittest import mock
 
 from datafeeds import db
 from datafeeds.common import test_utils, index
-from datafeeds.common.index import index_logs
+from datafeeds.common.index import index_logs, index_bill_records, BILLS_INDEX
 from datafeeds.common.typing import BillingData, BillingDatum, BillPdf
 from datafeeds.models.meter import MeterReading
 from datafeeds.models.user import (
@@ -179,3 +179,115 @@ class IndexTests(unittest.TestCase):
         with mock.patch("datafeeds.common.index.config.LOGPATH", log_fixture):
             index_logs("abc123")
         index_etl_run.assert_called_once_with("abc123", {"log": log_data})
+
+    @mock.patch("datafeeds.common.index._get_es_connection")
+    @mock.patch("datafeeds.common.index.bulk")
+    def test_index_bill_records(self, bulk_index, _es_conn):
+        meter = self.meters[0]
+        records: List[Dict, str] = [
+            # incoming only
+            {
+                "meter": meter.oid,
+                "operation": "new",
+                "incoming_initial": "2017-05-05",
+                "incoming_closing": "2017-06-05",
+                "incoming_cost": 97328.22,
+                "incoming_used": 400441,
+                "incoming_peak": 933.6,
+                "incoming_service": 3188664594280,
+                "incoming_manual": False,
+                "incoming_has_all_charges": True,
+                "incoming_tnd_cost": 45736.33,
+                "incoming_gen_cost": 51591.89,
+                "incoming_source": "billing_streams",
+                "incoming_tnd_used": 400441,
+                "incoming_gen_used": 400441,
+                "incoming_has_download": True,
+            },
+            # incoming and retained
+            {
+                "meter": meter.oid,
+                "operation": "skip - cannot override",
+                "incoming_initial": "2018-07-12",
+                "incoming_closing": "2018-08-09",
+                "incoming_cost": 29879.27,
+                "incoming_used": 255278,
+                "incoming_peak": None,
+                "incoming_service": 9008783371943964,
+                "incoming_manual": False,
+                "incoming_has_all_charges": False,
+                "incoming_tnd_cost": 29879.27,
+                "incoming_gen_cost": 0,
+                "incoming_source": "billing_streams",
+                "incoming_tnd_used": 255278,
+                "incoming_gen_used": None,
+                "incoming_has_download": False,
+                "retained_initial": "2018-07-12",
+                "retained_closing": "2018-08-09",
+                "retained_cost": 59719.93,
+                "retained_used": 255278,
+                "retained_peak": 609,
+                "retained_service": 9008783371943964,
+                "retained_manual": True,
+                "retained_has_all_charges": None,
+                "retained_tnd_cost": None,
+                "retained_gen_cost": None,
+                "retained_source": None,
+                "retained_tnd_used": None,
+                "retained_gen_used": None,
+                "retained_has_download": False,
+            },
+            {
+                "meter": meter.oid,
+                "operation": "update",
+                "incoming_initial": "2018-06-11",
+                "incoming_closing": "2018-07-10",
+                "incoming_cost": 31749.66,
+                "incoming_used": 270820,
+                "incoming_peak": None,
+                "incoming_service": 9008625472955284,
+                "incoming_manual": False,
+                "incoming_has_all_charges": None,
+                "incoming_tnd_cost": 31749.66,
+                "incoming_gen_cost": 0,
+                "incoming_source": "billing_streams",
+                "incoming_tnd_used": 270820,
+                "incoming_gen_used": None,
+                "incoming_has_download": False,
+                "replaced_initial": "2018-06-11",
+                "replaced_closing": "2018-07-10",
+                "replaced_cost": 46265.22,
+                "replaced_used": 270820,
+                "replaced_peak": 730,
+                "replaced_service": 9008625472955284,
+                "replaced_manual": True,
+                "replaced_has_all_charges": None,
+                "replaced_tnd_cost": None,
+                "replaced_gen_cost": None,
+                "replaced_source": None,
+                "replaced_tnd_used": None,
+                "replaced_gen_used": None,
+                "replaced_has_download": False,
+            },
+        ]
+        index_bill_records("test-scraper", records)
+        docs = bulk_index.call_args_list[0][0][1]
+        self.assertEqual(3, len(docs))
+        for idx, doc in enumerate(docs):
+            self.assertEqual(BILLS_INDEX, doc["_index"])
+            source = doc["_source"]
+            self.assertEqual("test-scraper", source["scraper"])
+            self.assertEqual(records[idx]["operation"], source["operation"])
+            self.assertEqual(str(meter.oid), source["meter"])
+            self.assertEqual(meter.utility_service.service_id, source["service_id"])
+            for key in ["initial", "closing", "cost", "used", "peak"]:
+                self.assertEqual(records[idx][f"incoming_{key}"], source[key])
+            for key in ["initial", "closing", "cost", "used", "peak"]:
+                if idx == 1:
+                    self.assertEqual(
+                        records[idx][f"retained_{key}"], source[f"prev_{key}"]
+                    )
+                if idx == 2:
+                    self.assertEqual(
+                        records[idx][f"replaced_{key}"], source[f"prev_{key}"]
+                    )

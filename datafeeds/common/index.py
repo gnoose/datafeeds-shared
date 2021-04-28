@@ -28,6 +28,7 @@ log = logging.getLogger(__name__)
 INDEX = "etl-tasks"  # write alias
 INDEX_PATTERN = "etl-tasks-*"
 INTERVAL_ISSUE_INDEX = "etl-interval-issues"
+BILLS_INDEX = "bills-log"
 LOG_URL_PATTERN = "https://snapmeter.com/api/v2/admin/scraper-archive?id=%s"
 
 
@@ -114,6 +115,34 @@ def index_etl_run(task_id: str, run: dict):
     if max_dt > min_dt:
         doc["maxFetched"] = max_dt
     es.index(index=INDEX, doc_type="_doc", id=task_id, body=doc, refresh="wait_for")
+
+
+def index_bill_records(scraper: str, change_records: List[Dict[str, Any]]):
+    """Index a list of bill change records."""
+    # get meter log info for all referenced meters
+    meter_log_extra: Dict[int, Dict] = {}
+    for meter_id in {rec["meter"] for rec in change_records}:
+        meter_log_extra[meter_id] = (
+            db.session.query(Meter).get(meter_id).build_log_extra
+        )
+    records: List[Dict[str, Any]] = []
+    for record in change_records:
+        source = {
+            "time": datetime.now(),
+            "scraper": scraper,
+            "operation": record["operation"],
+        }
+        source.update(meter_log_extra[record["meter"]])
+        for field in record:
+            # remove prefix
+            if field.startswith("incoming_"):
+                source[field.replace("incoming_", "")] = record[field]
+            # collapse retained_ and replaced_ to previous_
+            if field.startswith("retained_") or field.startswith("replaced_"):
+                field_name = field.replace("retained_", "").replace("replaced_", "")
+                source[f"prev_{field_name}"] = record[field]
+        records.append({"_index": BILLS_INDEX, "_type": "_doc", "_source": source})
+    bulk(_get_es_connection(), records)
 
 
 def run_meta(meter_oid: int) -> Dict[str, Any]:

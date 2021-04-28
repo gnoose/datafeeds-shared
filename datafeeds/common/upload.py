@@ -4,7 +4,7 @@ from datetime import timedelta, date, datetime
 
 from deprecation import deprecated
 import os
-from typing import Optional, Union, BinaryIO, List, Dict, Set
+from typing import Optional, Union, BinaryIO, List, Dict, Set, Any, Tuple
 from io import BytesIO
 import hashlib
 from sqlalchemy import func
@@ -79,15 +79,18 @@ def upload_bills(
     meter_oid: int,
     service_id: str,
     task_id: str,
+    scraper: str,
     billing_data: BillingData,
 ) -> Status:
     cur_most_recent = _latest_closing(service_id)
 
-    _upload_bills_to_services(service_id, billing_data)
+    _, change_records = _upload_bills_to_services(service_id, billing_data)
 
     if task_id and config.enabled("ES_INDEX_JOBS"):
         log.info("Updating billing range in Elasticsearch.")
         index.update_billing_range(task_id, billing_data)
+        if change_records:
+            index.index_bill_records(scraper, change_records)
     billing_data = verify_bills(meter_oid, billing_data)
 
     title = "Final Scraped Summary"
@@ -253,30 +256,37 @@ def upload_partial_bills(
     return status
 
 
-def _upload_bills_to_services(service_id: str, billing_data: BillingData) -> List[Bill]:
+def _upload_bills_to_services(
+    service_id: str, billing_data: BillingData
+) -> Tuple[List[Bill], List[Dict[str, Any]]]:
     """Reconciles incoming billing data with bills on every service with matching service_id."""
-    services = db.session.query(UtilityService.oid).filter(
+    services = db.session.query(UtilityService.oid, Meter.oid).filter(
         UtilityService.service_id == service_id,
         Meter.service == UtilityService.oid,
     )
 
     updated: Set[Bill] = set()
-    for service_oid in services:
+    change_records: List[Dict[str, Any]] = []
+    for service_oid, meter_oid in services:
         existing = (
             db.session.query(Bill)
-            .filter(service_oid[0] == Bill.service)
+            .filter(service_oid == Bill.service)
             .order_by(Bill.initial.asc())
             .all()
         )
 
         snapped_billing_data = snap_first_start(billing_data, existing)
         uncommitted_bills = convert_billing_data_to_bills(
-            service_oid[0], snapped_billing_data
+            service_oid, snapped_billing_data
         )
 
-        new_bills, _ = Bill.add_bills(uncommitted_bills, source="datafeeds")
+        new_bills, records = Bill.add_bills(uncommitted_bills, source="datafeeds")
+        # add meter to record; one bill can be added to multiple meters with the same service_id
+        for record in records:
+            record["meter"] = meter_oid
+        change_records += records
         updated = updated.union(new_bills)
-    return list(updated)
+    return list(updated), change_records
 
 
 def convert_billing_data_to_bills(

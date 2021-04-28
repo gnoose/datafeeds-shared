@@ -407,6 +407,34 @@ class PartialBill(ModelMixin, Base):
         db.session.flush()
 
 
+def create_change_record(
+    incoming: Optional["Bill"] = None,
+    replaced: Optional["Bill"] = None,
+    retained: Optional["Bill"] = None,
+    op: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Returns a dictionary to log bill changes that were made to Elasticsearch.
+
+    :param incoming: The new bill. May not have been saved.
+    :param replaced: The existing bill that was replaced by incoming.
+    :param retained: The existing bill that was preserved, causing incoming to be discarded.
+    :param op: The operation performed: create, delete, etc
+    :return flattened bill change summary, {"incoming_initial": ..., "incoming_closing": ..., "replaced_initial": ...,
+        "replaced_closing": ...}
+    """
+    change_record = {"operation": op}
+    if incoming:
+        change_record.update(incoming.to_dict_with_prefix("incoming"))
+
+    if replaced:
+        change_record.update(replaced.to_dict_with_prefix("replaced"))
+
+    if retained:
+        change_record.update(retained.to_dict_with_prefix("retained"))
+
+    return change_record
+
+
 class Bill(ModelMixin, Base):
     __tablename__ = "bill"
 
@@ -463,6 +491,7 @@ class Bill(ModelMixin, Base):
         incoming_summary = process_incoming_bills(service_oid, uncommitted, source)
 
         insertable: List[Bill] = []
+        change_record: List[Dict[str, Any]] = []
         meter = (
             db.session.query(Meter)
             .filter(Meter.kind != "sub", Meter.service == service_oid)
@@ -481,6 +510,9 @@ class Bill(ModelMixin, Base):
                     *incoming_attrs,
                     extra=extra,
                 )
+                change_record.append(
+                    create_change_record(incoming=incoming.bill, op="new")
+                )
                 insertable.append(incoming.bill)
             elif incoming.skip:
                 extra["evt"] = {"name": {"skip overlap"}}
@@ -489,6 +521,15 @@ class Bill(ModelMixin, Base):
                     *incoming_attrs,
                     extra=extra,
                 )
+                change_record.append(
+                    create_change_record(
+                        incoming=incoming.bill,
+                        retained=incoming.duplicate
+                        or incoming.update
+                        or incoming.overlaps[0],
+                        op="skip - cannot override",
+                    )
+                )
             elif incoming.duplicate:
                 extra["evt"] = {"name": {"match"}}
                 log.info(
@@ -496,7 +537,19 @@ class Bill(ModelMixin, Base):
                     *incoming_attrs,
                     extra=extra,
                 )
+                change_record.append(
+                    create_change_record(
+                        incoming=incoming.bill,
+                        retained=incoming.duplicate,
+                        op="skip - match",
+                    )
+                )
             elif incoming.update:
+                change_record.append(
+                    create_change_record(
+                        incoming=incoming.bill, replaced=incoming.update, op="update"
+                    )
+                )
                 incoming.update.copy_values(incoming.bill)
                 extra["evt"] = {"name": {"update"}}
                 log.info(
@@ -515,6 +568,11 @@ class Bill(ModelMixin, Base):
                         *extract_bill_attributes(existing),
                         extra=extra,
                     )
+                    change_record.append(
+                        create_change_record(
+                            incoming=incoming.bill, replaced=existing, op="replace"
+                        )
+                    )
                 db.session.add(incoming.bill)
                 insertable.append(incoming.bill)
                 extra["evt"] = {"name": {"create"}}
@@ -527,7 +585,7 @@ class Bill(ModelMixin, Base):
         db.session.flush()
         if meter:
             create_bill_audit_records(meter=meter, incoming_summary=incoming_summary)
-        return insertable, []
+        return insertable, change_record
 
     def overlaps(self, other: "Bill") -> bool:
         if not isinstance(other, Bill):
@@ -661,6 +719,33 @@ class Bill(ModelMixin, Base):
         "partial_bill_obj",
         creator=lambda pb: PartialBillLink(partial_bill_obj=pb),  # type: ignore
     )
+
+    def to_dict_with_prefix(self, prefix: str) -> Dict[str, Any]:
+        """Returns a dictionary of bill properties with the prefix added to each key.
+
+        This is for making data more "tidy" as we flatten to send to ES.  If the prefix is "incoming", this would return
+        {"incoming_initial": ..., "incoming_closing": ..., "incoming_cost": ...}
+        """
+        bill_attributes = [
+            "initial",
+            "closing",
+            "cost",
+            "used",
+            "peak",
+            "service",
+            "manual",
+            "has_all_charges",
+            "tnd_cost",
+            "gen_cost",
+            "source",
+            "tnd_used",
+            "gen_used",
+            "has_download",
+        ]
+        es_bill = {}
+        for key in bill_attributes:
+            es_bill["{}_{}".format(prefix, key)] = getattr(self, key, None)
+        return es_bill
 
 
 class PartialBillLink(ModelMixin, Base):

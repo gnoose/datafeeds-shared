@@ -175,7 +175,9 @@ def test_scraper(
         scraper.utility_service.set_tariff_from_utility_code = set_tariff_mock
     scraper.start()
     scraper.scrape(
-        bills_handler=ft.partial(test_upload_bills, -1, service_id, None),
+        bills_handler=ft.partial(
+            test_upload_bills, -1, service_id, None, "sce-react-basic-billing"
+        ),
         partial_bills_handler=ft.partial(test_upload_partial_bills, None, None, None),
         readings_handler=None,
         pdfs_handler=None,
