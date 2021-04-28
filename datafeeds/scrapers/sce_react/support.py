@@ -7,7 +7,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.common.exceptions import (
+    ElementClickInterceptedException,
+    StaleElementReferenceException,
+)
 
 from datafeeds.common.base import BaseWebScraper
 
@@ -85,4 +88,8 @@ def dismiss_overlay_click(
             else:
                 log.info("unable to close overlay, raising")
                 raise
+            driver.sleep(1)
+        except StaleElementReferenceException:
+            return
+
     driver.screenshot(BaseWebScraper.screenshot_path("close overlay"))

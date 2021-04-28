@@ -318,7 +318,6 @@ class SceReactBasicBillingScraper(BaseWebScraper):
     ):
         sce_pages.detect_and_close_survey(self._driver)
         self.utility_tariff_code = page.update_utility_service(self.utility_service)
-        self.log_multi_account_ids(page)
         page.search_account(self.service_id, self.utility_account_id)
 
     def search_failure_action(self, page: sce_pages.SceAccountSearchFailure):
@@ -372,6 +371,14 @@ class SceReactBasicBillingScraper(BaseWebScraper):
             )
         billing_objects = []
         for item in merged:
+            # sometimes cost is not available
+            if item.usage_info is None:
+                log.warning(
+                    "cost not found for %s - %s; skipping",
+                    item.start_date,
+                    item.end_date,
+                )
+                continue
             datum = BillingDatum(
                 start=item.start_date,
                 end=item.end_date,

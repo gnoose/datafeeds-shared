@@ -189,8 +189,11 @@ class IndexTests(unittest.TestCase):
             {
                 "meter": meter.oid,
                 "operation": "new",
-                "incoming_initial": "2017-05-05",
-                "incoming_closing": "2017-06-05",
+                "incoming_initial": date(2017, 5, 5),
+                "incoming_closing": date(2017, 6, 5),
+                # for validation only
+                "incoming_initial_str": "2017-05-05T00:00:00-07:00",
+                "incoming_closing_str": "2017-06-05T00:00:00-07:00",
                 "incoming_cost": 97328.22,
                 "incoming_used": 400441,
                 "incoming_peak": 933.6,
@@ -208,8 +211,11 @@ class IndexTests(unittest.TestCase):
             {
                 "meter": meter.oid,
                 "operation": "skip - cannot override",
-                "incoming_initial": "2018-07-12",
-                "incoming_closing": "2018-08-09",
+                "incoming_initial": date(2018, 7, 12),
+                "incoming_closing": date(2018, 8, 9),
+                # for validation only
+                "incoming_initial_str": "2018-07-12T00:00:00-07:00",
+                "incoming_closing_str": "2018-08-09T00:00:00-07:00",
                 "incoming_cost": 29879.27,
                 "incoming_used": 255278,
                 "incoming_peak": None,
@@ -222,8 +228,8 @@ class IndexTests(unittest.TestCase):
                 "incoming_tnd_used": 255278,
                 "incoming_gen_used": None,
                 "incoming_has_download": False,
-                "retained_initial": "2018-07-12",
-                "retained_closing": "2018-08-09",
+                "retained_initial": date(2018, 7, 12),
+                "retained_closing": date(2018, 8, 9),
                 "retained_cost": 59719.93,
                 "retained_used": 255278,
                 "retained_peak": 609,
@@ -240,8 +246,11 @@ class IndexTests(unittest.TestCase):
             {
                 "meter": meter.oid,
                 "operation": "update",
-                "incoming_initial": "2018-06-11",
-                "incoming_closing": "2018-07-10",
+                "incoming_initial": date(2018, 6, 11),
+                "incoming_closing": date(2018, 7, 10),
+                # for validation only
+                "incoming_initial_str": "2018-06-11T00:00:00-07:00",
+                "incoming_closing_str": "2018-07-10T00:00:00-07:00",
                 "incoming_cost": 31749.66,
                 "incoming_used": 270820,
                 "incoming_peak": None,
@@ -254,8 +263,8 @@ class IndexTests(unittest.TestCase):
                 "incoming_tnd_used": 270820,
                 "incoming_gen_used": None,
                 "incoming_has_download": False,
-                "replaced_initial": "2018-06-11",
-                "replaced_closing": "2018-07-10",
+                "replaced_initial": date(2018, 6, 11),
+                "replaced_closing": date(2018, 7, 10),
                 "replaced_cost": 46265.22,
                 "replaced_used": 270820,
                 "replaced_peak": 730,
@@ -280,14 +289,18 @@ class IndexTests(unittest.TestCase):
             self.assertEqual(records[idx]["operation"], source["operation"])
             self.assertEqual(str(meter.oid), source["meter"])
             self.assertEqual(meter.utility_service.service_id, source["service_id"])
-            for key in ["initial", "closing", "cost", "used", "peak"]:
+            for key in ["initial", "closing"]:
+                self.assertEqual(records[idx][f"incoming_{key}_str"], source[key])
+            for key in ["cost", "used", "peak"]:
                 self.assertEqual(records[idx][f"incoming_{key}"], source[key])
-            for key in ["initial", "closing", "cost", "used", "peak"]:
+            for key in ["cost", "used", "peak"]:
                 if idx == 1:
-                    self.assertEqual(
-                        records[idx][f"retained_{key}"], source[f"prev_{key}"]
-                    )
+                    records[idx][f"retained_{key}"], source[f"prev_{key}"]
                 if idx == 2:
-                    self.assertEqual(
-                        records[idx][f"replaced_{key}"], source[f"prev_{key}"]
-                    )
+                    records[idx][f"replaced_{key}"], source[f"prev_{key}"]
+            if idx == 1:
+                self.assertEqual("2018-07-12T00:00:00-07:00", source["prev_initial"])
+                self.assertEqual("2018-08-09T00:00:00-07:00", source["prev_closing"])
+            if idx == 2:
+                self.assertEqual("2018-06-11T00:00:00-07:00", source["prev_initial"])
+                self.assertEqual("2018-07-10T00:00:00-07:00", source["prev_closing"])

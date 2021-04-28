@@ -3,6 +3,7 @@ from typing import List, Set, Dict, Any, Tuple
 import logging
 
 from dateutil import parser as date_parser
+from dateutil import tz
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from elasticsearch.exceptions import NotFoundError
 from elasticsearch.helpers import bulk
@@ -121,10 +122,11 @@ def index_bill_records(scraper: str, change_records: List[Dict[str, Any]]):
     """Index a list of bill change records."""
     # get meter log info for all referenced meters
     meter_log_extra: Dict[int, Dict] = {}
+    meter_tz: Dict[int, str] = {}
     for meter_id in {rec["meter"] for rec in change_records}:
-        meter_log_extra[meter_id] = (
-            db.session.query(Meter).get(meter_id).build_log_extra
-        )
+        meter = db.session.query(Meter).get(meter_id)
+        meter_tz[meter_id] = meter.timezone
+        meter_log_extra[meter_id] = meter.build_log_extra
     records: List[Dict[str, Any]] = []
     for record in change_records:
         source = {
@@ -141,6 +143,22 @@ def index_bill_records(scraper: str, change_records: List[Dict[str, Any]]):
             if field.startswith("retained_") or field.startswith("replaced_"):
                 field_name = field.replace("retained_", "").replace("replaced_", "")
                 source[f"prev_{field_name}"] = record[field]
+        # add timestamp in meter timezone to prevent ES from assuming UTC
+        record_tz = tz.gettz(meter_tz[int(record["meter"])])
+        for key in ["initial", "closing"]:
+            source[key] = (
+                datetime.combine(source[key], datetime.min.time())
+                .replace(hour=0, minute=0, second=0, tzinfo=record_tz)
+                .isoformat()
+            )
+            prev_key = f"prev_{key}"
+            if prev_key in source:
+                source[prev_key] = (
+                    datetime.combine(source[prev_key], datetime.min.time())
+                    .replace(hour=0, minute=0, second=0, tzinfo=record_tz)
+                    .isoformat()
+                )
+        log.info("record=%s\nes_record=%s", record, source)
         records.append({"_index": BILLS_INDEX, "_type": "_doc", "_source": source})
     bulk(_get_es_connection(), records)
 

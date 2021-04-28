@@ -347,7 +347,7 @@ class SceMultiAccountLandingPage(PageState):
         # clear existing values
         for _ in range(20):
             actions.send_keys_to_element(account_search_field, Keys.BACK_SPACE)
-        actions.send_keys_to_element(account_search_field, search_id)
+        actions.send_keys_to_element(account_search_field, search_id.strip())
         actions.send_keys_to_element(account_search_field, Keys.ENTER)
         actions.perform()
         time.sleep(1)
@@ -630,12 +630,13 @@ class SceAccountSearchSuccess(PageState):
 
         This can be used to view billing data for the service account.
         """
+        said = service_id.strip()
         click_all_show_more(self.driver)
         # if there are multiple results, make sure we click the correct one
         for el in self.driver.find_elements_by_css_selector(
             ".serviceAccOverviewComponent__sceServiceAccSection__1nj_b"
         ):
-            if service_id in el.text:
+            if said in el.text:
                 log.debug(f"{service_id} found in {el.text}; clicking")
                 el.find_element_by_css_selector(
                     "a.serviceAccOverviewComponent__sceViewUsageBtn__ivII3"
@@ -644,7 +645,7 @@ class SceAccountSearchSuccess(PageState):
                 modal_text = self.driver.find_element_by_css_selector(
                     "#graphModal"
                 ).text
-                if service_id not in modal_text:
+                if said not in modal_text:
                     log.warning(
                         "usage report does not match service_id %s: %s",
                         service_id,
