@@ -1079,7 +1079,7 @@ class TestBillUpload(unittest.TestCase):
         db.session.flush()
 
         status = upload.upload_bills(
-            self.meter.oid, service.service_id, None, bills_list
+            self.meter.oid, service.service_id, None, None, bills_list
         )
         # No bills newer bills have arrived
         self.assertEqual(status, Status.COMPLETED)
@@ -1099,7 +1099,7 @@ class TestBillUpload(unittest.TestCase):
         ]
 
         status = upload.upload_bills(
-            self.meter.oid, service.service_id, None, new_bills_list
+            self.meter.oid, service.service_id, None, None, new_bills_list
         )
         # A more recent bill arrived
         self.assertEqual(status, Status.SUCCEEDED)
@@ -1156,7 +1156,7 @@ class TestBillUpload(unittest.TestCase):
             utility_code="Utility-Code",
         )
 
-        ret = _upload_bills_to_services(
+        ret, _ = _upload_bills_to_services(
             self.meter.utility_service.service_id, [bill_data]
         )
         self.assertEqual(len(ret), 1)
@@ -1255,7 +1255,7 @@ class TestBillUpload(unittest.TestCase):
         self.meter_two.utility_service.service_id = (
             self.meter.utility_service.service_id
         )
-        ret = _upload_bills_to_services(
+        ret, _ = _upload_bills_to_services(
             self.meter.utility_service.service_id, [bills_list[0]]
         )
         self.assertEqual(len(ret), 2, "Same bill added to two services.")
@@ -1282,7 +1282,7 @@ class TestBillUpload(unittest.TestCase):
         one_bill_list = [bills_list[0]]
         one_bill_list[0] = one_bill_list[0]._replace(used=4585.0234)
 
-        ret = _upload_bills_to_services(
+        ret, _ = _upload_bills_to_services(
             self.meter.utility_service.service_id, one_bill_list
         )
         self.assertEqual(len(ret), 1)
@@ -1295,7 +1295,7 @@ class TestBillUpload(unittest.TestCase):
         original_oid = bills[0].oid
         db.session.flush()
         # Duplicate bill, skipped.
-        ret = _upload_bills_to_services(
+        ret, _ = _upload_bills_to_services(
             self.meter.utility_service.service_id, one_bill_list
         )
         self.assertEqual(len(ret), 0)
@@ -1305,7 +1305,7 @@ class TestBillUpload(unittest.TestCase):
 
         # Updating bill
         one_bill_list[0] = one_bill_list[0]._replace(cost=333.12)
-        ret = _upload_bills_to_services(
+        ret, _ = _upload_bills_to_services(
             self.meter.utility_service.service_id, one_bill_list
         )
         self.assertEqual(len(ret), 1)
@@ -1317,7 +1317,7 @@ class TestBillUpload(unittest.TestCase):
 
         # Overlaps bill - delete and recreate:
         one_bill_list[0] = one_bill_list[0]._replace(start=datetime(2019, 1, 5))
-        ret = _upload_bills_to_services(
+        ret, _ = _upload_bills_to_services(
             self.meter.utility_service.service_id, one_bill_list
         )
         self.assertEqual(len(ret), 1)
@@ -1331,7 +1331,7 @@ class TestBillUpload(unittest.TestCase):
         db.session.add(bills[0])
         db.session.flush()
         new_modified = bills[0].modified
-        ret = _upload_bills_to_services(
+        ret, _ = _upload_bills_to_services(
             self.meter.utility_service.service_id, one_bill_list
         )
         self.assertEqual(len(ret), 0)
@@ -1357,7 +1357,7 @@ class TestBillUpload(unittest.TestCase):
         db.session.flush()
 
         one_bill_list[0] = one_bill_list[0]._replace(cost=233.12)
-        ret = _upload_bills_to_services(
+        ret, _ = _upload_bills_to_services(
             self.meter.utility_service.service_id, one_bill_list
         )
         self.assertEqual(len(ret), 0)
@@ -1378,6 +1378,7 @@ class TestBillUpload(unittest.TestCase):
         upload.upload_bills(
             self.meter.oid,
             self.meter.utility_service.service_id,
+            None,
             None,
             one_bill,
         )
@@ -1420,6 +1421,7 @@ class TestBillUpload(unittest.TestCase):
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
+            None,
             one_bill,
         )
 
@@ -1446,6 +1448,7 @@ class TestBillUpload(unittest.TestCase):
         upload.upload_bills(
             self.meter.oid,
             self.meter.utility_service.service_id,
+            None,
             None,
             one_bill,
         )
@@ -1475,6 +1478,7 @@ class TestBillUpload(unittest.TestCase):
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
+            None,
             one_bill,
         )
         bills = db.session.query(Bill).filter(Bill.service == self.meter.service).all()
@@ -1501,6 +1505,7 @@ class TestBillUpload(unittest.TestCase):
         upload.upload_bills(
             self.meter.oid,
             self.meter.utility_service.service_id,
+            None,
             None,
             bills_list,
         )
@@ -1532,6 +1537,7 @@ class TestBillUpload(unittest.TestCase):
         upload.upload_bills(
             self.meter.oid,
             self.meter.utility_service.service_id,
+            None,
             None,
             bill_updates,
         )
@@ -1582,6 +1588,7 @@ class TestBillUpload(unittest.TestCase):
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
+            None,
             one_bill,
         )
         bills = db.session.query(Bill).filter(Bill.service == self.meter.service).all()
@@ -1606,6 +1613,7 @@ class TestBillUpload(unittest.TestCase):
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
+            None,
             one_bill,
         )
 
@@ -1623,6 +1631,7 @@ class TestBillUpload(unittest.TestCase):
             self.meter.oid,
             self.meter.utility_service.service_id,
             None,
+            None,
             one_bill,
         )
         bills = db.session.query(Bill).filter(Bill.service == self.meter.service)
@@ -1636,6 +1645,7 @@ class TestBillUpload(unittest.TestCase):
         upload.upload_bills(
             self.meter.oid,
             self.meter.utility_service.service_id,
+            None,
             None,
             one_bill,
         )
@@ -1654,6 +1664,7 @@ class TestBillUpload(unittest.TestCase):
             upload.upload_bills(
                 self.meter.oid,
                 self.meter.utility_service.service_id,
+                None,
                 None,
                 one_bill,
             )
@@ -1677,6 +1688,7 @@ class TestBillUpload(unittest.TestCase):
             upload.upload_bills(
                 self.meter.oid,
                 self.meter.utility_service.service_id,
+                None,
                 None,
                 [incoming],
             )

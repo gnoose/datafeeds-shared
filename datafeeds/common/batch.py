@@ -118,6 +118,7 @@ def run_datafeed(
         meter.oid,
         meter.utility_service.service_id,
         task_id,
+        datasource.name,
     )
     readings_handler = ft.partial(
         upload_readings, transforms, meter.oid, datasource.name, task_id

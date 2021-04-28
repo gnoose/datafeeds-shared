@@ -455,7 +455,7 @@ class UsagePage:
             self._driver.find_element_by_css_selector("li[type='Min'] a").click()
         self._driver.sleep(2)
 
-    def download(self, start: date, end: date):
+    def green_button_download(self, start: date, end: date):
         # set date range in JavaScript instead of trying to navigate date picker
         self._driver.execute_script(
             "fromDate = new Date(Date.parse('%s'));" % start.strftime("%Y-%m-%d")
@@ -465,6 +465,16 @@ class UsagePage:
         )
         # click Download
         self._driver.find_element_by_css_selector("#btngbDataDownload").click()
+
+    def excel_download_available(self):
+        self._driver.screenshot(BaseWebScraper.screenshot_path("download available"))
+        try:
+            self._driver.find_element_by_css_selector(".acctMtrNotEligible")
+            log.info("meter not eligible; use GreenButton")
+            return False
+        except NoSuchElementException:
+            log.info("meter is eligible; use Excel")
+        return True
 
 
 class HomePage:
@@ -677,6 +687,28 @@ class SdgeMyAccountScraper(BaseWebScraper):
     def adjustment_factor(self):
         return self._configuration.adjustment_factor
 
+    def get_green_button(
+        self, usage_page: UsagePage, timeline: Timeline, start: date, end: date
+    ):
+        log.info("Getting interval data for date range: %s - %s", start, end)
+        # Set the date range in the UI, then click "Export"
+        log.info("Setting date range.")
+        usage_page.green_button_download(start, end)
+        download_path = wait_for_download(self._driver)
+
+        log.info("Processing downloaded file: {0}".format(download_path))
+        # ...then process the downloaded file.
+        for row in extract_csv_rows(download_path):
+            raw_reading = to_raw_reading(row, self.direction, self.adjustment_factor)
+            dt = datetime.combine(raw_reading.date, raw_reading.time)
+            val = timeline.lookup(dt)
+            if val:
+                timeline.insert(dt, (raw_reading.value + val) / 2)
+            else:
+                timeline.insert(dt, raw_reading.value)
+        # rename to keep files in archive, but prevent matching on filename
+        os.rename(download_path, f"{download_path}.processed")
+
     def _execute(self):
         try:
             return self._execute_internal()
@@ -741,7 +773,6 @@ class SdgeMyAccountScraper(BaseWebScraper):
                 )
                 log.info(error_msg)
                 raise InvalidAccountException(error_msg)
-
             self.screenshot("usage_account_selected")
 
         # Select the desired meter
@@ -761,26 +792,43 @@ class SdgeMyAccountScraper(BaseWebScraper):
             self.start_date, self.end_date, interval=self._configuration.interval
         )
 
+        excel_download = True
         if usage_page.is_enterprise():
             usage_page.enterprise_select_usage(self._configuration.interval)
         else:
             usage_page.select_usage(self._configuration.interval)
+            excel_download = usage_page.excel_download_available()
 
         # use the same JavaScript download for both regular and enterprise
-        if self._configuration.interval == 1440:
-            for subrange in date_range.split_iter(delta=relativedelta(days=7)):
-                usage_page.javascript_download(
-                    subrange.start_date,
-                    subrange.end_date,
-                    self._configuration.interval,
-                )
+        if excel_download:
+            if self._configuration.interval == 1440:
+                for subrange in date_range.split_iter(delta=relativedelta(days=7)):
+                    usage_page.javascript_download(
+                        subrange.start_date,
+                        subrange.end_date,
+                        self._configuration.interval,
+                    )
+            else:
+                dt = self.start_date
+                while dt < self.end_date:
+                    usage_page.javascript_download(dt, dt, self._configuration.interval)
+                    dt += timedelta(days=1)
+            for filename in glob(f"{self._driver.download_dir}/*.xlsx"):
+                parse_xlsx(timeline, filename, self.adjustment_factor)
         else:
-            dt = self.start_date
-            while dt < self.end_date:
-                usage_page.javascript_download(dt, dt, self._configuration.interval)
-                dt += timedelta(days=1)
-        for filename in glob(f"{self._driver.download_dir}/*.xlsx"):
-            parse_xlsx(timeline, filename, self.adjustment_factor)
+            log.info("starting GreenButton download")
+            usage_page.open_green_button()
+            self.screenshot("opened green button")
+            """
+            This page only allows you to download a certain amount of billing data at a time. We will use a
+            conservative chunk size of 90 days.
+            """
+            interval_size = relativedelta(days=90)
+            for subrange in date_range.split_iter(delta=interval_size):
+                self.get_green_button(
+                    usage_page, timeline, subrange.start_date, subrange.end_date
+                )
+
         return Results(readings=timeline.serialize())
 
 
