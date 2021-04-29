@@ -31,6 +31,7 @@ AMOUNT_REGEX = re.compile(r"Total New Charges([\d,]+\.\d\d)")
 USE_REGEX = re.compile(r"")
 DEMAND_REGEX = re.compile(r"")
 STATEMENT_REGEX = re.compile(r"BILLING DATE:\s*(.*)ACCOUNT")
+UTILILTY_CODE_REGEX = re.compile(r"Schedule\s*(\d{2,3})Service")
 
 
 def extract_amount(text: str) -> Optional[float]:
@@ -121,6 +122,16 @@ def extract_peak(text: str, meter_number: str) -> Optional[float]:
     return None
 
 
+def extract_utility_code(text: str) -> Optional[str]:
+    matches = UTILILTY_CODE_REGEX.search(text)
+    if not matches:
+        return None
+
+    s = "".join(filter(str.isdigit, matches.group(1)))
+
+    return f"Schedule {s}"
+
+
 def parse_bill_text(text: str, meter_number: str) -> Optional[BillingDatum]:
     sections = [
         s
@@ -136,6 +147,7 @@ def parse_bill_text(text: str, meter_number: str) -> Optional[BillingDatum]:
     use = extract_use(sections[0], meter_number)
     peak = extract_peak(sections[0], meter_number)
     statement_date = extract_statement_date(sections[0])
+    utility_code = extract_utility_code(sections[0])
     if (
         amount is not None
         and period is not None
@@ -151,7 +163,7 @@ def parse_bill_text(text: str, meter_number: str) -> Optional[BillingDatum]:
             peak=peak,
             items=None,
             attachments=None,
-            utility_code=None,
+            utility_code=utility_code,
         )
 
     return None

@@ -1,4 +1,3 @@
-import os
 import time
 import logging
 
@@ -108,7 +107,6 @@ class BillHistoryPage:
             with open(path, "rb") as f:
                 data = f.read()
                 results.append(data)
-            os.remove(path)
         return results
 
     def gather_data(self) -> List[bytes]:
