@@ -22,6 +22,6 @@ Create a datasource in the database, for use by scrapers:
 
     python scripts/create_test_data_source.py scraper username password --service_id 123 --utility_account_id 456
 
-Get credentials, for use in local browser
+Get credentials, for use in local browser (replace 456 with the datasource id for the current project)
 
-    python scripts/get_credentials 456
+    python scripts/get_credentials.py 456
