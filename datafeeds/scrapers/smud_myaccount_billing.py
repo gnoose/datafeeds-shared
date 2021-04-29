@@ -51,6 +51,7 @@ BillPeriodDetails = NamedTuple(
         ("total_kwh", float),
         ("max_kw", float),
         ("download_link", str),
+        ("utility_code", str),
     ],
 )
 
@@ -210,6 +211,13 @@ class SmudBillComparePage(PageState):
 
         return float(s.replace(",", ""))
 
+    @staticmethod
+    def _parse_rate_string(s: str) -> str:
+        for r in ["\n", "<br>"]:
+            s = s.replace(r, " ")
+        x = s.split()
+        return " ".join(x)
+
     def _parse_raw_bill_data(self, raw_data: dict) -> BillPeriodDetails:
         date_strings = raw_data.get("bill categories", "").split("-")
         return BillPeriodDetails(
@@ -224,6 +232,7 @@ class SmudBillComparePage(PageState):
             total_kwh=self._parse_usage_string(raw_data.get("total kwh used")),
             max_kw=self._parse_usage_string(raw_data.get("maximum kw")),
             download_link=raw_data.get("link"),
+            utility_code=self._parse_rate_string(raw_data.get("rate")),
         )
 
     def get_visible_bill_details(self) -> List[BillPeriodDetails]:
@@ -513,7 +522,7 @@ class SMUDMyAccountBillingScraper(BaseWebScraper):
             peak=bill_detail.max_kw,
             items=None,
             attachments=None,
-            utility_code=None,
+            utility_code=bill_detail.utility_code,
         )
 
         pdf_bytes = self.download_pdf(bill_detail)
