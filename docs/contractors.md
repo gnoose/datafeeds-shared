@@ -88,7 +88,6 @@ Add the files, commit, and push:
     git push
 
 Finally, request a review on the pull request.
-```
 
 Assign the job to a contractor. They should push their changes to a branch in the `datafeeds-shared` repo.
 
