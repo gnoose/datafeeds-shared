@@ -1,3 +1,4 @@
+from glob import glob
 import logging
 from typing import Tuple
 
@@ -12,6 +13,7 @@ from selenium.common.exceptions import (
     StaleElementReferenceException,
 )
 
+from datafeeds import config
 from datafeeds.common.base import BaseWebScraper
 
 log = logging.getLogger(__name__)
@@ -20,7 +22,7 @@ log = logging.getLogger(__name__)
 def detect_and_send_escape_to_close_survey(driver, timeout=5):
     try:
         locator = (By.CLASS_NAME, "fsrAbandonButton")
-        elem = WebDriverWait(driver, timeout).until(
+        elem = WebDriverWait(driver, timeout).guntil(
             EC.presence_of_element_located(locator)
         )
         actions = ActionChains(driver)
@@ -73,12 +75,17 @@ def dismiss_overlay_click(
         try:
             elem.click()
             break
-        except ElementClickInterceptedException:
+        except ElementClickInterceptedException as exc:
             log.info(
-                "blocked by overlay, attempting to close before clicking again (%s/%s)",
+                "blocked by overlay, attempting to close before clicking again (%s/%s): %s",
                 i,
                 retries,
+                exc,
             )
+            if len(glob(f"{config.WORKING_DIRECTORY}/*overlay.png")) >= retries * 2:
+                log.exception("giving up on closing overlay")
+                driver.screenshot(BaseWebScraper.screenshot_path("max_close_overlay"))
+                raise exc
             if detect_and_send_escape_to_close_survey(driver):
                 pass
             elif detect_and_close_survey(driver):
@@ -86,10 +93,10 @@ def dismiss_overlay_click(
             elif detect_and_close_modal(driver):
                 pass
             else:
-                log.info("unable to close overlay, raising")
-                raise
-            driver.sleep(1)
+                log.exception("unable to close overlay, raising")
+                raise exc
+            driver.sleep(2)
         except StaleElementReferenceException:
             return
 
-    driver.screenshot(BaseWebScraper.screenshot_path("close overlay"))
+    driver.screenshot(BaseWebScraper.screenshot_path("close_overlay"))
