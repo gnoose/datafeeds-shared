@@ -46,6 +46,7 @@ from datafeeds.scrapers.pepco_interval import datafeed as pepco_interval
 from datafeeds.scrapers.pge.bill_pdf import datafeed as pge_bill_pdf
 from datafeeds.scrapers.pge_energyexpert import datafeed as pge_energyexpert
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
+from datafeeds.scrapers.poway_water import datafeed as poway_water
 from datafeeds.scrapers.powertrack import datafeed as powertrack
 from datafeeds.scrapers.pse_interval import datafeed as pse_interval
 from datafeeds.scrapers.sdge_myaccount import datafeed as sdge_myaccount
@@ -188,6 +189,7 @@ scraper_functions = {
     "pge-energyexpert": pge_energyexpert,
     "pleasanton-urjanet": pleasanton,
     "portland-bizportal": portland_bizportal,
+    "poway-water": poway_water,
     "powertrack": powertrack,
     "pse-interval": pse_interval,
     "pse-urjanet": pse,
