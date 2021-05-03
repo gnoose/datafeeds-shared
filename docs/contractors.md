@@ -61,10 +61,9 @@ Get the environment set up:
     scripts/start_chrome.sh
     git checkout master
     git pull
-    git checkout 3888-svp-billing
+    git checkout branch-name
     git config user.name "First Last"
     git config user.email you@email.com
-```
 
 When you run `git pull`, you'll be prompted for a username and password. Use your GitHub username for the username, and a personal access token for password. To create one, see [Creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). On the `git config` step, if you have GitHub set to hide your email, use your private email from https://github.com/settings/emails.
 
@@ -76,7 +75,35 @@ Run the scraper: `python launch.py by-oid 44 2020-06-06 2020-12-07`
 
 The code for this scraper is https://github.com/gridium/datafeeds-shared/...
 
-Update the code to get the scraper to complete successfully. Before committing your changes, run these and fix any issues:
+Update the code to get the scraper to complete successfully. 
+
+## verification
+
+When complete, the scraper should produce output like this (values will differ, for illustration only):
+
+    2021-05-03 04:46:16,154 : INFO : Final Scraped Summary
+    2021-05-03 04:46:16,154 : INFO : ================================================================================
+    2021-05-03 04:46:16,154 : INFO : Start       End         Cost        Use         Peak       Has PDF    Utility Code
+    2021-05-03 04:46:16,154 : INFO : 2019-04-09  2019-05-08  10144.61    9489.0      0.0        True       GNR1 Gas Service to Small Commercial Customers
+    2021-05-03 04:46:16,154 : INFO : 2019-05-09  2019-06-07  8906.65     8566.0      0.0        True       GNR1 Gas Service to Small Commercial Customers
+    2021-05-03 04:46:16,154 : INFO : 2019-06-08  2019-07-09  7875.76     7425.0      0.0        True       GNR1 Gas Service to Small Commercial Customers
+
+    2021-04-30 05:15:10,182 : INFO : Summary of all Scraped Partial Bills
+    2021-04-30 05:15:10,182 : INFO : ================================================================================
+    2021-04-30 05:15:10,182 : INFO : Start       End         Cost        Use         Peak       Has PDF    Utility Code
+    2021-04-30 05:15:10,182 : INFO : 2021-02-23  2021-03-23  1287.64     25434.832   0.0        True       A10SX-Bright Choice
+
+
+    2021-04-28 20:48:05,429 : INFO : Final Interval Summary
+    2021-04-28 20:48:05,429 : INFO : 2021-04-25: 96 intervals. 0.4 net kWh, 0 null values.
+    2021-04-28 20:48:05,430 : INFO : 2021-04-26: 96 intervals. 0.4 net kWh, 0 null values.
+    2021-04-28 20:48:05,430 : INFO : 2021-04-27: 96 intervals. 0.0 net kWh, 96 null values.
+    2021-04-28 20:48:05,430 : INFO : 2021-04-28: 96 intervals. 0.0 net kWh, 96 null values.
+    2021-04-28 20:48:05,431 : INFO : Wrote interval data to /app/workdir/readings.csv.
+    2021-04-28 20:48:05,432 : INFO : all statuses: bills=None readings=Status.SUCCEEDED, pdfs=None, tnd=None, gen=None, meta=None
+    20
+
+Before committing your changes, run these and fix any issues:
 
     black .
     flake8 datafeeds launch.py
@@ -88,6 +115,7 @@ Add the files, commit, and push:
     git push
 
 Finally, request a review on the pull request.
+```
 
 Assign the job to a contractor. They should push their changes to a branch in the `datafeeds-shared` repo.
 

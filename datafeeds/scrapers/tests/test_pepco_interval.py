@@ -4,7 +4,7 @@ from datetime import date
 from dateutil.parser import parse as parse_date
 
 from datafeeds.common.support import Credentials, DateRange
-from datafeeds.scrapers.pepco_interval import (
+from datafeeds.scrapers.pepco import (
     PepcoIntervalScraper,
     PepcoIntervalConfiguration,
 )
