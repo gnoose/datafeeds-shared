@@ -189,6 +189,7 @@ class SMUDFirstFuelScraper(BaseWebScraper):
         super().__init__(*args, **kwargs)
         self.name = "SMUD First Fuel"
         self.timeline = None
+        self.url = "https://myaccount.smud.org"
 
     def _parse_csv(self, csv_file_path: str):
         self.timeline = Timeline(self.start_date, self.end_date)
@@ -204,7 +205,7 @@ class SMUDFirstFuelScraper(BaseWebScraper):
                     log.info("skipping row %s: %s", row, exc)
 
     def _execute(self):
-        self._driver.get("https://myaccount.smud.org")
+        self._driver.get(self.url)
         log.info(self._configuration.__dict__)
 
         # We define the scraper flow below using a simple state machine.
@@ -261,7 +262,7 @@ class SMUDFirstFuelScraper(BaseWebScraper):
         raise Exception("The scraper did not reach a finished state.")
 
     def init_action(self, _):
-        self._driver.get("https://myaccount.smud.org/")
+        self._driver.get(self.url)
 
     def login_action(self, page: LoginPage):
         """Action for the 'login' state. Simply logs in with provided credentials."""

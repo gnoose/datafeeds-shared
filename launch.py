@@ -42,6 +42,7 @@ from datafeeds.scrapers.nvenergy_myaccount import datafeed as nvenergy_myaccount
 from datafeeds.scrapers.pacific_power_billing.pacific_power_billing import (
     datafeed as pacific_power_billing,
 )
+from datafeeds.scrapers.pepco_interval import datafeed as pepco_interval
 from datafeeds.scrapers.pge.bill_pdf import datafeed as pge_bill_pdf
 from datafeeds.scrapers.pge_energyexpert import datafeed as pge_energyexpert
 from datafeeds.scrapers.portland_bizportal import datafeed as portland_bizportal
@@ -180,6 +181,7 @@ scraper_functions = {
     "nve-myaccount": nvenergy_myaccount,
     "pacific-power-billing": pacific_power_billing,
     "pacific-power-interval": pacific_power_interval,
+    "pepco-interval": pepco_interval,
     "pge-urjanet-v2": pge,
     "pge-urjanet-generation": pge_generation,
     "pge-bill-pdf": pge_bill_pdf,
