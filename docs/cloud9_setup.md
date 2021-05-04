@@ -79,7 +79,7 @@ Install dependencies
 cd datafeeds-shared
 pip install -r requirements.txt
 pip install -r dev-requirements.txt
-docker pull selenium/standalone-chrome:3.141.59-20200525
+docker pull selenium/standalone-chrome:4.0.0-beta-3-20210426
 ```
 
 The default EBS for Cloud9 is 10GB, which is not quite enough. Resize the volume to 20GB:
