@@ -74,6 +74,13 @@ class DukeIntervalScraper(epo_schneider.EnergyProfilerScraper):
             name="main_landing_page",
             page=duke_pages.DukeLandingPage(self._driver),
             action=self.landing_page_action,
+            transitions=["electric_usage"],
+        )
+
+        state_machine.add_state(
+            name="electric_usage",
+            page=duke_pages.DukeElectricUsagePage(self._driver),
+            action=self.usage_page_action,
             transitions=["done"],
         )
 
@@ -111,7 +118,10 @@ class DukeIntervalScraper(epo_schneider.EnergyProfilerScraper):
 
     def landing_page_action(self, page: duke_pages.DukeLandingPage):
         """Process landing page action """
-        page.open_profiler_page()
+        page.open_energy_usage()
+
+    def usage_page_action(self, page: duke_pages.DukeElectricUsagePage):
+        page.open_epo_site()
         profiler_window = self._driver.window_handles[1]
         with WindowSwitch(self._driver, profiler_window):
             self.readings = super()._execute().readings

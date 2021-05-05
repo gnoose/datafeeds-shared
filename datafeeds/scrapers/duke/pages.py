@@ -15,6 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 from datafeeds import config
+from datafeeds.common.base import BaseWebScraper
 from datafeeds.common.upload import hash_bill, upload_bill_to_s3
 from datafeeds.common.util.selenium import file_exists_in_dir
 from datafeeds.common.typing import BillingDatum, BillingRange
@@ -93,7 +94,7 @@ class DukeLandingPage(PageState):
 
     def get_ready_condition(self):
         self.link_to_accs_locator = (By.CSS_SELECTOR, "button#btnBillView")
-        return EC.element_to_be_clickable(self.link_to_accs_locator)
+        return EC.element_to_be_clickable((By.CSS_SELECTOR, ".Quick_LinkBox"))
 
     def open_accounts_page(self):
         """Opens page with all the accounts """
@@ -110,6 +111,41 @@ class DukeLandingPage(PageState):
         profiler_locator = (By.CSS_SELECTOR, "a#lnkInternalMeter")
         profiler_page_link = self.driver.find_element(*profiler_locator)
         profiler_page_link.click()
+
+    def open_energy_usage(self):
+        log.info("clicking ENERGY USAGE")
+        self.driver.screenshot(BaseWebScraper.screenshot_path("energy usage"))
+        energy_usage_link = self.driver.find_element_by_xpath(
+            "//a[contains(text(), 'Energy Usage')]"
+        )
+        energy_usage_link.click()
+        self.driver.sleep(0.5)
+        log.info("opening Electric Usage")
+        electrical_usage_link = self.driver.find_element_by_css_selector(
+            "a[href='/ElectricUsage']"
+        )
+        electrical_usage_link.click()
+        self.driver.screenshot(BaseWebScraper.screenshot_path("electric usage"))
+
+
+class DukeElectricUsagePage(PageState):
+    """Page object for the Duke Energy electric usage page """
+
+    def get_ready_condition(self):
+        return EC.element_to_be_clickable((By.CSS_SELECTOR, "div#epo"))
+
+    def open_epo_site(self):
+        log.info("opening Interval Metering Information")
+        self.driver.screenshot(BaseWebScraper.screenshot_path("epo1"))
+        embed_url = self.driver.find_element_by_css_selector(
+            "#epo embed"
+        ).get_attribute("src")
+        self.driver.get(embed_url)
+        self.driver.screenshot(BaseWebScraper.screenshot_path("epo2"))
+        self.driver.find_element_by_xpath(
+            "//a[contains(text(), 'Interval Metering')]"
+        ).click()
+        self.driver.screenshot(BaseWebScraper.screenshot_path("epo2"))
 
 
 class AccountListPage(PageState):
