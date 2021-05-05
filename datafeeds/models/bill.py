@@ -241,6 +241,10 @@ class PartialBill(ModelMixin, Base):
 
     utility_service = relationship("UtilityService")
 
+    bills = association_proxy(
+        "partial_bill_links", "bill_obj", creator=lambda b: PartialBillLink(bill_obj=b)  # type: ignore
+    )
+
     @classmethod
     def generate(
         cls,

@@ -1772,6 +1772,7 @@ class TestPdfAttachment(unittest.TestCase):
         (account, meters) = test_utils.create_meters()
         self.meter_ids = [m.oid for m in meters]
         self.meter = meters[0]
+        self.meter_two = meters[1]
         self.configuration = SceReactEnergyManagerBillingConfiguration(
             utility=self.meter.utility_service.utility,
             utility_account_id=self.meter.utility_service.utility_account_id,
@@ -1779,37 +1780,138 @@ class TestPdfAttachment(unittest.TestCase):
         )
         self.service = self.meter.utility_service
 
+        self.bill_1 = Bill()
+        self.bill_1.initial = date(2019, 4, 2)
+        self.bill_1.closing = date(2019, 5, 2)
+        self.bill_1.service = self.service.oid
+        db.session.add(self.bill_1)
+        db.session.flush()
+
+        # Creating bill on another meter on same account, with same utility account id.
+        self.meter_two.utility_service.utility_account_id = (
+            self.service.utility_account_id
+        )
+        db.session.add(self.meter_two.utility_service)
+
+        self.bill_2 = Bill()
+        self.bill_2.initial = date(2019, 4, 2)
+        self.bill_2.closing = date(2019, 5, 2)
+        self.bill_2.service = self.meter_two.utility_service.oid
+        db.session.add(self.bill_2)
+        db.session.flush()
+
+        self.key = "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf"
+        self.bill_pdf = BillPdf(
+            self.service.utility_account_id,
+            self.service.utility_account_id,
+            date(2019, 4, 2),
+            date(2019, 5, 2),
+            date(2019, 5, 2),
+            self.key,
+        )
+
     @classmethod
     def tearDown(cls):
         db.session.rollback()
 
     def test_attach_bill_pdfs(self):
+        """Meter only flag = False attaches bill pdfs to relevant bills across multiple services sharing
+        the same account id"""
         pdfs = []
         # Empty list has no new data
-        status = upload.attach_bill_pdfs(self.meter_ids[0], None, pdfs)
+        status = upload.attach_bill_pdfs(self.meter_ids[0], None, False, pdfs)
         self.assertEqual(status, Status.COMPLETED)
 
         service = self.meter.utility_service
         db.session.add(service)
 
-        bill_1 = Bill()
-        bill_1.initial = date(2019, 4, 2)
-        bill_1.closing = date(2019, 5, 2)
-        bill_1.service = service.oid
-        db.session.add(bill_1)
-        db.session.flush()
-        key = "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf"
-        service = self.meter.utility_service
-        print(service.utility_account_id)
-        bill_pdf = BillPdf(
-            service.utility_account_id,
-            service.utility_account_id,
-            date(2019, 4, 2),
-            date(2019, 5, 2),
-            date(2019, 5, 2),
-            key,
-        )
-        pdfs.append(bill_pdf)
-        status = upload.attach_bill_pdfs(self.meter_ids[0], key, pdfs)
+        pdfs.append(self.bill_pdf)
+        status = upload.attach_bill_pdfs(self.meter_ids[0], self.key, False, pdfs)
         # Now there is new data
         self.assertEqual(status, Status.SUCCEEDED)
+        self.assertEqual(
+            self.bill_1.attachments,
+            [
+                {
+                    "kind": "bill",
+                    "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf",
+                    "format": "PDF",
+                }
+            ],
+            "Attachment added to matching bill with same utility account id",
+        )
+        self.assertEqual(
+            self.bill_2.attachments,
+            [
+                {
+                    "kind": "bill",
+                    "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf",
+                    "format": "PDF",
+                }
+            ],
+            "Attachment also added to bill on meter two, which has the same utility account id.",
+        )
+
+    def test_attach_bill_pdfs_to_given_meter(self):
+        """Meter only flag to attach_bill_pdfs only attaches PDF's to bills on given meter.  Matches
+        up bill initial instead of statement date."""
+        pdfs = [self.bill_pdf]
+        status = upload.attach_bill_pdfs(
+            self.meter_ids[0], self.key, meter_only=True, pdfs=pdfs
+        )
+        self.assertEqual(status, Status.SUCCEEDED)
+        self.assertEqual(
+            self.bill_1.attachments,
+            [
+                {
+                    "kind": "bill",
+                    "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf",
+                    "format": "PDF",
+                }
+            ],
+            "Attachment added to matching bill with same utility account id",
+        )
+
+        self.assertIsNone(
+            self.bill_2.attachments,
+            "Bill not attached to other service with matching account id.",
+        )
+
+    def test_add_multiple_pdfs_to_given_bill(self):
+        """Multiple statements found, one with newer information, which is added first:"""
+        second_bill_pdf = BillPdf(
+            self.service.utility_account_id,
+            self.service.utility_account_id,
+            start=date(2019, 4, 2),
+            end=date(2019, 5, 2),
+            statement=date(2019, 9, 2),
+            s3_key="1ea5a6c9-0a3c-d0fc-a0ba-NEWEST.pdf",
+        )
+
+        pdfs = [self.bill_pdf, second_bill_pdf]
+        status = upload.attach_bill_pdfs(
+            self.meter_ids[0], self.key, meter_only=True, pdfs=pdfs
+        )
+        self.assertEqual(status, Status.SUCCEEDED)
+        self.assertEqual(
+            self.bill_1.attachments,
+            [
+                {
+                    "kind": "bill",
+                    "key": "1ea5a6c9-0a3c-d0fc-a0ba-NEWEST.pdf",
+                    "format": "PDF",
+                },
+                {
+                    "kind": "bill",
+                    "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf",
+                    "format": "PDF",
+                },
+            ],
+            "Both statements attached.",
+        )
+
+        pdfs = [self.bill_pdf, second_bill_pdf]
+        status = upload.attach_bill_pdfs(
+            self.meter_ids[0], self.key, meter_only=True, pdfs=pdfs
+        )
+        self.assertEqual(status, Status.COMPLETED, "All PDF's already attached.")

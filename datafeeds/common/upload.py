@@ -1,9 +1,12 @@
+from enum import Enum
+
 import logging
 import csv
 from datetime import timedelta, date, datetime
 
 from deprecation import deprecated
 import os
+from sqlalchemy.orm.attributes import flag_modified
 from typing import Optional, Union, BinaryIO, List, Dict, Set, Any, Tuple
 from io import BytesIO
 import hashlib
@@ -27,7 +30,12 @@ from datafeeds.common.util.s3 import (
     s3_key_exists,
 )
 from datafeeds.models import UtilityService
-from datafeeds.models.bill import Bill, PartialBillProviderType, snap_first_start
+from datafeeds.models.bill import (
+    Bill,
+    PartialBillProviderType,
+    snap_first_start,
+    PartialBill,
+)
 from datafeeds.models.meter import Meter, MeterReading
 from datafeeds.models.bill_document import BillDocument
 
@@ -153,16 +161,70 @@ def upload_readings(
     return Status.COMPLETED
 
 
+class AttachStatus(Enum):
+    ATTACHED = "attached"
+    FOUND = "found"
+    NOT_ATTACHED = "not_attached"
+
+    @classmethod
+    def ordered(cls) -> List["AttachStatus"]:
+        """Return status values in order from best (first) to worst (last)."""
+        return [AttachStatus.ATTACHED, AttachStatus.FOUND, AttachStatus.NOT_ATTACHED]
+
+    @classmethod
+    def best(cls, statuses: List[Optional["AttachStatus"]]) -> Optional["AttachStatus"]:
+        for status in AttachStatus.ordered():
+            if status in statuses:
+                return status
+        return None
+
+
+def add_attachment_to_bills(
+    pdf: BillPdf, bills: List[Union[Bill, PartialBill]]
+) -> AttachStatus:
+    att_status = AttachStatus.NOT_ATTACHED
+    for bill in bills:
+        bill_type = (
+            "bill" if isinstance(bill, Bill) else f"{bill.provider_type} partial bill"
+        )
+        # [{"kind": "bill", "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf", "format": "PDF"}]
+        log.info(
+            "matched bill pdf statement %s, interval start %s to %s %s %s-%s",
+            pdf.statement,
+            pdf.start,
+            bill_type,
+            bill.oid,
+            bill.initial,
+            bill.closing,
+        )
+        current_pdfs = {
+            att["key"] for att in bill.attachments or [] if att.get("format") == "PDF"
+        }
+        if current_pdfs:
+            if pdf.s3_key in current_pdfs:
+                att_status = AttachStatus.best([att_status, AttachStatus.FOUND])
+                continue
+        if not bill.attachments:
+            bill.attachments = []
+        # Insert new PDF's at the beginning so they are surfaced in the UI.
+        bill.attachments.insert(0, {"kind": "bill", "key": pdf.s3_key, "format": "PDF"})
+        flag_modified(bill, "attachments")
+        db.session.add(bill)
+        log.info("adding attachment %s to %s %s", pdf.s3_key, bill_type, bill.oid)
+        att_status = AttachStatus.ATTACHED
+    return att_status
+
+
 def attach_bill_pdfs(
     meter_oid: int,
     task_id: str,
+    meter_only: bool,
     pdfs: List[BillPdf],
 ) -> Status:
     """Attach a list of bill PDF files uploaded to S3 to bill records."""
     if not pdfs:
         return Status.COMPLETED
-    # A bill PDF is associated with one utility account; it can contain data for
-    # multiple SAIDs.
+
     count = 0
     unused = []
     for pdf in pdfs:
@@ -171,55 +233,57 @@ def attach_bill_pdfs(
             pdf.utility_account_id,
             pdf.statement,
         )
-        # look for bill that ended recently before the statement date
-        query = (
-            db.session.query(Bill)
-            .filter(UtilityService.utility_account_id == pdf.utility_account_id)
-            .filter(UtilityService.oid == Bill.service)
-            .filter(Bill.closing > pdf.statement - timedelta(days=14))
-            .filter(Bill.closing <= pdf.statement)
-        )
-        bill_count = query.count()
-        if not bill_count:
-            log.warning(
-                "no bills found for utility_account_id %s %s-%s",
-                pdf.utility_account_id,
-                pdf.start,
-                pdf.end,
+
+        if meter_only:
+            # Attach PDFs to bills on this meter's service only.  Matches up PDF start dates with PartialBill/
+            # Bill start dates with a small buffer.
+            bill_query = db.session.query(Bill).filter(
+                Bill.service == Meter.service,
+                Meter.oid == meter_oid,
+                Bill.initial > pdf.start - timedelta(days=1),
+                Bill.initial < pdf.start + timedelta(days=1),
             )
-            unused.append(pdf.s3_key)
-        attached = False
-        for bill in query:
-            # [{"kind": "bill", "key": "1ea5a6c9-0a3c-d0fc-a0ba-0eae4f86ddeb.pdf", "format": "PDF"}]
-            log.info(
-                "matched bill pdf %s to bill %s %s-%s",
-                pdf.statement,
-                bill.oid,
-                bill.initial,
-                bill.closing,
+            partial_bill_query = db.session.query(PartialBill).filter(
+                PartialBill.service == Meter.service,
+                Meter.oid == meter_oid,
+                PartialBill.initial > pdf.start - timedelta(days=1),
+                PartialBill.initial < pdf.start + timedelta(days=1),
+                PartialBill.superseded_by.is_(None),
+                PartialBill.provider_type == "tnd-only",
             )
-            current_pdfs = {
-                att["key"]
-                for att in bill.attachments or []
-                if att.get("format") == "PDF"
-            }
-            # if bill already has a PDF, skip (may use a different name hash)
-            if current_pdfs:
-                if pdf.s3_key in current_pdfs:
-                    attached = True
-                continue
-            attached = True
-            if not bill.attachments:
-                bill.attachments = []
-            bill.attachments.append(
-                {"kind": "bill", "key": pdf.s3_key, "format": "PDF"}
-            )
-            db.session.add(bill)
-            log.info("adding attachment %s to bill %s", pdf.s3_key, bill.oid)
-        if attached:
-            count += 1
+            if not bill_query.count() or not partial_bill_query.count():
+                log.warning(
+                    "no bills found for utility_account_id %s %s-%s",
+                    pdf.utility_account_id,
+                    pdf.start,
+                    pdf.end,
+                )
+                unused.append(pdf.s3_key)
+            bill_attach_status = add_attachment_to_bills(pdf, bill_query)
+            partial_attach_status = add_attachment_to_bills(pdf, partial_bill_query)
+            if (
+                AttachStatus.best([bill_attach_status, partial_attach_status])
+                == AttachStatus.ATTACHED
+            ):
+                # Only increase count if attachments were updated.
+                # Not adding any PDF's to "unused" because attachment could be in use on another meter.
+                count += 1
+
         else:
-            unused.append(pdf.s3_key)
+            # Attach PDF's to potentially multiple bills on multiple services with the same utility account id.
+            # Attach PDFs to bills on account that ended recently before the statement date:
+            query = (
+                db.session.query(Bill)
+                .filter(UtilityService.utility_account_id == pdf.utility_account_id)
+                .filter(UtilityService.oid == Bill.service)
+                .filter(Bill.closing > pdf.statement - timedelta(days=14))
+                .filter(Bill.closing <= pdf.statement)
+            )
+            attached = add_attachment_to_bills(pdf, query)
+            if attached == AttachStatus.ATTACHED:
+                count += 1
+            elif attached == AttachStatus.NOT_ATTACHED:
+                unused.append(pdf.s3_key)
     log.info("attached %s/%s pdfs", count, len(pdfs))
     for key in unused:
         remove_file_from_s3(config.BILL_PDF_S3_BUCKET, key)
