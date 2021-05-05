@@ -2,6 +2,14 @@
 
 Add best practices here.
 
+## see the scraper run
+
+  - run `scripts/start_chrome.sh` to start Selenium Chrome with a VNC server
+  - in the IDE, click Preview, Preview Running Application ; this will open the application in an IDE panel
+  - click Connect, then enter `secret` as the password
+  - run the scraper from the command line (`python launch.py by-oid 123 2021-01-01 2021-04-01`)
+  - to open Selenium in a new tab (outside the IDE), click Pop Out Into New Window (top right)
+
 ## screenshots
 
 In a scraper class (derived from `BaseWebScraper`):
