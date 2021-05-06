@@ -149,7 +149,7 @@ def kw_regexes(meter_number: str):
         "alt1_date_usage": r"Electric Charges\s+(\d+/\d+/\d+) - (\d+/\d+/\d+)\s+([\d\.,]+) kWh",
         # dates but no usage
         "alt2_date_usage": r"Electric Charges\s+(\d+/\d+/\d+) - (\d+/\d+/\d+)\s+",
-        "alt1_cost": r"Total New Charges\s+\$\s*([\d\.,]+)",
+        "alt1_cost": r"Total \w+ Charges  \$ ([\d,.]+)",
         "cost_subtotal": r"Subtotal Electric Charges\n.*?Total Electric Charges\s+\$\s+(?P<cost>[\d\.,]+)",
         # requires re.DOTALL
         "alt1_peak": r"Total kWh used.*?([\d\.,]+) kW\s+([\d\.,]+) kWh",

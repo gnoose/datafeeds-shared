@@ -27,6 +27,25 @@ from datafeeds.scrapers.ladwp_bill_pdf import (
 
 class TestLADWPParser(TestCase):
     @patch("datafeeds.scrapers.ladwp_bill_pdf.notify_rebill")
+    def test_single_meter_cost(self, _notify):
+        """Parser can extract the cost for a single meter from a multi-meter bill."""
+        filename = "datafeeds/scrapers/tests/fixtures/ladwp-4030.pdf"
+        self.maxDiff = None
+        expected = BillingDatum(
+            start=date(2021, 3, 9),
+            end=date(2021, 4, 8),
+            statement=date(2021, 4, 9),
+            # TODO: this is not extracted correctly
+            cost=883.85,
+            used=4464.0,
+            peak=14.4,
+            items=None,
+            attachments=None,
+            utility_code=None,
+        )
+        self.assertEqual([expected], parse_pdf(filename, "PMY00209-00014118", "kw"))
+
+    @patch("datafeeds.scrapers.ladwp_bill_pdf.notify_rebill")
     def test_single_account(self, _notify):
         """Parser can extract data from a single-account bill."""
         filename = "datafeeds/scrapers/tests/fixtures/ladwp-single.pdf"
