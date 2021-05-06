@@ -17,7 +17,7 @@ from datafeeds.common.typing import (
     BillingDatumItemsEntry,
     Status,
 )
-from datafeeds.common.upload import _upload_bills_to_services
+from datafeeds.common.upload import _upload_bills_to_services, AttachStatus
 from datafeeds.models.billaudit import BillAudit, WorkflowState
 from datafeeds.models.meter import ProductEnrollment, Building
 from datafeeds.models.utility_service import TND_ONLY
@@ -1915,3 +1915,13 @@ class TestPdfAttachment(unittest.TestCase):
             self.meter_ids[0], self.key, meter_only=True, pdfs=pdfs
         )
         self.assertEqual(status, Status.COMPLETED, "All PDF's already attached.")
+
+    def test_attach_status(self):
+        self.assertEqual(
+            AttachStatus.FOUND,
+            AttachStatus.best([AttachStatus.FOUND, AttachStatus.NOT_ATTACHED]),
+        )
+        self.assertEqual(
+            AttachStatus.ATTACHED,
+            AttachStatus.best([AttachStatus.FOUND, AttachStatus.ATTACHED]),
+        )
