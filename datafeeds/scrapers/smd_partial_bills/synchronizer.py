@@ -47,12 +47,10 @@ def get_service_ids(us: UtilityService) -> List[str]:
 
 def relevant_usage_points(m: Meter) -> Set[str]:
     """Compute a list of usage points associated with this meter.
-
     A valid usage point is any of the following:
     - The "stored usage point" associated with this meters meter data source.
         (This is likely to be invariant under SAID changes, which is why we keep it.)
     - Any usage point related to the meter's current SAID in the customer info table.
-
     If the current meter data source has no usage point associated with it,
     this function will assign one for future use.
     """

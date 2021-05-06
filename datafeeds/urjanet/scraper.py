@@ -3,7 +3,7 @@ import json
 import logging
 import re
 import hashlib
-from datetime import timedelta, date
+from datetime import date
 from typing import Optional, List
 
 import requests
@@ -15,7 +15,6 @@ from datafeeds.urjanet.model import (
     Charge,
     GridiumBillingPeriod,
     order_json,
-    GridiumBillingPeriodCollection,
 )
 from datafeeds.urjanet.datasource.base import UrjanetDataSource
 from datafeeds.urjanet.transformer import UrjanetGridiumTransformer
@@ -25,6 +24,7 @@ from datafeeds.common.typing import (
     AttachmentEntry,
     BillingDatum,
     BillingDatumItemsEntry,
+    BillingData,
 )
 
 
@@ -239,25 +239,9 @@ class BaseUrjanetScraper(BaseScraper):
         super().__init__(*args, **kwargs)
         self.name = "Urjanet Scraper: {}".format(self._configuration.utility_name)
 
-    def _execute(self):
+    def gridium_bills_to_billing_datum(self) -> BillingData:
         data = self.urja_datasource.load()
         gridium_bills = self.urja_transformer.urja_to_gridium(data)
-
-        if self._configuration.scrape_partial_bills:
-            restricted_billing_periods = []
-            start = self._date_range.start_date
-            end = max(start, self._date_range.end_date or date.today())
-            if end - start <= timedelta(days=60):
-                start = start - timedelta(days=60)
-                log.info("Adjusting start date to %s.", start)
-            for period in gridium_bills.periods:
-                if period.start >= start:
-                    restricted_billing_periods.append(period)
-            # Rather than scrape every bill we have, restrict *partial* urjanet scrapers to return data
-            # after the start date so we can return the same amount of data on both scrapers.
-            gridium_bills = GridiumBillingPeriodCollection(
-                periods=restricted_billing_periods
-            )
 
         out_dir = config.WORKING_DIRECTORY
         if out_dir:
@@ -266,14 +250,18 @@ class BaseUrjanetScraper(BaseScraper):
                 json_data = order_json(gridium_bills.to_json())
                 f.write(json.dumps(json_data, indent=4))
 
-        utility = self.urja_datasource.utility
-        account_id = self.urja_datasource.account_number
+        utility = self.urja_datasource.utility  # type: ignore
+        account_id = self.urja_datasource.account_number  # type: ignore
         billing_data_final = [
             make_billing_datum(
                 bill, utility, account_id, fetch_attachments=self.fetch_attachments
             )
             for bill in gridium_bills.periods
         ]
+        return billing_data_final
+
+    def _execute(self):
+        billing_data_final = self.gridium_bills_to_billing_datum()
         if self._configuration.partial_type == PartialBillProviderType.GENERATION_ONLY:
             return Results(generation_bills=billing_data_final)
         if self._configuration.partial_type == PartialBillProviderType.TND_ONLY:

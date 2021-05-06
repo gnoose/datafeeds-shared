@@ -157,7 +157,7 @@ class TestUrjanetScraper(unittest.TestCase):
             self.assertEqual(attachment.kind, "bill")
             self.assertEqual(attachment.format, "PDF")
 
-    def test_restrict_urjanet_data_range_for_partial_scrapers(self):
+    def test_urjanet_data_range_for_partial_scrapers(self):
         datasource = test_util.FixtureDataSource(
             os.path.join(DATA_DIR, "simple_fixture_input.json")
         )
@@ -174,14 +174,7 @@ class TestUrjanetScraper(unittest.TestCase):
         scraper = BaseUrjanetScraper(None, date_range, config)
         result = scraper._execute()
         self.assertEqual(
-            [], result.generation_bills, "partial urjanet bills outside of date range"
-        )
-
-        date_range = DateRange(date(2018, 1, 1), date(2020, 6, 1))
-        scraper = BaseUrjanetScraper(None, date_range, config)
-        result = scraper._execute()
-        self.assertEqual(
             expected,
             result.generation_bills,
-            "partial urjanet bills fall inside date range",
+            "partial urjanet scrapers return whatever partial bills we find, regardless of scraped range.",
         )

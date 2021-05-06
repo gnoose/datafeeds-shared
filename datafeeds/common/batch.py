@@ -111,6 +111,7 @@ def run_datafeed(
     transforms: Optional[List[Transforms]] = None,
     disable_login_on_error: Optional[bool] = False,
     notify_on_login_error: Optional[bool] = True,
+    meter_only: Optional[bool] = False,
 ) -> Status:
     transforms = [] if transforms is None else transforms
     bill_handler = ft.partial(
@@ -123,7 +124,7 @@ def run_datafeed(
     readings_handler = ft.partial(
         upload_readings, transforms, meter.oid, datasource.name, task_id
     )
-    pdfs_handler = ft.partial(attach_bill_pdfs, meter.oid, task_id)
+    pdfs_handler = ft.partial(attach_bill_pdfs, meter.oid, task_id, meter_only)
     partial_bill_handler = ft.partial(upload_partial_bills, meter, task_id)
 
     date_range = DateRange(
