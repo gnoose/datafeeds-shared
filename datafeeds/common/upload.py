@@ -249,16 +249,16 @@ def attach_bill_pdfs(
                 PartialBill.initial > pdf.start - timedelta(days=1),
                 PartialBill.initial < pdf.start + timedelta(days=1),
                 PartialBill.superseded_by.is_(None),
-                PartialBill.provider_type == "tnd-only",
+                PartialBill.visible.is_(True),
+                PartialBill.provider_type == PartialBillProviderType.TND_ONLY.value,
             )
-            if not bill_query.count() or not partial_bill_query.count():
+            if not bill_query.count() and not partial_bill_query.count():
                 log.warning(
                     "no bills found for utility_account_id %s %s-%s",
                     pdf.utility_account_id,
                     pdf.start,
                     pdf.end,
                 )
-                unused.append(pdf.s3_key)
             bill_attach_status = add_attachment_to_bills(pdf, bill_query)
             partial_attach_status = add_attachment_to_bills(pdf, partial_bill_query)
             if (
@@ -279,6 +279,14 @@ def attach_bill_pdfs(
                 .filter(Bill.closing > pdf.statement - timedelta(days=14))
                 .filter(Bill.closing <= pdf.statement)
             )
+            bill_count = query.count()
+            if not bill_count:
+                log.warning(
+                    "no bills found for utility_account_id %s %s-%s",
+                    pdf.utility_account_id,
+                    pdf.start,
+                    pdf.end,
+                )
             attached = add_attachment_to_bills(pdf, query)
             if attached == AttachStatus.ATTACHED:
                 count += 1
