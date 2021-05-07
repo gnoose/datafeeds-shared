@@ -203,6 +203,12 @@ def add_attachment_to_bills(
         if current_pdfs:
             if pdf.s3_key in current_pdfs:
                 att_status = AttachStatus.best([att_status, AttachStatus.FOUND])
+                log.info(
+                    "attachment %s already attached to %s %s",
+                    pdf.s3_key,
+                    bill_type,
+                    bill.oid,
+                )
                 continue
         if not bill.attachments:
             bill.attachments = []
@@ -240,14 +246,14 @@ def attach_bill_pdfs(
             bill_query = db.session.query(Bill).filter(
                 Bill.service == Meter.service,
                 Meter.oid == meter_oid,
-                Bill.initial > pdf.start - timedelta(days=1),
-                Bill.initial < pdf.start + timedelta(days=1),
+                Bill.initial >= pdf.start - timedelta(days=1),
+                Bill.initial <= pdf.start + timedelta(days=1),
             )
             partial_bill_query = db.session.query(PartialBill).filter(
                 PartialBill.service == Meter.service,
                 Meter.oid == meter_oid,
-                PartialBill.initial > pdf.start - timedelta(days=1),
-                PartialBill.initial < pdf.start + timedelta(days=1),
+                PartialBill.initial >= pdf.start - timedelta(days=1),
+                PartialBill.initial <= pdf.start + timedelta(days=1),
                 PartialBill.superseded_by.is_(None),
                 PartialBill.visible.is_(True),
                 PartialBill.provider_type == PartialBillProviderType.TND_ONLY.value,
